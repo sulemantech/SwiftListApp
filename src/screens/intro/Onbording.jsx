@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import OnboardingItem from './Onbordingitem';
-import pic1 from '../../assets/1.png';
-import pic2 from '../../assets/2.png';
-import pic3 from '../../assets/3.png';
-import pic4 from '../../assets/4.png';
-import pic5 from '../../assets/5.png';
+import pic1 from '../../assets/images/1.png';
+import pic2 from '../../assets/images/2.png';
+import pic3 from '../../assets/images/3.png';
+import pic4 from '../../assets/images/4.png';
+import pic5 from '../../assets/images/5.png';
 import SCREENS from '..';
 
 export default function Onboarding({navigation}) {
