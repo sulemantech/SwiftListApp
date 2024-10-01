@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flexGrow: 1, 
+    marginBottom: 80, 
   },
   scrollContent: {
     alignItems: 'flex-start',
