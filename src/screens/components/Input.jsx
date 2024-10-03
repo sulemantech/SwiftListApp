@@ -1,14 +1,33 @@
 import React from 'react';
-import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 
-const {width} = Dimensions.get('window');
-const TextInput2 = ({label, placeholder, value, onChangeText}) => {
+// const {width} = Dimensions.get('window');
+const TextInput2 = ({
+  label,
+  placeholder,
+  value,
+  onFocus,
+  onBlur,
+  onChangeText,
+  borderRadius = 20,
+  bgColor = '#fff',
+  fontsize = 11,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
 
       <TextInput
-        style={styles.input}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        style={[
+          styles.input,
+          {
+            backgroundColor: bgColor,
+            borderRadius: borderRadius,
+            fontSize: fontsize,
+          },
+        ]}
         placeholder={placeholder}
         placeholderTextColor="#A9A9A9"
         value={value}
@@ -28,8 +47,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: 12,
     fontWeight: '500',
-    marginBottom: 5,
-    paddingLeft: 15,
+    marginBottom: 3,
+    paddingLeft: 3,
     color: '#5C5C5C',
   },
   input: {
@@ -39,9 +58,8 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     paddingHorizontal: 10,
     fontFamily: 'Poppins-Regular',
-    fontSize: 11,
+    // fontSize: 11,
     fontWeight: '275',
-    backgroundColor: '#FAFAFA',
     lineHeight: 16.5,
   },
 });

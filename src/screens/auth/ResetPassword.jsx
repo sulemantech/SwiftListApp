@@ -1,4 +1,11 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/passwordreset.png';
@@ -7,13 +14,13 @@ import SCREENS from '..';
 
 const ResetPassword = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={back} style={styles.back} />
+          <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Password Reset</Text>
-        <Text style={styles.signInText}></Text>
+        <Text style={styles.signInText}> </Text>
       </View>
 
       <View style={styles.inputbox}>
@@ -22,10 +29,12 @@ const ResetPassword = ({navigation}) => {
         <Text style={styles.instructions}>Enter New Password And Confirm.</Text>
 
         <TextInput2
+        bgcolor={'#fff'}
           label={'Enter New Password'}
           placeholder={'Enter new password'}
         />
         <TextInput2
+        bgcolor={'#fff'}
           label={'Confirm Password'}
           placeholder={'Confirm password'}
         />
@@ -38,7 +47,7 @@ const ResetPassword = ({navigation}) => {
           <Text style={styles.buttonText}>Change Password</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -47,24 +56,22 @@ export default ResetPassword;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
-    alignItems: 'center',
+    paddingTop: 20,
     backgroundColor: '#fff',
     paddingHorizontal: '5%',
   },
   headerContainer: {
     position: 'absolute',
     top: 0,
-    padding: 7,
+    paddingVertical: 7,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '7%',
   },
   back: {
     width: 25,
-    height: 20
+    height: 20,
   },
   signInText: {
     color: '#6c6c6c',
@@ -73,19 +80,18 @@ const styles = StyleSheet.create({
   },
   inputbox: {
     width: '100%',
-    flex: 0.6,
-    marginTop: 7,
-
+    marginTop: 40,
+    gap: 20,
   },
   signinImage: {
     marginBottom: 10,
-    marginHorizontal:"auto"
+    marginHorizontal: 'auto',
   },
   instructions: {
     color: '#6c6c6c',
     fontSize: 12,
     lineHeight: 23,
-    marginHorizontal:"auto",
+    marginHorizontal: 'auto',
     fontFamily: 'Poppins-Regular',
     fontWeight: '300',
     textAlign: 'left',
@@ -101,7 +107,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#52C2FE',
     borderRadius: 30,
-    paddingVertical: 12,
+    paddingVertical: 20,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,

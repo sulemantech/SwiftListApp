@@ -1,4 +1,11 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/forgotpassword.png';
@@ -7,13 +14,13 @@ import SCREENS from '..';
 
 const ForgotPassword = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Forgot Password</Text>
-        <Text style={styles.signInText}></Text>
+        <Text style={styles.signInText}> </Text>
       </View>
 
       <View style={styles.inputbox}>
@@ -25,6 +32,7 @@ const ForgotPassword = ({navigation}) => {
         </Text>
 
         <TextInput2
+          bgcolor={'#fff'}
           label={'Email/PhoneNumber'}
           placeholder={'Enter Email Address'}
         />
@@ -37,7 +45,7 @@ const ForgotPassword = ({navigation}) => {
           <Text style={styles.buttonText}>Send</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -46,24 +54,22 @@ export default ForgotPassword;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
-    alignItems: 'center',
+    paddingTop: 20,
     backgroundColor: '#fff',
     paddingHorizontal: '5%',
   },
   headerContainer: {
     position: 'absolute',
     top: 0,
-    padding: 7,
+    paddingVertical: 7,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '7%',
   },
   back: {
     width: 25,
-    height: 20
+    height: 20,
   },
   signInText: {
     color: '#6c6c6c',
@@ -72,13 +78,12 @@ const styles = StyleSheet.create({
   },
   inputbox: {
     width: '100%',
-    flex: 0.48,
-    marginTop: 7,
-
+    marginTop: 50,
+    display: 'flex',
   },
   signinImage: {
     marginBottom: 10,
-    marginHorizontal:'auto'
+    marginHorizontal: 'auto',
   },
   instructions: {
     color: '#6c6c6c',

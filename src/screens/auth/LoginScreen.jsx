@@ -1,12 +1,12 @@
+import React, {useState} from 'react';
 import {
-  Button,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/Signin.png';
@@ -19,22 +19,23 @@ const LoginScreen = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>
-        <Text style={styles.signInText}></Text>
+        <Text style={styles.signInText}> </Text>
       </View>
 
       <View style={styles.inputbox}>
         <Image source={Signin} style={styles.signinImage} />
         <TextInput2
+        bgcolor={'#fff'}
           label={'Email/Phone Number'}
           placeholder={'Enter Email Address'}
         />
-        <TextInput2 label={'Password'} placeholder={'Enter Password'} />
+        <TextInput2 bgcolor={'#fff'} label={'Password'} placeholder={'Enter Password'} />
       </View>
 
       <View style={styles.row}>
@@ -54,7 +55,9 @@ const LoginScreen = ({navigation}) => {
       </View>
 
       <View style={styles.containersign}>
-        <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate(SCREENS.Dashbored)} >
+        <TouchableOpacity
+          style={styles.signInButton}
+          onPress={() => navigation.navigate(SCREENS.Dashbored)}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
       </View>
@@ -78,23 +81,24 @@ const LoginScreen = ({navigation}) => {
         </View>
         <View style={styles.containersocial}>
           <View style={styles.social}>
-          <TouchableOpacity style={styles.innersocial}>
-            <Image source={google} style={styles.socialIcon} />
-            <Text style={styles.socialButtonText}>Sign In with Google</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.innersocial}>
+              <Image source={google} style={styles.socialIcon} />
+              <Text style={styles.socialButtonText}>Sign In with Google</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
+
       <View style={styles.row2}>
         <View style={styles.checkboxContainer}>
-          <Text style={styles.checkboxLabel}>Don't Have an Account ? </Text>
+          <Text style={styles.checkboxLabel}>Don't Have an Account?</Text>
         </View>
 
         <TouchableOpacity onPress={() => navigation.navigate(SCREENS.signup)}>
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -102,7 +106,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     paddingTop: 70,
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -129,14 +133,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   inputbox: {
-    flex: 0.9,
     display: 'flex',
+    gap: 10,
     flexDirection: 'column',
     width: '100%',
   },
   signinImage: {
     marginBottom: 10,
-    marginHorizontal:'auto'
+    marginHorizontal: 'auto',
   },
   row: {
     flexDirection: 'row',
@@ -152,11 +156,10 @@ const styles = StyleSheet.create({
     width: '70%',
     marginTop: 10,
   },
-  socialIcon:{
-    width:35,
-    height:35,
+  socialIcon: {
+    width: 35,
+    height: 35,
   },
-
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
   checkboxLabel: {
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
-    color: "#8c8c8c",
+    color: '#8c8c8c',
     marginLeft: 8,
   },
   forgotPassword: {

@@ -1,9 +1,9 @@
 import React from 'react';
 import * as Progress from 'react-native-progress';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import circle from '../../assets/images/circle.png';
 
-const CardComponent = ({data = {}}) => {
+const CardComponent = ({ onPress, data = {} }) => {
   const {
     title,
     description,
@@ -18,27 +18,27 @@ const CardComponent = ({data = {}}) => {
   const percent = percentage / 100;
 
   return (
-    <View style={[styles.cardContainer, {backgroundColor: bgColor}]}>
+    <TouchableOpacity style={[styles.cardContainer, { backgroundColor: bgColor }]} onPress={onPress}>
       <View style={[styles.contentContainer]}>
-        <Text style={[styles.title, {color: badgeColor}]}>{title}</Text>
-        <Text style={[styles.description, {color: badgeColor}]}>
+        <Text style={[styles.title, { color: badgeColor }]}>{title}</Text>
+        <Text style={[styles.description, { color: badgeColor }]}>
           {description}
         </Text>
-        <Text style={[styles.badge, {backgroundColor: badgeColor}]}>
+        <Text style={[styles.badge, { backgroundColor: badgeColor }]}>
           {items}
         </Text>
-        <Text style={[styles.percentage, {color: badgeColor}]}>
+        <Text style={[styles.percentage, { color: badgeColor }]}>
           {percentagetext}
         </Text>
         <View style={[styles.progressview]}>
-        <Progress.Bar progress={percent} borderWidth={0} color={badgeColor} animated={true} />
+          <Progress.Bar progress={percent} borderWidth={0} color={badgeColor} animated={true} />
         </View>
       </View>
       <View style={[styles.contentContainer2]}>
         <Image source={circle} style={[styles.image2]} />
         {image && <Image source={image} style={[styles.image]} />}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '105%',
   },
-  progressview:{
+  progressview: {
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
-  }
+  },
 });
 
 export default CardComponent;
