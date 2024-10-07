@@ -7,12 +7,19 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  TouchableHighlight,
 } from 'react-native';
 import back from '../../assets/images/back-arrow.png';
 import heart from '../../assets/images/heartIcon.png';
 import arrowRight from '../../assets/images/down-arrow.png';
 import searchicon from '../../assets/images/search.png';
 import searchiconBlack from '../../assets/images/search-black.png';
+import GrocerySVG from '../../assets/images/SVG/grocerypage.svg';
+import SpiritualSVG from '../../assets/images/SVG/spiritualpage.svg';
+import PersonalGroomingSVG from '../../assets/images/SVG/pgrommingpage.svg';
+import ThingsToDoSVG from '../../assets/images/SVG/thingstodopage.svg';
+import KitchenMenuSVG from '../../assets/images/SVG/kitchenpage.svg';
+
 import {categories} from './Data';
 import TextInput2 from '../components/Input';
 
@@ -30,14 +37,24 @@ const ItemsList = ({ItemName, onBackPress}) => {
   );
 
   const filterItems = content => {
-    const filteredSubCategories = matchingCategory.subCategories.filter(subCategory =>
-      subCategory.name.toLowerCase().startsWith(content.toLowerCase())
+    const filteredSubCategories = matchingCategory.subCategories.filter(
+      subCategory =>
+        subCategory.name.toLowerCase().startsWith(content.toLowerCase()),
     );
     setFilteredCategory({
       ...matchingCategory,
       subCategories: filteredSubCategories,
     });
   };
+
+  const imageMap = {
+    groceryImage: GrocerySVG,
+    spiritualImage: SpiritualSVG,
+    personalGroomingImage: PersonalGroomingSVG,
+    thingsToDoImage: ThingsToDoSVG,
+    kitchenMenuImage: KitchenMenuSVG,
+  };
+  const SelectedImageComponent = imageMap[filteredCategory.category.image];
 
   return (
     <View style={styles.container}>
@@ -53,10 +70,12 @@ const ItemsList = ({ItemName, onBackPress}) => {
       {/* Category Image */}
       {filteredCategory && (
         <View style={styles.categoryContainer}>
-          <Image
-            source={filteredCategory.category.image}
-            style={styles.categoryImage}
-          />
+          <View>
+            {SelectedImageComponent ? (
+              <SelectedImageComponent style={styles.categoryImage} />
+            ) : null}
+          </View>
+
           <Text style={styles.caption2}>
             {filteredCategory.category.description}
           </Text>
@@ -64,7 +83,7 @@ const ItemsList = ({ItemName, onBackPress}) => {
             <TextInput2
               borderRadius={40}
               bgColor={isSearchFocused ? '#007AFF26' : '#fff'}
-              placeholder={'   Search items here...'}
+              placeholder={'Search items here...'}
               fontsize={16}
               onChangeText={text => {
                 filterItems(text);
@@ -95,13 +114,17 @@ const ItemsList = ({ItemName, onBackPress}) => {
           showsVerticalScrollIndicator={false}
           style={styles.subCategoriesContainer}>
           {filteredCategory.subCategories.map((subCategory, index) => (
-            <View key={index} style={styles.subCategoryItem}>
+            <TouchableHighlight
+              activeOpacity={0.2}
+              underlayColor="#52C2FE"
+              onPress={() => ('Pressed!')}
+              key={index}
+              style={styles.subCategoryItem}>
               <View style={styles.subCategoryContent}>
                 <Text style={styles.subCategoryName}>{subCategory.name}</Text>
                 <Image source={arrowRight} style={styles.arrowRight} />
               </View>
-              {/* Placeholder for items */}
-            </View>
+            </TouchableHighlight>
           ))}
         </ScrollView>
       )}

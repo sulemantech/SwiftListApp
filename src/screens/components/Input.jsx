@@ -42,6 +42,7 @@ export default TextInput2;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
   },
   label: {
     fontFamily: 'Poppins-Regular',
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     borderColor: '#DEDDE2',
     borderWidth: 1,
     borderRadius: 13,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     fontFamily: 'Poppins-Regular',
     // fontSize: 11,
     fontWeight: '275',

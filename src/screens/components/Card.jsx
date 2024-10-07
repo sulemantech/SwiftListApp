@@ -10,7 +10,7 @@ const CardComponent = ({ onPress, data = {} }) => {
     items,
     percentagetext,
     percentage,
-    image,
+    Picture,
     bgColor,
     badgeColor,
   } = data;
@@ -36,7 +36,9 @@ const CardComponent = ({ onPress, data = {} }) => {
       </View>
       <View style={[styles.contentContainer2]}>
         <Image source={circle} style={[styles.image2]} />
-        {image && <Image source={image} style={[styles.image]} />}
+        <View style={styles.image}>
+        <Picture width={150} height={130}/>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -93,10 +95,8 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    right: -0,
+    right: 0,
     bottom: 0,
-    width: '90%',
-    height: '105%',
   },
   image2: {
     position: 'absolute',

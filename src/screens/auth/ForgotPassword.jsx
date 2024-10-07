@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import TextInput2 from '../components/Input';
-import Signin from '../../assets/images/forgotpassword.png';
+import Signin from '../../assets/images/SVG/forgotpassword.svg';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 
@@ -24,7 +24,8 @@ const ForgotPassword = ({navigation}) => {
       </View>
 
       <View style={styles.inputbox}>
-        <Image source={Signin} style={styles.signinImage} />
+        {/* <Image source={Signin} style={styles.signinImage} /> */}
+        <Signin/>
 
         <Text style={styles.instructions}>
           Please Enter Your Email Address. You will receive a link to create a
@@ -80,6 +81,8 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 50,
     display: 'flex',
+    alignItems: 'center',
+    gap: 10,
   },
   signinImage: {
     marginBottom: 10,

@@ -3,19 +3,19 @@ import React, {useState} from 'react';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TextInput2 from '../components/Input'; // Your custom text input component
 import Filtericon from '../../assets/images/filtericon.png';
-import first from '../../assets/images/1st.png';
-import seconed from '../../assets/images/2nd.png';
-import third from '../../assets/images/3rd.png';
+import first from '../../assets/images/SVG/dashboardgrocery.svg';
+import seconed from '../../assets/images/SVG/dashboardspiritualgoals.svg';
+import third from '../../assets/images/SVG/dashboardpersonalgromming.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
 
 const Dashbored = () => {
-  const [selectedCard, setSelectedCard] = useState(null); 
+  const [selectedCard, setSelectedCard] = useState(null);
   const handleCardClick = title => {
     setSelectedCard(title);
   };
   const handleBackPress = () => {
-    setSelectedCard(null); 
+    setSelectedCard(null);
   };
 
   // const Tab = createBottomTabNavigator();
@@ -26,7 +26,7 @@ const Dashbored = () => {
       items: '200 Items',
       percentagetext: 'Bought 70%',
       percentage: 70,
-      image: first,
+      Picture: first,
       bgColor: '#9DF4F4',
       badgeColor: '#008B94',
     },
@@ -36,7 +36,7 @@ const Dashbored = () => {
       items: '10 Goals',
       percentagetext: 'Achieved 30%',
       percentage: 30,
-      image: seconed,
+      Picture: seconed,
       bgColor: '#98FBCB',
       badgeColor: '#4AA688',
     },
@@ -46,7 +46,7 @@ const Dashbored = () => {
       items: '10 Tasks',
       percentagetext: 'Completed 80%',
       percentage: 80,
-      image: third,
+      Picture: third,
       bgColor: '#FEE5D7',
       badgeColor: '#C54B6C',
     },
@@ -56,7 +56,7 @@ const Dashbored = () => {
       items: '200 Items',
       percentagetext: 'Bought 70%',
       percentage: 20,
-      image: first,
+      Picture: first,
       bgColor: '#FFCBA1CC',
       badgeColor: '#E36A4A',
     },
@@ -66,7 +66,7 @@ const Dashbored = () => {
       items: '200 Items',
       percentagetext: 'Bought 70%',
       percentage: 40,
-      image: seconed,
+      Picture: seconed,
       bgColor: '#98FBCB',
       badgeColor: '#FF5733',
     },

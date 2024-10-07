@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import TextInput2 from '../components/Input';
-import Signin from '../../assets/images/Signup.png';
+import Signin from '../../assets/images/SVG/signup.svg';
 import back from '../../assets/images/back-arrow.png';
 
 import SCREENS from '..';
@@ -25,7 +25,8 @@ const SignUpScreen = ({navigation}) => {
       </View>
 
       <View style={styles.inputbox}>
-        <Image source={Signin} style={styles.signinImage} />
+        {/* <Image source={Signin} style={styles.signinImage} /> */}
+        <Signin/>
         <TextInput2 bgcolor={'#fff'} label={'Name'} placeholder={'Enter User Name'} />
         <TextInput2
         bgcolor={'#fff'}
@@ -91,9 +92,10 @@ const styles = StyleSheet.create({
   inputbox: {
     width: '100%',
     display: 'flex',
+    alignItems: 'center',
     flexDirection: 'column',
     gap: 20,
-    marginTop: 20,
+    marginTop: 40,
   },
   signinImage: {
     marginVertical: 30,

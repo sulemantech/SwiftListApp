@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import TextInput2 from '../components/Input';
-import Signin from '../../assets/images/passwordreset.png';
+import Signin from '../../assets/images/SVG/restpassword.svg';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 
@@ -24,7 +24,8 @@ const ResetPassword = ({navigation}) => {
       </View>
 
       <View style={styles.inputbox}>
-        <Image source={Signin} style={styles.signinImage} />
+        {/* <Image source={Signin} style={styles.signinImage} /> */}
+        <Signin/>
 
         <Text style={styles.instructions}>Enter New Password And Confirm.</Text>
 
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
   inputbox: {
     width: '100%',
     marginTop: 40,
+    alignItems: 'center',
     gap: 20,
   },
   signinImage: {

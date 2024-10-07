@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import TextInput2 from '../components/Input';
-import Signin from '../../assets/images/Signin.png';
+import Signin from '../../assets/images/SVG/signin.svg';
 import facebook from '../../assets/images/social-media-facebook.png';
 import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
@@ -29,13 +29,18 @@ const LoginScreen = ({navigation}) => {
       </View>
 
       <View style={styles.inputbox}>
-        <Image source={Signin} style={styles.signinImage} />
+        {/* <Image source={Signin} style={styles.signinImage} /> */}
+        <Signin />
         <TextInput2
-        bgcolor={'#fff'}
+          bgcolor={'#fff'}
           label={'Email/Phone Number'}
           placeholder={'Enter Email Address'}
         />
-        <TextInput2 bgcolor={'#fff'} label={'Password'} placeholder={'Enter Password'} />
+        <TextInput2
+          bgcolor={'#fff'}
+          label={'Password'}
+          placeholder={'Enter Password'}
+        />
       </View>
 
       <View style={styles.row}>
@@ -75,7 +80,9 @@ const LoginScreen = ({navigation}) => {
           <View style={styles.social}>
             <TouchableOpacity style={styles.innersocial}>
               <Image source={facebook} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>Sign In with Facebook</Text>
+              <Text style={styles.socialButtonText}>
+                Continue with Facebook
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -83,7 +90,7 @@ const LoginScreen = ({navigation}) => {
           <View style={styles.social}>
             <TouchableOpacity style={styles.innersocial}>
               <Image source={google} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>Sign In with Google</Text>
+              <Text style={styles.socialButtonText}>Continue with Google</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -121,7 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '7%',
+    height: '10%',
   },
   back: {
     width: 25,
@@ -134,6 +141,7 @@ const styles = StyleSheet.create({
   },
   inputbox: {
     display: 'flex',
+    alignItems: 'center',
     gap: 10,
     flexDirection: 'column',
     width: '100%',
@@ -245,7 +253,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   innersocial: {
-    width: '60%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -253,7 +260,7 @@ const styles = StyleSheet.create({
   socialButtonText: {
     color: '#8C8C8C',
     fontSize: 14,
-    width: 160,
+    width: 200,
     overflow: 'hidden',
     fontWeight: '500',
     marginLeft: 10,

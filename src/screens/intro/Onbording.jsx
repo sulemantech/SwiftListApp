@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   FlatList,
@@ -5,15 +6,14 @@ import {
   Animated,
   Text,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import OnboardingItem from './Onbordingitem';
-import pic1 from '../../assets/images/1.png';
-import pic2 from '../../assets/images/2.png';
-import pic3 from '../../assets/images/3.png';
-import pic4 from '../../assets/images/4.png';
-import pic5 from '../../assets/images/5.png';
+import pic1 from '../../assets/images/SVG/1.svg';
+import pic2 from '../../assets/images/SVG/2.svg';
+import pic3 from '../../assets/images/SVG/3.svg';
+import pic4 from '../../assets/images/SVG/4.svg';
+import pic5 from '../../assets/images/SVG/5.svg';
 import SCREENS from '..';
 
 export default function Onboarding({navigation}) {
@@ -83,25 +83,24 @@ export default function Onboarding({navigation}) {
       >
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
-
-      <FlatList
-        data={slides}
-        renderItem={({item}) => <OnboardingItem item={item} />}
-        keyExtractor={item => item.id}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        bounces={false}
-        onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {x: scrollX}}}],
-          {useNativeDriver: false},
-        )}
-        scrollEventThrottle={32}
-        onViewableItemsChanged={ViewableItemsChanged}
-        viewabilityConfig={viewConfig}
-        ref={slidesRef}
-      />
-
+      <View style={styles.container2}>
+        <FlatList
+          data={slides}
+          renderItem={({item}) => <OnboardingItem item={item} />}
+          keyExtractor={item => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          bounces={false}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {x: scrollX}}}],
+            {useNativeDriver: false},
+          )}
+          scrollEventThrottle={32}
+          onViewableItemsChanged={ViewableItemsChanged}
+          viewabilityConfig={viewConfig}
+          ref={slidesRef}
+        />
       {/* Pagination Dots */}
       <View style={styles.pagination}>
         {slides.map((_, index) => (
@@ -127,8 +126,8 @@ export default function Onboarding({navigation}) {
           </TouchableOpacity>
         ))}
       </View>
+      </View>
 
-      {/* Next/Get Started Button */}
       <TouchableOpacity onPress={handleNext} style={styles.button}>
         <Text style={styles.buttonText}>
           {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
@@ -141,20 +140,24 @@ export default function Onboarding({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: 80,
+  },
+  container2: {
+    flex: 0.65,
   },
   pagination: {
     flexDirection: 'row',
-    position: 'absolute',
-    bottom: 160, // Adjust position
+    marginTop: 20,
+    marginHorizontal:'auto',
   },
   dotContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 12, // Increased to provide equal space around dot
+    width: 12,
     height: 12,
-    margin: 0, // Keep the margin for consistent spacing between dots
+    margin: 0,
   },
   dot: {
     width: 6,
@@ -162,16 +165,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   activeDotContainer: {
-    borderWidth: 1, // 1px space between the dot and the border
+    borderWidth: 1,
     borderColor: '#52C3FF',
     borderRadius: 15,
-    padding: 3, // Adds uniform padding around the dot
+    padding: 3,
   },
   button: {
-    position: 'absolute',
     width: '80%',
-    bottom: 70, // Position below pagination
-    backgroundColor: '#52C3FF', // Same color as active dot
+    backgroundColor: '#52C3FF',
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 200,
@@ -184,15 +185,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   skip: {
-    padding: 10, 
+    padding: 10,
     position: 'absolute', // Positioning in the top right corner
     top: 20,
     right: 20,
-    zIndex: 1000
+    zIndex: 1000,
   },
   skipText: {
     color: '#6c6c6c', // Text color
-    fontSize: 16, 
+    fontSize: 16,
     fontFamily: 'Poppins-Regular',
   },
 });

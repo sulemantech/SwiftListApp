@@ -1,80 +1,65 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, Text, View, StyleSheet} from 'react-native';
+import {Image, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Dashbored from './Dashbored';
 import UserProfile from './UserProfile';
 import Notifications from './Notifications';
 
-// Import your PNG icons
 import notificationIcon from '../../assets/images/bellicon.png';
 import homeIcon from '../../assets/images/homeicon.png';
 import profileIcon from '../../assets/images/profileicon.png';
 
-// TabIcon Component (already outside of render)
 const TabIcon = ({route, focused, size}) => {
-  let iconSource;
-  let tintColor = focused ? '#FFF' : 'gray';
-  let textColor = focused ? '#FFF' : 'gray';
+  const iconSource = {
+    Notification: notificationIcon,
+    Home: homeIcon,
+    Profile: profileIcon,
+  }[route.name];
 
-  if (route.name === 'Notification') {
-    iconSource = notificationIcon;
-  } else if (route.name === 'Home') {
-    iconSource = homeIcon;
-  } else if (route.name === 'Profile') {
-    iconSource = profileIcon;
-  }
+  const tintColor = focused ? '#FFF' : 'gray';
 
   return (
-    <View style={{alignItems: 'center'}}>
-      {focused ? (
-        <View style={styles.containertop}>
-          <View style={styles.container}>
-            <Image
-              source={iconSource}
-              style={{
-                width: size,
-                height: size,
-                tintColor: tintColor,
-              }}
-              resizeMode="contain"
-            />
-            <Text
-              style={{
-                color: textColor,
-                fontSize: 12,
-              }}>
-              {route.name}
-            </Text>
-          </View>
-        </View>
-      ) : (
-        <View style={{alignItems: 'center'}}>
-          <Image
-            source={iconSource}
-            style={{
-              width: size,
-              height: size,
-              tintColor: tintColor,
-            }}
-            resizeMode="contain"
-          />
-          <Text
-            style={{
-              color: textColor,
-              fontSize: 12,
-            }}>
-            {route.name}
-          </Text>
-        </View>
-      )}
+    <View style={focused ? styles.containertop : {alignItems: 'center'}}>
+      <View style={focused ? styles.container : {alignItems: 'center'}}>
+        <Image
+          source={iconSource}
+          style={{width: size, height: size, tintColor}}
+          resizeMode="contain"
+        />
+        <Text style={{color: tintColor, fontSize: 12}}>{route.name}</Text>
+      </View>
     </View>
   );
 };
 
-// Define screenOptions outside of the component to avoid recreating the function
-const screenOptions = ({route}) => ({
-  tabBarIcon: (props) => <TabIcon route={route} {...props} />,
+const getTabOrder = focusedTab => {
+  const orderMap = {
+    Home: ['Notification', 'Home', 'Profile'],
+    Notification: ['Home', 'Notification', 'Profile'],
+    Profile: ['Home', 'Profile', 'Notification'],
+  };
+  return orderMap[focusedTab] || ['Notification', 'Home', 'Profile'];
+};
+
+const renderTabBarButton = (tabName, setFocusedTab) => props =>
+  (
+    <TouchableOpacity
+      {...props}
+      onPress={() => {
+        setFocusedTab(tabName);
+        props.onPress();
+      }}
+      style={{flex: 1}}
+    />
+  );
+
+const renderTabBarIcon =
+  tabName =>
+  ({focused, size}) =>
+    <TabIcon route={{name: tabName}} focused={focused} size={size} />;
+
+const screenOptions = {
   tabBarActiveTintColor: '#52C2FE',
   tabBarInactiveTintColor: 'gray',
   tabBarLabel: () => null,
@@ -95,28 +80,37 @@ const screenOptions = ({route}) => ({
     shadowOpacity: 1,
     shadowRadius: 3.84,
   },
-});
+};
 
 const DashboredIndex = () => {
+  const [focusedTab, setFocusedTab] = useState('Home');
   const Tab = createBottomTabNavigator();
 
+  const tabOrder = getTabOrder(focusedTab);
+
   return (
-    <Tab.Navigator initialRouteName="Home" screenOptions={screenOptions}>
-      <Tab.Screen
-        name="Notification"
-        component={Notifications}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Home"
-        component={Dashbored}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={UserProfile}
-        options={{headerShown: false}}
-      />
+    <Tab.Navigator initialRouteName={focusedTab} screenOptions={screenOptions}>
+      {tabOrder.map(tabName => {
+        const component =
+          tabName === 'Notification'
+            ? Notifications
+            : tabName === 'Home'
+            ? Dashbored
+            : UserProfile;
+
+        return (
+          <Tab.Screen
+            key={tabName}
+            name={tabName}
+            component={component}
+            options={{
+              headerShown: false,
+              tabBarButton: renderTabBarButton(tabName, setFocusedTab),
+              tabBarIcon: renderTabBarIcon(tabName),
+            }}
+          />
+        );
+      })}
     </Tab.Navigator>
   );
 };
@@ -128,7 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#52C2FE',
     width: 70,
     height: 70,
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 1000,
@@ -145,7 +138,6 @@ const styles = StyleSheet.create({
   containertop: {
     width: 90,
     height: 100,
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
