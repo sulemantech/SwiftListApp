@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
@@ -19,12 +20,14 @@ import SpiritualSVG from '../../assets/images/SVG/spiritualpage.svg';
 import PersonalGroomingSVG from '../../assets/images/SVG/pgrommingpage.svg';
 import ThingsToDoSVG from '../../assets/images/SVG/thingstodopage.svg';
 import KitchenMenuSVG from '../../assets/images/SVG/kitchenpage.svg';
-
 import {categories} from './Data';
 import TextInput2 from '../components/Input';
+import SCREENS from '..';
 
 const ItemsList = ({ItemName, onBackPress}) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const navigation = useNavigation();
+
   const [filteredCategory, setFilteredCategory] = useState(
     categories.find(
       categoryObj =>
@@ -115,9 +118,13 @@ const ItemsList = ({ItemName, onBackPress}) => {
           style={styles.subCategoriesContainer}>
           {filteredCategory.subCategories.map((subCategory, index) => (
             <TouchableHighlight
+              onPress={() =>
+                navigation.navigate(SCREENS.Products, {
+                  myStringProp: subCategory.name,
+                })
+              }
               activeOpacity={0.2}
               underlayColor="#52C2FE"
-              onPress={() => ('Pressed!')}
               key={index}
               style={styles.subCategoryItem}>
               <View style={styles.subCategoryContent}>
