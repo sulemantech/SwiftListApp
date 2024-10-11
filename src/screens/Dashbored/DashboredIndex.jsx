@@ -1,16 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { useIsFocused } from '@react-navigation/native';
 import {Image, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Dashbored from './Dashbored';
 import UserProfile from './UserProfile';
 import Notifications from './Notifications';
+
 
 import notificationIcon from '../../assets/images/bellicon.png';
 import homeIcon from '../../assets/images/homeicon.png';
 import profileIcon from '../../assets/images/profileicon.png';
 
 const TabIcon = ({route, focused, size}) => {
+  const IsFocused = useIsFocused();
   const iconSource = {
     Notification: notificationIcon,
     Home: homeIcon,
@@ -27,7 +30,7 @@ const TabIcon = ({route, focused, size}) => {
           style={{width: size, height: size, tintColor}}
           resizeMode="contain"
         />
-        <Text style={{color: tintColor, fontSize: 12}}>{route.name}</Text>
+        {!IsFocused && <Text style={{color: tintColor, fontSize: 12}}>{route.name}</Text>}
       </View>
     </View>
   );
@@ -120,8 +123,8 @@ export default DashboredIndex;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#52C2FE',
-    width: 70,
-    height: 70,
+    width: 65,
+    height: 65,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 1000,

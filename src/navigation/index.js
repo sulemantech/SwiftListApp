@@ -9,7 +9,7 @@ import EmailSuccess from '../screens/auth/EmailSuccess';
 import ResetPassword from '../screens/auth/ResetPassword';
 import Congratulation from '../screens/auth/Congratulation';
 import DashboredIndex from '../screens/Dashbored/DashboredIndex';
-import Products from '../screens/Dashbored/Products';
+import ProductsPage from '../screens/Dashbored/ProductsPage';
 
 const Stack = createStackNavigator();
 
@@ -57,8 +57,8 @@ const StackNavigation = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name={SCREENS.Products}
-        component={Products}
+        name={SCREENS.ProductsPage}
+        component={ProductsPage}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

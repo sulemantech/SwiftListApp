@@ -110,26 +110,24 @@ const springroll = require('../../assets/images/products/frozenitems/springroll.
 const vegetablesamosa = require('../../assets/images/products/frozenitems/vegetablesamosa.png');
 
 const frozenitems = [
-  { name: 'Beefkofty', imgPath: Beefkofty },
-  { name: 'beefroll', imgPath: beefroll },
-  { name: 'BonelessChicken', imgPath: BonelessChicken },
-  { name: 'BurgerPatties', imgPath: BurgerPatties },
-  { name: 'cheeseball', imgPath: cheeseball },
-  { name: 'chickenbread', imgPath: chickenbread },
-  { name: 'ChickenKofty', imgPath: ChickenKofty },
-  { name: 'ChickenSamosa', imgPath: ChickenSamosa },
-  { name: 'chickenwings', imgPath: chickenwings },
-  { name: 'chickenwonton', imgPath: chickenwonton },
-  { name: 'chickenZinger', imgPath: chickenZinger },
-  { name: 'Fries', imgPath: Fries },
-  { name: 'Golakabab', imgPath: Golakabab },
-  { name: 'nuggets', imgPath: nuggets },
-  { name: 'Parathas', imgPath: Parathas },
-  { name: 'springroll', imgPath: springroll },
-  { name: 'vegetablesamosa', imgPath: vegetablesamosa },
+  {name: 'Beef Kofty', imgPath: Beefkofty},
+  {name: 'Beef Roll', imgPath: beefroll},
+  {name: 'Boneless Chicken', imgPath: BonelessChicken},
+  {name: 'Burger Patties', imgPath: BurgerPatties},
+  {name: 'Cheese Ball', imgPath: cheeseball},
+  {name: 'Chicken Bread', imgPath: chickenbread},
+  {name: 'Chicken Kofty', imgPath: ChickenKofty},
+  {name: 'Chicken Samosa', imgPath: ChickenSamosa},
+  {name: 'Chicken Wings', imgPath: chickenwings},
+  {name: 'Chicken Wonton', imgPath: chickenwonton},
+  {name: 'Chicken Zinger', imgPath: chickenZinger},
+  {name: 'Fries', imgPath: Fries},
+  {name: 'Gola Kabab', imgPath: Golakabab},
+  {name: 'Nuggets', imgPath: nuggets},
+  {name: 'Parathas', imgPath: Parathas},
+  {name: 'Spring Roll', imgPath: springroll},
+  {name: 'Vegetable Samosa', imgPath: vegetablesamosa},
 ];
-
-
 
 const spices = [
   {name: 'BlackPepper', imgPath: BlackPepper},
@@ -151,33 +149,33 @@ const spices = [
 ];
 
 const sauces = [
-  {name: 'BBQSauce', imgPath: BBQSauce},
-  {name: 'BlackSesame', imgPath: BlackSesame},
-  {name: 'BuffaloSauce', imgPath: BuffaloSauce},
-  {name: 'ChiliSauce', imgPath: ChiliSauce},
-  {name: 'CucumberSauce', imgPath: CucumberSauce},
-  {name: 'FishSauce', imgPath: FishSauce},
-  {name: 'HotSauce', imgPath: HotSauce},
+  {name: 'BBQ Sauce', imgPath: BBQSauce},
+  {name: 'Black Sesame', imgPath: BlackSesame},
+  {name: 'Buffalo Sauce', imgPath: BuffaloSauce},
+  {name: 'Chili Sauce', imgPath: ChiliSauce},
+  {name: 'Cucumber Sauce', imgPath: CucumberSauce},
+  {name: 'Fish Sauce', imgPath: FishSauce},
+  {name: 'Hot Sauce', imgPath: HotSauce},
   {name: 'Ketchup', imgPath: Ketchup},
-  {name: 'KimchiSauce', imgPath: KimchiSauce},
+  {name: 'Kimchi Sauce', imgPath: KimchiSauce},
   {name: 'Mayonnaise', imgPath: Mayonnaise},
-  {name: 'MustardSauce', imgPath: MustardSauce},
-  {name: 'SoySauces', imgPath: SoySauces},
-  {name: 'TomatoSauce', imgPath: TomatoSauce},
+  {name: 'Mustard Sauce', imgPath: MustardSauce},
+  {name: 'Soy Sauces', imgPath: SoySauces},
+  {name: 'Tomato Sauce', imgPath: TomatoSauce},
   {name: 'Vinegar', imgPath: Vinegar},
-  {name: 'WasabiSauce', imgPath: WasabiSauce},
+  {name: 'Wasabi Sauce', imgPath: WasabiSauce},
 ];
 
 const milkproducts = [
   {name: 'Butter', imgPath: Butter},
   {name: 'Cheese', imgPath: Cheese},
-  {name: 'CondenesdMilk', imgPath: CondenesdMilk},
+  {name: 'Condenesd Milk', imgPath: CondenesdMilk},
   {name: 'Curds', imgPath: Curds},
   {name: 'ghee', imgPath: ghee},
-  {name: 'PowderedMilk', imgPath: PowderedMilk},
+  {name: 'Powdered Milk', imgPath: PowderedMilk},
   {name: 'pudding', imgPath: pudding},
-  {name: 'sourcream', imgPath: sourcream},
-  {name: 'whippedcream', imgPath: whippedcream},
+  {name: 'sour cream', imgPath: sourcream},
+  {name: 'whipped cream', imgPath: whippedcream},
   {name: 'Yougurt', imgPath: Yougurt},
 ];
 
@@ -230,4 +228,4 @@ const fruitItems = [
   {name: 'Watermelon', imgPath: Watermelon},
 ];
 
-export {fruitItems, vegetableItems, milkproducts, sauces, spices , frozenitems};
+export {fruitItems, vegetableItems, milkproducts, sauces, spices, frozenitems};

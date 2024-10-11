@@ -1,3 +1,4 @@
+// ProductList.js
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -8,112 +9,80 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
-import back from '../../assets/images/back-arrow.png';
-import heart from '../../assets/images/heartIcon.png';
-import { useNavigation } from '@react-navigation/native';
-import { categories } from './Data';
 import PropTypes from 'prop-types';
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const Header = ({ title, onBack }) => (
-  <View style={styles.headerContainer}>
-    <TouchableOpacity onPress={onBack}>
-      <Image source={back} style={styles.back} />
-    </TouchableOpacity>
-    <Text style={styles.signInText}>{title}</Text>
-    <Image source={heart} style={styles.heart} />
-  </View>
-);
+const ProductList = ({ products, page }) => {
+  // Use an array to track the selected items' indices
+  const [selectedIndices, setSelectedIndices] = useState([]);
 
-const Products = ({ route }) => {
-  const navigation = useNavigation();
-  const { myStringProp } = route.params;
-
-  const matchingSubCategory = categories
-    .flatMap(category => category.subCategories)
-    .find(subCategory => subCategory.name === myStringProp);
-
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  // Toggle the selection of an item
+  const handleSelect = index => {
+    if (selectedIndices.includes(index)) {
+      setSelectedIndices(selectedIndices.filter(i => i !== index));
+    } else {
+      setSelectedIndices([...selectedIndices, index]);
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <Header title={myStringProp} onBack={() => navigation.goBack()} />
-
-      <View style={styles.productsContainer}>
-        {matchingSubCategory ? (
-          <FlatList
-            data={matchingSubCategory.items}
-            keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={styles.itemsContainer}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            numColumns={3}
-            renderItem={({ item, index }) => (
-              <TouchableOpacity
-                key={index}
-                style={[
-                  styles.productCard,
-                  selectedIndex === index && styles.selectedCard,
-                ]}
-                onPress={() => setSelectedIndex(index)}>
-                <Image source={item.imgPath} style={styles.productImage} />
-                <Text style={styles.productName}>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-            keyboardShouldPersistTaps="handled"
-          />
-        ) : (
-          <Text>No items available for this category.</Text>
-        )}
-      </View>
+    <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
+      {products.length > 0 ? (
+        <FlatList
+          data={products}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={styles.itemsContainer}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          numColumns={3}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.productCard,
+                selectedIndices.includes(index) && styles.selectedCard,
+              ]}
+              onPress={() => handleSelect(index)}
+            >
+              <Image source={item.imgPath} style={styles.productImage} />
+              <Text
+                style={styles.productName}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {item.name}
+              </Text>
+            </TouchableOpacity>
+          )}
+          keyboardShouldPersistTaps="handled"
+        />
+      ) : (
+        <Text>No items available for this category.</Text>
+      )}
     </View>
   );
 };
 
-Products.propTypes = {
-  route: PropTypes.shape({
-    params: PropTypes.shape({
-      myStringProp: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+ProductList.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      imgPath: PropTypes.any.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
-export default Products;
+export default ProductList;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EFF9FF',
-    alignItems: 'center',
-  },
-  headerContainer: {
-    paddingVertical: 7,
-    paddingHorizontal: '5.5%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    width: '100%',
-    zIndex: 1,
-  },
-  back: {
-    width: 27,
-    height: 20,
-  },
-  heart: {
-    width: 30,
-    height: 30,
-  },
-  signInText: {
-    color: '#6c6c6c',
-    fontSize: 20,
-    fontFamily: 'Poppins-Regular',
-  },
   productsContainer: {
     marginTop: 10,
     paddingHorizontal: 10,
     flex: 1,
+  },
+  productsContainer2: {
+    marginBottom: 10,
   },
   itemsContainer: {
     display: 'flex',
@@ -126,19 +95,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     width: screenWidth * 0.3,
+    aspectRatio: 1,
     borderRadius: 5,
     margin: 3,
   },
   selectedCard: {
-    backgroundColor: '#E36A4A',
+    backgroundColor: '#E36A4A', // This is the color when selected
   },
   productImage: {
     width: 80,
     height: 80,
   },
   productName: {
-    marginTop: 5,
-    fontSize: 14,
-    color: '#fff',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 11,
+    fontWeight: '300',
+    lineHeight: 16.5,
+    textAlign: 'center',
+    color: 'white',
   },
 });

@@ -7,6 +7,6 @@ const SCREENS = {
   ResetPassword: 'ResetPassword',
   Congratulation: 'Congratulation',
   Dashbored: 'Dashboard',
-  Products: 'Products',
+  ProductsPage: 'ProductsPage',
 };
 export default SCREENS;
