@@ -6,8 +6,9 @@ import {
   Animated,
   Text,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import OnboardingItem from './Onbordingitem';
 import pic1 from '../../assets/images/SVG/1.svg';
 import pic2 from '../../assets/images/SVG/2.svg';
@@ -16,11 +17,12 @@ import pic4 from '../../assets/images/SVG/4.svg';
 import pic5 from '../../assets/images/SVG/5.svg';
 import SCREENS from '..';
 
-export default function Onboarding({navigation}) {
+const { width, height } = Dimensions.get('window'); // Getting screen dimensions
+
+export default function Onboarding({ navigation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
-  // const {navigation}=props;
 
   const slides = [
     {
@@ -60,15 +62,15 @@ export default function Onboarding({navigation}) {
     },
   ];
 
-  const ViewableItemsChanged = useRef(({viewableItems}) => {
+  const ViewableItemsChanged = useRef(({ viewableItems }) => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
 
-  const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
+  const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
   const handleNext = () => {
     if (currentIndex < slides.length - 1) {
-      slidesRef.current.scrollToIndex({index: currentIndex + 1});
+      slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
       navigation.navigate(SCREENS.login);
     }
@@ -79,53 +81,52 @@ export default function Onboarding({navigation}) {
       <TouchableOpacity
         style={styles.skip}
         onPress={() => navigation.navigate(SCREENS.login)}
-        activeOpacity={0.7} // Add this for better feedback on touch
+        activeOpacity={0.7}
       >
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
       <View style={styles.container2}>
         <FlatList
           data={slides}
-          renderItem={({item}) => <OnboardingItem item={item} />}
+          renderItem={({ item }) => <OnboardingItem item={item} />}
           keyExtractor={item => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
           pagingEnabled
           bounces={false}
           onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {x: scrollX}}}],
-            {useNativeDriver: false},
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: false },
           )}
           scrollEventThrottle={32}
           onViewableItemsChanged={ViewableItemsChanged}
           viewabilityConfig={viewConfig}
           ref={slidesRef}
         />
-      {/* Pagination Dots */}
-      <View style={styles.pagination}>
-        {slides.map((_, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => {
-              slidesRef.current.scrollToIndex({index});
-              setCurrentIndex(index); // Update the currentIndex when a dot is pressed
-            }}
-            style={[
-              styles.dotContainer,
-              currentIndex === index ? styles.activeDotContainer : null,
-            ]}>
-            <View
+        <View style={styles.pagination}>
+          {slides.map((_, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                slidesRef.current.scrollToIndex({ index });
+                setCurrentIndex(index);
+              }}
               style={[
-                styles.dot,
-                {
-                  backgroundColor:
-                    currentIndex === index ? '#52C3FF' : '#A1DEFF',
-                },
-              ]}
-            />
-          </TouchableOpacity>
-        ))}
-      </View>
+                styles.dotContainer,
+                currentIndex === index ? styles.activeDotContainer : null,
+              ]}>
+              <View
+                style={[
+                  styles.dot,
+                  {
+                    backgroundColor:
+                      currentIndex === index ? '#52C3FF' : '#A1DEFF',
+                  },
+                ]}
+              />
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
 
       <TouchableOpacity onPress={handleNext} style={styles.button}>
@@ -142,15 +143,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 80,
+    gap: height * 0.05,
   },
   container2: {
     flex: 0.65,
   },
   pagination: {
     flexDirection: 'row',
-    marginTop: 20,
-    marginHorizontal:'auto',
+    marginTop: height * 0.02,
+    justifyContent: 'center',
   },
   dotContainer: {
     justifyContent: 'center',
@@ -173,27 +174,25 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     backgroundColor: '#52C3FF',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 200,
-    textAlign: 'center',
+    paddingVertical: height * 0.02,
+    borderRadius: width * 0.5,
+    alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontFamily: 'Poppins-Regular',
-    fontSize: 12,
+    fontSize: width * 0.045,
     textAlign: 'center',
   },
   skip: {
-    padding: 10,
-    position: 'absolute', // Positioning in the top right corner
-    top: 20,
-    right: 20,
-    zIndex: 1000,
+    padding: width * 0.03,
+    position: 'absolute',
+    top: height * 0.05,
+    right: width * 0.05,
   },
   skipText: {
-    color: '#6c6c6c', // Text color
-    fontSize: 16,
+    color: '#6c6c6c',
+    fontSize: width * 0.045,
     fontFamily: 'Poppins-Regular',
   },
 });

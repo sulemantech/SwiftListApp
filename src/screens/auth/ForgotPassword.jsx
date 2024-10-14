@@ -12,7 +12,7 @@ import Signin from '../../assets/images/SVG/forgotpassword.svg';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 
-const ForgotPassword = ({navigation}) => {
+const ForgotPassword = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -25,7 +25,7 @@ const ForgotPassword = ({navigation}) => {
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
-        <Signin/>
+        <Signin />
 
         <Text style={styles.instructions}>
           Please Enter Your Email Address. You will receive a link to create a
@@ -73,9 +73,10 @@ const styles = StyleSheet.create({
     height: 20,
   },
   signInText: {
-    color: '#6c6c6c',
+    color: '#0c0c0c',
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontWeight: '600',
+    fontFamily: 'OpenSans-Bold',
   },
   inputbox: {
     width: '100%',

@@ -1,10 +1,10 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import back from '../../assets/images/back-arrow.png';
 import Signin from '../../assets/images/SVG/emailsent.svg';
 import SCREENS from '..';
 
-const EmailSuccess = ({navigation}) => {
+const EmailSuccess = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -16,7 +16,7 @@ const EmailSuccess = ({navigation}) => {
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
-        <Signin/>
+        <Signin />
         <Text style={styles.instructions}>
           Email has been sent to your email address. Please check your inbox for
           the email and follow the instructions.
@@ -52,16 +52,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-   height: '10%',
+    height: '10%',
   },
   back: {
     width: 25,
     height: 20,
   },
   signInText: {
-    color: '#6c6c6c',
+    color: '#0c0c0c',
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontWeight: '600',
+    fontFamily: 'OpenSans-Bold',
   },
   inputbox: {
     width: '100%',

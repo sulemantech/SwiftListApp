@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     width: screenWidth * 0.3,
+    minWidth: 115,
     aspectRatio: 1,
     borderRadius: 5,
     margin: 3,

@@ -216,9 +216,10 @@ const styles = StyleSheet.create({
     height: 30,
   },
   signInText: {
-    color: '#6c6c6c',
+    color: '#0c0c0c',
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontWeight: '600',
+    fontFamily: 'OpenSans-Bold',
   },
   categoryContainer: {
     marginTop: height * 0.08, // Responsive margin-top

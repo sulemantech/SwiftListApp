@@ -135,9 +135,10 @@ const styles = StyleSheet.create({
     height: 20,
   },
   signInText: {
-    color: '#6c6c6c',
+    color: '#0c0c0c',
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontWeight: '600',
+    fontFamily: 'OpenSans-Bold',
   },
   inputbox: {
     display: 'flex',
@@ -173,19 +174,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checkboxLabel: {
-    fontSize: 14,
-    fontFamily: 'Poppins-Regular',
+    fontSize: 12,
+    fontFamily: 'Poppins-Light',
     color: '#8c8c8c',
     marginLeft: 8,
   },
   forgotPassword: {
     color: '#52C2FE',
-    fontFamily: 'Poppins-Regular',
-    fontSize: 14,
+    fontFamily: 'Poppins-Light',
+    fontSize: 12,
   },
   containersign: {
     marginTop: 10,
     width: '100%',
+    height: 60,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -202,6 +204,7 @@ const styles = StyleSheet.create({
   },
   signInButton: {
     width: '100%',
+    height:50,
     backgroundColor: '#52C2FE',
     borderRadius: 30,
     paddingVertical: 12,
@@ -210,11 +213,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
     fontSize: 12,
-    fontWeight: '500',
     paddingVertical: 10,
-    lineHeight: 16,
+    lineHeight: 6,
     textAlign: 'center',
     color: '#fff',
   },
@@ -242,6 +244,7 @@ const styles = StyleSheet.create({
   },
   social: {
     width: '100%',
+    height: 50,
     backgroundColor: '#fff',
     borderColor: '#8C8C8C',
     borderWidth: 1,
@@ -259,11 +262,11 @@ const styles = StyleSheet.create({
   },
   socialButtonText: {
     color: '#8C8C8C',
-    fontSize: 14,
+    fontSize: 13,
     width: 200,
     overflow: 'hidden',
     fontWeight: '500',
     marginLeft: 10,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
   },
 });
