@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
   instructions: {
     color: '#6c6c6c',
     fontSize: 12,
+    width: '100%',
     lineHeight: 23,
     fontFamily: 'Poppins-Regular',
     fontWeight: '300',

@@ -128,12 +128,14 @@ export default function Onboarding({ navigation }) {
           ))}
         </View>
       </View>
+      <View style={styles.btnview}>
 
       <TouchableOpacity onPress={handleNext} style={styles.button}>
         <Text style={styles.buttonText}>
           {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
         </Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -143,14 +145,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: height * 0.05,
+    gap: height * 0.06,
   },
   container2: {
-    flex: 0.65,
+    marginTop:height * 0.1,
+    height: height * 0.7,
   },
   pagination: {
     flexDirection: 'row',
-    marginTop: height * 0.02,
+    marginTop: height * 0.01,
     justifyContent: 'center',
   },
   dotContainer: {
@@ -173,6 +176,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '80%',
+    marginHorizontal: 'auto',
     backgroundColor: '#52C3FF',
     paddingVertical: height * 0.02,
     borderRadius: width * 0.5,
@@ -187,8 +191,13 @@ const styles = StyleSheet.create({
   skip: {
     padding: width * 0.03,
     position: 'absolute',
-    top: height * 0.05,
-    right: width * 0.05,
+    zIndex: 100,
+    top: height * 0.02,
+    right: width * 0.03,
+  },
+  btnview : {
+    width: '100%',
+    height: height * 0.27,
   },
   skipText: {
     color: '#6c6c6c',

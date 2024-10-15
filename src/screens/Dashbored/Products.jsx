@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   productCard: {
     backgroundColor: '#4AA688',
     alignItems: 'center',
-    padding: 15,
+    padding: 6,
     width: screenWidth * 0.3,
     minWidth: 115,
     aspectRatio: 1,
@@ -101,16 +101,15 @@ const styles = StyleSheet.create({
     margin: 3,
   },
   selectedCard: {
-    backgroundColor: '#E36A4A', // This is the color when selected
+    backgroundColor: '#E36A4A',
   },
   productImage: {
-    width: 80,
+    width: screenWidth * 0.2,
     height: 80,
   },
   productName: {
     fontFamily: 'Poppins-Regular',
     fontSize: 11,
-    fontWeight: '300',
     lineHeight: 16.5,
     textAlign: 'center',
     color: 'white',

@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     color: '#6c6c6c',
     fontSize: 12,
     lineHeight: 23,
+    width: '100%',
     fontFamily: 'Poppins-Regular',
     fontWeight: '300',
     textAlign: 'left',

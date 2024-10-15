@@ -1,11 +1,12 @@
-import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView, TextInput} from 'react-native';
 import React, {useState} from 'react';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import TextInput2 from '../components/Input'; // Your custom text input component
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
 import seconed from '../../assets/images/SVG/dashboardspiritualgoals.svg';
 import third from '../../assets/images/SVG/dashboardpersonalgromming.svg';
+import fourth from '../../assets/images/SVG/thingstodo.svg';
+import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
 
@@ -56,7 +57,7 @@ const Dashbored = () => {
       items: '200 Items',
       percentagetext: 'Bought 70%',
       percentage: 20,
-      Picture: first,
+      Picture: fourth,
       bgColor: '#FFCBA1CC',
       badgeColor: '#E36A4A',
     },
@@ -66,9 +67,9 @@ const Dashbored = () => {
       items: '200 Items',
       percentagetext: 'Bought 70%',
       percentage: 40,
-      Picture: seconed,
-      bgColor: '#98FBCB',
-      badgeColor: '#FF5733',
+      Picture: fifth,
+      bgColor: '#fddc8a',
+      badgeColor: '#D88D1B',
     },
   ];
   // const [filteredCategory, setFilteredCategory] = useState();
@@ -88,7 +89,8 @@ const Dashbored = () => {
             </Text>
           </View>
           <View style={styles.SearchANDFilter}>
-            <TextInput2 bgcolor={'#fff'} style={styles.searchInput} />
+            {/* <TextInput2 bgcolor={'#fff'} style={styles.searchInput} /> */}
+            <TextInput style={styles.input}/>
             <Image style={styles.filterimg} source={Filtericon} />
           </View>
           <ScrollView
@@ -136,9 +138,9 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   heading: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'OpenSans-SemiBold',
     fontSize: 16,
-    color: '#6c6c6c',
+    color: '#000',
     paddingVertical: '1%',
     fontWeight: '600',
     lineHeight: 16,
@@ -146,21 +148,21 @@ const styles = StyleSheet.create({
   },
   SearchANDFilter: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginBottom: 10,
+    alignItems: 'center',
+    // backgroundColor: 'red',
+    gap:8,
+    marginBottom: 6,
   },
   filterimg: {
-    height: 60,
-    width: 60,
-    marginLeft: 10,
+    width: 32,
+    aspectRatio: 1,
   },
   searchInput: {
     flex: 1,
-    height: 40,
+    height: 32,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#52C2FE',
     borderRadius: 8,
-    paddingHorizontal: 10,
   },
   cardContainer: {
     flexGrow: 1,
@@ -169,6 +171,19 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     alignItems: 'flex-start',
+  },
+  input: {
+    flex: 1,
+    height: 32,
+    borderColor: '#52C2FE',
+    borderWidth: 1,
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 20,
+    fontFamily: 'Poppins-Light',
+    fontSize: 11,
+    fontWeight: '275',
+    lineHeight: 16.5,
   },
 });
 

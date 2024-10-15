@@ -48,8 +48,9 @@ const SignUpScreen = ({navigation}) => {
       </View>
 
       <View style={styles.containersign}>
-        <TouchableOpacity style={styles.signInButton}>
-          <Text style={styles.buttonText}>Sign Up</Text>
+        <TouchableOpacity
+          style={styles.signInButton}>
+          <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
       </View>
 
@@ -104,9 +105,11 @@ const styles = StyleSheet.create({
   },
   row2: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 20,
+    marginHorizontal:'auto',
+    width: '70%',
   },
   checkboxLabel: {
     fontSize: 12,
@@ -120,16 +123,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   containersign: {
-    marginTop: 20,
+    marginTop: 10,
     width: '100%',
+    height: 50,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   signInButton: {
     width: '100%',
+    height:50,
     backgroundColor: '#52C2FE',
     borderRadius: 30,
-    paddingVertical: 20,
+    paddingVertical: 12,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
@@ -137,7 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'Poppins-Medium',
     fontSize: 12,
-    paddingVertical: 10,
+    // paddingVertical: 10,
     lineHeight: 16,
     textAlign: 'center',
     color: '#fff',

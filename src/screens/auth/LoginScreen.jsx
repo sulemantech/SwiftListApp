@@ -177,7 +177,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Poppins-Light',
     color: '#8c8c8c',
-    marginLeft: 8,
   },
   forgotPassword: {
     color: '#52C2FE',
@@ -187,7 +186,8 @@ const styles = StyleSheet.create({
   containersign: {
     marginTop: 10,
     width: '100%',
-    height: 60,
+    height: 50,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -215,8 +215,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: 'Poppins-Medium',
     fontSize: 12,
-    paddingVertical: 10,
-    lineHeight: 6,
+    // paddingVertical: 10,
+    lineHeight: 16,
     textAlign: 'center',
     color: '#fff',
   },

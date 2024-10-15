@@ -56,7 +56,7 @@ export default ProductsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EFF9FF',
+    backgroundColor: '#eff9ff',
     alignItems: 'center',
   },
   headerContainer: {

@@ -9,18 +9,14 @@ import {
 import React from 'react';
 import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/SVG/restpassword.svg';
-import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 
 const ResetPassword = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image source={back} style={styles.back} />
-        </TouchableOpacity>
+
         <Text style={styles.signInText}>Password Reset</Text>
-        <Text style={styles.signInText}> </Text>
       </View>
 
       <View style={styles.inputbox}>
@@ -66,7 +62,7 @@ const styles = StyleSheet.create({
     top: 0,
     paddingVertical: 7,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
   },
@@ -92,6 +88,7 @@ const styles = StyleSheet.create({
   },
   instructions: {
     color: '#6c6c6c',
+    width: '100%',
     fontSize: 12,
     lineHeight: 23,
     marginHorizontal: 'auto',

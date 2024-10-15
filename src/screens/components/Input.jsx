@@ -9,7 +9,7 @@ const TextInput2 = ({
   onFocus,
   onBlur,
   onChangeText,
-  borderRadius = 20,
+  borderRadius = 13,
   bgColor = '#fff',
   fontsize = 11,
 }) => {
@@ -55,11 +55,9 @@ const styles = StyleSheet.create({
     height: 50,
     borderColor: '#DEDDE2',
     borderWidth: 1,
-    borderRadius: 13,
     paddingHorizontal: 20,
     fontFamily: 'Poppins-Light',
     fontSize: 11,
-    fontWeight: '275',
     lineHeight: 16.5,
   },
 });

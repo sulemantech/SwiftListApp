@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'OpenSans-SemiBold',
     fontSize: 18,
     fontWeight: '600',
     lineHeight: 22,
