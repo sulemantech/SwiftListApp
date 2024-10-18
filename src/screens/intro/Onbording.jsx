@@ -29,14 +29,14 @@ export default function Onboarding({ navigation }) {
       id: '1',
       title: 'Organize Your Grocery Essentials',
       description:
-        'Keep Track Of All Your Shoping needs in one place. Add , edit, and check off items effortlessly',
+        'Keep track of all your shoping needs in one place. Add , edit, and check off items effortlessly.',
       image: pic1,
     },
     {
       id: '2',
-      title: 'Plan Your Growming Routine',
+      title: 'Plan Your Grooming Routine',
       description:
-        'stay on top of your self-care with scheduled reminders and custom groming lists.',
+        'Stay on top of your self-care with scheduled reminders and custom grooming lists.',
       image: pic2,
     },
     {
@@ -48,7 +48,7 @@ export default function Onboarding({ navigation }) {
     },
     {
       id: '4',
-      title: 'Manage Your Daily To Do Tasks',
+      title: 'Manage Your Daily To-Do Tasks',
       description:
         'Simplify your day by organizing tasks with ease. Prioritize, set deadlines, and stay productive.',
       image: pic4,
@@ -79,9 +79,9 @@ export default function Onboarding({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
+      activeOpacity={1}
         style={styles.skip}
         onPress={() => navigation.navigate(SCREENS.login)}
-        activeOpacity={0.7}
       >
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
@@ -106,6 +106,7 @@ export default function Onboarding({ navigation }) {
         <View style={styles.pagination}>
           {slides.map((_, index) => (
             <TouchableOpacity
+            activeOpacity={1}
               key={index}
               onPress={() => {
                 slidesRef.current.scrollToIndex({ index });
@@ -130,7 +131,7 @@ export default function Onboarding({ navigation }) {
       </View>
       <View style={styles.btnview}>
 
-      <TouchableOpacity onPress={handleNext} style={styles.button}>
+      <TouchableOpacity activeOpacity={1} onPress={handleNext} style={styles.button}>
         <Text style={styles.buttonText}>
           {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
         </Text>
@@ -177,16 +178,20 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     marginHorizontal: 'auto',
-    backgroundColor: '#52C3FF',
-    paddingVertical: height * 0.02,
-    borderRadius: width * 0.5,
+    height:50,
+    backgroundColor: '#52C2FE',
+    borderRadius: 30,
     alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
-    fontFamily: 'Poppins-Regular',
-    fontSize: width * 0.045,
+    fontFamily: 'Poppins-Medium',
+    fontSize: 12,
+    // paddingVertical: 10,
+    lineHeight: 16,
     textAlign: 'center',
+    color: '#fff',
   },
   skip: {
     padding: width * 0.03,
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: '#6c6c6c',
-    fontSize: width * 0.045,
+    fontSize: 25,
     fontFamily: 'Poppins-Regular',
   },
 });

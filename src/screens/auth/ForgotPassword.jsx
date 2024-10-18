@@ -16,7 +16,7 @@ const ForgotPassword = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Forgot Password</Text>
@@ -41,6 +41,7 @@ const ForgotPassword = ({ navigation }) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
+          activeOpacity={1}
           onPress={() => navigation.navigate(SCREENS.EmailSuccess)}
           style={styles.signInButton}>
           <Text style={styles.buttonText}>Send</Text>

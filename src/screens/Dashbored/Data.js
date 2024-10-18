@@ -3,7 +3,7 @@ import { fruitItems, vegetableItems, milkproducts, sauces, spices, frozenitems }
 export const categories = [
   {
     category: {
-      name: 'Grocery',
+      name: 'Grocery List',
       image: 'groceryImage',
       description:
         'Scroll to the predefined articles or type them freely into the search below.',

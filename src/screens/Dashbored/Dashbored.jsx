@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, Image, ScrollView, TextInput} from 'react-native';
 import React, {useState} from 'react';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
 import seconed from '../../assets/images/SVG/dashboardspiritualgoals.svg';
@@ -19,10 +19,9 @@ const Dashbored = () => {
     setSelectedCard(null);
   };
 
-  // const Tab = createBottomTabNavigator();
   const cardDataArray = [
     {
-      title: 'Grocery',
+      title: 'Grocery List',
       description: 'Add needed items.',
       items: '200 Items',
       percentagetext: 'Bought 70%',
@@ -54,9 +53,9 @@ const Dashbored = () => {
     {
       title: 'Things To Do',
       description: 'Add needed items.',
-      items: '200 Items',
-      percentagetext: 'Bought 70%',
-      percentage: 20,
+      items: '15 Items',
+      percentagetext: 'Bought 50%',
+      percentage: 50,
       Picture: fourth,
       bgColor: '#FFCBA1CC',
       badgeColor: '#E36A4A',
@@ -64,59 +63,63 @@ const Dashbored = () => {
     {
       title: 'Kitchen Menu',
       description: 'Add needed items.',
-      items: '200 Items',
-      percentagetext: 'Bought 70%',
-      percentage: 40,
+      items: '500 Recipies',
+      percentagetext: 'Cooked 70%',
+      percentage: 70,
       Picture: fifth,
       bgColor: '#fddc8a',
       badgeColor: '#D88D1B',
     },
   ];
-  // const [filteredCategory, setFilteredCategory] = useState();
 
   return (
     <>
       {selectedCard ? (
-        // If a card is selected, show the DetailView
-        <ItemsList ItemName={selectedCard} onBackPress={handleBackPress}  />
+        <ItemsList ItemName={selectedCard} onBackPress={handleBackPress} />
       ) : (
-        <View style={styles.container}>
-          <View>
-            <Text style={styles.caption}>Hello,</Text>
-            <Text style={styles.heading}>MetaFront!</Text>
-            <Text style={styles.caption2}>
-              Stay organized with quick access to all your essential lists!
-            </Text>
+        <LinearGradient
+          colors={['#EFF9FF', '#B2FEFA']} // Define your gradient colors here
+          style={styles.gradientBackground} // Apply gradient to the background
+        >
+          <View style={styles.container}>
+            <View>
+              <Text style={styles.caption}>Hello,</Text>
+              <Text style={styles.heading}>MetaFront!</Text>
+              <Text style={styles.caption2}>
+                Stay organized with quick access to all your essential lists!
+              </Text>
+            </View>
+            <View style={styles.SearchANDFilter}>
+              <TextInput style={styles.input} />
+              <Image style={styles.filterimg} source={Filtericon} />
+            </View>
+            <ScrollView
+              style={styles.cardContainer}
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
+            >
+              {cardDataArray.map((data, index) => (
+                <CardComponent
+                  key={index}
+                  data={data}
+                  onPress={() => handleCardClick(data.title)}
+                />
+              ))}
+            </ScrollView>
           </View>
-          <View style={styles.SearchANDFilter}>
-            {/* <TextInput2 bgcolor={'#fff'} style={styles.searchInput} /> */}
-            <TextInput style={styles.input}/>
-            <Image style={styles.filterimg} source={Filtericon} />
-          </View>
-          <ScrollView
-            style={styles.cardContainer}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false} // Optional: to hide the scroll indicator
-          >
-            {cardDataArray.map((data, index) => (
-              <CardComponent
-                key={index}
-                data={data}
-                onPress={() => handleCardClick(data.title)}
-              />
-            ))}
-          </ScrollView>
-        </View>
+        </LinearGradient>
       )}
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  gradientBackground: {
+    flex: 1, // This ensures the gradient takes up the full screen
+  },
   container: {
     flex: 1,
     paddingTop: 30,
-    backgroundColor: '#EFF9FF',
     paddingHorizontal: '5.5%',
   },
   caption: {
@@ -149,20 +152,12 @@ const styles = StyleSheet.create({
   SearchANDFilter: {
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: 'red',
-    gap:8,
+    gap: 8,
     marginBottom: 6,
   },
   filterimg: {
-    width: 32,
+    width: 40,
     aspectRatio: 1,
-  },
-  searchInput: {
-    flex: 1,
-    height: 32,
-    borderWidth: 1,
-    borderColor: '#52C2FE',
-    borderRadius: 8,
   },
   cardContainer: {
     flexGrow: 1,
@@ -174,16 +169,17 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 32,
+    height: 40.5,
     borderColor: '#52C2FE',
     borderWidth: 1,
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
+    paddingVertical: 0,
     fontFamily: 'Poppins-Light',
-    fontSize: 11,
-    fontWeight: '275',
-    lineHeight: 16.5,
+    fontSize: 14,
+    lineHeight: 40,
+    textAlignVertical: 'center',
   },
 });
 

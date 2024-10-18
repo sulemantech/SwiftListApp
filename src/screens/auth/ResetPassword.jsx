@@ -39,6 +39,7 @@ const ResetPassword = ({navigation}) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
+        activeOpacity={1}
           onPress={() => navigation.navigate(SCREENS.Congratulation)}
           style={styles.signInButton}>
           <Text style={styles.buttonText}>Change Password</Text>

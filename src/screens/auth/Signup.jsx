@@ -17,7 +17,7 @@ const SignUpScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign Up</Text>
@@ -49,6 +49,7 @@ const SignUpScreen = ({navigation}) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
+        activeOpacity={1}
           style={styles.signInButton}>
           <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
@@ -56,7 +57,7 @@ const SignUpScreen = ({navigation}) => {
 
       <View style={styles.row2}>
         <Text style={styles.checkboxLabel}>Already Have an Account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate(SCREENS.login)}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(SCREENS.login)}>
           <Text style={styles.forgotPassword}>Sign In</Text>
         </TouchableOpacity>
       </View>

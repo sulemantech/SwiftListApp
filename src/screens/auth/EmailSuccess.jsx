@@ -8,7 +8,7 @@ const EmailSuccess = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}> </Text>
@@ -25,6 +25,7 @@ const EmailSuccess = ({ navigation }) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
+          activeOpacity={1}
           style={styles.signInButton}
           onPress={() => navigation.navigate(SCREENS.ResetPassword)}>
           <Text style={styles.buttonText}>Continue</Text>

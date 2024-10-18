@@ -32,7 +32,7 @@ export default function UserProfile() {
       </View>
 
       {/* Edit Button */}
-      <TouchableOpacity style={styles.editButton}>
+      <TouchableOpacity activeOpacity={1} style={styles.editButton}>
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>
     </View>

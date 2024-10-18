@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'OpenSans-SemiBold',
     fontWeight: '600',
-    color: '#0c0c0c',
+    color: '#373737',
 
     marginBottom: 10,
     textAlign: 'center',

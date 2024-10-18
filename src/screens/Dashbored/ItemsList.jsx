@@ -13,11 +13,13 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import back from '../../assets/images/back-arrow.png';
 import heart from '../../assets/images/heartIcon.png';
-import arrowRight from '../../assets/images/down-arrow.png';
-import searchicon from '../../assets/images/search.png';
-import searchiconBlack from '../../assets/images/search-black.png';
+import arrowRight from '../../assets/images/arrownotactive.png';
+import arrowRightactive from '../../assets/images/arrowactive.png';
+import searchicon from '../../assets/images/searchiconactive.png';
+import searchiconBlack from '../../assets/images/searchiconnotactive.png';
 import GrocerySVG from '../../assets/images/SVG/grocerypage.svg';
 import SpiritualSVG from '../../assets/images/SVG/spiritualpage.svg';
 import PersonalGroomingSVG from '../../assets/images/SVG/pgrommingpage.svg';
@@ -25,7 +27,7 @@ import ThingsToDoSVG from '../../assets/images/SVG/thingstodopage.svg';
 import KitchenMenuSVG from '../../assets/images/SVG/kitchenpage.svg';
 import { categories } from './Data';
 import TextInput2 from '../components/Input';
-import SCREENS from '..';
+// import SCREENS from '..';
 import ProductList from './Products';
 
 // Get the screen dimensions
@@ -34,6 +36,7 @@ const { width, height } = Dimensions.get('window');
 const ItemsList = ({ ItemName, onBackPress }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [pressedItem, setPressedItem] = useState(null);
   const navigation = useNavigation();
 
   const matchingCategory = categories.find(
@@ -102,10 +105,16 @@ const ItemsList = ({ ItemName, onBackPress }) => {
         setIsSearchFocused(false);
         Keyboard.dismiss();
       }}>
-      <View style={styles.container}>
+      {/* Add LinearGradient around the entire view */}
+      <LinearGradient
+        colors={['#EFF9FF', '#EFF9FF']} // Apply your linear gradient colors here
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.container}
+      >
         {/* Header */}
         <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={onBackPress}>
+          <TouchableOpacity activeOpacity={1} onPress={onBackPress}>
             <Image source={back} style={styles.back} />
           </TouchableOpacity>
           <Text style={styles.signInText}>{ItemName}</Text>
@@ -126,7 +135,7 @@ const ItemsList = ({ ItemName, onBackPress }) => {
             <View style={styles.searchContainer}>
               <TextInput2
                 borderRadius={40}
-                bgColor={isSearchFocused ? '#007AFF26' : '#fff'}
+                bgColor={isSearchFocused ? '#FFF' : '#007AFF26'}
                 placeholder={'Search items here...'}
                 fontsize={16}
                 onChangeText={text => filterItems(text)}
@@ -135,12 +144,9 @@ const ItemsList = ({ ItemName, onBackPress }) => {
                 onBlur={() => setIsSearchFocused(false)}
               />
               <View
-                style={[
-                  styles.searchiconContainer,
-                  { backgroundColor: isSearchFocused ? '#fff' : '#FFC41F' },
-                ]}>
+                style={[styles.searchiconContainer]}>
                 <Image
-                  source={isSearchFocused ? searchiconBlack : searchicon}
+                  source={isSearchFocused ? searchicon : searchiconBlack}
                   style={styles.searchicon}
                 />
               </View>
@@ -155,25 +161,23 @@ const ItemsList = ({ ItemName, onBackPress }) => {
             style={styles.subCategoriesContainer}
             renderItem={({ item }) => (
               <TouchableHighlight
-                onPress={() =>
-                  navigation.navigate(SCREENS.ProductsPage, {
-                    myStringProp: item.name,
-                  })
-                }
-                activeOpacity={0.2}
-                underlayColor="#52C2FE"
+              onPress={() => {
+                setPressedItem(item.name);  // Set the pressed item
+                navigation.navigate('ProductsPage', { myStringProp: item.name });
+              }}
+                activeOpacity={1}
+                underlayColor="#fff"
                 style={styles.subCategoryItem}>
                 <View style={styles.subCategoryContent}>
                   <Text style={styles.subCategoryName}>{item.name}</Text>
-                  <Image source={arrowRight} style={styles.arrowRight} />
+                  <Image  source={pressedItem === item.name ? arrowRightactive : arrowRight}  style={styles.arrowRight} />
                 </View>
               </TouchableHighlight>
             )}
             ListHeaderComponent={filteredItems.length > 0 ? <ProductList products={filteredItems} page={'itemslist'} /> : null}
           />
         )}
-
-      </View>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Bold',
   },
   categoryContainer: {
-    marginTop: height * 0.08, // Responsive margin-top
+    marginTop: height * 0.08,
     alignItems: 'center',
     width: '100%',
   },
@@ -248,18 +252,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFC41F',
-    width: '11.5%',
-    height: '50%',
+    width: 40,
+    aspectRatio: 1,
     borderRadius: 100,
     overflow: 'hidden',
     position: 'absolute',
-    top: '30%',
+    top: '33%',
     right: 10,
   },
   searchicon: {
-    width: '60%',
-    height: '60%',
+    width: '100%',
+    height: '100%',
   },
   subCategoryItem: {
     marginBottom: 10,
@@ -284,8 +287,7 @@ const styles = StyleSheet.create({
     color: '#6C6C6C',
   },
   arrowRight: {
-    width: 30,
-    height: 30,
-    transform: [{ rotate: '-90deg' }],
+    width: 32,
+    height: 32,
   },
 });

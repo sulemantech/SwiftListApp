@@ -18,7 +18,7 @@ const CardComponent = ({ onPress, data = {} }) => {
   const percent = percentage / 100;
 
   return (
-    <TouchableOpacity style={[styles.cardContainer, { backgroundColor: bgColor }]} onPress={onPress}>
+    <TouchableOpacity activeOpacity={1} style={[styles.cardContainer, { backgroundColor: bgColor }]} onPress={onPress}>
       <View style={[styles.contentContainer]}>
         <Text style={[styles.title, { color: badgeColor }]}>{title}</Text>
         <Text style={[styles.description, { color: badgeColor }]}>
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: -0,
     top: 0,
-    width: '90%',
+    width: '65%',
+    maxWidth: '90%',
     height: '105%',
   },
   progressview: {

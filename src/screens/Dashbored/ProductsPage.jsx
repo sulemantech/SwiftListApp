@@ -15,7 +15,7 @@ import ProductList from './Products';
 
 const Header = ({ title, onBack }) => (
   <View style={styles.headerContainer}>
-    <TouchableOpacity onPress={onBack}>
+    <TouchableOpacity activeOpacity={1} onPress={onBack}>
       <Image source={back} style={styles.back} />
     </TouchableOpacity>
     <Text style={styles.signInText}>{title}</Text>

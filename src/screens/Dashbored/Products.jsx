@@ -1,12 +1,12 @@
-// ProductList.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import FastImage from 'react-native-fast-image';
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  Image,
-  FlatList,
+  // Image,
+  ScrollView,
   Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -14,10 +14,9 @@ import PropTypes from 'prop-types';
 const { width: screenWidth } = Dimensions.get('window');
 
 const ProductList = ({ products, page }) => {
-  // Use an array to track the selected items' indices
   const [selectedIndices, setSelectedIndices] = useState([]);
+  const [placeholderval, setPlaceholderval] = useState(products.length);
 
-  // Toggle the selection of an item
   const handleSelect = index => {
     if (selectedIndices.includes(index)) {
       setSelectedIndices(selectedIndices.filter(i => i !== index));
@@ -26,18 +25,34 @@ const ProductList = ({ products, page }) => {
     }
   };
 
+  useEffect(() => {
+    const number = products.length;
+
+    const calculateValue = (num) => {
+      if (num % 3 === 0) {
+        return 0;
+      } else {
+
+        const nearestHigherDivisibleBy3 = num + (3 - (num % 3));
+        return nearestHigherDivisibleBy3 - number;
+      }
+    };
+
+    const result = calculateValue(number);
+    setPlaceholderval(result);
+  }, [products.length]);
+
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
-        <FlatList
-          data={products}
-          keyExtractor={(item, index) => index.toString()}
-          contentContainerStyle={styles.itemsContainer}
+        <ScrollView contentContainerStyle={styles.itemsContainer}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          numColumns={3}
-          renderItem={({ item, index }) => (
+          removeClippedSubviews={true}
+        >
+          {products.map((item, index) => (
             <TouchableOpacity
+              activeOpacity={1}
               key={index}
               style={[
                 styles.productCard,
@@ -45,7 +60,13 @@ const ProductList = ({ products, page }) => {
               ]}
               onPress={() => handleSelect(index)}
             >
-              <Image source={item.imgPath} style={styles.productImage} />
+              <FastImage
+                source={item.imgPath}
+                style={styles.productImage}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+
+
               <Text
                 style={styles.productName}
                 numberOfLines={1}
@@ -54,9 +75,34 @@ const ProductList = ({ products, page }) => {
                 {item.name}
               </Text>
             </TouchableOpacity>
+          ))}
+          {products.length > 0 && (
+            <>
+              {products.slice(0, placeholderval).map((item, index) => (
+                <TouchableOpacity
+                  activeOpacity={0}
+                  key={index}
+                  style={[styles.productCard2]}
+                >
+                  <FastImage
+                    source={item.imgPath} // Access the imgPath of the current item
+                    style={styles.productImage}
+                    resizeMode={FastImage.resizeMode.cover}
+                  />
+                  <Text
+                    style={styles.productName}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </>
           )}
-          keyboardShouldPersistTaps="handled"
-        />
+
+
+        </ScrollView>
       ) : (
         <Text>No items available for this category.</Text>
       )}
@@ -86,6 +132,9 @@ const styles = StyleSheet.create({
   },
   itemsContainer: {
     display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     overflow: 'hidden',
     paddingBottom: 10,
@@ -93,22 +142,38 @@ const styles = StyleSheet.create({
   productCard: {
     backgroundColor: '#4AA688',
     alignItems: 'center',
+    justifyContent: 'center',
     padding: 6,
-    width: screenWidth * 0.3,
-    minWidth: 115,
+    width: screenWidth * 0.28,
+    maxWidth: screenWidth * 0.32,
     aspectRatio: 1,
     borderRadius: 5,
+    flexGrow: 1,
+    margin: 3,
+  },
+  productCard2: {
+    opacity: 0,
+    backgroundColor: '#4AA688',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 6,
+    width: screenWidth * 0.28,
+    maxWidth: screenWidth * 0.32,
+    aspectRatio: 1,
+    borderRadius: 5,
+    flexGrow: 1,
     margin: 3,
   },
   selectedCard: {
     backgroundColor: '#E36A4A',
   },
   productImage: {
-    width: screenWidth * 0.2,
-    height: 80,
+    width: screenWidth * 0.18,
+    height: screenWidth * 0.14,
   },
   productName: {
     fontFamily: 'Poppins-Regular',
+    marginTop: 10,
     fontSize: 11,
     lineHeight: 16.5,
     textAlign: 'center',

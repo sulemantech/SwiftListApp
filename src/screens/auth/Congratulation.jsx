@@ -1,14 +1,14 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import back from '../../assets/images/back-arrow.png';
 import Signin from '../../assets/images/SVG/passwordchanged.svg';
 import SCREENS from '..';
 
-const Congratulation = ({navigation}) => {
+const Congratulation = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}> </Text>
@@ -16,7 +16,7 @@ const Congratulation = ({navigation}) => {
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
-        <Signin/>
+        <Signin />
         <Text style={styles.instructions}>
           Congratulation! Your Password has been reset!
         </Text>
@@ -24,6 +24,7 @@ const Congratulation = ({navigation}) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
+          activeOpacity={1}
           style={styles.signInButton}
           onPress={() => navigation.navigate(SCREENS.login)}>
           <Text style={styles.buttonText}>Continue</Text>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-   height: '10%',
+    height: '10%',
   },
   back: {
     width: 25,

@@ -21,7 +21,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>
@@ -53,14 +53,14 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.checkboxLabel}>Keep me signed in</Text>
         </View>
 
-        <TouchableOpacity
+        <TouchableOpacity activeOpacity={1}
           onPress={() => navigation.navigate(SCREENS.ForgotPassword)}>
           <Text style={styles.forgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.containersign}>
-        <TouchableOpacity
+        <TouchableOpacity activeOpacity={1}
           style={styles.signInButton}
           onPress={() => navigation.navigate(SCREENS.Dashbored)}>
           <Text style={styles.buttonText}>Sign In</Text>
@@ -78,7 +78,7 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.socialouterview}>
         <View style={styles.containersocial}>
           <View style={styles.social}>
-            <TouchableOpacity style={styles.innersocial}>
+            <TouchableOpacity activeOpacity={1} style={styles.innersocial}>
               <Image source={facebook} style={styles.socialIcon} />
               <Text style={styles.socialButtonText}>
                 Continue with Facebook
@@ -88,7 +88,7 @@ const LoginScreen = ({navigation}) => {
         </View>
         <View style={styles.containersocial}>
           <View style={styles.social}>
-            <TouchableOpacity style={styles.innersocial}>
+            <TouchableOpacity activeOpacity={1} style={styles.innersocial}>
               <Image source={google} style={styles.socialIcon} />
               <Text style={styles.socialButtonText}>Continue with Google</Text>
             </TouchableOpacity>
@@ -101,7 +101,7 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.checkboxLabel}>Don't Have an Account?</Text>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate(SCREENS.signup)}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(SCREENS.signup)}>
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
       </View>
