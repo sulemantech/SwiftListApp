@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
   },
   image2: {
     position: 'absolute',
-    right: -0,
+    right: 0,
     top: 0,
-    width: '65%',
-    maxWidth: '90%',
+    width: '90%',
+    maxWidth: '100%',
     height: '105%',
   },
   progressview: {
@@ -113,3 +113,6 @@ const styles = StyleSheet.create({
 });
 
 export default CardComponent;
+
+
+

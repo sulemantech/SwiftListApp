@@ -1,17 +1,16 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import Onbording from './src/screens/intro/Onbording';
-import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import StackNavigation from './src/navigation';
+// import { appfirebase } from './src/firebaseConfig';
 
 export default function App() {
   const mytheme = {
     ...DefaultTheme,
-    colors:{
+    colors: {
       ...DefaultTheme.colors,
-      background:"#fff"
-    }
-  }
+      background: '#fff',
+    },
+  };
   return (
     <NavigationContainer theme={mytheme}>
       <StackNavigation />

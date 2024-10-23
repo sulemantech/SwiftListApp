@@ -1,231 +1,157 @@
-// const groceryImage = require('../../assets/images/SVG/grocerypage.svg');
-// const spiritualImage = require('../../assets/images/SVG/spiritualpage.svg');
-// const personalGroomingImage = require('../../assets/images/SVG/pgrommingpage.svg');
-// const thingsToDoImage = require('../../assets/images/SVG/thingstodopage.svg');
-// const kitchenMenuImage = require('../../assets/images/SVG/kitchenpage.svg');
-const Apple = require('../../assets/images/products/fruits/apple.png');
-const Avocado = require('../../assets/images/products/fruits/avocado.png');
-const Banana = require('../../assets/images/products/fruits/banana.png');
-const Blueberry = require('../../assets/images/products/fruits/blueberry.png');
-const Cherry = require('../../assets/images/products/fruits/cherry.png');
-const Grapes = require('../../assets/images/products/fruits/grapes.png');
-const Guava = require('../../assets/images/products/fruits/guava.png');
-const Kiwi = require('../../assets/images/products/fruits/kiwi.png');
-const Lichi = require('../../assets/images/products/fruits/lichi.png');
-const Mango = require('../../assets/images/products/fruits/mango.png');
-const Melon = require('../../assets/images/products/fruits/melon.png');
-const Orange = require('../../assets/images/products/fruits/orange.png');
-const Papaya = require('../../assets/images/products/fruits/papaya.png');
-const Peach = require('../../assets/images/products/fruits/peach.png');
-const Pear = require('../../assets/images/products/fruits/pear.png');
-const Pineapple = require('../../assets/images/products/fruits/pineapple.png');
-const Pomegranate = require('../../assets/images/products/fruits/pomengarate.png');
-const Raspberry = require('../../assets/images/products/fruits/raspberry.png');
-const Strawberry = require('../../assets/images/products/fruits/strawberry.png');
-const Watermelon = require('../../assets/images/products/fruits/watermelon.png');
-
-const Bringle = require('../../assets/images/products/vegetables/bringle.png');
-const Brocolli = require('../../assets/images/products/vegetables/brocolli.png');
-const Cabbage = require('../../assets/images/products/vegetables/cabbage.png');
-const Capsicum = require('../../assets/images/products/vegetables/capsicum.png');
-const Carrot = require('../../assets/images/products/vegetables/carrot.png');
-const Cucumber = require('../../assets/images/products/vegetables/cucumber.png');
-const Garlic = require('../../assets/images/products/vegetables/garlic.png');
-const Ginger = require('../../assets/images/products/vegetables/ginger.png');
-const GreenBeans = require('../../assets/images/products/vegetables/green_beans.png');
-const GreenChilli = require('../../assets/images/products/vegetables/greenchilli.png');
-const Leek = require('../../assets/images/products/vegetables/leek.png');
-const Lettuce = require('../../assets/images/products/vegetables/lettuce.png');
-const Mushroom = require('../../assets/images/products/vegetables/mushroom.png');
-const Okra = require('../../assets/images/products/vegetables/okra.png');
-const Onion = require('../../assets/images/products/vegetables/onion.png');
-const Peas = require('../../assets/images/products/vegetables/peas.png');
-const Potato = require('../../assets/images/products/vegetables/Potato.png');
-const Spinach = require('../../assets/images/products/vegetables/spinach.png');
-const SweetPotato = require('../../assets/images/products/vegetables/sweetpotato.png');
-const Tomato = require('../../assets/images/products/vegetables/tomatoo.png');
-const Turnip = require('../../assets/images/products/vegetables/turnipp.png');
-const Zucchini = require('../../assets/images/products/vegetables/zucchinii.png');
-
-const Butter = require('../../assets/images/products/milkproducts/Butter.png');
-const Cheese = require('../../assets/images/products/milkproducts/Cheese.png');
-const CondenesdMilk = require('../../assets/images/products/milkproducts/CondenesdMilk.png');
-const Curds = require('../../assets/images/products/milkproducts/Curds.png');
-const ghee = require('../../assets/images/products/milkproducts/ghee.png');
-const PowderedMilk = require('../../assets/images/products/milkproducts/PowderedMilk.png');
-const pudding = require('../../assets/images/products/milkproducts/pudding.png');
-const sourcream = require('../../assets/images/products/milkproducts/sourcream.png');
-const whippedcream = require('../../assets/images/products/milkproducts/whippedcream.png');
-const Yougurt = require('../../assets/images/products/milkproducts/Yogurt.png');
-
-const BBQSauce = require('../../assets/images/products/sauces/BBQsauces.png');
-const BlackSesame = require('../../assets/images/products/sauces/blackSesame.png');
-const BuffaloSauce = require('../../assets/images/products/sauces/buffalosauce.png');
-const ChiliSauce = require('../../assets/images/products/sauces/chilisauce.png');
-const CucumberSauce = require('../../assets/images/products/sauces/cucumbersauce.png');
-const FishSauce = require('../../assets/images/products/sauces/fishsauce.png');
-const HotSauce = require('../../assets/images/products/sauces/hotsauce.png');
-const Ketchup = require('../../assets/images/products/sauces/ketchup.png');
-const KimchiSauce = require('../../assets/images/products/sauces/kimchisauce.png');
-const Mayonnaise = require('../../assets/images/products/sauces/mayonnaise.png');
-const MustardSauce = require('../../assets/images/products/sauces/mustardsauce.png');
-const SoySauces = require('../../assets/images/products/sauces/soysauces.png');
-const TomatoSauce = require('../../assets/images/products/sauces/tomatoSauce.png');
-const Vinegar = require('../../assets/images/products/sauces/vinegar.png');
-const WasabiSauce = require('../../assets/images/products/sauces/wasabisauce.png');
-
-const BlackPepper = require('../../assets/images/products/spices/blackpepper.png');
-const Caraway = require('../../assets/images/products/spices/caraway.png');
-const CaromSeeds = require('../../assets/images/products/spices/caromseeds.png');
-const Clove = require('../../assets/images/products/spices/clove.png');
-const CorianderSeed = require('../../assets/images/products/spices/corianderseed.png');
-const CuminSeeds = require('../../assets/images/products/spices/cuminseeds.png');
-const Fennel = require('../../assets/images/products/spices/fennal.png');
-const FlaxSeeds = require('../../assets/images/products/spices/flaxseeds.png');
-const GarlicPowder = require('../../assets/images/products/spices/garlicpowder.png');
-const GingerPowder = require('../../assets/images/products/spices/gingerpowder.png');
-const PineNuts = require('../../assets/images/products/spices/pinenuts.png');
-const Saffron = require('../../assets/images/products/spices/saffron.png');
-const Salt = require('../../assets/images/products/spices/salt.png');
-const StarAnise = require('../../assets/images/products/spices/staranise.png');
-const Tamarind = require('../../assets/images/products/spices/tamarind.png');
-const Turmeric = require('../../assets/images/products/spices/turmeric.png');
-
-const Beefkofty = require('../../assets/images/products/frozenitems/Beefkofty.png');
-const beefroll = require('../../assets/images/products/frozenitems/beefroll.png');
-const BonelessChicken = require('../../assets/images/products/frozenitems/BonelessChicken.png');
-const BurgerPatties = require('../../assets/images/products/frozenitems/BurgerPatties.png');
-const cheeseball = require('../../assets/images/products/frozenitems/cheeseball.png');
-const chickenbread = require('../../assets/images/products/frozenitems/chickenbread.png');
-const ChickenKofty = require('../../assets/images/products/frozenitems/ChickenKofty.png');
-const ChickenSamosa = require('../../assets/images/products/frozenitems/ChickenSamosa.png');
-const chickenwings = require('../../assets/images/products/frozenitems/chickenwings.png');
-const chickenwonton = require('../../assets/images/products/frozenitems/chickenwonton.png');
-const chickenZinger = require('../../assets/images/products/frozenitems/chickenZinger.png');
-const Fries = require('../../assets/images/products/frozenitems/Fries.png');
-const Golakabab = require('../../assets/images/products/frozenitems/Golakabab.png');
-const nuggets = require('../../assets/images/products/frozenitems/nuggets.png');
-const Parathas = require('../../assets/images/products/frozenitems/Parathas.png');
-const springroll = require('../../assets/images/products/frozenitems/springroll.png');
-const vegetablesamosa = require('../../assets/images/products/frozenitems/vegetablesamosa.png');
-
 const frozenitems = [
-  {name: 'Beef Kofty', imgPath: Beefkofty},
-  {name: 'Beef Roll', imgPath: beefroll},
-  {name: 'Boneless Chicken', imgPath: BonelessChicken},
-  {name: 'Burger Patties', imgPath: BurgerPatties},
-  {name: 'Cheese Ball', imgPath: cheeseball},
-  {name: 'Chicken Bread', imgPath: chickenbread},
-  {name: 'Chicken Kofty', imgPath: ChickenKofty},
-  {name: 'Chicken Samosa', imgPath: ChickenSamosa},
-  {name: 'Chicken Wings', imgPath: chickenwings},
-  {name: 'Chicken Wonton', imgPath: chickenwonton},
-  {name: 'Chicken Zinger', imgPath: chickenZinger},
-  {name: 'Fries', imgPath: Fries},
-  {name: 'Gola Kabab', imgPath: Golakabab},
-  {name: 'Nuggets', imgPath: nuggets},
-  {name: 'Parathas', imgPath: Parathas},
-  {name: 'Spring Roll', imgPath: springroll},
-  {name: 'Vegetable Samosa', imgPath: vegetablesamosa},
+  { name: 'Bread', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Bread.png' },
+  { name: 'Burger Patties', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Burger Patties.png' },
+  { name: 'Cheese Ball', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Cheese Ball.png' },
+  { name: 'Chicken Breast', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Chicken Breast.png' },
+  { name: 'Chicken Samosa', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Chicken Samosa.png' },
+  { name: 'Chicken Strips', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Chicken Strips.png' },
+  { name: 'Chicken Wings', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Chicken Wings.png' },
+  { name: 'Corn', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Corn.png' },
+  { name: 'Dumplings', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Dumplings.png' },
+  { name: 'Fish', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Fish.png' },
+  { name: 'French Fries', imgPath: '/SwiftlistApp/Grocery/FrozenItems/French Fries.png' },
+  { name: 'Fruits', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Fruits.png' },
+  { name: 'Full Chicken', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Full Chicken.png' },
+  { name: 'Gola Kebab', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Gola Kebab.png' },
+  { name: 'Ice Cream', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Ice Cream.png' },
+  { name: 'Meat', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Meat.png' },
+  { name: 'Meatballs', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Meatballs.png' },
+  { name: 'Nuggets', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Nuggets.png' },
+  { name: 'Parathas', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Parathas.png' },
+  { name: 'Pepperoni', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Peporoni.png' },
+  { name: 'Pizza', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Pizza.png' },
+  { name: 'Popcorn Chicken', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Popcorn Chicken.png' },
+  { name: 'Sausages', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Sausages.png' },
+  { name: 'Spring Roll', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Spring Roll.png' },
+  { name: 'Vegetable Samosa', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Vegetable Samosa.png' },
+  { name: 'Vegetables', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Vegetables.png' },
+  { name: 'Wonton', imgPath: '/SwiftlistApp/Grocery/FrozenItems/Wonton.png' },
+  { name: 'Chicken Drumstick', imgPath: '/SwiftlistApp/Grocery/FrozenItems/chicken_drumstick.png' },
 ];
+
 
 const spices = [
-  {name: 'BlackPepper', imgPath: BlackPepper},
-  {name: 'Caraway', imgPath: Caraway},
-  {name: 'CaromSeeds', imgPath: CaromSeeds},
-  {name: 'Clove', imgPath: Clove},
-  {name: 'CorianderSeed', imgPath: CorianderSeed},
-  {name: 'CuminSeeds', imgPath: CuminSeeds},
-  {name: 'Fennel', imgPath: Fennel},
-  {name: 'FlaxSeeds', imgPath: FlaxSeeds},
-  {name: 'GarlicPowder', imgPath: GarlicPowder},
-  {name: 'GingerPowder', imgPath: GingerPowder},
-  {name: 'PineNuts', imgPath: PineNuts},
-  {name: 'Saffron', imgPath: Saffron},
-  {name: 'Salt', imgPath: Salt},
-  {name: 'StarAnise', imgPath: StarAnise},
-  {name: 'Tamarind', imgPath: Tamarind},
-  {name: 'Turmeric', imgPath: Turmeric},
+  { name: 'Basil', imgPath: '/SwiftlistApp/Grocery/Spices/Basil.png' },
+  { name: 'Black Cardamom', imgPath: '/SwiftlistApp/Grocery/Spices/Black Cardamom.png' },
+  { name: 'Black Pepper', imgPath: '/SwiftlistApp/Grocery/Spices/Black Pepper.png' },
+  { name: 'Cardamom', imgPath: '/SwiftlistApp/Grocery/Spices/Cardamom.png' },
+  { name: 'Chilli Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Chili Powder.png' },
+  { name: 'Cinnamon', imgPath: '/SwiftlistApp/Grocery/Spices/Cinnamon.png' },
+  { name: 'Cloves', imgPath: '/SwiftlistApp/Grocery/Spices/Cloves.png' },
+  { name: 'Coriander Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Coriander Powder.png' },
+  { name: 'Cumin', imgPath: '/SwiftlistApp/Grocery/Spices/Cumin.png' },
+  { name: 'Curry Leaves', imgPath: '/SwiftlistApp/Grocery/Spices/Curry Leaves.png' },
+  { name: 'Fennel Seeds', imgPath: '/SwiftlistApp/Grocery/Spices/Fennel Seeds.png' },
+  { name: 'Garam Masala', imgPath: '/SwiftlistApp/Grocery/Spices/Garam Masala.png' },
+  { name: 'Garlic Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Garlic Powder.png' },
+  { name: 'Ginger Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Ginger Powder.png' },
+  { name: 'Mixed Herbs', imgPath: '/SwiftlistApp/Grocery/Spices/Mixed Herbs.png' },
+  { name: 'Nutmeg', imgPath: '/SwiftlistApp/Grocery/Spices/Nutmeg.png' },
+  { name: 'Oregano', imgPath: '/SwiftlistApp/Grocery/Spices/Oregano.png' },
+  { name: 'Paprika Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Paprika Powder.png' },
+  { name: 'Powdered Garam Masala', imgPath: '/SwiftlistApp/Grocery/Spices/Powdered Garam Masala.png' },
+  { name: 'Red Chilli Flakes', imgPath: '/SwiftlistApp/Grocery/Spices/Red Chilli Flakes.png' },
+  { name: 'Rosemary', imgPath: '/SwiftlistApp/Grocery/Spices/Rosemary.png' },
+  { name: 'Salt', imgPath: '/SwiftlistApp/Grocery/Spices/Salt.png' },
+  { name: 'Star Anise', imgPath: '/SwiftlistApp/Grocery/Spices/Star Anise.png' },
+  { name: 'Sugar', imgPath: '/SwiftlistApp/Grocery/Spices/Sugar.png' },
+  { name: 'Turmeric Powder', imgPath: '/SwiftlistApp/Grocery/Spices/Turmeric Powder.png' },
+  { name: 'White Pepper', imgPath: '/SwiftlistApp/Grocery/Spices/White Pepper.png' },
 ];
+
 
 const sauces = [
-  {name: 'BBQ Sauce', imgPath: BBQSauce},
-  {name: 'Black Sesame', imgPath: BlackSesame},
-  {name: 'Buffalo Sauce', imgPath: BuffaloSauce},
-  {name: 'Chili Sauce', imgPath: ChiliSauce},
-  {name: 'Cucumber Sauce', imgPath: CucumberSauce},
-  {name: 'Fish Sauce', imgPath: FishSauce},
-  {name: 'Hot Sauce', imgPath: HotSauce},
-  {name: 'Ketchup', imgPath: Ketchup},
-  {name: 'Kimchi Sauce', imgPath: KimchiSauce},
-  {name: 'Mayonnaise', imgPath: Mayonnaise},
-  {name: 'Mustard Sauce', imgPath: MustardSauce},
-  {name: 'Soy Sauces', imgPath: SoySauces},
-  {name: 'Tomato Sauce', imgPath: TomatoSauce},
-  {name: 'Vinegar', imgPath: Vinegar},
-  {name: 'Wasabi Sauce', imgPath: WasabiSauce},
+  { name: 'BBQ Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/BBQ Sauce.png' },
+  { name: 'Balsamic Vinegar', imgPath: '/SwiftlistApp/Grocery/Sauces/Balsamic Vinegar.png' },
+  { name: 'Chili Paste', imgPath: '/SwiftlistApp/Grocery/Sauces/Chili Paste.png' },
+  { name: 'Chilli Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Chilli Sauce.png' },
+  { name: 'Fish Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Fish Sauce.png' },
+  { name: 'Hot Chilli Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Hot Chilli Sauce.png' },
+  { name: 'Hot Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Hot Sauce.png' },
+  { name: 'Marinara Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Marinara Sauce.png' },
+  { name: 'Mayonnaise', imgPath: '/SwiftlistApp/Grocery/Sauces/Mayonnaise.png' },
+  { name: 'Mustard Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Mustard Sauce.png' },
+  { name: 'Pasta Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Pasta Sauce.png' },
+  { name: 'Seasoning Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Seasoning Sauce.png' },
+  { name: 'Soy Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Soy Sauce.png' },
+  { name: 'Sriracha', imgPath: '/SwiftlistApp/Grocery/Sauces/Sriracha.png' },
+  { name: 'Steak Sauce', imgPath: '/SwiftlistApp/Grocery/Sauces/Steak Sauce.png' },
+  { name: 'Tahini', imgPath: '/SwiftlistApp/Grocery/Sauces/Tahini.png' },
+  { name: 'Tomato Paste', imgPath: '/SwiftlistApp/Grocery/Sauces/Tomato Paste.png' },
+  { name: 'Vinegar', imgPath: '/SwiftlistApp/Grocery/Sauces/Vinegar.png' },
+  { name: 'Ketchup', imgPath: '/SwiftlistApp/Grocery/Sauces/ketchup.png' },
 ];
+
 
 const milkproducts = [
-  {name: 'Butter', imgPath: Butter},
-  {name: 'Cheese', imgPath: Cheese},
-  {name: 'Condenesd Milk', imgPath: CondenesdMilk},
-  {name: 'Curds', imgPath: Curds},
-  {name: 'ghee', imgPath: ghee},
-  {name: 'Powdered Milk', imgPath: PowderedMilk},
-  {name: 'pudding', imgPath: pudding},
-  {name: 'sour cream', imgPath: sourcream},
-  {name: 'whipped cream', imgPath: whippedcream},
-  {name: 'Yougurt', imgPath: Yougurt},
+  { name: 'Butter Milk', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Butter Milk.png' },
+  { name: 'Butter', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Butter.png' },
+  { name: 'Cheese', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Cheese.png' },
+  { name: 'Condensed Milk', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Condensed Milk.png' },
+  { name: 'Cottage Cheese', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Cottage Cheese.png' },
+  { name: 'Cream Cheese', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Cream Cheese.png' },
+  { name: 'Cream', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Cream.png' },
+  { name: 'Evaporated Milk', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Evaporated Milk.png' },
+  { name: 'Heavy Cream', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Heavy Cream.png' },
+  { name: 'Skim Milk', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Skim Milk.png' },
+  { name: 'Sour Cream', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Sour Cream.png' },
+  { name: 'Whole Milk Powder', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Whole Milk Powder.png' },
+  { name: 'Whole Milk', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Whole Milk.png' },
+  { name: 'Yogurt', imgPath: '/SwiftlistApp/Grocery/MilkProducts/Yogurt.png' },
 ];
+
 
 const vegetableItems = [
-  {name: 'Bringle', imgPath: Bringle},
-  {name: 'Brocolli', imgPath: Brocolli},
-  {name: 'Cabbage', imgPath: Cabbage},
-  {name: 'Capsicum', imgPath: Capsicum},
-  {name: 'Carrot', imgPath: Carrot},
-  {name: 'Cucumber', imgPath: Cucumber},
-  {name: 'Garlic', imgPath: Garlic},
-  {name: 'Ginger', imgPath: Ginger},
-  {name: 'Green Beans', imgPath: GreenBeans},
-  {name: 'Green Chilli', imgPath: GreenChilli},
-  {name: 'Leek', imgPath: Leek},
-  {name: 'Lettuce', imgPath: Lettuce},
-  {name: 'Mushroom', imgPath: Mushroom},
-  {name: 'Okra', imgPath: Okra},
-  {name: 'Onion', imgPath: Onion},
-  {name: 'Peas', imgPath: Peas},
-  {name: 'Potato', imgPath: Potato},
-  {name: 'Spinach', imgPath: Spinach},
-  {name: 'Sweet Potato', imgPath: SweetPotato},
-  {name: 'Tomato', imgPath: Tomato},
-  {name: 'Turnip', imgPath: Turnip},
-  {name: 'Zucchini', imgPath: Zucchini},
+  { name: 'Potato', imgPath: '/SwiftlistApp/Grocery/vegetables/Potato.png' },
+  { name: 'Bringle', imgPath: '/SwiftlistApp/Grocery/vegetables/bringle.png' },
+  { name: 'Broccoli', imgPath: '/SwiftlistApp/Grocery/vegetables/brocolli.png' },
+  { name: 'Cabbage', imgPath: '/SwiftlistApp/Grocery/vegetables/cabbage.png' },
+  { name: 'Capsicum', imgPath: '/SwiftlistApp/Grocery/vegetables/capsicum.png' },
+  { name: 'Carrot', imgPath: '/SwiftlistApp/Grocery/vegetables/carrot.png' },
+  { name: 'Cucumber', imgPath: '/SwiftlistApp/Grocery/vegetables/cucumber.png' },
+  { name: 'Garlic', imgPath: '/SwiftlistApp/Grocery/vegetables/garlic.png' },
+  { name: 'Ginger', imgPath: '/SwiftlistApp/Grocery/vegetables/ginger.png' },
+  { name: 'Green Beans', imgPath: '/SwiftlistApp/Grocery/vegetables/green_beans.png' },
+  { name: 'Green Chilli', imgPath: '/SwiftlistApp/Grocery/vegetables/greenchilli.png' },
+  { name: 'Leek', imgPath: '/SwiftlistApp/Grocery/vegetables/leek.png' },
+  { name: 'Lettuce', imgPath: '/SwiftlistApp/Grocery/vegetables/lettuce.png' },
+  { name: 'Mushroom', imgPath: '/SwiftlistApp/Grocery/vegetables/mushroom.png' },
+  { name: 'Okra', imgPath: '/SwiftlistApp/Grocery/vegetables/okra.png' },
+  { name: 'Onion', imgPath: '/SwiftlistApp/Grocery/vegetables/onion.png' },
+  { name: 'Peas', imgPath: '/SwiftlistApp/Grocery/vegetables/peas.png' },
+  { name: 'Spinach', imgPath: '/SwiftlistApp/Grocery/vegetables/spinach.png' },
+  { name: 'Sweet Potato', imgPath: '/SwiftlistApp/Grocery/vegetables/sweetpotato.png' },
+  { name: 'Tomato', imgPath: '/SwiftlistApp/Grocery/vegetables/tomatoo.png' },
+  { name: 'Turnip', imgPath: '/SwiftlistApp/Grocery/vegetables/turnipp.png' },
+  { name: 'Zucchini', imgPath: '/SwiftlistApp/Grocery/vegetables/zucchinii.png' }
 ];
 
-// Fruit items
+
+
+// // Fruit items
 const fruitItems = [
-  {name: 'Apple', imgPath: Apple},
-  {name: 'Avocado', imgPath: Avocado},
-  {name: 'Banana', imgPath: Banana},
-  {name: 'Blueberry', imgPath: Blueberry},
-  {name: 'Cherry', imgPath: Cherry},
-  {name: 'Grapes', imgPath: Grapes},
-  {name: 'Guava', imgPath: Guava},
-  {name: 'Kiwi', imgPath: Kiwi},
-  {name: 'Lichi', imgPath: Lichi},
-  {name: 'Mango', imgPath: Mango},
-  {name: 'Melon', imgPath: Melon},
-  {name: 'Orange', imgPath: Orange},
-  {name: 'Papaya', imgPath: Papaya},
-  {name: 'Peach', imgPath: Peach},
-  {name: 'Pear', imgPath: Pear},
-  {name: 'Pineapple', imgPath: Pineapple},
-  {name: 'Pomegranate', imgPath: Pomegranate},
-  {name: 'Raspberry', imgPath: Raspberry},
-  {name: 'Strawberry', imgPath: Strawberry},
-  {name: 'Watermelon', imgPath: Watermelon},
+  { imgPath: 'SwiftlistApp/Grocery/fruits/apple.png', name: 'Apple' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/avocado.png', name: 'Avocado' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/banana.png', name: 'Banana' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/blueberry.png', name: 'Blueberry' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/cherry.png', name: 'Cherry' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/grapes.png', name: 'Grapes' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/guava.png', name: 'Guava' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/kiwi.png', name: 'Kiwi' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/lichi.png', name: 'Lichi' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/mango.png', name: 'Mango' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/melon.png', name: 'Melon' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/orange.png', name: 'Orange' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/papaya.png', name: 'Papaya' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/peach.png', name: 'Peach' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/pear.png', name: 'Pear' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/pineapple.png', name: 'Pineapple' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/pomengarate.png', name: 'Pomengranate' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/raspberry.png', name: 'Raspberry' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/strawberry.png', name: 'Strawberry' },
+  { imgPath: 'SwiftlistApp/Grocery/fruits/watermelon.png', name: 'Watermelon' },
 ];
 
-export {fruitItems, vegetableItems, milkproducts, sauces, spices, frozenitems};
+
+export {frozenitems , spices , sauces , milkproducts , vegetableItems , fruitItems};
+// export {fruitItems, vegetableItems, milkproducts, sauces, spices, frozenitems};

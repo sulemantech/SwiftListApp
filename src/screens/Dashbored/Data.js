@@ -1,4 +1,4 @@
-import { fruitItems, vegetableItems, milkproducts, sauces, spices, frozenitems } from './Images';
+import {frozenitems , spices , sauces, milkproducts, vegetableItems, fruitItems } from './Images';
 
 export const categories = [
   {
@@ -14,7 +14,7 @@ export const categories = [
       {name: 'Milk Products', items: milkproducts},
       {name: 'Frozen Items', items: frozenitems},
       {name: 'Sauces', items: sauces},
-      {name: 'Pulses', items: fruitItems},
+      {name: 'Pulses', items: frozenitems},
       {name: 'Spices', items: spices},
     ],
   },
@@ -26,12 +26,12 @@ export const categories = [
         'Scroll to the predefined articles or type them freely into the search below.',
     },
     subCategories: [
-      {name: 'Prayers', items: fruitItems},
-      {name: 'Fasting', items: fruitItems},
-      {name: 'Zikar & Silence', items: fruitItems},
-      {name: 'Donating', items: fruitItems},
-      {name: 'Meditation', items: fruitItems},
-      {name: 'Being mindful', items: fruitItems},
+      {name: 'Prayers', items: frozenitems},
+      {name: 'Fasting', items: frozenitems},
+      {name: 'Zikar & Silence', items: frozenitems},
+      {name: 'Donating', items: frozenitems},
+      {name: 'Meditation', items: frozenitems},
+      {name: 'Being mindful', items: frozenitems},
     ],
   },
   {
@@ -42,12 +42,12 @@ export const categories = [
         'Scroll to the predefined articles or type them freely into the search below.',
     },
     subCategories: [
-      {name: 'Personal Hygiene', items: fruitItems},
-      {name: 'Dental Care', items: fruitItems},
-      {name: 'Skin Care', items: fruitItems},
-      {name: 'Hair Care', items: fruitItems},
-      {name: 'Nail Care', items: fruitItems},
-      {name: 'Public Speaking', items: fruitItems},
+      {name: 'Personal Hygiene', items: frozenitems},
+      {name: 'Dental Care', items: frozenitems},
+      {name: 'Skin Care', items: frozenitems},
+      {name: 'Hair Care', items: frozenitems},
+      {name: 'Nail Care', items: frozenitems},
+      {name: 'Public Speaking', items: frozenitems},
     ],
   },
   {
@@ -58,12 +58,12 @@ export const categories = [
         'Scroll to the predefined articles or type them freely into the search below.',
     },
     subCategories: [
-      {name: 'Cleaning', items: fruitItems},
-      {name: 'Laundry', items: fruitItems},
-      {name: 'Drinking', items: fruitItems},
-      {name: 'Eating', items: fruitItems},
-      {name: 'Cooking', items: fruitItems},
-      {name: 'Official Tasks', items: fruitItems},
+      {name: 'Cleaning', items: frozenitems},
+      {name: 'Laundry', items: frozenitems},
+      {name: 'Drinking', items: frozenitems},
+      {name: 'Eating', items: frozenitems},
+      {name: 'Cooking', items: frozenitems},
+      {name: 'Official Tasks', items: frozenitems},
     ],
   },
   {
@@ -74,12 +74,12 @@ export const categories = [
         'Scroll to the predefined articles or type them freely into the search below.',
     },
     subCategories: [
-      {name: 'Breakfast', items: fruitItems},
-      {name: 'Brunch', items: fruitItems},
-      {name: 'Salads', items: fruitItems},
-      {name: 'Chicken', items: fruitItems},
-      {name: 'Mutton', items: fruitItems},
-      {name: 'Beef', items: fruitItems},
+      {name: 'Breakfast', items: frozenitems},
+      {name: 'Brunch', items: frozenitems},
+      {name: 'Salads', items: frozenitems},
+      {name: 'Chicken', items: frozenitems},
+      {name: 'Mutton', items: frozenitems},
+      {name: 'Beef', items: frozenitems},
     ],
   },
 ];

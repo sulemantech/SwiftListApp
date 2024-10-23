@@ -15,6 +15,7 @@ import pic2 from '../../assets/images/SVG/2.svg';
 import pic3 from '../../assets/images/SVG/3.svg';
 import pic4 from '../../assets/images/SVG/4.svg';
 import pic5 from '../../assets/images/SVG/5.svg';
+// Use this as needed
 import SCREENS from '..';
 
 const { width, height } = Dimensions.get('window'); // Getting screen dimensions
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: '#6c6c6c',
-    fontSize: 25,
+    fontSize: 20,
     fontFamily: 'Poppins-Regular',
   },
 });

@@ -1,5 +1,5 @@
-import {View, Text, StyleSheet, Image, ScrollView, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
@@ -9,8 +9,9 @@ import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
-
-const Dashbored = () => {
+// import Divider from '../components/Divider';
+import SCREENS from '..';
+const Dashbored = ({ navigation }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const handleCardClick = title => {
     setSelectedCard(title);
@@ -78,13 +79,15 @@ const Dashbored = () => {
         <ItemsList ItemName={selectedCard} onBackPress={handleBackPress} />
       ) : (
         <LinearGradient
-          colors={['#EFF9FF', '#B2FEFA']} // Define your gradient colors here
-          style={styles.gradientBackground} // Apply gradient to the background
+          colors={['#EFF9FF', '#B2FEFA']}
+          style={styles.gradientBackground}
         >
           <View style={styles.container}>
             <View>
               <Text style={styles.caption}>Hello,</Text>
-              <Text style={styles.heading}>MetaFront!</Text>
+              <View>
+                <Text style={styles.heading}>MetaFront!</Text>
+              </View>
               <Text style={styles.caption2}>
                 Stay organized with quick access to all your essential lists!
               </Text>
@@ -98,6 +101,17 @@ const Dashbored = () => {
               contentContainerStyle={styles.scrollContent}
               showsVerticalScrollIndicator={false}
             >
+
+              <View style={styles.editcontainer}>
+                <Text style={styles.heading}>Your Lists</Text>
+                <TouchableOpacity
+                  activeOpacity={0.4}
+                  style={styles.skip}
+                // onPress={() => navigation.navigate(SCREENS.Theme)}
+                >
+                  <Text style={styles.heading}>Edit</Text>
+                </TouchableOpacity>
+              </View>
               {cardDataArray.map((data, index) => (
                 <CardComponent
                   key={index}
@@ -105,6 +119,12 @@ const Dashbored = () => {
                   onPress={() => handleCardClick(data.title)}
                 />
               ))}
+              <TouchableOpacity onPress={() => navigation.navigate(SCREENS.Theme)} style={styles.card}>
+                <View style={styles.iconContainer}>
+                  <Text style={styles.icon}> + </Text>
+                </View>
+                <Text style={styles.iconText}>Create List</Text>
+              </TouchableOpacity>
             </ScrollView>
           </View>
         </LinearGradient>
@@ -115,7 +135,7 @@ const Dashbored = () => {
 
 const styles = StyleSheet.create({
   gradientBackground: {
-    flex: 1, // This ensures the gradient takes up the full screen
+    flex: 1,
   },
   container: {
     flex: 1,
@@ -149,6 +169,14 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     textAlign: 'left',
   },
+  editcontainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+    justifyContent: 'space-between',
+  },
   SearchANDFilter: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -180,6 +208,47 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 40,
     textAlignVertical: 'center',
+  },
+  iconContainer: {
+    backgroundColor: 'grey',
+    borderRadius: 50,
+    width: 40,
+    aspectRatio: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    fontFamily: 'OpenSans-SemiBold',
+    fontSize: 28,
+    marginBottom: 10,
+    marginLeft: 1,
+    color: 'white',
+  },
+  iconText: {
+    fontFamily: 'OpenSans-SemiBold',
+    fontSize: 16,
+    marginBottom: 6,
+    marginLeft: 3,
+    color: 'grey',
+    marginTop: 5,
+    textAlign: 'center',
+  },
+  card: {
+    width: '98%',
+    height: 60,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 4,
+    borderRadius: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 5,
+    marginVertical: 10,
+    marginHorizontal: 'auto',
   },
 });
 

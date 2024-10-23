@@ -8,5 +8,6 @@ const SCREENS = {
   Congratulation: 'Congratulation',
   Dashbored: 'Dashboard',
   ProductsPage: 'ProductsPage',
+  Theme : 'Theme',
 };
 export default SCREENS;

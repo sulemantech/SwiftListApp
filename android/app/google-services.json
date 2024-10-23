@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "685029163622",
+    "project_id": "swiftlist-android",
+    "storage_bucket": "swiftlist-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685029163622:android:14f2ead24a6edafdb2a3a7",
+        "android_client_info": {
+          "package_name": "com.swiftlist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwu-jZk9PoqZasmOrEID6hIfJpIuhRR0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

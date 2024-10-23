@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, { useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {

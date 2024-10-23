@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import FastImage from 'react-native-fast-image';
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  // Image,
   ScrollView,
   Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import storage from '@react-native-firebase/storage';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const ProductList = ({ products, page }) => {
   const [selectedIndices, setSelectedIndices] = useState([]);
   const [placeholderval, setPlaceholderval] = useState(products.length);
+  const [imageUrls, setImageUrls] = useState([]); // State to store fetched image URLs
 
   const handleSelect = index => {
     if (selectedIndices.includes(index)) {
@@ -32,7 +33,6 @@ const ProductList = ({ products, page }) => {
       if (num % 3 === 0) {
         return 0;
       } else {
-
         const nearestHigherDivisibleBy3 = num + (3 - (num % 3));
         return nearestHigherDivisibleBy3 - number;
       }
@@ -42,10 +42,31 @@ const ProductList = ({ products, page }) => {
     setPlaceholderval(result);
   }, [products.length]);
 
+  useLayoutEffect(() => {
+    const fetchImageUrls = async () => {
+      try {
+        const urls = await Promise.all(
+          products.map(async (item) => {
+            const url = await storage().ref(item.imgPath).getDownloadURL();
+            return url;
+          })
+        );
+        setImageUrls(urls);
+      } catch (error) {
+        console.error("Error fetching image URLs: ", error);
+      }
+    };
+
+    if (products.length > 0) {
+      fetchImageUrls(); // Call the function to fetch URLs when products are available
+    }
+  }, [products]);
+
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
-        <ScrollView contentContainerStyle={styles.itemsContainer}
+        <ScrollView
+          contentContainerStyle={styles.itemsContainer}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           removeClippedSubviews={true}
@@ -61,12 +82,10 @@ const ProductList = ({ products, page }) => {
               onPress={() => handleSelect(index)}
             >
               <FastImage
-                source={item.imgPath}
+                source={{ uri: imageUrls[index] }} // Access fetched image URL
                 style={styles.productImage}
                 resizeMode={FastImage.resizeMode.cover}
               />
-
-
               <Text
                 style={styles.productName}
                 numberOfLines={1}
@@ -85,7 +104,7 @@ const ProductList = ({ products, page }) => {
                   style={[styles.productCard2]}
                 >
                   <FastImage
-                    source={item.imgPath} // Access the imgPath of the current item
+                    source={{ uri: imageUrls[index] }}
                     style={styles.productImage}
                     resizeMode={FastImage.resizeMode.cover}
                   />
@@ -100,8 +119,6 @@ const ProductList = ({ products, page }) => {
               ))}
             </>
           )}
-
-
         </ScrollView>
       ) : (
         <Text>No items available for this category.</Text>
@@ -113,7 +130,7 @@ const ProductList = ({ products, page }) => {
 ProductList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      imgPath: PropTypes.any.isRequired,
+      imgPath: PropTypes.string.isRequired, // imgPath should be a string representing Firebase storage path
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
