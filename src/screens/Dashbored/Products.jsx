@@ -9,14 +9,12 @@ import {
   Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import storage from '@react-native-firebase/storage';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const ProductList = ({ products, page }) => {
   const [selectedIndices, setSelectedIndices] = useState([]);
   const [placeholderval, setPlaceholderval] = useState(products.length);
-  const [imageUrls, setImageUrls] = useState([]); // State to store fetched image URLs
 
   const handleSelect = index => {
     if (selectedIndices.includes(index)) {
@@ -42,26 +40,8 @@ const ProductList = ({ products, page }) => {
     setPlaceholderval(result);
   }, [products.length]);
 
-  useLayoutEffect(() => {
-    const fetchImageUrls = async () => {
-      try {
-        const urls = await Promise.all(
-          products.map(async (item) => {
-            const url = await storage().ref(item.imgPath).getDownloadURL();
-            return url;
-          })
-        );
-        setImageUrls(urls);
-      } catch (error) {
-        console.error("Error fetching image URLs: ", error);
-      }
-    };
 
-    if (products.length > 0) {
-      fetchImageUrls(); // Call the function to fetch URLs when products are available
-    }
-  }, [products]);
-
+  
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
@@ -82,7 +62,7 @@ const ProductList = ({ products, page }) => {
               onPress={() => handleSelect(index)}
             >
               <FastImage
-                source={{ uri: imageUrls[index] }} // Access fetched image URL
+                source={item.imgPath}
                 style={styles.productImage}
                 resizeMode={FastImage.resizeMode.cover}
               />
@@ -104,7 +84,7 @@ const ProductList = ({ products, page }) => {
                   style={[styles.productCard2]}
                 >
                   <FastImage
-                    source={{ uri: imageUrls[index] }}
+                    source={item.imgPath}
                     style={styles.productImage}
                     resizeMode={FastImage.resizeMode.cover}
                   />
