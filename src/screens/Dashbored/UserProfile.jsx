@@ -1,188 +1,120 @@
-import React, { useEffect, useState } from 'react';
-import FastImage from 'react-native-fast-image';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
-import storage from '@react-native-firebase/storage';
-import PropTypes from 'prop-types';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
 
-const { width: screenWidth } = Dimensions.get('window');
-
-const ProductList = ({ products, page }) => {
-  const [selectedIndices, setSelectedIndices] = useState([]);
-  const [placeholderval, setPlaceholderval] = useState(products.length);
-  const [imageUrls, setImageUrls] = useState([]); // State to hold image URLs
-
-  useEffect(() => {
-    const fetchImageUrls = async () => {
-      try {
-        const urls = await Promise.all(
-          products.map(async (item) => {
-            const url = await storage().ref(item.imgPath).getDownloadURL();
-            return url;
-          })
-        );
-        setImageUrls(urls);
-      } catch (error) {
-        console.error("Error fetching image URLs: ", error);
-      }
-    };
-
-    if (products.length > 0) {
-      fetchImageUrls();
-    }
-  }, [products]);
-
-  const handleSelect = (index) => {
-    if (selectedIndices.includes(index)) {
-      setSelectedIndices(selectedIndices.filter(i => i !== index));
-    } else {
-      setSelectedIndices([...selectedIndices, index]);
-    }
-  };
-
-  useEffect(() => {
-    const number = products.length;
-
-    const calculateValue = (num) => {
-      if (num % 3 === 0) {
-        return 0;
-      } else {
-        const nearestHigherDivisibleBy3 = num + (3 - (num % 3));
-        return nearestHigherDivisibleBy3 - number;
-      }
-    };
-
-    const result = calculateValue(number);
-    setPlaceholderval(result);
-  }, [products.length]);
-
+export default function UserProfile() {
   return (
-    <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
-      {products.length > 0 ? (
-        <ScrollView
-          contentContainerStyle={styles.itemsContainer}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          removeClippedSubviews={true}
-        >
-          {products.map((item, index) => (
-            <TouchableOpacity
-              activeOpacity={1}
-              key={index}
-              style={[styles.productCard, selectedIndices.includes(index) && styles.selectedCard]}
-              onPress={() => handleSelect(index)}
-            >
-              <FastImage
-                source={{ uri: imageUrls[index] }} // Access the image URL
-                style={styles.productImage}
-                resizeMode={FastImage.resizeMode.cover}
-              />
-              <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
-                {item.name}
-              </Text>
-            </TouchableOpacity>
-          ))}
-          {products.length > 0 && (
-            <>
-              {products.slice(0, placeholderval).map((item, index) => (
-                <TouchableOpacity
-                  activeOpacity={0}
-                  key={index}
-                  style={[styles.productCard2]}
-                >
-                  <FastImage
-                    source={{ uri: imageUrls[index] }} // Access the image URL
-                    style={styles.productImage}
-                    resizeMode={FastImage.resizeMode.cover}
-                  />
-                  <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </>
-          )}
-        </ScrollView>
-      ) : (
-        <Text>No items available for this category.</Text>
-      )}
+    <View style={styles.container}>
+      {/* Profile Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Profile</Text>
+      </View>
+
+      {/* Profile Picture */}
+      <View style={styles.profileContainer}>
+        <Image
+          source={{ uri: 'https://via.placeholder.com/150' }} // Placeholder image URL
+          style={styles.profileImage}
+        />
+        <Text style={styles.name}>MetaFront Ahmad</Text>
+        <Text style={styles.email}>MetaFront@example.com</Text>
+      </View>
+
+      {/* Additional Information */}
+      <View style={styles.infoSection}>
+        <View style={styles.infoContainer}>
+          <Text style={styles.label}>Phone:</Text>
+          <Text style={styles.value}>+123 456 7890</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.label}>Location:</Text>
+          <Text style={styles.value}>Islamabad, Pakistan</Text>
+        </View>
+      </View>
+
+      {/* Edit Button */}
+      <TouchableOpacity activeOpacity={1} style={styles.editButton}>
+        <Text style={styles.editButtonText}>Edit Profile</Text>
+      </TouchableOpacity>
     </View>
   );
-};
-
-ProductList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      imgPath: PropTypes.string.isRequired, // Ensure it's a string
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-export default ProductList;
+}
 
 const styles = StyleSheet.create({
-  productsContainer: {
-    marginTop: 10,
-    paddingHorizontal: 10,
+  container: {
     flex: 1,
+    backgroundColor: '#f5f5f5',
   },
-  productsContainer2: {
+  header: {
+    backgroundColor: '#52C2FE',
+    paddingVertical: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  headerText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  profileContainer: {
+    alignItems: 'center',
+    marginTop: -50,
+    marginBottom: 30,
+  },
+  profileImage: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    borderWidth: 4,
+    borderColor: '#fff',
     marginBottom: 10,
   },
-  itemsContainer: {
-    display: 'flex',
+  name: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  email: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 20,
+  },
+  infoSection: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  infoContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    overflow: 'hidden',
-    paddingBottom: 10,
+    justifyContent: 'space-between',
+    marginVertical: 10,
   },
-  productCard: {
-    backgroundColor: '#4AA688',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 6,
-    width: screenWidth * 0.28,
-    maxWidth: screenWidth * 0.32,
-    aspectRatio: 1,
-    borderRadius: 5,
-    flexGrow: 1,
-    margin: 3,
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
   },
-  productCard2: {
-    opacity: 0,
-    backgroundColor: '#4AA688',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 6,
-    width: screenWidth * 0.28,
-    maxWidth: screenWidth * 0.32,
-    aspectRatio: 1,
-    borderRadius: 5,
-    flexGrow: 1,
-    margin: 3,
+  value: {
+    fontSize: 16,
+    color: '#666',
   },
-  selectedCard: {
-    backgroundColor: '#E36A4A',
+  editButton: {
+    backgroundColor: '#52C2FE',
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    alignSelf: 'center',
+    marginTop: 20,
   },
-  productImage: {
-    width: screenWidth * 0.18,
-    height: screenWidth * 0.14,
-  },
-  productName: {
-    fontFamily: 'Poppins-Regular',
-    marginTop: 10,
-    fontSize: 11,
-    lineHeight: 16.5,
-    textAlign: 'center',
-    color: 'white',
+  editButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

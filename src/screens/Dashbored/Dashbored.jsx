@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState , useCallback } from 'react';
 import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
@@ -9,6 +9,8 @@ import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // import Divider from '../components/Divider';
 import SCREENS from '..';
 const Dashbored = ({ navigation }) => {
@@ -19,6 +21,7 @@ const Dashbored = ({ navigation }) => {
   const handleBackPress = () => {
     setSelectedCard(null);
   };
+  
 
   const cardDataArray = [
     {
@@ -76,7 +79,7 @@ const Dashbored = ({ navigation }) => {
   return (
     <>
       {selectedCard ? (
-        <ItemsList ItemName={selectedCard} onBackPress={handleBackPress} />
+        <ItemsList ItemName={selectedCard} ListName={selectedCard} onBackPress={handleBackPress} />
       ) : (
         <LinearGradient
           colors={['#EFF9FF', '#B2FEFA']}

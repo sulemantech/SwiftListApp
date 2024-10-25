@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FastImage from 'react-native-fast-image';
 import {
   StyleSheet,
@@ -8,21 +8,47 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import PropTypes from 'prop-types';
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const ProductList = ({ products, page }) => {
-  const [selectedIndices, setSelectedIndices] = useState([]);
+const ProductList = ({  products, page , ListName }) => {
+  console.log(ListName , " In ItemsList")
+  console.log(products)
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [placeholderval, setPlaceholderval] = useState(products.length);
 
-  const handleSelect = index => {
-    if (selectedIndices.includes(index)) {
-      setSelectedIndices(selectedIndices.filter(i => i !== index));
-    } else {
-      setSelectedIndices([...selectedIndices, index]);
+  const handleSelect = async (product) => {
+    try {
+      const isSelected = selectedProducts.some(selected => selected.name === product.name);
+      const newSelectedProducts = isSelected
+        ? selectedProducts.filter(selected => selected.name !== product.name)
+        : [...selectedProducts, { name: product.name, imgPath: product.imgPath }];
+
+      setSelectedProducts(newSelectedProducts);
+
+      await AsyncStorage.setItem(`selectedProducts${ListName}`, JSON.stringify(newSelectedProducts));
+    } catch (error) {
+      console.error('Failed to save selected products:', error);
     }
   };
+
+
+  useEffect(() => {
+    const loadSelectedProducts = async () => {
+      try {
+        const storedProducts = await AsyncStorage.getItem(`selectedProducts${ListName}`);
+        if (storedProducts) {
+          setSelectedProducts(JSON.parse(storedProducts));
+        }
+      } catch (error) {
+        console.error('Failed to load selected products:', error);
+      }
+    };
+
+    loadSelectedProducts();
+  }, []);
 
   useEffect(() => {
     const number = products.length;
@@ -40,8 +66,6 @@ const ProductList = ({ products, page }) => {
     setPlaceholderval(result);
   }, [products.length]);
 
-
-  
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
@@ -57,9 +81,9 @@ const ProductList = ({ products, page }) => {
               key={index}
               style={[
                 styles.productCard,
-                selectedIndices.includes(index) && styles.selectedCard,
+                selectedProducts.some(selected => selected.name === item.name) && styles.selectedCard, // Check if product is selected
               ]}
-              onPress={() => handleSelect(index)}
+              onPress={() => handleSelect(item)} // Pass the product object instead of index
             >
               <FastImage
                 source={item.imgPath}
@@ -110,7 +134,7 @@ const ProductList = ({ products, page }) => {
 ProductList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      imgPath: PropTypes.string.isRequired, // imgPath should be a string representing Firebase storage path
+      imgPath: PropTypes.any, // imgPath should be a string representing Firebase storage path
       name: PropTypes.string.isRequired,
     })
   ).isRequired,

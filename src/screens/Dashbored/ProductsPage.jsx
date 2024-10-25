@@ -25,7 +25,7 @@ const Header = ({ title, onBack }) => (
 
 const ProductsPage = ({ route }) => {
   const navigation = useNavigation();
-  const { myStringProp } = route.params;
+  const { myStringProp, ListName } = route.params;
 
   const matchingSubCategory = categories
     .flatMap(category => category.subCategories)
@@ -35,7 +35,7 @@ const ProductsPage = ({ route }) => {
     <View style={styles.container}>
       <Header title={myStringProp} onBack={() => navigation.goBack()} />
       {matchingSubCategory ? (
-        <ProductList products={matchingSubCategory.items} />
+        <ProductList products={matchingSubCategory.items} ListName={ListName} />
       ) : (
         <Text>No items available for this category.</Text>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
@@ -26,16 +26,20 @@ import ThingsToDoSVG from '../../assets/images/SVG/thingstodopage.svg';
 import KitchenMenuSVG from '../../assets/images/SVG/kitchenpage.svg';
 import { categories } from './Data';
 import TextInput2 from '../components/Input';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // import SCREENS from '..';
 import ProductList from './Products';
 
 // Get the screen dimensions
 const { width, height } = Dimensions.get('window');
 
-const ItemsList = ({ ItemName, onBackPress }) => {
+const ItemsList = ({ ItemName, ListName , onBackPress }) => {
+  console.log(ListName , " In ItemsList")
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
   const [pressedItem, setPressedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const navigation = useNavigation();
 
   const matchingCategory = categories.find(
@@ -51,9 +55,8 @@ const ItemsList = ({ ItemName, onBackPress }) => {
     ) => {
       const searchQuery = content.toLowerCase();
 
-      // Check if the search query is empty
       if (!searchQuery) {
-        return setFilteredItems([]); // Set to empty if input is cleared
+        return setFilteredItems([]);
       }
 
       const category = categories.find(
@@ -88,6 +91,23 @@ const ItemsList = ({ ItemName, onBackPress }) => {
     },
     [matchingCategory],
   );
+
+  const retrieveItemsFromAsyncStorage = useCallback(async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(`selectedProducts${ListName}`);
+      const items = jsonValue ? JSON.parse(jsonValue) : [];
+      console.log(`selectedProducts${ListName}`, items);
+      setSelectedItem(items);
+    } catch (e) {
+      console.error('Error reading from AsyncStorage:', e);
+    }
+  }, []); 
+
+  useEffect(() => {
+    retrieveItemsFromAsyncStorage();
+  }, [retrieveItemsFromAsyncStorage]);
+
+
 
   const imageMap = {
     groceryImage: GrocerySVG,
@@ -160,21 +180,33 @@ const ItemsList = ({ ItemName, onBackPress }) => {
             style={styles.subCategoriesContainer}
             renderItem={({ item }) => (
               <TouchableHighlight
-              onPress={() => {
-                setPressedItem(item.name);  // Set the pressed item
-                navigation.navigate('ProductsPage', { myStringProp: item.name });
-              }}
+                onPress={() => {
+                  setPressedItem(item.name);
+                  navigation.navigate('ProductsPage', { myStringProp: item.name , ListName : ListName });
+                }}
                 activeOpacity={1}
                 underlayColor="#fff"
-                style={styles.subCategoryItem}>
+                style={styles.subCategoryItem}
+              >
                 <View style={styles.subCategoryContent}>
                   <Text style={styles.subCategoryName}>{item.name}</Text>
-                  <Image  source={pressedItem === item.name ? arrowRightactive : arrowRight}  style={styles.arrowRight} />
+                  <Image source={pressedItem === item.name ? arrowRightactive : arrowRight} style={styles.arrowRight} />
                 </View>
               </TouchableHighlight>
             )}
-            ListHeaderComponent={filteredItems.length > 0 ? <ProductList products={filteredItems} page={'itemslist'} /> : null}
+            ListHeaderComponent={
+              filteredItems.length > 0 ? (
+                <ProductList products={filteredItems} ListName={ListName} page="itemslist" />
+              ) : (
+                Array.isArray(selectedItem) && selectedItem.length > 0 ? (
+                  <ProductList products={selectedItem} ListName={ListName} page="itemslist" />
+                ) : (
+                  null
+                )
+              )
+            }
           />
+
         )}
       </LinearGradient>
     </TouchableWithoutFeedback>
