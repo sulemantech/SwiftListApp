@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState , useCallback } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
 import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
@@ -18,10 +18,23 @@ const Dashbored = ({ navigation }) => {
   const handleCardClick = title => {
     setSelectedCard(title);
   };
+
   const handleBackPress = () => {
     setSelectedCard(null);
+    return true;
   };
-  
+
+  useEffect(() => {
+    if (selectedCard) {
+
+      const backHandler = BackHandler.addEventListener(
+        'hardwareBackPress',
+        handleBackPress
+      );
+      return () => backHandler.remove();
+    }
+  }, [selectedCard]);
+
 
   const cardDataArray = [
     {

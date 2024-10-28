@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Image,
+  BackHandler,
 } from 'react-native';
 import back from '../../assets/images/back-arrow.png';
 import heart from '../../assets/images/heartIcon.png';
@@ -31,9 +32,27 @@ const ProductsPage = ({ route }) => {
     .flatMap(category => category.subCategories)
     .find(subCategory => subCategory.name === myStringProp);
 
+  const handleBackPress = () => {
+    navigation.goBack(); 
+    return true; // Prevent default behavior
+  };
+
+  useEffect(() => {
+    // Add back button listener
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      handleBackPress
+    );
+
+    // Cleanup listener on unmount
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Header title={myStringProp} onBack={() => navigation.goBack()} />
+      <Header title={myStringProp} onBack={handleBackPress} />
       {matchingSubCategory ? (
         <ProductList products={matchingSubCategory.items} ListName={ListName} />
       ) : (
