@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler } from 'react-native';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
@@ -9,38 +9,32 @@ import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
+import { ProductContext } from '../../Context/CardContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// import Divider from '../components/Divider';
 import SCREENS from '..';
 const Dashbored = ({ navigation }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const handleCardClick = title => {
     setSelectedCard(title);
   };
+  const { selectedProducts } = useContext(ProductContext);
+
 
   const handleBackPress = () => {
     setSelectedCard(null);
     return true;
   };
 
-  useEffect(() => {
-    if (selectedCard) {
-
-      const backHandler = BackHandler.addEventListener(
-        'hardwareBackPress',
-        handleBackPress
-      );
-      return () => backHandler.remove();
-    }
-  }, [selectedCard]);
+  console.log(selectedProducts)
 
 
-  const cardDataArray = [
+  const [cardDataArray, setCardDataArray] = useState([
     {
       title: 'Grocery List',
       description: 'Add needed items.',
       items: '200 Items',
+      storageKey: 'selectedProductsGrocery List',
       percentagetext: 'Bought 70%',
       percentage: 70,
       Picture: first,
@@ -51,6 +45,7 @@ const Dashbored = ({ navigation }) => {
       title: 'Spiritual Goals',
       description: 'Add your spiritual goals.',
       items: '10 Goals',
+      storageKey: 'selectedProductsSpiritual Goals',
       percentagetext: 'Achieved 30%',
       percentage: 30,
       Picture: seconed,
@@ -61,6 +56,7 @@ const Dashbored = ({ navigation }) => {
       title: 'Personal Grooming',
       description: 'Add your grooming tasks in list.',
       items: '10 Tasks',
+      storageKey: 'selectedProductsPersonal Grooming',
       percentagetext: 'Completed 80%',
       percentage: 80,
       Picture: third,
@@ -71,6 +67,7 @@ const Dashbored = ({ navigation }) => {
       title: 'Things To Do',
       description: 'Add needed items.',
       items: '15 Items',
+      storageKey: 'selectedProductsThings To Do',
       percentagetext: 'Bought 50%',
       percentage: 50,
       Picture: fourth,
@@ -81,13 +78,53 @@ const Dashbored = ({ navigation }) => {
       title: 'Kitchen Menu',
       description: 'Add needed items.',
       items: '500 Recipies',
+      storageKey: 'selectedProductsKitchen Menu',
       percentagetext: 'Cooked 70%',
       percentage: 70,
       Picture: fifth,
       bgColor: '#fddc8a',
       badgeColor: '#D88D1B',
     },
-  ];
+  ]);
+
+
+  useEffect(() => {
+    const loadSelectedProducts = () => {
+      let totalItems = 0;
+
+      const updatedCardData = cardDataArray.map((card) => {
+        const itemsFromContext = selectedProducts[card.title] || [];
+        const itemCount = itemsFromContext.length;
+
+        totalItems += itemCount;
+
+        return {
+          ...card,
+          items: `${itemCount} ${card.items.split(' ')[1]}`,
+          itemCount,
+        };
+      });
+
+      const updatedCardDataWithPercentages = updatedCardData.map(card => {
+        const percentage = totalItems > 0
+          ? Math.round((card.itemCount / totalItems) * 100)
+          : 0;
+
+        return {
+          ...card,
+          percentagetext: `${card.percentagetext.split(' ')[0]} ${percentage}%`,
+          percentage,
+        };
+      });
+
+      setCardDataArray(updatedCardDataWithPercentages);
+    };
+
+    loadSelectedProducts();
+  }, [selectedProducts]);
+
+
+
 
   return (
     <>
@@ -135,6 +172,7 @@ const Dashbored = ({ navigation }) => {
                   onPress={() => handleCardClick(data.title)}
                 />
               ))}
+
               <TouchableOpacity onPress={() => navigation.navigate(SCREENS.Theme)} style={styles.card}>
                 <View style={styles.iconContainer}>
                   <Text style={styles.icon}> + </Text>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SCREENS from '../screens';
 import Onboarding from '../screens/intro/Onbording';
@@ -11,18 +11,34 @@ import Congratulation from '../screens/auth/Congratulation';
 import DashboredIndex from '../screens/Dashbored/DashboredIndex';
 import ProductsPage from '../screens/Dashbored/ProductsPage';
 import Theme from '../screens/components/Theme';
-import { CardProvider } from '../Context/CardContext';
+import { ProductProvider } from '../Context/CardContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
+  
+  useEffect(() => {
+    const checkFirstLaunch = async () => {
+      const hasCompletedOnboarding = await AsyncStorage.getItem('hasCompletedOnboarding');
+      setIsFirstLaunch(!hasCompletedOnboarding);
+    };
+    checkFirstLaunch();
+  }, []);
+  
+  const completeOnboarding = async () => {
+    await AsyncStorage.setItem('hasCompletedOnboarding', 'true');
+    setIsFirstLaunch(false);
+  };
   return (
-    <CardProvider>
-      <Stack.Navigator initialRouteName={SCREENS.intro}>
+    <ProductProvider>
+      <Stack.Navigator initialRouteName={ isFirstLaunch ? SCREENS.intro : SCREENS.Dashbored}>
         <Stack.Screen
           name={SCREENS.intro}
           component={Onboarding}
           options={{ headerShown: false }}
+          initialParams={{ onComplete: completeOnboarding }}
         />
         <Stack.Screen
           name={SCREENS.login}
@@ -70,7 +86,7 @@ const StackNavigation = () => {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
-    </CardProvider>
+    </ProductProvider>
   );
 };
 

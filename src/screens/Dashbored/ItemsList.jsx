@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useCallback, useEffect, useContext } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
@@ -11,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
   FlatList,
+  BackHandler
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import back from '../../assets/images/back-arrow.png';
@@ -26,21 +27,30 @@ import ThingsToDoSVG from '../../assets/images/SVG/thingstodopage.svg';
 import KitchenMenuSVG from '../../assets/images/SVG/kitchenpage.svg';
 import { categories } from './Data';
 import TextInput2 from '../components/Input';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// import SCREENS from '..';
+import { ProductContext } from '../../Context/CardContext';
 import ProductList from './Products';
+import getCurrentDateTimeKey from '../components/GetCurrentDateTimeKey';
 
 // Get the screen dimensions
 const { width, height } = Dimensions.get('window');
 
-const ItemsList = ({ ItemName, ListName , onBackPress }) => {
-  console.log(ListName , " In ItemsList")
+const ItemsList = ({ ItemName, ListName, onBackPress }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
   const [pressedItem, setPressedItem] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const navigation = useNavigation();
+  const [itemclicked, setItemclicked] = useState(true);
+  const { selectedProducts } = useContext(ProductContext);
+  const handleProductSelect = () => {
+    setItemclicked(!itemclicked);
+  };
+  const [key, setKey] = useState(getCurrentDateTimeKey());
+  console.log(selectedProducts)
+
+  useEffect(() => {
+    setSelectedItem(selectedProducts[ListName])
+  }, [selectedProducts])
 
   const matchingCategory = categories.find(
     categoryObj =>
@@ -48,39 +58,13 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
   );
 
   const filterItems = useCallback(
-    (
-      content,
-      selectedCategory = matchingCategory?.category.name,
-      selectedSubCategory = null,
-    ) => {
+    (content) => {
       const searchQuery = content.toLowerCase();
-
       if (!searchQuery) {
         return setFilteredItems([]);
       }
 
-      const category = categories.find(
-        cat =>
-          cat.category.name.toLowerCase() === selectedCategory?.toLowerCase(),
-      );
-      if (!category) {
-        return setFilteredItems([]);
-      }
-
-      let subCategories = category.subCategories;
-      if (selectedSubCategory) {
-        const subCategory = subCategories.find(
-          subCat =>
-            subCat.name.toLowerCase() === selectedSubCategory?.toLowerCase(),
-        );
-        if (subCategory) {
-          subCategories = [subCategory];
-        } else {
-          return setFilteredItems([]);
-        }
-      }
-
-      const allItems = subCategories.flatMap(subCategory => subCategory.items);
+      const allItems = matchingCategory.subCategories.flatMap(subCategory => subCategory.items);
       const filteredItemsArray = allItems.filter(
         item =>
           item.name.toLowerCase().startsWith(searchQuery) ||
@@ -92,22 +76,23 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
     [matchingCategory],
   );
 
-  const retrieveItemsFromAsyncStorage = useCallback(async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem(`selectedProducts${ListName}`);
-      const items = jsonValue ? JSON.parse(jsonValue) : [];
-      console.log(`selectedProducts${ListName}`, items);
-      setSelectedItem(items);
-    } catch (e) {
-      console.error('Error reading from AsyncStorage:', e);
-    }
-  }, []); 
-
-  useEffect(() => {
-    retrieveItemsFromAsyncStorage();
-  }, [retrieveItemsFromAsyncStorage]);
 
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const backAction = () => {
+        onBackPress();
+        return true;
+      };
+
+      const backHandler = BackHandler.addEventListener(
+        'hardwareBackPress',
+        backAction
+      );
+
+      return () => backHandler.remove();
+    }, [onBackPress])
+  );
 
   const imageMap = {
     groceryImage: GrocerySVG,
@@ -124,9 +109,8 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
         setIsSearchFocused(false);
         Keyboard.dismiss();
       }}>
-      {/* Add LinearGradient around the entire view */}
       <LinearGradient
-        colors={['#EFF9FF', '#EFF9FF']} // Apply your linear gradient colors here
+        colors={['#EFF9FF', '#EFF9FF']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.container}
@@ -162,8 +146,7 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
               />
-              <View
-                style={[styles.searchiconContainer]}>
+              <View style={styles.searchiconContainer}>
                 <Image
                   source={isSearchFocused ? searchicon : searchiconBlack}
                   style={styles.searchicon}
@@ -182,7 +165,7 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
               <TouchableHighlight
                 onPress={() => {
                   setPressedItem(item.name);
-                  navigation.navigate('ProductsPage', { myStringProp: item.name , ListName : ListName });
+                  navigation.navigate('ProductsPage', { myStringProp: item.name, ListName: ListName });
                 }}
                 activeOpacity={1}
                 underlayColor="#fff"
@@ -196,17 +179,16 @@ const ItemsList = ({ ItemName, ListName , onBackPress }) => {
             )}
             ListHeaderComponent={
               filteredItems.length > 0 ? (
-                <ProductList products={filteredItems} ListName={ListName} page="itemslist" />
+                <ProductList products={filteredItems} ListName={ListName} onProductSelect={handleProductSelect} page="itemslist" />
               ) : (
                 Array.isArray(selectedItem) && selectedItem.length > 0 ? (
-                  <ProductList products={selectedItem} ListName={ListName} page="itemslist" />
+                  <ProductList products={selectedItem} ListName={ListName} onProductSelect={handleProductSelect} page="itemslist" />
                 ) : (
                   null
                 )
               )
             }
           />
-
         )}
       </LinearGradient>
     </TouchableWithoutFeedback>

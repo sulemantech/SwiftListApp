@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 2,
     alignItems: 'flex-start',
-    flex: 1,
+    flex: 1.2,
     marginLeft: 15,
   },
   contentContainer2: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     top: 0,
-    width: '90%',
+    width: '100%',
     maxWidth: '100%',
     height: '105%',
   },

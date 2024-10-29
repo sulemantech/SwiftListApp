@@ -20,7 +20,8 @@ import SCREENS from '..';
 
 const { width, height } = Dimensions.get('window'); // Getting screen dimensions
 
-export default function Onboarding({ navigation }) {
+export default function Onboarding({ navigation, route }) {
+  const { onComplete } = route.params || {};
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -73,16 +74,21 @@ export default function Onboarding({ navigation }) {
     if (currentIndex < slides.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      navigation.navigate(SCREENS.login);
+      if (onComplete) onComplete(); // Mark onboarding as complete
+      navigation.replace(SCREENS.login); // Navigate to the login screen
     }
   };
+
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
-      activeOpacity={1}
+        activeOpacity={1}
         style={styles.skip}
-        onPress={() => navigation.navigate(SCREENS.login)}
+        onPress={() => {
+          if (onComplete) onComplete(); 
+          navigation.replace(SCREENS.login);
+        }}
       >
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
@@ -107,7 +113,7 @@ export default function Onboarding({ navigation }) {
         <View style={styles.pagination}>
           {slides.map((_, index) => (
             <TouchableOpacity
-            activeOpacity={1}
+              activeOpacity={1}
               key={index}
               onPress={() => {
                 slidesRef.current.scrollToIndex({ index });
@@ -132,11 +138,11 @@ export default function Onboarding({ navigation }) {
       </View>
       <View style={styles.btnview}>
 
-      <TouchableOpacity activeOpacity={1} onPress={handleNext} style={styles.button}>
-        <Text style={styles.buttonText}>
-          {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity activeOpacity={1} onPress={handleNext} style={styles.button}>
+          <Text style={styles.buttonText}>
+            {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -150,7 +156,7 @@ const styles = StyleSheet.create({
     gap: height * 0.06,
   },
   container2: {
-    marginTop:height * 0.1,
+    marginTop: height * 0.1,
     height: height * 0.7,
   },
   pagination: {
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     marginHorizontal: 'auto',
-    height:50,
+    height: 50,
     backgroundColor: '#52C2FE',
     borderRadius: 30,
     alignItems: 'center',
@@ -201,7 +207,7 @@ const styles = StyleSheet.create({
     top: height * 0.02,
     right: width * 0.03,
   },
-  btnview : {
+  btnview: {
     width: '100%',
     height: height * 0.27,
   },
