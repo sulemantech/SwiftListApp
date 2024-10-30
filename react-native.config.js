@@ -1,7 +1,9 @@
 module.exports = {
   project: {
     ios: {},
-    android: {},
+    android: {
+      packageName:'com.swiftlist'
+    },
   },
   assets: ['./assets/fonts'],
 };

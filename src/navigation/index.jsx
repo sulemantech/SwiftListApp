@@ -17,20 +17,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
-  const [isFirstLaunch, setIsFirstLaunch] = useState(true);
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   
-  // useEffect(() => {
-  //   const checkFirstLaunch = async () => {
-  //     const hasCompletedOnboarding = await AsyncStorage.getItem('hasCompletedOnboarding');
-  //     setIsFirstLaunch(!hasCompletedOnboarding);
-  //   };
-  //   checkFirstLaunch();
-  // }, []);
+  useEffect(() => {
+    const checkFirstLaunch = async () => {
+      const hasCompletedOnboarding = await AsyncStorage.getItem('hasCompletedOnboarding');
+      setIsFirstLaunch(!hasCompletedOnboarding);
+    };
+    checkFirstLaunch();
+  }, []);
   
-  // const completeOnboarding = async () => {
-  //   await AsyncStorage.setItem('hasCompletedOnboarding', 'true');
-  //   setIsFirstLaunch(false);
-  // };
+  const completeOnboarding = async () => {
+    await AsyncStorage.setItem('hasCompletedOnboarding', 'true');
+    setIsFirstLaunch(false);
+  };
   return (
     <ProductProvider>
       <Stack.Navigator initialRouteName={ isFirstLaunch ? SCREENS.intro : SCREENS.Dashbored}>
@@ -38,7 +38,7 @@ const StackNavigation = () => {
           name={SCREENS.intro}
           component={Onboarding}
           options={{ headerShown: false }}
-          // initialParams={{ onComplete: completeOnboarding }}
+          initialParams={{ onComplete: completeOnboarding }}
         />
         <Stack.Screen
           name={SCREENS.login}
