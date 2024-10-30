@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         width: 27,
         height: 20,
         marginBottom: 10,
-        marginRight: 40,
+        marginRight: 30,
     },
     signInText: {
         color: '#0c0c0c',

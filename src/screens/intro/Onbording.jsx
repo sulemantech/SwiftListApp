@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  StatusBar,
 } from 'react-native';
 import React, { useState, useRef } from 'react';
 import OnboardingItem from './Onbordingitem';
@@ -82,11 +83,17 @@ export default function Onboarding({ navigation, route }) {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#FFF"
+        barStyle={'dark-content'}
+      // showHideTransition={statusBarTransition}
+      />
       <TouchableOpacity
         activeOpacity={1}
         style={styles.skip}
         onPress={() => {
-          if (onComplete) onComplete(); 
+          if (onComplete) onComplete();
           navigation.replace(SCREENS.login);
         }}
       >

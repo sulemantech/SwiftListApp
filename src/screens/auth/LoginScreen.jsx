@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import TextInput2 from '../components/Input';
@@ -15,11 +16,17 @@ import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#FFF"
+        barStyle={'dark-content'}
+      // showHideTransition={statusBarTransition}
+      />
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
@@ -48,7 +55,7 @@ const LoginScreen = ({navigation}) => {
           <CheckBox
             value={isChecked}
             onValueChange={setIsChecked}
-            tintColors={{true: '#52C2FE', false: '#52C2FE'}}
+            tintColors={{ true: '#52C2FE', false: '#52C2FE' }}
           />
           <Text style={styles.checkboxLabel}>Keep me signed in</Text>
         </View>
@@ -204,7 +211,7 @@ const styles = StyleSheet.create({
   },
   signInButton: {
     width: '100%',
-    height:50,
+    height: 50,
     backgroundColor: '#52C2FE',
     borderRadius: 30,
     paddingVertical: 12,

@@ -11,7 +11,8 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
   FlatList,
-  BackHandler
+  BackHandler,
+  StatusBar
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import back from '../../assets/images/back-arrow.png';
@@ -112,6 +113,12 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
         end={{ x: 1, y: 0 }}
         style={styles.container}
       >
+          <StatusBar
+            animated={true}
+            backgroundColor="#FFF"
+            barStyle={'dark-content'}
+          // showHideTransition={statusBarTransition}
+          />
         <Header onBack={onBackPress} title={ItemName} />
 
         {matchingCategory && (

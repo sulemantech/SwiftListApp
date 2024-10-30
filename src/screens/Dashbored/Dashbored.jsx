@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler, StatusBar } from 'react-native';
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
 import Filtericon from '../../assets/images/filtericon.png';
@@ -131,6 +131,12 @@ const Dashbored = ({ navigation }) => {
           colors={['#EFF9FF', '#B2FEFA']}
           style={styles.gradientBackground}
         >
+          <StatusBar
+            animated={true}
+            backgroundColor="#EFF9FF"
+            barStyle={'dark-content'}
+          // showHideTransition={statusBarTransition}
+          />
           <View style={styles.container}>
             <View>
               <Text style={styles.caption}>Hello,</Text>
