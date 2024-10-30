@@ -10,7 +10,6 @@ import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
 import { ProductContext } from '../../Context/CardContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import SCREENS from '..';
 const Dashbored = ({ navigation }) => {
@@ -25,9 +24,6 @@ const Dashbored = ({ navigation }) => {
     setSelectedCard(null);
     return true;
   };
-
-  console.log(selectedProducts)
-
 
   const [cardDataArray, setCardDataArray] = useState([
     {

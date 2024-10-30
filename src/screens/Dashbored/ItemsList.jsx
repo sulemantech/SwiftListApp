@@ -29,9 +29,8 @@ import { categories } from './Data';
 import TextInput2 from '../components/Input';
 import { ProductContext } from '../../Context/CardContext';
 import ProductList from './Products';
-import getCurrentDateTimeKey from '../components/GetCurrentDateTimeKey';
+import Header from '../components/Header';
 
-// Get the screen dimensions
 const { width, height } = Dimensions.get('window');
 
 const ItemsList = ({ ItemName, ListName, onBackPress }) => {
@@ -45,8 +44,6 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
   const handleProductSelect = () => {
     setItemclicked(!itemclicked);
   };
-  const [key, setKey] = useState(getCurrentDateTimeKey());
-  console.log(selectedProducts)
 
   useEffect(() => {
     setSelectedItem(selectedProducts[ListName])
@@ -115,14 +112,7 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
         end={{ x: 1, y: 0 }}
         style={styles.container}
       >
-        {/* Header */}
-        <View style={styles.headerContainer}>
-          <TouchableOpacity activeOpacity={1} onPress={onBackPress}>
-            <Image source={back} style={styles.back} />
-          </TouchableOpacity>
-          <Text style={styles.signInText}>{ItemName}</Text>
-          <Image source={heart} style={styles.heart} />
-        </View>
+        <Header onBack={onBackPress} title={ItemName} />
 
         {matchingCategory && (
           <View style={styles.categoryContainer}>
@@ -213,31 +203,6 @@ const styles = StyleSheet.create({
     lineHeight: 23,
     textAlign: 'center',
   },
-  headerContainer: {
-    position: 'absolute',
-    top: 0,
-    paddingVertical: 7,
-    paddingHorizontal: '5%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    width: '100%',
-  },
-  back: {
-    width: 27,
-    height: 20,
-  },
-  heart: {
-    width: 30,
-    height: 30,
-  },
-  signInText: {
-    color: '#0c0c0c',
-    fontSize: 20,
-    fontWeight: '600',
-    fontFamily: 'OpenSans-Bold',
-  },
   categoryContainer: {
     marginTop: height * 0.08,
     alignItems: 'center',
@@ -270,7 +235,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
     position: 'absolute',
-    top: '33%',
+    top: '30%',
     right: 10,
   },
   searchicon: {

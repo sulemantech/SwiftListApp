@@ -196,6 +196,7 @@ const DashboredIndex = () => (
 const styles = StyleSheet.create({
   tabBarStyle: {
     height: 70,
+    paddingBottom:4,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     backgroundColor: 'white',
@@ -214,6 +215,7 @@ const styles = StyleSheet.create({
     height: 24,
   },
   activeIconContainer: {
+    marginTop: 2,
     backgroundColor: '#52C2FE',
     padding: 10,
     borderRadius: 30,
