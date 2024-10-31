@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useMemo } from 'react';
 import FastImage from 'react-native-fast-image';
 import {
   StyleSheet,
@@ -8,19 +8,23 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import PropTypes from 'prop-types';
 import { ProductContext } from '../../Context/CardContext';
+import BottomSheetComponent from '../components/BottomSheetComponent';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) => {
   const { selectedProducts, updateSelectedProducts } = useContext(ProductContext);
   const [placeholderVal, setPlaceholderVal] = useState(0);
+  const [selecteditem, setSelecteditem] = useState('Selected Item');
 
   const handleSelect = async (product) => {
     await updateSelectedProducts(ListName, product);
     onProductSelect();
   };
+
 
   useEffect(() => {
     const numProducts = products.length;
@@ -69,21 +73,25 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
   );
 
   return (
-    <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
-      {products.length > 0 ? (
-        <ScrollView
-          contentContainerStyle={styles.itemsContainer}
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          removeClippedSubviews={true}
-        >
-          {products.map((item, index) => renderProductCard(item, index))}
-          {Array.from({ length: placeholderVal }, (_, index) => renderProductCard(products[index], index, true))}
-        </ScrollView>
-      ) : (
-        <Text>No items available for this category.</Text>
-      )}
-    </View>
+    <>
+      <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
+        {products.length > 0 ? (
+          <ScrollView
+            contentContainerStyle={styles.itemsContainer}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            removeClippedSubviews={true}
+          >
+            {products.map((item, index) => renderProductCard(item, index))}
+            {Array.from({ length: placeholderVal }, (_, index) => renderProductCard(products[index], index, true))}
+          </ScrollView>
+        ) : (
+          <Text>No items available for this category.</Text>
+        )}
+      </View>
+        {page !== 'itemslist' && <BottomSheetComponent selecteditem={selecteditem} />}
+
+    </>
   );
 };
 
@@ -157,5 +165,4 @@ const styles = StyleSheet.create({
   bottomLeftBorder: {
     borderBottomLeftRadius: 5,
   },
-
 });

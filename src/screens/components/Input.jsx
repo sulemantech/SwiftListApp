@@ -15,7 +15,7 @@ const TextInput2 = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
+      {label && <Text style={styles.label}>{label}</Text>}
 
       <TextInput
         onFocus={onFocus}
@@ -41,7 +41,6 @@ export default TextInput2;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: '100%',
   },
   label: {

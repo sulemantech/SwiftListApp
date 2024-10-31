@@ -7,7 +7,6 @@ import {
   Image,
   BackHandler,
 } from 'react-native';
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { useNavigation } from '@react-navigation/native';
 import { categories } from './Data';
 import PropTypes from 'prop-types';
@@ -37,7 +36,6 @@ const ProductsPage = ({ route }) => {
     };
   }, []);
 
-  const snapPoints = useMemo(() => ['10%', '50%', '75%'], []);
 
   return (
     <View style={styles.container}>
@@ -47,11 +45,6 @@ const ProductsPage = ({ route }) => {
       ) : (
         <Text>No items available for this category.</Text>
       )}
-      {/* <BottomSheet style={styles.bottomSheet} index={1} snapPoints={snapPoints}>
-        <BottomSheetView style={styles.contentContainer}>
-          <Text style={styles.bottomSheetview}>MetaFront Bottom Sheet Created 🎉</Text>
-        </BottomSheetView>
-      </BottomSheet> */}
     </View>
   );
 };
@@ -71,21 +64,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#eff9ff',
-  },
-  bottomSheet: {
-    backgroundColor: '#fff',
-    position: 'absolute',
-    color: 'black',
-    width: '100%',
-    zIndex: 99,
-  },
-  bottomSheetview: {
-    color: 'black',
-  },
-  contentContainer: {
-    flex: 1,
-    padding: 36,
-    color: 'black',
-    alignItems: 'center',
   },
 });

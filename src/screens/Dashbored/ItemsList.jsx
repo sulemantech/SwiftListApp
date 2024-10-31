@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
     position: 'absolute',
-    top: '30%',
+    top: '6%',
     right: 10,
   },
   searchicon: {
