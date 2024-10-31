@@ -18,8 +18,7 @@ const EmailSuccess = ({ navigation }) => {
         {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin />
         <Text style={styles.instructions}>
-          Email has been sent to your email address. Please check your inbox for
-          the email and follow the instructions.
+          Email has been sent to your email address. Please check your inbox for email and follow instructions.
         </Text>
       </View>
 

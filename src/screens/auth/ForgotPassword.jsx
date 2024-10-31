@@ -28,14 +28,14 @@ const ForgotPassword = ({ navigation }) => {
         <Signin />
 
         <Text style={styles.instructions}>
-          Please Enter Your Email Address. You will receive a link to create a
+          Please enter your email address. You will receive a link to create a
           new Password via email.
         </Text>
 
         <TextInput2
           bgcolor={'#fff'}
           label={'Email/PhoneNumber'}
-          placeholder={'Enter Email Address'}
+          placeholder={'Enter email address'}
         />
       </View>
 

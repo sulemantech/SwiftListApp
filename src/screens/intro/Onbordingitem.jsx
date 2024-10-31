@@ -5,7 +5,7 @@ const OnboardingItem = ({item}) => {
 
   return (
     <View style={[styles.container, {width}]}>
-      <item.image />
+      <View style={styles.image}><item.image /></View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.divder}> </Text>
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   image: {
+    transform: [{ scale: 0.95 }],
     justifyContent: 'center',
   },
   textContainer: {
@@ -40,9 +41,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   divder:{
-    width: 54,
+    width: 55,
     height: 2,
-    borderWidth: 1,
+    borderBottomWidth: 2,
     borderColor:'#81CAED',
   },
   description: {

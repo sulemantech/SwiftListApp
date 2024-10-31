@@ -23,11 +23,11 @@ const ResetPassword = ({navigation}) => {
         {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin/>
 
-        <Text style={styles.instructions}>Enter New Password And Confirm.</Text>
+        <Text style={styles.instructions}>Enter new password and confirm.</Text>
 
         <TextInput2
         bgcolor={'#fff'}
-          label={'Enter New Password'}
+          label={'New Password'}
           placeholder={'Enter new password'}
         />
         <TextInput2

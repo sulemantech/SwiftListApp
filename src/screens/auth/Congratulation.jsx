@@ -8,17 +8,17 @@ const Congratulation = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
+        {/* <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
-        <Text style={styles.signInText}> </Text>
+        <Text style={styles.signInText}> </Text> */}
       </View>
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin />
         <Text style={styles.instructions}>
-          Congratulation! Your Password has been reset!
+          Congratulation! Your password has been reset!
         </Text>
       </View>
 
@@ -27,7 +27,7 @@ const Congratulation = ({ navigation }) => {
           activeOpacity={1}
           style={styles.signInButton}
           onPress={() => navigation.navigate(SCREENS.login)}>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>Done</Text>
         </TouchableOpacity>
       </View>
     </View>

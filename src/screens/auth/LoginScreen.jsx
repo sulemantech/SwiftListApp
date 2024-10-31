@@ -41,7 +41,7 @@ const LoginScreen = ({ navigation }) => {
         <TextInput2
           bgcolor={'#fff'}
           label={'Email/Phone Number'}
-          placeholder={'Enter Email Address'}
+          placeholder={'Enter email address'}
         />
         <TextInput2
           bgcolor={'#fff'}

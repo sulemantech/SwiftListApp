@@ -61,10 +61,10 @@ const Dashbored = ({ navigation }) => {
     },
     {
       title: 'Things To Do',
-      description: 'Add needed items.',
+      description: 'Add tasks in your to do list.',
       items: '15 Items',
       storageKey: 'selectedProductsThings To Do',
-      percentagetext: 'Bought 50%',
+      percentagetext: 'Completed 50%',
       percentage: 50,
       Picture: fourth,
       bgColor: '#FFCBA1CC',
@@ -72,7 +72,7 @@ const Dashbored = ({ navigation }) => {
     },
     {
       title: 'Kitchen Menu',
-      description: 'Add needed items.',
+      description: 'Add items to your list.',
       items: '500 Recipies',
       storageKey: 'selectedProductsKitchen Menu',
       percentagetext: 'Cooked 70%',

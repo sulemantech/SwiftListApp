@@ -27,11 +27,11 @@ const SignUpScreen = ({navigation}) => {
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin/>
-        <TextInput2 bgcolor={'#fff'} label={'Name'} placeholder={'Enter User Name'} />
+        <TextInput2 bgcolor={'#fff'} label={'Name'} placeholder={'Enter Username'} />
         <TextInput2
         bgcolor={'#fff'}
           label={'Email/Phone Number'}
-          placeholder={'Enter Email Address'}
+          placeholder={'Enter email address'}
         />
         <TextInput2
         bgcolor={'#fff'}
@@ -42,7 +42,7 @@ const SignUpScreen = ({navigation}) => {
         <TextInput2
         bgcolor={'#fff'}
           label={'Confirm Password'}
-          placeholder={'Re-Enter Password'}
+          placeholder={'Re-enter Password'}
           secureTextEntry={true}
         />
       </View>

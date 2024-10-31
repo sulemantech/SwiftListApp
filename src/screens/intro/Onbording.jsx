@@ -219,8 +219,8 @@ const styles = StyleSheet.create({
     height: height * 0.27,
   },
   skipText: {
-    color: '#6c6c6c',
-    fontSize: 20,
+    color: '#6c6c6c90',
+    fontSize: 15,
     fontFamily: 'Poppins-Regular',
   },
 });
