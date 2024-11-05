@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,14 +12,41 @@ import { categories } from './Data';
 import PropTypes from 'prop-types';
 import ProductList from './Products';
 import Header from '../components/Header';
+import { ProductContext } from '../../Context/CardContext';
+
 
 const ProductsPage = ({ route }) => {
   const navigation = useNavigation();
   const { myStringProp, ListName } = route.params;
+  const { selectedProducts, updateSelectedProducts, clearSelectedProducts } = useContext(ProductContext);
 
   const matchingSubCategory = categories
     .flatMap(category => category.subCategories)
     .find(subCategory => subCategory.name === myStringProp);
+
+  let updatedItems = matchingSubCategory ? [...matchingSubCategory.items] : [];
+
+  // Iterate over selected products to replace items in updatedItems
+  for (const listName in selectedProducts) {
+    if (selectedProducts[listName].length > 0) {
+      selectedProducts[listName].forEach(selectedItem => {
+        const matchingIndex = updatedItems.findIndex(item => item.name === selectedItem.name);
+        if (matchingIndex !== -1) {
+          // Replace the matching item with the selected item
+          updatedItems[matchingIndex] = {
+            ...selectedItem, // Keep properties from selected item
+            imgPath: updatedItems[matchingIndex].imgPath // Maintain the imgPath from matching subcategory
+          };
+        }
+      });
+    }
+  }
+
+  // Update matchingSubCategory with the new items
+  const newMatchingSubCategory = { ...matchingSubCategory, items: updatedItems };
+
+  // Log the new matching subcategory
+  console.log("New Matching SubCategory:", newMatchingSubCategory);
 
   const handleBackPress = () => {
     navigation.goBack();
@@ -36,12 +63,11 @@ const ProductsPage = ({ route }) => {
     };
   }, []);
 
-
   return (
     <View style={styles.container}>
       <Header title={myStringProp} Rightelement={true} onBack={handleBackPress} />
-      {matchingSubCategory ? (
-        <ProductList products={matchingSubCategory.items} ListName={ListName} />
+      {newMatchingSubCategory.items.length > 0 ? (
+        <ProductList products={newMatchingSubCategory.items} ListName={ListName} />
       ) : (
         <Text>No items available for this category.</Text>
       )}

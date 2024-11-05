@@ -990,15 +990,260 @@ const cleaningItems = [
   { name: 'Wiping Surfaces', imgPath: wipingSurfaces },
 ];
 
+const Baking = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Baking.png');
+const Boiling = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Boiling.png');
+const Broiling = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Broiling.png');
+const ChoppingVegetables = require('../../assets/images/SwiftlistApp/ToDo/Cooking/ChoppingVegetables.png');
+const Frying = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Frying.png');
+const Grilling = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Grilling.png');
+const Marinating = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Marinating.png');
+const MixingIngredients = require('../../assets/images/SwiftlistApp/ToDo/Cooking/MixingIngredients.png');
+const PreppingIngredients = require('../../assets/images/SwiftlistApp/ToDo/Cooking/PreppingIngredients.png');
+const Roasting = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Roasting.png');
+const SlowCooking = require('../../assets/images/SwiftlistApp/ToDo/Cooking/SlowCooking.png');
+const Steaming = require('../../assets/images/SwiftlistApp/ToDo/Cooking/Steaming.png');
+const StirringandSauteing = require('../../assets/images/SwiftlistApp/ToDo/Cooking/StirringandSauteing.png');
+const UsingCookingAppliances = require('../../assets/images/SwiftlistApp/ToDo/Cooking/UsingCookingAppliances.png');
+
+const Cooking = [
+  { name: 'Baking', imgPath: Baking },
+  { name: 'Boiling', imgPath: Boiling },
+  { name: 'Broiling', imgPath: Broiling },
+  { name: 'Chopping Vegetables', imgPath: ChoppingVegetables },
+  { name: 'Frying', imgPath: Frying },
+  { name: 'Grilling', imgPath: Grilling },
+  { name: 'Marinating', imgPath: Marinating },
+  { name: 'Mixing Ingredients', imgPath: MixingIngredients },
+  { name: 'Prepping Ingredients', imgPath: PreppingIngredients },
+  { name: 'Roasting', imgPath: Roasting },
+  { name: 'Slow Cooking', imgPath: SlowCooking },
+  { name: 'Steaming', imgPath: Steaming },
+  { name: 'Stirring and Sauteing', imgPath: StirringandSauteing },
+  { name: 'Using Cooking Appliances', imgPath: UsingCookingAppliances },
+];
+
+const AiringDelicateFabrics = require('../../assets/images/SwiftlistApp/ToDo/Laundry/AiringDelicateFabrics.png');
+const DetergentSelection = require('../../assets/images/SwiftlistApp/ToDo/Laundry/DetergentSelection.png');
+const DryingClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/DryingClothes.png');
+const FoldingClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/FoldingClothes.png');
+const HangingClothes1 = require('../../assets/images/SwiftlistApp/ToDo/Laundry/HangingClothes(1).png');
+const HangingClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/HangingClothes.png');
+const Ironing = require('../../assets/images/SwiftlistApp/ToDo/Laundry/Ironing.png');
+const OrganizingCloset = require('../../assets/images/SwiftlistApp/ToDo/Laundry/OrganizingCloset.png');
+const RemovingStains = require('../../assets/images/SwiftlistApp/ToDo/Laundry/RemovingStains.png');
+const SortingClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/SortingClothes.png');
+const StarchingClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/StarchingClothes.png');
+const StoringBedLinen = require('../../assets/images/SwiftlistApp/ToDo/Laundry/StoringBedLinen.png');
+const StoringWinterClothes = require('../../assets/images/SwiftlistApp/ToDo/Laundry/StoringWinterClothes.png');
+const UsingFabricSoftener = require('../../assets/images/SwiftlistApp/ToDo/Laundry/UsingFabricSoftener.png');
+const WashingMachineUse = require('../../assets/images/SwiftlistApp/ToDo/Laundry/WashingMachineUse.png');
+
+const ToDoLaundry = [
+  { name: 'Airing Delicate Fabrics', imgPath: AiringDelicateFabrics },
+  { name: 'Detergent Selection', imgPath: DetergentSelection },
+  { name: 'Drying Clothes', imgPath: DryingClothes },
+  { name: 'Folding Clothes', imgPath: FoldingClothes },
+  { name: 'Hanging Clothes (1)', imgPath: HangingClothes1 },
+  { name: 'Hanging Clothes', imgPath: HangingClothes },
+  { name: 'Ironing', imgPath: Ironing },
+  { name: 'Organizing Closet', imgPath: OrganizingCloset },
+  { name: 'Removing Stains', imgPath: RemovingStains },
+  { name: 'Sorting Clothes', imgPath: SortingClothes },
+  { name: 'Starching Clothes', imgPath: StarchingClothes },
+  { name: 'Storing Bed Linen', imgPath: StoringBedLinen },
+  { name: 'Storing Winter Clothes', imgPath: StoringWinterClothes },
+  { name: 'Using Fabric Softener', imgPath: UsingFabricSoftener },
+  { name: 'Washing Machine Use', imgPath: WashingMachineUse },
+];
 
 
+const Beer = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Beer.png');
+// const Coffee = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Coffee.png');
+// const EnergyDrinks = require('../../assets/images/SwiftlistApp/ToDo/Drinking/EnergyDrinks.png');
+const HerbalTeas = require('../../assets/images/SwiftlistApp/ToDo/Drinking/HerbalTeas.png');
+// const Juice = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Juice.png');
+const JuiceDetox = require('../../assets/images/SwiftlistApp/ToDo/Drinking/JuiceDetox.png');
+// const Lemonade = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Lemonade.png');
+// const Milkshakes = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Milkshakes.png');
+const Smoothies = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Smoothies.png');
+// const Soda = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Soda.png');
+// const SparklingWater = require('../../assets/images/SwiftlistApp/ToDo/Drinking/SparklingWater.png');
+// const Tea = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Tea.png');
+// const Water = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Water.png');
+const Wine = require('../../assets/images/SwiftlistApp/ToDo/Drinking/Wine.png');
 
+const ToDoDrinking = [
+  { name: 'Beer', imgPath: Beer },
+  { name: 'Coffee', imgPath: Coffee },
+  { name: 'Energy Drinks', imgPath: EnergyDrinks },
+  { name: 'Herbal Teas', imgPath: HerbalTeas },
+  { name: 'Juice', imgPath: Juice },
+  { name: 'Juice Detox', imgPath: JuiceDetox },
+  { name: 'Lemonade', imgPath: Lemonade },
+  { name: 'Milkshakes', imgPath: Milkshakes },
+  { name: 'Smoothies', imgPath: Smoothies },
+  { name: 'Soda', imgPath: Soda },
+  { name: 'Sparkling Water', imgPath: SparklingWater },
+  { name: 'Tea', imgPath: Tea },
+  { name: 'Water', imgPath: Water },
+  { name: 'Wine', imgPath: Wine },
+];
+
+
+const Breakfast = require('../../assets/images/SwiftlistApp/ToDo/Eating/Breakfast.png');
+const Buffet = require('../../assets/images/SwiftlistApp/ToDo/Eating/Buffet.png');
+const Desserts = require('../../assets/images/SwiftlistApp/ToDo/Eating/Desserts.png');
+const Dinner = require('../../assets/images/SwiftlistApp/ToDo/Eating/Dinner.png');
+const FastFood = require('../../assets/images/SwiftlistApp/ToDo/Eating/FastFood.png');
+const Fruit = require('../../assets/images/SwiftlistApp/ToDo/Eating/Fruit.png');
+const GrilledMeals = require('../../assets/images/SwiftlistApp/ToDo/Eating/GrilledMeals.png');
+const Lunch = require('../../assets/images/SwiftlistApp/ToDo/Eating/Lunch.png');
+const MealPrep = require('../../assets/images/SwiftlistApp/ToDo/Eating/MealPrep.png');
+const PlatedMeals = require('../../assets/images/SwiftlistApp/ToDo/Eating/PlatedMeals.png');
+const Salads = require('../../assets/images/SwiftlistApp/ToDo/Eating/Salads.png');
+const Snacks = require('../../assets/images/SwiftlistApp/ToDo/Eating/Snacks.png');
+const TakeawayMeals = require('../../assets/images/SwiftlistApp/ToDo/Eating/TakeawayMeals.png');
+
+const Eating = [
+  { name: 'Breakfast', imgPath: Breakfast },
+  { name: 'Buffet', imgPath: Buffet },
+  { name: 'Desserts', imgPath: Desserts },
+  { name: 'Dinner', imgPath: Dinner },
+  { name: 'Fast Food', imgPath: FastFood },
+  { name: 'Fruit', imgPath: Fruit },
+  { name: 'Grilled Meals', imgPath: GrilledMeals },
+  { name: 'Lunch', imgPath: Lunch },
+  { name: 'Meal Prep', imgPath: MealPrep },
+  { name: 'Plated Meals', imgPath: PlatedMeals },
+  { name: 'Salads', imgPath: Salads },
+  { name: 'Snacks', imgPath: Snacks },
+  { name: 'Takeaway Meals', imgPath: TakeawayMeals },
+];
+
+
+const AnsweringEmails = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/AnsweringEmails.png');
+const BudgetPlanning = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/BudgetPlanning.png');
+const CompletingDocuments = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/CompletingDocuments.png');
+const DataEntry = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/DataEntry.png');
+const FileManagement = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/FileManagement.png');
+const OrganizingMeetings = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/OrganizingMeetings.png');
+const PhoneCalls = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/PhoneCalls.png');
+const PreparingPresentations = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingPresentations.png');
+const PreparingReports = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingReports.png');
+const ProjectManagement = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/ProjectManagement.png');
+const ReviewingDocuments = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/ReviewingDocuments.png');
+const SchedulingMeetings = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/SchedulingMeetings.png');
+const TaskPrioritization = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/TaskPrioritization.png');
+const TrackingTasks = require('../../assets/images/SwiftlistApp/ToDo/OfficialTask/TrackingTasks.png');
+
+const OfficialTask = [
+  { name: 'Answering Emails', imgPath: AnsweringEmails },
+  { name: 'Budget Planning', imgPath: BudgetPlanning },
+  { name: 'Completing Documents', imgPath: CompletingDocuments },
+  { name: 'Data Entry', imgPath: DataEntry },
+  { name: 'File Management', imgPath: FileManagement },
+  { name: 'Organizing Meetings', imgPath: OrganizingMeetings },
+  { name: 'Phone Calls', imgPath: PhoneCalls },
+  { name: 'Preparing Presentations', imgPath: PreparingPresentations },
+  { name: 'Preparing Reports', imgPath: PreparingReports },
+  { name: 'Project Management', imgPath: ProjectManagement },
+  { name: 'Reviewing Documents', imgPath: ReviewingDocuments },
+  { name: 'Scheduling Meetings', imgPath: SchedulingMeetings },
+  { name: 'Task Prioritization', imgPath: TaskPrioritization },
+  { name: 'Tracking Tasks', imgPath: TrackingTasks },
+];
+
+const ApplyPerfume = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Applyperfume.png');
+const ApplyScreen = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Applyscreen.png');
+const BrushTeeth = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Brushteeth.png');
+const CleanEars = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Cleanears.png');
+const CleanBody = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/CleansBody.png');
+const ComboHair = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Combohair.png');
+const ConditionHair = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Conditionhair.png');
+const MoisturizeSkin = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Moisturizeskin.png');
+const ShampooHair = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Shampoohair.png');
+const Shower = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Shower.png');
+const TrimNails = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Trimnails.png');
+const WashFace = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Washface.png');
+const WearCleanCloths = require('../../assets/images/SwiftlistApp/Grooming/PersonalHygiene/wearcleanclloths.png');
+
+const PersonalHygiene = [
+  { name: 'Apply Perfume', imgPath: ApplyPerfume },
+  { name: 'Apply Screen', imgPath: ApplyScreen },
+  { name: 'Brush Teeth', imgPath: BrushTeeth },
+  { name: 'Clean Ears', imgPath: CleanEars },
+  { name: 'Clean Body', imgPath: CleanBody },
+  { name: 'Combo Hair', imgPath: ComboHair },
+  { name: 'Condition Hair', imgPath: ConditionHair },
+  { name: 'Moisturize Skin', imgPath: MoisturizeSkin },
+  { name: 'Shampoo Hair', imgPath: ShampooHair },
+  { name: 'Shower', imgPath: Shower },
+  { name: 'Trim Nails', imgPath: TrimNails },
+  { name: 'Wash Face', imgPath: WashFace },
+  { name: 'Wear Clean Cloths', imgPath: WearCleanCloths },
+];
+
+
+// Dental Care
+const Consultation = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/Consulation.png');
+const FlexibleDenture = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/FlexibleDenture.png');
+const MouthGuard = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/MouthGuard.png');
+const OralProphylaxis = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/OralProphylaxis.png');
+const PartialDenture = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/PartialDenture.png');
+const Retainers = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/Retainers.png');
+const TemporaryFilling = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/TemporaryFilling.png');
+const ToothExtraction = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/ToothExtraction.png');
+const Whitening = require('../../assets/images/SwiftlistApp/Grooming/DentalCare/Whitening.png');
+
+const DentalCare = [
+  { name: 'Consultation', imgPath: Consultation },
+  { name: 'Flexible Denture', imgPath: FlexibleDenture },
+  { name: 'Mouth Guard', imgPath: MouthGuard },
+  { name: 'Oral Prophylaxis', imgPath: OralProphylaxis },
+  { name: 'Partial Denture', imgPath: PartialDenture },
+  { name: 'Retainers', imgPath: Retainers },
+  { name: 'Temporary Filling', imgPath: TemporaryFilling },
+  { name: 'Tooth Extraction', imgPath: ToothExtraction },
+  { name: 'Whitening', imgPath: Whitening },
+]; 
+
+// Skin Care
+const AloeVera = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Aloevera.png');
+const Cleanser = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Cleanser.png');
+// const EyeCream = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Eyecream.png');
+const FaceOil = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Faceoil.png');
+// const Moisturizer = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Moisturizer.png');
+const NightCream = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Nightcream.png');
+const Serum = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Serum.png');
+const SpotTreatment = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Spottreatment.png');
+const Toner = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Toner.png');
+
+// Combined array for Skin Care
+const SkinCare = [
+  { name: 'Aloe Vera', imgPath: AloeVera },
+  { name: 'Cleanser', imgPath: Cleanser },
+  { name: 'Eye Cream', imgPath: EyeCream },
+  { name: 'Face Oil', imgPath: FaceOil },
+  { name: 'Moisturizer', imgPath: Moisturizer },
+  { name: 'Night Cream', imgPath: NightCream },
+  { name: 'Serum', imgPath: Serum },
+  { name: 'Spot Treatment', imgPath: SpotTreatment },
+  { name: 'Toner', imgPath: Toner },
+];
 
 
 
 
 export {
   frozenitems,
+  DentalCare,
+  SkinCare,
+  Cooking,
+  Eating,
+  PersonalHygiene,
+  ToDoLaundry,
+  OfficialTask,
+  ToDoDrinking,
   cleaningItems,
   meditationItems,
   prayersItems,

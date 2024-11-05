@@ -1,3 +1,4 @@
+import { Easing } from 'react-native';
 import {
   azkaarItems,
   bakeryAndBreadItems,
@@ -6,9 +7,12 @@ import {
   cleaningCaddyItems,
   condimentsAndDressingsItems,
   confectioneryAndSweetsItems,
+  Cooking,
   cookingOilsItems,
   dairyAlternativesItems,
+  DentalCare,
   donatingItems,
+  Eating,
   fastingItems,
   flourAndBakingSuppliesItems,
   frozenitems,
@@ -19,15 +23,20 @@ import {
   meditationItems,
   milkproducts,
   nutsAndSeedsItems,
+  OfficialTask,
   paperProductsItems,
   pastaAndNoodlesItems,
   personalCareItems,
+  PersonalHygiene,
   petFoodAndSuppliesItems,
   prayersItems,
   Pulses,
   sauces,
+  SkinCare,
   snacksItems,
   spices,
+  ToDoDrinking,
+  ToDoLaundry,
   vegetableItems
 } from './Images';
 
@@ -91,9 +100,9 @@ export const categories = [
         'Scroll to the predefined articles or type them freely into the search below.',
     },
     subCategories: [
-      {name: 'Personal Hygiene', items: frozenitems},
-      {name: 'Dental Care', items: frozenitems},
-      {name: 'Skin Care', items: frozenitems},
+      {name: 'Personal Hygiene', items: PersonalHygiene},
+      {name: 'Dental Care', items: DentalCare},
+      {name: 'Skin Care', items: SkinCare},
       {name: 'Hair Care', items: frozenitems},
       {name: 'Nail Care', items: frozenitems},
       {name: 'Public Speaking', items: frozenitems},
@@ -108,11 +117,11 @@ export const categories = [
     },
     subCategories: [
       {name: 'Cleaning', items: cleaningCaddyItems},
-      {name: 'Laundry', items: frozenitems},
-      {name: 'Drinking', items: frozenitems},
-      {name: 'Eating', items: frozenitems},
-      {name: 'Cooking', items: frozenitems},
-      {name: 'Official Tasks', items: frozenitems},
+      {name: 'Laundry', items: ToDoLaundry},
+      {name: 'Drinking', items: ToDoDrinking},
+      {name: 'Eating', items: Eating},
+      {name: 'Cooking', items: Cooking},
+      {name: 'Official Tasks', items: OfficialTask},
     ],
   },
   {

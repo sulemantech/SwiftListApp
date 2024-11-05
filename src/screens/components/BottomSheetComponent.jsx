@@ -1,37 +1,96 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useMemo, useState } from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useContext, useMemo, useState } from 'react'
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import TextInput2 from './Input';
-import CheckBox from '@react-native-community/checkbox';
 import Checkboxwithlabel from './Checkboxwithlabel';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ProductContext } from '../../Context/CardContext';
 
 
-const BottomSheetComponent = ({ selecteditem }) => {
-    const snapPoints = useMemo(() => ['10%', '50%', '55%'], []);
+const BottomSheetComponent = ({ selecteditem, ListName }) => {
+    const [itemsQuantity, setItemsQuantity] = useState({ Quantity: 0, unit: '', urgancy: false });
+
+    const SelectQuantity = (Quantity) => {
+        setItemsQuantity((prevState) => {
+            const newState = {
+                ...prevState,
+                Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
+            };
+            return newState;
+        });
+    };
+
+
+    const snapPoints = useMemo(() => ['15%', '50%', '55%', '100%'], []);
     const ItemValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
+    const { selectedProducts, updateSelectedProducts, updateSelectedProductsQuantity, clearSelectedProducts } = useContext(ProductContext);
+
+    const handleSelectedElementQuantity = async (ListNamee) => {
+        if (selectedProducts[ListNamee] && selectedProducts[ListNamee].length > 0) {
+            const updatedList = [...selectedProducts[ListNamee]];
+            const lastElement = updatedList[updatedList.length - 1];
+
+            const updatedLastElement = {
+                ...lastElement,
+                Quantity: itemsQuantity.Quantity,
+                unit: itemsQuantity.unit,
+                urgancy: itemsQuantity.urgancy,
+            };
+
+            try {
+                await updateSelectedProductsQuantity(ListNamee, updatedLastElement);
+            } catch (error) {
+                console.error('Error handling product selection:', error);
+            }
+        } else {
+            console.log('The list is empty or does not exist:', ListNamee);
+        }
+    };
+
 
     return (
-        <BottomSheet style={styles.bottomSheet} index={1} snapPoints={snapPoints}>
+        <BottomSheet style={styles.bottomSheet} index={0} snapPoints={snapPoints}>
             <BottomSheetView style={styles.contentContainer}>
                 <View style={styles.bottomSheetHeader}>
                     <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-                    <Text style={styles.bottomSheetHeadertext}>Done</Text>
+                    <Text onPress={() => handleSelectedElementQuantity(ListName)} style={styles.bottomSheetHeadertext}>Done</Text>
                 </View>
-                <View style={styles.TextInput2}>
+                {/* <View style={styles.TextInput2}>
                     <TextInput2 borderRadius={22} bgColor='#007AFF26' placeholder={'Enter Needed Quantity'} fontsize={16} />
                     <Text style={styles.buttonsLabeltext}>{`Item Details for ${selecteditem}`}</Text>
-                </View>
+                </View> */}
                 <View style={styles.contentContainer2}>
                     {ItemValues.map((item, index) => (
-                        <View key={index} style={styles.bottomSheetview}>
+                        <TouchableOpacity key={index} onPress={() => SelectQuantity(item)} style={styles.bottomSheetview}>
                             <Text style={styles.bottomSheettext}>{item}</Text>
-                        </View>
+                        </TouchableOpacity>
                     ))}
                 </View>
                 <View style={styles.CheckboxesContainer}>
-                    <Checkboxwithlabel Label={'Kg'}/>
-                    <Checkboxwithlabel Label={'Dozan'}/>
-                    <Checkboxwithlabel Label={'Urgent'}/>
+                    <Checkboxwithlabel
+                        onChange={() => setItemsQuantity(prevState => ({
+                            ...prevState,
+                            unit: 'Kg'
+                        }))}
+                        Label={'Kg'}
+                    />
+                    <Checkboxwithlabel
+                        onChange={() => {
+                            setItemsQuantity(prevState => ({
+                                ...prevState,
+                                unit: 'Dozan'
+                            }));
+                        }}
+                        Label={'Dozan'}
+                    />
+                    <Checkboxwithlabel
+                        onChange={() => setItemsQuantity(prevState => ({
+                            ...prevState,
+                            urgancy: !itemsQuantity.urgancy
+                        }))}
+                        Label={'Urgancy'}
+                    />
+
 
                 </View>
             </BottomSheetView>
@@ -105,7 +164,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
     },
-    CheckboxesContainer:{
+    CheckboxesContainer: {
         marginTop: 15,
         width: '96%',
         display: 'flex',

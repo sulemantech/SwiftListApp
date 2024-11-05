@@ -5,7 +5,7 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState({});
-  const [hasCleared, setHasCleared] = useState(false); 
+  const [hasCleared, setHasCleared] = useState(false);
 
   useEffect(() => {
     const loadSelectedProducts = async () => {
@@ -41,16 +41,29 @@ export const ProductProvider = ({ children }) => {
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };
 
+  const updateSelectedProductsQuantity = async (ListName, product) => {
+    const updatedProducts = { ...selectedProducts };
+
+    if (updatedProducts[ListName] && updatedProducts[ListName].length > 0) {
+      updatedProducts[ListName].pop();
+    }
+
+    updatedProducts[ListName].push( product );
+
+    setSelectedProducts(updatedProducts);
+    await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
+  };
+
   const clearSelectedProducts = async () => {
     if (!hasCleared) {
-      setSelectedProducts({}); 
-      await AsyncStorage.removeItem('selectedProducts' , 'selectedProductsGrocery List');
+      setSelectedProducts({});
+      await AsyncStorage.removeItem('selectedProducts', 'selectedProductsGrocery List');
       setHasCleared(true);
     }
   };
 
   return (
-    <ProductContext.Provider value={{ selectedProducts, updateSelectedProducts, clearSelectedProducts }}>
+    <ProductContext.Provider value={{ selectedProducts, updateSelectedProducts, clearSelectedProducts, updateSelectedProductsQuantity }}>
       {children}
     </ProductContext.Provider>
   );
