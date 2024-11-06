@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   searchContainer: {
-    height: 80,
+    // height: 80,
     width: '90%',
     position: 'relative',
   },

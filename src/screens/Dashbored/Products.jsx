@@ -19,9 +19,13 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
   const { selectedProducts, updateSelectedProducts, clearSelectedProducts } = useContext(ProductContext);
   const [selectedProduct, setSelectedProduct] = useState('Select a Product');
   const [placeholderVal, setPlaceholderVal] = useState(products.length);
+  const [isProductSelected, setIsProductSelected] = useState(false);
 
 
   const handleSelect = async (product) => {
+    setSelectedProduct(product.name)
+
+    console.log('selectedProducts :', selectedProducts , 'selectedProduct:',selectedProduct)
     try {
       await updateSelectedProducts(ListName, product);
       onProductSelect();
@@ -29,6 +33,12 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
       console.error('Error handling product selection:', error);
     }
   };
+
+  useEffect(() => {
+    // Check if the selected product is in the selectedProducts list
+    const isFound = selectedProducts[ListName]?.some(selected => selected.name === selectedProduct);
+    setIsProductSelected(isFound); // Update the state based on the result
+  }, [selectedProduct, selectedProducts, ListName]);
 
 
   useEffect(() => {
@@ -87,22 +97,22 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
             >
               <FastImage
                 source={item.imgPath}
-                style={styles.productImage}
+                style={[styles.productImage, (item.Quantity || item.unit || item.urgancy) && styles.scaledimg]}
                 resizeMode={FastImage.resizeMode.cover}
               />
               <Text
-                style={styles.productName}
-                numberOfLines={1}
+                style={[styles.productName, (item.Quantity || item.unit || item.urgancy) && styles.textscale]}
+                // numberOfLines={1}
                 ellipsizeMode="tail"
               >
-                {item.name} 
+                {item.name}
               </Text>
               {(item.Quantity || item.unit || item.urgancy) && <Text
-                style={styles.productName2}
+                style={[styles.productName2, (item.Quantity || item.unit || item.urgancy) && styles.textscale]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
-                {`${item?.Quantity}-${item?.unit} ${item?.urgancy && ', Urgant'}`}
+                {`${item?.Quantity}-${item?.unit} ${item?.urgancy ? ', Urgant' : ''}`}
               </Text>}
             </TouchableOpacity>
           ))}
@@ -134,7 +144,7 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
       ) : (
         <Text>No items available for this category.</Text>
       )}
-      {page !== 'itemslist' && <BottomSheetComponent selecteditem={selectedProduct} ListName={ListName} />}
+      {(page !== 'itemslist' && isProductSelected) && <BottomSheetComponent selecteditem={selectedProduct} ListName={ListName} />}
     </View>
   );
 };
@@ -230,5 +240,17 @@ const styles = StyleSheet.create({
   },
   borderRadiusmain: {
     borderRadius: 5,
+  },
+  scaledimg: {
+    width: screenWidth * 0.15,
+    height: screenWidth * 0.12,
+  },
+  textscale: {
+    fontFamily: 'Poppins-Regular',
+    marginTop: 6,
+    fontSize: 10,
+    textAlign: 'center',
+    lineHeight: 12,
+    color: 'white',
   }
 });

@@ -32,22 +32,16 @@ const ProductsPage = ({ route }) => {
       selectedProducts[listName].forEach(selectedItem => {
         const matchingIndex = updatedItems.findIndex(item => item.name === selectedItem.name);
         if (matchingIndex !== -1) {
-          // Replace the matching item with the selected item
           updatedItems[matchingIndex] = {
-            ...selectedItem, // Keep properties from selected item
-            imgPath: updatedItems[matchingIndex].imgPath // Maintain the imgPath from matching subcategory
+            ...selectedItem,
+            imgPath: updatedItems[matchingIndex].imgPath
           };
         }
       });
     }
   }
 
-  // Update matchingSubCategory with the new items
   const newMatchingSubCategory = { ...matchingSubCategory, items: updatedItems };
-
-  // Log the new matching subcategory
-  console.log("New Matching SubCategory:", newMatchingSubCategory);
-
   const handleBackPress = () => {
     navigation.goBack();
     return true;

@@ -9,6 +9,7 @@ import { ProductContext } from '../../Context/CardContext';
 
 const BottomSheetComponent = ({ selecteditem, ListName }) => {
     const [itemsQuantity, setItemsQuantity] = useState({ Quantity: 0, unit: '', urgancy: false });
+    const [snapIndex, setSnapIndex] = useState(0);
 
     const SelectQuantity = (Quantity) => {
         setItemsQuantity((prevState) => {
@@ -49,16 +50,16 @@ const BottomSheetComponent = ({ selecteditem, ListName }) => {
 
 
     return (
-        <BottomSheet style={styles.bottomSheet} index={0} snapPoints={snapPoints}>
+        <BottomSheet style={styles.bottomSheet} index={snapIndex} onChange={index => setSnapIndex(index)} snapPoints={snapPoints}>
             <BottomSheetView style={styles.contentContainer}>
                 <View style={styles.bottomSheetHeader}>
                     <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
                     <Text onPress={() => handleSelectedElementQuantity(ListName)} style={styles.bottomSheetHeadertext}>Done</Text>
                 </View>
-                {/* <View style={styles.TextInput2}>
+               {snapIndex === 4 && <View style={styles.TextInput2}>
                     <TextInput2 borderRadius={22} bgColor='#007AFF26' placeholder={'Enter Needed Quantity'} fontsize={16} />
                     <Text style={styles.buttonsLabeltext}>{`Item Details for ${selecteditem}`}</Text>
-                </View> */}
+                </View>}
                 <View style={styles.contentContainer2}>
                     {ItemValues.map((item, index) => (
                         <TouchableOpacity key={index} onPress={() => SelectQuantity(item)} style={styles.bottomSheetview}>
@@ -78,10 +79,10 @@ const BottomSheetComponent = ({ selecteditem, ListName }) => {
                         onChange={() => {
                             setItemsQuantity(prevState => ({
                                 ...prevState,
-                                unit: 'Dozan'
+                                unit: 'Dozen'
                             }));
                         }}
-                        Label={'Dozan'}
+                        Label={'Dozen'}
                     />
                     <Checkboxwithlabel
                         onChange={() => setItemsQuantity(prevState => ({

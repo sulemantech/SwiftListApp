@@ -181,7 +181,7 @@ const DashboredIndex = () => (
         return <TabIcon source={icons[route.name]} focused={focused} />;
       },
       tabBarLabel: ({focused}) => (
-        <Text style={{color: focused ? 'gray' : 'gray', fontSize: 12}}>{route.name}</Text>
+        <Text style={{color: focused ? '#52C2FE' : 'gray', fontSize: 12}}>{route.name}</Text>
       ),
       headerShown: false,
       tabBarStyle: styles.tabBarStyle,
@@ -215,9 +215,9 @@ const styles = StyleSheet.create({
     height: 24,
   },
   activeIconContainer: {
-    marginTop: 2,
+    marginTop: 5,
     backgroundColor: '#52C2FE',
-    padding: 10,
+    padding: 9,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
