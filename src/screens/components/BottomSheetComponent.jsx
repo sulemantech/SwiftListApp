@@ -1,30 +1,30 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import TextInput2 from './Input';
 import Checkboxwithlabel from './Checkboxwithlabel';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ProductContext } from '../../Context/CardContext';
 
-
-const BottomSheetComponent = ({ selecteditem, ListName }) => {
-    const [itemsQuantity, setItemsQuantity] = useState({ Quantity: 0, unit: '', urgancy: false });
-    const [snapIndex, setSnapIndex] = useState(0);
-
+const BottomSheetComponent = ({ selecteditem, ListName, setIsProductSelected , setSnapIndex , snapIndex }) => {
+    const [itemsQuantity, setItemsQuantity] = useState({ Quantity: '', unit: '', urgency: false });
+    const [selectedValue, setSelectedValue] = useState(null); 
     const SelectQuantity = (Quantity) => {
-        setItemsQuantity((prevState) => {
-            const newState = {
-                ...prevState,
-                Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
-            };
-            return newState;
-        });
+        setItemsQuantity((prevState) => ({
+            ...prevState,
+            Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
+        }));
+        setSelectedValue(Quantity); // Update selected item
     };
 
+    useEffect(() => {
+        if (itemsQuantity) {
+            handleSelectedElementQuantity(ListName);
+        }
+    }, [itemsQuantity]);
 
-    const snapPoints = useMemo(() => ['15%', '50%', '55%', '100%'], []);
+    const snapPoints = useMemo(() => ['12%', '50%', '55%', '100%'], []);
     const ItemValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
-    const { selectedProducts, updateSelectedProducts, updateSelectedProductsQuantity, clearSelectedProducts } = useContext(ProductContext);
+    const { selectedProducts, updateSelectedProductsQuantity } = useContext(ProductContext);
 
     const handleSelectedElementQuantity = async (ListNamee) => {
         if (selectedProducts[ListNamee] && selectedProducts[ListNamee].length > 0) {
@@ -35,7 +35,7 @@ const BottomSheetComponent = ({ selecteditem, ListName }) => {
                 ...lastElement,
                 Quantity: itemsQuantity.Quantity,
                 unit: itemsQuantity.unit,
-                urgancy: itemsQuantity.urgancy,
+                urgency: itemsQuantity.urgency,
             };
 
             try {
@@ -48,21 +48,29 @@ const BottomSheetComponent = ({ selecteditem, ListName }) => {
         }
     };
 
-
     return (
         <BottomSheet style={styles.bottomSheet} index={snapIndex} onChange={index => setSnapIndex(index)} snapPoints={snapPoints}>
             <BottomSheetView style={styles.contentContainer}>
                 <View style={styles.bottomSheetHeader}>
                     <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-                    <Text onPress={() => handleSelectedElementQuantity(ListName)} style={styles.bottomSheetHeadertext}>Done</Text>
+                    <Text onPress={() => setIsProductSelected(false)} style={styles.bottomSheetHeadertext}>Done</Text>
                 </View>
-               {snapIndex === 4 && <View style={styles.TextInput2}>
-                    <TextInput2 borderRadius={22} bgColor='#007AFF26' placeholder={'Enter Needed Quantity'} fontsize={16} />
-                    <Text style={styles.buttonsLabeltext}>{`Item Details for ${selecteditem}`}</Text>
-                </View>}
+                {snapIndex === 4 && (
+                    <View style={styles.TextInput2}>
+                        <TextInput2 borderRadius={22} value={itemsQuantity.Quantity} onChangeText={(value) => SelectQuantity(value)} bgColor='#007AFF26' placeholder={'Enter Needed Quantity'} fontsize={16} />
+                        <Text style={styles.buttonsLabeltext}>{`Item Details for ${selecteditem}`}</Text>
+                    </View>
+                )}
                 <View style={styles.contentContainer2}>
                     {ItemValues.map((item, index) => (
-                        <TouchableOpacity key={index} onPress={() => SelectQuantity(item)} style={styles.bottomSheetview}>
+                        <TouchableOpacity
+                            key={index}
+                            onPress={() => SelectQuantity(item)}
+                            style={[
+                                styles.bottomSheetview,
+                                item === selectedValue && styles.selectedItem, // Apply selected style conditionally
+                            ]}
+                        >
                             <Text style={styles.bottomSheettext}>{item}</Text>
                         </TouchableOpacity>
                     ))}
@@ -87,22 +95,19 @@ const BottomSheetComponent = ({ selecteditem, ListName }) => {
                     <Checkboxwithlabel
                         onChange={() => setItemsQuantity(prevState => ({
                             ...prevState,
-                            urgancy: !itemsQuantity.urgancy
+                            urgency: !itemsQuantity.urgency
                         }))}
-                        Label={'Urgancy'}
+                        Label={'Urgency'}
                     />
-
-
                 </View>
             </BottomSheetView>
         </BottomSheet>
-    )
-}
+    );
+};
 
-export default BottomSheetComponent
+export default BottomSheetComponent;
 
 const styles = StyleSheet.create({
-
     bottomSheet: {
         backgroundColor: '#fff',
         position: 'absolute',
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         width: '95%',
         flexDirection: 'row',
-        marginTop: 10,
+        marginTop: 0,
         marginBottom: 10,
         justifyContent: 'space-between',
     },
@@ -125,7 +130,6 @@ const styles = StyleSheet.create({
         fontFamily: 'OpenSans-Bold',
         fontSize: 16,
         textAlign: 'center',
-
     },
     buttonsLabeltext: {
         width: '100%',
@@ -133,7 +137,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'left',
         marginVertical: 4,
-
     },
     TextInput2: {
         width: '94%',
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         gap: 6,
-        marginTop: 10,
+        marginTop: 2,
         alignItems: 'center',
     },
     contentContainer: {
@@ -174,4 +177,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
-})
+    selectedItem: {
+        backgroundColor: '#E36A4A', // Highlight color for selected item
+    },
+});

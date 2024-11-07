@@ -16,6 +16,7 @@ import BottomSheetComponent from '../components/BottomSheetComponent';
 const { width: screenWidth } = Dimensions.get('window');
 
 const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) => {
+  const [snapIndex, setSnapIndex] = useState(0);
   const { selectedProducts, updateSelectedProducts, clearSelectedProducts } = useContext(ProductContext);
   const [selectedProduct, setSelectedProduct] = useState('Select a Product');
   const [placeholderVal, setPlaceholderVal] = useState(products.length);
@@ -24,8 +25,6 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
 
   const handleSelect = async (product) => {
     setSelectedProduct(product.name)
-
-    console.log('selectedProducts :', selectedProducts , 'selectedProduct:',selectedProduct)
     try {
       await updateSelectedProducts(ListName, product);
       onProductSelect();
@@ -35,9 +34,8 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
   };
 
   useEffect(() => {
-    // Check if the selected product is in the selectedProducts list
     const isFound = selectedProducts[ListName]?.some(selected => selected.name === selectedProduct);
-    setIsProductSelected(isFound); // Update the state based on the result
+    setIsProductSelected(isFound);
   }, [selectedProduct, selectedProducts, ListName]);
 
 
@@ -68,13 +66,13 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
       secondLineLastElement,
     };
   };
-
+  const paddingBottom = snapIndex === 0 ? 100 : snapIndex === 1 ? 180 : snapIndex === 2 ? 400 : 400;
 
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
         <ScrollView
-          contentContainerStyle={styles.itemsContainer}
+          contentContainerStyle={[styles.itemsContainer, { paddingBottom }]}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           removeClippedSubviews={true}
@@ -89,6 +87,7 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
                 index === 0 && styles.topLeftBorder,
                 index === 2 && styles.topRightBorder,
                 products.length === 1 && styles.borderRadiusmain,
+                products.length === 2 && index === 1 && styles.topRightBorder && styles.topRightBorder,
                 index === products.length - 1 && styles.bottomRightBorder,
                 index === getBorderStyles(index, products.length).borderBottomRightIndex && styles.bottomLeftBorder,
                 index === getBorderStyles(index, products.length).secondLineLastElement && styles.bottomRightBorder,
@@ -97,22 +96,22 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
             >
               <FastImage
                 source={item.imgPath}
-                style={[styles.productImage, (item.Quantity || item.unit || item.urgancy) && styles.scaledimg]}
+                style={[styles.productImage, (item.Quantity || item.unit || item.urgency) && styles.scaledimg]}
                 resizeMode={FastImage.resizeMode.cover}
               />
               <Text
-                style={[styles.productName, (item.Quantity || item.unit || item.urgancy) && styles.textscale]}
+                style={[styles.productName, (item.Quantity || item.unit || item.urgency) && styles.textscale]}
                 // numberOfLines={1}
                 ellipsizeMode="tail"
               >
                 {item.name}
               </Text>
-              {(item.Quantity || item.unit || item.urgancy) && <Text
-                style={[styles.productName2, (item.Quantity || item.unit || item.urgancy) && styles.textscale]}
+              {(item.Quantity || item.unit || item.urgency) && <Text
+                style={[styles.productName2, (item.Quantity || item.unit || item.urgency) && styles.textscale]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
-                {`${item?.Quantity}-${item?.unit} ${item?.urgancy ? ', Urgant' : ''}`}
+                {`${item?.Quantity ? item.Quantity : ''}${item?.unit && '-' + item?.unit} ${item?.urgency ? '  Urgent' : ''}`}
               </Text>}
             </TouchableOpacity>
           ))}
@@ -144,7 +143,13 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
       ) : (
         <Text>No items available for this category.</Text>
       )}
-      {(page !== 'itemslist' && isProductSelected) && <BottomSheetComponent selecteditem={selectedProduct} ListName={ListName} />}
+      {(page !== 'itemslist' && isProductSelected) && <BottomSheetComponent
+        selecteditem={selectedProduct}
+        ListName={ListName}
+        setIsProductSelected={setIsProductSelected}
+        setSnapIndex={setSnapIndex}
+        snapIndex={snapIndex}
+      />}
     </View>
   );
 };
@@ -176,7 +181,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     overflow: 'hidden',
-    paddingBottom: 10,
   },
   productCard: {
     backgroundColor: '#4AA688',
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
     width: screenWidth * 0.28,
     maxWidth: screenWidth * 0.32,
     aspectRatio: 1,
-    // borderRadius: 5,
+    // borderRadius:8,
     flexGrow: 1,
     margin: 3,
   },
@@ -199,7 +203,7 @@ const styles = StyleSheet.create({
     width: screenWidth * 0.28,
     maxWidth: screenWidth * 0.32,
     aspectRatio: 1,
-    // borderRadius: 5,
+    // borderRadius:8,
     flexGrow: 1,
     margin: 3,
   },
@@ -227,19 +231,19 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   topRightBorder: {
-    borderTopRightRadius: 5,
+    borderTopRightRadius: 8,
   },
   topLeftBorder: {
-    borderTopLeftRadius: 5,
+    borderTopLeftRadius: 8,
   },
   bottomRightBorder: {
-    borderBottomRightRadius: 5,
+    borderBottomRightRadius: 8,
   },
   bottomLeftBorder: {
-    borderBottomLeftRadius: 5,
+    borderBottomLeftRadius: 8,
   },
   borderRadiusmain: {
-    borderRadius: 5,
+    borderRadius: 8,
   },
   scaledimg: {
     width: screenWidth * 0.15,
