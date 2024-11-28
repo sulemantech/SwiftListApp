@@ -14,7 +14,7 @@ import SCREENS from '..';
 
 const ForgotPassword = ({ navigation }) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />

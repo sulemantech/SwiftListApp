@@ -1218,6 +1218,26 @@ const Serum = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Serum.
 const SpotTreatment = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Spottreatment.png');
 const Toner = require('../../assets/images/SwiftlistApp/Grooming/SkinCare/Toner.png');
 
+const BrushingCombing = require('../../assets/images/SwiftlistApp/Grooming/HairCare/BrushingCombing.png');
+const HairMaskTreatment = require('../../assets/images/SwiftlistApp/Grooming/HairCare/HairMaskTreatment.png');
+const HairOiling = require('../../assets/images/SwiftlistApp/Grooming/HairCare/HairOiling.png');
+const HairWash = require('../../assets/images/SwiftlistApp/Grooming/HairCare/HairWash.png');
+const ScalpMassaging = require('../../assets/images/SwiftlistApp/Grooming/HairCare/ScalpMassaging.png');
+const ScalpScrub = require('../../assets/images/SwiftlistApp/Grooming/HairCare/ScalpScrub.png');
+const NailCleaning = require('../../assets/images/SwiftlistApp/Grooming/NailCare/Cleaning.png');
+const Massaging = require('../../assets/images/SwiftlistApp/Grooming/NailCare/Massaging.png');
+const Moisturizing = require('../../assets/images/SwiftlistApp/Grooming/NailCare/Moisturizing.png');
+const Trimming = require('../../assets/images/SwiftlistApp/Grooming/NailCare/Trimming.png');
+
+
+// Combined array for Skin Care
+const NailCare = [
+  { name: 'Nail Cleaning', imgPath: NailCleaning },
+  { name: 'Massaging', imgPath: Massaging },
+  { name: 'Moisturizing', imgPath: Moisturizing },
+  { name: 'Trimming', imgPath: Trimming },
+
+];
 // Combined array for Skin Care
 const SkinCare = [
   { name: 'Aloe Vera', imgPath: AloeVera },
@@ -1232,12 +1252,209 @@ const SkinCare = [
 ];
 
 
+const Haircare = [
+  { name: 'Brushing Combing', imgPath: BrushingCombing },
+  { name: 'Hair Mask Treatment', imgPath: HairMaskTreatment },
+  { name: 'HairOiling', imgPath: HairOiling },
+  { name: 'HairWash', imgPath: HairWash },
+  { name: 'ScalpMassaging', imgPath: ScalpMassaging },
+  { name: 'ScalpScrub', imgPath: ScalpScrub },
+]
+
+// Importing all images
+const BeefBiryani = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBiryani.png');
+const BeefBurger = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBurger.png');
+const BeefCurry = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefCurry.png');
+const BeefKebab = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefKebab.png');
+const BeefRibs = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefRibs.png');
+const BeefSteak = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefSteak.png');
+const BeefStirFry = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStirFry.png');
+const BeefStroganoff = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStroganoff.png');
+const BeefTacos = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefTacos.png');
+const RoastBeef = require('../../assets/images/SwiftlistApp/KitchenMenu/Beef/RoastBeef.png');
+
+const BeefDishes = [
+  { name: 'Beef Biryani', imgPath: BeefBiryani },
+  { name: 'Beef Burger', imgPath: BeefBurger },
+  { name: 'Beef Curry', imgPath: BeefCurry },
+  { name: 'Beef Kebab', imgPath: BeefKebab },
+  { name: 'Beef Ribs', imgPath: BeefRibs },
+  { name: 'Beef Steak', imgPath: BeefSteak },
+  { name: 'Beef Stir Fry', imgPath: BeefStirFry },
+  { name: 'Beef Stroganoff', imgPath: BeefStroganoff },
+  { name: 'Beef Tacos', imgPath: BeefTacos },
+  { name: 'Roast Beef', imgPath: RoastBeef },
+];
+
+// Importing all images for Breakfast items
+const BoiledEggs = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/BoiledEggs.png');
+// const Cereal = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Cereal.png');
+const FrenchToast = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/FrenchToast.png');
+const Omelette = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Omelette.png');
+// const Pancakes = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Pancakes.png');
+const ParathaYogurt = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Paratha&Yogurt.png');
+const Porridge = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Porridge.png');
+const ScrambledEggs = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/ScrambledEggs.png');
+const SmoothieBowl = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/SmoothieBowl.png');
+// const Waffles = require('../../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Waffles.png');
+
+// Combined array for Breakfast items
+const BreakfastItems = [
+  { name: 'Boiled Eggs', imgPath: BoiledEggs },
+  { name: 'Cereal', imgPath: Cereal },
+  { name: 'French Toast', imgPath: FrenchToast },
+  { name: 'Omelette', imgPath: Omelette },
+  { name: 'Pancakes', imgPath: Pancakes },
+  { name: 'Paratha & Yogurt', imgPath: ParathaYogurt },
+  { name: 'Porridge', imgPath: Porridge },
+  { name: 'Scrambled Eggs', imgPath: ScrambledEggs },
+  { name: 'Smoothie Bowl', imgPath: SmoothieBowl },
+  { name: 'Waffles', imgPath: Waffles },
+];
+
+// Importing all images for Brunch items
+const Burrito = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/Burrito.png');
+const ChickenSaladSandwich = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/ChickenSaladSandwich.png');
+const FlatbreadHummus = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/Flatbread&Hummus.png');
+const Frittata = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/Frittata.png');
+const Sandwich = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/Sandwich.png');
+const Wraps = require('../../assets/images/SwiftlistApp/KitchenMenu/Brunch/Wraps.png');
+
+// Combined array for Brunch items
+const BrunchItems = [
+  { name: 'Burrito', imgPath: Burrito },
+  { name: 'Chicken Salad Sandwich', imgPath: ChickenSaladSandwich },
+  { name: 'Flatbread & Hummus', imgPath: FlatbreadHummus },
+  { name: 'Frittata', imgPath: Frittata },
+  { name: 'Sandwich', imgPath: Sandwich },
+  { name: 'Wraps', imgPath: Wraps },
+];
+
+// Importing all images for Chicken items
+const ChickenAlfredo = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenAlfredo.png');
+const ChickenCurry = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenCurry.png');
+const ChickenFajitas = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenFajitas.png');
+const ChickenNuggets = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenNuggets.png');
+const ChickenParmesan = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenParmesan.png');
+const ChickenShawarma = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenShawarma.png');
+const ChickenTikka = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenTikka.png');
+// const ChickenWings = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenWings.png');
+const GrilledChicken = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/GrilledChicken.png');
+const RoastedChicken = require('../../assets/images/SwiftlistApp/KitchenMenu/Chicken/RoastedChicken.png');
+
+// Combined array for Chicken items
+const ChickenItems = [
+  { name: 'Chicken Alfredo', imgPath: ChickenAlfredo },
+  { name: 'Chicken Curry', imgPath: ChickenCurry },
+  { name: 'Chicken Fajitas', imgPath: ChickenFajitas },
+  { name: 'Chicken Nuggets', imgPath: ChickenNuggets },
+  { name: 'Chicken Parmesan', imgPath: ChickenParmesan },
+  { name: 'Chicken Shawarma', imgPath: ChickenShawarma },
+  { name: 'Chicken Tikka', imgPath: ChickenTikka },
+  { name: 'Chicken Wings', imgPath: ChickenWings },
+  { name: 'Grilled Chicken', imgPath: GrilledChicken },
+  { name: 'Roasted Chicken', imgPath: RoastedChicken },
+];
+
+// Importing all images for Dinner items
+const BeefLasagna = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/BeefLasagna.png');
+const GrilledLambChops = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/GrilledLambChops.png');
+const HerbRoastedChickenwithMashedPotatoes = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/HerbRoastedChickenwithMashedPotatoes.png');
+const KidneyBeanswithRice = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/KidneyBeanswithRice.png');
+const MoroccanChickenwithCouscous = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/MoroccanChickenwithCouscous.png');
+const MushroomRisotto = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/MushroomRisotto.png');
+const MuttonCurrywithFlatbread = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonCurrywithFlatbread.png');
+const MuttonSoupwithBread = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonSoupwithBread.png');
+const SeekhKebabswithNaan = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/SeekhKebabswithNaan.png');
+const SpicedWholeChickenwithYogurtSauce = require('../../assets/images/SwiftlistApp/KitchenMenu/Dinner/SpicedWholeChickenwithYogurtSauce.png');
+
+// Combined array for Dinner items
+const DinnerItems = [
+  { name: 'Beef Lasagna', imgPath: BeefLasagna },
+  { name: 'Grilled Lamb Chops', imgPath: GrilledLambChops },
+  { name: 'Herb Roasted Chicken with Mashed Potatoes', imgPath: HerbRoastedChickenwithMashedPotatoes },
+  { name: 'Kidney Beans with Rice', imgPath: KidneyBeanswithRice },
+  { name: 'Moroccan Chicken with Couscous', imgPath: MoroccanChickenwithCouscous },
+  { name: 'Mushroom Risotto', imgPath: MushroomRisotto },
+  { name: 'Mutton Curry with Flatbread', imgPath: MuttonCurrywithFlatbread },
+  { name: 'Mutton Soup with Bread', imgPath: MuttonSoupwithBread },
+  { name: 'Seekh Kebabs with Naan', imgPath: SeekhKebabswithNaan },
+  { name: 'Spiced Whole Chicken with Yogurt Sauce', imgPath: SpicedWholeChickenwithYogurtSauce },
+];
+
+
+// Importing all images for Lunch items
+const ChickenBiryani = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenBiryani.png');
+const ChickenKarahiwithNaan = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenKarahiwithNaan.png');
+const LentilswithRice = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/LentilswithRice.png');
+const MincedMeatStuffedBread = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/MincedMeatStuffedBread.png');
+const MuttonKormawithTandooriRoti = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/MuttonKormawithTandooriRoti.png');
+const PalakPaneer = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/PalakPaneer(SpinachandCottageCheese)withRice.png');
+const PotatoandMeatCurry = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/PotatoandMeatCurry.png');
+const PulaowithRaita = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/PulaowithRaita.png');
+const SpicedOkra = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicedOkra.png');
+const SpicyChickpeaSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicyChickpeaSalad.png');
+
+// Combined array for Lunch items
+const LunchItems = [
+  { name: 'Chicken Biryani', imgPath: ChickenBiryani },
+  { name: 'Chicken Karahi with Naan', imgPath: ChickenKarahiwithNaan },
+  { name: 'Lentils with Rice', imgPath: LentilswithRice },
+  { name: 'Minced Meat Stuffed Bread', imgPath: MincedMeatStuffedBread },
+  { name: 'Mutton Korma with Tandoori Roti', imgPath: MuttonKormawithTandooriRoti },
+  { name: 'Palak Paneer (Spinach and Cottage Cheese) with Rice', imgPath: PalakPaneer },
+  { name: 'Potato and Meat Curry', imgPath: PotatoandMeatCurry },
+  { name: 'Pulao with Raita', imgPath: PulaowithRaita },
+  { name: 'Spiced Okra', imgPath: SpicedOkra },
+  { name: 'Spicy Chickpea Salad', imgPath: SpicyChickpeaSalad },
+];
+
+// Importing all images for Salad items
+const CaesarSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/CaesarSalad.png');
+const CapreseSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/CapreseSalad.png');
+const CobbSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/CobbSalad.png');
+const ColeslawSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/ColeslawSalad.png');
+const GardenSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/GardenSalad.png');
+const GreekSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/GreekSalad.png');
+const PastaSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/PastaSalad.png');
+const SpinachSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/SpinachSalad.png');
+const TunaSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/TunaSalad.png');
+const WaldorfSalad = require('../../assets/images/SwiftlistApp/KitchenMenu/Salad/WaldorfSalad.png');
+
+// Combined array for Salad items
+const SaladItems = [
+  { name: 'Caesar Salad', imgPath: CaesarSalad },
+  { name: 'Caprese Salad', imgPath: CapreseSalad },
+  { name: 'Cobb Salad', imgPath: CobbSalad },
+  { name: 'Coleslaw Salad', imgPath: ColeslawSalad },
+  { name: 'Garden Salad', imgPath: GardenSalad },
+  { name: 'Greek Salad', imgPath: GreekSalad },
+  { name: 'Pasta Salad', imgPath: PastaSalad },
+  { name: 'Spinach Salad', imgPath: SpinachSalad },
+  { name: 'Tuna Salad', imgPath: TunaSalad },
+  { name: 'Waldorf Salad', imgPath: WaldorfSalad },
+];
+
+
+
+
+
+
 
 
 export {
   frozenitems,
+  Haircare,
+  DinnerItems,
+  SaladItems,
+  LunchItems,
+  ChickenItems,
+  BrunchItems,
+  BreakfastItems,
   DentalCare,
+  BeefDishes,
   SkinCare,
+  NailCare,
   Cooking,
   Eating,
   PersonalHygiene,

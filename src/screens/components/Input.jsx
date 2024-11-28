@@ -8,10 +8,11 @@ const TextInput2 = ({
   value,
   onFocus,
   onBlur,
+  secureTextEntry=false,
   onChangeText,
   borderRadius = 13,
   bgColor = '#fff',
-  fontsize = 11,
+  fontsize = 13,
 }) => {
   return (
     <View style={styles.container}>
@@ -20,6 +21,7 @@ const TextInput2 = ({
       <TextInput
         onFocus={onFocus}
         onBlur={onBlur}
+        secureTextEntry={secureTextEntry}
         style={[
           styles.input,
           {

@@ -101,6 +101,8 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
   };
   const SelectedImageComponent = imageMap[matchingCategory?.category.image];
 
+  
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -121,14 +123,16 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
           />
         <Header onBack={onBackPress} title={ItemName} />
 
-        {matchingCategory && (
           <View style={styles.categoryContainer}>
             {!isSearchFocused && SelectedImageComponent && (
               <SelectedImageComponent style={styles.categoryImage} />
             )}
+            {!isSearchFocused && !SelectedImageComponent && (
+              <PersonalGroomingSVG style={styles.categoryImage} />
+            )}
             {!isSearchFocused && (
               <Text style={styles.caption2}>
-                {matchingCategory.category.description}
+                {matchingCategory ? matchingCategory.category.description : categories[0].category.description}
               </Text>
             )}
 
@@ -151,10 +155,9 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
               </View>
             </View>
           </View>
-        )}
-        {matchingCategory && (
+
           <FlatList
-            data={matchingCategory.subCategories}
+            data={matchingCategory ? matchingCategory.subCategories : categories[0].subCategories}
             keyExtractor={(item, index) => index.toString()}
             showsVerticalScrollIndicator={false}
             style={styles.subCategoriesContainer}
@@ -186,7 +189,6 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
               )
             }
           />
-        )}
       </LinearGradient>
     </TouchableWithoutFeedback>
   );
@@ -266,6 +268,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   subCategoryName: {
+    fontFamily: 'Poppins-Light',
     fontSize: 16,
     fontWeight: '300',
     lineHeight: 24,

@@ -6,7 +6,7 @@ export default function Notifications() {
     <View style={styles.container}>
       <Text style={styles.header}>Notifications</Text>
 
-      <ScrollView contentContainerStyle={styles.notificationsContainer}>
+      <ScrollView contentContainerStyle={styles.notificationsContainer} keyboardShouldPersistTaps='handled'>
         {/* Dummy notifications */}
         <View style={styles.notificationCard}>
           <Text style={styles.notificationText}>

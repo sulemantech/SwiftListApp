@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -7,6 +7,8 @@ import {
   View,
   ScrollView,
   StatusBar,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import TextInput2 from '../components/Input';
@@ -15,39 +17,87 @@ import facebook from '../../assets/images/social-media-facebook.png';
 import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
+import auth from '@react-native-firebase/auth';
+import { ProductContext } from '../../Context/CardContext';
 
 const LoginScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const { setUserName , isAuthenticated } = useContext(ProductContext);
+
+  const handleSignIn = async () => {
+    // Reset error messages
+    setEmailError('');
+    setPasswordError('');
+
+    if (email === '') {
+      setEmailError('Please fill in the email field.');
+    }
+    if (password === '') {
+      setPasswordError('Please fill in the password field.');
+    }
+    if (email === '' || password === '') {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await auth().signInWithEmailAndPassword(email, password);
+      const user = auth().currentUser;
+      if (user) {
+        const username = user.displayName || 'User';
+        setUserName(username); 
+      }
+      navigation.replace(SCREENS.Dashbored); 
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+    setLoading(false);
+  };
+
+  const onSignInButtonPress = () => {
+    handleSignIn();
+  };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#FFF"
-        barStyle={'dark-content'}
-      // showHideTransition={statusBarTransition}
-      />
+    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+      <StatusBar animated={true} backgroundColor="#FFF" barStyle={'dark-content'} />
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>
-        <Text style={styles.signInText}> </Text>
+        <Text style={styles.signInText}></Text>
       </View>
-
       <View style={styles.inputbox}>
-        {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin />
         <TextInput2
           bgcolor={'#fff'}
           label={'Email/Phone Number'}
           placeholder={'Enter email address'}
+          value={email}
+          onChangeText={(value) => {
+            setEmail(value);
+            setEmailError(''); // Clear error as user types
+          }}
         />
+        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
         <TextInput2
           bgcolor={'#fff'}
           label={'Password'}
           placeholder={'Enter Password'}
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(value) => {
+            setPassword(value);
+            setPasswordError(''); // Clear error as user types
+          }}
         />
+        {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
       </View>
 
       <View style={styles.row}>
@@ -60,17 +110,20 @@ const LoginScreen = ({ navigation }) => {
           <Text style={styles.checkboxLabel}>Keep me signed in</Text>
         </View>
 
-        <TouchableOpacity activeOpacity={1}
-          onPress={() => navigation.navigate(SCREENS.ForgotPassword)}>
+        <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate(SCREENS.ForgotPassword)}>
           <Text style={styles.forgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.containersign}>
-        <TouchableOpacity activeOpacity={1}
+        <TouchableOpacity
+          activeOpacity={1}
           style={styles.signInButton}
-          onPress={() => navigation.navigate(SCREENS.Dashbored)}>
-          <Text style={styles.buttonText}>Sign In</Text>
+          onPress={onSignInButtonPress}
+          disabled={loading}
+        >
+          {!loading && <Text style={styles.buttonText}>Sign In</Text>}
+          {loading && <View><ActivityIndicator size="large" color="#fff" /></View>}
         </TouchableOpacity>
       </View>
 
@@ -190,14 +243,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Light',
     fontSize: 12,
   },
-  containersign: {
-    marginTop: 10,
-    width: '100%',
-    height: 50,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   containersocial: {
     marginTop: 0,
     width: '100%',
@@ -209,6 +254,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containersign: {
+    marginTop: 10,
+    width: '100%',
+    height: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  
   signInButton: {
     width: '100%',
     height: 50,
@@ -218,15 +272,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
+    flexDirection: 'row',  // Ensures horizontal alignment of the content
   },
+  
   buttonText: {
     fontFamily: 'Poppins-Medium',
     fontSize: 12,
-    // paddingVertical: 10,
     lineHeight: 16,
     textAlign: 'center',
     color: '#fff',
+    display: 'flex',
+    alignItems: 'center',  
+    justifyContent: 'center', 
   },
+  
   containerline: {
     alignItems: 'center',
     marginVertical: 20,
@@ -265,15 +324,20 @@ const styles = StyleSheet.create({
   innersocial: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   socialButtonText: {
-    color: '#8C8C8C',
-    fontSize: 13,
-    width: 200,
-    overflow: 'hidden',
-    fontWeight: '500',
     marginLeft: 10,
+    fontFamily: 'Poppins-Regular',
+    color: '#8C8C8C',
+    fontSize: 12,
+  },
+  errorText: {
+    color: 'red',
+    width: '100%',
+    fontSize: 12,
+    paddingLeft:16,
+    marginTop: -8,
+    textAlign: 'left',
     fontFamily: 'Poppins-Medium',
   },
 });

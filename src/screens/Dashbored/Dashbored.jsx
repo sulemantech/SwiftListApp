@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler, StatusBar } from 'react-native';
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import LinearGradient from 'react-native-linear-gradient';
 import Filtericon from '../../assets/images/filtericon.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
 import seconed from '../../assets/images/SVG/dashboardspiritualgoals.svg';
@@ -10,29 +11,29 @@ import fifth from '../../assets/images/SVG/recipe.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
 import { ProductContext } from '../../Context/CardContext';
-
 import SCREENS from '..';
+
 const Dashbored = ({ navigation }) => {
   const [selectedCard, setSelectedCard] = useState(null);
+  const [isListLoaded, setIsListLoaded] = useState(false); 
+
   const handleCardClick = title => {
     setSelectedCard(title);
   };
-  const { selectedProducts } = useContext(ProductContext);
+  const { selectedProducts , userName , changestate , setChangestate } = useContext(ProductContext);
 
 
   const handleBackPress = () => {
     setSelectedCard(null);
     return true;
   };
-
-  const [cardDataArray, setCardDataArray] = useState([
+  const cardDataArray = [
     {
       title: 'Grocery List',
       description: 'Add needed items.',
-      items: '200 Items',
-      storageKey: 'selectedProductsGrocery List',
-      percentagetext: 'Bought 70%',
-      percentage: 70,
+      items: '0 Items',
+      percentagetext: 'Bought 0%',
+      percentage: 0,
       Picture: first,
       bgColor: '#9DF4F4',
       badgeColor: '#008B94',
@@ -40,10 +41,9 @@ const Dashbored = ({ navigation }) => {
     {
       title: 'Spiritual Goals',
       description: 'Add your spiritual goals.',
-      items: '10 Goals',
-      storageKey: 'selectedProductsSpiritual Goals',
-      percentagetext: 'Achieved 30%',
-      percentage: 30,
+      items: '0 Goals',
+      percentagetext: 'Achieved 0%',
+      percentage: 0,
       Picture: seconed,
       bgColor: '#98FBCB',
       badgeColor: '#4AA688',
@@ -51,10 +51,9 @@ const Dashbored = ({ navigation }) => {
     {
       title: 'Personal Grooming',
       description: 'Add your grooming tasks in list.',
-      items: '10 Tasks',
-      storageKey: 'selectedProductsPersonal Grooming',
-      percentagetext: 'Completed 80%',
-      percentage: 80,
+      items: '0 Tasks',
+      percentagetext: 'Completed 0%',
+      percentage: 0,
       Picture: third,
       bgColor: '#FEE5D7',
       badgeColor: '#C54B6C',
@@ -62,10 +61,9 @@ const Dashbored = ({ navigation }) => {
     {
       title: 'Things To Do',
       description: 'Add tasks in your to do list.',
-      items: '15 Items',
-      storageKey: 'selectedProductsThings To Do',
-      percentagetext: 'Completed 50%',
-      percentage: 50,
+      items: '0 Items',
+      percentagetext: 'Completed 0%',
+      percentage: 0,
       Picture: fourth,
       bgColor: '#FFCBA1CC',
       badgeColor: '#E36A4A',
@@ -73,22 +71,67 @@ const Dashbored = ({ navigation }) => {
     {
       title: 'Kitchen Menu',
       description: 'Add items to your list.',
-      items: '500 Recipies',
-      storageKey: 'selectedProductsKitchen Menu',
-      percentagetext: 'Cooked 70%',
-      percentage: 70,
+      items: '0 Recipies',
+      percentagetext: 'Cooked 0%',
+      percentage: 0,
       Picture: fifth,
       bgColor: '#fddc8a',
       badgeColor: '#D88D1B',
     },
-  ]);
+  ];
+
+  
+  const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
+
+  const FilterCatagories = (name) => {
+    const searchedtext = name.toLowerCase();
+    if (!searchedtext) {
+      return setCardDataFilterArray(cardDataArray);
+    }
+    setCardDataFilterArray(cardDataFilterArray.filter(item => item.title.toLowerCase().startsWith(searchedtext)));
+  };
+
+  const getListFromLocalStorage = async () => {
+    setIsListLoaded(false);
+    try {
+      const storedList = await AsyncStorage.getItem('userLists');
+      const list = storedList ? JSON.parse(storedList) : [];
+      console.log('List retrieved from local storage:', list);
+  
+      const formattedList = list
+      .map(item => ({
+        ...item,
+        Picture: item.Picture === 'first' ? first :
+                 item.Picture === 'seconed' ? seconed :
+                 item.Picture === 'third' ? third :
+                 item.Picture === 'fourth' ? fourth :
+                 item.Picture === 'fifth' ? fifth : item.Picture,
+      }))
+      .filter(item => item.title);
+
+    const mergedData = formattedList.length > 0 ? [...cardDataArray, ...formattedList] : cardDataArray;
+  
+      setCardDataFilterArray(mergedData);
+      setIsListLoaded(true);
+      setChangestate(false)
+    } catch (error) {
+      console.error('Error retrieving list:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    getListFromLocalStorage();
+  }, [changestate]);
+
 
 
   useEffect(() => {
+    if (!isListLoaded) return;
     const loadSelectedProducts = () => {
       let totalItems = 0;
 
-      const updatedCardData = cardDataArray.map((card) => {
+      const updatedCardData = cardDataFilterArray.map((card) => {
         const itemsFromContext = selectedProducts[card.title] || [];
         const itemCount = itemsFromContext.length;
 
@@ -113,14 +156,11 @@ const Dashbored = ({ navigation }) => {
         };
       });
 
-      setCardDataArray(updatedCardDataWithPercentages);
+      setCardDataFilterArray(updatedCardDataWithPercentages); 
     };
 
     loadSelectedProducts();
-  }, [selectedProducts]);
-
-
-
+  }, [selectedProducts , isListLoaded]);
 
   return (
     <>
@@ -141,20 +181,21 @@ const Dashbored = ({ navigation }) => {
             <View>
               <Text style={styles.caption}>Hello,</Text>
               <View>
-                <Text style={styles.heading}>MetaFront!</Text>
+                <Text style={styles.heading}>{userName} !</Text>
               </View>
               <Text style={styles.caption2}>
                 Stay organized with quick access to all your essential lists!
               </Text>
             </View>
             <View style={styles.SearchANDFilter}>
-              <TextInput style={styles.input} />
+              <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={styles.input} />
               <Image style={styles.filterimg} source={Filtericon} />
             </View>
             <ScrollView
               style={styles.cardContainer}
               contentContainerStyle={styles.scrollContent}
               showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps='handled'
             >
 
               <View style={styles.editcontainer}>
@@ -167,7 +208,7 @@ const Dashbored = ({ navigation }) => {
                   <Text style={styles.heading}>Edit</Text>
                 </TouchableOpacity>
               </View>
-              {cardDataArray.map((data, index) => (
+              {cardDataFilterArray.map((data, index) => (
                 <CardComponent
                   key={index}
                   data={data}

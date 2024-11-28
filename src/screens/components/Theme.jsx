@@ -1,5 +1,6 @@
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import circle from '../../assets/images/circle.png';
 import first from '../../assets/images/SVG/dashboardgrocery.svg';
 import back from '../../assets/images/back-arrow.png';
@@ -8,84 +9,147 @@ import third from '../../assets/images/SVG/dashboardpersonalgromming.svg';
 import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
 import TextInput2 from './Input';
+import { ProductContext } from '../../Context/CardContext';
 
 const Theme = ({ navigation }) => {
+    const { setChangestate } = useContext(ProductContext);
+    const [listName, setListName] = useState('');
+    const [listDescription, setListDescription] = useState('');
+    const [selectedTheme, setSelectedTheme] = useState(null);
 
     const cardDataArray = [
         {
-            title: 'Grocery List',
-            description: 'Add needed items.',
-            items: '200 Items',
-            percentagetext: 'Bought 70%',
-            percentage: 70,
             Picture: first,
             bgColor: '#9DF4F4',
             badgeColor: '#008B94',
         },
         {
-            title: 'Spiritual Goals',
-            description: 'Add your spiritual goals.',
-            items: '10 Goals',
-            percentagetext: 'Achieved 30%',
-            percentage: 30,
             Picture: seconed,
             bgColor: '#98FBCB',
             badgeColor: '#4AA688',
         },
         {
-            title: 'Personal Grooming',
-            description: 'Add your grooming tasks in list.',
-            items: '10 Tasks',
-            percentagetext: 'Completed 80%',
-            percentage: 80,
             Picture: third,
             bgColor: '#FEE5D7',
             badgeColor: '#C54B6C',
         },
         {
-            title: 'Things To Do',
-            description: 'Add needed items.',
-            items: '15 Items',
-            percentagetext: 'Bought 50%',
-            percentage: 50,
             Picture: fourth,
             bgColor: '#FFCBA1CC',
             badgeColor: '#E36A4A',
         },
         {
-            title: 'Kitchen Menu',
-            description: 'Add needed items.',
-            items: '500 Recipies',
-            percentagetext: 'Cooked 70%',
-            percentage: 70,
             Picture: fifth,
             bgColor: '#fddc8a',
             badgeColor: '#D88D1B',
         },
     ];
+
+    const SelectedThemeSetting = (index, data) => {
+        setSelectedTheme({
+            Picture: index === 0 ? 'first' : index === 1 ? 'seconed' : index === 2 ? 'third' : index === 3 ? 'fourth' : index === 4 ? 'fifth' : null,
+            bgColor: data.bgColor,
+            badgeColor: data.badgeColor,
+        }
+        )
+    };
+
+    const saveListToStorage = async () => {
+        try {
+            // Ensure all fields are completed
+            if (!listName || !listDescription || !selectedTheme) {
+                alert("Please complete all fields and select a theme.");
+                return;
+            }
+
+            const newListItem = {
+                title: listName,
+                description: listDescription,
+                items: '0 Items',
+                percentagetext: 'Bought 0%',
+                percentage: 0,
+                Picture: selectedTheme.Picture,
+                bgColor: selectedTheme.bgColor,
+                badgeColor: selectedTheme.badgeColor,
+            };
+
+            const storedList = await AsyncStorage.getItem('userLists');
+            const currentList = storedList ? JSON.parse(storedList) : [];
+
+            const updatedList = [...currentList, newListItem];
+
+            await AsyncStorage.setItem('userLists', JSON.stringify(updatedList));
+            console.log("List saved to local storage:", updatedList);
+
+            setListName('');
+            setListDescription('');
+            setSelectedTheme(null);
+            setChangestate(true);
+
+        } catch (error) {
+            console.error("Error saving list to local storage:", error);
+        }
+    };
+
+
     return (
-        <ScrollView styles={styles.container}>
+        <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
+            <StatusBar
+                animated={true}
+                backgroundColor="#FFF"
+                barStyle={'dark-content'}
+            />
             <View style={styles.headerContainer}>
                 <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
                     <Image source={back} style={styles.back} />
                 </TouchableOpacity>
-                <Text style={styles.signInText}>Create New List </Text>
-                <Text style={styles.signInText}> </Text>
+                <Text style={styles.signInText}>Create New List</Text>
+                <TouchableOpacity onPress={saveListToStorage} style={styles.saveButton}>
+                    <Text style={styles.saveButtonText}>Save</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.container2}>
-                <TextInput2 label={'List Name:'} placeholder={'Write your list name'} />
-                <TextInput2 label={'List Description:'} placeholder={'Write your list Description'} />
-                <Text style={styles.signInText}>Please Select Theme </Text>
+                <TextInput2
+                    label={'List Name:'}
+                    placeholder={'Write your list name'}
+                    value={listName}
+                    onChangeText={setListName}
+                />
+                <TextInput2
+                    label={'List Description:'}
+                    placeholder={'Write your list Description'}
+                    value={listDescription}
+                    onChangeText={setListDescription}
+                />
+                <Text style={styles.signInText}>Please Select Theme</Text>
                 {cardDataArray.map((data, index) => (
-                    <TouchableOpacity key={index} activeOpacity={1} style={[styles.cardContainer, { backgroundColor: data.bgColor }]} >
-                        <View style={[styles.contentContainer2]}>
-                            <Image source={circle} style={[styles.image2]} />
+                    <TouchableOpacity
+                        key={index}
+                        activeOpacity={1}
+                        style={[
+                            styles.cardContainer,
+                            {
+                                backgroundColor: data.bgColor,
+                                borderWidth: selectedTheme?.Picture === (index === 0 ? 'first' : index === 1 ? 'seconed' : index === 2 ? 'third' : index === 3 ? 'fourth' : 'fifth')
+                                    ? 4
+                                    : 0,
+                                borderColor: selectedTheme?.Picture === (index === 0 ? 'first' : index === 1 ? 'seconed' : index === 2 ? 'third' : index === 3 ? 'fourth' : 'fifth')
+                                    ? '#33a1de'
+                                    : 'transparent',
+                                borderRadius: 10,
+                            }
+                        ]}
+                        onPress={() => SelectedThemeSetting(index, data)}
+                    >
+                        <View style={styles.contentContainer2}>
+                            <Image source={circle} style={styles.image2} />
                             <View style={styles.image}>
                                 <data.Picture width={150} height={130} />
                             </View>
                         </View>
                     </TouchableOpacity>
                 ))}
+
             </View>
         </ScrollView>
     );
@@ -127,7 +191,6 @@ const styles = StyleSheet.create({
         flex: 1,
         marginVertical: 10,
         overflow: 'hidden',
-        display: 'flex',
         flexDirection: 'row',
     },
     contentContainer2: {
@@ -147,5 +210,17 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
         bottom: 0,
+    },
+    saveButton: {
+        // backgroundColor: '#008B94',
+        paddingVertical: 10,
+        alignItems: 'center',
+        borderRadius: 10,
+        // marginTop: 20,
+    },
+    saveButtonText: {
+        color: '#000',
+        fontSize: 18,
+        fontWeight: '600',
     },
 });

@@ -13,7 +13,7 @@ import SCREENS from '..';
 
 const ResetPassword = ({navigation}) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
       <View style={styles.headerContainer}>
 
         <Text style={styles.signInText}>Password Reset</Text>

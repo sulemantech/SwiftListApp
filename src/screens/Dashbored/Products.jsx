@@ -66,8 +66,7 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
       secondLineLastElement,
     };
   };
-  const paddingBottom = snapIndex === 0 ? 100 : snapIndex === 1 ? 180 : snapIndex === 2 ? 400 : 400;
-
+  const paddingBottom = (page !== 'itemslist') ? (snapIndex === 0 ? 100 : snapIndex === 1 ? 180 : snapIndex === 2 ? 400 : 400) : 0;
   return (
     <View style={page !== 'itemslist' ? styles.productsContainer : styles.productsContainer2}>
       {products.length > 0 ? (
@@ -76,6 +75,7 @@ const ProductList = ({ products, page, ListName, onProductSelect = () => { } }) 
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           removeClippedSubviews={true}
+          keyboardShouldPersistTaps='handled'
         >
           {products.map((item, index) => (
             <TouchableOpacity

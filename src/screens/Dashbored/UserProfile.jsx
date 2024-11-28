@@ -1,7 +1,22 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
+import auth from '@react-native-firebase/auth'; // Firebase authentication import
+import { ProductContext } from '../../Context/CardContext';
 
-export default function UserProfile() {
+export default function UserProfile({ navigation }) {
+  const { userName } = useContext(ProductContext);
+
+  // Function to handle logout
+  const handleLogout = async () => {
+    try {
+      await auth().signOut(); // Sign out the user
+      // Navigate to login screen after logout
+      navigation.navigate('Login'); // Replace 'Login' with the actual name of your login screen
+    } catch (error) {
+      console.error("Logout error: ", error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* Profile Header */}
@@ -15,7 +30,7 @@ export default function UserProfile() {
           source={{ uri: 'https://via.placeholder.com/150' }} // Placeholder image URL
           style={styles.profileImage}
         />
-        <Text style={styles.name}>MetaFront Ahmad</Text>
+        <Text style={styles.name}>{userName}</Text>
         <Text style={styles.email}>MetaFront@example.com</Text>
       </View>
 
@@ -34,6 +49,11 @@ export default function UserProfile() {
       {/* Edit Button */}
       <TouchableOpacity activeOpacity={1} style={styles.editButton}>
         <Text style={styles.editButtonText}>Edit Profile</Text>
+      </TouchableOpacity>
+
+      {/* Logout Button */}
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutButtonText}>Log Out</Text>
       </TouchableOpacity>
     </View>
   );
@@ -113,6 +133,19 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   editButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  logoutButton: {
+    backgroundColor: '#52C2FE',
+    paddingVertical: 12,
+    paddingHorizontal: 50,
+    borderRadius: 30,
+    alignSelf: 'center',
+    marginTop: 20,
+  },
+  logoutButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',

@@ -1,11 +1,15 @@
 import React, { createContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState({});
   const [hasCleared, setHasCleared] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userName, setUserName] = useState('User Name');
+  const [changestate, setChangestate] = useState(false);
 
   useEffect(() => {
     const loadSelectedProducts = async () => {
@@ -19,7 +23,16 @@ export const ProductProvider = ({ children }) => {
       }
     };
 
+    const loadUserName = async () => {
+      const user = auth().currentUser;
+      if (user) {
+        const storedUserName = user.displayName || await AsyncStorage.getItem('userName');
+        setUserName(storedUserName || 'User Name');
+      }
+    };
+
     loadSelectedProducts();
+    loadUserName();
   }, []);
 
   const updateSelectedProducts = async (ListName, product) => {
@@ -48,7 +61,7 @@ export const ProductProvider = ({ children }) => {
       updatedProducts[ListName].pop();
     }
 
-    updatedProducts[ListName].push( product );
+    updatedProducts[ListName].push(product);
 
     setSelectedProducts(updatedProducts);
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
@@ -57,13 +70,23 @@ export const ProductProvider = ({ children }) => {
   const clearSelectedProducts = async () => {
     if (!hasCleared) {
       setSelectedProducts({});
-      await AsyncStorage.removeItem('selectedProducts', 'selectedProductsGrocery List');
+      await AsyncStorage.removeItem('selectedProducts');
       setHasCleared(true);
     }
   };
 
   return (
-    <ProductContext.Provider value={{ selectedProducts, updateSelectedProducts, clearSelectedProducts, updateSelectedProductsQuantity }}>
+    <ProductContext.Provider value={{
+      changestate, setChangestate,
+      selectedProducts,
+      updateSelectedProducts,
+      clearSelectedProducts,
+      updateSelectedProductsQuantity,
+      isAuthenticated,
+      setIsAuthenticated,
+      userName,
+      setUserName
+    }}>
       {children}
     </ProductContext.Provider>
   );

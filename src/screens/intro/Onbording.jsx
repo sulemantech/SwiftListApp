@@ -1,25 +1,14 @@
-/* eslint-disable react-native/no-inline-styles */
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  Animated,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-  StatusBar,
-} from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, FlatList, StyleSheet, Animated, Text, TouchableOpacity, Dimensions, StatusBar } from 'react-native';
+import SCREENS from '..';
 import OnboardingItem from './Onbordingitem';
 import pic1 from '../../assets/images/SVG/1.svg';
 import pic2 from '../../assets/images/SVG/2.svg';
 import pic3 from '../../assets/images/SVG/3.svg';
 import pic4 from '../../assets/images/SVG/4.svg';
 import pic5 from '../../assets/images/SVG/5.svg';
-// Use this as needed
-import SCREENS from '..';
 
-const { width, height } = Dimensions.get('window'); // Getting screen dimensions
+const { width, height } = Dimensions.get('window');
 
 export default function Onboarding({ navigation, route }) {
   const { onComplete } = route.params || {};
@@ -27,68 +16,33 @@ export default function Onboarding({ navigation, route }) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
 
+  useEffect(() => {
+    if (navigation && onComplete) {
+      navigation.setOptions({ onComplete });
+    }
+  }, [navigation, onComplete]);
+
   const slides = [
-    {
-      id: '1',
-      title: 'Organize Your Grocery Essentials',
-      description:
-        'Keep track of all your shoping needs in one place. Add , edit, and check off items effortlessly.',
-      image: pic1,
-    },
-    {
-      id: '2',
-      title: 'Plan Your Grooming Routine',
-      description:
-        'Stay on top of your self-care with scheduled reminders and custom grooming lists.',
-      image: pic2,
-    },
-    {
-      id: '3',
-      title: 'Track Your Spiritual journey',
-      description:
-        'Keep track of all your shopping needs in one place. Add, edit, and check off items effortlessly.',
-      image: pic3,
-    },
-    {
-      id: '4',
-      title: 'Manage Your Daily To-Do Tasks',
-      description:
-        'Simplify your day by organizing tasks with ease. Prioritize, set deadlines, and stay productive.',
-      image: pic4,
-    },
-    {
-      id: '5',
-      title: 'Create Your Perfect Kitchen Menu',
-      description:
-        'Plan meals for the week with recipes. Organize ingredients and streamline cooking process.',
-      image: pic5,
-    },
+    { id: '1', title: 'Organize Your Grocery Essentials', description: 'Keep track of all your shopping needs...', image: pic1 },
+    { id: '2', title: 'Plan Your Grooming Routine', description: 'Stay on top of your self-care...', image: pic2 },
+    { id: '3', title: 'Track Your Spiritual Journey', description: 'Track all your spiritual growth...', image: pic3 },
+    { id: '4', title: 'Manage Your Daily To-Do Tasks', description: 'Simplify your day...', image: pic4 },
+    { id: '5', title: 'Create Your Perfect Kitchen Menu', description: 'Organize recipes and ingredients...', image: pic5 },
   ];
-
-  const ViewableItemsChanged = useRef(({ viewableItems }) => {
-    setCurrentIndex(viewableItems[0].index);
-  }).current;
-
-  const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
   const handleNext = () => {
     if (currentIndex < slides.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      if (onComplete) onComplete(); // Mark onboarding as complete
-      navigation.replace(SCREENS.login); // Navigate to the login screen
+      const onComplete = navigation.getParam('onComplete', null);
+      if (onComplete) onComplete();
+      navigation.replace(SCREENS.login);
     }
   };
 
-
   return (
     <View style={styles.container}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#FFF"
-        barStyle={'dark-content'}
-      // showHideTransition={statusBarTransition}
-      />
+      <StatusBar animated={true} backgroundColor="#FFF" barStyle="dark-content" />
       <TouchableOpacity
         activeOpacity={1}
         style={styles.skip}
@@ -110,41 +64,31 @@ export default function Onboarding({ navigation, route }) {
           bounces={false}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: false },
+            { useNativeDriver: false }
           )}
           scrollEventThrottle={32}
-          onViewableItemsChanged={ViewableItemsChanged}
-          viewabilityConfig={viewConfig}
+          onViewableItemsChanged={({ viewableItems }) => setCurrentIndex(viewableItems[0].index)}
+          viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
           ref={slidesRef}
         />
         <View style={styles.pagination}>
           {slides.map((_, index) => (
             <TouchableOpacity
-              activeOpacity={1}
               key={index}
               onPress={() => {
                 slidesRef.current.scrollToIndex({ index });
                 setCurrentIndex(index);
               }}
-              style={[
-                styles.dotContainer,
-                currentIndex === index ? styles.activeDotContainer : null,
-              ]}>
+              style={[styles.dotContainer, currentIndex === index ? styles.activeDotContainer : null]}
+            >
               <View
-                style={[
-                  styles.dot,
-                  {
-                    backgroundColor:
-                      currentIndex === index ? '#52C3FF' : '#A1DEFF',
-                  },
-                ]}
+                style={[styles.dot, { backgroundColor: currentIndex === index ? '#52C3FF' : '#A1DEFF' }]}
               />
             </TouchableOpacity>
           ))}
         </View>
       </View>
       <View style={styles.btnview}>
-
         <TouchableOpacity activeOpacity={1} onPress={handleNext} style={styles.button}>
           <Text style={styles.buttonText}>
             {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
