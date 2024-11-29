@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -17,6 +17,7 @@ import facebook from '../../assets/images/social-media-facebook.png';
 import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 import { ProductContext } from '../../Context/CardContext';
 
@@ -27,7 +28,40 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { setUserName , isAuthenticated } = useContext(ProductContext);
+  const { setUserName, isAuthenticated } = useContext(ProductContext);
+
+  // useEffect(() => {
+  GoogleSignin.configure({
+    webClientId: '685029163622-b51etimc1vcq6o4elp3qp26achvil27v.apps.googleusercontent.com',
+  });
+  // }, []);
+
+  async function onGoogleButtonPress() {
+    try {
+      setLoading(true);
+      await GoogleSignin.signOut();
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const signInResult = await GoogleSignin.signIn();
+      const idToken = signInResult?.data?.idToken;
+      const accessToken = signInResult?.data?.accessToken;
+      if (!idToken) {
+        throw new Error('No ID token found');
+      }
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken, accessToken);
+      await auth().signInWithCredential(googleCredential);
+      const user = auth().currentUser;
+      if (user) {
+        const username = user.displayName || 'User';
+        setUserName(username);
+      }
+      navigation.replace(SCREENS.Dashbored);
+    } catch (error) {
+      console.error('Google Sign-in error: ', error);
+      Alert.alert('Error', 'Google Sign-In failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const handleSignIn = async () => {
     // Reset error messages
@@ -50,9 +84,9 @@ const LoginScreen = ({ navigation }) => {
       const user = auth().currentUser;
       if (user) {
         const username = user.displayName || 'User';
-        setUserName(username); 
+        setUserName(username);
       }
-      navigation.replace(SCREENS.Dashbored); 
+      navigation.replace(SCREENS.Dashbored);
     } catch (error) {
       Alert.alert('Error', error.message);
     }
@@ -64,7 +98,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+    <ScrollView contentContainerStyle={styles.container} pointerEvents={loading ? "none" : "auto"} keyboardShouldPersistTaps="handled">
       <StatusBar animated={true} backgroundColor="#FFF" barStyle={'dark-content'} />
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
@@ -148,7 +182,8 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <View style={styles.containersocial}>
           <View style={styles.social}>
-            <TouchableOpacity activeOpacity={1} style={styles.innersocial}>
+            <TouchableOpacity activeOpacity={1} style={styles.innersocial} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+              disabled={loading}>
               <Image source={google} style={styles.socialIcon} />
               <Text style={styles.socialButtonText}>Continue with Google</Text>
             </TouchableOpacity>
@@ -165,6 +200,12 @@ const LoginScreen = ({ navigation }) => {
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
       </View>
+
+      {/* {loading && (
+        <View style={styles.overlay}>
+          <ActivityIndicator size="large" color="#fff" />
+        </View>
+      )} */}
     </ScrollView>
   );
 };
@@ -262,7 +303,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  
+
   signInButton: {
     width: '100%',
     height: 50,
@@ -274,7 +315,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',  // Ensures horizontal alignment of the content
   },
-  
+
   buttonText: {
     fontFamily: 'Poppins-Medium',
     fontSize: 12,
@@ -282,10 +323,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
     display: 'flex',
-    alignItems: 'center',  
-    justifyContent: 'center', 
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  
+
   containerline: {
     alignItems: 'center',
     marginVertical: 20,
@@ -335,7 +376,7 @@ const styles = StyleSheet.create({
     color: 'red',
     width: '100%',
     fontSize: 12,
-    paddingLeft:16,
+    paddingLeft: 16,
     marginTop: -8,
     textAlign: 'left',
     fontFamily: 'Poppins-Medium',

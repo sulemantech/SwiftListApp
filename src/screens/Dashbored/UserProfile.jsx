@@ -9,9 +9,8 @@ export default function UserProfile({ navigation }) {
   // Function to handle logout
   const handleLogout = async () => {
     try {
-      await auth().signOut(); // Sign out the user
-      // Navigate to login screen after logout
-      navigation.navigate('Login'); // Replace 'Login' with the actual name of your login screen
+      await auth().signOut();
+      navigation.replace('Login');
     } catch (error) {
       console.error("Logout error: ", error.message);
     }
