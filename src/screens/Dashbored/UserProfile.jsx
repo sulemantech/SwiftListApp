@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth'; // Firebase authentication impor
 import { ProductContext } from '../../Context/CardContext';
 
 export default function UserProfile({ navigation }) {
-  const { userName } = useContext(ProductContext);
+const { userName , profilePicture } = useContext(ProductContext);
 
   // Function to handle logout
   const handleLogout = async () => {
@@ -20,13 +20,13 @@ export default function UserProfile({ navigation }) {
     <View style={styles.container}>
       {/* Profile Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Profile</Text>
+        <Text style={styles.headerText}></Text>
       </View>
 
       {/* Profile Picture */}
       <View style={styles.profileContainer}>
         <Image
-          source={{ uri: 'https://via.placeholder.com/150' }} // Placeholder image URL
+          source={{ uri: profilePicture }} // Placeholder image URL
           style={styles.profileImage}
         />
         <Text style={styles.name}>{userName}</Text>

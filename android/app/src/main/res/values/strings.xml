@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">swiftlist</string>
+    <string name="app_name">SwiftList</string>
+    <string name="facebook_app_id">1103524997989554</string>
+    <string name="fb_login_protocol_scheme">fb1103524997989554</string>
+    <string name="facebook_client_token">83186eafbfe9291f66ca58149534ef5c</string>
 </resources>

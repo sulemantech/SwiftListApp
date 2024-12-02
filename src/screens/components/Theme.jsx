@@ -10,6 +10,7 @@ import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
 import TextInput2 from './Input';
 import { ProductContext } from '../../Context/CardContext';
+import SCREENS from '..';
 
 const Theme = ({ navigation }) => {
     const { setChangestate } = useContext(ProductContext);
@@ -47,7 +48,12 @@ const Theme = ({ navigation }) => {
 
     const SelectedThemeSetting = (index, data) => {
         setSelectedTheme({
-            Picture: index === 0 ? 'first' : index === 1 ? 'seconed' : index === 2 ? 'third' : index === 3 ? 'fourth' : index === 4 ? 'fifth' : null,
+            Picture: index === 0 ? 'first'
+                : index === 1 ? 'seconed'
+                    : index === 2 ? 'third'
+                        : index === 3 ? 'fourth'
+                            : index === 4 ? 'fifth'
+                                : null,
             bgColor: data.bgColor,
             badgeColor: data.badgeColor,
         }
@@ -56,7 +62,6 @@ const Theme = ({ navigation }) => {
 
     const saveListToStorage = async () => {
         try {
-            // Ensure all fields are completed
             if (!listName || !listDescription || !selectedTheme) {
                 alert("Please complete all fields and select a theme.");
                 return;
@@ -85,6 +90,7 @@ const Theme = ({ navigation }) => {
             setListDescription('');
             setSelectedTheme(null);
             setChangestate(true);
+            navigation.replace(SCREENS.Dashbored);
 
         } catch (error) {
             console.error("Error saving list to local storage:", error);

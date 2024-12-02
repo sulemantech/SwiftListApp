@@ -18,8 +18,10 @@ import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
 import { ProductContext } from '../../Context/CardContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -28,13 +30,51 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { setUserName, isAuthenticated } = useContext(ProductContext);
+  const { setUserName , setProfilePicture , isAuthenticated } = useContext(ProductContext);
 
   // useEffect(() => {
   GoogleSignin.configure({
     webClientId: '685029163622-b51etimc1vcq6o4elp3qp26achvil27v.apps.googleusercontent.com',
   });
   // }, []);
+
+  const onFacebookButtonPress = async () => {
+    try {
+      setLoading(true);
+
+      // Attempt to log in with Facebook
+      const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+      if (result.isCancelled) {
+        console.log('User cancelled the login process');
+        return;
+      }
+
+      // Get the access token
+      const data = await AccessToken.getCurrentAccessToken();
+      if (!data) {
+        console.log('Failed to get access token');
+        return;
+      }
+
+      // Use the Facebook access token to authenticate with Firebase
+      const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+      await auth().signInWithCredential(facebookCredential);
+
+      const user = auth().currentUser;
+      if (user) {
+        const username = user.displayName || 'User';
+        setUserName(username);
+      }
+
+      navigation.replace(SCREENS.Dashbored);
+    } catch (error) {
+      console.error('Facebook Sign-in error: ', error);
+      Alert.alert('Error', 'Facebook Sign-In failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   async function onGoogleButtonPress() {
     try {
@@ -49,10 +89,14 @@ const LoginScreen = ({ navigation }) => {
       }
       const googleCredential = auth.GoogleAuthProvider.credential(idToken, accessToken);
       await auth().signInWithCredential(googleCredential);
+      await AsyncStorage.removeItem('user');
       const user = auth().currentUser;
       if (user) {
         const username = user.displayName || 'User';
+        const profilePicture = user.photoURL || '';
+        await AsyncStorage.setItem(`user`, JSON.stringify({ username, profilePicture }));
         setUserName(username);
+        setProfilePicture(profilePicture);
       }
       navigation.replace(SCREENS.Dashbored);
     } catch (error) {
@@ -170,25 +214,28 @@ const LoginScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.socialouterview}>
-        <View style={styles.containersocial}>
+        <TouchableOpacity onPress={onFacebookButtonPress}
+              disabled={loading} style={styles.containersocial}>
           <View style={styles.social}>
-            <TouchableOpacity activeOpacity={1} style={styles.innersocial}>
+            <View
+              style={styles.innersocial}
+            >
               <Image source={facebook} style={styles.socialIcon} />
               <Text style={styles.socialButtonText}>
                 Continue with Facebook
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={styles.containersocial}>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))} disabled={loading} style={styles.containersocial}>
           <View style={styles.social}>
-            <TouchableOpacity activeOpacity={1} style={styles.innersocial} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
-              disabled={loading}>
+            <View style={styles.innersocial}>
               <Image source={google} style={styles.socialIcon} />
               <Text style={styles.socialButtonText}>Continue with Google</Text>
-            </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.row2}>

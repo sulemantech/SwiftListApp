@@ -8,7 +8,8 @@ export const ProductProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState({});
   const [hasCleared, setHasCleared] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userName, setUserName] = useState('User Name');
+  const [userName, setUserName] = useState('');
+  const [profilePicture, setProfilePicture] = useState('https://via.placeholder.com/150');
   const [changestate, setChangestate] = useState(false);
 
   useEffect(() => {
@@ -23,16 +24,23 @@ export const ProductProvider = ({ children }) => {
       }
     };
 
-    const loadUserName = async () => {
-      const user = auth().currentUser;
-      if (user) {
-        const storedUserName = user.displayName || await AsyncStorage.getItem('userName');
-        setUserName(storedUserName || 'User Name');
-      }
+
+    const loadUserData = async () => {
+      // try {
+        const userData = await AsyncStorage.getItem('user');
+        if (userData) {
+          const { username, profilePicture } = JSON.parse(userData);
+          setUserName(username);
+          setProfilePicture(profilePicture);
+        }
+      // } catch (error) {
+      //   console.error('Error loading user data:', error);
+      // }
     };
 
+    
+    loadUserData();
     loadSelectedProducts();
-    loadUserName();
   }, []);
 
   const updateSelectedProducts = async (ListName, product) => {
@@ -85,7 +93,8 @@ export const ProductProvider = ({ children }) => {
       isAuthenticated,
       setIsAuthenticated,
       userName,
-      setUserName
+      setUserName,
+      profilePicture, setProfilePicture
     }}>
       {children}
     </ProductContext.Provider>
