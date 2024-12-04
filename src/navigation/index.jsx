@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import remoteConfig from '@react-native-firebase/remote-config';  // Firebase Remote Config
@@ -13,9 +13,10 @@ import Congratulation from '../screens/auth/Congratulation';
 import DashboredIndex from '../screens/Dashbored/DashboredIndex';
 import ProductsPage from '../screens/Dashbored/ProductsPage';
 import Theme from '../screens/components/Theme';
-import { ProductProvider } from '../Context/CardContext';
+import { ProductContext, ProductProvider } from '../Context/CardContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { initializeNotificationListeners } from '../screens/components/InAppNotification';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,10 @@ const StackNavigation = () => {
   const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [initializing, setInitializing] = useState(true);
+  const { addNotification } = useContext(ProductContext);
+  useEffect(() => {
+    initializeNotificationListeners(addNotification);
+  }, [addNotification]);
 
   useEffect(() => {
     const fetchRemoteConfig = async () => {
@@ -66,7 +71,6 @@ const StackNavigation = () => {
   }
 
   return (
-    <ProductProvider>
       <Stack.Navigator
         initialRouteName={
           isAuthenticated
@@ -128,7 +132,6 @@ const StackNavigation = () => {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
-    </ProductProvider>
   );
 };
 

@@ -44,7 +44,6 @@ const BottomSheetComponent = ({ selecteditem, ListName, setIsProductSelected , s
                 console.error('Error handling product selection:', error);
             }
         } else {
-            console.log('The list is empty or does not exist:', ListNamee);
         }
     };
 

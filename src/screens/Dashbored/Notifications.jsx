@@ -1,47 +1,27 @@
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import React from 'react';
+import { ProductContext } from '../../Context/CardContext';
 
 export default function Notifications() {
+  const { notifications } = useContext(ProductContext);
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Notifications</Text>
 
-      <ScrollView contentContainerStyle={styles.notificationsContainer} keyboardShouldPersistTaps='handled'>
-        {/* Dummy notifications */}
-        <View style={styles.notificationCard}>
-          <Text style={styles.notificationText}>
-            <Text style={styles.notificationTitle}>MetaFront</Text> well come .
-          </Text>
-          <Text style={styles.notificationTime}>5 minutes ago</Text>
-        </View>
-
-        <View style={styles.notificationCard}>
-          <Text style={styles.notificationText}>
-            Your order has been shipped to <Text style={styles.notificationTitle}>Pakistan</Text>.
-          </Text>
-          <Text style={styles.notificationTime}>30 minutes ago</Text>
-        </View>
-
-        <View style={styles.notificationCard}>
-          <Text style={styles.notificationText}>
-            <Text style={styles.notificationTitle}>MetaFront</Text> changed phone number.
-          </Text>
-          <Text style={styles.notificationTime}>1 hour ago</Text>
-        </View>
-
-        <View style={styles.notificationCard}>
-          <Text style={styles.notificationText}>
-            You have new contacts from <Text style={styles.notificationTitle}>Pakistan</Text>.
-          </Text>
-          <Text style={styles.notificationTime}>3 hours ago</Text>
-        </View>
-
-        <View style={styles.notificationCard}>
-          <Text style={styles.notificationText}>
-            <Text style={styles.notificationTitle}>MetaFront</Text> Your Profile name has changed.
-          </Text>
-          <Text style={styles.notificationTime}>1 day ago</Text>
-        </View>
+      <ScrollView contentContainerStyle={styles.notificationsContainer} keyboardShouldPersistTaps="handled">
+        {notifications.length === 0 ? (
+          <Text style={styles.noNotifications}>No Notifications Yet</Text>
+        ) : (
+          notifications.map((notif, index) => (
+            <View key={index} style={styles.notificationCard}>
+              <Text style={styles.notificationText}>
+                <Text style={styles.notificationTitle}>{notif.title}</Text>: {notif.body}
+              </Text>
+              <Text style={styles.notificationTime}>{new Date(notif.time).toLocaleString()}</Text>
+            </View>
+          ))
+        )}
       </ScrollView>
     </View>
   );
@@ -70,6 +50,7 @@ const styles = StyleSheet.create({
   notificationsContainer: {
     paddingHorizontal: 20,
     paddingTop: 10,
+    paddingBottom: 70,
   },
   notificationCard: {
     backgroundColor: '#fff',
@@ -93,5 +74,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#aaa',
     marginTop: 5,
+  },
+  noNotifications: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#aaa',
+    marginTop: 20,
   },
 });

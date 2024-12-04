@@ -8,6 +8,7 @@ export const ProductProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState({});
   const [hasCleared, setHasCleared] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [notifications, setNotifications] = useState([]);
   const [userName, setUserName] = useState('');
   const [profilePicture, setProfilePicture] = useState('https://via.placeholder.com/150');
   const [changestate, setChangestate] = useState(false);
@@ -83,9 +84,59 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  // Load notifications from AsyncStorage
+  useEffect(() => {
+    const loadNotifications = async () => {
+      try {
+        const storedNotifications = await AsyncStorage.getItem(`${userName}-notifications`);
+        if (storedNotifications) {
+          setNotifications(JSON.parse(storedNotifications));
+        }
+      } catch (error) {
+        console.error('Failed to load notifications:', error);
+      }
+    };
+
+    loadNotifications();
+  }, []);
+
+  // Save notifications to AsyncStorage whenever they change
+  useEffect(() => {
+    const saveNotifications = async () => {
+      try {
+        await AsyncStorage.setItem(`${userName}-notifications`, JSON.stringify(notifications));
+      } catch (error) {
+        console.error('Failed to save notifications:', error);
+      }
+    };
+
+    saveNotifications();
+  }, [notifications]);
+
+  const addNotification = (notification) => {
+    setNotifications((prev) => {
+      const isDuplicate = prev.some((n) => 
+        n.title === notification.title && 
+        Math.abs(n.time - notification.time) >= 60000 
+      );
+      
+      if (!isDuplicate) {
+        return [...prev, notification];
+      }
+      return prev;
+    });
+  
+    console.log('Added notification:', notification);
+  };
+  
+  
+  
+
+
   return (
     <ProductContext.Provider value={{
       changestate, setChangestate,
+      notifications, addNotification,
       selectedProducts,
       updateSelectedProducts,
       clearSelectedProducts,

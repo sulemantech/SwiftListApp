@@ -95,9 +95,7 @@ const Dashbored = ({ navigation }) => {
     setIsListLoaded(false);
     try {
       const storedList = await AsyncStorage.getItem('userLists');
-      const list = storedList ? JSON.parse(storedList) : [];
-      console.log('List retrieved from local storage:', list);
-  
+      const list = storedList ? JSON.parse(storedList) : [];  
       const formattedList = list
       .map(item => ({
         ...item,

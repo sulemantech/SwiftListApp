@@ -84,7 +84,6 @@ const Theme = ({ navigation }) => {
             const updatedList = [...currentList, newListItem];
 
             await AsyncStorage.setItem('userLists', JSON.stringify(updatedList));
-            console.log("List saved to local storage:", updatedList);
 
             setListName('');
             setListDescription('');

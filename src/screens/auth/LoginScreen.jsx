@@ -17,11 +17,13 @@ import facebook from '../../assets/images/social-media-facebook.png';
 import google from '../../assets/images/social-media-google.png';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
+import useFirebaseMessaging from '../components/UseFirebaseMessaging';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from '@react-native-firebase/auth';
 import { ProductContext } from '../../Context/CardContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import messaging from '@react-native-firebase/messaging'
 
 const LoginScreen = ({ navigation }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -30,13 +32,19 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { setUserName , setProfilePicture , isAuthenticated } = useContext(ProductContext);
+  const { setUserName, setProfilePicture, isAuthenticated } = useContext(ProductContext);
 
   // useEffect(() => {
   GoogleSignin.configure({
     webClientId: '685029163622-b51etimc1vcq6o4elp3qp26achvil27v.apps.googleusercontent.com',
   });
   // }, []);
+
+  const { getDeviceToken } = useFirebaseMessaging();
+
+  useEffect(() => {
+    getDeviceToken(); // Fetch the FCM token on app start
+  }, [getDeviceToken]);
 
   const onFacebookButtonPress = async () => {
     try {
@@ -45,14 +53,12 @@ const LoginScreen = ({ navigation }) => {
       // Attempt to log in with Facebook
       const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
       if (result.isCancelled) {
-        console.log('User cancelled the login process');
         return;
       }
 
       // Get the access token
       const data = await AccessToken.getCurrentAccessToken();
       if (!data) {
-        console.log('Failed to get access token');
         return;
       }
 
@@ -215,7 +221,7 @@ const LoginScreen = ({ navigation }) => {
 
       <View style={styles.socialouterview}>
         <TouchableOpacity onPress={onFacebookButtonPress}
-              disabled={loading} style={styles.containersocial}>
+          disabled={loading} style={styles.containersocial}>
           <View style={styles.social}>
             <View
               style={styles.innersocial}
@@ -228,7 +234,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))} disabled={loading} style={styles.containersocial}>
+        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => {})} disabled={loading} style={styles.containersocial}>
           <View style={styles.social}>
             <View style={styles.innersocial}>
               <Image source={google} style={styles.socialIcon} />
