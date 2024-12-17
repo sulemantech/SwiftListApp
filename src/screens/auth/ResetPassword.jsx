@@ -11,27 +11,26 @@ import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/SVG/restpassword.svg';
 import SCREENS from '..';
 
-const ResetPassword = ({navigation}) => {
+const ResetPassword = ({ navigation }) => {
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
       <View style={styles.headerContainer}>
-
         <Text style={styles.signInText}>Password Reset</Text>
       </View>
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
-        <Signin/>
+        <Signin />
 
         <Text style={styles.instructions}>Enter new password and confirm.</Text>
 
         <TextInput2
-        bgcolor={'#fff'}
+          bgcolor={'#fff'}
           label={'New Password'}
           placeholder={'Enter new password'}
         />
         <TextInput2
-        bgcolor={'#fff'}
+          bgcolor={'#fff'}
           label={'Confirm Password'}
           placeholder={'Confirm password'}
         />
@@ -39,7 +38,7 @@ const ResetPassword = ({navigation}) => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
-        activeOpacity={1}
+          activeOpacity={1}
           onPress={() => navigation.navigate(SCREENS.Congratulation)}
           style={styles.signInButton}>
           <Text style={styles.buttonText}>Change Password</Text>

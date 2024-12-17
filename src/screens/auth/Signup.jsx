@@ -40,6 +40,7 @@ const SignUpScreen = ({ navigation }) => {
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign Up</Text>
+        <Text style={styles.signInText}></Text>
       </View>
 
       <View style={styles.inputbox}>

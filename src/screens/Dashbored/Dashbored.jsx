@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, BackHandler, StatusBar, useColorScheme } from 'react-native';
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,12 +15,13 @@ import SCREENS from '..';
 
 const Dashbored = ({ navigation }) => {
   const [selectedCard, setSelectedCard] = useState(null);
-  const [isListLoaded, setIsListLoaded] = useState(false); 
+  const [isListLoaded, setIsListLoaded] = useState(false);
+  const colorScheme = useColorScheme(); 
 
   const handleCardClick = title => {
     setSelectedCard(title);
   };
-  const { selectedProducts , userName , changestate , setChangestate } = useContext(ProductContext);
+  const { selectedProducts , userDetails , changestate , setChangestate } = useContext(ProductContext);
 
 
   const handleBackPress = () => {
@@ -179,14 +180,14 @@ const Dashbored = ({ navigation }) => {
             <View>
               <Text style={styles.caption}>Hello,</Text>
               <View>
-                <Text style={styles.heading}>{userName} !</Text>
+                <Text style={styles.heading}>{userDetails.UserName} !</Text>
               </View>
               <Text style={styles.caption2}>
                 Stay organized with quick access to all your essential lists!
               </Text>
             </View>
             <View style={styles.SearchANDFilter}>
-              <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={styles.input} />
+              <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={[styles.input , {color: colorScheme === 'dark' ? '#000' : '#000'} ]} />
               <Image style={styles.filterimg} source={Filtericon} />
             </View>
             <ScrollView

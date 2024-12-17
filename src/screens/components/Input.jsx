@@ -1,19 +1,20 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import { StyleSheet, useColorScheme, Text, TextInput, View } from 'react-native';
 
-// const {width} = Dimensions.get('window');
 const TextInput2 = ({
   label,
   placeholder,
   value,
   onFocus,
   onBlur,
-  secureTextEntry=false,
+  secureTextEntry = false,
   onChangeText,
   borderRadius = 13,
   bgColor = '#fff',
   fontsize = 13,
 }) => {
+  const colorScheme = useColorScheme();  // Correct placement of useColorScheme
+
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
@@ -28,6 +29,7 @@ const TextInput2 = ({
             backgroundColor: bgColor,
             borderRadius: borderRadius,
             fontSize: fontsize,
+            color: colorScheme === 'dark' ? '#000' : '#000',  // Corrected usage
           },
         ]}
         placeholder={placeholder}

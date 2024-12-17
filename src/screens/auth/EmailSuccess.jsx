@@ -26,7 +26,9 @@ const EmailSuccess = ({ navigation }) => {
         <TouchableOpacity
           activeOpacity={1}
           style={styles.signInButton}
-          onPress={() => navigation.navigate(SCREENS.ResetPassword)}>
+          onPress={() => navigation.navigate(SCREENS.login)}
+          // onPress={() => navigation.navigate(SCREENS.ResetPassword)}
+          >
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </View>

@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import auth from '@react-native-firebase/auth';
 
 export const ProductContext = createContext();
 
@@ -9,8 +8,13 @@ export const ProductProvider = ({ children }) => {
   const [hasCleared, setHasCleared] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [notifications, setNotifications] = useState([]);
-  const [userName, setUserName] = useState('');
-  const [profilePicture, setProfilePicture] = useState('https://via.placeholder.com/150');
+  const [userDetails, setUserDetails] = useState({
+    UserName: "",
+    UserEmail: "",
+    UserMobileNo: "",
+    UserLocation: "",
+    UserProfilePicture: 'https://via.placeholder.com/150',
+  });
   const [changestate, setChangestate] = useState(false);
 
   useEffect(() => {
@@ -25,21 +29,22 @@ export const ProductProvider = ({ children }) => {
       }
     };
 
-
     const loadUserData = async () => {
-      // try {
+      try {
         const userData = await AsyncStorage.getItem('user');
         if (userData) {
           const { username, profilePicture } = JSON.parse(userData);
-          setUserName(username);
-          setProfilePicture(profilePicture);
+          setUserDetails(prevDetails => ({
+            ...prevDetails,
+            UserName: username || prevDetails.UserName,
+            UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+          }));
         }
-      // } catch (error) {
-      //   console.error('Error loading user data:', error);
-      // }
+      } catch (error) {
+        console.error('Error loading user data:', error);
+      }
     };
 
-    
     loadUserData();
     loadSelectedProducts();
   }, []);
@@ -88,7 +93,7 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     const loadNotifications = async () => {
       try {
-        const storedNotifications = await AsyncStorage.getItem(`${userName}-notifications`);
+        const storedNotifications = await AsyncStorage.getItem(`${userDetails.UserName}-notifications`);
         if (storedNotifications) {
           setNotifications(JSON.parse(storedNotifications));
         }
@@ -104,7 +109,7 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     const saveNotifications = async () => {
       try {
-        await AsyncStorage.setItem(`${userName}-notifications`, JSON.stringify(notifications));
+        await AsyncStorage.setItem(`${userDetails.UserName}-notifications`, JSON.stringify(notifications));
       } catch (error) {
         console.error('Failed to save notifications:', error);
       }
@@ -143,9 +148,7 @@ export const ProductProvider = ({ children }) => {
       updateSelectedProductsQuantity,
       isAuthenticated,
       setIsAuthenticated,
-      userName,
-      setUserName,
-      profilePicture, setProfilePicture
+      userDetails, setUserDetails,
     }}>
       {children}
     </ProductContext.Provider>

@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { setUserName, setProfilePicture, isAuthenticated } = useContext(ProductContext);
+  const { setUserDetails, isAuthenticated } = useContext(ProductContext);
 
   // useEffect(() => {
   GoogleSignin.configure({
@@ -49,29 +49,48 @@ const LoginScreen = ({ navigation }) => {
   const onFacebookButtonPress = async () => {
     try {
       setLoading(true);
-
+  
       // Attempt to log in with Facebook
       const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
       if (result.isCancelled) {
         return;
       }
-
+  
       // Get the access token
       const data = await AccessToken.getCurrentAccessToken();
       if (!data) {
         return;
       }
-
+  
       // Use the Facebook access token to authenticate with Firebase
       const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
       await auth().signInWithCredential(facebookCredential);
-
+  
       const user = auth().currentUser;
+  
+      let profilePicture = 'https://via.placeholder.com/150'; // Default profile picture
+  
+      // Manually fetch the profile picture
+      const response = await fetch(
+        `https://graph.facebook.com/me/picture?type=large&redirect=false&access_token=${data.accessToken}`
+      );
+      const profileData = await response.json();
+      if (profileData?.data?.url) {
+        profilePicture = profileData.data.url;
+      }
+  
       if (user) {
         const username = user.displayName || 'User';
-        setUserName(username);
+        const email = user.email || 'Not Available';
+  
+        setUserDetails(prevDetails => ({
+          ...prevDetails,
+          UserName: username || prevDetails.UserName,
+          UserEmail: email || prevDetails.UserEmail,
+          UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+        }));
       }
-
+  
       navigation.replace(SCREENS.Dashbored);
     } catch (error) {
       console.error('Facebook Sign-in error: ', error);
@@ -80,6 +99,7 @@ const LoginScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+  
 
 
   async function onGoogleButtonPress() {
@@ -99,11 +119,17 @@ const LoginScreen = ({ navigation }) => {
       const user = auth().currentUser;
       if (user) {
         const username = user.displayName || 'User';
-        const profilePicture = user.photoURL || '';
-        await AsyncStorage.setItem(`user`, JSON.stringify({ username, profilePicture }));
-        setUserName(username);
-        setProfilePicture(profilePicture);
+        const profilePicture = user.photoURL || 'https://via.placeholder.com/150';
+
+        await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
+
+        setUserDetails(prevDetails => ({
+          ...prevDetails,
+          UserName: username || prevDetails.UserName,
+          UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+        }));
       }
+
       navigation.replace(SCREENS.Dashbored);
     } catch (error) {
       console.error('Google Sign-in error: ', error);
@@ -134,7 +160,10 @@ const LoginScreen = ({ navigation }) => {
       const user = auth().currentUser;
       if (user) {
         const username = user.displayName || 'User';
-        setUserName(username);
+        setUserDetails(prevDetails => ({
+          ...prevDetails,
+          UserName: username || prevDetails.UserName,
+        }));
       }
       navigation.replace(SCREENS.Dashbored);
     } catch (error) {
@@ -234,7 +263,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => {})} disabled={loading} style={styles.containersocial}>
+        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => { })} disabled={loading} style={styles.containersocial}>
           <View style={styles.social}>
             <View style={styles.innersocial}>
               <Image source={google} style={styles.socialIcon} />

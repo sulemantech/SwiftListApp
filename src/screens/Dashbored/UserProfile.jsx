@@ -6,7 +6,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import scheduleNotification from '../components/InAppNotification';
 
 export default function UserProfile({ navigation }) {
-  const { userName, profilePicture } = useContext(ProductContext);
+  const { userDetails, profilePicture } = useContext(ProductContext);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -71,11 +71,11 @@ export default function UserProfile({ navigation }) {
       {/* Profile Picture */}
       <View style={styles.profileContainer}>
         <Image
-          source={{ uri: profilePicture }} // Placeholder image URL
+          source={{ uri: userDetails.UserProfilePicture }} // Placeholder image URL
           style={styles.profileImage}
         />
-        <Text style={styles.name}>{userName}</Text>
-        <Text style={styles.email}>MetaFront@example.com</Text>
+        <Text style={styles.name}>{userDetails.UserName}</Text>
+        <Text style={styles.email}>{userDetails.UserEmail}</Text>
       </View>
 
       {/* Additional Information */}

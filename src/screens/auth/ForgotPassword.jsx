@@ -1,52 +1,79 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import TextInput2 from '../components/Input';
 import Signin from '../../assets/images/SVG/forgotpassword.svg';
 import back from '../../assets/images/back-arrow.png';
 import SCREENS from '..';
+import CustomModal from '../components/Modal';
 
 const ForgotPassword = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [modalVisible, setModalVisible] = useState(false); // State to control modal visibility
+  const [modalMessage, setModalMessage] = useState(''); // Message to display in the modal
+
+  const handlePasswordReset = async () => {
+    if (!email.trim()) {
+      setModalMessage('Please enter a valid email address.');
+      setModalVisible(true);
+      return;
+    }
+
+    try {
+      await auth().sendPasswordResetEmail(email);
+      setModalMessage('A password reset link has been sent to your email. Please check your inbox.');
+      setModalVisible(true);
+      navigation.navigate(SCREENS.EmailSuccess); // Navigate to success screen
+    } catch (error) {
+      console.error('Password reset error:', error.message);
+      setModalMessage('Failed to send password reset email. Please try again.');
+      setModalVisible(true);
+    }
+  };
+
   return (
-    <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Forgot Password</Text>
-        <Text style={styles.signInText}> </Text>
+        <Text style={styles.signInText}></Text>
       </View>
 
       <View style={styles.inputbox}>
-        {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin />
-
         <Text style={styles.instructions}>
           Please enter your email address. You will receive a link to create a
-          new Password via email.
+          new password via email.
         </Text>
 
         <TextInput2
           bgcolor={'#fff'}
-          label={'Email/PhoneNumber'}
+          label={'Email'}
           placeholder={'Enter email address'}
+          value={email}
+          onChangeText={setEmail}
         />
       </View>
 
       <View style={styles.containersign}>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => navigation.navigate(SCREENS.EmailSuccess)}
-          style={styles.signInButton}>
+          onPress={handlePasswordReset}
+          style={styles.signInButton}
+        >
           <Text style={styles.buttonText}>Send</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Custom Modal for alerts */}
+      <CustomModal 
+        isVisible={modalVisible} 
+        onClose={() => setModalVisible(false)} 
+        title="Password Reset"
+        description={modalMessage} 
+      />
     </ScrollView>
   );
 };
@@ -85,10 +112,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     gap: 10,
-  },
-  signinImage: {
-    marginBottom: 10,
-    marginHorizontal: 'auto',
   },
   instructions: {
     color: '#6c6c6c',
