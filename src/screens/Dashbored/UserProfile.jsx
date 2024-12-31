@@ -2,15 +2,26 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-na
 import React, { useContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import { ProductContext } from '../../Context/CardContext';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import scheduleNotification from '../components/InAppNotification';
+import profile from '../../assets/images/SVG/profilepage/profile.svg';
+import changepassword from '../../assets/images/SVG/profilepage/logout.svg';
+import notification from '../../assets/images/SVG/profilepage/notification.svg';
+import language from '../../assets/images/SVG/profilepage/language.svg';
+import darkmode from '../../assets/images/SVG/profilepage/darkmode.svg';
+import aboutapp from '../../assets/images/SVG/profilepage/aboutapp.svg';
+import ratereview from '../../assets/images/SVG/profilepage/raterevieww.svg';
+import privacypolicy from '../../assets/images/SVG/profilepage/privacypolicy.svg';
+import termsconditions from '../../assets/images/SVG/profilepage/termsconditions.svg';
+import help from '../../assets/images/SVG/profilepage/help.svg';
+import logout from '../../assets/images/SVG/profilepage/logoutt.svg';
+import deleteaccount from '../../assets/images/SVG/profilepage/deleteaccount.svg';
+import Edit from '../../assets/images/SVG/profilepage/edit.svg';
+import LabelWithBtn from '../components/LabelWithBtn';
+import { ScrollView } from 'react-native-gesture-handler';
+import Header from '../components/Header';
 
 export default function UserProfile({ navigation }) {
-  const { userDetails, profilePicture } = useContext(ProductContext);
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [showTimePicker, setShowTimePicker] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
+  const { userDetails } = useContext(ProductContext);
+
 
   const handleLogout = async () => {
     try {
@@ -21,125 +32,117 @@ export default function UserProfile({ navigation }) {
     }
   };
 
-  const handleDateChange = (event, date) => {
-    setShowDatePicker(false); // Close the date picker
-    if (date) {
-      setSelectedDate(date); // Update state with selected date
-      setShowTimePicker(true); // Show the time picker after date selection
-    }
+
+
+  const goToSettings = () => {
+    navigation.navigate('Settings');
   };
-
-  const handleTimeChange = (event, time) => {
-    setShowTimePicker(false); // Close the time picker
-    if (time) {
-      // Set selected time
-      const dateTime = new Date(selectedDate);
-      dateTime.setHours(time.getHours());
-      dateTime.setMinutes(time.getMinutes());
-      setSelectedTime(dateTime); // Set the selected time with the selected date
-    }
-  };
-
-  const triggerNotification = () => {
-    if (!selectedTime) {
-      Alert.alert('No Notification Time', 'Please select a time to schedule the notification.');
-      return;
-    }
-
-    // Check if the selected time is in the future
-    if (selectedTime <= new Date()) {
-      Alert.alert('Invalid Time', 'Please select a future date and time for the notification.');
-      return;
-    }
-
-    Alert.alert(
-      'Notification Scheduled',
-      `Notification set for ${selectedTime.toLocaleString()}.`
-    );
-
-    // Call the notification service function
-    scheduleNotification(selectedTime.toISOString(), 'Reminder', 'It’s time to do your work!');
+  const handleBackPress = () => {
+    navigation.goBack();
+    return true;
   };
 
   return (
-    <View style={styles.container}>
-      {/* Profile Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerText}></Text>
-      </View>
+    <ScrollView style={styles.container}>
+      <Header title={'Profile'} Rightelement={true} onBack={handleBackPress} />
 
-      {/* Profile Picture */}
       <View style={styles.profileContainer}>
-        <Image
-          source={{ uri: userDetails.UserProfilePicture }} // Placeholder image URL
-          style={styles.profileImage}
-        />
-        <Text style={styles.name}>{userDetails.UserName}</Text>
-        <Text style={styles.email}>{userDetails.UserEmail}</Text>
-      </View>
-
-      {/* Additional Information */}
-      <View style={styles.infoSection}>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>Phone:</Text>
-          <Text style={styles.value}>+123 456 7890</Text>
-        </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.label}>Location:</Text>
-          <Text style={styles.value}>Islamabad, Pakistan</Text>
+        <View style={styles.card}>
+          <Image
+            source={{ uri: userDetails.UserProfilePicture }}
+            style={styles.profileImage}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.name}>{userDetails.UserName}</Text>
+            <Text style={styles.email}>{"Premium Member"}</Text>
+          </View>
+          <TouchableOpacity>
+            <Edit />
+          </TouchableOpacity>
         </View>
       </View>
 
-      {/* Edit Button */}
-      <TouchableOpacity activeOpacity={1} style={styles.editButton}>
-        <Text style={styles.editButtonText}>Edit Profile</Text>
-      </TouchableOpacity>
+      <View style={styles.cardsContainer}>
+        <Text style={styles.buttonText}>My Account</Text>
 
-      <TouchableOpacity style={styles.editButton} onPress={() => setShowDatePicker(true)}>
-        <Text style={styles.datePickerButtonText}>Pick Notification Time</Text>
-      </TouchableOpacity>
+        <View style={styles.cards}>
+          <LabelWithBtn
+            text="Profile Details"
+            IconsURL={profile}
+          />
+          <LabelWithBtn
+            text="Change Password"
+            IconsURL={changepassword}
+          />
+        </View>
+      </View>
+      <View style={styles.cardsContainer}>
+        <Text style={styles.buttonText}>Settings</Text>
+        <View style={styles.cards}>
+          <LabelWithBtn
+            text="Notification"
+            IconsURL={notification}
+          />
+          <LabelWithBtn
+            text="Language"
+            IconsURL={language}
+          />
+          <LabelWithBtn
+            text="Dark Mode"
+            IconsURL={darkmode}
+          />
+        </View>
+      </View>
 
-      {/* Date Picker */}
-      {showDatePicker && (
-        <DateTimePicker
-          value={selectedDate || new Date()}
-          mode="date"
-          display="default"
-          minimumDate={new Date()} // Allow current date
-          onChange={handleDateChange}
-        />
-      )}
+      <View style={styles.cardsContainer}>
+        <Text style={styles.buttonText}>About</Text>
 
-      {/* Time Picker */}
-      {showTimePicker && (
-        <DateTimePicker
-          value={selectedDate || new Date()}
-          mode="time"
-          display="default"
-          onChange={handleTimeChange}
-        />
-      )}
+        <View style={styles.cards}>
+          <LabelWithBtn
+            text="About App"
+            IconsURL={aboutapp}
+          />
+          <LabelWithBtn
+            text="Rate & Review"
+            IconsURL={ratereview}
+          />
+          <LabelWithBtn
+            text="Privacy Policy"
+            IconsURL={privacypolicy}
+          />
+          <LabelWithBtn
+            text="Terms & Conditions"
+            IconsURL={termsconditions}
+          />
+          <LabelWithBtn
+            text="Help"
+            IconsURL={help}
+          />
+        </View>
+      </View>
 
-      <Text style={styles.selectedDateText}>
-        Notification set for: {selectedTime ? selectedTime.toLocaleString() : 'None'}
-      </Text>
-
-      <TouchableOpacity style={styles.editButton} onPress={triggerNotification}>
-        <Text style={styles.triggerButtonText}>Schedule Notification</Text>
-      </TouchableOpacity>
-
-      {/* Logout Button */}
-      <TouchableOpacity style={styles.editButton} onPress={handleLogout}>
-        <Text style={styles.logoutButtonText}>Log Out</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={styles.cardsContainer}>
+        <View style={styles.cards}>
+          <LabelWithBtn
+            text="Log Out"
+            onPress={handleLogout}
+            IconsURL={logout}
+          />
+          <LabelWithBtn
+            text="Delete Account"
+            IconsURL={deleteaccount}
+          />
+        </View>
+      </View>
+      <View style={styles.bottommargin}></View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#EFF9FF',
   },
   header: {
     backgroundColor: '#52C2FE',
@@ -148,66 +151,77 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+
   },
   profileContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -50,
-    marginBottom: 30,
+    marginTop: 6,
+
+  },
+  cardsContainer: {
+    width: '90%',
+    marginHorizontal: 'auto',
+    marginTop: 8,
+  },
+  buttonText: {
+    fontFamily: 'Poppins-Bold',
+    color: '#0c0c0c',
+    fontSize: 13,
+    lineHeight: 19.5,
+    textAlign: 'left',
+    marginLeft: 8,
+    marginVertical: 3,
+  },
+  cards: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderBottomWidth: 4,
+    borderRightWidth: 2,
+    borderColor: '#007AFF26',
+    marginHorizontal: 'auto',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+  },
+  card: {
+    width: '90%',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 13,
+    paddingVertical: 8,
+    borderRadius: 10,
+    borderBottomWidth: 4,
+    borderRightWidth: 2,
+    borderColor: '#007AFF26',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   profileImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 4,
-    borderColor: '#fff',
-    marginBottom: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 35,
+    marginRight: 12,
+  },
+  textContainer: {
+    flex: 1,
   },
   name: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: 16,
+    fontFamily: 'OpenSans-Medium',
+    color: '#0c0c0c',
+    lineHeight: 16,
+
   },
   email: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 20,
-  },
-  infoSection: {
-    backgroundColor: '#fff',
-    padding: 20,
-    marginHorizontal: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 10,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  value: {
-    fontSize: 16,
-    color: '#666',
-  },
-  editButton: {
-    backgroundColor: '#52C2FE',
-    paddingVertical: 12,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    alignSelf: 'center',
-    marginTop: 20,
-  },
-  editButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 13,
+    fontFamily: 'OpenSans-Medium',
+    color: '#52C2FE',
+    lineHeight: 19.5,
   },
   datePickerButton: {
     backgroundColor: '#52C2FE',
@@ -224,6 +238,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
     fontSize: 16,
+    color: '#333',
   },
   triggerButton: {
     backgroundColor: '#52C2FE',
@@ -241,11 +256,14 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 30,
   },
   logoutButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  bottommargin: {
+    height: 90,
+  }
 });

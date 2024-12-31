@@ -31,6 +31,7 @@ import TextInput2 from '../components/Input';
 import { ProductContext } from '../../Context/CardContext';
 import ProductList from './Products';
 import Header from '../components/Header';
+import CIrcleWithchevron from '../components/CIrcleWithchevron';
 
 const { width, height } = Dimensions.get('window');
 
@@ -173,7 +174,8 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
               >
                 <View style={styles.subCategoryContent}>
                   <Text style={styles.subCategoryName}>{item.name}</Text>
-                  <Image source={pressedItem === item.name ? arrowRightactive : arrowRight} style={styles.arrowRight} />
+                  {/* <Image source={pressedItem === item.name ? arrowRightactive : arrowRight} style={styles.arrowRight} /> */}
+                  <CIrcleWithchevron/>
                 </View>
               </TouchableHighlight>
             )}
@@ -244,7 +246,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
     position: 'absolute',
-    top: '6%',
+    top: '10%',
     right: 10,
   },
   searchicon: {

@@ -13,13 +13,10 @@ const CustomModal = ({ isVisible, onClose, title, description }) => {
           duration={500} 
           style={[styles.modalContainer, { width: width - 40, height: height * 0.4 }]}
         >
-          {/* Modal Title */}
           <Text style={styles.title}>{title}</Text>
           
-          {/* Modal Description */}
           <Text style={styles.description}>{description}</Text>
           
-          {/* Close Button */}
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>
