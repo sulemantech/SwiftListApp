@@ -53,7 +53,7 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
 
   const matchingCategory = categories.find(
     categoryObj =>
-      categoryObj.category.name.toLowerCase() === ItemName.toLowerCase(),
+      categoryObj.category.name.toLowerCase() === ItemName.title.toLowerCase(),
   );
 
   const filterItems = useCallback(
@@ -122,7 +122,7 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
             barStyle={'dark-content'}
           // showHideTransition={statusBarTransition}
           />
-        <Header onBack={onBackPress} title={ItemName} />
+        <Header onBack={onBackPress} title={ItemName.title} />
 
           <View style={styles.categoryContainer}>
             {!isSearchFocused && SelectedImageComponent && (
@@ -140,7 +140,7 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
             <View style={styles.searchContainer}>
               <TextInput2
                 borderRadius={40}
-                bgColor={isSearchFocused ? '#FFF' : '#007AFF26'}
+                bgColor={isSearchFocused ? '#FFF' : ItemName.bgColor+50}
                 placeholder={'Search items here...'}
                 fontsize={16}
                 onChangeText={text => filterItems(text)}
@@ -175,7 +175,7 @@ const ItemsList = ({ ItemName, ListName, onBackPress }) => {
                 <View style={styles.subCategoryContent}>
                   <Text style={styles.subCategoryName}>{item.name}</Text>
                   {/* <Image source={pressedItem === item.name ? arrowRightactive : arrowRight} style={styles.arrowRight} /> */}
-                  <CIrcleWithchevron/>
+                  <CIrcleWithchevron chevronColor =  {ItemName.bgColor}/>
                 </View>
               </TouchableHighlight>
             )}

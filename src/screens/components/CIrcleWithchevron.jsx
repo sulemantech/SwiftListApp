@@ -2,14 +2,14 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-const CircleWithChevron = () => {
+const CircleWithChevron = ({ chevronColor = '#61CBD6' }) => {
     return (
         <LinearGradient
-            colors={['#61CBD6', '#61CBD6']}
+            colors={[chevronColor, chevronColor]}
             start={{ x: 0.25, y: 0.75 }}
             end={{ x: 0.75, y: 0.25 }}
             style={styles.circle}>
-            <View style={styles.chevron} />
+            <View style={[styles.chevron]} />
         </LinearGradient>
     );
 };

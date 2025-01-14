@@ -8,6 +8,7 @@ import seconed from '../../assets/images/SVG/dashboardspiritualgoals.svg';
 import third from '../../assets/images/SVG/dashboardpersonalgromming.svg';
 import fourth from '../../assets/images/SVG/thingstodo.svg';
 import fifth from '../../assets/images/SVG/recipe.svg';
+import Bell from '../../assets/images/SVG/dashboard/bell.svg';
 import CardComponent from '../components/Card';
 import ItemsList from './ItemsList';
 import { ProductContext } from '../../Context/CardContext';
@@ -16,12 +17,12 @@ import SCREENS from '..';
 const Dashbored = ({ navigation }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [isListLoaded, setIsListLoaded] = useState(false);
-  const colorScheme = useColorScheme(); 
+  const colorScheme = useColorScheme();
 
   const handleCardClick = title => {
     setSelectedCard(title);
   };
-  const { selectedProducts , userDetails , changestate , setChangestate } = useContext(ProductContext);
+  const { selectedProducts, userDetails, changestate, setChangestate } = useContext(ProductContext);
 
 
   const handleBackPress = () => {
@@ -36,8 +37,8 @@ const Dashbored = ({ navigation }) => {
       percentagetext: 'Bought 0%',
       percentage: 0,
       Picture: first,
-      bgColor: '#9DF4F4',
-      badgeColor: '#008B94',
+      bgColor: '#9CF6FF',
+      badgeColor: '#61CBD6',
     },
     {
       title: 'Spiritual Goals',
@@ -46,8 +47,8 @@ const Dashbored = ({ navigation }) => {
       percentagetext: 'Achieved 0%',
       percentage: 0,
       Picture: seconed,
-      bgColor: '#98FBCB',
-      badgeColor: '#4AA688',
+      bgColor: '#CBFFBF',
+      badgeColor: '#7EBB6F',
     },
     {
       title: 'Personal Grooming',
@@ -56,8 +57,8 @@ const Dashbored = ({ navigation }) => {
       percentagetext: 'Completed 0%',
       percentage: 0,
       Picture: third,
-      bgColor: '#FEE5D7',
-      badgeColor: '#C54B6C',
+      bgColor: '#FDFFB6',
+      badgeColor: '#B4B82E',
     },
     {
       title: 'Things To Do',
@@ -66,8 +67,8 @@ const Dashbored = ({ navigation }) => {
       percentagetext: 'Completed 0%',
       percentage: 0,
       Picture: fourth,
-      bgColor: '#FFCBA1CC',
-      badgeColor: '#E36A4A',
+      bgColor: '#FFD7A6',
+      badgeColor: '#D98E33',
     },
     {
       title: 'Kitchen Menu',
@@ -76,12 +77,12 @@ const Dashbored = ({ navigation }) => {
       percentagetext: 'Cooked 0%',
       percentage: 0,
       Picture: fifth,
-      bgColor: '#fddc8a',
-      badgeColor: '#D88D1B',
+      bgColor: '#FFAEAD',
+      badgeColor: '#D66160',
     },
   ];
 
-  
+
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
 
   const FilterCatagories = (name) => {
@@ -96,20 +97,20 @@ const Dashbored = ({ navigation }) => {
     setIsListLoaded(false);
     try {
       const storedList = await AsyncStorage.getItem('userLists');
-      const list = storedList ? JSON.parse(storedList) : [];  
+      const list = storedList ? JSON.parse(storedList) : [];
       const formattedList = list
-      .map(item => ({
-        ...item,
-        Picture: item.Picture === 'first' ? first :
-                 item.Picture === 'seconed' ? seconed :
-                 item.Picture === 'third' ? third :
-                 item.Picture === 'fourth' ? fourth :
-                 item.Picture === 'fifth' ? fifth : item.Picture,
-      }))
-      .filter(item => item.title);
+        .map(item => ({
+          ...item,
+          Picture: item.Picture === 'first' ? first :
+            item.Picture === 'seconed' ? seconed :
+              item.Picture === 'third' ? third :
+                item.Picture === 'fourth' ? fourth :
+                  item.Picture === 'fifth' ? fifth : item.Picture,
+        }))
+        .filter(item => item.title);
 
-    const mergedData = formattedList.length > 0 ? [...cardDataArray, ...formattedList] : cardDataArray;
-  
+      const mergedData = formattedList.length > 0 ? [...cardDataArray, ...formattedList] : cardDataArray;
+
       setCardDataFilterArray(mergedData);
       setIsListLoaded(true);
       setChangestate(false)
@@ -117,7 +118,7 @@ const Dashbored = ({ navigation }) => {
       console.error('Error retrieving list:', error);
     }
   };
-  
+
 
   useEffect(() => {
     getListFromLocalStorage();
@@ -155,41 +156,47 @@ const Dashbored = ({ navigation }) => {
         };
       });
 
-      setCardDataFilterArray(updatedCardDataWithPercentages); 
+      setCardDataFilterArray(updatedCardDataWithPercentages);
     };
 
     loadSelectedProducts();
-  }, [selectedProducts , isListLoaded]);
+  }, [selectedProducts, isListLoaded]);
 
   return (
     <>
       {selectedCard ? (
-        <ItemsList ItemName={selectedCard} ListName={selectedCard} onBackPress={handleBackPress} />
+        <ItemsList ItemName={selectedCard} ListName={selectedCard.title} onBackPress={handleBackPress} />
       ) : (
         <LinearGradient
-          colors={['#EFF9FF', '#B2FEFA']}
+          colors={['#FFC41F10', '#FFFFFF10' , '#FFC41F20']}
           style={styles.gradientBackground}
         >
           <StatusBar
             animated={true}
-            backgroundColor="#EFF9FF"
+            backgroundColor="#FFC41F10"
             barStyle={'dark-content'}
           // showHideTransition={statusBarTransition}
           />
           <View style={styles.container}>
-            <View>
-              <Text style={styles.caption}>Hello,</Text>
-              <View>
-                <Text style={styles.heading}>{userDetails.UserName} !</Text>
+            <View style={styles.userHeaderContainer}>
+              <View style={styles.userHeaderLeft}>
+                <Image
+                  source={{ uri: userDetails.UserProfilePicture }}
+                  style={styles.userProfileImage}
+                />
+                <View style={styles.userTextContainer}>
+                  <Text style={styles.userGreetingText}>Hello,</Text>
+                  <Text style={styles.userNameText}>{userDetails.UserName}!</Text>
+                </View>
               </View>
-              <Text style={styles.caption2}>
-                Stay organized with quick access to all your essential lists!
-              </Text>
+              <View style={styles.bgbill}>
+                <Bell />
+              </View>
             </View>
-            <View style={styles.SearchANDFilter}>
+            {/* <View style={styles.SearchANDFilter}>
               <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={[styles.input , {color: colorScheme === 'dark' ? '#000' : '#000'} ]} />
               <Image style={styles.filterimg} source={Filtericon} />
-            </View>
+            </View> */}
             <ScrollView
               style={styles.cardContainer}
               contentContainerStyle={styles.scrollContent}
@@ -197,7 +204,7 @@ const Dashbored = ({ navigation }) => {
               keyboardShouldPersistTaps='handled'
             >
 
-              <View style={styles.editcontainer}>
+              {/* <View style={styles.editcontainer}>
                 <Text style={styles.heading}>Your Lists</Text>
                 <TouchableOpacity
                   activeOpacity={0.4}
@@ -206,12 +213,12 @@ const Dashbored = ({ navigation }) => {
                 >
                   <Text style={styles.heading}>Edit</Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
               {cardDataFilterArray.map((data, index) => (
                 <CardComponent
                   key={index}
                   data={data}
-                  onPress={() => handleCardClick(data.title)}
+                  onPress={() => handleCardClick(data)}
                 />
               ))}
 
@@ -235,8 +242,45 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 30,
-    paddingHorizontal: '5.5%',
+    paddingTop: 10,
+    paddingHorizontal: '5%',
+  },
+  userHeaderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 'auto',
+    width: '100%',
+    marginVertical: 10,
+  },
+  userHeaderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userProfileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  userTextContainer: {
+    flexDirection: 'column',
+  },
+  userGreetingText: {
+    fontSize: 13,
+    color: '#344054',
+    lineHeight: 19.5,
+    fontFamily: 'OpenSans-Medium',
+  },
+  userNameText: {
+    fontSize: 16,
+    color: '#344054',
+    lineHeight: 16,
+    fontFamily: 'OpenSans-Bold',
+  },
+  notificationIcon: {
+    width: 30,
+    height: 30,
   },
   caption: {
     fontFamily: 'Poppins-Regular',
@@ -328,6 +372,19 @@ const styles = StyleSheet.create({
     color: 'grey',
     marginTop: 5,
     textAlign: 'center',
+  },
+  bgbill: {
+    backgroundColor: "#FF3837",
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    alignItems: 'center', 
+    justifyContent: 'center',
+    shadowColor: "#E24140", 
+    shadowOffset: { width: 0, height: 4 }, 
+    shadowOpacity: 0.4, 
+    shadowRadius: 4,
+    elevation: 6,
   },
   card: {
     width: '98%',

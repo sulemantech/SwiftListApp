@@ -18,6 +18,7 @@ import Edit from '../../assets/images/SVG/profilepage/edit.svg';
 import LabelWithBtn from '../components/LabelWithBtn';
 import { ScrollView } from 'react-native-gesture-handler';
 import Header from '../components/Header';
+import SCREENS from '..';
 
 export default function UserProfile({ navigation }) {
   const { userDetails } = useContext(ProductContext);
@@ -31,6 +32,44 @@ export default function UserProfile({ navigation }) {
       console.error('Logout error: ', error.message);
     }
   };
+  const handleDeleteAccount = async () => {
+  const user = auth().currentUser;
+
+  if (user) {
+    Alert.alert(
+      "Delete Account",
+      "Are you sure you want to delete your account? This action cannot be undone.",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await user.delete();
+              Alert.alert("Account Deleted", "Your account has been successfully deleted.");
+              navigation.replace(SCREENS.login); 
+            } catch (error) {
+              if (error.code === 'auth/requires-recent-login') {
+                Alert.alert(
+                  "Re-Authentication Required",
+                  "Please sign in again to delete your account."
+                );
+              } else {
+                Alert.alert("Error", error.message);
+              }
+            }
+          },
+        },
+      ]
+    );
+  } else {
+    Alert.alert("Error", "No user is currently signed in.");
+  }
+};
 
 
 
@@ -131,6 +170,7 @@ export default function UserProfile({ navigation }) {
           <LabelWithBtn
             text="Delete Account"
             IconsURL={deleteaccount}
+            onPress={handleDeleteAccount}
           />
         </View>
       </View>

@@ -13,6 +13,7 @@ const CardComponent = ({ onPress, data = {} }) => {
     Picture,
     bgColor,
     badgeColor,
+    textcolor="#626262",
   } = data;
 
   const percent = percentage / 100;
@@ -20,24 +21,24 @@ const CardComponent = ({ onPress, data = {} }) => {
   return (
     <TouchableOpacity activeOpacity={1} style={[styles.cardContainer, { backgroundColor: bgColor }]} onPress={onPress}>
       <View style={[styles.contentContainer]}>
-        <Text style={[styles.title, { color: badgeColor }]}>{title}</Text>
-        <Text style={[styles.description, { color: badgeColor }]}>
+        <Text style={[styles.title, { color: textcolor }]}>{title}</Text>
+        <Text style={[styles.description, { color: textcolor }]}>
           {description}
         </Text>
         <Text style={[styles.badge, { backgroundColor: badgeColor }]}>
           {items}
         </Text>
-        <Text style={[styles.percentage, { color: badgeColor }]}>
+        <Text style={[styles.percentage, { color: textcolor }]}>
           {percentagetext}
         </Text>
-        <View style={[styles.progressview]}>
+        <View style={[styles.progressview , { borderColor: badgeColor }]} >
           <Progress.Bar progress={percent} borderWidth={0} color={badgeColor} animated={true} />
         </View>
       </View>
       <View style={[styles.contentContainer2]}>
         <Image source={circle} style={[styles.image2]} />
         <View style={styles.image}>
-        <Picture width={150} height={130}/>
+        <Picture width={150} height={130} fill="#000"/>
         </View>
       </View>
     </TouchableOpacity>
@@ -108,6 +109,7 @@ const styles = StyleSheet.create({
   },
   progressview: {
     backgroundColor: '#FFFFFF',
+    borderWidth: 1,
     borderRadius: 5,
   },
 });

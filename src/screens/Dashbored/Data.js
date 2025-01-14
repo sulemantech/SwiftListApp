@@ -1,4 +1,3 @@
-import { Easing } from 'react-native';
 import {
   azkaarItems,
   bakeryAndBreadItems,
