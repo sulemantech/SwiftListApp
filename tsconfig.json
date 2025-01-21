@@ -10,8 +10,9 @@
   },
   "include": [
     "**/*.ts",
+    "declarations.d.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "app/index.tsx"  ]
 }
