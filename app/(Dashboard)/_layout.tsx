@@ -257,7 +257,7 @@ import { COLORS, icons } from "../../constants";
 export default function DashboardLayout() {
   return (
     <Tabs
-      initialRouteName="Home"
+      initialRouteName="Dashboard"
       screenOptions={{
         tabBarShowLabel: true,
         headerShown: false,
@@ -265,14 +265,15 @@ export default function DashboardLayout() {
       }}
     >
       <Tabs.Screen
-        name="Dashboard"
+        name="Notifications"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Home_outline}
+              source={icons.Notification1}
               resizeMode="contain"
               style={[
-                styles.icon,
+                // styles.icon,
+                styles.icon2,
                 { tintColor: focused ? COLORS.secondary : COLORS.gray },
               ]}
             />
@@ -284,7 +285,7 @@ export default function DashboardLayout() {
                 { color: focused ? COLORS.secondary : COLORS.gray },
               ]}
             >
-              Home
+              Notifications
             </Text>
           ),
         }}
@@ -315,7 +316,7 @@ export default function DashboardLayout() {
         }}
       />
       <Tabs.Screen
-        name="Home"
+        name="Dashboard"
         options={{
           tabBarIcon: ({ focused }) => (
             <LinearGradient
@@ -325,7 +326,7 @@ export default function DashboardLayout() {
               style={styles.gradientIcon}
             >
               <Image
-                source={icons.Main_icon}
+                source={icons.Home1}
                 resizeMode="contain"
                 style={styles.mainIcon}
               />
@@ -410,7 +411,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   tabBarLabel: {
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "600",
     paddingTop: 4,
   },
@@ -431,5 +432,10 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     tintColor: COLORS.white,
+  },
+  icon2: {
+    width: 30,
+    height: 30,
+    marginTop: 5,
   },
 });
