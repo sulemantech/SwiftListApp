@@ -35,6 +35,8 @@
 //   );
 // }
 
+// Syed ****************************************************
+
 import React from "react";
 import { View, Image, Platform, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -161,7 +163,6 @@ export default function DashboardLayout() {
                 shadowOpacity: 0.25,
                 shadowRadius: 3.84,
                 elevation: 0,
-                
               }}
             >
               <Image
