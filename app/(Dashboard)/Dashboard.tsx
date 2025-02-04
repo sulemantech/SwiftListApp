@@ -10,8 +10,18 @@ import fourth from "../../assets/images/SVG/thingstodo.svg";
 import fifth from "../../assets/images/SVG/recipe.svg";
 import bell from "../../assets/images/SVG/dashboard/bell.svg";
 import CardComponent from "../../components/Card";
+const UserProfile = require("../../assets/images/UserProfile.png");
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
+import { COLORS, icons } from "../../constants";
+import { FontFamily } from "@/constants/theme";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+// import CircularProgress from "react-native-progress";
+import { Svg, Circle } from "react-native-svg";
+
 
 const Dashboard = () => {
   const cardDataArray = [
@@ -69,6 +79,7 @@ const Dashboard = () => {
   ];
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
+  const [value, setValue] = useState(0);
 
   return (
     <>
@@ -83,6 +94,7 @@ const Dashboard = () => {
       <View style={styles.container}>
         <View style={styles.userHeaderContainer}>
           <View style={styles.userHeaderLeft}>
+            <Image source={UserProfile} style={styles.userProfileImage} />
             {/* <Image
                   source={{ uri: userDetails.UserProfilePicture }}
                   style={styles.userProfileImage}
@@ -90,16 +102,28 @@ const Dashboard = () => {
             <View style={styles.userTextContainer}>
               <Text style={styles.userGreetingText}>Hello,</Text>
               {/* <Text style={styles.userNameText}>{userDetails.UserName}!</Text> */}
+              <Text style={styles.userNameText}>MetaFront! LLP.</Text>
             </View>
           </View>
           <View style={styles.bgbill}>
-            <Image source={bell} style={styles.notificationIcon} />
+            <Image source={icons.Notification1} style={styles.bellIcon} />
           </View>
         </View>
         {/* <View style={styles.SearchANDFilter}>
               <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={[styles.input , {color: colorScheme === 'dark' ? '#000' : '#000'} ]} />
               <Image style={styles.filterimg} source={Filtericon} />
             </View> */}
+        <View style={styles.todayProgress_card}>
+          <LinearGradient
+            colors={["#9584F8", "#9584F810", "#9584F820"]}
+            style={styles.LinearGradient}
+          >
+            <View style={styles.innerView}>
+              <Text style={styles.innerText}>Today’s Progress</Text>
+              {/* <CircularProgress/> */}
+            </View>
+          </LinearGradient>
+        </View>
         <ScrollView
           style={styles.cardContainer}
           contentContainerStyle={styles.scrollContent}
@@ -147,7 +171,11 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: 300,
+    borderTopLeftRadius: 14, // Set your desired border radius
+    borderTopRightRadius: 14, // Set your desired border radius
+    overflow: "hidden", // Ensures content doesn't overflow
   },
+
   container: {
     flex: 1,
     paddingTop: 30,
@@ -155,12 +183,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   userHeaderContainer: {
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: "auto",
     width: "100%",
     marginVertical: 10,
+    // backgroundColor:"red"
   },
   userHeaderLeft: {
     flexDirection: "row",
@@ -183,9 +213,11 @@ const styles = StyleSheet.create({
   },
   userNameText: {
     fontSize: 16,
-    color: "#344054",
+    fontWeight: "bold",
+    color: "black",
     lineHeight: 16,
-    fontFamily: "OpenSans-Bold",
+    fontFamily: FontFamily.heading,
+    marginTop: 5,
   },
   notificationIcon: {
     width: 30,
@@ -285,9 +317,9 @@ const styles = StyleSheet.create({
   },
   bgbill: {
     backgroundColor: "#FF3837",
-    height: 24,
-    width: 24,
-    borderRadius: 12,
+    height: 30,
+    width: 30,
+    borderRadius: 17,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#E24140",
@@ -313,6 +345,36 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: "auto",
   },
+  bellIcon: {
+    width: 20,
+    height: 20,
+    color: "#fff",
+  },
+  todayProgress_card: {
+    marginTop: 10,
+    height: hp("20%"),
+    width: "100%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 4,
+    borderRadius: 14,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 5,
+    marginVertical: 10,
+    marginHorizontal: "auto",
+  },
+  innerView: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  innerText: {},
 });
 
 export default Dashboard;

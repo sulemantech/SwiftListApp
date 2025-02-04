@@ -478,6 +478,7 @@ const styles = StyleSheet.create({
     marginVertical: hp("1.5%"),
     overflow: "hidden",
     flexDirection: "row",
+    
   },
   contentContainer: {
     flexDirection: "column",
