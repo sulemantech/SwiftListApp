@@ -1,7 +1,13 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 import React, { useState } from "react";
 import { Image } from "expo-image";
-import { ScrollView } from "react-native";
 // import Filtericon from '../../assets/images/filtericon.png';
 import first from "../../assets/images/SVG/dashboardgrocery.svg";
 import seconed from "../../assets/images/SVG/dashboardspiritualgoals.svg";
@@ -22,6 +28,7 @@ import {
 } from "react-native-responsive-screen";
 // import CircularProgress from "react-native-progress";
 import { Svg, Circle } from "react-native-svg";
+
 
 const Dashboard = () => {
   const cardDataArray = [
@@ -128,7 +135,7 @@ const Dashboard = () => {
                     key={index}
                     percentage={
                       cardDataArray.progress ? cardDataArray.progress * 100 : 1
-                    } 
+                    }
                     colors={[
                       "#FFF",
                       cardDataArray.badgeColor,
@@ -445,6 +452,7 @@ const styles = StyleSheet.create({
     // backgroundColor:"black",
     marginTop: 5,
   },
+
 });
 
 export default Dashboard;
