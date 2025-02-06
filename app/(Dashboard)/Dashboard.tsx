@@ -15,13 +15,13 @@ import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
 import { FontFamily } from "@/constants/theme";
+import ProgressCircle from "../../components/progress";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 // import CircularProgress from "react-native-progress";
 import { Svg, Circle } from "react-native-svg";
-
 
 const Dashboard = () => {
   const cardDataArray = [
@@ -30,7 +30,7 @@ const Dashboard = () => {
       description: "Add needed items.",
       items: "200 Items",
       percentagetext: "Bought 70%",
-      progress: 0.7,
+      progress: 0.8,
       color: "#008B94",
       Picture: first,
       bgColor: "#9DF4F4",
@@ -41,7 +41,7 @@ const Dashboard = () => {
       description: "Add your spiritual goals.",
       items: "10 Goals",
       percentagetext: "Achieved 30%",
-      progress: 0.3,
+      progress: 0.67,
       Picture: seconed,
       bgColor: "#98FBCB",
       badgeColor: "#4AA688",
@@ -51,7 +51,7 @@ const Dashboard = () => {
       description: "Add your grooming tasks in list.",
       items: "10 Tasks",
       percentagetext: "Completed 80%",
-      progress: 0.8,
+      progress: 0.72,
       Picture: third,
       bgColor: "#FEE5D7",
       badgeColor: "#C54B6C",
@@ -71,7 +71,7 @@ const Dashboard = () => {
       description: "Add items to your list.",
       items: "500 Recipes",
       percentagetext: "Cooked 0%",
-      progress: 0.7,
+      progress: 0.78,
       Picture: fifth,
       bgColor: "#FDDC8A",
       badgeColor: "#D88D1B",
@@ -121,6 +121,53 @@ const Dashboard = () => {
             <View style={styles.innerView}>
               <Text style={styles.innerText}>Today’s Progress</Text>
               {/* <CircularProgress/> */}
+
+              <View style={styles.progressCircles_view}>
+                {cardDataArray.map((cardDataArray, index) => (
+                  <ProgressCircle
+                    key={index}
+                    percentage={
+                      cardDataArray.progress ? cardDataArray.progress * 100 : 1
+                    } 
+                    colors={[
+                      "#FFF",
+                      cardDataArray.badgeColor,
+                      cardDataArray.badgeColor,
+                    ]}
+                    size={40}
+                    strokeWidth={7}
+                    textSize={10}
+                  />
+                ))}
+              </View>
+              <View style={styles.motivational_msg_view}>
+                <Image
+                  source={UserProfile}
+                  style={[
+                    styles.userProfileImage,
+                    { width: 17.69, height: 17.69 },
+                  ]}
+                />
+                <View
+                  style={{
+                    backgroundColor: "#8879F6",
+                    justifyContent: "center",
+                    borderRadius: 11.17,
+                    width: 208,
+                    height: 19,
+                    left: -4,
+                  }}
+                >
+                  <Text
+                    style={[
+                      styles.innerText,
+                      { color: "#FFF", textAlign: "center" },
+                    ]}
+                  >
+                    🎉 Keep the pace! You’re doing great.
+                  </Text>
+                </View>
+              </View>
             </View>
           </LinearGradient>
         </View>
@@ -369,12 +416,35 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
   },
   innerView: {
-    flexDirection: "row",
-    alignItems: "center",
+    // flexDirection: "row",
+    margin: 10,
+    alignItems: "flex-start",
     justifyContent: "space-between",
     width: "100%",
+    gap: 10,
   },
-  innerText: {},
+  innerText: {
+    fontFamily: "Poppins-Regular",
+    fontSize: 10,
+    color: "#000",
+    paddingVertical: "0.5%",
+    fontWeight: "400",
+    lineHeight: 12,
+    textAlign: "left",
+  },
+  progressCircles_view: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    // backgroundColor:"black",
+  },
+  motivational_msg_view: {
+    flexDirection: "row",
+    alignItems: "center",
+    // gap: 0,
+    // backgroundColor:"black",
+    marginTop: 5,
+  },
 });
 
 export default Dashboard;

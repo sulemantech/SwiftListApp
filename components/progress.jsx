@@ -1,5 +1,5 @@
 // import React, { useEffect } from "react";
-// import { TextInput, View } from "react-native";
+// import { Text, View } from "react-native";
 // import Animated, {
 //   interpolateColor,
 //   useAnimatedProps,
@@ -10,167 +10,76 @@
 // import { Circle, Svg } from "react-native-svg";
 
 // const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-// const AnimatedText = Animated.createAnimatedComponent(TextInput);
-
-// const radius = 45;
-// const circumference = radius * Math.PI * 2;
-// const duration = 6000;
-
-// const ProgressCircle = () => {
-//   const strokeOffset = useSharedValue(circumference);
-
-//   const percentage = useDerivedValue(() => {
-//     return ((circumference - strokeOffset.value) / circumference) * 100;
-//   });
-
-//   const strokeColor = useDerivedValue(() => {
-//     return interpolateColor(
-//       percentage.value,
-//       [0, 50, 100],
-//       ["#9E4784", "#66347F", "#37306B"]
-//     );
-//   });
-
-//   const animatedCircleProps = useAnimatedProps(() => {
-//     return {
-//       strokeDashoffset: strokeOffset.value, // Ensure animation works
-//       stroke: strokeColor.value,
-//     };
-//   });
-
-//   const animatedTextProps = useAnimatedProps(() => {
-//     return {
-//       text: `${Math.round(percentage.value)} %`,
-//     };
-//   });
-
-//   useEffect(() => {
-//     strokeOffset.value = withTiming(0, { duration }); // Ensure it animates
-//   }, []);
-
-//   return (
-//     <View
-//       style={{
-//         justifyContent: "center",
-//         alignItems: "center",
-//       }}
-//     >
-//       <AnimatedText
-//         editable={false} // Required for TextInput
-//         style={{
-//           color: "#37306B",
-//           fontSize: 24,
-//           fontWeight: "bold",
-//           position: "absolute",
-//         }}
-//         animatedProps={animatedTextProps}
-//       />
-//       <Svg height="200" width="200" viewBox="0 0 100 100">
-//         {/* Background Circle */}
-//         <Circle
-//           cx="50"
-//           cy="50"
-//           r="45"
-//           stroke="#E7E7E7"
-//           strokeWidth="10"
-//           fill="transparent"
-//         />
-//         {/* Animated Progress Circle */}
-//         <AnimatedCircle
-//           animatedProps={animatedCircleProps}
-//           cx="50"
-//           cy="50"
-//           r="45"
-//           strokeDasharray={`${circumference}`}
-//           strokeDashoffset={circumference} // Start from full circumference
-//           strokeWidth="10"
-//           fill="transparent"
-//         />
-//       </Svg>
-//     </View>
-//   );
-// };
-
-// export default ProgressCircle;
-
-// import React, { useEffect } from "react";
-// import { TextInput, View } from "react-native";
-// import Animated, {
-//   interpolateColor,
-//   useAnimatedProps,
-//   useDerivedValue,
-//   useSharedValue,
-//   withTiming,
-// } from "react-native-reanimated";
-// import { Circle, Svg } from "react-native-svg";
-
-// const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-// const AnimatedText = Animated.createAnimatedComponent(TextInput);
-
-// const radius = 45;
-// const circumference = radius * Math.PI * 2;
-// const duration = 2000;
+// const AnimatedText = Animated.createAnimatedComponent(Text);
 
 // const ProgressCircle = ({
 //   percentage = 0,
 //   colors = ["#9E4784", "#66347F", "#37306B"],
+//   size = 100,
+//   strokeWidth = 10,
+//   textSize = 24,
 // }) => {
-//   const strokeOffset = useSharedValue(circumference);
+//   const radius = (size - strokeWidth) / 2;
+//   const circumference = 2 * Math.PI * radius;
+//   const duration = 4000;
+
+//   const progress = useSharedValue(0);
 
 //   useEffect(() => {
-//     strokeOffset.value = withTiming(circumference * (1 - percentage / 100), {
-//       duration,
-//     });
+//     progress.value = withTiming(percentage, { duration });
 //   }, [percentage]);
 
+//   const strokeOffset = useDerivedValue(() => {
+//     return circumference * (1 - progress.value / 100);
+//   });
+
 //   const strokeColor = useDerivedValue(() => {
-//     return interpolateColor(percentage, [0, 50, 100], colors);
+//     return interpolateColor(progress.value, [0, 50, 100], colors);
 //   });
 
-//   const animatedCircleProps = useAnimatedProps(() => {
-//     return {
-//       strokeDashoffset: strokeOffset.value,
-//       stroke: strokeColor.value,
-//     };
-//   });
+//   const animatedCircleProps = useAnimatedProps(() => ({
+//     strokeDashoffset: strokeOffset.value,
+//     stroke: strokeColor.value,
+//   }));
 
-//   const animatedTextProps = useAnimatedProps(() => {
-//     return {
-//       text: `${Math.round(percentage)} %`,
-//     };
+//   const animatedText = useDerivedValue(() => {
+//     return `${Math.round(progress.value)}%`;
 //   });
 
 //   return (
 //     <View style={{ justifyContent: "center", alignItems: "center" }}>
 //       <AnimatedText
-//         editable={false}
 //         style={{
-//           color: "#37306B",
-//           fontSize: 24,
+//           color: "black",
+//           fontSize: textSize,
 //           fontWeight: "bold",
 //           position: "absolute",
+//           textAlign: "center",
 //         }}
-//         animatedProps={animatedTextProps}
-//       />
-//       <Svg height="200" width="200" viewBox="0 0 100 100">
+//       >
+//         {animatedText.value}
+//       </AnimatedText>
+//       <Svg height={size} width={size} viewBox={`0 0 ${size} ${size}`}>
 //         {/* Background Circle */}
 //         <Circle
-//           cx="50"
-//           cy="50"
-//           r="45"
+//           cx={size / 2}
+//           cy={size / 2}
+//           r={radius}
 //           stroke="#E7E7E7"
-//           strokeWidth="10"
+//           strokeWidth={strokeWidth}
 //           fill="transparent"
 //         />
 //         {/* Animated Progress Circle */}
 //         <AnimatedCircle
 //           animatedProps={animatedCircleProps}
-//           cx="50"
-//           cy="50"
-//           r="45"
+//           cx={size / 2}
+//           cy={size / 2}
+//           r={radius}
 //           strokeDasharray={circumference}
-//           strokeWidth="10"
+//           strokeWidth={strokeWidth}
+//           strokeLinecap="round"
 //           fill="transparent"
+//           transform={`rotate(-90 ${size / 2} ${size / 2})`} // Start from top
 //         />
 //       </Svg>
 //     </View>
@@ -192,14 +101,17 @@ import { Circle, Svg } from "react-native-svg";
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-const radius = 45;
-const circumference = radius * Math.PI * 2;
-const duration = 2000;
-
 const ProgressCircle = ({
   percentage = 0,
   colors = ["#9E4784", "#66347F", "#37306B"],
+  size = 100, // Dynamic size
+  strokeWidth = 10, // Dynamic stroke width
+  textSize = 24, // Dynamic text size
 }) => {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * Math.PI * 2;
+  const duration = 4000;
+
   const strokeOffset = useSharedValue(circumference);
   const [displayPercentage, setDisplayPercentage] = useState(0);
 
@@ -208,7 +120,6 @@ const ProgressCircle = ({
       duration,
     });
 
-    // Update percentage text smoothly
     let progress = 0;
     const interval = setInterval(() => {
       progress += 1;
@@ -232,37 +143,36 @@ const ProgressCircle = ({
 
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
-      {/* Display percentage text using state */}
       <TextInput
         editable={false}
-        value={`${displayPercentage} %`}
+        value={`${displayPercentage}%`}
         style={{
-          color: "#37306B",
-          fontSize: 24,
-          fontWeight: "bold",
+          color: "black",
+          fontSize: textSize,
+          fontWeight: "regular",
           position: "absolute",
           textAlign: "center",
         }}
       />
-      <Svg height="200" width="200" viewBox="0 0 100 100">
-        {/* Background Circle */}
+      <Svg height={size} width={size} viewBox={`0 0 ${size} ${size}`}>
         <Circle
-          cx="50"
-          cy="50"
-          r="45"
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
           stroke="#E7E7E7"
-          strokeWidth="10"
+          strokeWidth={strokeWidth}
           fill="transparent"
         />
-        {/* Animated Progress Circle */}
         <AnimatedCircle
           animatedProps={animatedCircleProps}
-          cx="50"
-          cy="50"
-          r="45"
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
           strokeDasharray={circumference}
-          strokeWidth="10"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
           fill="transparent"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`} // Rotate to start from top
         />
       </Svg>
     </View>
@@ -270,3 +180,46 @@ const ProgressCircle = ({
 };
 
 export default ProgressCircle;
+
+{
+  /* <CircularProgress/> */
+}
+{
+  /* <View style={styles.progressCircles_view}>
+                <ProgressCircle
+                  percentage={85}
+                  colors={["#FFF", "#ADF7FE", "#ADF7FE"]}
+                  size={40} // Custom size
+                  strokeWidth={7} // Thicker stroke
+                  textSize={10} // Larger text
+                />
+                <ProgressCircle
+                  percentage={85}
+                  colors={["#FFF", "#8BC17C", "#8BC17C"]}
+                  size={40} // Custom size
+                  strokeWidth={7} // Thicker stroke
+                  textSize={10} // Larger text
+                />
+                <ProgressCircle
+                  percentage={85}
+                  colors={["#FFF", "#BBBF42", "#BBBF42"]}
+                  size={40} // Custom size
+                  strokeWidth={7} // Thicker stroke
+                  textSize={10} // Larger text
+                />
+                <ProgressCircle
+                  percentage={85}
+                  colors={["#FFF", "#DD9947", "#DD9947"]}
+                  size={40} // Custom size
+                  strokeWidth={7} // Thicker stroke
+                  textSize={10} // Larger text
+                />
+                <ProgressCircle
+                  percentage={85}
+                  colors={["#FFF", "#DA716F", "#DA716F"]}
+                  size={40} // Custom size
+                  strokeWidth={7} // Thicker stroke
+                  textSize={10} // Larger text
+                />
+              </View> */
+}
