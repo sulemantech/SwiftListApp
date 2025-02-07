@@ -6,7 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image } from "expo-image";
 // import Filtericon from '../../assets/images/filtericon.png';
 import first from "../../assets/images/SVG/dashboardgrocery.svg";
