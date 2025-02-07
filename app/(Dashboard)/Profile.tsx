@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { COLORS } from "@/constants";
-import ProgressCircle from "../../components/progress";
+// import ProgressCircle from "../../components/progress";
+import TextInput2 from "../../components/Input";
 
 const Profile = () => {
   return (
@@ -14,12 +15,21 @@ const Profile = () => {
         strokeWidth={20} // Increase the stroke thickness
         textSize={18} // Increase the text font size
       /> */}
-      <ProgressCircle
+      {/* <ProgressCircle
         percentage={85}
         colors={["#FF5733", "red", "red"]}
         size={80} // Custom size
         strokeWidth={15} // Thicker stroke
         textSize={18} // Larger text
+      /> */}
+      <TextInput2
+        placeholder="Enter Name"
+        label={"Name"}
+        value={undefined}
+        onFocus={undefined}
+        onBlur={undefined}
+        onChangeText={undefined}
+        bgColor="red"
       />
     </View>
   );

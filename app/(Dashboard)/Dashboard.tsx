@@ -16,7 +16,7 @@ import fourth from "../../assets/images/SVG/thingstodo.svg";
 import fifth from "../../assets/images/SVG/recipe.svg";
 import bell from "../../assets/images/SVG/dashboard/bell.svg";
 import CardComponent from "../../components/Card";
-const UserProfile = require("../../assets/images/UserProfile.png");
+import UserProfile from "../../assets/images/UserProfile.png";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
@@ -28,6 +28,7 @@ import {
 } from "react-native-responsive-screen";
 // import CircularProgress from "react-native-progress";
 import { Svg, Circle } from "react-native-svg";
+import { router } from "expo-router";
 
 
 const Dashboard = () => {
@@ -87,12 +88,16 @@ const Dashboard = () => {
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
   const [value, setValue] = useState(0);
+  const handleNavigate = (name:any) => {
+    router.push({
+      pathname: "/(Dashboard)/Categories",
+      params: { name: name },
+    });
+  };
 
   return (
     <>
-      {/* {selectedCard ? (
-        <ItemsList ItemName={selectedCard} ListName={selectedCard.title} onBackPress={handleBackPress} />
-        ) : ( */}
+   
       <LinearGradient
         colors={["#FFC41F10", "#FFFFFF10", "#FFC41F20"]}
         style={styles.LinearGradient}
@@ -198,7 +203,7 @@ const Dashboard = () => {
             <CardComponent
               key={index}
               data={data}
-              // onPress={() => handleCardClick(data)}
+              onPress={() => handleNavigate(data.title)}
             />
           ))}
 
