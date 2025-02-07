@@ -16,7 +16,7 @@ import fourth from "../../assets/images/SVG/thingstodo.svg";
 import fifth from "../../assets/images/SVG/recipe.svg";
 import bell from "../../assets/images/SVG/dashboard/bell.svg";
 import CardComponent from "../../components/Card";
-const UserProfile = require("../../assets/images/UserProfile.png");
+import UserProfile from "../../assets/images/UserProfile.png";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";

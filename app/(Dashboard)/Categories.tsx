@@ -1,14 +1,33 @@
-import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  TextInput,
+} from "react-native";
 import React from "react";
 import { COLORS } from "@/constants";
 import SpiritualSVG from "../../assets/images/SVG/spiritualpage.svg";
+import searchicon from "../../assets/images/searchiconactive.png";
+import searchiconBlack from "../../assets/images/searchiconnotactive.png";
+import arrowRight from "../../assets/images/arrownotactive.png";
+import heart from "../../assets/images/heartIcon.png";
 import { SvgProps } from "react-native-svg"; // Import SvgProps for type safety
 import { Image } from "expo-image";
+import TextInput2 from "../../components/Input";
+
 const { width, height } = Dimensions.get("window");
 
 const SpiritualIcon = SpiritualSVG as unknown as React.FC<SvgProps>;
 
 const Categories = () => {
+  const [isSearchFocused, setIsSearchFocused] = React.useState(false);
+
+  function filterItems(text: string): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <View style={styles.container}>
       {/* Static Header */}
@@ -23,12 +42,40 @@ const Categories = () => {
           <Image source={SpiritualIcon} style={styles.main_image} />
         </View>
 
-        <Text style={styles.caption2}>Category Description</Text>
+        <Text style={styles.caption2}>
+          Scroll to the predefined categories or Search them freely
+        </Text>
+        {/* Search bar */}
+        <View style={styles.searchContainer}>
+          <TextInput2
+            borderRadius={40}
+            placeholder={"Search items here..."}
+            fontsize={16}
+            // onChangeText={text => filterItems(text)}
+            style={[
+              styles.searchInput,
+              {
+                backgroundColor: isSearchFocused ? "#FFF" : "#9CF6FF",
+              },
+            ]}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setIsSearchFocused(false)}
+          />
+          <View style={styles.searchiconContainer}>
+            <Image
+              source={isSearchFocused ? searchicon : searchiconBlack}
+              style={styles.searchicon}
+            />
+          </View>
+        </View>
       </View>
 
       {/* Static Category List */}
-      <FlatList
-        data={[
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.subCategoriesContainer}
+      >
+        {[
           { name: "Category 1" },
           { name: "Category 2" },
           { name: "Category 3" },
@@ -38,16 +85,12 @@ const Categories = () => {
           { name: "Category 7" },
           { name: "Category 8" },
           { name: "Category 9" },
-        ]}
-        keyExtractor={(item, index) => index.toString()}
-        showsVerticalScrollIndicator={false}
-        style={styles.subCategoriesContainer}
-        renderItem={({ item }) => (
-          <View style={styles.subCategoryItem}>
+        ].map((item, index) => (
+          <View key={index.toString()} style={styles.subCategoryItem}>
             <Text style={styles.subCategoryName}>{item.name}</Text>
           </View>
-        )}
-      />
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -69,16 +112,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   categoryContainer: {
-    // marginTop: 20,
+    marginTop: height * 0.08,
     alignItems: "center",
     width: "100%",
-    // backgroundColor: "red",
+    // overflow: "hidden",
   },
   caption2: {
     fontSize: 13,
     paddingVertical: 5,
     color: "#6c6c6c",
     textAlign: "center",
+    // fontFamily: "Poppins-Regular",
+    // fontSize: 13,
+    // paddingVertical: "0.4%",
+    // paddingHorizontal: "4%",
+    // color: "#6c6c6c",
+    // fontWeight: "300",
+    // lineHeight: 23,
+    // textAlign: "center",
   },
   subCategoriesContainer: {
     marginTop: 20,
@@ -98,7 +149,41 @@ const styles = StyleSheet.create({
   },
   main_image: {
     width: width * 0.5,
-    height: height * 0.20,
+    height: height * 0.2,
     resizeMode: "contain",
+  },
+  searchContainer: {
+    flexDirection: "row",
+    width: "95%",
+    position: "relative",
+    // backgroundColor: "red",
+    // padding: 10,
+  },
+  searchicon: {
+    width: "100%",
+    height: "100%",
+    // backgroundColor: "red",
+  },
+
+  searchiconContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 40,
+    aspectRatio: 1,
+    borderRadius: 100,
+    overflow: "hidden",
+    position: "absolute",
+    top: "10%",
+    // backgroundColor: "red",
+    right: 10,
+  },
+  searchInput: {
+    width: "100%",
+    borderRadius: 40,
+    padding: 15,
+    backgroundColor: "#FFF",
+    borderWidth: 1,
+    borderColor: "#007AFF15",
   },
 });
