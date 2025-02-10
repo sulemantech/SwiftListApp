@@ -1,8 +1,8 @@
 import { Stack, useRouter, useSegments } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useEffect, useState } from "react";
-
+import { ProductProvider } from "../Context/CardContext";
 
 export default function RootLayout() {
   const [initializing, setInitializing] = useState(true);
@@ -13,36 +13,38 @@ export default function RootLayout() {
   const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
     console.log(user);
     setUser(user);
-    if (initializing) { setInitializing(false) }
-  }
+    if (initializing) {
+      setInitializing(false);
+    }
+  };
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
 
   useEffect(() => {
-    if (initializing) return ;
-    const inAuthGroup = segment[0] === '(Dashboard)';
-    if(user && !inAuthGroup){
-      router.replace('/(Dashboard)/Dashboard')
-    }else if(!user && inAuthGroup){
-      router.replace('/')
+    if (initializing) return;
+    const inAuthGroup = segment[0] === "(Dashboard)";
+    if (user && !inAuthGroup) {
+      router.replace("/(Dashboard)/Dashboard");
+    } else if (!user && inAuthGroup) {
+      router.replace("/");
     }
-    
-  },[user , initializing]);
+  }, [user, initializing]);
 
   if (initializing) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size={"large"} />
       </View>
-    )
+    );
   }
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(Dashboard)" options={{ headerShown: false }} />
-
-    </Stack>
-  )
+    <ProductProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(Dashboard)" options={{ headerShown: false }} />
+      </Stack>
+    </ProductProvider>
+  );
 }

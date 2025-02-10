@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   StyleSheet,
   Text,
@@ -11,12 +11,12 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
-import TextInput2 from "./Input1";
+import TextInput2 from "../../components/Input1";
 import Checkbox from "expo-checkbox";
-import Signin from "../assets/images/SVG/signin.svg";
-import facebook from "../assets/images/social-media-facebook.png";
-import google from "../assets/images/social-media-google.png";
-import back from "../assets/images/back-arrow.png";
+import Signin from "../../assets/images/SVG/signin.svg";
+import facebook from "../../assets/images/social-media-facebook.png";
+import google from "../../assets/images/social-media-google.png";
+import back from "../../assets/images/back-arrow.png";
 // import SCREENS from '..';
 // import useFirebaseMessaging from '../components/UseFirebaseMessaging';
 // import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -174,6 +174,12 @@ const LoginScreen = ({ navigation }) => {
     handleSignIn();
   };
 
+  const handleNavigate = () => {
+    router.push({
+      pathname: "/(auth)/Signup",
+    });
+  };
+
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -234,7 +240,7 @@ const LoginScreen = ({ navigation }) => {
 
         <TouchableOpacity
           activeOpacity={1}
-          //  onPress={() => navigation.navigate(SCREENS.ForgotPassword)}
+        //  onPress={() => navigation.navigate(SCREENS.ForgotPassword)}
         >
           <Text style={styles.forgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
@@ -299,12 +305,11 @@ const LoginScreen = ({ navigation }) => {
           <Text style={styles.checkboxLabel}>Don't Have an Account?</Text>
         </View>
 
-        <Link
-          href="/auth/Signup"
-          //  onPress={() => navigation.navigate(SCREENS.signup)}
+        <TouchableOpacity activeOpacity={1}
+         onPress={() => handleNavigate()}
         >
           <Text style={styles.forgotPassword}>Sign Up</Text>
-        </Link>
+        </TouchableOpacity>
       </View>
 
       {/* {loading && (

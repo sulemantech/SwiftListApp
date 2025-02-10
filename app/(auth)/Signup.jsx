@@ -29,7 +29,7 @@ const SignUpScreen = ({ navigation }) => {
         try {
           await auth().createUserWithEmailAndPassword(email, password);
           await auth().currentUser.updateProfile({ displayName: name });
-          navigation.navigate(SCREENS.Dashbored);
+        //   navigation.navigate(SCREENS.Dashbored);
         } catch (err) {
           setError(err.message);
         }
@@ -85,7 +85,7 @@ const SignUpScreen = ({ navigation }) => {
 
             <View style={styles.containersign}>
                 <TouchableOpacity activeOpacity={1} style={styles.signInButton}
-                //  onPress={handleSignUp}
+                 onPress={handleSignUp}
                 >
                     <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>

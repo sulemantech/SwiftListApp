@@ -131,7 +131,7 @@ const Dashboard = () => {
             style={styles.LinearGradient}
           >
             <View style={styles.innerView}>
-              <Text style={styles.innerText}>Today’s Progress</Text>
+              <Text style={styles.innerText}>Tasks Completed !</Text>
               {/* <CircularProgress/> */}
 
               <View style={styles.progressCircles_view}>

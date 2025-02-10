@@ -1,20 +1,12 @@
-import React from 'react';
-import { Image, StyleSheet, View, Text, Platform } from 'react-native';
-import { ProductProvider } from '../Context/CardContext'
-import { useNavigation } from '@react-navigation/native';
-import LoginScreen from '../components/Login';
+import React from "react";
+import { Image, StyleSheet, View, Text, Platform } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import LoginScreen from "./(auth)/Login";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
 
-  return (
-
-    <ProductProvider>
-      <LoginScreen navigation={navigation}/>
-    </ProductProvider>
-  );
+  return <LoginScreen navigation={navigation} />;
 }
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
