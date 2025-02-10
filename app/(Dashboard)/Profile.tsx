@@ -1,37 +1,33 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, StatusBar, SafeAreaView } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
 import { COLORS } from "@/constants";
-// import ProgressCircle from "../../components/progress";
-import TextInput2 from "../../components/Input";
+import Header from "../../components/Header";
 
 const Profile = () => {
+  const router = useRouter();
+
+  const handleBackPress = () => {
+    router.back();
+  };
+
   return (
-    <View style={styles.container}>
-      {/* <Text style={styles.text}>Profile Coming Soon!</Text> */}
-      {/* <ProgressCircle
-        percentage={80}
-        colors={["#FF5733", "#FFC300", "#DAF7A6"]}
-        size={100} // Increase overall size of the progress bar
-        strokeWidth={20} // Increase the stroke thickness
-        textSize={18} // Increase the text font size
-      /> */}
-      {/* <ProgressCircle
-        percentage={85}
-        colors={["#FF5733", "red", "red"]}
-        size={80} // Custom size
-        strokeWidth={15} // Thicker stroke
-        textSize={18} // Larger text
-      /> */}
-      <TextInput2
-        placeholder="Enter Name"
-        label={"Name"}
-        value={undefined}
-        onFocus={undefined}
-        onBlur={undefined}
-        onChangeText={undefined}
-        bgColor="red"
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.headerContainer}>
+        <Header
+          title={"Profile"}
+          Rightelement={true}
+          onBack={handleBackPress}
+        />
+      </View>
+      <View style={styles.content}>
+        <Header
+          title={"Profile"}
+          Rightelement={true}
+          onBack={handleBackPress}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -40,13 +36,14 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+  },
+  headerContainer: {
+    marginTop: 30,
+  },
+  content: {
+    flex: 1, // Fills remaining space
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.primary,
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: COLORS.secondary,
   },
 });
