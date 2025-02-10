@@ -6,7 +6,7 @@ import TextInput2 from '../../components/Input';
 import Signin from '../../assets/images/SVG/signup.svg';
 import back from '../../assets/images/back-arrow.png';
 import { Link } from 'expo-router';
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -17,22 +17,22 @@ const SignUpScreen = ({ navigation }) => {
 
     const handleSignUp = async () => {
         // Basic validation
-        // if (password !== confirmPassword) {
-        //   setError("Passwords do not match!");
-        //   return;
-        // }
-        // if (!email || !password) {
-        //   setError("Please fill in all fields.");
-        //   return;
-        // }
+        if (password !== confirmPassword) {
+          setError("Passwords do not match!");
+          return;
+        }
+        if (!email || !password) {
+          setError("Please fill in all fields.");
+          return;
+        }
 
-        // try {
-        //   await auth().createUserWithEmailAndPassword(email, password);
-        //   await auth().currentUser.updateProfile({ displayName: name });
-        //   navigation.navigate(SCREENS.Dashbored);
-        // } catch (err) {
-        //   setError(err.message);
-        // }
+        try {
+          await auth().createUserWithEmailAndPassword(email, password);
+          await auth().currentUser.updateProfile({ displayName: name });
+          navigation.navigate(SCREENS.Dashbored);
+        } catch (err) {
+          setError(err.message);
+        }
     };
 
     return (

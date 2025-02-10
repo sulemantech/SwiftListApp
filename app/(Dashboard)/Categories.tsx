@@ -116,7 +116,14 @@ const Categories = () => {
         />
         <Header onBack={router.back} title={name} />
 
-        <View style={styles.categoryContainer}>
+        {/* <View style={styles.categoryContainer}> */}
+        <View
+          style={
+            isSearchFocused
+              ? styles.serachFocused_categoryContainer
+              : styles.categoryContainer
+          }
+        >
           {!isSearchFocused && SelectedImageComponent && (
             <Image
               source={SelectedImageComponent}
@@ -135,8 +142,28 @@ const Categories = () => {
                 : categories[0].category.description}
             </Text>
           )}
+          {/* {!isSearchFocused && SelectedImageComponent && (
+            <Image
+              source={SelectedImageComponent}
+              style={styles.categoryImage}
+            />
+          )} */}
 
-          <View style={styles.searchContainer}>
+          {/* <View
+            style={
+              isSearchFocused
+                ? styles.search_focused_searchContainer
+                : styles.searchContainer
+            }
+          > */}
+          <View
+            style={[
+              styles.searchContainerBase,
+              isSearchFocused && styles.search_focused_searchContainer,
+              !isSearchFocused && styles.searchContainer,
+            ]}
+          >
+            {/* <View style={styles.searchContainer}> */}
             {/* <TextInput2
               borderRadius={40}
               bgColor={isSearchFocused ? "#FFF" : "#007AFF"}
@@ -236,29 +263,46 @@ const styles = StyleSheet.create({
     height: "38%",
     // backgroundColor: "green",
   },
+  serachFocused_categoryContainer: {
+    top: 0,
+    // backgroundColor: "red",
+    alignItems: "center",
+    width: "100%",
+    height: "8%",
+    marginBottom: "3%",
+  },
+
   categoryImage: {
     width: width * 0.4,
     height: height * 0.25,
     resizeMode: "contain",
     // backgroundColor:"red"
   },
-  searchContainer: {
-    // height: "14.5%",
+  searchContainerBase: {
     width: "95%",
     height: "17%",
     position: "relative",
+    top: 10,
     // backgroundColor: "red",
+  },
+  searchContainer: {
+    // backgroundColor: "green", // Default background
+  },
+  search_focused_searchContainer: {
+    width: "95%",
+    height: "120%",
+    // backgroundColor: "black", // Background when focused
   },
   searchInput: {
     width: "95%",
     height: "100%",
     // backgroundColor: "red",
     borderRadius: 40,
-    paddingHorizontal:"4.3%",
+    paddingHorizontal: "4.3%",
     marginHorizontal: "2%",
   },
   subCategoriesContainer: {
-    // marginTop: 20,
+    marginTop: 20,
     marginBottom: 80,
     width: "95%",
   },
@@ -278,9 +322,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     // paddingRight:"9%",
-    
+
     // backgroundColor: "red",
-    
   },
   subCategoryItem: {
     marginBottom: 10,
