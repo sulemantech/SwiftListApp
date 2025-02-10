@@ -6,7 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image } from "expo-image";
 // import Filtericon from '../../assets/images/filtericon.png';
 import first from "../../assets/images/SVG/dashboardgrocery.svg";
@@ -28,6 +28,7 @@ import {
 } from "react-native-responsive-screen";
 // import CircularProgress from "react-native-progress";
 import { Svg, Circle } from "react-native-svg";
+import { router } from "expo-router";
 
 
 const Dashboard = () => {
@@ -87,12 +88,16 @@ const Dashboard = () => {
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
   const [value, setValue] = useState(0);
+  const handleNavigate = (name:any) => {
+    router.push({
+      pathname: "/(Dashboard)/Categories",
+      params: { name: name },
+    });
+  };
 
   return (
     <>
-      {/* {selectedCard ? (
-        <ItemsList ItemName={selectedCard} ListName={selectedCard.title} onBackPress={handleBackPress} />
-        ) : ( */}
+   
       <LinearGradient
         colors={["#FFC41F10", "#FFFFFF10", "#FFC41F20"]}
         style={styles.LinearGradient}
@@ -198,7 +203,7 @@ const Dashboard = () => {
             <CardComponent
               key={index}
               data={data}
-              // onPress={() => handleCardClick(data)}
+              onPress={() => handleNavigate(data.title)}
             />
           ))}
 
