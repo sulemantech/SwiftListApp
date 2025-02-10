@@ -29,6 +29,7 @@ import {
 // import CircularProgress from "react-native-progress";
 import { Svg, Circle } from "react-native-svg";
 import { router } from "expo-router";
+import React from "react";
 
 
 const Dashboard = () => {

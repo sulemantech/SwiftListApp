@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import ChevronIcon from '../../assets/images/SVG/profilepage/chevron.svg'; // Chevron SVG
-import Fifth from '../../assets/images/SVG/profilepage/profile.svg'; // Icon SVG
+import ChevronIcon from '../assets/images/SVG/profilepage/chevron.svg'; // Chevron SVG
+import Fifth from '../assets/images/SVG/profilepage/profile.svg'; // Icon SVG
 
 const LabelWithBtn = ({ text, onPress = () => { console.log('Button pressed'); }, IconsURL=Fifth, iconSize = { width: 16, height: 16 } }) => {
     return (
