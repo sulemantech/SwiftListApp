@@ -1,70 +1,63 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import TextInput2 from '../../components/Input';
-import Signin from '../../assets/images/SVG/restpassword.svg';
-// import SCREENS from '..';
+import back from '../../assets/images/back-arrow.png';
+import Signin from '../../assets/images/SVG/emailsent.svg';
+import SCREENS from '..';
 
-const ResetPassword = ({ navigation }) => {
+const EmailSuccess = () => {
   return (
-    <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
+    <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.signInText}>Password Reset</Text>
+        <TouchableOpacity activeOpacity={1}
+        //  onPress={() => navigation.goBack()}
+         >
+          <Image source={back} style={styles.back}
+           />
+        </TouchableOpacity>
+        <Text style={styles.signInText}> </Text>
       </View>
 
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.signinImage} /> */}
         <Signin />
-
-        <Text style={styles.instructions}>Enter new password and confirm.</Text>
-
-        <TextInput2
-          bgcolor={'#fff'}
-          label={'New Password'}
-          placeholder={'Enter new password'}
-        />
-        <TextInput2
-          bgcolor={'#fff'}
-          label={'Confirm Password'}
-          placeholder={'Confirm password'}
-        />
+        <Text style={styles.instructions}>
+          Email has been sent to your email address. Please check your inbox for email and follow instructions.
+        </Text>
       </View>
 
       <View style={styles.containersign}>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => navigation.navigate(SCREENS.Congratulation)}
-          style={styles.signInButton}>
-          <Text style={styles.buttonText}>Change Password</Text>
+          style={styles.signInButton}
+          // onPress={() => navigation.navigate(SCREENS.login)}
+          // onPress={() => navigation.navigate(SCREENS.ResetPassword)}
+          >
+          <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
-export default ResetPassword;
+export default EmailSuccess;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 70,
+    alignItems: 'center',
     backgroundColor: '#fff',
     paddingHorizontal: '5%',
   },
   headerContainer: {
     position: 'absolute',
     top: 0,
-    paddingVertical: 7,
+    padding: 7,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+    height: '10%',
   },
   back: {
     width: 25,
@@ -78,20 +71,19 @@ const styles = StyleSheet.create({
   },
   inputbox: {
     width: '100%',
-    marginTop: 40,
+    marginTop: 7,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 20,
+    gap: 10,
   },
   signinImage: {
     marginBottom: 10,
-    marginHorizontal: 'auto',
   },
   instructions: {
     color: '#6c6c6c',
-    width: '100%',
     fontSize: 12,
     lineHeight: 23,
-    marginHorizontal: 'auto',
+    width: '100%',
     fontFamily: 'Poppins-Regular',
     fontWeight: '300',
     textAlign: 'left',
@@ -107,7 +99,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#52C2FE',
     borderRadius: 30,
-    paddingVertical: 20,
+    paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,

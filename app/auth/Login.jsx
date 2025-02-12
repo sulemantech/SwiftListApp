@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Image } from "expo-image";
-import { Link, router } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import {
   StyleSheet,
   Text,
@@ -26,13 +26,14 @@ import auth from "@react-native-firebase/auth";
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import messaging from '@react-native-firebase/messaging'
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const routerr = useRouter();
   // const { setUserDetails, isAuthenticated } = useContext(ProductContext);
 
   // useEffect(() => {
@@ -192,7 +193,9 @@ const LoginScreen = ({ navigation }) => {
         barStyle={"dark-content"}
       />
       <View style={styles.headerContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
+        <TouchableOpacity activeOpacity={1}
+        //  onPress={() => navigation.goBack()}
+         >
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>
@@ -304,12 +307,14 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.checkboxContainer}>
           <Text style={styles.checkboxLabel}>Don't Have an Account?</Text>
         </View>
-
-        <TouchableOpacity activeOpacity={1}
-         onPress={() => handleNavigate()}
+        <TouchableOpacity
+          activeOpacity={1}
+         onPress={() => routerr.push('/auth/Signup')}
         >
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
+        
+
       </View>
 
       {/* {loading && (

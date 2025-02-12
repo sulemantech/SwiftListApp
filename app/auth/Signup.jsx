@@ -8,32 +8,32 @@ import back from '../../assets/images/back-arrow.png';
 import { Link } from 'expo-router';
 import auth from '@react-native-firebase/auth';
 
-const SignUpScreen = ({ navigation }) => {
+const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
     const [error, setError] = useState(null);
 
-    const handleSignUp = async () => {
-        // Basic validation
-        if (password !== confirmPassword) {
-          setError("Passwords do not match!");
-          return;
-        }
-        if (!email || !password) {
-          setError("Please fill in all fields.");
-          return;
-        }
+    // const handleSignUp = async () => {
+    //     // Basic validation
+    //     if (password !== confirmPassword) {
+    //       setError("Passwords do not match!");
+    //       return;
+    //     }
+    //     if (!email || !password) {
+    //       setError("Please fill in all fields.");
+    //       return;
+    //     }
 
-        try {
-          await auth().createUserWithEmailAndPassword(email, password);
-          await auth().currentUser.updateProfile({ displayName: name });
-        //   navigation.navigate(SCREENS.Dashbored);
-        } catch (err) {
-          setError(err.message);
-        }
-    };
+    //     try {
+    //       await auth().createUserWithEmailAndPassword(email, password);
+    //       await auth().currentUser.updateProfile({ displayName: name });
+    //     //   navigation.navigate(SCREENS.Dashbored);
+    //     } catch (err) {
+    //       setError(err.message);
+    //     }
+    // };
 
     return (
         <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
@@ -85,7 +85,7 @@ const SignUpScreen = ({ navigation }) => {
 
             <View style={styles.containersign}>
                 <TouchableOpacity activeOpacity={1} style={styles.signInButton}
-                 onPress={handleSignUp}
+                //  onPress={handleSignUp}
                 >
                     <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
@@ -94,7 +94,7 @@ const SignUpScreen = ({ navigation }) => {
             <View style={styles.row2}>
                 <Text style={styles.checkboxLabel}>Already Have an Account?</Text>
                 <Link 
-                // href='/Screens/LoginScreen' 
+                href='/auth/Login' 
                 >
                     <Text style={styles.forgotPassword}>Sign Up</Text>
                 </Link>
@@ -103,7 +103,7 @@ const SignUpScreen = ({ navigation }) => {
     );
 };
 
-export default SignUpScreen;
+export default Signup;
 
 const styles = StyleSheet.create({
     container: {

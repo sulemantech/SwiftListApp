@@ -7,7 +7,7 @@ import {ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nativ
 // import SCREENS from '..';
 // import CustomModal from '../components/Modal';
 
-const ForgotPassword = ({ navigation }) => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [modalVisible, setModalVisible] = useState(false); // State to control modal visibility
   const [modalMessage, setModalMessage] = useState(''); // Message to display in the modal

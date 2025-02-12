@@ -4,7 +4,7 @@ import back from '../../assets/images/back-arrow.png';
 import Signin from '../../assets/images/SVG/passwordchanged.svg';
 import SCREENS from '..';
 
-const Congratulation = ({ navigation }) => {
+const Congratulation = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
