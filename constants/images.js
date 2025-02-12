@@ -1,3 +1,5 @@
+// profilepage
+
 // Spices image paths
 const basil = require('../assets/images/SwiftlistApp/Grocery/Spices/Basil.png');
 const blackCardamom = require('../assets/images/SwiftlistApp/Grocery/Spices/BlackCardamom.png');

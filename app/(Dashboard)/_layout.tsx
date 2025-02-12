@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Image, Platform, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Image,
+  Platform,
+  Text,
+  StyleSheet,
+  ImageSourcePropType,
+} from "react-native";
 import { Tabs } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
@@ -19,7 +26,7 @@ export default function DashboardLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Notification1}
+              source={icons.Notification1 as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 // styles.icon,
@@ -45,7 +52,7 @@ export default function DashboardLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Explore_outline}
+              source={icons.Explore_outline as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
@@ -76,7 +83,7 @@ export default function DashboardLayout() {
               style={styles.gradientIcon}
             >
               <Image
-                source={icons.Home1}
+                source={icons.Home1 as ImageSourcePropType}
                 resizeMode="contain"
                 style={styles.mainIcon}
               />
@@ -90,7 +97,7 @@ export default function DashboardLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Categories_outline}
+              source={icons.Categories_outline as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
@@ -115,7 +122,7 @@ export default function DashboardLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Profile_outline}
+              source={icons.Profile_outline as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
