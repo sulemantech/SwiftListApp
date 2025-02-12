@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
+  Image,
 } from "react-native";
 import React, { useContext } from "react";
 import auth from "@react-native-firebase/auth";
@@ -24,6 +25,8 @@ import deleteaccount from "../../assets/images/profilepage/deleteaccount.png";
 import Edit from "../../assets/images/profilepage/edit.png";
 import ChevronIcon from "../../assets/images/SVG/profilepage/chevron.svg";
 import LabelWithBtn from "../../components/LabelWithBtn";
+import UserProfile from "../../assets/images/UserProfile.png";
+
 import Header from "../../components/Header";
 import { router } from "expo-router";
 
@@ -91,8 +94,10 @@ const Profile = () => {
           {/* <Image
             source={{ uri: userDetails?.UserProfilePicture }}
             style={styles.profileImage}
-          /> */}
+          />  */}
+          <Image source={UserProfile} style={styles.profileImage} />
           <View style={styles.textContainer}>
+            <Text style={styles.name}>Syed Abdullah</Text>
             {/* <Text style={styles.name}>{userDetails?.UserName}</Text> */}
             <Text style={styles.email}>{"Premium Member"}</Text>
           </View>
