@@ -68,11 +68,11 @@ const ForgotPassword = () => {
       </View> */}
 
       {/* Custom Modal for alerts */}
-      {/* <CustomModal 
-        isVisible={modalVisible} 
-        onClose={() => setModalVisible(false)} 
+      {/* <CustomModal
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
         title="Password Reset"
-        description={modalMessage} 
+        description={modalMessage}
       /> */}
     </ScrollView>
   );
@@ -146,3 +146,14 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
+// import { View, Text } from "react-native";
+// import React from "react";
+
+// export default function ForgotPassword() {
+//   return (
+//     <View>
+//       <Text>ForgotPassword</Text>
+//     </View>
+//   );
+// }

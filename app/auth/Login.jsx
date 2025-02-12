@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Image } from "expo-image";
-import { Link, useRouter } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 import {
   StyleSheet,
   Text,
@@ -175,11 +175,7 @@ const LoginScreen = () => {
     handleSignIn();
   };
 
-  const handleNavigate = () => {
-    router.push({
-      pathname: "/(auth)/Signup",
-    });
-  };
+  
 
   return (
     <ScrollView
@@ -193,9 +189,10 @@ const LoginScreen = () => {
         barStyle={"dark-content"}
       />
       <View style={styles.headerContainer}>
-        <TouchableOpacity activeOpacity={1}
-        //  onPress={() => navigation.goBack()}
-         >
+        <TouchableOpacity
+          activeOpacity={1}
+          //  onPress={() => navigation.goBack()}
+        >
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>
@@ -243,7 +240,7 @@ const LoginScreen = () => {
 
         <TouchableOpacity
           activeOpacity={1}
-        //  onPress={() => navigation.navigate(SCREENS.ForgotPassword)}
+          onPress={() => routerr.push("/auth/ForgotPassword")}
         >
           <Text style={styles.forgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
@@ -309,12 +306,10 @@ const LoginScreen = () => {
         </View>
         <TouchableOpacity
           activeOpacity={1}
-         onPress={() => routerr.push('/auth/Signup')}
+          onPress={() => routerr.push("/auth/Signup")}
         >
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
-        
-
       </View>
 
       {/* {loading && (
