@@ -15,25 +15,25 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [error, setError] = useState(null);
 
-    // const handleSignUp = async () => {
-    //     // Basic validation
-    //     if (password !== confirmPassword) {
-    //       setError("Passwords do not match!");
-    //       return;
-    //     }
-    //     if (!email || !password) {
-    //       setError("Please fill in all fields.");
-    //       return;
-    //     }
+    const handleSignUp = async () => {
+        // Basic validation
+        if (password !== confirmPassword) {
+          setError("Passwords do not match!");
+          return;
+        }
+        if (!email || !password) {
+          setError("Please fill in all fields.");
+          return;
+        }
 
-    //     try {
-    //       await auth().createUserWithEmailAndPassword(email, password);
-    //       await auth().currentUser.updateProfile({ displayName: name });
-    //     //   navigation.navigate(SCREENS.Dashbored);
-    //     } catch (err) {
-    //       setError(err.message);
-    //     }
-    // };
+        try {
+          await auth().createUserWithEmailAndPassword(email, password);
+          await auth().currentUser.updateProfile({ displayName: name });
+        //   navigation.navigate(SCREENS.Dashbored);
+        } catch (err) {
+          setError(err.message);
+        }
+    };
 
     return (
         <ScrollView style={styles.container} keyboardShouldPersistTaps='handled'>
@@ -85,7 +85,7 @@ const Signup = () => {
 
             <View style={styles.containersign}>
                 <TouchableOpacity activeOpacity={1} style={styles.signInButton}
-                //  onPress={handleSignUp}
+                 onPress={handleSignUp}
                 >
                     <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
@@ -93,8 +93,8 @@ const Signup = () => {
 
             <View style={styles.row2}>
                 <Text style={styles.checkboxLabel}>Already Have an Account?</Text>
-                <Link 
-                href='/auth/Login' 
+                <Link
+                    href='/auth/Login'
                 >
                     <Text style={styles.forgotPassword}>Sign Up</Text>
                 </Link>

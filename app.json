@@ -29,6 +29,7 @@
     "plugins": [
       "expo-router",
       [
+        "@react-native-google-signin/google-signin",
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
@@ -41,7 +42,8 @@
         "expo-build-properties",
         {
           "ios": {
-            "useFrameworks": "static"
+            "useFrameworks": "static",
+            "googleServicesFile": "./GoogleService-Info.plist"
           }
         }
       ],
