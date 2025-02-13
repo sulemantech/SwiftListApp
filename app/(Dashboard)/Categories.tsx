@@ -8,15 +8,9 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-// import back from '../../assets/images/back-arrow.png';
-// import heart from '../../assets/images/heartIcon.png';
-// import arrowRight from '../../assets/images/arrownotactive.png';
-// import arrowRightactive from '../../assets/images/arrowactive.png';
 import searchicon from "../../assets/images/searchiconactive.png";
 import searchiconBlack from "../../assets/images/searchiconnotactive.png";
-
 import PersonalGroomingSVG from "../../assets/images/SVG/pgrommingpage.svg";
-
 import { categories } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
 // import { ProductContext } from '../../Context/CardContext';
@@ -43,9 +37,10 @@ const Categories = () => {
   // useEffect(() => {
   //   setSelectedItem(selectedProducts[ListName])
   // }, [selectedProducts])
+  const { name } = useLocalSearchParams();
 
   const matchingCategory = categories.find(
-    (categoryObj) => categoryObj.category.name.toLowerCase() === name
+    (categoryObj) => categoryObj.category.name.toLowerCase() === (Array.isArray(name) ? name[0] : name)?.toLowerCase()
   );
 
   // const filterItems = useCallback(
@@ -82,7 +77,7 @@ const Categories = () => {
   //     return () => backHandler.remove();
   //   }, [onBackPress])
   // );
-  const { name } = useLocalSearchParams();
+ 
 
   // Ensure name is always a string
   const formattedName =

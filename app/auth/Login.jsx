@@ -22,7 +22,7 @@ import back from "../../assets/images/back-arrow.png";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 // import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from "@react-native-firebase/auth";
-// import { ProductContext } from '../Context/CardContext';
+import { ProductContext } from '../../Context/CardContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import messaging from '@react-native-firebase/messaging'
 
@@ -34,7 +34,7 @@ const LoginScreen = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const routerr = useRouter();
-  // const { setUserDetails, isAuthenticated } = useContext(ProductContext);
+  const { setUserDetails, isAuthenticated } = useContext(ProductContext);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -121,13 +121,13 @@ const LoginScreen = () => {
           const username = user.displayName || 'User';
           const profilePicture = user.photoURL || 'https://via.placeholder.com/150';
 
-          // await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
+          await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
 
-          // setUserDetails(prevDetails => ({
-          //   ...prevDetails,
-          //   UserName: username || prevDetails.UserName,
-          //   UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
-          // }));
+          setUserDetails(prevDetails => ({
+            ...prevDetails,
+            UserName: username || prevDetails.UserName,
+            UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+          }));
         }
 
         routerr.replace('/(Dashboard)/Dashboard');
@@ -173,12 +173,6 @@ const LoginScreen = () => {
 
   const onSignInButtonPress = () => {
     handleSignIn();
-  };
-
-  const handleNavigate = () => {
-    router.push({
-      pathname: "/(auth)/Signup",
-    });
   };
 
   return (
