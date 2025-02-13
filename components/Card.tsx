@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: hp("20%"),
     width: "100%",
+    zIndex: 999 ,
     borderRadius: wp("5%"),
     flex: 1,
     marginVertical: hp("1.5%"),

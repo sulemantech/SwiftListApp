@@ -6,7 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Image } from "expo-image";
 // import Filtericon from '../../assets/images/filtericon.png';
 import first from "../../assets/images/SVG/dashboardgrocery.svg";
@@ -15,8 +15,10 @@ import third from "../../assets/images/SVG/dashboardpersonalgromming.svg";
 import fourth from "../../assets/images/SVG/thingstodo.svg";
 import fifth from "../../assets/images/SVG/recipe.svg";
 import bell from "../../assets/images/SVG/dashboard/bell.svg";
+import { ProductContext } from '../../Context/CardContext';
 import CardComponent from "../../components/Card";
 import UserProfile from "../../assets/images/UserProfile.png";
+import TasksStatistics from "@/components/TasksStatistics";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
@@ -33,6 +35,7 @@ import React from "react";
 
 
 const Dashboard = () => {
+  const { userDetails  } = useContext(ProductContext);
   const cardDataArray = [
     {
       title: "Grocery List",
@@ -107,15 +110,15 @@ const Dashboard = () => {
       <View style={styles.container}>
         <View style={styles.userHeaderContainer}>
           <View style={styles.userHeaderLeft}>
-            <Image source={UserProfile} style={styles.userProfileImage} />
+            <Image source={{uri: userDetails.UserProfilePicture || UserProfile}} style={styles.userProfileImage} />
             {/* <Image
                   source={{ uri: userDetails.UserProfilePicture }}
                   style={styles.userProfileImage}
                 /> */}
             <View style={styles.userTextContainer}>
               <Text style={styles.userGreetingText}>Hello,</Text>
-              {/* <Text style={styles.userNameText}>{userDetails.UserName}!</Text> */}
-              <Text style={styles.userNameText}>MetaFront! LLP.</Text>
+              <Text style={styles.userNameText}>{userDetails.UserName || "UserName"}!</Text>
+              {/* <Text style={styles.userNameText}>MetaFront! LLP.</Text> */}
             </View>
           </View>
           <View style={styles.bgbill}>
@@ -126,64 +129,7 @@ const Dashboard = () => {
               <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={[styles.input , {color: colorScheme === 'dark' ? '#000' : '#000'} ]} />
               <Image style={styles.filterimg} source={Filtericon} />
             </View> */}
-        <View style={styles.todayProgress_card}>
-          <LinearGradient
-            colors={["#9584F8", "#9584F810", "#9584F820"]}
-            style={styles.LinearGradient}
-          >
-            <View style={styles.innerView}>
-              <Text style={styles.innerText}>Tasks Completed !</Text>
-              {/* <CircularProgress/> */}
-
-              <View style={styles.progressCircles_view}>
-                {cardDataArray.map((cardDataArray, index) => (
-                  <ProgressCircle
-                    key={index}
-                    percentage={
-                      cardDataArray.progress ? cardDataArray.progress * 100 : 1
-                    }
-                    colors={[
-                      "#FFF",
-                      cardDataArray.badgeColor,
-                      cardDataArray.badgeColor,
-                    ]}
-                    size={40}
-                    strokeWidth={7}
-                    textSize={10}
-                  />
-                ))}
-              </View>
-              <View style={styles.motivational_msg_view}>
-                <Image
-                  source={UserProfile}
-                  style={[
-                    styles.userProfileImage,
-                    { width: 17.69, height: 17.69 },
-                  ]}
-                />
-                <View
-                  style={{
-                    backgroundColor: "#8879F6",
-                    justifyContent: "center",
-                    borderRadius: 11.17,
-                    width: 208,
-                    height: 19,
-                    left: -4,
-                  }}
-                >
-                  <Text
-                    style={[
-                      styles.innerText,
-                      { color: "#FFF", textAlign: "center" },
-                    ]}
-                  >
-                    🎉 Keep the pace! You’re doing great.
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </LinearGradient>
-        </View>
+            <TasksStatistics cardDataArray={cardDataArray}/>
         <ScrollView
           style={styles.cardContainer}
           contentContainerStyle={styles.scrollContent}
@@ -332,7 +278,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     flexGrow: 1,
     // marginBottom: 80,
-    zIndex: 100,
+    zIndex: 999,
   },
   scrollContent: {
     alignItems: "flex-start",
