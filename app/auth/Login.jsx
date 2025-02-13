@@ -175,8 +175,6 @@ const LoginScreen = () => {
     handleSignIn();
   };
 
-  
-
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -189,10 +187,7 @@ const LoginScreen = () => {
         barStyle={"dark-content"}
       />
       <View style={styles.headerContainer}>
-        <TouchableOpacity
-          activeOpacity={1}
-          //  onPress={() => navigation.goBack()}
-        >
+        <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign In</Text>

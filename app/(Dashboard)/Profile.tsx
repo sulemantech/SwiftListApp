@@ -22,7 +22,8 @@ import termsconditions from "../../assets/images/profilepage/termsconditions.png
 import help from "../../assets/images/profilepage/help.png";
 import logout from "../../assets/images/profilepage/logout.png";
 import deleteaccount from "../../assets/images/profilepage/deleteaccount.png";
-import Edit from "../../assets/images/profilepage/edit.png";
+import Edit from "../../assets/images/profilepage/Edit.png";
+import Edit1 from "../../assets/images/profilepage/Edit1.png";
 import ChevronIcon from "../../assets/images/SVG/profilepage/chevron.svg";
 import LabelWithBtn from "../../components/LabelWithBtn";
 import UserProfile from "../../assets/images/UserProfile.png";
@@ -95,13 +96,20 @@ const Profile = () => {
             source={{ uri: userDetails?.UserProfilePicture }}
             style={styles.profileImage}
           />  */}
+          {/* <Image
+            source={{ uri: userDetails?.UserProfilePicture }}
+            style={styles.profileImage}
+          />  */}
           <Image source={UserProfile} style={styles.profileImage} />
           <View style={styles.textContainer}>
             <Text style={styles.name}>Syed Abdullah</Text>
             {/* <Text style={styles.name}>{userDetails?.UserName}</Text> */}
             <Text style={styles.email}>{"Premium Member"}</Text>
           </View>
-          <TouchableOpacity>{/* <Edit /> */}</TouchableOpacity>
+          {/* <TouchableOpacity><Edit /></TouchableOpacity> */}
+          <TouchableOpacity>
+            <Image source={Edit1} style={styles.editImage} />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -211,6 +219,10 @@ const styles = StyleSheet.create({
     lineHeight: 19.5,
   },
   bottommargin: { height: 90 },
+  editImage: {
+    width: 20,
+    height: 20,
+  },
 });
 
 // import React, { useContext } from "react";

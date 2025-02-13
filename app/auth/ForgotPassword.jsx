@@ -1,40 +1,32 @@
-import React, { useState } from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// import auth from '@react-native-firebase/auth';
-// import TextInput2 from '../components/Input';
-// import Signin from '../../assets/images/SVG/forgotpassword.svg';
-// import back from '../../assets/images/back-arrow.png';
-// import SCREENS from '..';
-// import CustomModal from '../components/Modal';
+import React, { useState } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
+import auth from "@react-native-firebase/auth";
+import TextInput2 from "../../components/Input";
+// import Signin from "../../assets/images/SVG/forgotpassword.svg";
+import back from "../../assets/images/back-arrow.png";
+import Signin from "../../assets/images/SVG/signup.svg";
+import forgotScreen_image from "../../assets/images/forgotScreen_image.png";
+import { router } from "expo-router";
+// import SCREENS from "..";
+// import CustomModal from "../components/Modal";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [modalVisible, setModalVisible] = useState(false); // State to control modal visibility
-  const [modalMessage, setModalMessage] = useState(''); // Message to display in the modal
-
-  // const handlePasswordReset = async () => {
-  //   if (!email.trim()) {
-  //     setModalMessage('Please enter a valid email address.');
-  //     setModalVisible(true);
-  //     return;
-  //   }
-
-  //   try {
-  //     await auth().sendPasswordResetEmail(email);
-  //     setModalMessage('A password reset link has been sent to your email. Please check your inbox.');
-  //     setModalVisible(true);
-  //     navigation.navigate(SCREENS.EmailSuccess); // Navigate to success screen
-  //   } catch (error) {
-  //     console.error('Password reset error:', error.message);
-  //     setModalMessage('Failed to send password reset email. Please try again.');
-  //     setModalVisible(true);
-  //   }
-  // };
+  const [modalMessage, setModalMessage] = useState(""); // Message to display in the modal
 
   return (
+    // <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-      {/* <View style={styles.headerContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={() => navigation.goBack()}>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Forgot Password</Text>
@@ -42,16 +34,17 @@ const ForgotPassword = () => {
       </View>
 
       <View style={styles.inputbox}>
-        <Signin />
+        {/* <Signin /> */}
+        <Image source={forgotScreen_image} style={styles.PlaceHolderimage} />
         <Text style={styles.instructions}>
           Please enter your email address. You will receive a link to create a
           new password via email.
         </Text>
 
         <TextInput2
-          bgcolor={'#fff'}
-          label={'Email'}
-          placeholder={'Enter email address'}
+          bgcolor={"#fff"}
+          label={"Email"}
+          placeholder={"Enter email address"}
           value={email}
           onChangeText={setEmail}
         />
@@ -60,12 +53,12 @@ const ForgotPassword = () => {
       <View style={styles.containersign}>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={handlePasswordReset}
+          // onPress={handlePasswordReset}
           style={styles.signInButton}
         >
           <Text style={styles.buttonText}>Send</Text>
         </TouchableOpacity>
-      </View> */}
+      </View>
 
       {/* Custom Modal for alerts */}
       {/* <CustomModal
@@ -84,66 +77,71 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
-    backgroundColor: '#fff',
-    paddingHorizontal: '5%',
+    backgroundColor: "#fff",
+    paddingHorizontal: "5%",
   },
   headerContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     paddingVertical: 7,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
   },
   back: {
     width: 25,
     height: 20,
   },
   signInText: {
-    color: '#0c0c0c',
+    color: "#0c0c0c",
     fontSize: 20,
-    fontWeight: '600',
-    fontFamily: 'OpenSans-Bold',
+    fontWeight: "600",
+    fontFamily: "OpenSans-Bold",
   },
   inputbox: {
-    width: '100%',
+    width: "100%",
     marginTop: 50,
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     gap: 10,
   },
   instructions: {
-    color: '#6c6c6c',
+    color: "#6c6c6c",
     fontSize: 12,
-    width: '100%',
+    width: "100%",
     lineHeight: 23,
-    fontFamily: 'Poppins-Regular',
-    fontWeight: '300',
-    textAlign: 'left',
+    fontFamily: "Poppins-Regular",
+    fontWeight: "300",
+    textAlign: "left",
     marginBottom: 10,
   },
   containersign: {
     marginTop: 10,
-    width: '100%',
-    fontFamily: 'Poppins-Regular',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    fontFamily: "Poppins-Regular",
+    alignItems: "center",
+    justifyContent: "center",
   },
   signInButton: {
-    width: '100%',
-    backgroundColor: '#52C2FE',
+    width: "100%",
+    backgroundColor: "#52C2FE",
     borderRadius: 30,
     paddingVertical: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: "Poppins-Regular",
     fontSize: 12,
-    fontWeight: '500',
-    color: '#fff',
+    fontWeight: "500",
+    color: "#fff",
+  },
+  PlaceHolderimage: {
+    width: 158,
+    height: 150.07,
+    gap: 0,
   },
 });
 
@@ -157,3 +155,22 @@ const styles = StyleSheet.create({
 //     </View>
 //   );
 // }
+
+// const handlePasswordReset = async () => {
+//   if (!email.trim()) {
+//     setModalMessage('Please enter a valid email address.');
+//     setModalVisible(true);
+//     return;
+//   }
+
+//   try {
+//     await auth().sendPasswordResetEmail(email);
+//     setModalMessage('A password reset link has been sent to your email. Please check your inbox.');
+//     setModalVisible(true);
+//     navigation.navigate(SCREENS.EmailSuccess); // Navigate to success screen
+//   } catch (error) {
+//     console.error('Password reset error:', error.message);
+//     setModalMessage('Failed to send password reset email. Please try again.');
+//     setModalVisible(true);
+//   }
+// };
