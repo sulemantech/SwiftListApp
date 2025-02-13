@@ -28,8 +28,8 @@
     },
     "plugins": [
       "expo-router",
+      "@react-native-google-signin/google-signin",
       [
-        "@react-native-google-signin/google-signin",
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
@@ -53,6 +53,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "15d62413-617c-4aeb-ac7b-a5d1f7f104d3"
+      }
     }
   }
 }

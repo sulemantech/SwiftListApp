@@ -19,11 +19,11 @@ import google from "../../assets/images/social-media-google.png";
 import back from "../../assets/images/back-arrow.png";
 // import SCREENS from '..';
 // import useFirebaseMessaging from '../components/UseFirebaseMessaging';
-// import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 // import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from "@react-native-firebase/auth";
 // import { ProductContext } from '../Context/CardContext';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import messaging from '@react-native-firebase/messaging'
 
 const LoginScreen = () => {
@@ -36,11 +36,11 @@ const LoginScreen = () => {
   const routerr = useRouter();
   // const { setUserDetails, isAuthenticated } = useContext(ProductContext);
 
-  // useEffect(() => {
-  //   GoogleSignin.configure({
-  //     webClientId: '685029163622-b51etimc1vcq6o4elp3qp26achvil27v.apps.googleusercontent.com',
-  //   });
-  // }, []);
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: "43816911899-r0905121ph3ppu4p6feodkg0ieq4tkj5.apps.googleusercontent.com",
+    });
+  }, []);
 
   //   const { getDeviceToken } = useFirebaseMessaging();
 
@@ -102,42 +102,42 @@ const LoginScreen = () => {
   //     }
   //   };
 
-  //   async function onGoogleButtonPress() {
-  //     try {
-  //       setLoading(true);
-  //       await GoogleSignin.signOut();
-  //       await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  //       const signInResult = await GoogleSignin.signIn();
-  //       const idToken = signInResult?.data?.idToken;
-  //       const accessToken = signInResult?.data?.accessToken;
-  //       if (!idToken) {
-  //         throw new Error('No ID token found');
-  //       }
-  //       const googleCredential = auth.GoogleAuthProvider.credential(idToken, accessToken);
-  //       await auth().signInWithCredential(googleCredential);
-  //       await AsyncStorage.removeItem('user');
-  //       const user = auth().currentUser;
-  //       if (user) {
-  //         const username = user.displayName || 'User';
-  //         const profilePicture = user.photoURL || 'https://via.placeholder.com/150';
+    async function onGoogleButtonPress() {
+      try {
+        setLoading(true);
+        await GoogleSignin.signOut();
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        const signInResult = await GoogleSignin.signIn();
+        const idToken = signInResult?.data?.idToken;
+        const accessToken = signInResult?.data?.accessToken;
+        if (!idToken) {
+          throw new Error('No ID token found');
+        }
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken, accessToken);
+        await auth().signInWithCredential(googleCredential);
+        await AsyncStorage.removeItem('user');
+        const user = auth().currentUser;
+        if (user) {
+          const username = user.displayName || 'User';
+          const profilePicture = user.photoURL || 'https://via.placeholder.com/150';
 
-  //         await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
+          // await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
 
-  //         setUserDetails(prevDetails => ({
-  //           ...prevDetails,
-  //           UserName: username || prevDetails.UserName,
-  //           UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
-  //         }));
-  //       }
+          // setUserDetails(prevDetails => ({
+          //   ...prevDetails,
+          //   UserName: username || prevDetails.UserName,
+          //   UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+          // }));
+        }
 
-  //       navigation.replace(SCREENS.Dashbored);
-  //     } catch (error) {
-  //       console.error('Google Sign-in error: ', error);
-  //       Alert.alert('Error', 'Google Sign-In failed. Please try again.');
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
+        routerr.replace('/(Dashboard)/Dashboard');
+      } catch (error) {
+        console.error('Google Sign-in error: ', error);
+        Alert.alert('Error', 'Google Sign-In failed. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    }
 
   const handleSignIn = async () => {
     // Reset error messages
@@ -290,7 +290,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          //  onPress={() => onGoogleButtonPress().then(() => { })}
+           onPress={() => onGoogleButtonPress().then(() => { })}
           disabled={loading}
           style={styles.containersocial}
         >
