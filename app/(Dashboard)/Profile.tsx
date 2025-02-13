@@ -5,11 +5,11 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
-  Image,
 } from "react-native";
 import React, { useContext } from "react";
 import auth from "@react-native-firebase/auth";
 import profile from "../../assets/images/profilepage/profile.png";
+import { Image } from "expo-image";
 // import changepassword from "../../assets/images/profilepage/changepassword.png";
 import changepassword from "../../assets/images/profilepage/changepassword.png";
 import notification from "../../assets/images/profilepage/notification.png";
