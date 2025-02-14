@@ -25,10 +25,76 @@ interface CardComponentProps {
   data?: CardData;
 }
 
+// const CardComponent: React.FC<CardComponentProps> = ({
+//   onPress = () => {
+//     console.log("clicked");
+//   },
+//   data = {},
+// }) => {
+//   const {
+//     title,
+//     description,
+//     items,
+//     percentagetext,
+//     progress = 0,
+//     Picture,
+//     bgColor,
+//     badgeColor,
+//     textcolor = "#626262",
+//   } = data;
+
+//   // Ensure progress is within the range [0, 1]
+//   const clampedProgress = Math.max(0, Math.min(progress, 1));
+
+//   return (
+//     // <TouchableOpacity
+//     //   activeOpacity={1}
+//     //   style={[styles.cardContainer, { backgroundColor: bgColor }]}
+//     //   onPress={() => onPress()}
+//     // >
+//     <TouchableOpacity
+//       activeOpacity={0.8}
+//       style={[styles.cardContainer, { backgroundColor: bgColor }]}
+//       onPress={() => {
+//         console.log("Card Pressed:", title);
+//         onPress();
+//       }}
+//     >
+//       <View style={styles.contentContainer}>
+//         <Text style={[styles.title, { color: textcolor }]}>{title}</Text>
+//         <Text style={[styles.description, { color: textcolor }]}>
+//           {description}
+//         </Text>
+//         <Text style={[styles.badge, { backgroundColor: badgeColor }]}>
+//           {items}
+//         </Text>
+//         <Text style={[styles.percentage, { color: textcolor }]}>
+//           {percentagetext}
+//         </Text>
+//         <View style={[styles.progressview, { borderColor: badgeColor }]}>
+//           <Progress.Bar
+//             progress={clampedProgress}
+//             unfilledColor="white"
+//             borderWidth={0}
+//             color={badgeColor}
+//             animated={true}
+//             width={wp("45%")}
+//             height={hp("0.5%")}
+//           />
+//         </View>
+//       </View>
+//       <View style={styles.contentContainer2}>
+//         <Image source={circle} style={styles.image2} />
+//         <View style={styles.image}>
+//           <Image source={Picture} style={styles.responsiveImage} />
+//         </View>
+//       </View>
+//     </TouchableOpacity>
+//   );
+// };
+
 const CardComponent: React.FC<CardComponentProps> = ({
-  onPress = () => {
-    console.log("clicked");
-  },
+  onPress,
   data = {},
 }) => {
   const {
@@ -48,9 +114,14 @@ const CardComponent: React.FC<CardComponentProps> = ({
 
   return (
     <TouchableOpacity
-      activeOpacity={1}
+      activeOpacity={0.8}
       style={[styles.cardContainer, { backgroundColor: bgColor }]}
-      onPress={onPress}
+      onPress={() => {
+        if (onPress) {
+          console.log("Card Pressed:", title);
+          onPress();
+        }
+      }}
     >
       <View style={styles.contentContainer}>
         <Text style={[styles.title, { color: textcolor }]}>{title}</Text>
@@ -89,7 +160,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: hp("20%"),
     width: "100%",
-    zIndex: 999 ,
+    zIndex: 999,
     borderRadius: wp("5%"),
     flex: 1,
     marginVertical: hp("1.5%"),

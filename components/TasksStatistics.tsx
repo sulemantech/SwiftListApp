@@ -58,7 +58,12 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
                 left: -4,
               }}
             >
-              <Text style={[styles.innerText, { color: "#FFF", textAlign: "center" }]}>
+              <Text
+                style={[
+                  styles.innerText,
+                  { color: "#FFF", textAlign: "center" },
+                ]}
+              >
                 🎉 Keep the pace! You’re doing great.
               </Text>
             </View>
@@ -117,14 +122,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   LinearGradient: {
-    position: "absolute",
+    // position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: 300,
-    borderTopLeftRadius: 14,
-    borderTopRightRadius: 14,
+    height: hp("20%"),
+    width: "100%",
+    // borderTopLeftRadius: 14,
+    // borderTopRightRadius: 14,
     overflow: "hidden",
+    borderRadius: 14,
   },
   userProfileImage: {
     width: 40,

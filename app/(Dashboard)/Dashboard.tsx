@@ -3,39 +3,33 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ScrollView,
-  Dimensions,
+  FlatList,
 } from "react-native";
 import { useContext, useState } from "react";
 import { Image } from "expo-image";
-// import Filtericon from '../../assets/images/filtericon.png';
-import first from "../../assets/images/SVG/dashboardgrocery.svg";
-import seconed from "../../assets/images/SVG/dashboardspiritualgoals.svg";
-import third from "../../assets/images/SVG/dashboardpersonalgromming.svg";
-import fourth from "../../assets/images/SVG/thingstodo.svg";
-import fifth from "../../assets/images/SVG/recipe.svg";
-import bell from "../../assets/images/SVG/dashboard/bell.svg";
-import { ProductContext } from '../../Context/CardContext';
-import CardComponent from "../../components/Card";
-import UserProfile from "../../assets/images/UserProfile.png";
+import { ProductContext } from "@/Context/CardContext";
+import CardComponent from "@/components/Card";
+import UserProfile from "@/assets/images/UserProfile.png";
 import TasksStatistics from "@/components/TasksStatistics";
 import { StatusBar } from "expo-status-bar";
-import { LinearGradient } from "expo-linear-gradient";
-import { COLORS, icons } from "../../constants";
+import { COLORS, icons } from "@/constants";
 import { FontFamily } from "@/constants/theme";
-import ProgressCircle from "../../components/progress";
+import { router } from "expo-router";
+
+import first from "@/assets/images/SVG/dashboardgrocery.svg";
+import seconed from "@/assets/images/SVG/dashboardspiritualgoals.svg";
+import third from "@/assets/images/SVG/dashboardpersonalgromming.svg";
+import fourth from "@/assets/images/SVG/thingstodo.svg";
+import fifth from "@/assets/images/SVG/recipe.svg";
+import { LinearGradient } from "expo-linear-gradient";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-// import CircularProgress from "react-native-progress";
-import { Svg, Circle } from "react-native-svg";
-import { router } from "expo-router";
-import React from "react";
-
 
 const Dashboard = () => {
-  const { userDetails  } = useContext(ProductContext);
+  const { userDetails } = useContext(ProductContext);
+
   const cardDataArray = [
     {
       title: "Grocery List",
@@ -43,7 +37,6 @@ const Dashboard = () => {
       items: "200 Items",
       percentagetext: "Bought 70%",
       progress: 0.8,
-      color: "#008B94",
       Picture: first,
       bgColor: "#9DF4F4",
       badgeColor: "#61CBD6",
@@ -70,7 +63,7 @@ const Dashboard = () => {
     },
     {
       title: "Things To Do",
-      description: "Add tasks in your to do list.",
+      description: "Add tasks in your to-do list.",
       items: "0 Items",
       percentagetext: "Completed 50%",
       progress: 0.5,
@@ -91,102 +84,364 @@ const Dashboard = () => {
   ];
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
-  const [value, setValue] = useState(0);
-  const handleNavigate = (name:any) => {
-    router.push({
-      pathname: "/(Dashboard)/Categories",
-      params: { name: name },
-    });
-  };
 
   return (
-    <>
-   
-      <LinearGradient
-        colors={["#FFC41F10", "#FFFFFF10", "#FFC41F20"]}
-        style={styles.LinearGradient}
-      />
-      <StatusBar style="dark" backgroundColor="#FFFFFF" />
+    <LinearGradient
+      colors={["#CBC3FB10", "#CBC3FB20", "#CBC3FB30"]}
+      style={styles.LinearGradient}
+    >
       <View style={styles.container}>
+        <StatusBar style="dark" backgroundColor="#FFFFFF" />
+
+        {/* User Header */}
         <View style={styles.userHeaderContainer}>
           <View style={styles.userHeaderLeft}>
-            <Image source={{uri: userDetails.UserProfilePicture || UserProfile}} style={styles.userProfileImage} />
-            {/* <Image
-                  source={{ uri: userDetails.UserProfilePicture }}
-                  style={styles.userProfileImage}
-                /> */}
+            <Image
+              source={{ uri: userDetails.UserProfilePicture || UserProfile }}
+              style={styles.userProfileImage}
+            />
             <View style={styles.userTextContainer}>
               <Text style={styles.userGreetingText}>Hello,</Text>
-              <Text style={styles.userNameText}>{userDetails.UserName || "UserName"}!</Text>
-              {/* <Text style={styles.userNameText}>MetaFront! LLP.</Text> */}
+              <Text style={styles.userNameText}>
+                {userDetails.UserName || "UserName"}!
+              </Text>
             </View>
           </View>
-          <View style={styles.bgbill}>
-            <Image source={icons.Notification1} style={styles.bellIcon} />
-          </View>
-        </View>
-        {/* <View style={styles.SearchANDFilter}>
-              <TextInput onChangeText={(text) => { FilterCatagories(text) }} style={[styles.input , {color: colorScheme === 'dark' ? '#000' : '#000'} ]} />
-              <Image style={styles.filterimg} source={Filtericon} />
-            </View> */}
-            <TasksStatistics cardDataArray={cardDataArray}/>
-        <ScrollView
-          style={styles.cardContainer}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-        >
-          {/* <View style={styles.editcontainer}>
-                <Text style={styles.heading}>Your Lists</Text>
-                <TouchableOpacity
-                  activeOpacity={0.4}
-                  style={styles.skip}
-                // onPress={() => navigation.navigate(SCREENS.Theme)}
-                >
-                  <Text style={styles.heading}>Edit</Text>
-                </TouchableOpacity>
-              </View> */}
-          {cardDataFilterArray.map((data, index) => (
-            <CardComponent
-              key={index}
-              data={data}
-              onPress={() => handleNavigate(data.title)}
-            />
-          ))}
 
-          <TouchableOpacity
-            //  onPress={() => navigation.navigate(SCREENS.Theme)}
-            style={styles.card}
-          >
-            <View style={styles.iconContainer}>
-              <Text style={styles.icon}> + </Text>
-            </View>
-            <Text style={styles.iconText}>Create List</Text>
+          {/* Notification Icon */}
+          <TouchableOpacity style={styles.bgbill}>
+            <Image source={icons.Notification1} style={styles.bellIcon} />
           </TouchableOpacity>
-        </ScrollView>
+        </View>
+
+        {/* Tasks Statistics Component */}
+        <TasksStatistics cardDataArray={cardDataArray} />
+        <View style={styles.flatListContainer}>
+          {/* Card List */}
+          <FlatList
+            data={cardDataFilterArray}
+            keyExtractor={(item, index) => index.toString()}
+            contentContainerStyle={styles.cardContainer}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            renderItem={({ item }) => (
+              <CardComponent
+                data={item}
+                onPress={() =>
+                  router.push({
+                    pathname: "/(Dashboard)/Categories",
+                    params: { name: item.title },
+                  })
+                }
+              />
+            )}
+            ListFooterComponent={
+              // <TouchableOpacity style={styles.card}>
+              //   <View style={styles.iconContainer}>
+              //     <Text style={styles.icon}> + </Text>
+              //   </View>
+              //   <Text style={styles.iconText}>Create List</Text>
+              // </TouchableOpacity>
+              //           {/* Create List Button */}
+              <TouchableOpacity style={styles.card}>
+                <View style={styles.iconContainer}>
+                  <Text style={styles.icon}> + </Text>
+                </View>
+                <Text style={styles.iconText}>Create List</Text>
+              </TouchableOpacity>
+            }
+          />
+        </View>
       </View>
-      {/* )} */}
-    </>
+    </LinearGradient>
   );
 };
 
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 30,
+//     paddingHorizontal: "5%",
+//     // backgroundColor: "#FFFFFF",
+//   },
+//   LinearGradient: {
+//     // position: "absolute",
+//     left: 0,
+//     right: 0,
+//     top: 0,
+//     width: "100%",
+//     height: "100%",
+//     flex: 1,
+//   },
+//   flatListContainer: {
+//     // backgroundColor: "red",
+//     marginBottom: 315,
+//   },
+//   userHeaderContainer: {
+//     marginTop: 20,
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     width: "100%",
+//     marginVertical: 10,
+//   },
+//   userHeaderLeft: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//   },
+//   userProfileImage: {
+//     width: 40,
+//     height: 40,
+//     borderRadius: 25,
+//     marginRight: 10,
+//   },
+//   userTextContainer: {
+//     flexDirection: "column",
+//   },
+//   userGreetingText: {
+//     fontSize: 13,
+//     color: "#344054",
+//     fontFamily: "OpenSans-Medium",
+//   },
+//   userNameText: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "black",
+//     fontFamily: FontFamily.heading,
+//     marginTop: 5,
+//   },
+//   bgbill: {
+//     backgroundColor: "#FF3837",
+//     height: 30,
+//     width: 30,
+//     borderRadius: 17,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     shadowColor: "#E24140",
+//     shadowOffset: { width: 0, height: 4 },
+//     shadowOpacity: 0.4,
+//     shadowRadius: 4,
+//     elevation: 6,
+//   },
+//   cardContainer: {
+//     paddingBottom: 20,
+//     // backgroundColor: "black",
+//   },
+//   card: {
+//     width: "98%",
+//     height: 60,
+//     backgroundColor: "#fff",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     flexDirection: "row",
+//     gap: 4,
+//     borderRadius: 14,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.3,
+//     shadowRadius: 3,
+//     elevation: 5,
+//     marginVertical: 10,
+//     marginHorizontal: "auto",
+//   },
+//   iconContainer: {
+//     backgroundColor: "grey",
+//     borderRadius: 50,
+//     width: 40,
+//     aspectRatio: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   icon: {
+//     fontSize: 28,
+//     color: "white",
+//   },
+//   iconText: {
+//     fontSize: 16,
+//     color: "grey",
+//     marginTop: 5,
+//     textAlign: "center",
+//   },
+//   bellIcon: {
+//     width: 25,
+//     height: 25,
+//   },
+// });
+
+export default Dashboard;
+
+// import {
+//   StyleSheet,
+//   Text,
+//   TouchableOpacity,
+//   View,
+//   ScrollView,
+//   Dimensions,
+// } from "react-native";
+// import { useContext, useState } from "react";
+// import { Image } from "expo-image";
+// // import Filtericon from '../../assets/images/filtericon.png';
+// import first from "../../assets/images/SVG/dashboardgrocery.svg";
+// import seconed from "../../assets/images/SVG/dashboardspiritualgoals.svg";
+// import third from "../../assets/images/SVG/dashboardpersonalgromming.svg";
+// import fourth from "../../assets/images/SVG/thingstodo.svg";
+// import fifth from "../../assets/images/SVG/recipe.svg";
+// import bell from "../../assets/images/SVG/dashboard/bell.svg";
+// import { ProductContext } from "../../Context/CardContext";
+// import CardComponent from "../../components/Card";
+// import UserProfile from "../../assets/images/UserProfile.png";
+// import TasksStatistics from "@/components/TasksStatistics";
+// import { StatusBar } from "expo-status-bar";
+// import { LinearGradient } from "expo-linear-gradient";
+// import { COLORS, icons } from "../../constants";
+// import { FontFamily } from "@/constants/theme";
+// import ProgressCircle from "../../components/progress";
+// import {
+//   widthPercentageToDP as wp,
+//   heightPercentageToDP as hp,
+// } from "react-native-responsive-screen";
+// // import CircularProgress from "react-native-progress";
+// import { Svg, Circle } from "react-native-svg";
+// import { router } from "expo-router";
+// import React from "react";
+// import { useRouter } from "expo-router";
+
+// const Dashboard = () => {
+//   const router = useRouter();
+//   const { userDetails } = useContext(ProductContext);
+//   const cardDataArray = [
+//     {
+//       title: "Grocery List",
+//       description: "Add needed items.",
+//       items: "200 Items",
+//       percentagetext: "Bought 70%",
+//       progress: 0.8,
+//       color: "#008B94",
+//       Picture: first,
+//       bgColor: "#9DF4F4",
+//       badgeColor: "#61CBD6",
+//     },
+//     {
+//       title: "Spiritual Goals",
+//       description: "Add your spiritual goals.",
+//       items: "10 Goals",
+//       percentagetext: "Achieved 30%",
+//       progress: 0.67,
+//       Picture: seconed,
+//       bgColor: "#98FBCB",
+//       badgeColor: "#4AA688",
+//     },
+//     {
+//       title: "Personal Grooming",
+//       description: "Add your grooming tasks in list.",
+//       items: "10 Tasks",
+//       percentagetext: "Completed 80%",
+//       progress: 0.72,
+//       Picture: third,
+//       bgColor: "#FEE5D7",
+//       badgeColor: "#C54B6C",
+//     },
+//     {
+//       title: "Things To Do",
+//       description: "Add tasks in your to do list.",
+//       items: "0 Items",
+//       percentagetext: "Completed 50%",
+//       progress: 0.5,
+//       Picture: fourth,
+//       bgColor: "#FFCBA1",
+//       badgeColor: "#E36A4A",
+//     },
+//     {
+//       title: "Kitchen Menu",
+//       description: "Add items to your list.",
+//       items: "500 Recipes",
+//       percentagetext: "Cooked 0%",
+//       progress: 0.78,
+//       Picture: fifth,
+//       bgColor: "#FDDC8A",
+//       badgeColor: "#D88D1B",
+//     },
+//   ];
+
+//   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
+//   const [value, setValue] = useState(0);
+
+//   return (
+//     <>
+//       <LinearGradient
+//         colors={["#FFC41F10", "#FFFFFF10", "#FFC41F20"]}
+//         style={styles.LinearGradient}
+//       />
+//       <StatusBar style="dark" backgroundColor="#FFFFFF" />
+
+//       <View style={styles.container}>
+//         {/* User Header */}
+//         <View style={styles.userHeaderContainer}>
+//           <View style={styles.userHeaderLeft}>
+//             <Image
+//               source={{ uri: userDetails.UserProfilePicture || UserProfile }}
+//               style={styles.userProfileImage}
+//             />
+//             <View style={styles.userTextContainer}>
+//               <Text style={styles.userGreetingText}>Hello,</Text>
+//               <Text style={styles.userNameText}>
+//                 {userDetails.UserName || "UserName"}!
+//               </Text>
+//             </View>
+//           </View>
+//           <View style={styles.bgbill}>
+//             <Image source={icons.Notification1} style={styles.bellIcon} />
+//           </View>
+//         </View>
+
+//         {/* Task Statistics */}
+//         <TasksStatistics cardDataArray={cardDataArray} />
+
+//         {/* Scrollable List */}
+//         <ScrollView
+//           style={styles.cardContainer}
+//           contentContainerStyle={styles.scrollContent}
+//           showsVerticalScrollIndicator={false}
+//           keyboardShouldPersistTaps="handled"
+//         >
+//           {/* Map over cardDataFilterArray */}
+//           {cardDataFilterArray.map((item, index) => (
+//             <CardComponent
+//               key={index}
+//               data={item}
+//               onPress={() => console.log(item.title)}
+//             />
+//           ))}
+
+//           {/* Create List Button */}
+//           <TouchableOpacity style={styles.card}>
+//             <View style={styles.iconContainer}>
+//               <Text style={styles.icon}> + </Text>
+//             </View>
+//             <Text style={styles.iconText}>Create List</Text>
+//           </TouchableOpacity>
+//         </ScrollView>
+//       </View>
+//     </>
+//   );
+// };
+
 const styles = StyleSheet.create({
   LinearGradient: {
-    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: 300,
-    borderTopLeftRadius: 14, // Set your desired border radius
-    borderTopRightRadius: 14, // Set your desired border radius
-    overflow: "hidden", // Ensures content doesn't overflow
+    width: "100%",
+    height: "100%",
+    flex: 1,
   },
 
   container: {
     flex: 1,
     paddingTop: 30,
     paddingHorizontal: "5%",
-    backgroundColor: "#FFFFFF",
+    // backgroundColor: "#FFFFFF",
+    // marginBottom: 310,
   },
   userHeaderContainer: {
     marginTop: 20,
@@ -207,6 +462,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 25,
     marginRight: 10,
+  },
+  flatListContainer: {
+    // backgroundColor: "red",
+    marginBottom: 315,
   },
   userTextContainer: {
     flexDirection: "column",
@@ -275,7 +534,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   cardContainer: {
-    backgroundColor: "#FFFFFF",
+    // backgroundColor: "#FFFFFF",
     flexGrow: 1,
     // marginBottom: 80,
     zIndex: 999,
@@ -404,7 +663,6 @@ const styles = StyleSheet.create({
     // backgroundColor:"black",
     marginTop: 5,
   },
-
 });
 
-export default Dashboard;
+// export default Dashboard;
