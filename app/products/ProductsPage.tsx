@@ -108,12 +108,7 @@ const ProductsPage: React.FC = () => {
         onBack={handleBackPress}
       />
       {updatedItems.length > 0 ? (
-        <ProductList
-          products={updatedItems}
-          ListName={ListName}
-          page={""}
-          columns={3}
-        />
+        <ProductList products={updatedItems} ListName={ListName} page={""} />
       ) : (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>
@@ -130,12 +125,11 @@ export default ProductsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#eff9ff", // Light blue background for consistency
+    backgroundColor: "#eff9ff",
     paddingHorizontal: 9,
     paddingTop: 1,
   },
   emptyContainer: {
-    
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
