@@ -13,9 +13,17 @@ interface HeaderProps {
   Rightelement?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, onBack, Rightelement = false }) => (
+const Header: React.FC<HeaderProps> = ({
+  title,
+  onBack,
+  Rightelement = false,
+}) => (
   <View style={styles.headerContainer}>
-    <TouchableOpacity style={styles.backview} activeOpacity={0.2} onPress={onBack}>
+    <TouchableOpacity
+      style={styles.backview}
+      activeOpacity={0.2}
+      onPress={onBack}
+    >
       <Image source={back} style={styles.back} />
     </TouchableOpacity>
     <Text style={styles.signInText}>{title}</Text>
@@ -35,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     zIndex: 1,
-    marginTop:40
+    marginTop: 40,
   },
   backview: {
     height: 60,

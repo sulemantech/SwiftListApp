@@ -13,6 +13,7 @@ import searchiconBlack from "../../assets/images/searchiconnotactive.png";
 import PersonalGroomingSVG from "../../assets/images/SVG/pgrommingpage.svg";
 import { categories } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
+import ProductsPage from "@/app/products/ProductsPage";
 // import { ProductContext } from '../../Context/CardContext';
 // import ProductList from './Products';
 import Header from "../../components/Header";
@@ -20,16 +21,26 @@ import CIrcleWithchevron from "../../components/CIrcleWithchevron";
 import { router, useLocalSearchParams } from "expo-router";
 import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
+import { useRouter } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
-const Categories = () => {
+interface Props {
+  ListName: string;
+}
+
+// const Categories = () => {
+const Categories: React.FC<Props> = ({ ListName }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
-  const [pressedItem, setPressedItem] = useState(null);
+  // const [pressedItem, setPressedItem] = useState(null);
+  const [pressedItem, setPressedItem] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [itemclicked, setItemclicked] = useState(true);
   // const { selectedProducts } = useContext(ProductContext);
+
+  // Inside your component:
+  const router = useRouter();
   const handleProductSelect = () => {
     setItemclicked(!itemclicked);
   };
@@ -40,7 +51,9 @@ const Categories = () => {
   const { name } = useLocalSearchParams();
 
   const matchingCategory = categories.find(
-    (categoryObj) => categoryObj.category.name.toLowerCase() === (Array.isArray(name) ? name[0] : name)?.toLowerCase()
+    (categoryObj) =>
+      categoryObj.category.name.toLowerCase() ===
+      (Array.isArray(name) ? name[0] : name)?.toLowerCase()
   );
 
   // const filterItems = useCallback(
@@ -77,7 +90,6 @@ const Categories = () => {
   //     return () => backHandler.remove();
   //   }, [onBackPress])
   // );
- 
 
   // Ensure name is always a string
   const formattedName =
@@ -201,17 +213,19 @@ const Categories = () => {
           style={styles.subCategoriesContainer}
           renderItem={({ item }) => (
             <TouchableHighlight
-              // onPress={() => {
-              //   setPressedItem(item.name);
-              //   navigation.navigate('ProductsPage', { myStringProp: item.name, ListName: ListName });
-              // }}
+              onPress={() => {
+                setPressedItem(item.name);
+                router.push({
+                  pathname: "/products/ProductsPage",
+                  params: { myStringProp: item.name, ListName },
+                });
+              }}
               activeOpacity={1}
               underlayColor="#fff"
               style={styles.subCategoryItem}
             >
               <View style={styles.subCategoryContent}>
                 <Text style={styles.subCategoryName}>{item.name}</Text>
-                {/* <Image source={pressedItem === item.name ? arrowRightactive : arrowRight} style={styles.arrowRight} /> */}
                 <CIrcleWithchevron chevronColor={"#52C2FE"} />
               </View>
             </TouchableHighlight>
@@ -300,6 +314,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 80,
     width: "95%",
+    // backgroundColor:"red"
   },
   searchiconContainer: {
     display: "flex",
@@ -330,6 +345,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderBottomColor: "#007AFF15",
     borderBottomWidth: 5,
+    // backgroundColor:"red"
   },
   subCategoryContent: {
     flexDirection: "row",
