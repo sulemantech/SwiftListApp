@@ -99,11 +99,11 @@ const ProductList: React.FC<ProductListProps> = ({
               ]}
               onPress={() => handleSelect(item)}
             >
-              {/* <Image
+              <Image
                 source={item.imgPath}
                 style={styles.productImage}
                 contentFit="cover"
-              /> */}
+              />
               <Text
                 style={styles.productName}
                 numberOfLines={1}
