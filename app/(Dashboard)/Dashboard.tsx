@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   View,
   FlatList,
+  useWindowDimensions,
 } from "react-native";
 import { useContext, useState } from "react";
 import { Image } from "expo-image";
@@ -22,13 +23,10 @@ import third from "@/assets/images/SVG/dashboardpersonalgromming.svg";
 import fourth from "@/assets/images/SVG/thingstodo.svg";
 import fifth from "@/assets/images/SVG/recipe.svg";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
 
 const Dashboard = () => {
   const { userDetails } = useContext(ProductContext);
+  const { width, height } = useWindowDimensions();
 
   const cardDataArray = [
     {
@@ -159,6 +157,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     flex: 1,
+    // backgroundColor:"red"
   },
 
   container: {
@@ -342,7 +341,8 @@ const styles = StyleSheet.create({
   },
   todayProgress_card: {
     marginTop: 10,
-    height: hp("20%"),
+    // height: hp("20%"),
+    height: 300,
     width: "100%",
     backgroundColor: "#fff",
     justifyContent: "center",
