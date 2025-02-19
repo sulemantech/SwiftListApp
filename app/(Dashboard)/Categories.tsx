@@ -115,13 +115,17 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     // }}
     >
       <View style={styles.container}>
-        <StatusBar
+        {/* <StatusBar
           animated={true}
           backgroundColor="#52C2FE"
           // barStyle={"dark-content"}
           // showHideTransition={statusBarTransition}
+        /> */}
+        {/* <Header onBack={router.back} title={name} /> */}
+        <Header
+          onBack={() => router.replace("/(Dashboard)/Dashboard")}
+          title={name}
         />
-        <Header onBack={router.back} title={name} />
 
         {/* <View style={styles.categoryContainer}> */}
         <View

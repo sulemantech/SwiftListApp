@@ -47,7 +47,11 @@
 //       {updatedItems.length > 0 ? (
 //         <ProductList products={updatedItems} ListName={ListName} page={""} />
 //       ) : (
-//         <Text>No items available for this category.</Text>
+//         <View style={styles.emptyContainer}>
+//           <Text style={styles.emptyText}>
+//             No items available for this category.
+//           </Text>
+//         </View>
 //       )}
 //     </View>
 //   );
@@ -59,16 +63,41 @@
 //   container: {
 //     flex: 1,
 //     backgroundColor: "#eff9ff",
+//     paddingHorizontal: 9,
+//     paddingTop: 1,
+//   },
+//   emptyContainer: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   emptyText: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#555",
+//     textAlign: "center",
 //   },
 // });
+// import React, { useContext, useEffect, useMemo } from "react";
+// import {
+//   StyleSheet,
+//   Text,
+//   View,
+//   BackHandler,
+// } from "react-native";
+// import { useLocalSearchParams, useRouter } from "expo-router";
+// import { categories } from "../../constants/Data";
+// import ProductList from "./Products";
+// import Header from "../../components/Header";
+// import { ProductContext } from "../../Context/CardContext";
+
 import React, { useContext, useEffect, useMemo } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, BackHandler } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { categories } from "../../constants/Data";
 import ProductList from "./Products";
 import Header from "../../components/Header";
 import { ProductContext } from "../../Context/CardContext";
-
 const ProductsPage: React.FC = () => {
   const router = useRouter();
   const { myStringProp, ListName } = useLocalSearchParams<{
@@ -98,7 +127,17 @@ const ProductsPage: React.FC = () => {
 
   const handleBackPress = () => {
     router.back();
+    return true;
   };
+
+  // Handle Android Back Button
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      handleBackPress
+    );
+    return () => backHandler.remove();
+  }, []);
 
   return (
     <View style={styles.container}>

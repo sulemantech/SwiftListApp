@@ -242,6 +242,13 @@ const ProductList: React.FC<ProductListProps> = ({
         ? lastIndex - 3
         : null;
 
+    const secondLineLastElement =
+      lastIndex % 3 === 2
+        ? lastIndex - 3
+        : lastIndex % 3 === 1
+        ? lastIndex - 2
+        : null;
+
     return {
       borderBottomRightIndex,
       secondLineLastElement,
@@ -296,11 +303,11 @@ const ProductList: React.FC<ProductListProps> = ({
                   styles.topRightBorder,
                 index === products.length - 1 && styles.bottomRightBorder,
                 index ===
-                  getBorderStyles(index, lastIndex).borderBottomRightIndex &&
-                  styles.bottomLeftBorder,
+                  getBorderStyles(index, products.length)
+                    .borderBottomRightIndex && styles.bottomLeftBorder,
                 index ===
-                  getBorderStyles(index, lastIndex).secondLineLastElement &&
-                  styles.bottomRightBorder,
+                  getBorderStyles(index, products.length)
+                    .secondLineLastElement && styles.bottomRightBorder,
               ]}
               onPress={() => handleSelect(item)}
             >
@@ -349,6 +356,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: 10,
     flex: 1,
+    justifyContent: "space-between",
   },
   productsContainer2: {
     marginBottom: 10,
@@ -371,6 +379,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     margin: 3,
   },
+  
   selectedCard: {
     backgroundColor: "#E36A4A",
   },

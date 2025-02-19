@@ -3,6 +3,7 @@ import { ActivityIndicator, View } from "react-native";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useEffect, useState } from "react";
 import { ProductProvider } from "../Context/CardContext";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function RootLayout() {
   const [initializing, setInitializing] = useState(true);
@@ -40,12 +41,14 @@ export default function RootLayout() {
     );
   }
   return (
-    <ProductProvider>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(Dashboard)" options={{ headerShown: false }} />
-        <Stack.Screen name="auth" options={{ headerShown: false }} />
-      </Stack>
-    </ProductProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ProductProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(Dashboard)" options={{ headerShown: false }} />
+          <Stack.Screen name="auth" options={{ headerShown: false }} />
+        </Stack>
+      </ProductProvider>
+    </GestureHandlerRootView>
   );
 }
