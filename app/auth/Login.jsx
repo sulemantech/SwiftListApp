@@ -19,11 +19,11 @@ import google from "../../assets/images/social-media-google.png";
 import back from "../../assets/images/back-arrow.png";
 // import SCREENS from '..';
 // import useFirebaseMessaging from '../components/UseFirebaseMessaging';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 // import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from "@react-native-firebase/auth";
-import { ProductContext } from '../../Context/CardContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ProductContext } from "../../Context/CardContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import messaging from '@react-native-firebase/messaging'
 
 const LoginScreen = () => {
@@ -38,7 +38,8 @@ const LoginScreen = () => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: "43816911899-r0905121ph3ppu4p6feodkg0ieq4tkj5.apps.googleusercontent.com",
+      webClientId:
+        "43816911899-r0905121ph3ppu4p6feodkg0ieq4tkj5.apps.googleusercontent.com",
     });
   }, []);
 
@@ -102,42 +103,51 @@ const LoginScreen = () => {
   //     }
   //   };
 
-    async function onGoogleButtonPress() {
-      try {
-        setLoading(true);
-        await GoogleSignin.signOut();
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        const signInResult = await GoogleSignin.signIn();
-        const idToken = signInResult?.data?.idToken;
-        const accessToken = signInResult?.data?.accessToken;
-        if (!idToken) {
-          throw new Error('No ID token found');
-        }
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken, accessToken);
-        await auth().signInWithCredential(googleCredential);
-        await AsyncStorage.removeItem('user');
-        const user = auth().currentUser;
-        if (user) {
-          const username = user.displayName || 'User';
-          const profilePicture = user.photoURL || 'https://via.placeholder.com/150';
-
-          await AsyncStorage.setItem('user', JSON.stringify({ username, profilePicture }));
-
-          setUserDetails(prevDetails => ({
-            ...prevDetails,
-            UserName: username || prevDetails.UserName,
-            UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
-          }));
-        }
-
-        routerr.replace('/(Dashboard)/Dashboard');
-      } catch (error) {
-        console.error('Google Sign-in error: ', error);
-        Alert.alert('Error', 'Google Sign-In failed. Please try again.');
-      } finally {
-        setLoading(false);
+  async function onGoogleButtonPress() {
+    try {
+      setLoading(true);
+      await GoogleSignin.signOut();
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+      const signInResult = await GoogleSignin.signIn();
+      const idToken = signInResult?.data?.idToken;
+      const accessToken = signInResult?.data?.accessToken;
+      if (!idToken) {
+        throw new Error("No ID token found");
       }
+      const googleCredential = auth.GoogleAuthProvider.credential(
+        idToken,
+        accessToken
+      );
+      await auth().signInWithCredential(googleCredential);
+      await AsyncStorage.removeItem("user");
+      const user = auth().currentUser;
+      if (user) {
+        const username = user.displayName || "User";
+        const profilePicture =
+          user.photoURL || "https://via.placeholder.com/150";
+
+        await AsyncStorage.setItem(
+          "user",
+          JSON.stringify({ username, profilePicture })
+        );
+
+        setUserDetails((prevDetails) => ({
+          ...prevDetails,
+          UserName: username || prevDetails.UserName,
+          UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+        }));
+      }
+
+      routerr.replace("/(Dashboard)/Dashboard");
+    } catch (error) {
+      console.error("Google Sign-in error: ", error);
+      Alert.alert("Error", "Google Sign-In failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
+  }
 
   const handleSignIn = async () => {
     // Reset error messages
@@ -225,12 +235,14 @@ const LoginScreen = () => {
       <View style={styles.row}>
         <View style={styles.checkboxContainer}>
           <Checkbox
-            color={"#52C2FE"}
+            color={"#6C6C6C"}
             value={isChecked}
             onValueChange={setIsChecked}
             tintColors={{ true: "#52C2FE", false: "#52C2FE" }}
           />
-          <Text style={styles.checkboxLabel}>Keep me signed in</Text>
+          <Text style={[styles.checkboxLabel, { left: 10 }]}>
+            Keep me signed in
+          </Text>
         </View>
 
         <TouchableOpacity
@@ -260,7 +272,7 @@ const LoginScreen = () => {
       <View style={styles.containerline}>
         <View style={styles.lineContainer}>
           <View style={styles.line} />
-          <Text style={styles.dividerText}>OR</Text>
+          <Text style={styles.dividerText}>Or sign in with</Text>
           <View style={styles.line} />
         </View>
       </View>
@@ -282,14 +294,19 @@ const LoginScreen = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-           onPress={() => onGoogleButtonPress().then(() => { })}
+          onPress={() => onGoogleButtonPress().then(() => {})}
           disabled={loading}
           style={styles.containersocial}
         >
           <View style={styles.social}>
             <View style={styles.innersocial}>
-              <Image source={google} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>Continue with Google</Text>
+              <Image
+                source={google}
+                style={[styles.socialIcon, { left: -7 }]}
+              />
+              <Text style={[styles.socialButtonText, { left: -7 }]}>
+                Continue with Google
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -301,7 +318,7 @@ const LoginScreen = () => {
         </View>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => routerr.push("/auth/Signup")}
+          onPress={() => router.push("/auth/Signup")}
         >
           <Text style={styles.forgotPassword}>Sign Up</Text>
         </TouchableOpacity>
@@ -342,10 +359,13 @@ const styles = StyleSheet.create({
     height: 20,
   },
   signInText: {
-    color: "#0c0c0c",
+    color: "#4C4C4C",
+    opacity: 0.8,
     fontSize: 20,
     fontWeight: "600",
     fontFamily: "OpenSans-Bold",
+
+    // backgroundColor:"red"
   },
   inputbox: {
     display: "flex",
@@ -373,12 +393,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "70%",
+    width: "54%",
     marginTop: 10,
+    // backgroundColor:"red"
   },
   socialIcon: {
-    width: 35,
-    height: 35,
+    width: 24,
+    height: 24,
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -389,11 +410,13 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Light",
     color: "#8c8c8c",
     marginLeft: 2,
+    // backgroundColor:"red"
   },
   forgotPassword: {
-    color: "#52C2FE",
+    color: "#9386F7",
     fontFamily: "Poppins-Light",
     fontSize: 12,
+    // backgroundColor:"red"
   },
   containersocial: {
     marginTop: 0,
@@ -416,9 +439,10 @@ const styles = StyleSheet.create({
   },
 
   signInButton: {
+    // width: "100%",
     width: "100%",
     height: 50,
-    backgroundColor: "#52C2FE",
+    backgroundColor: "#A9A0F0",
     borderRadius: 30,
     paddingVertical: 12,
     alignItems: "center",
@@ -451,20 +475,22 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: "#52C2FE",
+    backgroundColor: "#5C5C5C",
+    opacity: 0.7,
   },
   dividerText: {
     backgroundColor: "white",
     paddingHorizontal: 10,
-    color: "#52C2FE",
-    fontWeight: "bold",
-    fontFamily: "Poppins-Regular",
+    color: "#5C5C5C",
+    opacity: 0.7,
+    fontWeight: "400",
+    fontFamily: "Open Sans",
   },
   social: {
     width: "100%",
     height: 50,
     backgroundColor: "#fff",
-    borderColor: "#8C8C8C",
+    borderColor: "#A9A0F0",
     borderWidth: 1,
     borderRadius: 30,
     flexDirection: "row",

@@ -66,8 +66,8 @@ const Dashboard = () => {
       percentagetext: "Completed 50%",
       progress: 0.5,
       Picture: fourth,
-      bgColor: "#FFCBA1",
-      badgeColor: "#E36A4A",
+      bgColor: "#FFD7A6",
+      badgeColor: "#D98E33",
     },
     {
       title: "Kitchen Menu",
@@ -99,9 +99,9 @@ const Dashboard = () => {
               style={styles.userProfileImage}
             />
             <View style={styles.userTextContainer}>
-              <Text style={styles.userGreetingText}>Hello,</Text>
+              <Text style={styles.userGreetingText}>Hello</Text>
               <Text style={styles.userNameText}>
-                {userDetails.UserName || "UserName"}!
+                {userDetails.UserName || "UserName"}
               </Text>
             </View>
           </View>

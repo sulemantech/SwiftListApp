@@ -21,25 +21,25 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
 
-    const handleSignUp = async () => {
-        // Basic validation
-        if (password !== confirmPassword) {
-          setError("Passwords do not match!");
-          return;
-        }
-        if (!email || !password) {
-          setError("Please fill in all fields.");
-          return;
-        }
+  const handleSignUp = async () => {
+    // Basic validation
+    if (password !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+    if (!email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
 
-        try {
-          await auth().createUserWithEmailAndPassword(email, password);
-          await auth().currentUser.updateProfile({ displayName: name });
-        //   navigation.navigate(SCREENS.Dashbored);
-        } catch (err) {
-          setError(err.message);
-        }
-    };
+    try {
+      await auth().createUserWithEmailAndPassword(email, password);
+      await auth().currentUser.updateProfile({ displayName: name });
+      //   navigation.navigate(SCREENS.Dashbored);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
@@ -87,24 +87,46 @@ const Signup = () => {
         />
       </View>
 
-            <View style={styles.containersign}>
-                <TouchableOpacity activeOpacity={1} style={styles.signInButton}
-                 onPress={handleSignUp}
-                >
-                    <Text style={styles.buttonText}>Sign up</Text>
-                </TouchableOpacity>
-            </View>
+      <View style={styles.containersign}>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.signInButton}
+          onPress={handleSignUp}
+        >
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
 
-            <View style={styles.row2}>
-                <Text style={styles.checkboxLabel}>Already Have an Account?</Text>
-                <Link
-                    href='/auth/Login'
-                >
-                    <Text style={styles.forgotPassword}>Sign Up</Text>
-                </Link>
-            </View>
-        </ScrollView>
-    );
+      {/* <View style={styles.row2}>
+        <Text style={styles.checkboxLabel}>Already Have an Account?</Text>
+        <Link href="/auth/Login">
+          <Text style={[styles.forgotPassword, { marginLeft: 10 }]}>
+            Sign In
+          </Text>
+        </Link>
+      </View>
+    </ScrollView>
+  );
+}; */}
+      <View style={styles.row2}>
+        <View style={styles.checkboxContainer}>
+          <Text style={styles.checkboxLabel}>Already have an account?</Text>
+        </View>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => router.push("/auth/Login")}
+        >
+          <Text style={styles.forgotPassword}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* {loading && (
+        <View style={styles.overlay}>
+          <ActivityIndicator size="large" color="#fff" />
+        </View>
+      )} */}
+    </ScrollView>
+  );
 };
 
 export default Signup;
@@ -157,18 +179,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20,
     marginHorizontal: "auto",
-    width: "70%",
   },
   checkboxLabel: {
     fontSize: 12,
     fontFamily: "Poppins-Light",
     color: "#8c8c8c",
-    marginLeft: 8,
   },
   forgotPassword: {
-    color: "#52C2FE",
+    color: "#A9A0F0",
     fontFamily: "Poppins-Light",
     fontSize: 12,
+    marginLeft: 8,
+    // backgroundColor: "red",
   },
   containersign: {
     marginTop: 10,
@@ -181,7 +203,7 @@ const styles = StyleSheet.create({
   signInButton: {
     width: "100%",
     height: 50,
-    backgroundColor: "#52C2FE",
+    backgroundColor: "#A9A0F0",
     borderRadius: 30,
     paddingVertical: 12,
     alignItems: "center",
