@@ -26,6 +26,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
         <data android:scheme="com.suliman.SwiftListApp"/>
+        <data android:scheme="exp+swiftlistapp"/>
       </intent-filter>
     </activity>
   </application>
