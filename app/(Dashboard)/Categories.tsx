@@ -8,8 +8,9 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-import searchicon from "../../assets/images/searchiconactive.png";
-import searchiconBlack from "../../assets/images/searchiconnotactive.png";
+import searchicon from "../../assets/images/SVG/searchiconactive.svg";
+// import searchiconBlack from "../../assets/images/searchiconnotactive.png";
+import searchiconBlack from "../../assets/images/SVG/searchiconnotactive.svg";
 import PersonalGroomingSVG from "../../assets/images/SVG/pgrommingpage.svg";
 import { categories } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
@@ -130,6 +131,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         {/* <View style={styles.categoryContainer}> */}
         <View
           style={
+            // styles.categoryContainer
             isSearchFocused
               ? styles.serachFocused_categoryContainer
               : styles.categoryContainer
@@ -170,7 +172,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           <View
             style={[
               styles.searchContainerBase,
-              isSearchFocused && styles.search_focused_searchContainer,
+              isSearchFocused,
+              // && styles.search_focused_searchContainer,
               !isSearchFocused && styles.searchContainer,
             ]}
           >
@@ -191,7 +194,10 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               fontsize={16}
               style={[
                 styles.searchInput,
-                { backgroundColor: isSearchFocused ? "#FFF" : "#9DF4F4" },
+                {
+                  backgroundColor: isSearchFocused ? "#FFF" : "#CBC3FB80",
+                  opacity: isSearchFocused ? 1 : 0.5,
+                },
               ]}
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
@@ -230,7 +236,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             >
               <View style={styles.subCategoryContent}>
                 <Text style={styles.subCategoryName}>{item.name}</Text>
-                <CIrcleWithchevron chevronColor={"#52C2FE"} />
+                <CIrcleWithchevron chevronColor={"#A9A0F0"} />
               </View>
             </TouchableHighlight>
           )}
@@ -276,14 +282,6 @@ const styles = StyleSheet.create({
     height: "38%",
     // backgroundColor: "green",
   },
-  serachFocused_categoryContainer: {
-    top: 0,
-    // backgroundColor: "red",
-    alignItems: "center",
-    width: "100%",
-    height: "8%",
-    marginBottom: "3%",
-  },
 
   categoryImage: {
     width: width * 0.4,
@@ -291,29 +289,50 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     // backgroundColor:"red"
   },
-  searchContainerBase: {
-    width: "95%",
-    height: "17%",
-    position: "relative",
-    top: 10,
-    // backgroundColor: "red",
-  },
+
   searchContainer: {
     // backgroundColor: "green", // Default background
   },
-  search_focused_searchContainer: {
+
+  // searchInput: {
+  //   width: "95%",
+  //   // height: "100%",
+  //   // backgroundColor: "red",
+  //   borderRadius: 40,
+  //   paddingHorizontal: "4.3%",
+  //   marginHorizontal: "2%",
+  //   // opacity: 0.5,
+  // },
+  serachFocused_categoryContainer: {
+    top: 0,
+    // backgroundColor: "red",
+
+    width: "100%",
+    // height: "8%",
+    // marginBottom: "3%",
+    marginTop: "2%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  searchContainerBase: {
     width: "95%",
-    height: "120%",
-    // backgroundColor: "black", // Background when focused
+    // height: "15%",
+    // position: "relative",
+
+    // backgroundColor: "green",
+    alignItems: "center",
+    justifyContent: "center",
   },
   searchInput: {
-    width: "95%",
-    height: "100%",
-    // backgroundColor: "red",
+    width: "95%", // Ensures it remains the same in both states
+    height: 45, // Fixed height
     borderRadius: 40,
     paddingHorizontal: "4.3%",
     marginHorizontal: "2%",
+    // backgroundColor: "red",
   },
+
   subCategoriesContainer: {
     marginTop: 20,
     marginBottom: 80,

@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     margin: 3,
   },
-  
+
   selectedCard: {
     backgroundColor: "#E36A4A",
   },

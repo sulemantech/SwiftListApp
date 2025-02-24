@@ -164,7 +164,7 @@ export default ProductsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#eff9ff",
+    backgroundColor: "#EFF9FF",
     paddingHorizontal: 9,
     paddingTop: 1,
   },
