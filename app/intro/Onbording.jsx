@@ -12,11 +12,11 @@ import {
 import { useRouter } from "expo-router";
 import OnboardingItem from "./Onbordingitem";
 // import SvgUri from "react-native-svg-uri";
-import pic1 from "../../assets/images/SVG/1.svg";
-import pic2 from "../../assets/images/SVG/2.svg";
-import pic3 from "../../assets/images/SVG/3.svg";
-import pic4 from "../../assets/images/SVG/4.svg";
-import pic5 from "../../assets/images/SVG/5.svg";
+import pic1 from "../../assets/images/Onbording/1.png";
+import pic2 from "../../assets/images/Onbording/2.png";
+import pic3 from "../../assets/images/Onbording/3.png";
+import pic4 from "../../assets/images/Onbording/4.png";
+import pic5 from "../../assets/images/Onbording/5.png";
 
 const { width, height } = Dimensions.get("window");
 
@@ -119,7 +119,7 @@ export default function Onboarding() {
                   styles.dot,
                   {
                     backgroundColor:
-                      currentIndex === index ? "#52C3FF" : "#A1DEFF",
+                      currentIndex === index ? "#A9A0F0" : "#A9A0F0",
                   },
                 ]}
               />
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   activeDotContainer: {
     borderWidth: 1,
-    borderColor: "#52C3FF",
+    borderColor: "#A9A0F0",
     borderRadius: 15,
     padding: 3,
   },
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     width: "80%",
     marginHorizontal: "auto",
     height: 50,
-    backgroundColor: "#52C2FE",
+    backgroundColor: "#A9A0F0",
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
