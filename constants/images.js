@@ -28,70 +28,70 @@ const sugar = require('../assets/images/SwiftlistApp/Grocery/Spices/Sugar.png');
 const turmericPowder = require('../assets/images/SwiftlistApp/Grocery/Spices/TurmericPowder.png');
 const whitePepper = require('../assets/images/SwiftlistApp/Grocery/Spices/WhitePepper.png');
 // Sauces image paths
-const bbqSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/BBQSauce.png');
-const balsamicVinegar = require('../assets/images/SwiftlistApp/Grocery/Sauces/BalsamicVinegar.png');
-const chiliPaste = require('../assets/images/SwiftlistApp/Grocery/Sauces/ChiliPaste.png');
-const chilliSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/ChilliSauce.png');
-const fishSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/FishSauce.png');
-const hotChilliSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/HotChilliSauce.png');
-const hotSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/HotSauce.png');
-const marinaraSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/MarinaraSauce.png');
-const mayonnaise = require('../assets/images/SwiftlistApp/Grocery/Sauces/Mayonnaise.png');
-const mustardSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/MustardSauce.png');
-const pastaSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/PastaSauce.png');
-const seasoningSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SeasoningSauce.png');
-const soySauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SoySauce.png');
-const sriracha = require('../assets/images/SwiftlistApp/Grocery/Sauces/Sriracha.png');
-const steakSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SteakSauce.png');
-const tahini = require('../assets/images/SwiftlistApp/Grocery/Sauces/Tahini.png');
-const tomatoPaste = require('../assets/images/SwiftlistApp/Grocery/Sauces/TomatoPaste.png');
-const vinegar = require('../assets/images/SwiftlistApp/Grocery/Sauces/Vinegar.png');
-const ketchup = require('../assets/images/SwiftlistApp/Grocery/Sauces/ketchup.png');
+const bbqSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/BBQSauce.svg');
+const balsamicVinegar = require('../assets/images/SwiftlistApp/Grocery/Sauces/BalsamicVinegar.svg');
+const chiliPaste = require('../assets/images/SwiftlistApp/Grocery/Sauces/ChiliPaste.svg');
+const chilliSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/ChilliSauce.svg');
+const fishSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/FishSauce.svg');
+const hotChilliSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/HotChilliSauce.svg');
+const hotSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/HotSauce.svg');
+const marinaraSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/MarinaraSauce.svg');
+const mayonnaise = require('../assets/images/SwiftlistApp/Grocery/Sauces/Mayonnaise.svg');
+const mustardSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/MustardSauce.svg');
+const pastaSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/PastaSauce.svg');
+const seasoningSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SeasoningSauce.svg');
+const soySauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SoySauce.svg');
+const sriracha = require('../assets/images/SwiftlistApp/Grocery/Sauces/Sriracha.svg');
+const steakSauce = require('../assets/images/SwiftlistApp/Grocery/Sauces/SteakSauce.svg');
+const tahini = require('../assets/images/SwiftlistApp/Grocery/Sauces/Tahini.svg');
+const tomatoPaste = require('../assets/images/SwiftlistApp/Grocery/Sauces/TomatoPaste.svg');
+const vinegar = require('../assets/images/SwiftlistApp/Grocery/Sauces/Vinegar.svg');
+const ketchup = require('../assets/images/SwiftlistApp/Grocery/Sauces/Ketchup.svg');
 // Frozen Items
-const Bread = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Bread.png');
-const BurgerPatties = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/BurgerPatties.png');
-const CheeseBall = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/CheeseBall.png');
-const ChickenBreast = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenBreast.png');
-const ChickenSamosa = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenSamosa.png');
-const ChickenStrips = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenStrips.png');
-const ChickenWings = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenWings.png');
-const Corn = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Corn.png');
-const Dumplings = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Dumplings.png');
-const Fish = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Fish.png');
-const FrenchFries = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/FrenchFries.png');
+const Bread = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Bread.svg');
+const BurgerPatties = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/BurgerPatties.svg');
+const CheeseBall = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/CheeseBall.svg');
+const ChickenBreast = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenBreast.svg');
+const ChickenSamosa = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Chicken Samosa.svg');
+const ChickenStrips = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenBreast.svg');
+const ChickenWings = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenWings.svg');
+const Corn = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Corn.svg');
+const Dumplings = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Dumplings.svg');
+const Fish = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Fish.svg');
+const FrenchFries = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/FrenchFries.svg');
 const Fruits = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Fruits.png');
-const FullChicken = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/FullChicken.png');
-const GolaKebab = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/GolaKebab.png');
-const IceCream = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/IceCream.png');
-const Meat = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Meat.png');
-const Meatballs = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Meatballs.png');
-const Nuggets = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Nuggets.png');
-const Parathas = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Parathas.png');
-const Pepperoni = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Peporoni.png');
-const Pizza = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Pizza.png');
-const PopcornChicken = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/PopcornChicken.png');
-const Sausages = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Sausages.png');
-const SpringRoll = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/SpringRoll.png');
-const VegetableSamosa = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/VegetableSamosa.png');
-const Vegetables = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Vegetables.png');
-const Wonton = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Wonton.png');
-const ChickenDrumstick = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/chicken_drumstick.png');
+const FullChicken = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/FullChicken.svg');
+const GolaKebab = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/GolaKebab.svg');
+const IceCream = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/IceCream.svg');
+const Meat = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Meat.svg');
+const Meatballs = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/MeatBalls.svg');
+const Nuggets = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Nuggets.svg');
+const Parathas = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Parathas.svg');
+const Pepperoni = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Peporoni.svg');
+const Pizza = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Pizza.svg');
+const PopcornChicken = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/PopcornChicken.svg');
+const Sausages = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Sausages.svg');
+const SpringRoll = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/SpringRoll.svg');
+const VegetableSamosa = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/VegetableSamosa.svg');
+const Vegetables = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Vegetables.svg');
+const Wonton = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/Wonton.svg');
+const ChickenDrumstick = require('../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenDrumstick.svg');
 
 // Milk Products
-const butterMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/ButterMilk.png');
-const butter = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Butter.png');
-const cheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Cheese.png');
-const condensedMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CondensedMilk.png');
-const cottageCheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CottageCheese.png');
-const creamCheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CreamCheese.png');
-const cream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Cream.png');
+const butterMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/ButterMilk.svg');
+const butter = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Butter.svg');
+const cheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Cheese.svg');
+const condensedMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CondensedMilk.svg');
+const cottageCheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CottageCheese.svg');
+const creamCheese = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/CreamCheese.svg');
+const cream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Cream.svg');
 const evaporatedMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/EvaporatedMilk.png');
-const heavyCream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/HeavyCream.png');
-const skimMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/SkimMilk.png');
-const sourCream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/SourCream.png');
+const heavyCream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/HeavyCream.svg');
+const skimMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/SkimMilk.svg');
+const sourCream = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/SourCream.svg');
 const wholeMilkPowder = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/WholeMilkPowder.png');
-const wholeMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/WholeMilk.png');
-const yogurt = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Yogurt.png');
+const wholeMilk = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/WholeMilk.svg');
+const yogurt = require('../assets/images/SwiftlistApp/Grocery/MilkProducts/Yogurt.svg');
 
 // Vegetables
 const potato = require('../assets/images/SwiftlistApp/Grocery/Vegetables/potato.png');
@@ -118,39 +118,39 @@ const turnip = require('../assets/images/SwiftlistApp/Grocery/Vegetables/turnip.
 const zucchini = require('../assets/images/SwiftlistApp/Grocery/Vegetables/zucchini.png');
 
 // Fruits
-const apple = require('../assets/images/SwiftlistApp/Grocery/Fruits/apple.png');
-const avocado = require('../assets/images/SwiftlistApp/Grocery/Fruits/avocado.png');
-const banana = require('../assets/images/SwiftlistApp/Grocery/Fruits/banana.png');
-const blueberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/blueberry.png');
-const cherry = require('../assets/images/SwiftlistApp/Grocery/Fruits/cherry.png');
-const grapes = require('../assets/images/SwiftlistApp/Grocery/Fruits/grapes.png');
-const guava = require('../assets/images/SwiftlistApp/Grocery/Fruits/guava.png');
-const kiwi = require('../assets/images/SwiftlistApp/Grocery/Fruits/kiwi.png');
-const lichi = require('../assets/images/SwiftlistApp/Grocery/Fruits/lichi.png');
-const mango = require('../assets/images/SwiftlistApp/Grocery/Fruits/mango.png');
-const melon = require('../assets/images/SwiftlistApp/Grocery/Fruits/melon.png');
+const apple = require('../assets/images/SwiftlistApp/Grocery/Fruits/Apple.svg');
+const avocado = require('../assets/images/SwiftlistApp/Grocery/Fruits/Avocado.svg');
+const banana = require('../assets/images/SwiftlistApp/Grocery/Fruits/Banana.svg');
+const blueberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/Blueberry.svg');
+const cherry = require('../assets/images/SwiftlistApp/Grocery/Fruits/Cherry.svg');
+const grapes = require('../assets/images/SwiftlistApp/Grocery/Fruits/Grapes.svg');
+const guava = require('../assets/images/SwiftlistApp/Grocery/Fruits/Guava.svg');
+const kiwi = require('../assets/images/SwiftlistApp/Grocery/Fruits/Kiwi.svg');
+const lichi = require('../assets/images/SwiftlistApp/Grocery/Fruits/Lichi.svg');
+const mango = require('../assets/images/SwiftlistApp/Grocery/Fruits/Mango.svg');
+const melon = require('../assets/images/SwiftlistApp/Grocery/Fruits/Melon.svg');
 const orange = require('../assets/images/SwiftlistApp/Grocery/Fruits/orange.png');
-const papaya = require('../assets/images/SwiftlistApp/Grocery/Fruits/papaya.png');
-const peach = require('../assets/images/SwiftlistApp/Grocery/Fruits/peach.png');
-const pear = require('../assets/images/SwiftlistApp/Grocery/Fruits/pear.png');
-const pineapple = require('../assets/images/SwiftlistApp/Grocery/Fruits/pineapple.png');
+const papaya = require('../assets/images/SwiftlistApp/Grocery/Fruits/Papaya.svg');
+const peach = require('../assets/images/SwiftlistApp/Grocery/Fruits/Peach.svg');
+const pear = require('../assets/images/SwiftlistApp/Grocery/Fruits/Pear.svg');
+const pineapple = require('../assets/images/SwiftlistApp/Grocery/Fruits/Pineapple.svg');
 const pomengranate = require('../assets/images/SwiftlistApp/Grocery/Fruits/pomengarate.png');
-const raspberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/raspberry.png');
-const strawberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/strawberry.png');
-const watermelon = require('../assets/images/SwiftlistApp/Grocery/Fruits/watermelon.png');
+const raspberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/Raspberry.svg');
+const strawberry = require('../assets/images/SwiftlistApp/Grocery/Fruits/Strawberry.svg');
+const watermelon = require('../assets/images/SwiftlistApp/Grocery/Fruits/Watermelon.svg');
 
 // pulses
 
-const BlackEyedPeas = require('../assets/images/SwiftlistApp/Grocery/Pulses/BlackeyedPeas.png');
-const BlankLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/BlankLentil.png');
-const BrownLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/BrownLentil.png');
-const Chickpeas = require('../assets/images/SwiftlistApp/Grocery/Pulses/Chickpeas.png');
-const GreenLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/GreenLentil.png');
-const OrangeLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/OrangeLentil.png');
-const RedBeans = require('../assets/images/SwiftlistApp/Grocery/Pulses/RedBeans.png');
-const WhiteBeans = require('../assets/images/SwiftlistApp/Grocery/Pulses/WhiteBeans.png');
-const WhiteLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/WhiteLentil.png');
-const YellowLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/YellowLentil.png');
+const BlackEyedPeas = require('../assets/images/SwiftlistApp/Grocery/Pulses/BlackEyedPeas.svg');
+const BlankLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/BlackLentil.svg');
+const BrownLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/BrownLentil.svg');
+const Chickpeas = require('../assets/images/SwiftlistApp/Grocery/Pulses/Chickpeas.svg');
+const GreenLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/GreenLentil.svg');
+const OrangeLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/OrangeLentil.svg');
+const RedBeans = require('../assets/images/SwiftlistApp/Grocery/Pulses/RedBeans.svg');
+const WhiteBeans = require('../assets/images/SwiftlistApp/Grocery/Pulses/WhiteBeans.svg');
+const WhiteLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/WhiteLentil.svg');
+const YellowLentil = require('../assets/images/SwiftlistApp/Grocery/Pulses/YellowLentil.svg');
 
 const frozenitems = [
   {name: 'Bread', imgPath: Bread},
@@ -493,15 +493,15 @@ const cleaningCaddyItems = [
   {name: 'Trash Bags', imgPath: TrashBags},
   {name: 'Wiper', imgPath: Wiper},
 ];
-const CaesarDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/CaesarDressing.png');
-const HoneyMustard = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HoneyMustard.png');
-const HotSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HotSauce.png');
-const PeanutButter = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/PeanutButter.png');
-const RanchDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/RanchDressing.png');
-const SaladDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SaladDressing.png');
-const SandwichSpread = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SandwichSpread.png');
-const TartarSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/TartarSauce.png');
-const WorcestershireSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/WorcestershireSauce.png');
+const CaesarDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/CaesarDressing.svg');
+const HoneyMustard = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HoneyMustard.svg');
+const HotSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HotSauce.svg');
+const PeanutButter = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/PeanutButter.svg');
+const RanchDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/RanchDressing.svg');
+const SaladDressing = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SaladDressing.svg');
+const SandwichSpread = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SandwichSpread.svg');
+const TartarSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/TartarSauce.svg');
+const WorcestershireSauce = require('../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/WorcestershireSauce.svg');
 
 const condimentsAndDressingsItems = [
   {name: 'Caesar Dressing', imgPath: CaesarDressing},
@@ -516,17 +516,17 @@ const condimentsAndDressingsItems = [
 ];
 
 
-const Candies = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Candies.png');
-const ChocolateBars = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateBars.png');
-const ChocolateSyrup = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateSyrup.png');
+const Candies = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Candies.svg');
+const ChocolateBars = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateBars.svg');
+const ChocolateSyrup = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateSyrup.svg');
 // const Cookies = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Cookies.png');
-const Donuts = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Donuts.png');
-const GummyBears = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/GummyBears.png');
-const HardCandy = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/HardCandy.png');
-// const IceCream = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/IceCream.png');
-const Lollipops = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Lollipops.png');
-const Marshmallows = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Marshmallows.png');
-const Pastries = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Pastries.png');
+const Donuts = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Donuts.svg');
+const GummyBears1 = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/GummyBears.svg');
+const HardCandy = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/HardCandy.svg');
+const IceCream1 = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/IceCream.svg');
+const Lollipops = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Lollipops.svg');
+const Marshmallows = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Marshmallows.svg');
+const Pastries = require('../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Pastries.svg');
 
 const confectioneryAndSweetsItems = [
   { name: 'Candies', imgPath: Candies },
@@ -534,23 +534,23 @@ const confectioneryAndSweetsItems = [
   { name: 'Chocolate Syrup', imgPath: ChocolateSyrup },
   { name: 'Cookies', imgPath: Cookies },
   { name: 'Donuts', imgPath: Donuts },
-  { name: 'Gummy Bears', imgPath: GummyBears },
+  { name: 'Gummy Bears', imgPath: GummyBears1 },
   { name: 'Hard Candy', imgPath: HardCandy },
-  { name: 'Ice Cream', imgPath: IceCream },
+  { name: 'Ice Cream', imgPath: IceCream1 },
   { name: 'Lollipops', imgPath: Lollipops },
   { name: 'Marshmallows', imgPath: Marshmallows },
   { name: 'Pastries', imgPath: Pastries },
 ];
 
 
-const CanolaOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CanolaOil.png');
-const CoconutOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CoconutOil.png');
-const CornOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CornOil.png');
-const GrapeseedOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/GrapeseedOil.png');
-const OliveOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/OliveOil.png');
-const SesameOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/SesameOil.png');
-const SunflowerOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/SunflowerOil.png');
-const VegetableOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/VegetableOil.png');
+const CanolaOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CanolaOil.svg');
+const CoconutOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CoconutOil.svg');
+const CornOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/CornOil.svg');
+const GrapeseedOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/GrapeseedOil.svg');
+const OliveOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/OliveOil.svg');
+const SesameOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/SesameOil.svg');
+const SunflowerOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/SunflowerOil.svg');
+const VegetableOil = require('../assets/images/SwiftlistApp/Grocery/CookingOils/VegetableOil.svg');
 
 const cookingOilsItems = [
   { name: 'Canola Oil', imgPath: CanolaOil },
@@ -562,15 +562,15 @@ const cookingOilsItems = [
   { name: 'Sunflower Oil', imgPath: SunflowerOil },
   { name: 'Vegetable Oil', imgPath: VegetableOil },
 ];
-const AlmondMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/AlmondMilk.png');
-const CashewMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CashewMilk.png');
-const CoconutMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CoconutMilk.png');
-const HazelnutMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HazelnutMilk.png');
-const HempMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HempMilk.png');
-const LactoseFreeMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/Lactose-FreeMilk.png');
-const OatMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/OatMilk.png');
-const RiceMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/RiceMilk.png');
-const SoyMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/SoyMilk.png');
+const AlmondMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/AlmondMilk.svg');
+const CashewMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CashewMilk.svg');
+const CoconutMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CoconutMilk.svg');
+const HazelnutMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HazelnutMilk.svg');
+const HempMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HempMilk.svg');
+const LactoseFreeMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/LactoseFreeMilk.svg');
+const OatMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/OatMilk.svg');
+const RiceMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/RiceMilk.svg');
+const SoyMilk = require('../assets/images/SwiftlistApp/Grocery/DairyAlternatives/SoyMilk.svg');
 
 const dairyAlternativesItems = [
   { name: 'Almond Milk', imgPath: AlmondMilk },
@@ -584,19 +584,19 @@ const dairyAlternativesItems = [
   { name: 'Soy Milk', imgPath: SoyMilk },
 ];
 
-const AllPurposeFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/All-PurposeFlour.png');
-const BakingPowder = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingPowder.png');
-const BakingSoda = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingSoda.png');
-const BrownieMix = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Browniemix.png');
-const CakeMix = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CakeMix.png');
-const ChocolateChips = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Chocolatechips.png');
-const CocoaPowder = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CocoaPowder.png');
-const Cornstarch = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Cornstarch.png');
-const PastryFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/PastryFlour.png');
-const SelfRaisingFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Self-RaisingFlour.png');
-const Sugar = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Sugar.png');
-const VanillaExtract = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/VanillaExtract.png');
-const Yeast = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Yeast.png');
+const AllPurposeFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/AllPurposeFlour.svg');
+const BakingPowder = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingPowder.svg');
+const BakingSoda = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingPowder.svg');
+const BrownieMix = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BrownieMix.svg');
+const CakeMix = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CakeMix.svg');
+const ChocolateChips = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/ChocolateChips.svg');
+const CocoaPowder = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CocoaPowder.svg');
+const Cornstarch = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Cornstarch.svg');
+const PastryFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/PastryFlour.svg');
+const SelfRaisingFlour = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/SelfRaisingFlour.svg');
+const Sugar = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Sugar.svg');
+const VanillaExtract = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/VanillaExtract.svg');
+const Yeast = require('../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Yeast.svg');
 
 const flourAndBakingSuppliesItems = [
   { name: 'All-Purpose Flour', imgPath: AllPurposeFlour },
@@ -615,15 +615,15 @@ const flourAndBakingSuppliesItems = [
 ];
 
 
-const Barley = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Barley.png');
-const BasmatiRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/basmatirice.png');
-const BrownRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/brownrice.png');
-const JasmineRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/jasminerice.png');
-const Millet = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Millet.png');
-const Oats = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/oats.png');
-const Quinoa = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Quinoa.png');
-const WhiteRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/WhiteRice.png');
-const WildRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/wildrice.png');
+const Barley = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Barley.svg');
+const BasmatiRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/BasmatiRice.svg');
+const BrownRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/BrownRice.svg');
+const JasmineRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/JasmineRice.svg');
+const Millet = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Millet.svg');
+const Oats = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Oats.svg');
+const Quinoa = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/Quinoa.svg');
+const WhiteRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/WhiteRice.svg');
+const WildRice = require('../assets/images/SwiftlistApp/Grocery/Grains&Rice/WildRice.svg');
 
 const grainsAndRiceItems = [
   { name: 'Barley', imgPath: Barley },
@@ -637,17 +637,17 @@ const grainsAndRiceItems = [
   { name: 'Wild Rice', imgPath: WildRice },
 ];
 
-const Basil = require('../assets/images/SwiftlistApp/Grocery/Herbs/Basil.png');
-const BayLeaves = require('../assets/images/SwiftlistApp/Grocery/Herbs/BayLeaves.png');
-const Chives = require('../assets/images/SwiftlistApp/Grocery/Herbs/Chives.png');
-const Cilantro = require('../assets/images/SwiftlistApp/Grocery/Herbs/Cilantro.png');
-const Dill = require('../assets/images/SwiftlistApp/Grocery/Herbs/Dill.png');
-const Mint = require('../assets/images/SwiftlistApp/Grocery/Herbs/Mint.png');
-const Oregano = require('../assets/images/SwiftlistApp/Grocery/Herbs/Oregano.png');
-const Parsley = require('../assets/images/SwiftlistApp/Grocery/Herbs/Parsley.png');
-const Rosemary = require('../assets/images/SwiftlistApp/Grocery/Herbs/Rosemary.png');
-const Sage = require('../assets/images/SwiftlistApp/Grocery/Herbs/Sage.png');
-const Thyme = require('../assets/images/SwiftlistApp/Grocery/Herbs/Thyme.png');
+const Basil = require('../assets/images/SwiftlistApp/Grocery/Herbs/Basil.svg');
+const BayLeaves = require('../assets/images/SwiftlistApp/Grocery/Herbs/Bay Leaves.svg');
+const Chives = require('../assets/images/SwiftlistApp/Grocery/Herbs/Chives.svg');
+const Cilantro = require('../assets/images/SwiftlistApp/Grocery/Herbs/Cilantro.svg');
+const Dill = require('../assets/images/SwiftlistApp/Grocery/Herbs/Dill.svg');
+const Mint = require('../assets/images/SwiftlistApp/Grocery/Herbs/Mint.svg');
+const Oregano = require('../assets/images/SwiftlistApp/Grocery/Herbs/Oregano.svg');
+const Parsley = require('../assets/images/SwiftlistApp/Grocery/Herbs/Parsley.svg');
+const Rosemary = require('../assets/images/SwiftlistApp/Grocery/Herbs/Rosemary.svg');
+const Sage = require('../assets/images/SwiftlistApp/Grocery/Herbs/Sage.svg');
+const Thyme = require('../assets/images/SwiftlistApp/Grocery/Herbs/Thyme.svg');
 
 const herbsItems = [
   { name: 'Basil', imgPath: Basil },
@@ -663,16 +663,16 @@ const herbsItems = [
   { name: 'Thyme', imgPath: Thyme },
 ];
 
-const Bacon = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Bacon.png');
+const Bacon = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Bacon.svg');
 // const ChickenBreast = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/ChickenBreast.png');
 // const ChickenWings = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/ChickenWings.png');
-const FishFillets = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/FishFillets.png');
-const GroundBeef = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/GroundBeef.png');
-const LambChops = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/LambChops.png');
-const Salmon = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Salmon.png');
+const FishFillets = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/FishFillets.svg');
+const GroundBeef = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/GroundBeef.svg');
+const LambChops = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/LambChops.svg');
+const Salmon = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Salmon.svg');
 // const Sausages = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Sausages.png');
-const Shrimp = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Shrimp.png');
-const TurkeyBreast = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/TurkeyBreast.png');
+const Shrimp = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Shrimp.svg');
+const TurkeyBreast = require('../assets/images/SwiftlistApp/Grocery/Meat&Seafood/TurkeyBreast.svg');
 
 const meatAndSeafoodItems = [
   { name: 'Bacon', imgPath: Bacon },
@@ -688,19 +688,19 @@ const meatAndSeafoodItems = [
 ];
 
 
-const Almonds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Almonds.png');
-const BrazilNuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/BrazilNuts.png');
-const Cashews = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Cashews.png');
-const Coconut = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Coconut.png');
-const Fig = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Fig.png');
-const Flaxseeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Flaxseeds.png');
-const MacadamiaNuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/MacadamiaNuts.png');
-const Peanuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Peanuts.png');
-const Pecans = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pecans.png');
-const Pistachios = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pistachios.png');
-const PumpkinSeeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/PumpkinSeeds.png');
-const SunflowerSeeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/SunflowerSeeds.png');
-const Walnuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Walnuts.png');
+const Almonds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Almonds.svg');
+const BrazilNuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/BrazilNuts.svg');
+const Cashews = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Cashews.svg');
+const Coconut = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Coconut.svg');
+const Fig = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Fig.svg');
+const Flaxseeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/FlaxSeeds.svg');
+const MacadamiaNuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/MacadamiaNuts.svg');
+const Peanuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Peanuts.svg');
+const Pecans = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pecans.svg');
+const Pistachios = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pistachios.svg');
+const PumpkinSeeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/PumpkinSeeds.svg');
+const SunflowerSeeds = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/SunflowerSeeds.svg');
+const Walnuts = require('../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Walnuts.svg');
 
 const nutsAndSeedsItems = [
   { name: 'Almonds', imgPath: Almonds },
@@ -719,17 +719,17 @@ const nutsAndSeedsItems = [
 ];
 
 
-const AluminumFoil = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/AluminumFoil.png');
-const CoffeeFilters = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/CoffeeFilters.png');
-const Napkins = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/Napkins.png');
-const PaperCups = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperCups.png');
-const PaperNapkins = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperNapkins.png');
-const PaperPlates = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperPlates.png');
-const PaperTowels = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperTowels.png');
-const Tissues = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/Tissues.png');
-const ToiletPaper = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/ToiletPaper.png');
+const AluminumFoil = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/AluminumFoil.svg');
+const CoffeeFilters = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/CoffeeFilters.svg');
+const Napkins = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/Napkins.svg');
+const PaperCups = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperCups.svg');
+const PaperNapkins = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperNapkins.svg');
+const PaperPlates = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperPlates.svg');
+const PaperTowels = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperTowels.svg');
+const Tissues = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/Tissues.svg');
+const ToiletPaper = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/ToiletPaper.svg');
 // const TrashBags = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/TrashBags.png');
-const WrappingPaper = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/WrappingPaper.png');
+const WrappingPaper = require('../assets/images/SwiftlistApp/Grocery/PaperProducts/WrappingPaper.svg');
 
 const paperProductsItems = [
   { name: 'Aluminum Foil', imgPath: AluminumFoil },
@@ -745,19 +745,19 @@ const paperProductsItems = [
   { name: 'Wrapping Paper', imgPath: WrappingPaper },
 ];
 
-const BowtiePasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/BowtiePasta.png');
-const EggNoodles = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/EggNoodles.png');
-const Fettuccine = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Fettuccine.png');
-const FusilliPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/FusilliPasta.png');
-const ItalianPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ItalianPasta.png');
-const LasagnaNoodles = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/LasagnaNoodles.png');
-const Linguine = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Linguine.png');
-const Macaroni = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Macaroni.png');
-const PennePasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/PennePasta.png');
-const Ravioli = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Ravioli.png');
-const RigatoniPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/RigatoniPasta.png');
-const ShellPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ShellPasta.png');
-const Spaghetti = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Spaghetti.png');
+const BowtiePasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/BowtiePasta.svg');
+const EggNoodles = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/EggNoodles.svg');
+const Fettuccine = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Fettuccine.svg');
+const FusilliPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/FusilliPasta.svg');
+const ItalianPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ItalianPasta.svg');
+const LasagnaNoodles = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/LasagnaNoodles.svg');
+const Linguine = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Linguine.svg');
+const Macaroni = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Macaroni.svg');
+const PennePasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/PennePasta.svg');
+const Ravioli = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Ravioli.svg');
+const RigatoniPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/RigatoniPasta.svg');
+const ShellPasta = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ShellPasta.svg');
+const Spaghetti = require('../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Spaghetti.svg');
 
 const pastaAndNoodlesItems = [
   { name: 'Bowtie Pasta', imgPath: BowtiePasta },
@@ -775,21 +775,21 @@ const pastaAndNoodlesItems = [
   { name: 'Spaghetti', imgPath: Spaghetti },
 ];
 
-const BathSoap = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/BathSoap.png');
-const BodyWash = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/bodywash.png');
-const Deodorant = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Deodorant.png');
-const EyeCream = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/eyecream.png');
-const FaceWash = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/FaceWash.png');
-const HairConditioner = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/HairConditioner.png');
-const HandSanitizer = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/HandSanitizer.png');
-const LipBalm = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/lipbalm.png');
-const Lotion = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Lotion.png');
-const Moisturizer = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Moisturizer.png');
-const Shampoo = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Shampoo.png');
-const ShavingCream = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/ShavingCream.png');
-const Soap = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Soap.png');
-const Sunscreen = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/sunscreen.png');
-const Toothpaste = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Toothpaste.png');
+const BathSoap = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/BathSoap.svg');
+const BodyWash = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/BodyWash.svg');
+const Deodorant = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Deodorant.svg');
+const EyeCream = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/EyeCream.svg');
+const FaceWash = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/FaceWash.svg');
+const HairConditioner = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/HairConditioner.svg');
+const HandSanitizer = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/HandSanitizer.svg');
+const LipBalm = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/LipBalm.svg');
+const Lotion = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Lotion.svg');
+const Moisturizer = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Moisturizer.svg');
+const Shampoo = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Shampoo.svg');
+const ShavingCream = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/ShavingCream.svg');
+const Soap = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Soap.svg');
+const Sunscreen = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/sunscreen.svg');
+const Toothpaste = require('../assets/images/SwiftlistApp/Grocery/PersonalCare/Toothpaste.svg');
 
 const personalCareItems = [
   { name: 'Bath Soap', imgPath: BathSoap },
@@ -809,17 +809,17 @@ const personalCareItems = [
   { name: 'Toothpaste', imgPath: Toothpaste },
 ];
 
-const BirdSeed = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/BirdSeed.png');
-const CatFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatFood.png');
-const CatLitter = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatLitter.png');
-const DogFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogFood.png');
-const DogTreats = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogTreats.png');
-const FishFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/FishFood.png');
-const LitterBoxLiners = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/LitterBoxLiners.png');
-const PetGroomingSupplies = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetGroomingSupplies.png');
-const PetShampoo = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetShampoo.png');
-const PetToys = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetToys.png');
-const PetTreats = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetTreats.png');
+const BirdSeed = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/BirdSeed.svg');
+const CatFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatFood.svg');
+const CatLitter = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatLitter.svg');
+const DogFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogFood.svg');
+const DogTreats = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogTreats.svg');
+const FishFood = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/FishFood.svg');
+const LitterBoxLiners = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/LitterBoxLiners.svg');
+const PetGroomingSupplies = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetGroomingSupplies.svg');
+const PetShampoo = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetShampoo.svg');
+const PetToys = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetToys.svg');
+const PetTreats = require('../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetTreats.svg');
 
 const petFoodAndSuppliesItems = [
   { name: 'Bird Seed', imgPath: BirdSeed },
