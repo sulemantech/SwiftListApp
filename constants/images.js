@@ -1146,20 +1146,20 @@ const Eating = [
 ];
 
 
-const AnsweringEmails = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/AnsweringEmails.png');
-const BudgetPlanning = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/BudgetPlanning.png');
-const CompletingDocuments = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/CompletingDocuments.png');
-const DataEntry = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/DataEntry.png');
-const FileManagement = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/FileManagement.png');
-const OrganizingMeetings = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/OrganizingMeetings.png');
-const PhoneCalls = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PhoneCalls.png');
-const PreparingPresentations = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingPresentations.png');
-const PreparingReports = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingReports.png');
-const ProjectManagement = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/ProjectManagement.png');
-const ReviewingDocuments = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/ReviewingDocuments.png');
-const SchedulingMeetings = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/SchedulingMeetings.png');
-const TaskPrioritization = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/TaskPrioritization.png');
-const TrackingTasks = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/TrackingTasks.png');
+const AnsweringEmails = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/AnsweringEmails.svg');
+const BudgetPlanning = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/BudgetPlanning.svg');
+const CompletingDocuments = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/CompletingDocuments.svg');
+const DataEntry = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/DataEntry.svg');
+const FileManagement = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/FileManagement.svg');
+const OrganizingMeetings = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/OrganizingMeetings.svg');
+const PhoneCalls = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PhoneCalls.svg');
+const PreparingPresentations = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingPresentations.svg');
+const PreparingReports = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/PreparingReports.svg');
+const ProjectManagement = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/ProjectManagement.svg');
+const ReviewingDocuments = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/ReviewingDocuments.svg');
+const SchedulingMeetings = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/SchedulingMeetings.svg');
+const TaskPrioritization = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/TaskPrioritization.svg');
+const TrackingTasks = require('../assets/images/SwiftlistApp/ToDo/OfficialTask/TrackingTasks.svg');
 
 const OfficialTask = [
   { name: 'Answering Emails', imgPath: AnsweringEmails },
@@ -1287,16 +1287,16 @@ const Haircare = [
 ]
 
 // Importing all images
-const BeefBiryani = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBiryani.png');
-const BeefBurger = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBurger.png');
-const BeefCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefCurry.png');
-const BeefKebab = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefKebab.png');
-const BeefRibs = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefRibs.png');
-const BeefSteak = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefSteak.png');
-const BeefStirFry = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStirFry.png');
-const BeefStroganoff = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStroganoff.png');
-const BeefTacos = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefTacos.png');
-const RoastBeef = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/RoastBeef.png');
+const BeefBiryani = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBiryani.svg');
+const BeefBurger = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBurger.svg');
+const BeefCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefCurry.svg');
+const BeefKebab = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefKebab.svg');
+const BeefRibs = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefRibs.svg');
+const BeefSteak = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefSteak.svg');
+const BeefStirFry = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStirFry.svg');
+const BeefStroganoff = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStroganoff.svg');
+const BeefTacos = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefTacos.svg');
+const RoastBeef = require('../assets/images/SwiftlistApp/KitchenMenu/Beef/RoastBeef.svg');
 
 const BeefDishes = [
   { name: 'Beef Biryani', imgPath: BeefBiryani },
@@ -1356,16 +1356,16 @@ const BrunchItems = [
 ];
 
 // Importing all images for Chicken items
-const ChickenAlfredo = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenAlfredo.png');
-const ChickenCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenCurry.png');
-const ChickenFajitas = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenFajitas.png');
-const ChickenNuggets = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenNuggets.png');
-const ChickenParmesan = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenParmesan.png');
-const ChickenShawarma = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenShawarma.png');
-const ChickenTikka = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenTikka.png');
+const ChickenAlfredo = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenAlfredo.svg');
+const ChickenCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenCurry.svg');
+const ChickenFajitas = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenFajitas.svg');
+const ChickenNuggets = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenNuggets.svg');
+const ChickenParmesan = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenParmesan.svg');
+const ChickenShawarma = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenShawarma.svg');
+const ChickenTikka = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenTikka.svg');
 // const ChickenWings = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenWings.png');
-const GrilledChicken = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/GrilledChicken.png');
-const RoastedChicken = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/RoastedChicken.png');
+const GrilledChicken = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/GrilledChicken.svg');
+const RoastedChicken = require('../assets/images/SwiftlistApp/KitchenMenu/Chicken/RoastedChicken.svg');
 
 // Combined array for Chicken items
 const ChickenItems = [
@@ -1382,16 +1382,16 @@ const ChickenItems = [
 ];
 
 // Importing all images for Dinner items
-const BeefLasagna = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/BeefLasagna.png');
-const GrilledLambChops = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/GrilledLambChops.png');
-const HerbRoastedChickenwithMashedPotatoes = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/HerbRoastedChickenwithMashedPotatoes.png');
-const KidneyBeanswithRice = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/KidneyBeanswithRice.png');
-const MoroccanChickenwithCouscous = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MoroccanChickenwithCouscous.png');
-const MushroomRisotto = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MushroomRisotto.png');
-const MuttonCurrywithFlatbread = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonCurrywithFlatbread.png');
-const MuttonSoupwithBread = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonSoupwithBread.png');
-const SeekhKebabswithNaan = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/SeekhKebabswithNaan.png');
-const SpicedWholeChickenwithYogurtSauce = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/SpicedWholeChickenwithYogurtSauce.png');
+const BeefLasagna = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/BeefLasagna.svg');
+const GrilledLambChops = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/GrilledLambChops.svg');
+const HerbRoastedChickenwithMashedPotatoes = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/HerbRoastedChickenWithMashedPotatoes.svg');
+const KidneyBeanswithRice = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/KidneyBeansWithRice.svg');
+const MoroccanChickenwithCouscous = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MoroccanChickenWithCouscous.svg');
+const MushroomRisotto = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MushroomRisotto.svg');
+const MuttonCurrywithFlatbread = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonCurryWithFlatbread.svg');
+const MuttonSoupwithBread = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonSoupWithBread.svg');
+const SeekhKebabswithNaan = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/SeekhKebabsWithNaan.svg');
+const SpicedWholeChickenwithYogurtSauce = require('../assets/images/SwiftlistApp/KitchenMenu/Dinner/SpicedWholeChickenWithYogurtSauce.svg');
 
 // Combined array for Dinner items
 const DinnerItems = [
@@ -1409,16 +1409,16 @@ const DinnerItems = [
 
 
 // Importing all images for Lunch items
-const ChickenBiryani = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenBiryani.png');
-const ChickenKarahiwithNaan = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenKarahiwithNaan.png');
-const LentilswithRice = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/LentilswithRice.png');
-const MincedMeatStuffedBread = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/MincedMeatStuffedBread.png');
-const MuttonKormawithTandooriRoti = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/MuttonKormawithTandooriRoti.png');
-const PalakPaneer = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PalakPaneer(SpinachandCottageCheese)withRice.png');
-const PotatoandMeatCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PotatoandMeatCurry.png');
-const PulaowithRaita = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PulaowithRaita.png');
-const SpicedOkra = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicedOkra.png');
-const SpicyChickpeaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicyChickpeaSalad.png');
+const ChickenBiryani = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenBiryani.svg');
+const ChickenKarahiwithNaan = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenKarahiWithNaan.svg');
+const LentilswithRice = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/LentilsWithRice.svg');
+const MincedMeatStuffedBread = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/MincedMeatStuffedBread.svg');
+const MuttonKormawithTandooriRoti = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/MuttonKormaWithTandooriRoti.svg');
+const PalakPaneer = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PalakPaneer(Spinach and Cottage Cheese)WithRice.svg');
+const PotatoandMeatCurry = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PotatoAndMeatCurry.svg');
+const PulaowithRaita = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/PulaoWithRaita.svg');
+const SpicedOkra = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicedOkra.svg');
+const SpicyChickpeaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicyChickpeaSalad.svg');
 
 // Combined array for Lunch items
 const LunchItems = [
