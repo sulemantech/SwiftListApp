@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   productCard: {
-    backgroundColor: "#4AA688",
+    backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
     padding: 6,
@@ -381,7 +381,8 @@ const styles = StyleSheet.create({
   },
 
   selectedCard: {
-    backgroundColor: "#E36A4A",
+    backgroundColor: "#CBC3FB",
+    opacity: 0.2,
   },
   productImage: {
     width: screenWidth * 0.18,
