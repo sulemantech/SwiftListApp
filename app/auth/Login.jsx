@@ -140,7 +140,7 @@ const LoginScreen = () => {
         }));
       }
 
-      routerr.replace("/(Dashboard)/Dashboard");
+      routerr.replace("/(Dashboard)/Home");
     } catch (error) {
       console.error("Google Sign-in error: ", error);
       Alert.alert("Error", "Google Sign-In failed. Please try again.");
