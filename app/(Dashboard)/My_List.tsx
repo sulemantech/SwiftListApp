@@ -2,15 +2,15 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '@/constants'
 
-const Explore = () => {
+const My_List = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Explore Coming Soon!</Text>
+      <Text style={styles.text}>My List Coming Soon!</Text>
     </View>
   )
 }
 
-export default Explore
+export default My_List
 
 const styles = StyleSheet.create({
   container: {

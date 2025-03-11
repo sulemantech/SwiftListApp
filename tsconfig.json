@@ -14,5 +14,5 @@
     "expo-env.d.ts",
     "app/index.tsx",
     "constants/icons.js"
-  ]
+, "app/(Dashboard)/Notifications.jsx"  ]
 }

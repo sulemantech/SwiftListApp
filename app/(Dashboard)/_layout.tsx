@@ -47,7 +47,7 @@ export default function HomeLayout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
+       <Tabs.Screen
         name="Notifications"
         options={{
           tabBarIcon: ({ focused }) => (
@@ -72,9 +72,9 @@ export default function HomeLayout() {
             </Text>
           ),
         }}
-      /> */}
+      /> 
       <Tabs.Screen
-        name="Explore"
+        name="My_List"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
