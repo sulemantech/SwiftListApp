@@ -157,7 +157,6 @@
 //     color: "white",
 //   },
 // });
-
 import React, { useEffect, useState, useContext } from "react";
 import { Image } from "expo-image";
 import {
@@ -170,7 +169,9 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
+import productsImages from "../../constants/productsImages"; // Import correctly if needed
 import BottomSheetComponent from "../../components/BottomSheetComponent";
+import { images } from "@/constants";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -311,11 +312,9 @@ const ProductList: React.FC<ProductListProps> = ({
               ]}
               onPress={() => handleSelect(item)}
             >
-              <Image
-                source={item.imgPath}
-                style={styles.productImage}
-                contentFit="cover"
-              />
+              {/* Render the SVG component directly */}
+              <item.imgPath width={50} height={50} />
+
               <Text style={styles.productName} ellipsizeMode="tail">
                 {item.name}
               </Text>

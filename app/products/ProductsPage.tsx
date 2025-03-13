@@ -117,7 +117,7 @@ const ProductsPage: React.FC = () => {
   const updatedItems = useMemo(() => {
     if (!matchingSubCategory) return [];
 
-    return matchingSubCategory.items.map((item) => {
+    return matchingSubCategory.items.map((item:any) => {
       const selectedItem = selectedProducts[ListName]?.find(
         (selected: { name: string }) => selected.name === item.name
       );

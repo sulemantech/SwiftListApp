@@ -124,7 +124,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         /> */}
         {/* <Header onBack={router.back} title={name} /> */}
         <Header
-          onBack={() => router.replace("/(Dashboard)/Dashboard")}
+          onBack={() => router.replace("/(Dashboard)/Home")}
           title={name}
         />
 
@@ -137,12 +137,12 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               : styles.categoryContainer
           }
         >
-          {!isSearchFocused && SelectedImageComponent && (
+          {/* {!isSearchFocused && SelectedImageComponent && (
             <Image
               source={SelectedImageComponent}
               style={styles.categoryImage}
             />
-          )}
+          )} */}
           {!isSearchFocused && !SelectedImageComponent && (
             <View style={styles.categoryImage}>
               <PersonalGroomingSVG />
@@ -155,12 +155,12 @@ const Categories: React.FC<Props> = ({ ListName }) => {
                 : categories[0].category.description}
             </Text>
           )}
-          {/* {!isSearchFocused && SelectedImageComponent && (
+          {!isSearchFocused && SelectedImageComponent && (
             <Image
               source={SelectedImageComponent}
               style={styles.categoryImage}
             />
-          )} */}
+          )}
 
           {/* <View
             style={
@@ -203,11 +203,31 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               onBlur={() => setIsSearchFocused(false)}
             />
 
-            <View style={styles.searchiconContainer}>
+            {/* <View style={styles.searchiconContainer}>
               <Image
                 source={isSearchFocused ? searchicon : searchiconBlack}
                 style={styles.searchicon}
               />
+            </View> */}
+            <View style={styles.searchiconContainer}>
+              {typeof searchicon === "function" ? (
+                <View style={styles.searchicon}>
+                  {isSearchFocused
+                    ? React.createElement(searchicon, {
+                        width: "100%",
+                        height: "100%",
+                      })
+                    : React.createElement(searchiconBlack, {
+                        width: "100%",
+                        height: "100%",
+                      })}
+                </View>
+              ) : (
+                <Image
+                  source={isSearchFocused ? searchicon : searchiconBlack}
+                  style={styles.searchicon}
+                />
+              )}
             </View>
           </View>
         </View>

@@ -16,13 +16,13 @@ import { StatusBar } from "expo-status-bar";
 import { COLORS, icons } from "@/constants";
 import { FontFamily } from "@/constants/theme";
 import { router } from "expo-router";
-
-import first from "@/assets/images/SVG/dashboardgrocery.svg";
-import seconed from "@/assets/images/SVG/dashboardspiritualgoals.svg";
-import third from "@/assets/images/SVG/dashboardpersonalgromming.svg";
-import fourth from "@/assets/images/SVG/thingstodo.svg";
-import fifth from "@/assets/images/SVG/recipe.svg";
+import First from "../../assets/images/SVG/dashboardgrocery.svg"
+import Second from "../../assets/images/SVG/dashboardspiritualgoals.svg"
+import Third from "../../assets/images/SVG/dashboardpersonalgromming.svg"
+import Fourth from "../../assets/images/SVG/thingstodo.svg"
+import Fifth from "../../assets/images/SVG/recipe.svg"
 import { LinearGradient } from "expo-linear-gradient";
+import Card from "@/components/Card";
 
 const Home = () => {
   const { userDetails } = useContext(ProductContext);
@@ -35,7 +35,7 @@ const Home = () => {
       items: "200 Items",
       percentagetext: "Bought 70%",
       progress: 0.8,
-      Picture: first,
+      Picture: First,
       bgColor: "#9DF4F4",
       badgeColor: "#61CBD6",
     },
@@ -45,7 +45,7 @@ const Home = () => {
       items: "10 Goals",
       percentagetext: "Achieved 30%",
       progress: 0.67,
-      Picture: seconed,
+      Picture: Second,
       bgColor: "#98FBCB",
       badgeColor: "#4AA688",
     },
@@ -55,7 +55,7 @@ const Home = () => {
       items: "10 Tasks",
       percentagetext: "Completed 80%",
       progress: 0.72,
-      Picture: third,
+      Picture: Third,
       bgColor: "#FEE5D7",
       badgeColor: "#C54B6C",
     },
@@ -65,7 +65,7 @@ const Home = () => {
       items: "0 Items",
       percentagetext: "Completed 50%",
       progress: 0.5,
-      Picture: fourth,
+      Picture: Fourth,
       bgColor: "#FFD7A6",
       badgeColor: "#D98E33",
     },
@@ -75,7 +75,7 @@ const Home = () => {
       items: "500 Recipes",
       percentagetext: "Cooked 0%",
       progress: 0.78,
-      Picture: fifth,
+      Picture: Fifth,
       bgColor: "#FDDC8A",
       badgeColor: "#D88D1B",
     },
@@ -116,7 +116,7 @@ const Home = () => {
         <TasksStatistics cardDataArray={cardDataArray} />
         <View style={styles.flatListContainer}>
           {/* Card List */}
-          <FlatList
+           <FlatList
             data={cardDataFilterArray}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.cardContainer}
@@ -141,7 +141,7 @@ const Home = () => {
                 <Text style={styles.iconText}>Create List</Text>
               </TouchableOpacity>
             }
-          />
+          /> 
         </View>
       </View>
     </LinearGradient>
@@ -389,3 +389,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 });
+
+// import { View, Text } from "react-native";
+// import React from "react";
+
+// const Home = () => {
+//   return (
+//     <View>
+//       <Text>Home</Text>
+//     </View>
+//   );
+// };
+
+// export default Home;

@@ -204,7 +204,7 @@ const LoginScreen = () => {
         <Text style={styles.signInText}></Text>
       </View>
       <View style={styles.inputbox}>
-        <Image source={Signin} style={styles.PlaceHolderimage} />
+        {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
         <TextInput2
           bgcolor={"#fff"}
           label={"Email/Phone Number"}

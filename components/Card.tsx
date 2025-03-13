@@ -1,5 +1,15 @@
+// import { View, Text } from 'react-native'
+// import React from 'react'
 
+// const Card = () => {
+//   return (
+//     <View>
+//       <Text>Card</Text>
+//     </View>
+//   )
+// }
 
+// export default Card
 import * as Progress from "react-native-progress";
 import {
   View,
@@ -14,7 +24,7 @@ import {
 import { Image } from "expo-image";
 import circle from "../assets/images/circle.png";
 import { COLORS, FontFamily, FontSize } from "../constants/theme";
-
+import Apple from "./../assets/Apple.svg";
 interface CardData {
   title?: string;
   description?: string;
@@ -94,11 +104,23 @@ const CardComponent: React.FC<CardComponentProps> = ({
       </View>
       <View style={styles.contentContainer2(width)}>
         <Image source={circle} style={styles.image2} />
-        <View style={styles.image}>
+        {/* <View style={styles.image}>
           <Image
             source={Picture}
             style={styles.responsiveImage(width, height)}
           />
+        </View> */}
+        <View style={styles.image}>
+          {typeof Picture === "function" ? (
+            <View style={{ width: width * 0.4, height: height * 0.15 }}>
+              <Picture width={width * 0.4} height={height * 0.15} />
+            </View>
+          ) : (
+            <Image
+              source={Picture}
+              style={styles.responsiveImage(width, height)}
+            />
+          )}
         </View>
       </View>
     </TouchableOpacity>
@@ -185,19 +207,7 @@ const styles = {
 };
 
 export default CardComponent;
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ===================================================================
 // import * as Progress from "react-native-progress";
 // import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 // import circle from "../assets/images/circle.png";
