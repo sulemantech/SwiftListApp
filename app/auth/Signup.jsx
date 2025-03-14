@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import TextInput2 from "../../components/Input";
 // import Signin from '../../assets/images/SVG/signup.svg';
-import Signin from "../../assets/images/SVG/signup.svg";
+import Signup1 from "../../assets/images/SVG/signup.svg";
 import back from "../../assets/images/back-arrow.png";
 import { Link, router } from "expo-router";
 import auth from "@react-native-firebase/auth";
@@ -53,7 +53,9 @@ const Signup = () => {
 
       <View style={styles.inputbox}>
         {/* <Signin /> */}
-        <Image source={Signin} style={styles.PlaceHolderimage} />
+        {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
+        <Signup1 width={158} height={150} />
+
         {error && <Text style={styles.errorText}>{error}</Text>}
         <TextInput2
           bgcolor={"#fff"}
