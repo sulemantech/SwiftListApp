@@ -11,7 +11,7 @@
     "ios": {
       "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
-      "bundleIdentifier": "com.abdullah.SwiftListApp"
+      "bundleIdentifier": "com.suliman.SwiftListApp"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +19,7 @@
         "backgroundColor": "#ffffff"
       },
       "googleServicesFile": "./google-services.json",
-      "package": "com.abdullah.SwiftListApp"
+      "package": "com.suliman.SwiftListApp"
     },
     "web": {
       "bundler": "metro",
