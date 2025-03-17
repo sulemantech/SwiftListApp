@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import OnboardingItem from "./Onbordingitem";
+import * as SecureStore from "expo-secure-store";
 // import SvgUri from "react-native-svg-uri";
 import pic1 from "../../assets/images/Onbording/1.png";
 import pic2 from "../../assets/images/Onbording/2.png";
@@ -59,14 +60,19 @@ export default function Onboarding() {
     },
   ];
 
-  const handleNext = () => {
+  const handleNext = async () => { 
     if (currentIndex < slides.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      // router.replace("/(Dashboard)/Home");
-      router.replace("/auth/Login");
+      try {
+        await SecureStore.setItemAsync("onboardingCompleted", "true");
+        router.replace("/auth/Login");
+      } catch (error) {
+        console.error("Error saving onboarding status:", error);
+      }
     }
   };
+  
 
   return (
     <View style={styles.container}>
