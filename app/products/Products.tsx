@@ -313,11 +313,40 @@ const ProductList: React.FC<ProductListProps> = ({
               onPress={() => handleSelect(item)}
             >
               {/* Render the SVG component directly */}
-              <item.imgPath width={50} height={50} />
-
-              <Text style={styles.productName} ellipsizeMode="tail">
+              {/* <item.imgPath width={50} height={50} fill="black" /> */}
+              <item.imgPath
+                width={50}
+                height={50}
+                color={
+                  selectedProducts[ListName]?.some(
+                    (selected: { name: string }) => selected.name === item.name
+                  )
+                    ? "#FFFFFF"
+                    : "#A9A0F0"
+                    // "#9747FF"
+                  // "#A9A0F0"
+                }
+              />
+              <Text
+                style={[
+                  styles.productName,
+                  {
+                    color: selectedProducts[ListName]?.some(
+                      (selected: { name: string }) =>
+                        selected.name === item.name
+                    )
+                      ? "#FFFFFF"
+                      : "#A9A0F0",
+                  },
+                ]}
+                ellipsizeMode="tail"
+              >
                 {item.name}
               </Text>
+
+              {/* <Text style={styles.productName} ellipsizeMode="tail">
+                {item.name}
+              </Text> */}
               {(item.Quantity || item.unit || item.urgency) && (
                 <Text
                   style={styles.productName2}
@@ -368,7 +397,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   productCard: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F3F3FD",
     alignItems: "center",
     justifyContent: "center",
     padding: 6,
@@ -380,8 +409,9 @@ const styles = StyleSheet.create({
   },
 
   selectedCard: {
-    backgroundColor: "#CBC3FB",
-    opacity: 0.2,
+    backgroundColor: "#9747FF",
+    zIndex: 1,
+    // opacity: 0.2,
   },
   productImage: {
     width: screenWidth * 0.18,
