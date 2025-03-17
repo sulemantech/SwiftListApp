@@ -64,7 +64,7 @@ export default function Onboarding() {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
       // router.replace("/(Dashboard)/Home");
-      router.replace("/(Dashboard)/Home");
+      router.replace("/auth/Login");
     }
   };
 
