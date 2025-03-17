@@ -92,7 +92,13 @@
 // import { ProductContext } from "../../Context/CardContext";
 
 import React, { useContext, useEffect, useMemo } from "react";
-import { StyleSheet, Text, View, BackHandler } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  BackHandler,
+  SafeAreaView,
+} from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { categories } from "../../constants/Data";
 import ProductList from "./Products";
@@ -117,7 +123,7 @@ const ProductsPage: React.FC = () => {
   const updatedItems = useMemo(() => {
     if (!matchingSubCategory) return [];
 
-    return matchingSubCategory.items.map((item:any) => {
+    return matchingSubCategory.items.map((item: any) => {
       const selectedItem = selectedProducts[ListName]?.find(
         (selected: { name: string }) => selected.name === item.name
       );
@@ -140,7 +146,7 @@ const ProductsPage: React.FC = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header
         title={myStringProp || "Products"}
         Rightelement={true}
@@ -155,7 +161,7 @@ const ProductsPage: React.FC = () => {
           </Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -164,14 +170,16 @@ export default ProductsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EFF9FF",
+    // backgroundColor: "#EFF9FF",
+    // backgroundColor:"red",
     paddingHorizontal: 9,
-    paddingTop: 1,
+    // paddingTop: 1,
   },
   emptyContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "red",
   },
   emptyText: {
     fontSize: 16,

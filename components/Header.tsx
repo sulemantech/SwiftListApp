@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({
   onBack,
   Rightelement = false,
 }) => (
-  <View style={styles.headerContainer}>
+  <SafeAreaView style={styles.headerContainer}>
     <TouchableOpacity
       style={styles.backview}
       activeOpacity={0.2}
@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
     </TouchableOpacity>
     <Text style={styles.signInText}>{title}</Text>
     {Rightelement && <Image source={heart} style={styles.heart} />}
-  </View>
+  </SafeAreaView>
 );
 
 export default Header;
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     zIndex: 1,
-    marginTop: 40,
+    marginTop: 25,
   },
   backview: {
     height: 60,
