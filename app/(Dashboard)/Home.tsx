@@ -127,7 +127,8 @@ const Home = () => {
                 data={item}
                 onPress={() =>
                   router.push({
-                    pathname: "/(Dashboard)/Categories",
+                    // pathname: "/(Dashboard)/Categories",
+                    pathname: "/categories/Categories",
                     params: { name: item.title },
                   })
                 }

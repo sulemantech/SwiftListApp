@@ -119,7 +119,7 @@ export default function HomeLayout() {
         }}
       /> */}
       <Tabs.Screen
-        name="Categories"
+        name="Reminder"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

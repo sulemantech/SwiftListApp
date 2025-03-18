@@ -353,12 +353,18 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
   },
 
+  // subCategoriesContainer: {
+  //   marginTop: 20,
+  //   marginBottom: 80,
+  //   width: "100%",
+  //   backgroundColor:"red"
+  // },
   subCategoriesContainer: {
-    marginTop: 20,
-    marginBottom: 80,
-    width: "95%",
-    // backgroundColor:"red"
+    flex: 1, // Ensures it takes all available space
+    width: "100%", // Full width
+    paddingHorizontal: 10, // Adjust as needed
   },
+
   searchiconContainer: {
     display: "flex",
     justifyContent: "center",
