@@ -57,10 +57,27 @@
           }
         }
       ],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1103524997989554",
+          "clientToken": "83186eafbfe9291f66ca58149534ef5c",
+          "displayName": "Login with Facebook",
+          "scheme": "fb1103524997989554",
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": true,
+          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ],
+      "expo-tracking-transparency",
+ 
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
       "@react-native-firebase/crashlytics",
-      "expo-secure-store"
+      "expo-secure-store",
+      "react-native-fbsdk-next",
+      "expo-tracking-transparency"
     ],
     "experiments": {
       "typedRoutes": true

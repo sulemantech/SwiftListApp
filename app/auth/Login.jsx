@@ -20,7 +20,7 @@ import back from "../../assets/images/back-arrow.png";
 // import SCREENS from '..';
 // import useFirebaseMessaging from '../components/UseFirebaseMessaging';
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-// import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import auth from "@react-native-firebase/auth";
 import { ProductContext } from "../../Context/CardContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -49,59 +49,46 @@ const LoginScreen = () => {
   //     getDeviceToken(); // Fetch the FCM token on app start
   //   }, [getDeviceToken]);
 
-  //   const onFacebookButtonPress = async () => {
-  //     try {
-  //       setLoading(true);
-
-  //       // Attempt to log in with Facebook
-  //       const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-  //       if (result.isCancelled) {
-  //         return;
-  //       }
-
-  //       // Get the access token
-  //       const data = await AccessToken.getCurrentAccessToken();
-  //       if (!data) {
-  //         return;
-  //       }
-
-  //       // Use the Facebook access token to authenticate with Firebase
-  //       const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-  //       await auth().signInWithCredential(facebookCredential);
-
-  //       const user = auth().currentUser;
-
-  //       let profilePicture = 'https://via.placeholder.com/150'; // Default profile picture
-
-  //       // Manually fetch the profile picture
-  //       const response = await fetch(
-  //         `https://graph.facebook.com/me/picture?type=large&redirect=false&access_token=${data.accessToken}`
-  //       );
-  //       const profileData = await response.json();
-  //       if (profileData?.data?.url) {
-  //         profilePicture = profileData.data.url;
-  //       }
-
-  //       if (user) {
-  //         const username = user.displayName || 'User';
-  //         const email = user.email || 'Not Available';
-
-  //         setUserDetails(prevDetails => ({
-  //           ...prevDetails,
-  //           UserName: username || prevDetails.UserName,
-  //           UserEmail: email || prevDetails.UserEmail,
-  //           UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
-  //         }));
-  //       }
-
-  //       navigation.replace(SCREENS.Dashbored);
-  //     } catch (error) {
-  //       console.error('Facebook Sign-in error: ', error);
-  //       Alert.alert('Error', 'Facebook Sign-In failed. Please try again.');
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  const onFacebookButtonPress = async () => {
+    try {
+      setLoading(true);
+      const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+      
+      if (result.isCancelled) {
+        console.log('Facebook login cancelled');
+        return;
+      }
+  
+      const data = await AccessToken.getCurrentAccessToken();
+      if (!data) {
+        throw new Error('Something went wrong obtaining access token');
+      }
+  
+      const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+      await auth().signInWithCredential(facebookCredential);
+  
+      const user = auth().currentUser;
+  
+      if (user) {
+        const username = user.displayName || "User";
+        const profilePicture = user.photoURL || "https://via.placeholder.com/150";
+        
+        setUserDetails(prevDetails => ({
+          ...prevDetails,
+          UserName: username || prevDetails.UserName,
+          UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
+        }));
+      }
+  
+      routerr.replace("/(Dashboard)/Home");
+    } catch (error) {
+      console.error('Facebook Sign-in error: ', error);
+      Alert.alert('Error', 'Facebook Sign-In failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   async function onGoogleButtonPress() {
     try {
@@ -281,7 +268,7 @@ const LoginScreen = () => {
 
       <View style={styles.socialouterview}>
         <TouchableOpacity
-          //  onPress={onFacebookButtonPress}
+          onPress={onFacebookButtonPress}
           disabled={loading}
           style={styles.containersocial}
         >
