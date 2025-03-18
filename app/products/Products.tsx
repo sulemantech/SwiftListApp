@@ -169,7 +169,6 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
-import productsImages from "../../constants/productsImages"; // Import correctly if needed
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
 
@@ -313,7 +312,6 @@ const ProductList: React.FC<ProductListProps> = ({
               onPress={() => handleSelect(item)}
             >
               {/* Render the SVG component directly */}
-              {/* <item.imgPath width={50} height={50} fill="black" /> */}
               <item.imgPath
                 width={50}
                 height={50}
@@ -323,8 +321,6 @@ const ProductList: React.FC<ProductListProps> = ({
                   )
                     ? "#FFFFFF"
                     : "#A9A0F0"
-                    // "#9747FF"
-                  // "#A9A0F0"
                 }
               />
               <Text
