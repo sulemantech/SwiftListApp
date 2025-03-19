@@ -12,7 +12,6 @@ import {
 import { useRouter } from "expo-router";
 import OnboardingItem from "./Onbordingitem";
 import * as SecureStore from "expo-secure-store";
-// import SvgUri from "react-native-svg-uri";
 import pic1 from "../../assets/images/Onbording/1.png";
 import pic2 from "../../assets/images/Onbording/2.png";
 import pic3 from "../../assets/images/Onbording/3.png";
@@ -26,36 +25,38 @@ export default function Onboarding() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
+  // status bar
+  
 
   const slides = [
     {
       id: "1",
       title: "Organize Your Grocery Essentials",
-      description: "Keep track of all your shopping needs...",
+      description: "Keep track of all your shopping needs in one place. Add, edit, and check off items effortlessly.",
       image: pic1,
     },
     {
       id: "2",
       title: "Plan Your Grooming Routine",
-      description: "Stay on top of your self-care...",
+      description: "Stay on top of your self-care with scheduled reminders and custom grooming lists.",
       image: pic2,
     },
     {
       id: "3",
       title: "Track Your Spiritual Journey",
-      description: "Track all your spiritual growth...",
+      description: "Keep track of all your shopping needs in one place. Add, edit, and check off items effortlessly.",
       image: pic3,
     },
     {
       id: "4",
       title: "Manage Your Daily To-Do Tasks",
-      description: "Simplify your day...",
+      description: "Simplify your day by organizing tasks with ease. Prioritize, set deadlines, and stay productive.",
       image: pic4,
     },
     {
       id: "5",
       title: "Create Your Perfect Kitchen Menu",
-      description: "Organize recipes and ingredients...",
+      description: "Plan meals for the week with recipes. Organize ingredients and streamline cooking process.",
       image: pic5,
     },
   ];
@@ -171,6 +172,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     margin: 0,
+    top:-25,
   },
   dot: {
     width: 6,
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   button: {
-    width: "80%",
+    width: "87%",
     marginHorizontal: "auto",
     height: 50,
     backgroundColor: "#A9A0F0",

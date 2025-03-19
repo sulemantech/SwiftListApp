@@ -20,7 +20,7 @@ import back from "../../assets/images/back-arrow.png";
 // import SCREENS from '..';
 // import useFirebaseMessaging from '../components/UseFirebaseMessaging';
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 import auth from "@react-native-firebase/auth";
 import { ProductContext } from "../../Context/CardContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -52,43 +52,48 @@ const LoginScreen = () => {
   const onFacebookButtonPress = async () => {
     try {
       setLoading(true);
-      const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-      
+      const result = await LoginManager.logInWithPermissions([
+        "public_profile",
+        "email",
+      ]);
+
       if (result.isCancelled) {
-        console.log('Facebook login cancelled');
+        console.log("Facebook login cancelled");
         return;
       }
-  
+
       const data = await AccessToken.getCurrentAccessToken();
       if (!data) {
-        throw new Error('Something went wrong obtaining access token');
+        throw new Error("Something went wrong obtaining access token");
       }
-  
-      const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data.accessToken
+      );
       await auth().signInWithCredential(facebookCredential);
-  
+
       const user = auth().currentUser;
-  
+
       if (user) {
         const username = user.displayName || "User";
-        const profilePicture = user.photoURL || "https://via.placeholder.com/150";
-        
-        setUserDetails(prevDetails => ({
+        const profilePicture =
+          user.photoURL || "https://via.placeholder.com/150";
+
+        setUserDetails((prevDetails) => ({
           ...prevDetails,
           UserName: username || prevDetails.UserName,
           UserProfilePicture: profilePicture || prevDetails.UserProfilePicture,
         }));
       }
-  
+
       routerr.replace("/(Dashboard)/Home");
     } catch (error) {
-      console.error('Facebook Sign-in error: ', error);
-      Alert.alert('Error', 'Facebook Sign-In failed. Please try again.');
+      console.error("Facebook Sign-in error: ", error);
+      Alert.alert("Error", "Facebook Sign-In failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-  
 
   async function onGoogleButtonPress() {
     try {
@@ -268,21 +273,6 @@ const LoginScreen = () => {
 
       <View style={styles.socialouterview}>
         <TouchableOpacity
-          onPress={onFacebookButtonPress}
-          disabled={loading}
-          style={styles.containersocial}
-        >
-          <View style={styles.social}>
-            <View style={styles.innersocial}>
-              <Image source={facebook} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>
-                Continue with Facebook
-              </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
           onPress={() => onGoogleButtonPress().then(() => {})}
           disabled={loading}
           style={styles.containersocial}
@@ -299,11 +289,25 @@ const LoginScreen = () => {
             </View>
           </View>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={onFacebookButtonPress}
+          disabled={loading}
+          style={styles.containersocial}
+        >
+          <View style={styles.social}>
+            <View style={styles.innersocial}>
+              <Image source={facebook} style={styles.socialIcon} />
+              <Text style={styles.socialButtonText}>
+                Continue with Facebook
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.row2}>
         <View style={styles.checkboxContainer}>
-          <Text style={styles.checkboxLabel}>Don't Have an Account?</Text>
+          <Text style={styles.checkboxLabel}>Don’t have an account?</Text>
         </View>
         <TouchableOpacity
           activeOpacity={1}
@@ -382,7 +386,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "54%",
+    width: "47.5%",
     marginTop: 10,
     // backgroundColor:"red"
   },

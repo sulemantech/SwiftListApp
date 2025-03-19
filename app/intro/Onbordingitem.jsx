@@ -79,7 +79,7 @@ const OnboardingItem = ({ item }) => {
       <View style={styles.image}>
         <Image
           source={item.image}
-          style={{ width: 200, height: 200, resizeMode: "contain" }}
+          style={{ width: 280, height: 265.95, resizeMode: "contain" }}
         />
       </View>
       <View style={styles.textContainer}>
@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "center",
     lineHeight: 23,
+    fontWeight:400,
     paddingHorizontal: 24,
   },
 });
