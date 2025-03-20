@@ -15,7 +15,7 @@ import TasksStatistics from "@/components/TasksStatistics";
 import { StatusBar } from "expo-status-bar";
 import { COLORS, icons } from "@/constants";
 import { FontFamily } from "@/constants/theme";
-import { router } from "expo-router";
+import { ExternalPathString, router } from "expo-router";
 import First from "../../assets/images/SVG/dashboardgrocery.svg"
 import Second from "../../assets/images/SVG/dashboardspiritualgoals.svg"
 import Third from "../../assets/images/SVG/dashboardpersonalgromming.svg"
@@ -128,7 +128,7 @@ const Home = () => {
                 onPress={() =>
                   router.push({
                     // pathname: "/(Dashboard)/Categories",
-                    pathname: "/categories/Categories",
+                    pathname: "/categories/Categories" as ExternalPathString,
                     params: { name: item.title },
                   })
                 }

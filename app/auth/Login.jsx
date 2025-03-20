@@ -188,13 +188,13 @@ const LoginScreen = () => {
         backgroundColor="#FFF"
         barStyle={"dark-content"}
       />
-      <View style={styles.headerContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
+      {/* <View style={styles.headerContainer}> */}
+        {/* <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
           <Image source={back} style={styles.back} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Text style={styles.signInText}>Sign In</Text>
-        <Text style={styles.signInText}></Text>
-      </View>
+        {/* <Text style={styles.signInText}></Text> */}
+      {/* </View> */}
       <View style={styles.inputbox}>
         {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
         <Signin width={158} height={150} />
@@ -331,27 +331,30 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingTop: 70,
+    paddingTop: 20,
     alignItems: "center",
     backgroundColor: "#fff",
     paddingHorizontal: "5.5%",
     fontFamily: "Poppins-Regular",
+    // backgroundColor: "red",
   },
-  headerContainer: {
-    position: "absolute",
-    top: 0,
-    padding: 7,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "10%",
-  },
+  // headerContainer: {
+  //   position: "absolute",
+  //   top: 0,
+  //   padding: 7,
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  //   width: "100%",
+  //   height: "10%",
+  // },
   back: {
     width: 25,
     height: 20,
   },
   signInText: {
+    selfAlign: "center",
+    marginBottom: 25,
     color: "#4C4C4C",
     opacity: 0.8,
     fontSize: 20,
