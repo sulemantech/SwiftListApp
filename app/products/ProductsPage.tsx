@@ -105,6 +105,7 @@ import { categories } from "../../constants/Data";
 import ProductList from "./Products";
 import Header from "../../components/Header";
 import { ProductContext } from "../../Context/CardContext";
+import { goBack } from "expo-router/build/global-state/routing";
 // import { StatusBar } from "expo-status-bar";
 const ProductsPage: React.FC = () => {
   const router = useRouter();
@@ -154,7 +155,8 @@ const ProductsPage: React.FC = () => {
       <Header
         title={myStringProp || "Products"}
         Rightelement={false}
-        onBack={handleBackPress}
+        // onBack={handleBackPress}
+        onBack={() => router.back()}
       />
       <View style={styles.divider} />
       
