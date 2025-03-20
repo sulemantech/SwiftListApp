@@ -98,12 +98,14 @@ import {
   View,
   BackHandler,
   SafeAreaView,
+  StatusBar
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { categories } from "../../constants/Data";
 import ProductList from "./Products";
 import Header from "../../components/Header";
 import { ProductContext } from "../../Context/CardContext";
+// import { StatusBar } from "expo-status-bar";
 const ProductsPage: React.FC = () => {
   const router = useRouter();
   const { myStringProp, ListName } = useLocalSearchParams<{
@@ -147,11 +149,15 @@ const ProductsPage: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Status Bar */}
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Header
         title={myStringProp || "Products"}
-        Rightelement={true}
+        Rightelement={false}
         onBack={handleBackPress}
       />
+      <View style={styles.divider} />
+      
       {updatedItems.length > 0 ? (
         <ProductList products={updatedItems} ListName={ListName} page={""} />
       ) : (
@@ -170,9 +176,10 @@ export default ProductsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#EFF9FF",
+    backgroundColor: "#FFFFFF",
     // backgroundColor:"red",
-    paddingHorizontal: 9,
+    // paddingHorizontal: 9,
+
     // paddingTop: 1,
   },
   emptyContainer: {
@@ -186,5 +193,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#555",
     textAlign: "center",
+  },
+  divider: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#ccc",
+    // marginVertical: 10,
+    marginTop: 15,
+  },
+  productContainer: {
+    backgroundColor: "red",
   },
 });

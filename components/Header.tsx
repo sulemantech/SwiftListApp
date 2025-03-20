@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     zIndex: 1,
-    marginTop: 25,
+    marginTop: 24,
   },
   backview: {
     height: 60,

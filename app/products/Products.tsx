@@ -313,8 +313,8 @@ const ProductList: React.FC<ProductListProps> = ({
             >
               {/* Render the SVG component directly */}
               <item.imgPath
-                width={50}
-                height={50}
+                width={screenWidth * 0.1667}
+                height={screenWidth * 0.1667}
                 color={
                   selectedProducts[ListName]?.some(
                     (selected: { name: string }) => selected.name === item.name
@@ -356,6 +356,30 @@ const ProductList: React.FC<ProductListProps> = ({
               )}
             </TouchableOpacity>
           ))}
+          {products.length > 0 && (
+            <>
+              {products.slice(0, placeholderVal).map((item, index) => (
+                <TouchableOpacity
+                  activeOpacity={0}
+                  key={index}
+                  style={[styles.productCard2]}
+                >
+                  {/* <Image
+                    source={item.imgPath}
+                    style={styles.productImage}
+                    resizeMode={FastImage.resizeMode.cover}
+                  /> */}
+                  <Text
+                    style={styles.productName}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </>
+          )}
         </ScrollView>
       ) : (
         <Text>No items available for this category.</Text>
@@ -377,13 +401,18 @@ export default ProductList;
 
 const styles = StyleSheet.create({
   productsContainer: {
-    marginTop: 10,
-    paddingHorizontal: 10,
+    // marginTop: 10,
+    // paddingHorizontal: 10,
+    // backgroundColor: "red",
+    marginVertical: 10,
+    marginHorizontal: 10,
+
     flex: 1,
     justifyContent: "space-between",
   },
   productsContainer2: {
-    marginBottom: 10,
+    // marginBottom: 10,
+    marginVertical: 10,
   },
   itemsContainer: {
     display: "flex",
@@ -396,6 +425,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3FD",
     alignItems: "center",
     justifyContent: "center",
+
     padding: 6,
     width: screenWidth * 0.28,
     maxWidth: screenWidth * 0.32,
@@ -415,7 +445,7 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontFamily: "Poppins-Regular",
-    marginTop: 10,
+    marginTop: 7,
     fontSize: 11,
     textAlign: "center",
     color: "white",
@@ -441,5 +471,19 @@ const styles = StyleSheet.create({
   },
   bottomLeftBorder: {
     borderBottomLeftRadius: 8,
+  },
+  productCard2: {
+    opacity: 0,
+    backgroundColor: "#4AA688",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 6,
+    width: screenWidth * 0.28,
+    maxWidth: screenWidth * 0.32,
+    aspectRatio: 1,
+    // borderRadius:8,
+    flexGrow: 1,
+    margin: 3,
+    
   },
 });

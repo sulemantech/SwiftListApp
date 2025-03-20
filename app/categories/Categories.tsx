@@ -650,7 +650,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height:"90%",
+    height: "90%",
     marginTop: 20,
     // backgroundColor:"red"
   },
@@ -802,5 +802,12 @@ const styles = StyleSheet.create({
     width: "80%", // Ensures it is wider than the image
     alignItems: "center",
     marginTop: 10, // Ensures it's below the image
+  },
+  divider: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#ccc",
+    // marginVertical: 10,
+    marginTop: 15,
   },
 });
