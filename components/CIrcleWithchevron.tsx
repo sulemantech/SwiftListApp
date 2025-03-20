@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderRadius: 2,
     marginRight: 4,
-    borderColor: "#fff", // Chevron color
+    borderColor: "#A9A0F0", // Chevron color
     transform: [{ rotate: "45deg" }], // Rotate to create a chevron
   },
 });

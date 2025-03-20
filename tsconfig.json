@@ -15,5 +15,5 @@
     "app/index.tsx",
     "constants/icons.js",
     "app/(Dashboard)/Notifications.jsx"
-  ]
+, "app/auth/ForgotPassword.tsx"  ]
 }

@@ -128,13 +128,23 @@ const CardComponent: React.FC<CardComponentProps> = ({
 };
 
 const styles = {
+  // cardContainer: (width: number, height: number): ViewStyle => ({
+  //   height: height * 0.2,
+  //   width: "100%",
+  //   zIndex: 999,
+  //   borderRadius: width * 0.05,
+  //   flex: 1,
+  //   marginVertical: height * 0.015,
+  //   overflow: "hidden",
+  //   flexDirection: "row",
+  // }),
   cardContainer: (width: number, height: number): ViewStyle => ({
-    height: height * 0.2,
-    width: "100%",
+    height: 150, 
+    width: "100%", 
     zIndex: 999,
     borderRadius: width * 0.05,
     flex: 1,
-    marginVertical: height * 0.015,
+    marginVertical: 10, 
     overflow: "hidden",
     flexDirection: "row",
   }),

@@ -474,7 +474,7 @@ import { categories } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
 import Header from "../../components/Header";
 import CIrcleWithchevron from "../../components/CIrcleWithchevron";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams, ExternalPathString } from "expo-router";
 import { Image } from "expo-image";
 import PersonalGroomingSVG from "../../assets/images/SVG/pgrommingpage.svg";
 import GrocerySVG from "../../assets/images/SVG/grocerypage.svg";
@@ -520,9 +520,11 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     <TouchableWithoutFeedback>
       <View style={styles.container}>
         <Header
-          onBack={() => router.replace("/(Dashboard)/Home")}
+          // onBack={() => router.replace("/(Dashboard)/Home")}
+          onBack={() => router.back()}
           title={name}
         />
+        <View style={styles.divider} />
 
         <View
           style={
@@ -618,7 +620,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               onPress={() => {
                 setPressedItem(item.name);
                 router.push({
-                  pathname: "/products/ProductsPage",
+                  pathname: "/products/ProductsPage" as ExternalPathString,
                   params: { myStringProp: item.name, ListName },
                 });
               }}
@@ -628,7 +630,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             >
               <View style={styles.subCategoryContent}>
                 <Text style={styles.subCategoryName}>{item.name}</Text>
-                <CIrcleWithchevron chevronColor={"#A9A0F0"} />
+                <CIrcleWithchevron chevronColor={"#F3F3FD"} />
               </View>
             </TouchableHighlight>
           )}
@@ -786,6 +788,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: 12,
+    // backgroundColor: "red",
   },
   subCategoryName: {
     fontFamily: "Poppins-Light",

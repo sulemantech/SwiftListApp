@@ -7,6 +7,9 @@ import {
   View,
   TextInputProps,
 } from "react-native";
+import { Dimensions } from "react-native";
+
+const { width: screenWidth } = Dimensions.get("window");
 
 interface TextInput2Props extends TextInputProps {
   label?: string;
@@ -60,7 +63,8 @@ export default TextInput2;
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    // width: "100%",
+    width: screenWidth * 0.8889,
   },
   label: {
     fontFamily: "Poppins-Medium",
