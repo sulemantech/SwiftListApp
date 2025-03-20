@@ -35,8 +35,7 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await auth().signOut();
-      router.replace("/");
-      // navigation.replace('Login');
+      router.replace("/auth/Login");
     } catch (error: any) {
       console.error("Logout error: ", error.message);
     }

@@ -11,10 +11,10 @@ import { Tabs } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
 
-export default function DashboardLayout() {
+export default function HomeLayout() {
   return (
     <Tabs
-      initialRouteName="Dashboard"
+      initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: true,
         headerShown: false,
@@ -22,11 +22,11 @@ export default function DashboardLayout() {
       }}
     >
       <Tabs.Screen
-        name="Notifications"
+        name="Home"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Notification1 as ImageSourcePropType}
+              source={icons.Home as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 // styles.icon,
@@ -42,17 +42,43 @@ export default function DashboardLayout() {
                 { color: focused ? COLORS.secondary : COLORS.gray },
               ]}
             >
-              Notifications
+              Home
             </Text>
           ),
         }}
       />
-      <Tabs.Screen
-        name="Explore"
+       <Tabs.Screen
+        name="Notifications"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Explore_outline as ImageSourcePropType}
+              source={icons.Home as ImageSourcePropType}
+              resizeMode="contain"
+              style={[
+                // styles.icon,
+                styles.icon2,
+                { tintColor: focused ? COLORS.secondary : COLORS.gray },
+              ]}
+            />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text
+              style={[
+                styles.tabBarLabel,
+                { color: focused ? COLORS.secondary : COLORS.gray },
+              ]}
+            >
+              Home
+            </Text>
+          ),
+        }}
+      /> 
+      <Tabs.Screen
+        name="My_List"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={icons.My_List as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
@@ -67,13 +93,13 @@ export default function DashboardLayout() {
                 { color: focused ? COLORS.secondary : COLORS.gray },
               ]}
             >
-              Explore
+              My List
             </Text>
           ),
         }}
       />
-      <Tabs.Screen
-        name="Dashboard"
+      {/* <Tabs.Screen
+        name="Home"
         options={{
           tabBarIcon: ({ focused }) => (
             <LinearGradient
@@ -91,13 +117,13 @@ export default function DashboardLayout() {
           ),
           tabBarLabel: () => null,
         }}
-      />
+      /> */}
       <Tabs.Screen
-        name="Categories"
+        name="Reminder"
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Categories_outline as ImageSourcePropType}
+              source={icons.Reminder as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
@@ -112,7 +138,7 @@ export default function DashboardLayout() {
                 { color: focused ? COLORS.secondary : COLORS.gray },
               ]}
             >
-              Categories
+              Reminder
             </Text>
           ),
         }}
@@ -122,7 +148,7 @@ export default function DashboardLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
-              source={icons.Profile_outline as ImageSourcePropType}
+              source={icons.Profile as ImageSourcePropType}
               resizeMode="contain"
               style={[
                 styles.icon,
