@@ -6,24 +6,40 @@ import {
   TouchableOpacity,
   View,
   Image,
+  Alert,
 } from "react-native";
 import auth from "@react-native-firebase/auth";
 import TextInput2 from "../../components/Input";
-// import Signin from "../../assets/images/SVG/forgotpassword.svg";
 import back from "../../assets/images/back-arrow.png";
 import Signin from "../../assets/images/SVG/signup.svg";
 import forgotScreen_image from "../../assets/images/forgotScreen_image.png";
 import { router } from "expo-router";
-// import SCREENS from "..";
-// import CustomModal from "../components/Modal";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [modalVisible, setModalVisible] = useState(false); // State to control modal visibility
-  const [modalMessage, setModalMessage] = useState(""); // Message to display in the modal
+
+  const handlePasswordReset = async () => {
+    if (!email.trim()) {
+      Alert.alert("Error", "Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      await auth().sendPasswordResetEmail(email);
+      console.log("Reset email sent to:", email);
+
+      Alert.alert(
+        "Success",
+        "A password reset link has been sent to your email. Please check your inbox."
+      );
+      router.back(); // Navigate back after sending the reset email
+    } catch (error) {
+      console.error("Password reset error:", error.message);
+      Alert.alert("Error", "Failed to send password reset email. Please try again.");
+    }
+  };
 
   return (
-    // <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <View style={styles.headerContainer}>
         <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
@@ -34,11 +50,9 @@ const ForgotPassword = () => {
       </View>
 
       <View style={styles.inputbox}>
-        {/* <Signin /> */}
         <Image source={forgotScreen_image} style={styles.PlaceHolderimage} />
         <Text style={styles.instructions}>
-          Please enter your email address. You will receive a link to create a
-          new password via email.
+          Please enter your email address. You will receive a link to reset your password.
         </Text>
 
         <TextInput2
@@ -52,21 +66,13 @@ const ForgotPassword = () => {
 
       <View style={styles.containersign}>
         <TouchableOpacity
-          activeOpacity={1}
-          // onPress={handlePasswordReset}
+          activeOpacity={10}
+          onPress={handlePasswordReset} // Updated to call the function
           style={styles.signInButton}
         >
           <Text style={styles.buttonText}>Send</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Custom Modal for alerts */}
-      {/* <CustomModal
-        isVisible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        title="Password Reset"
-        description={modalMessage}
-      /> */}
     </ScrollView>
   );
 };
@@ -119,7 +125,6 @@ const styles = StyleSheet.create({
   containersign: {
     marginTop: 10,
     width: "100%",
-    fontFamily: "Poppins-Regular",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -141,36 +146,5 @@ const styles = StyleSheet.create({
   PlaceHolderimage: {
     width: 158,
     height: 150.07,
-    gap: 0,
   },
 });
-
-// import { View, Text } from "react-native";
-// import React from "react";
-
-// export default function ForgotPassword() {
-//   return (
-//     <View>
-//       <Text>ForgotPassword</Text>
-//     </View>
-//   );
-// }
-
-// const handlePasswordReset = async () => {
-//   if (!email.trim()) {
-//     setModalMessage('Please enter a valid email address.');
-//     setModalVisible(true);
-//     return;
-//   }
-
-//   try {
-//     await auth().sendPasswordResetEmail(email);
-//     setModalMessage('A password reset link has been sent to your email. Please check your inbox.');
-//     setModalVisible(true);
-//     navigation.navigate(SCREENS.EmailSuccess); // Navigate to success screen
-//   } catch (error) {
-//     console.error('Password reset error:', error.message);
-//     setModalMessage('Failed to send password reset email. Please try again.');
-//     setModalVisible(true);
-//   }
-// };
