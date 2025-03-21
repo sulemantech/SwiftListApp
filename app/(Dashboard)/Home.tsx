@@ -16,18 +16,16 @@ import { StatusBar } from "expo-status-bar";
 import { COLORS, icons } from "@/constants";
 import { FontFamily } from "@/constants/theme";
 import { ExternalPathString, router } from "expo-router";
-import First from "../../assets/images/SVG/dashboardgrocery.svg"
-import Second from "../../assets/images/SVG/dashboardspiritualgoals.svg"
-import Third from "../../assets/images/SVG/dashboardpersonalgromming.svg"
-import Fourth from "../../assets/images/SVG/thingstodo.svg"
-import Fifth from "../../assets/images/SVG/recipe.svg"
+import First from "../../assets/images/SVG/dashboardgrocery.svg";
+import Second from "../../assets/images/SVG/dashboardspiritualgoals.svg";
+import Third from "../../assets/images/SVG/dashboardpersonalgromming.svg";
+import Fourth from "../../assets/images/SVG/thingstodo.svg";
+import Fifth from "../../assets/images/SVG/recipe.svg";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "@/components/Card";
 import { Dimensions } from "react-native";
-
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
-
 
 const Home = () => {
   const { userDetails } = useContext(ProductContext);
@@ -81,8 +79,10 @@ const Home = () => {
       percentagetext: "Cooked 0%",
       progress: 0.78,
       Picture: Fifth,
-      bgColor: "#FDDC8A",
-      badgeColor: "#D88D1B",
+      // bgColor: "#FDDC8A",
+      // badgeColor: "#D88D1B",
+      bgColor: "#FFAEAD",
+      badgeColor: "#D66160",
     },
   ];
 
@@ -121,7 +121,7 @@ const Home = () => {
         <TasksStatistics cardDataArray={cardDataArray} />
         <View style={styles.flatListContainer}>
           {/* Card List */}
-           <FlatList
+          <FlatList
             data={cardDataFilterArray}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.cardContainer}
@@ -147,7 +147,7 @@ const Home = () => {
                 <Text style={styles.iconText}>Create List</Text>
               </TouchableOpacity>
             }
-          /> 
+          />
         </View>
       </View>
     </LinearGradient>
