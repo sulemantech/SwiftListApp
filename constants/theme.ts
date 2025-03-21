@@ -48,7 +48,7 @@ export const FontFamily: Record<string, string> = {
 };
 
 export const FontSize: Record<string, number> = {
-  subtitle: 12,
+  subtitle: 14,
   title: 16,
   itemtitle: 18,
   itemscount: 10,

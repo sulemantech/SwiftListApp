@@ -5,6 +5,9 @@ import React from "react";
 import UserProfile from "../assets/images/UserProfile.png";
 import ProgressCircle from "./progress";
 import { Image } from "expo-image";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
 
 // Define the type for each item in cardDataArray
 interface CardData {
@@ -18,7 +21,7 @@ interface TasksStatisticsProps {
 }
 
 const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
-  const { width, height } = useWindowDimensions();
+  // const { width, height } = useWindowDimensions();
   return (
     <View style={styles.todayProgress_card}>
       <LinearGradient
@@ -77,9 +80,10 @@ export default TasksStatistics;
 const styles = StyleSheet.create({
   todayProgress_card: {
     marginTop: 10,
+
     // height: hp("20%"),
     height: 150,
-    width: "100%",
+  width:screenWidth * 0.8889,
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",

@@ -23,6 +23,11 @@ import Fourth from "../../assets/images/SVG/thingstodo.svg"
 import Fifth from "../../assets/images/SVG/recipe.svg"
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "@/components/Card";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 
 const Home = () => {
   const { userDetails } = useContext(ProductContext);
@@ -164,7 +169,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-    paddingHorizontal: "5%",
+    alignItems: "center",
+    // paddingHorizontal: "5%",
     // backgroundColor: "#FFFFFF",
     // marginBottom: 310,
   },
@@ -174,7 +180,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: "auto",
-    width: "100%",
+    width: screenWidth * 0.8889,
+
     marginVertical: 10,
     // backgroundColor:"red"
   },

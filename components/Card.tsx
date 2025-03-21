@@ -24,7 +24,12 @@ import {
 import { Image } from "expo-image";
 import circle from "../assets/images/circle.png";
 import { COLORS, FontFamily, FontSize } from "../constants/theme";
-import Apple from "./../assets/Apple.svg";
+
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 interface CardData {
   title?: string;
   description?: string;
@@ -97,8 +102,8 @@ const CardComponent: React.FC<CardComponentProps> = ({
             borderWidth={0}
             color={badgeColor}
             animated={true}
-            width={width * 0.45}
-            height={height * 0.005}
+            width={screenWidth * 0.4166}
+            height={screenHeight * 0.0035}
           />
         </View>
       </View>
@@ -130,7 +135,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
 const styles = {
   // cardContainer: (width: number, height: number): ViewStyle => ({
   //   height: height * 0.2,
-  //   width: "100%",
+  //
   //   zIndex: 999,
   //   borderRadius: width * 0.05,
   //   flex: 1,
@@ -139,12 +144,12 @@ const styles = {
   //   flexDirection: "row",
   // }),
   cardContainer: (width: number, height: number): ViewStyle => ({
-    height: 150, 
-    width: "100%", 
+    height: 150,
+    width: screenWidth * 0.8889,
     zIndex: 999,
     borderRadius: width * 0.05,
     flex: 1,
-    marginVertical: 10, 
+    marginVertical: 10,
     overflow: "hidden",
     flexDirection: "row",
   }),
@@ -162,7 +167,7 @@ const styles = {
     padding: width * 0.02,
   }),
   title: (width: number): TextStyle => ({
-    fontFamily: FontFamily.H4_Regular,
+    fontFamily: FontFamily.B2_Semibold,
     fontSize: FontSize.itemtitle,
     color: COLORS.black,
     fontWeight: "600",
@@ -174,21 +179,26 @@ const styles = {
     fontSize: FontSize.subtitle,
     color: COLORS.gray,
     fontWeight: "300",
-    marginVertical: height * 0.002,
+    // marginVertical: height * 0.002,
     textAlign: "left",
   }),
   badge: (width: number, height: number): TextStyle => ({
-    paddingHorizontal: width * 0.03,
-    paddingVertical: height * 0.005,
+    height: screenHeight * 0.019,
+    width: screenWidth * 0.2112,
+
+    // paddingHorizontal: width * 0.03,
+    // paddingVertical: height * 0.005,
     textAlign: "center",
-    borderRadius: width * 0.05,
-    fontSize: FontSize.subtitle,
-    fontFamily: FontFamily.subtitle,
+    textAlignVertical: "center",
+    borderRadius: 12,
+    fontSize: 13,
+    fontFamily: FontFamily.P2_Regular,
     color: "white",
     marginVertical: height * 0.002,
   }),
   percentage: (width: number): TextStyle => ({
-    fontSize: width * 0.035,
+    fontSize: 12,
+    fontWeight: "400",
     color: "#000",
   }),
   progressview: (width: number): ViewStyle => ({
@@ -207,12 +217,14 @@ const styles = {
     resizeMode: "contain",
   }),
   image2: {
-    position: "absolute",
-    right: 0,
-    top: -12,
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
+    // position: "absolute",
+    right: -5,
+    top: -8,
+    width: screenWidth * 0.3833,
+    height: screenHeight * 0.1115,
+
+    // height: "100%",
+    // resizeMode: "contain",
   } as ImageStyle,
 };
 
@@ -379,7 +391,7 @@ export default CardComponent;
 // const styles = StyleSheet.create({
 //   cardContainer: {
 //     height: hp("20%"),
-//     width: "100%",
+//
 //     zIndex: 999,
 //     borderRadius: wp("5%"),
 //     flex: 1,
@@ -449,7 +461,7 @@ export default CardComponent;
 //     position: "absolute",
 //     right: 0,
 //     top: -12,
-//     width: "100%",
+//
 //     height: "100%",
 //     resizeMode: "contain",
 //   },
