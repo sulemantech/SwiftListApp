@@ -400,15 +400,22 @@ const ProductList: React.FC<ProductListProps> = ({
 export default ProductList;
 
 const styles = StyleSheet.create({
-  productsContainer: {
-    // marginTop: 10,
-    // paddingHorizontal: 10,
-    // backgroundColor: "red",
-    marginVertical: 10,
-    marginHorizontal: 10,
+  // productsContainer: {
+  //   // marginTop: 10,
+  //   // paddingHorizontal: 10,
+  //   // backgroundColor: "red",
+  //   marginVertical: 10,
+  //   marginHorizontal: 10,
 
+  //   flex: 1,
+  //   justifyContent: "space-between",
+  // },
+  productsContainer: {
+    marginVertical: 10,
+    // marginHorizontal: 10,  ❌ REMOVE or REDUCE THIS
     flex: 1,
     justifyContent: "space-between",
+    paddingHorizontal: 10,
   },
   productsContainer2: {
     // marginBottom: 10,
@@ -484,6 +491,5 @@ const styles = StyleSheet.create({
     // borderRadius:8,
     flexGrow: 1,
     margin: 3,
-    
   },
 });

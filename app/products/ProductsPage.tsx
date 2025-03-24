@@ -113,7 +113,7 @@ const ProductsPage: React.FC = () => {
     myStringProp: string;
     ListName: string;
   }>();
-  const { selectedProducts } = useContext(ProductContext);
+const selectedProducts = useContext(ProductContext)?.selectedProducts;
 
   // Find matching sub-category
   const matchingSubCategory = useMemo(() => {
@@ -124,7 +124,7 @@ const ProductsPage: React.FC = () => {
 
   // Update items based on selected products
   const updatedItems = useMemo(() => {
-    if (!matchingSubCategory) return [];
+    if (!selectedProducts || !matchingSubCategory) return [];
 
     return matchingSubCategory.items.map((item: any) => {
       const selectedItem = selectedProducts[ListName]?.find(
