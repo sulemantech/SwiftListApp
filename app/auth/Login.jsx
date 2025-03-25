@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     fontSize: 26,
     fontWeight: "600",
-    fontFamily: "OpenSans-Bold",
+    fontFamily: "OpenSans-italic",
 
     // backgroundColor:"red"
   },

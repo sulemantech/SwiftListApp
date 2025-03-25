@@ -71,13 +71,13 @@
         }
       ],
       "expo-tracking-transparency",
- 
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
       "@react-native-firebase/crashlytics",
       "expo-secure-store",
       "react-native-fbsdk-next",
-      "expo-tracking-transparency"
+      "expo-tracking-transparency",
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
