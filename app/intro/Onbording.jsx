@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     // marginTop: 10,
   },
   buttonText: {
-    fontFamily: "Poppins-Medium",
+    fontFamily: "OpenSans-Medium",
     fontSize: 12,
     lineHeight: 16,
     textAlign: "center",
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     color: " #5C5C5C",
     // color:"red",
     fontSize: 12,
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     opacity: 0.7,
     fontWeight: "600",
   },

@@ -188,17 +188,19 @@ const LoginScreen = () => {
         backgroundColor="#FFF"
         barStyle={"dark-content"}
       />
+      {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
+      <View style={styles.signInContainer}>
+        <Text style={styles.signInTitle}>Sign In</Text>
+        <Signin width={158} height={150.07} style={styles.signinImage} />
+      </View>
       {/* <View style={styles.headerContainer}> */}
-        {/* <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
+      {/* <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
           <Image source={back} style={styles.back} />
         </TouchableOpacity> */}
-        <Text style={styles.signInText}>Sign In</Text>
-        {/* <Text style={styles.signInText}></Text> */}
+
+      {/* <Text style={styles.signInText}></Text> */}
       {/* </View> */}
       <View style={styles.inputbox}>
-        {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
-        <Signin width={158} height={150} />
-
         <TextInput2
           bgcolor={"#fff"}
           label={"Email/Phone Number"}
@@ -335,7 +337,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     paddingHorizontal: "5.5%",
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     // backgroundColor: "red",
   },
   // headerContainer: {
@@ -403,14 +405,14 @@ const styles = StyleSheet.create({
   },
   checkboxLabel: {
     fontSize: 12,
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Regular",
     color: "#8c8c8c",
     marginLeft: 2,
     // backgroundColor:"red"
   },
   forgotPassword: {
     color: "#A9A0F0",
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-SemiBold",
     fontSize: 12,
     marginLeft: 3,
     // backgroundColor: "red",
@@ -450,7 +452,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontFamily: "Poppins-Medium",
+    fontFamily: "OpenSans-Medium",
     fontSize: 12,
     lineHeight: 16,
     textAlign: "center",
@@ -463,7 +465,7 @@ const styles = StyleSheet.create({
   containerline: {
     alignItems: "center",
     marginVertical: 20,
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
   },
   lineContainer: {
     flexDirection: "row",
@@ -481,8 +483,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     color: "#5C5C5C",
     opacity: 0.7,
-    fontWeight: "400",
-    fontFamily: "Open Sans",
+    fontFamily: "OpenSans-Regular",
   },
   social: {
     width: "100%",
@@ -503,7 +504,7 @@ const styles = StyleSheet.create({
   },
   socialButtonText: {
     marginLeft: 10,
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     color: "#8C8C8C",
     fontSize: 12,
   },
@@ -514,6 +515,20 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     marginTop: -8,
     textAlign: "left",
-    fontFamily: "Poppins-Medium",
+    fontFamily: "OpenSans-Medium",
+  },
+  signInContainer: {
+    marginTop: 15,
+    alignItems: "center", // Center both elements horizontally
+    marginBottom: 20, // Add spacing between Sign In text and form fields
+  },
+  signInTitle: {
+    fontSize: 16, // Adjust font size as needed
+    fontFamily: "OpenSans-SemiBold",
+    color: "#4C4C4C",
+    marginBottom: 10, // Creates spacing between text and SVG
+  },
+  signinImage: {
+    marginTop: 10, // Move the SVG a little down
   },
 });

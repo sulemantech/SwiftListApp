@@ -49,7 +49,7 @@
 //     borderColor: "#81CAED",
 //   },
 //   description: {
-//     fontFamily: "Poppins-Regular", // Ensure this font is loaded in Expo
+//     fontFamily: "OpenSans-Regular", // Ensure this font is loaded in Expo
 //     color: "#6c6c6c",
 //     fontWeight: "300",
 //     fontSize: 12,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   //   borderColor: "#81CAED",
   // },
   description: {
-    fontFamily: "Poppins-Regular", // Ensure this font is loaded in Expo
+    fontFamily: "OpenSans-Regular", // Ensure this font is loaded in Expo
     color: "#6c6c6c",
     fontWeight: "300",
     fontSize: 12,

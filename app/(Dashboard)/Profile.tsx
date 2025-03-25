@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   cardsContainer: { width: "90%", alignSelf: "center", marginTop: 8 },
   buttonText: {
-    fontFamily: "Poppins-Bold",
+    fontFamily: "OpenSans-Bold",
     color: "#0c0c0c",
     fontSize: 13,
     lineHeight: 19.5,
@@ -376,7 +376,7 @@ const styles = StyleSheet.create({
 //   profileContainer: { flex: 1, alignItems: "center", marginTop: 6 },
 //   cardsContainer: { width: "90%", alignSelf: "center", marginTop: 8 },
 //   buttonText: {
-//     fontFamily: "Poppins-Bold",
+//     fontFamily: "OpenSans-Bold",
 //     fontSize: 13,
 //     color: "#0c0c0c",
 //     marginLeft: 8,

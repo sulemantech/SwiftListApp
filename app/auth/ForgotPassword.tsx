@@ -51,7 +51,6 @@ const ForgotPassword: React.FC = () => {
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Forgot Password</Text>
-        <Text style={styles.signInText}></Text>
       </View>
 
       <View style={styles.inputbox}>
@@ -97,23 +96,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: "5%",
   },
   headerContainer: {
-    position: "absolute",
-    top: 0,
-    paddingVertical: 7,
+    position: "relative", // ✅ Keep it relative
+    top: 15,
+    // paddingVertical: 7,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
   },
+
   back: {
     width: 18.95,
     height: 10.26,
   },
   signInText: {
+    position: "absolute", // ✅ Absolutely positioned
+    left: "50%", // ✅ Start at center
+    transform: [{ translateX: -54 }], // ✅ Adjust for perfect centering
     color: "#4C4C4C",
+    // opacity: 0.8,
     fontSize: 16,
-    fontWeight: "600",
-    fontFamily: "OpenSans-Bold",
+    fontFamily: "OpenSans-SemiBold",
   },
   inputbox: {
     width: "100%",
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     width: screenWidth * 0.8889,
     lineHeight: 20,
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontWeight: "400",
     textAlign: "center",
     opacity: 0.7,
@@ -150,13 +152,14 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   buttonText: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 12,
     fontWeight: "500",
     color: "#fff",
   },
   PlaceHolderimage: {
-    marginTop: 10,
+    // marginTop: 10,
+    top: -5,
   },
 });
 
@@ -285,7 +288,7 @@ const styles = StyleSheet.create({
 //     fontSize: 12,
 //     width: "100%",
 //     lineHeight: 23,
-//     fontFamily: "Poppins-Regular",
+//     fontFamily: "OpenSans-Regular",
 //     fontWeight: "300",
 //     textAlign: "left",
 //     marginBottom: 10,
@@ -306,7 +309,7 @@ const styles = StyleSheet.create({
 //     marginTop: 10,
 //   },
 //   buttonText: {
-//     fontFamily: "Poppins-Regular",
+//     fontFamily: "OpenSans-Regular",
 //     fontSize: 12,
 //     fontWeight: "500",
 //     color: "#fff",

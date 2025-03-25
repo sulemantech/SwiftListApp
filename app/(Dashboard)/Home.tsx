@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   caption: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 12,
     paddingVertical: "0.2%",
     color: "#6c6c6c",
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   caption2: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 13,
     paddingVertical: "0.4%",
     color: "#6c6c6c",
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
     paddingVertical: 0,
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Light",
     fontSize: 14,
     lineHeight: 40,
     textAlignVertical: "center",
@@ -376,7 +376,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   innerText: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 10,
     color: "#000",
     paddingVertical: "0.5%",

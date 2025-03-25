@@ -48,7 +48,6 @@ const Signup = () => {
           <Image source={back} style={styles.back} />
         </TouchableOpacity>
         <Text style={styles.signInText}>Sign Up</Text>
-        <Text style={styles.signInText}></Text>
       </View>
 
       <View style={styles.inputbox}>
@@ -141,25 +140,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: "5%",
   },
   headerContainer: {
+    position: "relative", // ✅ Keep it relative
+    top: 15,
+    // paddingVertical: 7,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    position: "absolute",
     width: "100%",
-    top: 0,
   },
   back: {
     width: 18.95,
     height: 10.26,
   },
   signInText: {
+    position: "absolute", // ✅ Absolutely positioned
+    left: "53%", // ✅ Start at center
+    transform: [{ translateX: -40 }], // ✅ Adjust for perfect centering
     color: "#4C4C4C",
+    // opacity: 0.8,
+    // paddingVertical: 7,
     fontSize: 16,
-    fontWeight: "600",
-    lineHeight: 16,
-    // marginBottom: 10,
-
-    fontFamily: "OpenSans-Bold",
+    fontFamily: "OpenSans-SemiBold",
   },
   inputbox: {
     width: "100%",
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     gap: 20,
-    marginTop: 40,
+    marginTop: 50,
   },
   PlaceHolderimage: {
     width: 158,
@@ -187,12 +187,12 @@ const styles = StyleSheet.create({
   },
   checkboxLabel: {
     fontSize: 12,
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Light",
     color: "#8c8c8c",
   },
   forgotPassword: {
     color: "#A9A0F0",
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Light",
     fontSize: 12,
     marginLeft: 3,
     // backgroundColor: "red",
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: "Poppins-Medium",
+    fontFamily: "OpenSans-Medium",
     fontSize: 12,
     lineHeight: 16,
     textAlign: "center",

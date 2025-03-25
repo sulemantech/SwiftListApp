@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 23,
     width: '100%',
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'OpenSans-Regular',
     fontWeight: '300',
     textAlign: 'left',
     marginBottom: 10,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'OpenSans-Regular',
     fontSize: 12,
     fontWeight: '500',
     color: '#fff',

@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     // backgroundColor:"red"
   },
   caption2: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 13,
     paddingVertical: "0.4%",
     paddingHorizontal: "4%",
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
   },
   subCategoryName: {
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Light",
     fontSize: 16,
     fontWeight: "300",
     lineHeight: 24,
@@ -710,7 +710,7 @@ const styles = StyleSheet.create({
 //     alignItems: "center",
 //   },
 //   caption2: {
-//     fontFamily: "Poppins-Regular",
+//     fontFamily: "OpenSans-Regular",
 //     fontSize: 13,
 //     paddingVertical: "0.4%",
 //     paddingHorizontal: "4%",
@@ -838,7 +838,7 @@ const styles = StyleSheet.create({
 //     marginHorizontal: 12,
 //   },
 //   subCategoryName: {
-//     fontFamily: "Poppins-Light",
+//     fontFamily: "OpenSans-Light",
 //     fontSize: 16,
 //     fontWeight: "300",
 //     lineHeight: 24,
