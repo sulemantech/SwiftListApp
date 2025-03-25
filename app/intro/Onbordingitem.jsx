@@ -84,7 +84,7 @@ const OnboardingItem = ({ item }) => {
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.divider}> </Text>
+        {/* <Text style={styles.divider}> </Text> */}
         <Text style={styles.description}>{item.description}</Text>
       </View>
     </View>
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
   },
-  divider: {
-    width: 55,
-    height: 2,
-    borderBottomWidth: 2,
-    borderColor: "#81CAED",
-  },
+  // divider: {
+  //   width: 55,
+  //   height: 2,
+  //   borderBottomWidth: 2,
+  //   borderColor: "#81CAED",
+  // },
   description: {
     fontFamily: "Poppins-Regular", // Ensure this font is loaded in Expo
     color: "#6c6c6c",

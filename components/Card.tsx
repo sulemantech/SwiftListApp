@@ -183,7 +183,7 @@ const styles = {
     textAlign: "left",
   }),
   badge: (width: number, height: number): TextStyle => ({
-    height: screenHeight * 0.019,
+    // height: screenHeight * 0.019,
     width: screenWidth * 0.2112,
 
     // paddingHorizontal: width * 0.03,

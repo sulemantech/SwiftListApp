@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: height * 0.06,
+    // gap: height * 0.06,
   },
   container2: {
     marginTop: height * 0.1,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   pagination: {
     flexDirection: "row",
-    marginTop: height * 0.01,
+    // marginTop: height * 0.01,
     justifyContent: "center",
   },
   dotContainer: {
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     margin: 0,
-    top:-25,
+    top: -55,
   },
   dot: {
     width: 6,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
+    // marginTop: 10,
   },
   buttonText: {
     fontFamily: "Poppins-Medium",
@@ -214,9 +214,12 @@ const styles = StyleSheet.create({
     height: height * 0.27,
   },
   skipText: {
-    color: "#6c6c6c90",
-    fontSize: 15,
+    color: " #5C5C5C",
+    // color:"red",
+    fontSize: 12,
     fontFamily: "Poppins-Regular",
+    opacity: 0.7,
+    fontWeight: "600",
   },
 });
 

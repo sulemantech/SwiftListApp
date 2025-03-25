@@ -104,9 +104,10 @@ const Home = () => {
               style={styles.userProfileImage}
             />
             <View style={styles.userTextContainer}>
-              <Text style={styles.userGreetingText}>Hello</Text>
+              <Text style={styles.userGreetingText}>Hello!</Text>
               <Text style={styles.userNameText}>
-                {userDetails.UserName || "UserName"}
+                {userDetails.UserName || "UserName."}
+                {"."}
               </Text>
             </View>
           </View>

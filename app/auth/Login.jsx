@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     color: "#4C4C4C",
     opacity: 0.8,
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: "600",
     fontFamily: "OpenSans-Bold",
 
@@ -409,10 +409,12 @@ const styles = StyleSheet.create({
     // backgroundColor:"red"
   },
   forgotPassword: {
-    color: "#9386F7",
+    color: "#A9A0F0",
     fontFamily: "Poppins-Light",
     fontSize: 12,
-    // backgroundColor:"red"
+    marginLeft: 3,
+    // backgroundColor: "red",
+    textDecorationLine: "underline",
   },
   containersocial: {
     marginTop: 0,

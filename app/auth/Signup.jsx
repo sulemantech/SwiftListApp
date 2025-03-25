@@ -136,7 +136,7 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 10,
+    paddingVertical: 35,
     backgroundColor: "#fff",
     paddingHorizontal: "5%",
   },
@@ -149,13 +149,16 @@ const styles = StyleSheet.create({
     top: 0,
   },
   back: {
-    width: 25,
-    height: 20,
+    width: 18.95,
+    height: 10.26,
   },
   signInText: {
-    color: "#0c0c0c",
-    fontSize: 20,
+    color: "#4C4C4C",
+    fontSize: 16,
     fontWeight: "600",
+    lineHeight: 16,
+    // marginBottom: 10,
+
     fontFamily: "OpenSans-Bold",
   },
   inputbox: {
@@ -191,8 +194,9 @@ const styles = StyleSheet.create({
     color: "#A9A0F0",
     fontFamily: "Poppins-Light",
     fontSize: 12,
-    marginLeft: 8,
+    marginLeft: 3,
     // backgroundColor: "red",
+    textDecorationLine: "underline",
   },
   containersign: {
     marginTop: 10,

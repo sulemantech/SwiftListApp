@@ -106,12 +106,12 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   back: {
-    width: 25,
-    height: 20,
+    width: 18.95,
+    height: 10.26,
   },
   signInText: {
-    color: "#0c0c0c",
-    fontSize: 20,
+    color: "#4C4C4C",
+    fontSize: 16,
     fontWeight: "600",
     fontFamily: "OpenSans-Bold",
   },
