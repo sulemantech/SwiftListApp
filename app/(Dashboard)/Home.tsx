@@ -206,15 +206,16 @@ const styles = StyleSheet.create({
   userGreetingText: {
     fontSize: 13,
     color: "#344054",
+    opacity: 0.6,
     lineHeight: 19.5,
     fontFamily: "OpenSans-Medium",
   },
   userNameText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "black",
+    color: "#4C4C4C",
     lineHeight: 16,
-    fontFamily: FontFamily.heading,
+    fontFamily: "OpenSans-SemiBold",
     marginTop: 5,
   },
   notificationIcon: {

@@ -29,7 +29,7 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
         style={styles.LinearGradient}
       >
         <View style={styles.innerView}>
-          <Text style={styles.innerText}>Tasks Completed!</Text>
+          <Text style={styles.innerText}>Today’s Progress</Text>
 
           <View style={styles.progressCircles_view}>
             {cardDataArray.map((card, index) => (
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 
     // height: hp("20%"),
     height: 150,
-  width:screenWidth * 0.8889,
+    width: screenWidth * 0.8889,
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   innerText: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "OpenSans-Regular",
     fontSize: 10,
     color: "#000",
     paddingVertical: "0.5%",
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
 //     gap: 10,
 //   },
 //   innerText: {
-//     fontFamily: "Poppins-Regular",
+//     fontFamily: "OpenSans-Regular",
 //     fontSize: 10,
 //     color: "#000",
 //     paddingVertical: "0.5%",

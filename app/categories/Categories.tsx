@@ -134,7 +134,9 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             borderRadius={40}
             placeholder={"Search items here..."}
             placeholderTextColor={"black"}
-            fontsize={16}
+            // placeholderfontsize
+            fontsize={13}
+            
             style={[
               styles.searchInput,
               isSearchFocused && styles.searchInputFocused, // Apply focus styles
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
   caption2: {
     fontFamily: "OpenSans-Regular",
     fontSize: 13,
-    paddingVertical: "0.4%",
+    paddingVertical: "2%",
     paddingHorizontal: "4%",
     color: "#6c6c6c",
     fontWeight: "300",
@@ -360,11 +362,10 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
   },
   subCategoryName: {
-    fontFamily: "OpenSans-Light",
+    fontFamily: "OpenSans-Medium",
     fontSize: 16,
-    fontWeight: "300",
     lineHeight: 24,
-    color: "#6C6C6C",
+    color: "#5C5C5C",
   },
   arrowRight: {
     width: 32,

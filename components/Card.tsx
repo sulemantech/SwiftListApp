@@ -167,7 +167,7 @@ const styles = {
     padding: width * 0.02,
   }),
   title: (width: number): TextStyle => ({
-    fontFamily: FontFamily.B2_Semibold,
+    fontFamily: "OpenSans-SemiBold",
     fontSize: FontSize.itemtitle,
     color: COLORS.black,
     fontWeight: "600",
@@ -175,7 +175,7 @@ const styles = {
     textAlign: "left",
   }),
   description: (width: number, height: number): TextStyle => ({
-    fontFamily: FontFamily.S1_Regular,
+    fontFamily: "OpenSans-Regular",
     fontSize: FontSize.subtitle,
     color: COLORS.gray,
     fontWeight: "300",
@@ -184,7 +184,9 @@ const styles = {
   }),
   badge: (width: number, height: number): TextStyle => ({
     // height: screenHeight * 0.019,
-    width: screenWidth * 0.2112,
+    // width: screenWidth * 0.2112,
+    width: 69,
+    height: 22,
 
     // paddingHorizontal: width * 0.03,
     // paddingVertical: height * 0.005,
@@ -192,14 +194,14 @@ const styles = {
     textAlignVertical: "center",
     borderRadius: 12,
     fontSize: 13,
-    fontFamily: FontFamily.P2_Regular,
+    fontFamily: "OpenSans-Regular",
     color: "white",
     marginVertical: height * 0.002,
   }),
   percentage: (width: number): TextStyle => ({
     fontSize: 12,
-    fontWeight: "400",
     color: "#000",
+    fontFamily: "OpenSans-Regular",
   }),
   progressview: (width: number): ViewStyle => ({
     backgroundColor: "#FFFFFF",

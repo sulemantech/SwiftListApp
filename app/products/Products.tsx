@@ -451,14 +451,14 @@ const styles = StyleSheet.create({
     height: screenWidth * 0.14,
   },
   productName: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "Poppins-Medium",
     marginTop: 7,
     fontSize: 11,
     textAlign: "center",
     color: "white",
   },
   productName2: {
-    fontFamily: "Poppins-Regular",
+    fontFamily: "Poppins-Medium",
     marginTop: 2,
     fontSize: 11,
     textAlign: "center",
