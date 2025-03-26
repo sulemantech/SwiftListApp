@@ -25,6 +25,10 @@ import auth from "@react-native-firebase/auth";
 import { ProductContext } from "../../Context/CardContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // import messaging from '@react-native-firebase/messaging'
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
 
 const LoginScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -189,9 +193,12 @@ const LoginScreen = () => {
         barStyle={"dark-content"}
       />
       {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
-      <View style={styles.signInContainer}>
-        <Text style={styles.signInTitle}>Sign In</Text>
-        <Signin width={158} height={150.07} style={styles.signinImage} />
+      <View style={styles.headerContainer}>
+        <Text style={styles.signInTitle}>{"Sign In"}</Text>
+      </View>
+
+      <View style={styles.ImageContainer}>
+        <Signin width={158} height={150} style={styles.signinImage} />
       </View>
       {/* <View style={styles.headerContainer}> */}
       {/* <TouchableOpacity activeOpacity={1} onPress={() => router.back()}>
@@ -202,6 +209,7 @@ const LoginScreen = () => {
       {/* </View> */}
       <View style={styles.inputbox}>
         <TextInput2
+          style={{ marginBottom: 20 }}
           bgcolor={"#fff"}
           label={"Email/Phone Number"}
           placeholder={"Enter email address"}
@@ -309,13 +317,13 @@ const LoginScreen = () => {
 
       <View style={styles.row2}>
         <View style={styles.checkboxContainer}>
-          <Text style={styles.checkboxLabel}>Don’t have an account?</Text>
+          <Text style={styles.donthaveanaccount}>Don’t have an account?</Text>
         </View>
         <TouchableOpacity
           activeOpacity={1}
           onPress={() => router.push("/auth/Signup")}
         >
-          <Text style={styles.forgotPassword}>Sign Up</Text>
+          <Text style={styles.Signuptext}>Sign Up</Text>
         </TouchableOpacity>
       </View>
 
@@ -385,14 +393,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    marginTop: 10,
+    marginTop: 11,
+    marginBottom: 24,
   },
   row2: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     width: "47.5%",
-    marginTop: 10,
+    marginTop: 11,
     // backgroundColor:"red"
   },
   socialIcon: {
@@ -402,44 +411,68 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   checkboxLabel: {
     fontSize: 12,
     fontFamily: "OpenSans-Regular",
-    color: "#8c8c8c",
+    color: "#5C5C5C",
     marginLeft: 2,
     // backgroundColor:"red"
   },
   forgotPassword: {
-    color: "#5C5C5C",
-    fontFamily: "OpenSans-SemiBold",
-    fontSize: 16,
+    color: "#9386F7",
+    fontFamily: "OpenSans-Regular",
+    fontSize: 12,
     marginLeft: 3,
     // backgroundColor: "red",
     textDecorationLine: "underline",
   },
   containersocial: {
-    marginTop: 0,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    // backgroundColor: "green",
   },
   socialouterview: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    // backgroundColor: "green",
+    // height: 10,
+    marginTop: 0, // Remove the top margin
+    paddingTop: 0, // Ensure no extra padding
   },
+  // containersign: {
+  //   marginTop: 10,
+  //   width: "100%",
+  //   height: 50,
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
   containersign: {
-    marginTop: 10,
     width: "100%",
     height: 50,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 0, // Set to 0
   },
 
+  // signInButton: {
+  //   // width: "100%",
+  //   width: "100%",
+  //   height: 50,
+  //   backgroundColor: "#A9A0F0",
+  //   borderRadius: 30,
+  //   paddingVertical: 12,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   marginTop: 10,
+  //   flexDirection: "row", // Ensures horizontal alignment of the content
+  // },
   signInButton: {
-    // width: "100%",
     width: "100%",
     height: 50,
     backgroundColor: "#A9A0F0",
@@ -447,30 +480,44 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
-    flexDirection: "row", // Ensures horizontal alignment of the content
+    flexDirection: "row",
+    marginTop: 0, // Set to 0 or adjust as needed
   },
 
   buttonText: {
-    fontFamily: "OpenSans-Medium",
-    fontSize: 12,
+    fontFamily: "OpenSans-SemiBold",
+    fontSize: 13,
     lineHeight: 16,
     textAlign: "center",
-    color: "#fff",
+    color: "#FFFFFF",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
 
+  // containerline: {
+  //   alignItems: "center",
+  //   marginVertical: 20,
+  //   fontFamily: "OpenSans-Regular",
+  //   // color: "red",
+  //   // backgroundColor: "red",
+  // },
   containerline: {
+    width: "100%",
     alignItems: "center",
-    marginVertical: 20,
-    fontFamily: "OpenSans-Regular",
+    justifyContent: "center",
+    marginVertical: 0, // Remove any vertical spacing
+    paddingVertical: 0, // Ensure no extra padding
   },
+
   lineContainer: {
     flexDirection: "row",
     alignItems: "center",
     width: "90%",
+    marginTop: 24,
+    marginBottom: 14,
+    // backgroundColor: "red",
+    // marginVertical: 20,
   },
   line: {
     flex: 1,
@@ -484,6 +531,7 @@ const styles = StyleSheet.create({
     color: "#5C5C5C",
     opacity: 0.7,
     fontFamily: "OpenSans-Regular",
+    fontSize: 14,
   },
   social: {
     width: "100%",
@@ -493,20 +541,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 30,
     flexDirection: "row",
-    paddingVertical: 12,
+    paddingVertical: 13,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
+    // backgroundColor: "red",
   },
   innersocial: {
     flexDirection: "row",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   socialButtonText: {
     marginLeft: 10,
-    fontFamily: "OpenSans-Regular",
-    color: "#8C8C8C",
-    fontSize: 12,
+    fontFamily: "OpenSans-SemiBold",
+    color: "#5C5C5C",
+    fontSize: 13,
   },
   errorText: {
     color: "red",
@@ -517,18 +567,58 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontFamily: "OpenSans-Medium",
   },
-  signInContainer: {
-    marginTop: 15,
+  ImageContainer: {
+    marginTop: 20,
     alignItems: "center", // Center both elements horizontally
     marginBottom: 20, // Add spacing between Sign In text and form fields
+    // width:screenWidth * 0.4389,
+    // height:screenHeight * 0.1829,
   },
+  // signInTitle: {
+  //   fontSize: 16, // Adjust font size as needed
+  //   fontFamily: "OpenSans-SemiBold",
+  //   color: "#5C5C5C",
+  //   marginBottom: 24, // Creates spacing between text and SVG
+  // },
   signInTitle: {
-    fontSize: 16, // Adjust font size as needed
-    fontFamily: "OpenSans-SemiBold",
-    color: "#4C4C4C",
-    marginBottom: 10, // Creates spacing between text and SVG
+    fontSize: 16, // Adjust size as needed
+    fontWeight: "OpenSans-SemiBold",
+    color: "#5C5C5C", // Ensure it's not the same as background
+    textAlign: "center",
+    // letter spacing
+    letterSpacing: 0,
+    // lineHeight: 16,
   },
   signinImage: {
     marginTop: 10, // Move the SVG a little down
+  },
+  // headerContainer: {
+  //   backgroundColor: "red",
+  //   width:screenWidth * 0.275,
+  //   height:screenHeight * 0.0268,
+  // },
+  headerContainer: {
+    // backgroundColor: "red", // Temporary for debugging
+    marginTop: 20,
+  },
+  donthaveanaccount: {
+    fontSize: 14,
+    fontFamily: "OpenSans-Regular",
+    color: "#5C5C5C",
+    // marginLeft: 2,
+    opacity: 0.7,
+    // backgroundColor: "red",
+    marginTop: 13,
+  },
+  Signuptext: {
+    opacity: 0.7,
+    // backgroundColor: "red",
+    marginTop: 13,
+    color: "#9386F7",
+    fontFamily: "OpenSans-Regular",
+    fontSize: 14,
+    marginLeft: 3,
+    // backgroundColor: "red",
+    textDecorationLine: "underline",
   },
 });

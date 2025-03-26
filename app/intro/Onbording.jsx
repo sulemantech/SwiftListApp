@@ -159,20 +159,22 @@ const styles = StyleSheet.create({
   },
   container2: {
     marginTop: height * 0.1,
-    height: height * 0.7,
+    height: height * 0.5,
+    // backgroundColor: "green",
   },
   pagination: {
     flexDirection: "row",
     // marginTop: height * 0.01,
     justifyContent: "center",
+    // backgroundColor: "red",
   },
   dotContainer: {
     justifyContent: "center",
     alignItems: "center",
     width: 12,
     height: 12,
-    margin: 0,
-    top: -55,
+    top: 0,
+    // top: -55,
   },
   dot: {
     width: 6,
@@ -194,6 +196,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     // marginTop: 10,
+    top: 50,
   },
   buttonText: {
     fontFamily: "OpenSans-Medium",
