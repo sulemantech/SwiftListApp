@@ -48,6 +48,8 @@ export default TextInput2;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    // backgroundColor:"red",
+    // marginBottom: 16,
   },
   label: {
     fontFamily: "OpenSans-Regular",

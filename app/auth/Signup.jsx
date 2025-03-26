@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import TextInput2 from "../../components/Input";
+// import TextInput2 from "../../components/Input";
+import TextInput2 from "../../components/Input1";
+
 // import Signin from '../../assets/images/SVG/signup.svg';
 import Signup1 from "../../assets/images/SVG/signup.svg";
 import back from "../../assets/images/back-arrow.png";
@@ -53,10 +55,12 @@ const Signup = () => {
       <View style={styles.inputbox}>
         {/* <Signin /> */}
         {/* <Image source={Signin} style={styles.PlaceHolderimage} /> */}
-        <Signup1 width={158} height={150} />
+        <Signup1 width={158} height={150} style={styles.PlaceHolderimage} />
 
         {error && <Text style={styles.errorText}>{error}</Text>}
+
         <TextInput2
+          style={{ marginBottom: 24 }}
           bgcolor={"#fff"}
           label={"Name"}
           placeholder={"Enter Username"}
@@ -64,13 +68,16 @@ const Signup = () => {
           onChangeText={setName}
         />
         <TextInput2
+          style={{ marginBottom: 24 }}
           bgcolor={"#fff"}
+          // style={{ marginBottom: 24 }}
           label={"Email/Phone Number"}
           placeholder={"Enter email address"}
           value={email}
           onChangeText={setEmail}
         />
         <TextInput2
+          style={{ marginBottom: 24 }}
           bgcolor={"#fff"}
           label={"Password"}
           placeholder={"Enter Password"}
@@ -79,6 +86,7 @@ const Signup = () => {
           onChangeText={setPassword}
         />
         <TextInput2
+          style={{ marginBottom: 24 }}
           bgcolor={"#fff"}
           label={"Confirm Password"}
           placeholder={"Re-enter Password"}
@@ -111,13 +119,15 @@ const Signup = () => {
 }; */}
       <View style={styles.row2}>
         <View style={styles.checkboxContainer}>
-          <Text style={styles.checkboxLabel}>Already have an account?</Text>
+          <Text style={styles.donthaveanaccount}>
+            Already have an account?{" "}
+          </Text>
         </View>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => router.push("/auth/Login")}
+          onPress={() => router.push("/auth/Signup")}
         >
-          <Text style={styles.forgotPassword}>Sign In</Text>
+          <Text style={styles.SignIntext}>Sign In</Text>
         </TouchableOpacity>
       </View>
 
@@ -135,55 +145,48 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 35,
     backgroundColor: "#fff",
     paddingHorizontal: "5%",
+    
   },
   headerContainer: {
-    position: "relative", // ✅ Keep it relative
-    top: 15,
-    // paddingVertical: 7,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
+    marginTop: 20,
   },
   back: {
     width: 18.95,
     height: 10.26,
   },
   signInText: {
-    position: "absolute", // ✅ Absolutely positioned
-    left: "53%", // ✅ Start at center
-    transform: [{ translateX: -40 }], // ✅ Adjust for perfect centering
+    position: "absolute",
+    left: "50%",
+    transform: [{ translateX: -30 }],
     color: "#4C4C4C",
-    // opacity: 0.8,
-    // paddingVertical: 7,
     fontSize: 16,
     fontFamily: "OpenSans-SemiBold",
+    // backgroundColor:"red",
   },
   inputbox: {
     width: "100%",
-    display: "flex",
     alignItems: "center",
-    flexDirection: "column",
-    gap: 20,
-    marginTop: 50,
+    // backgroundColor: "green",
+    marginTop: 26,
   },
   PlaceHolderimage: {
     width: 158,
     height: 150.07,
-    gap: 0,
-  },
-  signinImage: {
-    marginVertical: 30,
-    alignSelf: "center",
+    marginBottom: 24,
   },
   row2: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 20,
-    marginHorizontal: "auto",
+    alignSelf:"center",
+    // width: "47.5%",
+    marginTop: 24,
+    // backgroundColor:"red"
   },
   checkboxLabel: {
     fontSize: 12,
@@ -194,15 +197,11 @@ const styles = StyleSheet.create({
     color: "#A9A0F0",
     fontFamily: "OpenSans-Light",
     fontSize: 12,
-    marginLeft: 3,
-    // backgroundColor: "red",
     textDecorationLine: "underline",
   },
   containersign: {
-    marginTop: 10,
     width: "100%",
     height: 50,
-    display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -211,21 +210,144 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: "#A9A0F0",
     borderRadius: 30,
-    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
   },
   buttonText: {
-    fontFamily: "OpenSans-Medium",
-    fontSize: 12,
+    fontFamily: "OpenSans-SemiBold",
+    fontSize: 13,
     lineHeight: 16,
     textAlign: "center",
-    color: "#fff",
+    color: "#FFFFFF",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   errorText: {
     color: "red",
     fontSize: 14,
-    marginBottom: 10,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    // backgroundColor: "red",
+  },
+  donthaveanaccount: {
+    fontSize: 14,
+    fontFamily: "OpenSans-Regular",
+    color: "#5C5C5C",
+    // marginLeft: 2,
+    opacity: 0.7,
+    // backgroundColor: "red",
+    // marginTop: 13,
+  },
+  SignIntext: {
+    opacity: 0.7,
+    // backgroundColor: "red",
+    // marginTop: 13,
+    color: "#9386F7",
+    fontFamily: "OpenSans-Regular",
+    fontSize: 14,
+    // marginLeft: 1,
+    // backgroundColor: "red",
+    textDecorationLine: "underline",
   },
 });
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingVertical: 35,
+//     backgroundColor: "#fff",
+//     paddingHorizontal: "5%",
+//   },
+//   headerContainer: {
+//     position: "relative", // ✅ Keep it relative
+//     top: 15,
+//     // paddingVertical: 7,
+//     flexDirection: "row",
+//     alignItems: "center",
+//     width: "100%",
+//   },
+//   back: {
+//     width: 18.95,
+//     height: 10.26,
+//   },
+//   signInText: {
+//     position: "absolute", // ✅ Absolutely positioned
+//     left: "53%", // ✅ Start at center
+//     transform: [{ translateX: -40 }], // ✅ Adjust for perfect centering
+//     color: "#4C4C4C",
+//     // opacity: 0.8,
+//     // paddingVertical: 7,
+//     fontSize: 16,
+//     fontFamily: "OpenSans-SemiBold",
+//   },
+//   inputbox: {
+//     width: "100%",
+//     display: "flex",
+//     alignItems: "center",
+//     flexDirection: "column",
+//     gap: 20,
+//     marginTop: 50,
+//   },
+//   PlaceHolderimage: {
+//     width: 158,
+//     height: 150.07,
+//     gap: 0,
+//   },
+//   signinImage: {
+//     marginVertical: 30,
+//     alignSelf: "center",
+//   },
+//   row2: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     marginVertical: 20,
+//     marginHorizontal: "auto",
+//   },
+//   checkboxLabel: {
+//     fontSize: 12,
+//     fontFamily: "OpenSans-Light",
+//     color: "#8c8c8c",
+//   },
+//   forgotPassword: {
+//     color: "#A9A0F0",
+//     fontFamily: "OpenSans-Light",
+//     fontSize: 12,
+//     marginLeft: 3,
+//     // backgroundColor: "red",
+//     textDecorationLine: "underline",
+//   },
+//   containersign: {
+//     marginTop: 10,
+//     width: "100%",
+//     height: 50,
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   signInButton: {
+//     width: "100%",
+//     height: 50,
+//     backgroundColor: "#A9A0F0",
+//     borderRadius: 30,
+//     paddingVertical: 12,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     marginTop: 10,
+//   },
+//   buttonText: {
+//     fontFamily: "OpenSans-Medium",
+//     fontSize: 12,
+//     lineHeight: 16,
+//     textAlign: "center",
+//     color: "#fff",
+//   },
+//   errorText: {
+//     color: "red",
+//     fontSize: 14,
+//     marginBottom: 10,
+//   },
+// });

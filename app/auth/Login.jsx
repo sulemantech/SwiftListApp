@@ -209,7 +209,7 @@ const LoginScreen = () => {
       {/* </View> */}
       <View style={styles.inputbox}>
         <TextInput2
-          style={{ marginBottom: 20 }}
+          style={{ marginBottom: 24 }}
           bgcolor={"#fff"}
           label={"Email/Phone Number"}
           placeholder={"Enter email address"}
@@ -617,7 +617,7 @@ const styles = StyleSheet.create({
     color: "#9386F7",
     fontFamily: "OpenSans-Regular",
     fontSize: 14,
-    marginLeft: 3,
+    // marginLeft: 3,
     // backgroundColor: "red",
     textDecorationLine: "underline",
   },

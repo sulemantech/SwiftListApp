@@ -19,6 +19,7 @@ interface TextInput2Props extends TextInputProps {
 }
 
 const TextInput2: React.FC<TextInput2Props> = ({
+  
   label,
   placeholder,
   value,
@@ -29,6 +30,8 @@ const TextInput2: React.FC<TextInput2Props> = ({
   borderRadius = 13,
   bgColor = "#fff",
   fontsize = 13,
+  style,
+
   ...props
 }) => {
   const colorScheme = useColorScheme();
@@ -67,18 +70,19 @@ const styles = StyleSheet.create({
     width: screenWidth * 0.8889,
   },
   label: {
-    fontFamily: "Poppins-Medium",
+    // backgroundColor: "red",
+    fontFamily: "OpenSans-Regular",
     fontSize: 12,
-    marginBottom: 3,
+    marginBottom: 12,
     paddingLeft: 3,
-    color: "#6c6c6c",
+    color: "#5C5C5C",
   },
   input: {
     height: 50,
     borderColor: "#DEDDE2",
     borderWidth: 1,
     paddingHorizontal: 20,
-    fontFamily: "Poppins-Light",
+    fontFamily: "OpenSans-Light",
     fontSize: 11,
     lineHeight: 16.5,
   },
