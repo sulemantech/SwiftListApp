@@ -411,9 +411,9 @@ const styles = StyleSheet.create({
     // backgroundColor:"red"
   },
   forgotPassword: {
-    color: "#A9A0F0",
+    color: "#5C5C5C",
     fontFamily: "OpenSans-SemiBold",
-    fontSize: 12,
+    fontSize: 16,
     marginLeft: 3,
     // backgroundColor: "red",
     textDecorationLine: "underline",

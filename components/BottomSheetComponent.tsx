@@ -103,64 +103,26 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
           <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
           <Text
             onPress={() => setIsProductSelected(false)}
-            style={styles.bottomSheetHeadertext}
+            style={styles.doneText}
           >
             Done
           </Text>
         </View>
-        {snapIndex === 4 && (
-          <View style={styles.TextInput2}>
-            <TextInput2
-              borderRadius={22}
-              value={itemsQuantity.Quantity.toString()}
-              onChangeText={(value) => SelectQuantity(value)}
-              bgColor="#007AFF26"
-              placeholder="Enter Needed Quantity"
-              fontsize={16}
-            />
+        {/* divider */}
+        <View style={styles.divider} />
+        <View style={styles.FromCategoryContainer}>
+          <Text style={styles.Category}>Categories</Text>
+          <View style={styles.CategoryContainer}>
             <Text
-              style={styles.buttonsLabeltext}
-            >{`Item Details for ${selecteditem}`}</Text>
-          </View>
-        )}
-        <View style={styles.contentContainer2}>
-          {/* old code */}
-          {ItemValues.map((item) => (
-            <TouchableOpacity
-              key={item}
-              onPress={() => SelectQuantity(item)}
-              style={[
-                styles.bottomSheetview,
-                item === selectedValue && styles.selectedItem,
-              ]}
+              onPress={() => setIsProductSelected(false)}
+              style={styles.CategoryName}
             >
-              <Text style={styles.bottomSheettext}>{item}</Text>
-            </TouchableOpacity>
-          ))}
+              {ListName}
+            </Text>
+          </View>
         </View>
-        <View style={styles.CheckboxesContainer}>
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({ ...prevState, unit: "Kg" }))
-            }
-            Label="Kg"
-          />
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({ ...prevState, unit: "Dozen" }))
-            }
-            Label="Dozen"
-          />
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({
-                ...prevState,
-                urgency: !prevState.urgency,
-              }))
-            }
-            Label="Urgency"
-          />
-        </View>
+        {/*======================== old code ======================*/}
+
       </BottomSheetView>
     </BottomSheet>
   );
@@ -182,18 +144,76 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: "space-between",
   },
-  bottomSheetHeadertext: {
-    fontFamily: "OpenSans-Bold",
-    fontSize: 16,
+  doneText: {
+    fontFamily: "OpenSans-Medium",
+    fontSize: 14,
     textAlign: "center",
+    // marginTop: 26,
+    paddingTop: 26,
+    paddingRight: 20,
+    color: "#5C5C5C",
+  },
+  bottomSheetHeadertext: {
+    fontFamily: "OpenSans-SemiBold",
+    fontSize: 18,
+    textAlign: "center",
+    paddingTop: 28,
+    paddingLeft: 20,
     color: "#4C4C4C",
   },
+  divider: {
+    width: "105%",
+    height: 1,
+    backgroundColor: "#cccc",
+    // marginVertical: 10,
+    marginTop: 20,
+    opacity: 1,
+  },
+  FromCategoryContainer: {
+    display: "flex",
+    width: "95%",
+    flexDirection: "row",
+    marginTop: 15,
+    justifyContent: "space-between",
+    alignItems: "center",
+    // backgroundColor: "red",
+  },
+  Category: {
+    fontFamily: "OpenSans-Medium",
+    fontSize: 14,
+    textAlign: "center",
+    paddingTop: 28,
+    paddingLeft: 20,
+    color: "#5C5C5C",
+    // color: "red",
+  },
+  CategoryContainer: {
+    display: "flex",
+    width: 52,
+    height: 22,
+    backgroundColor: "#007AFF26",
+    borderRadius: 15,
+    gap: 10,
+    marginTop: 26,
+    marginRight: 20,
+    // backgroundColor: "red",
+  },
+  CategoryName: {
+    fontFamily: "OpenSans-Regular",
+    fontSize: 12,
+    textAlign: "center",
+    paddingTop: 2,
+    color: "#4C4C4C",
+  },
+
   buttonsLabeltext: {
     width: "100%",
     fontFamily: "OpenSans-Bold",
     fontSize: 16,
     textAlign: "left",
     marginVertical: 4,
+    color: "#4C4C4C",
+    backgroundColor: "red",
   },
   TextInput2: {
     width: "94%",
@@ -246,6 +266,68 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
 });
+// old code
+
+        {
+          /* {snapIndex === 4 && (
+          <View style={styles.TextInput2}>
+            <TextInput2
+              borderRadius={22}
+              value={itemsQuantity.Quantity.toString()}
+              onChangeText={(value) => SelectQuantity(value)}
+              bgColor="#007AFF26"
+              placeholder="Enter Needed Quantity"
+              fontsize={16}
+            />
+            <Text
+              style={styles.buttonsLabeltext}
+            >{`Item Details for ${selecteditem}`}</Text>
+          </View>
+        )} */
+        }
+
+        {
+          /* <View style={styles.contentContainer2}>
+          
+          {ItemValues.map((item) => (
+            <TouchableOpacity
+              key={item}
+              onPress={() => SelectQuantity(item)}
+              style={[
+                styles.bottomSheetview,
+                item === selectedValue && styles.selectedItem,
+              ]}
+            >
+              <Text style={styles.bottomSheettext}>{item}</Text>
+            </TouchableOpacity>
+          ))}
+        </View> */
+        }
+        {
+          /* <View style={styles.CheckboxesContainer}>
+          <Checkboxwithlabel
+            onChange={() =>
+              setItemsQuantity((prevState) => ({ ...prevState, unit: "Kg" }))
+            }
+            Label="Kg"
+          />
+          <Checkboxwithlabel
+            onChange={() =>
+              setItemsQuantity((prevState) => ({ ...prevState, unit: "Dozen" }))
+            }
+            Label="Dozen"
+          />
+          <Checkboxwithlabel
+            onChange={() =>
+              setItemsQuantity((prevState) => ({
+                ...prevState,
+                urgency: !prevState.urgency,
+              }))
+            }
+            Label="Urgency"
+          />
+        </View> */
+        }
 
 // old code
 // import React, { useContext, useEffect, useMemo, useState } from "react";

@@ -172,6 +172,7 @@ import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
 
+
 const { width: screenWidth } = Dimensions.get("window");
 
 interface Product {
@@ -415,7 +416,8 @@ const styles = StyleSheet.create({
     // marginHorizontal: 10,  ❌ REMOVE or REDUCE THIS
     flex: 1,
     justifyContent: "space-between",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
+    // backgroundColor: "red",
   },
   productsContainer2: {
     // marginBottom: 10,
@@ -442,7 +444,7 @@ const styles = StyleSheet.create({
   },
 
   selectedCard: {
-    backgroundColor: "#9747FF",
+    backgroundColor: "#A9A0F0",
     zIndex: 1,
     // opacity: 0.2,
   },
