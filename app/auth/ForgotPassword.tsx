@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import auth from "@react-native-firebase/auth";
-import TextInput2 from "../../components/Input";
+import TextInput2 from "../../components/Input1";
 import back from "../../assets/images/back-arrow.png";
 import ForgotPassword_image from "../../assets/images/ForgotPassword.svg";
 import { router } from "expo-router";
@@ -30,10 +30,11 @@ const ForgotPassword: React.FC = () => {
       await auth().sendPasswordResetEmail(email);
       console.log("Reset email sent to:", email);
 
-      Alert.alert(
-        "Success",
-        "A password reset link has been sent to your email. Please check your inbox."
-      );
+      // Alert.alert(
+      //   "Success",
+      //   "A password reset link has been sent to your email. Please check your inbox."
+      // );
+      router.push("/auth/EmailSuccess");
     } catch (error: unknown) {
       const err = error as { message: string };
       console.error("Password reset error:", err.message);
@@ -65,11 +66,15 @@ const ForgotPassword: React.FC = () => {
         </Text>
 
         <TextInput2
+          // style={{ marginBottom: 24 }}
           bgColor={"#fff"}
           label={"Email"}
           placeholder={"Enter email address"}
           value={email}
           onChangeText={setEmail}
+          onFocus={undefined}
+          onBlur={undefined}
+          style={undefined}
         />
       </View>
 
@@ -87,42 +92,34 @@ const ForgotPassword: React.FC = () => {
 };
 
 export default ForgotPassword;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
     backgroundColor: "#fff",
     paddingHorizontal: "5%",
   },
   headerContainer: {
-    position: "relative", // ✅ Keep it relative
-    top: 15,
-    // paddingVertical: 7,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
+    marginTop: 18,
   },
-
   back: {
     width: 18.95,
     height: 10.26,
   },
   signInText: {
-    position: "absolute", // ✅ Absolutely positioned
-    left: "50%", // ✅ Start at center
-    transform: [{ translateX: -54 }], // ✅ Adjust for perfect centering
+    position: "absolute",
+    left: "50%",
+    transform: [{ translateX: -54 }],
     color: "#4C4C4C",
-    // opacity: 0.8,
     fontSize: 16,
     fontFamily: "OpenSans-SemiBold",
   },
   inputbox: {
     width: "100%",
-    marginTop: 50,
-    display: "flex",
     alignItems: "center",
-    gap: 10,
+    marginTop: 24,
   },
   instructions: {
     color: "#6c6c6c",
@@ -133,14 +130,14 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "center",
     opacity: 0.7,
-    marginBottom: 20,
-    marginTop: 10,
+    marginTop: 24,
+    marginBottom: 40,
   },
   containersign: {
-    marginTop: 10,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 24,
   },
   ForgotPasswordButton: {
     width: screenWidth * 0.8889,
@@ -149,7 +146,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 25,
   },
   buttonText: {
     fontFamily: "OpenSans-Regular",
@@ -158,10 +154,84 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   PlaceHolderimage: {
-    // marginTop: 10,
-    top: -5,
+    top: 0, // Removes any offset
   },
 });
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 20,
+//     backgroundColor: "#fff",
+//     paddingHorizontal: "5%",
+//   },
+//   headerContainer: {
+//     position: "relative", // ✅ Keep it relative
+//     top: 15,
+//     // paddingVertical: 7,
+//     flexDirection: "row",
+//     alignItems: "center",
+//     width: "100%",
+//   },
+
+//   back: {
+//     width: 18.95,
+//     height: 10.26,
+//   },
+//   signInText: {
+//     position: "absolute", // ✅ Absolutely positioned
+//     left: "50%", // ✅ Start at center
+//     transform: [{ translateX: -54 }], // ✅ Adjust for perfect centering
+//     color: "#4C4C4C",
+//     // opacity: 0.8,
+//     fontSize: 16,
+//     fontFamily: "OpenSans-SemiBold",
+//   },
+//   inputbox: {
+//     width: "100%",
+//     marginTop: 50,
+//     display: "flex",
+//     alignItems: "center",
+//     gap: 10,
+//   },
+//   instructions: {
+//     color: "#6c6c6c",
+//     fontSize: 14,
+//     width: screenWidth * 0.8889,
+//     lineHeight: 20,
+//     fontFamily: "OpenSans-Regular",
+//     fontWeight: "400",
+//     textAlign: "center",
+//     opacity: 0.7,
+//     marginBottom: 20,
+//     marginTop: 10,
+//   },
+//   containersign: {
+//     marginTop: 10,
+//     width: "100%",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   ForgotPasswordButton: {
+//     width: screenWidth * 0.8889,
+//     backgroundColor: "#A9A0F0",
+//     borderRadius: 30,
+//     paddingVertical: 16,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     marginTop: 25,
+//   },
+//   buttonText: {
+//     fontFamily: "OpenSans-Regular",
+//     fontSize: 12,
+//     fontWeight: "500",
+//     color: "#fff",
+//   },
+//   PlaceHolderimage: {
+//     // marginTop: 10,
+//     top: -5,
+//   },
+// });
 
 // izaz changes
 // import React, { useState } from "react";

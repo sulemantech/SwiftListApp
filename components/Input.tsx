@@ -51,6 +51,7 @@ const TextInput2: React.FC<TextInput2Props> = ({
             fontSize: fontsize,
             color: colorScheme === "dark" ? "#000" : "#000",
           },
+          style,
         ]}
         placeholder={placeholder}
         placeholderTextColor="#A9A9A9"

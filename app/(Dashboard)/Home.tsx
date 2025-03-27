@@ -75,7 +75,7 @@ const Home = () => {
     {
       title: "Kitchen Menu",
       description: "Add items to your list.",
-      items: "500 Recipes",
+      items: "500 Items",
       percentagetext: "Cooked 0%",
       progress: 0.78,
       Picture: Fifth,
@@ -316,8 +316,8 @@ const styles = StyleSheet.create({
   },
   bgbill: {
     backgroundColor: "#FF3837",
-    height: 30,
-    width: 30,
+    height: 24,
+    width: 24,
     borderRadius: 17,
     alignItems: "center",
     justifyContent: "center",

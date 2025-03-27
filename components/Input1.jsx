@@ -1,5 +1,11 @@
-import React from 'react';
-import { StyleSheet, useColorScheme, Text, TextInput, View } from 'react-native';
+import React from "react";
+import {
+  StyleSheet,
+  useColorScheme,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 const TextInput2 = ({
   label,
@@ -10,11 +16,11 @@ const TextInput2 = ({
   secureTextEntry = false,
   onChangeText,
   borderRadius = 13,
-  bgColor = '#fff',
+  bgColor = "#fff",
   fontsize = 13,
   style,
 }) => {
-  const colorScheme = useColorScheme();  // Correct placement of useColorScheme
+  const colorScheme = useColorScheme(); // Correct placement of useColorScheme
 
   return (
     <View style={styles.container}>

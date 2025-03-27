@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "47.5%",
+    // width: "47.5%",
     marginTop: 11,
     // backgroundColor:"red"
   },
@@ -617,7 +617,7 @@ const styles = StyleSheet.create({
     color: "#9386F7",
     fontFamily: "OpenSans-Regular",
     fontSize: 14,
-    // marginLeft: 3,
+    marginLeft: 3,
     // backgroundColor: "red",
     textDecorationLine: "underline",
   },

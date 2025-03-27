@@ -136,11 +136,15 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             placeholderTextColor={"black"}
             // placeholderfontsize
             fontsize={13}
-            
-            style={[
-              styles.searchInput,
-              isSearchFocused && styles.searchInputFocused, // Apply focus styles
-            ]}
+            style={
+              isSearchFocused
+                ? styles.searchInputFocused
+                : styles.searchInput
+            }
+            // style={[
+            //   styles.searchInput,
+            //   isSearchFocused && styles.searchInputFocused, // Apply focus styles
+            // ]}
             onFocus={() => setIsSearchFocused(true)}
             onBlur={() => setIsSearchFocused(false)}
           />
@@ -216,15 +220,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: "90%",
-    marginTop: 20,
+    // height: "90%",
+    marginTop: 15,
     // backgroundColor:"red"
   },
   caption2: {
     fontFamily: "OpenSans-Regular",
     fontSize: 13,
-    paddingVertical: "2%",
+    // paddingVertical: "2%",
     paddingHorizontal: "4%",
+    marginTop: 15,
     color: "#6c6c6c",
     fontWeight: "300",
     lineHeight: 23,
@@ -235,7 +240,7 @@ const styles = StyleSheet.create({
     // justifyContent:"center",
     alignItems: "center",
     width: "100%",
-    height: "38%",
+    // height: "38%",
     // backgroundColor: "green",
   },
   categoryImage: {
@@ -287,6 +292,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 29.62,
   },
   // searchInput: {
   //   width: "95%", // Ensures it remains the same in both states
@@ -381,13 +387,14 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#ccc",
     // marginVertical: 10,
-    marginTop: 15,
+    marginTop: 21,
   },
   searchInputFocused: {
     backgroundColor: "#FFF", // Focused background color
     opacity: 1, // Full opacity
     borderColor: "#A9A0F0", // Border color on focus
     width: "99%",
+    top: -1.5,
   },
 });
 
