@@ -6,6 +6,8 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { Dimensions } from "react-native";
+const { width, height } = Dimensions.get("window");
 
 const TextInput2 = ({
   label,
@@ -60,12 +62,13 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: "OpenSans-Regular",
     fontSize: 12,
-    marginBottom: 12,
+    marginBottom: height * 0.0146,
     paddingLeft: 3,
     color: "#5C5C5C",
   },
   input: {
-    height: 50,
+    height: height * 0.061,
+    // height: 50,
     borderColor: "#DEDDE2",
     borderWidth: 1,
     paddingHorizontal: 20,
