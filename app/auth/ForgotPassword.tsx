@@ -14,8 +14,8 @@ import back from "../../assets/images/back-arrow.png";
 import ForgotPassword_image from "../../assets/images/ForgotPassword.svg";
 import { router } from "expo-router";
 import { Dimensions } from "react-native";
+const { width, height } = Dimensions.get("window");
 
-const screenWidth = Dimensions.get("window").width;
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -57,8 +57,8 @@ const ForgotPassword: React.FC = () => {
       <View style={styles.inputbox}>
         <ForgotPassword_image
           style={styles.PlaceHolderimage}
-          width={screenWidth * 0.4455}
-          height={screenWidth * 0.4455}
+          width={width * 0.4455}
+          height={width * 0.4455}
         />
         <Text style={styles.instructions}>
           Please enter your email address. You will receive a link to create a
@@ -68,7 +68,7 @@ const ForgotPassword: React.FC = () => {
         <TextInput2
           // style={{ marginBottom: 24 }}
           bgColor={"#fff"}
-          label={"Email"}
+          label={"Email/Phone Number"}
           placeholder={"Enter email address"}
           value={email}
           onChangeText={setEmail}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    marginTop: 18,
+    marginTop: height * 0.022,
   },
   back: {
     width: 18.95,
@@ -119,19 +119,20 @@ const styles = StyleSheet.create({
   inputbox: {
     width: "100%",
     alignItems: "center",
-    marginTop: 24,
+    marginTop: height * 0.0293,
   },
   instructions: {
     color: "#6c6c6c",
     fontSize: 14,
-    width: screenWidth * 0.8889,
+    width: width * 0.8889,
     lineHeight: 20,
     fontFamily: "OpenSans-Regular",
     fontWeight: "400",
     textAlign: "center",
     opacity: 0.7,
-    marginTop: 24,
-    marginBottom: 40,
+    marginTop: height * 0.0293,
+    marginBottom: height * 0.0488,
+    // backgroundColor: "red",
   },
   containersign: {
     width: "100%",
@@ -140,10 +141,11 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   ForgotPasswordButton: {
-    width: screenWidth * 0.8889,
+    width: width * 0.8889,
     backgroundColor: "#A9A0F0",
     borderRadius: 30,
-    paddingVertical: 16,
+    // paddingVertical: 16,
+    height: height * 0.061,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -197,7 +199,7 @@ const styles = StyleSheet.create({
 //   instructions: {
 //     color: "#6c6c6c",
 //     fontSize: 14,
-//     width: screenWidth * 0.8889,
+//     width: width * 0.8889,
 //     lineHeight: 20,
 //     fontFamily: "OpenSans-Regular",
 //     fontWeight: "400",
@@ -213,7 +215,7 @@ const styles = StyleSheet.create({
 //     justifyContent: "center",
 //   },
 //   ForgotPasswordButton: {
-//     width: screenWidth * 0.8889,
+//     width: width * 0.8889,
 //     backgroundColor: "#A9A0F0",
 //     borderRadius: 30,
 //     paddingVertical: 16,
