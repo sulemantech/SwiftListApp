@@ -31,7 +31,7 @@ export default function RootLayout() {
     "OpenSans-Italic": require("../assets/fonts/OpenSans-Italic.ttf"),
     "OpenSans-Light": require("../assets/fonts/OpenSans-Light.ttf"),
     "OpenSans-Medium": require("../assets/fonts/OpenSans-Medium.ttf"),
-    "openSans-SemiBold": require("../assets/fonts/OpenSans-SemiBold.ttf"),
+    "OpenSans-SemiBold": require("../assets/fonts/OpenSans-SemiBold.ttf"),
   });
 
   // Hide splash screen once fonts are loaded

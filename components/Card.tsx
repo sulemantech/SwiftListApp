@@ -39,6 +39,7 @@ interface CardData {
   bgColor?: string;
   badgeColor?: string;
   textcolor?: string;
+  percent?: string;
 }
 
 interface CardComponentProps {
@@ -62,6 +63,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
     bgColor,
     badgeColor,
     textcolor = "#626262",
+    percent,
   } = data;
 
   // Ensure progress is within the range [0, 1]
@@ -91,9 +93,15 @@ const CardComponent: React.FC<CardComponentProps> = ({
         >
           {items}
         </Text>
-        <Text style={[styles.percentage(width), { color: textcolor }]}>
-          {percentagetext}
-        </Text>
+        <View style={styles.percentageRow}>
+          <Text style={[styles.percentage(width), { color: textcolor }]}>
+            {percentagetext}
+          </Text>
+          <Text style={[styles.percent(width), { color: textcolor }]}>
+            {percent ? `${percent}%` : ""}
+          </Text>
+        </View>
+
         <View style={[styles.progressview(width), { borderColor: badgeColor }]}>
           <Progress.Bar
             progress={clampedProgress}
@@ -200,7 +208,16 @@ const styles = {
     color: "#5C5C5C",
     fontFamily: "OpenSans-Regular",
     // backgroundColor: "red",
-    lineHeight:16,
+    lineHeight: 16,
+    marginBottom: height * 0.0024,
+  }),
+  percent: (width: number): TextStyle => ({
+    left: -4,
+    fontSize: 12,
+    color: "#5C5C5C",
+    fontFamily: "OpenSans-SemiBold",
+    // backgroundColor: "red",
+    // lineHeight: 16,
     marginBottom: height * 0.0024,
   }),
   progressview: (width: number): ViewStyle => ({
@@ -228,6 +245,11 @@ const styles = {
     // height: "100%",
     // resizeMode: "contain",
   } as ImageStyle,
+  percentageRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: width * 0.02,
+  } as ViewStyle,
 };
 
 export default CardComponent;
