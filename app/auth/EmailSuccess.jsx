@@ -118,9 +118,7 @@ import back from "../../assets/images/back-arrow.png";
 import Signin from "../../assets/images/SVG/emailsent.svg";
 import { Dimensions } from "react-native";
 import { router } from "expo-router";
-const screenWidth = Dimensions.get("window").width;
-
-const screenHeight = Dimensions.get("window").height;
+const { width, height } = Dimensions.get("window");
 
 const EmailSuccess = () => {
   return (
@@ -165,25 +163,33 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   inputbox: {
-    marginTop: 65,
+    marginTop: height * 0.0793,
+
     width: "100%",
     alignItems: "center",
   },
   signinImage: {
     marginTop: 0,
-    marginBottom: 24, // Ensures no gap above image
+    marginBottom: height * 0.0293,
+    // Ensures no gap above image
+    // backgroundColor: "red",
+    height: height * 0.1829,
+    width: width * 0.468,
   },
   instructions: {
     color: "#4C4C4C",
     fontSize: 14,
-    width: screenWidth * 0.7778,
-    lineHeight: 20,
+    // height: height * 0.0793,
+    paddingHorizontal: 40,
+    width:"100%",
+
+    lineHeight: 15,
     fontFamily: "OpenSans-Regular",
-    fontWeight: "400",
     textAlign: "center",
     opacity: 0.7,
-    lineHeight: screenHeight * 0.0317,
-    // lineHeight: screenHeight * 0.0417,
+    lineHeight: height * 0.0317,
+    // backgroundColor: "red",
+    // lineHeight: height * 0.0417,
 
     paragraphSpacing: 10,
   },
@@ -195,13 +201,13 @@ const styles = StyleSheet.create({
   warning: {
     color: "#B20B1F",
     fontSize: 13,
-    width: screenWidth * 0.4556,
+    width: width * 0.4556,
 
     lineHeight: 20,
     fontFamily: "OpenSans-SemiBold",
     fontWeight: "400",
-    lineHeight: screenHeight * 0.0251,
-    // lineHeight: screenHeight * 0.0361,
+    lineHeight: height * 0.0251,
+    // lineHeight: height * 0.0361,
 
     textAlign: "center",
     opacity: 0.7,

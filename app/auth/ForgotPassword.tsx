@@ -69,7 +69,7 @@ const ForgotPassword: React.FC = () => {
           // style={{ marginBottom: 24 }}
           bgColor={"#fff"}
           label={"Email/Phone Number"}
-          placeholder={"Enter email address"}
+          placeholder={"Enter your email "}
           value={email}
           onChangeText={setEmail}
           onFocus={undefined}
