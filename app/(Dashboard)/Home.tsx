@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     alignItems: "center",
     // paddingHorizontal: "5%",
-    // backgroundColor: "#FFFFFF",
+    // backgroundColor: "red",
     // marginBottom: 310,
   },
   userHeaderContainer: {
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   cardContainer: {
-    // backgroundColor: "#FFFFFF",
+    // backgroundColor: "red",
     flexGrow: 1,
     // marginBottom: 80,
     zIndex: 999,

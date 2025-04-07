@@ -7,7 +7,7 @@ import ProgressCircle from "./progress";
 import { Image } from "expo-image";
 import { Dimensions } from "react-native";
 
-const screenWidth = Dimensions.get("window").width;
+const { width, height } = Dimensions.get("window");
 
 // Define the type for each item in cardDataArray
 interface CardData {
@@ -37,7 +37,7 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
                 key={index}
                 percentage={card.progress ? card.progress * 100 : 1}
                 colors={["#FFF", card.badgeColor, card.badgeColor]}
-                size={40}
+                size={height * 0.0488}
                 strokeWidth={7}
                 textSize={10}
               />
@@ -54,15 +54,14 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
                 backgroundColor: "#8879F6",
                 justifyContent: "center",
                 borderRadius: 11.17,
-                width: 208,
-                height: 19,
-                left: -4,
+                width: width * 0.5778,
+                height: height * 0.0232,
               }}
             >
               <Text
                 style={[
-                  styles.innerText,
-                  { color: "#FFF", textAlign: "center" },
+                  styles.motivationalmsg,
+                  { color: "#FFF", textAlign: "left" },
                 ]}
               >
                 🎉 Keep the pace! You’re doing great.
@@ -79,11 +78,9 @@ export default TasksStatistics;
 
 const styles = StyleSheet.create({
   todayProgress_card: {
-    marginTop: 10,
-
-    // height: hp("20%"),
-    height: 150,
-    width: screenWidth * 0.8889,
+    marginTop: height * 0.0244,
+    height: height * 0.1683,
+    width: width * 0.8889,
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
@@ -95,52 +92,70 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
-    marginVertical: 10,
-    marginHorizontal: "auto",
+    marginVertical: height * 0.0122,
+    marginHorizontal: 0,
   },
   innerView: {
-    margin: 10,
+    // margin: 10,
+    marginVertical: height * 0.022,
+    marginHorizontal: width * 0.05,
     alignItems: "flex-start",
     justifyContent: "space-between",
     width: "100%",
-    gap: 10,
+
+    // backgroundColor: "red",
+    // paddingHorizontal: 10,
+    // height: height * 0.1238,
   },
   innerText: {
-    fontFamily: "OpenSans-Regular",
-    fontSize: 10,
-    color: "#000",
-    paddingVertical: "0.5%",
-    fontWeight: "400",
-    lineHeight: 12,
+    fontFamily: "OpenSans-Medium",
+    fontSize: 14,
+    color: "#5C5C5C",
+    // paddingVertical: "0.5%",
+
+    // lineHeight: "100%",
     textAlign: "left",
+    // backgroundColor: "red",
+    marginBottom: height * 0.0171,
   },
   progressCircles_view: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: width * 0.0111,
+    // backgroundColor: "red",
   },
   motivational_msg_view: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 5,
+    marginTop: height * 0.0171,
+    // backgroundColor: "red",
+    // width: width * 0.8889,
   },
   LinearGradient: {
     // position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: 150,
+    height: height * 0.1683,
     width: "100%",
     // borderTopLeftRadius: 14,
     // borderTopRightRadius: 14,
     overflow: "hidden",
     borderRadius: 14,
+    // backgroundColor: "green",
   },
   userProfileImage: {
     width: 40,
     height: 40,
     borderRadius: 25,
-    marginRight: 10,
+    marginRight: width * 0.0083,
+  },
+  motivationalmsg: {
+    fontFamily: "OpenSans-Regular",
+    fontSize: 9,
+    textAlign: "center",
+    color: "#FFFFFF",
+    marginLeft: width * 0.0278,
   },
 });
 
