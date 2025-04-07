@@ -27,8 +27,7 @@ import { COLORS, FontFamily, FontSize } from "../constants/theme";
 
 import { Dimensions } from "react-native";
 
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
+const { width, height } = Dimensions.get("window");
 
 interface CardData {
   title?: string;
@@ -102,8 +101,8 @@ const CardComponent: React.FC<CardComponentProps> = ({
             borderWidth={0}
             color={badgeColor}
             animated={true}
-            width={screenWidth * 0.4166}
-            height={screenHeight * 0.0035}
+            width={width * 0.4167}
+            height={height * 0.0049}
           />
         </View>
       </View>
@@ -144,64 +143,65 @@ const styles = {
   //   flexDirection: "row",
   // }),
   cardContainer: (width: number, height: number): ViewStyle => ({
-    height: 150,
-    width: screenWidth * 0.8889,
+    height: height * 0.1683,
+    width: width * 0.8889,
     zIndex: 999,
     borderRadius: width * 0.05,
     flex: 1,
-    marginVertical: 10,
+    marginVertical: height * 0.0122,
     overflow: "hidden",
     flexDirection: "row",
+    // backgroundColor: "red",
   }),
   contentContainer: (width: number, height: number): ViewStyle => ({
     flexDirection: "column",
-    justifyContent: "center",
-    gap: height * 0.005,
+    // justifyContent: "center",
+    marginTop: height * 0.0232,
+    // gap: height * 0.005,
     alignItems: "flex-start",
-    flex: 1.2,
     marginLeft: width * 0.06,
+    // backgroundColor: "gray",
+    // width: width * 0.5644,
   }),
   contentContainer2: (width: number): ViewStyle => ({
     position: "relative",
     flex: 1,
-    padding: width * 0.02,
+    // padding: width * 0.02,
   }),
   title: (width: number): TextStyle => ({
     fontFamily: "OpenSans-SemiBold",
-    fontSize: FontSize.itemtitle,
-    color: COLORS.black,
-    fontWeight: "600",
+    fontSize: 18,
+    color: "#4C4C4C",
     lineHeight: width * 0.055,
     textAlign: "left",
+    // backgroundColor: "red",
+    marginBottom: height * 0.0024,
   }),
   description: (width: number, height: number): TextStyle => ({
     fontFamily: "OpenSans-Regular",
-    fontSize: FontSize.subtitle,
-    color: COLORS.gray,
-    fontWeight: "300",
-    // marginVertical: height * 0.002,
+    fontSize: 14,
+    color: "#5C5C5C",
     textAlign: "left",
+    // backgroundColor: "green",
   }),
   badge: (width: number, height: number): TextStyle => ({
-    // height: screenHeight * 0.019,
-    // width: screenWidth * 0.2112,
-    width: 69,
-    height: 22,
-
-    // paddingHorizontal: width * 0.03,
-    // paddingVertical: height * 0.005,
+    paddingHorizontal: width * 0.0222,
+    height: height * 0.0268,
     textAlign: "center",
     textAlignVertical: "center",
     borderRadius: 12,
     fontSize: 13,
     fontFamily: "OpenSans-Regular",
     color: "white",
-    marginVertical: height * 0.002,
+    marginBottom: height * 0.0024,
   }),
   percentage: (width: number): TextStyle => ({
     fontSize: 12,
-    color: "#000",
+    color: "#5C5C5C",
     fontFamily: "OpenSans-Regular",
+    // backgroundColor: "red",
+    lineHeight:16,
+    marginBottom: height * 0.0024,
   }),
   progressview: (width: number): ViewStyle => ({
     backgroundColor: "#FFFFFF",
@@ -222,8 +222,8 @@ const styles = {
     // position: "absolute",
     right: -5,
     top: -8,
-    width: screenWidth * 0.3833,
-    height: screenHeight * 0.1115,
+    width: width * 0.3833,
+    height: height * 0.1115,
 
     // height: "100%",
     // resizeMode: "contain",

@@ -51,7 +51,7 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
             />
             <View
               style={{
-                backgroundColor: "#8879F6",
+                backgroundColor: "#9386F7",
                 justifyContent: "center",
                 borderRadius: 11.17,
                 width: width * 0.5778,
@@ -78,7 +78,7 @@ export default TasksStatistics;
 
 const styles = StyleSheet.create({
   todayProgress_card: {
-    marginTop: height * 0.0244,
+    // marginTop: height * 0.0244,
     height: height * 0.1683,
     width: width * 0.8889,
     backgroundColor: "#fff",
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
-    marginVertical: height * 0.0122,
+    marginBottom: height * 0.0122,
     marginHorizontal: 0,
   },
   innerView: {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   motivational_msg_view: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: height * 0.0171,
+    marginTop: height * 0.0146,
     // backgroundColor: "red",
     // width: width * 0.8889,
   },
