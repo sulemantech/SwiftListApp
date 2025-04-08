@@ -144,17 +144,13 @@ const Home = () => {
                 }
               />
             )}
-            ListFooterComponent={
-              <TouchableOpacity style={styles.card}>
-                <View style={styles.iconContainer}>
-                  <Text style={styles.icon}> + </Text>
-                </View>
-                <Text style={styles.iconText}>Create List</Text>
-              </TouchableOpacity>
-            }
           />
         </View>
-      </View>
+      </View>{" "}
+      {/* closing flatListContainer */}
+      <TouchableOpacity style={styles.fixedAddButton}>
+        <Text style={styles.icon}> + </Text>
+      </TouchableOpacity>
     </LinearGradient>
   );
 };
@@ -282,6 +278,18 @@ const styles = StyleSheet.create({
     width: width * 0.0533,
     height: width * 0.0533,
     color: "#fff",
+  },
+  fixedAddButton: {
+    position: "absolute",
+    bottom: height * 0.1,
+    right: width * 0.055,
+    backgroundColor: "grey",
+    borderRadius: 50,
+    width: width * 0.106,
+    aspectRatio: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 999,
   },
 });
 
