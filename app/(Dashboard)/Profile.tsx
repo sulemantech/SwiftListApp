@@ -91,21 +91,11 @@ const Profile = () => {
 
       <View style={styles.profileContainer}>
         <View style={styles.card}>
-          {/* <Image
-            source={{ uri: userDetails?.UserProfilePicture }}
-            style={styles.profileImage}
-          />  */}
-          {/* <Image
-            source={{ uri: userDetails?.UserProfilePicture }}
-            style={styles.profileImage}
-          />  */}
           <Image source={UserProfile} style={styles.profileImage} />
           <View style={styles.textContainer}>
             <Text style={styles.name}>Syed Abdullah</Text>
-            {/* <Text style={styles.name}>{userDetails?.UserName}</Text> */}
             <Text style={styles.email}>{"Premium Member"}</Text>
           </View>
-          {/* <TouchableOpacity><Edit /></TouchableOpacity> */}
           <TouchableOpacity>
             <Image source={Edit1} style={styles.editImage} />
           </TouchableOpacity>
