@@ -194,10 +194,10 @@ const styles = StyleSheet.create({
   description: {
     fontFamily: "OpenSans-Regular",
     color: "#5C5C5C",
-    fontSize: 12,
+    fontSize: 13,
     textAlign: "center",
     // backgroundColor: "red",
-    lineHeight: 20, // Adjust line height for readability
+    lineHeight: 22, // Adjust line height for readability
     // marginHorizontal: width * 0.02, // Responsive horizontal padding
 
   },

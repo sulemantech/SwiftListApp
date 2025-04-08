@@ -46,6 +46,12 @@ interface CardComponentProps {
   onPress?: () => void;
   data?: CardData;
 }
+const getResponsiveFontSize = (
+  base: number,
+  min: number,
+  max: number,
+  screenWidth: number
+) => Math.max(Math.min((base / 360) * screenWidth, max), min);
 
 const CardComponent: React.FC<CardComponentProps> = ({
   onPress,
@@ -178,7 +184,7 @@ const styles = {
   }),
   title: (width: number): TextStyle => ({
     fontFamily: "OpenSans-SemiBold",
-    fontSize: 18,
+    fontSize: getResponsiveFontSize(18, 17, 19, width),
     color: "#4C4C4C",
     lineHeight: width * 0.055,
     textAlign: "left",
@@ -187,7 +193,7 @@ const styles = {
   }),
   description: (width: number, height: number): TextStyle => ({
     fontFamily: "OpenSans-Regular",
-    fontSize: 14,
+    fontSize: getResponsiveFontSize(14, 13, 15, width),
     color: "#5C5C5C",
     textAlign: "left",
     // backgroundColor: "green",
@@ -198,13 +204,13 @@ const styles = {
     textAlign: "center",
     textAlignVertical: "center",
     borderRadius: 12,
-    fontSize: 13,
+    fontSize: getResponsiveFontSize(13, 12, 14, width),
     fontFamily: "OpenSans-Regular",
     color: "white",
     marginBottom: height * 0.0024,
   }),
   percentage: (width: number): TextStyle => ({
-    fontSize: 12,
+    fontSize: getResponsiveFontSize(12, 11, 13, width),
     color: "#5C5C5C",
     fontFamily: "OpenSans-Regular",
     // backgroundColor: "red",
@@ -213,7 +219,7 @@ const styles = {
   }),
   percent: (width: number): TextStyle => ({
     left: -4,
-    fontSize: 12,
+    fontSize: getResponsiveFontSize(12, 11, 13, width),
     color: "#5C5C5C",
     fontFamily: "OpenSans-SemiBold",
     // backgroundColor: "red",
