@@ -186,7 +186,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
                 setPressedItem(item.name);
                 router.push({
                   pathname: "/products/ProductsPage" as ExternalPathString,
-                  params: { myStringProp: item.name, ListName },
+                  params: { myStringProp: item.name, ListName:name },
                 });
               }}
               activeOpacity={1}

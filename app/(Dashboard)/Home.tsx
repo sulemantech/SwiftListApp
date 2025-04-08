@@ -6,7 +6,7 @@ import {
   FlatList,
   useWindowDimensions,
 } from "react-native";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Image } from "expo-image";
 import { ProductContext } from "@/Context/CardContext";
 import CardComponent from "@/components/Card";
@@ -24,18 +24,26 @@ import Fifth from "../../assets/images/SVG/recipe.svg";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "@/components/Card";
 import { Dimensions } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get("window");
 
 const Home = () => {
-  const { userDetails } = useContext(ProductContext);
   const { width, height } = useWindowDimensions();
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [isListLoaded, setIsListLoaded] = useState(false);
+
+  const handleCardClick = (title: any) => {
+    setSelectedCard(title);
+  };
+  const { selectedProducts, userDetails, changestate, setChangestate } =
+    useContext(ProductContext);
 
   const cardDataArray = [
     {
       title: "Grocery List",
       description: "Add needed items.",
-      items: "200 Items",
+      items: "0 Items",
       percentagetext: "Bought",
       percent: "70",
       progress: 0.8,
@@ -46,7 +54,7 @@ const Home = () => {
     {
       title: "Spiritual Goals",
       description: "Add your spiritual goals.",
-      items: "10 Goals",
+      items: "0 Goals",
       percentagetext: "Achieved",
       percent: "30",
       progress: 0.67,
@@ -57,7 +65,7 @@ const Home = () => {
     {
       title: "Personal Grooming",
       description: "Add your grooming tasks in list.",
-      items: "10 Tasks",
+      items: "0 Tasks",
       percentagetext: "Completed",
       percent: "80",
       progress: 0.72,
@@ -79,7 +87,7 @@ const Home = () => {
     {
       title: "Kitchen Menu",
       description: "Add items to your list.",
-      items: "500 Recipies",
+      items: "0 Recipies",
       percentagetext: "Cooked",
       percent: "70",
       progress: 0.78,
@@ -90,6 +98,85 @@ const Home = () => {
   ];
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
+
+  const FilterCatagories = (name:any) => {
+    const searchedtext = name.toLowerCase();
+    if (!searchedtext) {
+      return setCardDataFilterArray(cardDataArray);
+    }
+    setCardDataFilterArray(cardDataFilterArray.filter(item => item.title.toLowerCase().startsWith(searchedtext)));
+  };
+
+  const getListFromLocalStorage = async () => {
+    setIsListLoaded(false);
+    try {
+      const storedList = await AsyncStorage.getItem('userLists');
+      const list = storedList ? JSON.parse(storedList) : [];
+      const formattedList = list
+        .map((item:any) => ({
+          ...item,
+          Picture: item.Picture === 'first' ? First :
+            item.Picture === 'seconed' ? Second :
+              item.Picture === 'third' ? Third :
+                item.Picture === 'fourth' ? Fourth :
+                  item.Picture === 'fifth' ? Fifth : item.Picture,
+        }))
+        .filter((item:any) => item.title);
+
+      const mergedData = formattedList.length > 0 ? [...cardDataArray, ...formattedList] : cardDataArray;
+
+      setCardDataFilterArray(mergedData);
+      setIsListLoaded(true);
+      setChangestate(false)
+    } catch (error) {
+      console.error('Error retrieving list:', error);
+    }
+  };
+
+
+  useEffect(() => {
+    getListFromLocalStorage();
+  }, [changestate]);
+
+
+
+  useEffect(() => {
+    if (!isListLoaded) return;
+    const loadSelectedProducts = () => {
+      let totalItems = 0;
+
+      const updatedCardData = cardDataFilterArray.map((card) => {
+        const itemsFromContext = selectedProducts[card.title] || [];
+        const itemCount = itemsFromContext.length;
+
+        totalItems += itemCount;
+
+        return {
+          ...card,
+          items: `${itemCount} ${card.items.split(' ')[1]}`,
+          itemCount,
+        };
+      });
+
+      const updatedCardDataWithPercentages = updatedCardData.map(card => {
+        const percentage = totalItems > 0
+          ? Math.round((card.itemCount / totalItems) * 100)
+          : 0;
+
+        return {
+          ...card,
+          percentagetext: `${card.percentagetext.split(' ')[0]} ${percentage}%`,
+          // percentage,
+        };
+      });
+
+      setCardDataFilterArray(updatedCardDataWithPercentages);
+    };
+
+    loadSelectedProducts();
+  }, [selectedProducts, isListLoaded]);
+
+  console.log("selectedProducts", selectedProducts);
 
   return (
     <LinearGradient
@@ -114,7 +201,6 @@ const Home = () => {
               <Text style={styles.userGreetingText}>Hello!</Text>
               <Text style={styles.userNameText}>
                 {userDetails.UserName || "UserName."}
-                {"."}
               </Text>
             </View>
           </View>

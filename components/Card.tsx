@@ -103,9 +103,9 @@ const CardComponent: React.FC<CardComponentProps> = ({
           <Text style={[styles.percentage(width), { color: textcolor }]}>
             {percentagetext}
           </Text>
-          <Text style={[styles.percent(width), { color: textcolor }]}>
+          {/* <Text style={[styles.percent(width), { color: textcolor }]}>
             {percent ? `${percent}%` : ""}
-          </Text>
+          </Text> */}
         </View>
 
         <View style={[styles.progressview(width), { borderColor: badgeColor }]}>
