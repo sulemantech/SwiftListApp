@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 0,
     shadowColor: "transparent",
+    
   },
   icon: {
     width: 20,
@@ -223,7 +224,8 @@ const styles = StyleSheet.create({
   iconbackground: {
     backgroundColor: "#F2F2F2",
     borderRadius: 50,
-    padding: 5,
-    marginTop: 5,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    
   },
 });
