@@ -10,6 +10,10 @@ import {
 import { Tabs } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, icons } from "../../constants";
+import Home from "../../assets/images/SVG/bottomTabIcons/Home.svg";
+import MyList from "../../assets/images/SVG/bottomTabIcons/MyList.svg";
+import Reminder from "../../assets/images/SVG/bottomTabIcons/Reminder.svg";
+import Profile from "../../assets/images/SVG/bottomTabIcons/Profile.svg";
 
 export default function HomeLayout() {
   return (
@@ -25,21 +29,19 @@ export default function HomeLayout() {
         name="Home"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Image
-              source={icons.Home as ImageSourcePropType}
-              resizeMode="contain"
-              style={[
-                // styles.icon,
-                styles.icon2,
-                { tintColor: focused ? COLORS.secondary : COLORS.gray },
-              ]}
-            />
+            <View style={focused ? styles.iconbackground : undefined}>
+              <Home
+                width={20}
+                height={20}
+                color={focused ? "#A9A0F0" : "#6C6C6C"}
+              />
+            </View>
           ),
           tabBarLabel: ({ focused }) => (
             <Text
               style={[
                 styles.tabBarLabel,
-                { color: focused ? COLORS.secondary : COLORS.gray },
+                { color: focused ? "#A9A0F0" : "#6C6C6C" },
               ]}
             >
               Home
@@ -47,7 +49,7 @@ export default function HomeLayout() {
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="Notifications"
         options={{
           tabBarIcon: ({ focused }) => (
@@ -72,25 +74,24 @@ export default function HomeLayout() {
             </Text>
           ),
         }}
-      /> 
+      />
       <Tabs.Screen
         name="My_List"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Image
-              source={icons.My_List as ImageSourcePropType}
-              resizeMode="contain"
-              style={[
-                styles.icon,
-                { tintColor: focused ? COLORS.secondary : COLORS.gray },
-              ]}
-            />
+            <View style={focused ? styles.iconbackground : undefined}>
+              <MyList
+                width={20}
+                height={20}
+                color={focused ? "#A9A0F0" : "#6C6C6C"}
+              />
+            </View>
           ),
           tabBarLabel: ({ focused }) => (
             <Text
               style={[
                 styles.tabBarLabel,
-                { color: focused ? COLORS.secondary : COLORS.gray },
+                { color: focused ? "#A9A0F0" : "#6C6C6C" },
               ]}
             >
               My List
@@ -122,20 +123,19 @@ export default function HomeLayout() {
         name="Reminder"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Image
-              source={icons.Reminder as ImageSourcePropType}
-              resizeMode="contain"
-              style={[
-                styles.icon,
-                { tintColor: focused ? COLORS.secondary : COLORS.gray },
-              ]}
-            />
+            <View style={focused ? styles.iconbackground : undefined}>
+              <Reminder
+                width={20}
+                height={20}
+                color={focused ? "#A9A0F0" : "#6C6C6C"}
+              />
+            </View>
           ),
           tabBarLabel: ({ focused }) => (
             <Text
               style={[
                 styles.tabBarLabel,
-                { color: focused ? COLORS.secondary : COLORS.gray },
+                { color: focused ? "#A9A0F0" : "#6C6C6C" },
               ]}
             >
               Reminder
@@ -147,20 +147,19 @@ export default function HomeLayout() {
         name="Profile"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Image
-              source={icons.Profile as ImageSourcePropType}
-              resizeMode="contain"
-              style={[
-                styles.icon,
-                { tintColor: focused ? COLORS.secondary : COLORS.gray },
-              ]}
-            />
+            <View style={focused ? styles.iconbackground : undefined}>
+              <Profile
+                width={20}
+                height={20}
+                color={focused ? "#A9A0F0" : "#6C6C6C"}
+              />
+            </View>
           ),
           tabBarLabel: ({ focused }) => (
             <Text
               style={[
                 styles.tabBarLabel,
-                { color: focused ? COLORS.secondary : COLORS.gray },
+                { color: focused ? "#A9A0F0" : "#6C6C6C" },
               ]}
             >
               Profile
@@ -219,6 +218,12 @@ const styles = StyleSheet.create({
   icon2: {
     width: 30,
     height: 30,
+    marginTop: 5,
+  },
+  iconbackground: {
+    backgroundColor: "#F2F2F2",
+    borderRadius: 50,
+    padding: 5,
     marginTop: 5,
   },
 });

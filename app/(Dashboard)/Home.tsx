@@ -130,7 +130,10 @@ const Home = () => {
           <FlatList
             data={cardDataFilterArray}
             keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={styles.cardContainer}
+            contentContainerStyle={[
+              styles.cardContainer,
+              { paddingBottom: height * 0.09 },
+            ]}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             renderItem={({ item }) => (
@@ -146,7 +149,7 @@ const Home = () => {
             )}
           />
         </View>
-      </View>{" "}
+      </View>
       {/* closing flatListContainer */}
       <TouchableOpacity style={styles.fixedAddButton}>
         <Text style={styles.icon}> + </Text>
@@ -190,6 +193,8 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     marginBottom: height * 0.39,
+    backgroundColor: "transparent",
+
     // backgroundColor: "red",
   },
   userTextContainer: {
@@ -228,13 +233,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  icon: {
-    fontFamily: "OpenSans-SemiBold",
-    fontSize: width * 0.074,
-    marginBottom: width * 0.026,
-    marginLeft: 1,
-    color: "white",
-  },
+
   iconText: {
     fontFamily: "OpenSans-SemiBold",
     fontSize: width * 0.042,
@@ -283,13 +282,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: height * 0.1,
     right: width * 0.055,
-    backgroundColor: "grey",
+    backgroundColor: "#A9A0F0",
     borderRadius: 50,
-    width: width * 0.106,
+    width: width * (60 / 360),
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
     zIndex: 999,
+  },
+  icon: {
+    fontFamily: "OpenSans-Light",
+    fontSize: width * 0.12,
+    color: "white",
+    marginBottom: width * 0.016,
+    marginLeft: 1,
   },
 });
 

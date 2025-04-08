@@ -108,7 +108,7 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="(Dashboard)" options={{ headerShown: false }} />
-          <Stack.Screen name="auth" options={{ headerShown: false }} />
+          {/* <Stack.Screen name="auth" options={{ headerShown: false }} /> */}
         </Stack>
       </ProductProvider>
     </GestureHandlerRootView>
