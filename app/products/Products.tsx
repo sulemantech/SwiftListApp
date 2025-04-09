@@ -27,7 +27,7 @@ interface Product {
 interface ProductListProps {
   products: Product[];
   page?: string;
-  ListName: string;
+  ListName: any;
   onProductSelect?: () => void;
 }
 
@@ -262,6 +262,7 @@ const styles = StyleSheet.create({
   productsContainer2: {
     // marginBottom: 10,
     marginVertical: 10,
+    marginHorizontal: 10,
   },
   itemsContainer: {
     display: "flex",

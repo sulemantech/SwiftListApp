@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -25,6 +25,8 @@ import GrocerySVG from "../../assets/images/SVG/grocerypage.svg";
 import SpiritualSVG from "../../assets/images/SVG/spiritualpage.svg";
 import ThingsToDoSVG from "../../assets/images/SVG/thingstodopage.svg";
 import KitchenSVG from "../../assets/images/SVG/kitchenpage.svg";
+import ProductList from "../products/Products";
+import { ProductContext } from "@/Context/CardContext";
 
 const { width, height } = Dimensions.get("window");
 
@@ -36,8 +38,11 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
   const [pressedItem, setPressedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState<any[]>([]);
   const [itemclicked, setItemclicked] = useState(true);
   const router = useRouter();
+  const { selectedProducts } = useContext(ProductContext);
+
   const { name } = useLocalSearchParams();
 
   const matchingCategory = categories.find(
@@ -45,7 +50,22 @@ const Categories: React.FC<Props> = ({ ListName }) => {
       categoryObj.category.name.toLowerCase() ===
       (Array.isArray(name) ? name[0] : name)?.toLowerCase()
   );
-
+  useEffect(() => {
+    const allItems = matchingCategory?.subCategories.flatMap(
+      (subCategory) => subCategory.items
+    ) || [];
+    
+    // Assuming `selectedProducts["Grocery List"]` is an array of objects with `name` property
+    const selectedNames = selectedProducts["Grocery List"]?.map((product:any) => product.name);
+  
+    // Filter allItems to match the selected product names
+    const filteredItems = allItems.filter((item) =>
+      selectedNames?.includes(item.name)
+    );
+  
+    setSelectedItem(filteredItems);
+  }, [selectedProducts, matchingCategory]);  // Make sure to include matchingCategory as a dependency
+  
   const formattedName =
     (Array.isArray(name) ? name[0] : name)?.replace(/\s+/g, "").toLowerCase() +
     "image";
@@ -59,6 +79,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   };
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
+  console.log(selectedItem, "selectedItem");
 
   return (
     <TouchableWithoutFeedback>
@@ -137,9 +158,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             // placeholderfontsize
             fontsize={13}
             style={
-              isSearchFocused
-                ? styles.searchInputFocused
-                : styles.searchInput
+              isSearchFocused ? styles.searchInputFocused : styles.searchInput
             }
             // style={[
             //   styles.searchInput,
@@ -186,7 +205,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
                 setPressedItem(item.name);
                 router.push({
                   pathname: "/products/ProductsPage" as ExternalPathString,
-                  params: { myStringProp: item.name, ListName:name },
+                  params: { myStringProp: item.name, ListName: name },
                 });
               }}
               activeOpacity={1}
@@ -199,6 +218,13 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               </View>
             </TouchableHighlight>
           )}
+          ListHeaderComponent={
+            <ProductList
+              products={selectedItem || []}
+              ListName={name}
+              page="itemslist"
+            />
+          }
         />
       </View>
     </TouchableWithoutFeedback>
