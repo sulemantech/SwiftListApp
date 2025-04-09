@@ -51,21 +51,27 @@ const Categories: React.FC<Props> = ({ ListName }) => {
       (Array.isArray(name) ? name[0] : name)?.toLowerCase()
   );
   useEffect(() => {
-    const allItems = matchingCategory?.subCategories.flatMap(
-      (subCategory) => subCategory.items
-    ) || [];
-    
-    // Assuming `selectedProducts["Grocery List"]` is an array of objects with `name` property
-    const selectedNames = selectedProducts["Grocery List"]?.map((product:any) => product.name);
-  
-    // Filter allItems to match the selected product names
+    const allItems =
+      matchingCategory?.subCategories.flatMap(
+        (subCategory) => subCategory.items
+      ) || [];
+
+    const selectedNames = selectedProducts[
+      Array.isArray(name) ? name[0] : name
+    ]?.map((product: any) => product.name);
+
     const filteredItems = allItems.filter((item) =>
       selectedNames?.includes(item.name)
     );
-  
-    setSelectedItem(filteredItems);
-  }, [selectedProducts, matchingCategory]);  // Make sure to include matchingCategory as a dependency
-  
+
+    const uniqueItems = filteredItems.filter(
+      (item, index, self) =>
+        index === self.findIndex((t) => t.name === item.name)
+    );
+
+    setSelectedItem(uniqueItems);
+  }, [selectedProducts, matchingCategory]);
+
   const formattedName =
     (Array.isArray(name) ? name[0] : name)?.replace(/\s+/g, "").toLowerCase() +
     "image";
