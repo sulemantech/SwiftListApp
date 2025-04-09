@@ -46,7 +46,7 @@ const Home = () => {
       items: "0 Items",
       percentagetext: "Bought",
       percent: "70",
-      progress: 0.8,
+      progress: 0.0,
       Picture: First,
       bgColor: "#9DF4F4",
       badgeColor: "#61CBD6",
@@ -57,7 +57,7 @@ const Home = () => {
       items: "0 Goals",
       percentagetext: "Achieved",
       percent: "30",
-      progress: 0.67,
+      progress: 0.0,
       Picture: Second,
       bgColor: "#98FBCB",
       badgeColor: "#4AA688",
@@ -68,7 +68,7 @@ const Home = () => {
       items: "0 Tasks",
       percentagetext: "Completed",
       percent: "80",
-      progress: 0.72,
+      progress: 0.0,
       Picture: Third,
       bgColor: "#FEE5D7",
       badgeColor: "#C54B6C",
@@ -79,7 +79,7 @@ const Home = () => {
       items: "0 Items",
       percentagetext: "Completed",
       percent: "50",
-      progress: 0.5,
+      progress: 0.0,
       Picture: Fourth,
       bgColor: "#FFD7A6",
       badgeColor: "#D98E33",
@@ -90,7 +90,7 @@ const Home = () => {
       items: "0 Recipies",
       percentagetext: "Cooked",
       percent: "70",
-      progress: 0.78,
+      progress: 0.0,
       Picture: Fifth,
       bgColor: "#FFAEAD",
       badgeColor: "#D66160",
@@ -162,9 +162,11 @@ const Home = () => {
         const percentage = totalItems > 0
           ? Math.round((card.itemCount / totalItems) * 100)
           : 0;
+          const progress = !isNaN(percentage) ? percentage / 100 : 0;
 
         return {
           ...card,
+          progress,
           percentagetext: `${card.percentagetext.split(' ')[0]} ${percentage}%`,
           // percentage,
         };
@@ -210,7 +212,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
 
-        <TasksStatistics cardDataArray={cardDataArray} />
+        <TasksStatistics cardDataArray={cardDataFilterArray} />
 
         <View style={styles.flatListContainer}>
           <FlatList

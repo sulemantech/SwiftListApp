@@ -39,19 +39,27 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
   const [displayPercentage, setDisplayPercentage] = useState(0);
 
   useEffect(() => {
+    // Avoid division by 0 or invalid percentages
+    if (!percentage || percentage <= 0) {
+      strokeOffset.value = withTiming(circumference, { duration });
+      setDisplayPercentage(0);
+      return;
+    }
+  
     strokeOffset.value = withTiming(circumference * (1 - percentage / 100), {
       duration,
     });
-
+  
     let progress = 0;
     const interval = setInterval(() => {
       progress += 1;
       setDisplayPercentage(Math.min(progress, percentage));
       if (progress >= percentage) clearInterval(interval);
     }, duration / percentage);
-
+  
     return () => clearInterval(interval);
   }, [percentage]);
+  
 
   const strokeColor = useDerivedValue(() => {
     return interpolateColor(percentage, [0, 50, 100], colors);

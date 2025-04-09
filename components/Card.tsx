@@ -1,15 +1,3 @@
-// import { View, Text } from 'react-native'
-// import React from 'react'
-
-// const Card = () => {
-//   return (
-//     <View>
-//       <Text>Card</Text>
-//     </View>
-//   )
-// }
-
-// export default Card
 import * as Progress from "react-native-progress";
 import {
   View,

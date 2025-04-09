@@ -35,7 +35,7 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
             {cardDataArray.map((card, index) => (
               <ProgressCircle
                 key={index}
-                percentage={card.progress ? card.progress * 100 : 1}
+                percentage={card.progress ? card.progress * 100 : 0}
                 colors={["#FFF", card.badgeColor, card.badgeColor]}
                 size={height * 0.0488}
                 strokeWidth={7}
