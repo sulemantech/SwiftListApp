@@ -58,7 +58,7 @@ const selectedProducts = useContext(ProductContext)?.selectedProducts;
       {/* Status Bar */}
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Header
-        title={myStringProp + ListName || "Products"}
+        title={myStringProp || "Products"}
         Rightelement={false}
         // onBack={handleBackPress}
         onBack={() => router.back()}

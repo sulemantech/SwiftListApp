@@ -1,10 +1,7 @@
-<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.8">
-<path d="M14.9156 15.8366L12.5 13.421V8.58984" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M20.9546 21.8746L18.5391 19.459" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M6.46146 19.459L4.0459 21.8746" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M19.1436 3.125L21.559 5.54056" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M5.85697 3.125L3.44141 5.54056" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-<path d="M12.5004 21.8749C17.1697 21.8749 20.9549 18.0896 20.9549 13.4203C20.9549 8.75102 17.1697 4.96582 12.5004 4.96582C7.8311 4.96582 4.0459 8.75102 4.0459 13.4203C4.0459 18.0896 7.8311 21.8749 12.5004 21.8749Z" stroke="currentColor" stroke-width="1.5625" stroke-miterlimit="10" stroke-linecap="round"/>
-</g>
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.6168 20.9997L18.2979 18.6807" stroke="#A9A0F0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M6.70273 18.6807L4.38379 20.9997" stroke="#A9A0F0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M18.8779 3L21.1967 5.31894" stroke="#A9A0F0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M6.12265 3L3.80371 5.31894" stroke="#A9A0F0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.6164 12.8838C20.6164 17.3664 16.9826 21.0002 12.5001 21.0002C8.01758 21.0002 4.38379 17.3664 4.38379 12.8838C4.38379 8.40137 8.01758 4.76758 12.5001 4.76758C16.9826 4.76758 20.6164 8.40137 20.6164 12.8838ZM13.2507 8.24605C13.2507 7.83184 12.9149 7.49605 12.5007 7.49605C12.0865 7.49605 11.7507 7.83184 11.7507 8.24605V12.8839V13.1946L11.9703 13.4143L14.2893 15.7333C14.5822 16.0261 15.0571 16.0261 15.35 15.7333C15.6429 15.4404 15.6429 14.9655 15.35 14.6726L13.2507 12.5733V8.24605Z" fill="currentColor"/>
 </svg>
