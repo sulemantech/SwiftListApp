@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { COLORS } from "@/constants";
+import { CardWithCounter } from "@/components/CardWithCouter";
 
 const Reminder = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Reminder Coming Soon!</Text>
+      <CardWithCounter/>
     </View>
   );
 };

@@ -12,10 +12,13 @@ import {
   View,
   Dimensions,
 } from "react-native";
+import { Badge } from "@rneui/themed";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import TextInput2 from "./Input";
 import Checkboxwithlabel from "./Checkboxwithlabel";
 import { ProductContext } from "../Context/CardContext";
+import { CardWithCounter } from "./CardWithCouter";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
 
@@ -112,17 +115,16 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         <View style={styles.divider} />
         <View style={styles.FromCategoryContainer}>
           <Text style={styles.Category}>Categories</Text>
-          <View style={styles.CategoryContainer}>
-            <Text
-              onPress={() => setIsProductSelected(false)}
-              style={styles.CategoryName}
-            >
-              {ListName}
-            </Text>
-          </View>
+          <Badge
+            value={`${ListName}`}
+            badgeStyle={styles.CategoryContainer}
+            textStyle={styles.CategoryName}
+          />
         </View>
         {/*======================== old code ======================*/}
-
+        <View >
+        <CardWithCounter />
+        </View>
       </BottomSheetView>
     </BottomSheet>
   );
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
   },
   bottomSheetHeader: {
     display: "flex",
-    width: "95%",
+    width: "90%",
     flexDirection: "row",
     marginBottom: 10,
     justifyContent: "space-between",
@@ -148,9 +150,7 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans-Medium",
     fontSize: 14,
     textAlign: "center",
-    // marginTop: 26,
     paddingTop: 26,
-    paddingRight: 20,
     color: "#5C5C5C",
   },
   bottomSheetHeadertext: {
@@ -158,51 +158,38 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     paddingTop: 28,
-    paddingLeft: 20,
     color: "#4C4C4C",
   },
   divider: {
-    width: "105%",
+    width: "100%",
     height: 1,
     backgroundColor: "#cccc",
-    // marginVertical: 10,
     marginTop: 20,
     opacity: 1,
   },
   FromCategoryContainer: {
     display: "flex",
-    width: "95%",
+    width: "90%",
     flexDirection: "row",
     marginTop: 15,
     justifyContent: "space-between",
     alignItems: "center",
-    // backgroundColor: "red",
   },
   Category: {
     fontFamily: "OpenSans-Medium",
     fontSize: 14,
     textAlign: "center",
-    paddingTop: 28,
-    paddingLeft: 20,
     color: "#5C5C5C",
-    // color: "red",
   },
   CategoryContainer: {
-    display: "flex",
-    width: 52,
     height: 22,
     backgroundColor: "#007AFF26",
-    borderRadius: 15,
-    gap: 10,
-    marginTop: 26,
-    marginRight: 20,
-    // backgroundColor: "red",
+    paddingHorizontal: 5,
   },
   CategoryName: {
     fontFamily: "OpenSans-Regular",
     fontSize: 12,
     textAlign: "center",
-    paddingTop: 2,
     color: "#4C4C4C",
   },
 
@@ -229,7 +216,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     marginHorizontal: 10,
-    // backgroundColor: "gray",
   },
   bottomSheetview: {
     width: 32,
@@ -266,283 +252,3 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
 });
-// old code
-
-        {
-          /* {snapIndex === 4 && (
-          <View style={styles.TextInput2}>
-            <TextInput2
-              borderRadius={22}
-              value={itemsQuantity.Quantity.toString()}
-              onChangeText={(value) => SelectQuantity(value)}
-              bgColor="#007AFF26"
-              placeholder="Enter Needed Quantity"
-              fontsize={16}
-            />
-            <Text
-              style={styles.buttonsLabeltext}
-            >{`Item Details for ${selecteditem}`}</Text>
-          </View>
-        )} */
-        }
-
-        {
-          /* <View style={styles.contentContainer2}>
-          
-          {ItemValues.map((item) => (
-            <TouchableOpacity
-              key={item}
-              onPress={() => SelectQuantity(item)}
-              style={[
-                styles.bottomSheetview,
-                item === selectedValue && styles.selectedItem,
-              ]}
-            >
-              <Text style={styles.bottomSheettext}>{item}</Text>
-            </TouchableOpacity>
-          ))}
-        </View> */
-        }
-        {
-          /* <View style={styles.CheckboxesContainer}>
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({ ...prevState, unit: "Kg" }))
-            }
-            Label="Kg"
-          />
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({ ...prevState, unit: "Dozen" }))
-            }
-            Label="Dozen"
-          />
-          <Checkboxwithlabel
-            onChange={() =>
-              setItemsQuantity((prevState) => ({
-                ...prevState,
-                urgency: !prevState.urgency,
-              }))
-            }
-            Label="Urgency"
-          />
-        </View> */
-        }
-
-// old code
-// import React, { useContext, useEffect, useMemo, useState } from "react";
-// import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-// import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-// import TextInput2 from "./Input";
-// import Checkboxwithlabel from "./Checkboxwithlabel";
-// import { ProductContext } from "../Context/CardContext";
-
-// const BottomSheetComponent = ({
-//   selecteditem,
-//   ListName,
-//   setIsProductSelected,
-//   setSnapIndex,
-//   snapIndex,
-// }) => {
-//   const [itemsQuantity, setItemsQuantity] = useState({
-//     Quantity: "",
-//     unit: "",
-//     urgency: false,
-//   });
-//   const [selectedValue, setSelectedValue] = useState(null);
-//   const SelectQuantity = (Quantity) => {
-//     setItemsQuantity((prevState) => ({
-//       ...prevState,
-//       Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
-//     }));
-//     setSelectedValue(Quantity); // Update selected item
-//   };
-
-//   useEffect(() => {
-//     if (itemsQuantity) {
-//       handleSelectedElementQuantity(ListName);
-//     }
-//   }, [itemsQuantity]);
-
-//   const snapPoints = useMemo(() => ["12%", "50%", "55%", "100%"], []);
-//   const ItemValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
-//   const { selectedProducts, updateSelectedProductsQuantity } =
-//     useContext(ProductContext);
-
-//   const handleSelectedElementQuantity = async (ListNamee) => {
-//     if (selectedProducts[ListNamee] && selectedProducts[ListNamee].length > 0) {
-//       const updatedList = [...selectedProducts[ListNamee]];
-//       const lastElement = updatedList[updatedList.length - 1];
-
-//       const updatedLastElement = {
-//         ...lastElement,
-//         Quantity: itemsQuantity.Quantity,
-//         unit: itemsQuantity.unit,
-//         urgency: itemsQuantity.urgency,
-//       };
-
-//       try {
-//         await updateSelectedProductsQuantity(ListNamee, updatedLastElement);
-//       } catch (error) {
-//         console.error("Error handling product selection:", error);
-//       }
-//     } else {
-//     }
-//   };
-
-//   return (
-//     <BottomSheet
-//       style={styles.bottomSheet}
-//       index={snapIndex}
-//       onChange={(index) => setSnapIndex(index)}
-//       snapPoints={snapPoints}
-//     >
-//       <BottomSheetView style={styles.contentContainer}>
-//         <View style={styles.bottomSheetHeader}>
-//           <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-//           <Text
-//             onPress={() => setIsProductSelected(false)}
-//             style={styles.bottomSheetHeadertext}
-//           >
-//             Done
-//           </Text>
-//         </View>
-//         {snapIndex === 4 && (
-//           <View style={styles.TextInput2}>
-//             <TextInput2
-//               borderRadius={22}
-//               value={itemsQuantity.Quantity}
-//               onChangeText={(value) => SelectQuantity(value)}
-//               bgColor="#007AFF26"
-//               placeholder={"Enter Needed Quantity"}
-//               fontsize={16}
-//             />
-//             <Text
-//               style={styles.buttonsLabeltext}
-//             >{`Item Details for ${selecteditem}`}</Text>
-//           </View>
-//         )}
-//         <View style={styles.contentContainer2}>
-//           {ItemValues.map((item, index) => (
-//             <TouchableOpacity
-//               key={index}
-//               onPress={() => SelectQuantity(item)}
-//               style={[
-//                 styles.bottomSheetview,
-//                 item === selectedValue && styles.selectedItem, // Apply selected style conditionally
-//               ]}
-//             >
-//               <Text style={styles.bottomSheettext}>{item}</Text>
-//             </TouchableOpacity>
-//           ))}
-//         </View>
-//         <View style={styles.CheckboxesContainer}>
-//           <Checkboxwithlabel
-//             onChange={() =>
-//               setItemsQuantity((prevState) => ({
-//                 ...prevState,
-//                 unit: "Kg",
-//               }))
-//             }
-//             Label={"Kg"}
-//           />
-//           <Checkboxwithlabel
-//             onChange={() => {
-//               setItemsQuantity((prevState) => ({
-//                 ...prevState,
-//                 unit: "Dozen",
-//               }));
-//             }}
-//             Label={"Dozen"}
-//           />
-//           <Checkboxwithlabel
-//             onChange={() =>
-//               setItemsQuantity((prevState) => ({
-//                 ...prevState,
-//                 urgency: !itemsQuantity.urgency,
-//               }))
-//             }
-//             Label={"Urgency"}
-//           />
-//         </View>
-//       </BottomSheetView>
-//     </BottomSheet>
-//   );
-// };
-
-// export default BottomSheetComponent;
-
-// const styles = StyleSheet.create({
-//   bottomSheet: {
-//     backgroundColor: "#fff",
-//     position: "absolute",
-//     color: "black",
-//     width: "95%",
-//     marginLeft: "2.5%",
-//     borderTopRightRadius: 10,
-//     borderTopLeftRadius: 10,
-//     zIndex: 99,
-//   },
-//   bottomSheetHeader: {
-//     display: "flex",
-//     width: "95%",
-//     flexDirection: "row",
-//     marginTop: 0,
-//     marginBottom: 10,
-//     justifyContent: "space-between",
-//   },
-//   bottomSheetHeadertext: {
-//     fontFamily: "OpenSans-Bold",
-//     fontSize: 16,
-//     textAlign: "center",
-//   },
-//   buttonsLabeltext: {
-//     width: "100%",
-//     fontFamily: "OpenSans-Bold",
-//     fontSize: 16,
-//     textAlign: "left",
-//     marginVertical: 4,
-//   },
-//   TextInput2: {
-//     width: "94%",
-//   },
-//   contentContainer2: {
-//     flexDirection: "row",
-//     flexWrap: "wrap",
-//     gap: 6,
-//     marginTop: 2,
-//     alignItems: "center",
-//   },
-//   contentContainer: {
-//     flexDirection: "column",
-//     alignItems: "center",
-//   },
-//   bottomSheetview: {
-//     width: 32,
-//     aspectRatio: 1,
-//     marginHorizontal: 6,
-//     backgroundColor: "#52c2fe",
-//     borderRadius: 4,
-//     display: "flex",
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-//   bottomSheettext: {
-//     fontFamily: "OpenSans-Bold",
-//     fontSize: 16,
-//     textAlign: "center",
-//     color: "white",
-//   },
-//   CheckboxesContainer: {
-//     marginTop: 15,
-//     width: "96%",
-//     display: "flex",
-//     flexDirection: "row",
-//     gap: 8,
-//     justifyContent: "flex-start",
-//     alignItems: "center",
-//   },
-//   selectedItem: {
-//     backgroundColor: "#E36A4A", // Highlight color for selected item
-//   },
-// });
