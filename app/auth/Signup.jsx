@@ -444,7 +444,8 @@ const styles = StyleSheet.create({
   signInButton: {
     width: "100%",
     // height: 50,
-    height: height * 0.061,
+    height: height * (50 / 820),
+    width: width * (320 / 360),
     backgroundColor: "#A9A0F0",
     borderRadius: 30,
     alignItems: "center",

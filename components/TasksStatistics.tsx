@@ -37,7 +37,7 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
                 key={index}
                 percentage={card.progress ? card.progress * 100 : 0}
                 colors={["#FFF", card.badgeColor, card.badgeColor]}
-                size={height * 0.0488}
+                size={height * (40 / 820)}
                 strokeWidth={7}
                 textSize={10}
               />
@@ -52,10 +52,11 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
             <View
               style={{
                 backgroundColor: "#9386F7",
+                // backgroundColor: "red",
                 justifyContent: "center",
                 borderRadius: 11.17,
-                width: width * 0.5778,
-                height: height * 0.0232,
+                width: width * (208 / 360),
+                height: height * (19 / 820),
               }}
             >
               <Text
@@ -79,8 +80,8 @@ export default TasksStatistics;
 const styles = StyleSheet.create({
   todayProgress_card: {
     // marginTop: height * 0.0244,
-    height: height * 0.1683,
-    width: width * 0.8889,
+    height: height * (138 / 820),
+    width: width * (320 / 360),
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   },
   innerView: {
     // margin: 10,
-    marginVertical: height * 0.022,
+    marginTop: height * 0.022,
     marginHorizontal: width * 0.05,
     alignItems: "flex-start",
     justifyContent: "space-between",
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     // lineHeight: "100%",
     textAlign: "left",
     // backgroundColor: "red",
-    marginBottom: height * 0.0171,
+    marginBottom: height * (12 / 820),
   },
   progressCircles_view: {
     flexDirection: "row",
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
   motivational_msg_view: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: height * 0.0146,
+    marginTop: height * (10 / 820),
     // backgroundColor: "red",
     // width: width * 0.8889,
   },
