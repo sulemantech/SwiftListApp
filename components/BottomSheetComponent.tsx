@@ -5,21 +5,13 @@ import React, {
   useState,
   useCallback,
 } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Dimensions,
-} from "react-native";
-import { Badge } from "@rneui/themed";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import TextInput2 from "./Input";
-import Checkboxwithlabel from "./Checkboxwithlabel";
-import { ProductContext } from "../Context/CardContext";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { Badge, useTheme } from "@rneui/themed";
 import { CardWithCounter } from "./CardWithCouter";
-import { ScrollView } from "react-native-gesture-handler";
-
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { ProductContext } from "../Context/CardContext";
+import { Divider, Theme, Switch } from "@rneui/themed";
+import CalendarTabBar from "./CalanderTabBar";
 const { width } = Dimensions.get("window");
 
 interface BottomSheetComponentProps {
@@ -48,9 +40,11 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
     unit: "",
     urgency: false,
   });
-  const [selectedValue, setSelectedValue] = useState<number | null>(null);
 
-  const snapPoints = useMemo(() => ["25%", "50%", "55%", "100%"], []);
+  const [selectedValue, setSelectedValue] = useState<number | null>(null);
+  const { theme } = useTheme();
+
+  const snapPoints = useMemo(() => ["25%", "55%", "90%"], []);
   const ItemValues: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
   const { selectedProducts, updateSelectedProductsQuantity } =
     useContext(ProductContext);
@@ -62,6 +56,16 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
     }));
     setSelectedValue(Number(Quantity));
   }, []);
+  const [checked, setChecked] = useState(false);
+
+  const toggleSwitch = () => {
+    setChecked(!checked);
+  };
+  const NUMBERS = Array.from({ length: 31 }, (_, index) =>
+    (index + 1).toString()
+  );
+  const Quntity = ["kg", "Litre", "Dozen"];
+  const Time = ["Per Day", "Per Week", "Per Month"];
 
   useEffect(() => {
     if (itemsQuantity.Quantity) {
@@ -121,11 +125,38 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
             textStyle={styles.CategoryName}
           />
         </View>
-        {/*======================== old code ======================*/}
-        <View >
-        <CardWithCounter />
+      </BottomSheetView>
+      {/*======================== old code ======================*/}
+      <BottomSheetView style={styles.counterCardWrapper}>
+        <View style={styles.counterCard}>
+          <Text> </Text>
+          <Text style={styles.CardName}>Counter</Text>
+          <Switch
+            value={checked}
+            onValueChange={(value) => setChecked(value)}
+          />
+        </View>
+        <Divider
+          width={1.5}
+          color={theme?.colors?.primary}
+          style={{ marginVertical: 10 }}
+        />
+        <View style={styles.counterCard}>
+          <View style={styles.LabelCounter}>
+            <Text style={styles.CounterLabeltext}>Quantity</Text>
+            <CardWithCounter Element={NUMBERS} />
+          </View>
+          <View style={styles.LabelCounter}>
+            <Text style={styles.CounterLabeltext}>Unit</Text>
+            <CardWithCounter Element={Quntity} />
+          </View>
+          <View style={styles.LabelCounter}>
+            <Text style={styles.CounterLabeltext}> </Text>
+            <CardWithCounter Element={Time} />
+          </View>
         </View>
       </BottomSheetView>
+      <CalendarTabBar/>
     </BottomSheet>
   );
 };
@@ -145,6 +176,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 10,
     justifyContent: "space-between",
+  },
+  counterCardWrapper: {
+    backgroundColor: "#FFFFFF",
+    marginTop: 10,
+    width: "90%",
+    marginHorizontal: "auto",
+    padding: 10,
+    borderRadius: 15,
+    flexDirection: "column",
+  },
+  counterCard: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   doneText: {
     fontFamily: "OpenSans-Medium",
@@ -186,9 +233,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF26",
     paddingHorizontal: 5,
   },
+  LabelCounter: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   CategoryName: {
     fontFamily: "OpenSans-Regular",
     fontSize: 12,
+    textAlign: "center",
+    color: "#4C4C4C",
+  },
+  CardName: {
+    fontFamily: "OpenSans-Bold",
+    fontSize: 16,
     textAlign: "center",
     color: "#4C4C4C",
   },
@@ -216,6 +275,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     marginHorizontal: 10,
+  },
+  CounterLabeltext: {
+    fontFamily: "OpenSans-Bold",
+    fontSize: 16,
+    textAlign: "center",
+    color: "#4C4C4C",
   },
   bottomSheetview: {
     width: 32,
