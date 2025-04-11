@@ -87,7 +87,7 @@ const Profile = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Header title="Profile" Rightelement={true} onBack={handleBackPress} />
+      <Header title="Profile" Rightelement={false} onBack={handleBackPress} />
 
       <View style={styles.profileContainer}>
         <View style={styles.card}>
