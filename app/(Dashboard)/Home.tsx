@@ -14,7 +14,6 @@ import UserProfile from "@/assets/images/UserProfile.png";
 import TasksStatistics from "@/components/TasksStatistics";
 import { StatusBar } from "expo-status-bar";
 import { COLORS, icons } from "@/constants";
-import { FontFamily } from "@/constants/theme";
 import { ExternalPathString, router } from "expo-router";
 import First from "../../assets/images/SVG/dashboardgrocery.svg";
 import Second from "../../assets/images/SVG/dashboardspiritualgoals.svg";
@@ -22,7 +21,6 @@ import Third from "../../assets/images/SVG/dashboardpersonalgromming.svg";
 import Fourth from "../../assets/images/SVG/thingstodo.svg";
 import Fifth from "../../assets/images/SVG/recipe.svg";
 import { LinearGradient } from "expo-linear-gradient";
-import Card from "@/components/Card";
 import { Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
