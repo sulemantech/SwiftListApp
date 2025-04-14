@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import searchicon from "../../assets/images/SVG/searchiconactive.svg";
 import searchiconBlack from "../../assets/images/SVG/searchiconnotactive.svg";
-import { categories } from "../../constants/Data";
+import { MyListCollection } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
 import Header from "../../components/Header";
 import CIrcleWithchevron from "../../components/CIrcleWithchevron";
@@ -45,32 +45,38 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
   const { name } = useLocalSearchParams();
 
-  const matchingCategory = categories.find(
-    (categoryObj) =>
-      categoryObj.category.name.toLowerCase() ===
+  const matchingCategory = MyListCollection.find((categoryObj) => {
+    const categoryName = categoryObj.name ?? categoryObj.name;
+    return (
+      categoryName?.toLowerCase() ===
       (Array.isArray(name) ? name[0] : name)?.toLowerCase()
-  );
-  useEffect(() => {
-    const allItems =
-      matchingCategory?.subCategories.flatMap(
-        (subCategory) => subCategory.items
-      ) || [];
-
-    const selectedNames = selectedProducts[
-      Array.isArray(name) ? name[0] : name
-    ]?.map((product: any) => product.name);
-
-    const filteredItems = allItems.filter((item) =>
-      selectedNames?.includes(item.name)
     );
-
+  });
+  
+  useEffect(() => {
+    if (!matchingCategory || !selectedProducts) return;
+  
+    const allItems =
+      matchingCategory.Categories?.flatMap((subCategory) => subCategory.items) || [];
+  
+    const listKey = Array.isArray(name) ? name[0] : name;
+  
+    const selectedNames = selectedProducts[listKey]?.map(
+      (product: any) => product.name
+    ) || [];
+  
+    const filteredItems = allItems.filter((item) =>
+      selectedNames.includes(item.name)
+    );
+  
     const uniqueItems = filteredItems.filter(
       (item, index, self) =>
         index === self.findIndex((t) => t.name === item.name)
     );
-
+  
     setSelectedItem(uniqueItems);
   }, [selectedProducts, matchingCategory]);
+  
 
   const formattedName =
     (Array.isArray(name) ? name[0] : name)?.replace(/\s+/g, "").toLowerCase() +
@@ -112,8 +118,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               <View style={styles.captionContainer}>
                 <Text style={styles.caption2}>
                   {matchingCategory
-                    ? matchingCategory.category.description
-                    : categories[0].category.description}
+                    ? matchingCategory.description
+                    : MyListCollection[0].description}
                 </Text>
               </View>
             </View>
@@ -128,8 +134,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           {/* {!isSearchFocused && (
             <Text style={styles.caption2}>
               {matchingCategory
-                ? matchingCategory.category.description
-                : categories[0].category.description}
+                ? matchingCategory.List.description
+                : MyListCollection[0].List.description}
             </Text>
           )} */}
         </View>
@@ -199,8 +205,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         <FlatList
           data={
             matchingCategory
-              ? matchingCategory.subCategories
-              : categories[0].subCategories
+              ? matchingCategory.Categories
+              : MyListCollection[0].Categories
           }
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
@@ -443,7 +449,7 @@ const styles = StyleSheet.create({
 // import searchicon from "../../assets/images/SVG/searchiconactive.svg";
 // // import searchiconBlack from "../../assets/images/searchiconnotactive.png";
 // import searchiconBlack from "../../assets/images/SVG/searchiconnotactive.svg";
-// import { categories } from "../../constants/Data";
+// import { MyListCollection } from "../../constants/Data";
 // import TextInput2 from "../../components/Input";
 // import ProductsPage from "@/app/products/ProductsPage";
 // // import { ProductContext } from '../../Context/CardContext';
@@ -487,9 +493,9 @@ const styles = StyleSheet.create({
 //   // }, [selectedProducts])
 //   const { name } = useLocalSearchParams();
 
-//   const matchingCategory = categories.find(
+//   const matchingCategory = MyListCollection.find(
 //     (categoryObj) =>
-//       categoryObj.category.name.toLowerCase() ===
+//       categoryObj.List.name.toLowerCase() ===
 //       (Array.isArray(name) ? name[0] : name)?.toLowerCase()
 //   );
 
@@ -500,7 +506,7 @@ const styles = StyleSheet.create({
 //   //       return setFilteredItems([]);
 //   //     }
 
-//   //     const allItems = matchingCategory.subCategories.flatMap(subCategory => subCategory.items);
+//   //     const allItems = matchingCategory.Categories.flatMap(subCategory => subCategory.items);
 //   //     const filteredItemsArray = allItems.filter(
 //   //       item =>
 //   //         item.name.toLowerCase().startsWith(searchQuery) ||
@@ -596,8 +602,8 @@ const styles = StyleSheet.create({
 //           {!isSearchFocused && (
 //             <Text style={styles.caption2}>
 //               {matchingCategory
-//                 ? matchingCategory.category.description
-//                 : categories[0].category.description}
+//                 ? matchingCategory.List.description
+//                 : MyListCollection[0].List.description}
 //             </Text>
 //           )}
 //           {!isSearchFocused && SelectedImageComponent && (
@@ -621,8 +627,8 @@ const styles = StyleSheet.create({
 //           {!isSearchFocused && (
 //             <Text style={styles.caption2}>
 //               {matchingCategory
-//                 ? matchingCategory.category.description
-//                 : categories[0].category.description}
+//                 ? matchingCategory.List.description
+//                 : MyListCollection[0].List.description}
 //             </Text>
 //           )}
 
@@ -699,8 +705,8 @@ const styles = StyleSheet.create({
 //         <FlatList
 //           data={
 //             matchingCategory
-//               ? matchingCategory.subCategories
-//               : categories[0].subCategories
+//               ? matchingCategory.Categories
+//               : MyListCollection[0].Categories
 //           }
 //           keyExtractor={(item, index) => index.toString()}
 //           showsVerticalScrollIndicator={false}

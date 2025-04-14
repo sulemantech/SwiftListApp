@@ -8,26 +8,33 @@ import {
   StatusBar
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { categories } from "../../constants/Data";
+import { MyListCollection } from "../../constants/Data";
 import ProductList from "./Products";
 import Header from "../../components/Header";
 import { ProductContext } from "../../Context/CardContext";
+
 const ProductsPage: React.FC = () => {
   const router = useRouter();
   const { myStringProp, ListName } = useLocalSearchParams<{
     myStringProp: string;
     ListName: string;
   }>();
-const selectedProducts = useContext(ProductContext)?.selectedProducts;
 
-  // Find matching sub-category
+  const selectedProducts = useContext(ProductContext)?.selectedProducts;
+
+  // Adjust for inconsistent structure of MyListCollection
+  const allCategories = useMemo(() => {
+    return MyListCollection.flatMap((list) =>
+      list.Categories ?? list.Categories ?? []
+    );
+  }, []);
+
   const matchingSubCategory = useMemo(() => {
-    return categories
-      .flatMap((category) => category.subCategories)
-      .find((subCategory) => subCategory.name === myStringProp);
-  }, [myStringProp]);
+    return allCategories.find(
+      (subCategory) => subCategory.name === myStringProp
+    );
+  }, [myStringProp, allCategories]);
 
-  // Update items based on selected products
   const updatedItems = useMemo(() => {
     if (!selectedProducts || !matchingSubCategory) return [];
 
@@ -44,7 +51,6 @@ const selectedProducts = useContext(ProductContext)?.selectedProducts;
     return true;
   };
 
-  // Handle Android Back Button
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
@@ -55,22 +61,20 @@ const selectedProducts = useContext(ProductContext)?.selectedProducts;
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Status Bar */}
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Header
         title={myStringProp || "Products"}
         Rightelement={false}
-        // onBack={handleBackPress}
-        onBack={() => router.back()}
+        onBack={handleBackPress}
       />
       <View style={styles.divider} />
-      
+
       {updatedItems.length > 0 ? (
         <ProductList products={updatedItems} ListName={ListName} page={""} />
       ) : (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>
-            No items available for this category.
+            No items available for this List.
           </Text>
         </View>
       )}
@@ -84,10 +88,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    // backgroundColor:"red",
-    // paddingHorizontal: 9,
-
-    // paddingTop: 1,
   },
   emptyContainer: {
     flex: 1,
@@ -105,10 +105,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 1,
     backgroundColor: "#ccc",
-    // marginVertical: 10,
     marginTop: 15,
-  },
-  productContainer: {
-    backgroundColor: "red",
   },
 });

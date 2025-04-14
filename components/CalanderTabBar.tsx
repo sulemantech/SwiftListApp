@@ -15,21 +15,31 @@ const CalendarTabBar: React.FC = () => {
     { label: "Night", icon: "weather-night" },
   ];
 
-  const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const weekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
   return (
     <View style={styles.container}>
-      <Tab
-        value={tabIndex}
-        onChange={setTabIndex}
-        indicatorStyle={styles.indicator}
-        variant="primary"
-        containerStyle={styles.tabContainer}
-      >
-        <Tab.Item title="Daily" titleStyle={styles.tabText} />
-        <Tab.Item title="Weekly" titleStyle={styles.tabText} />
-        <Tab.Item title="Monthly" titleStyle={styles.tabText} />
-      </Tab>
+      <View style={styles.customTabWrapper}>
+        {["Daily", "Weekly", "Monthly"].map((title, index) => (
+          <TouchableOpacity
+            key={title}
+            onPress={() => setTabIndex(index)}
+            style={[
+              styles.customTabItem,
+              tabIndex === index && styles.customTabItemActive,
+            ]}
+          >
+            <Text
+              style={[
+                styles.customTabText,
+                tabIndex === index && styles.customTabTextActive,
+              ]}
+            >
+              {title}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
 
       <TabView value={tabIndex} onChange={setTabIndex} animationType="spring">
         {/* Daily */}
@@ -47,13 +57,15 @@ const CalendarTabBar: React.FC = () => {
                 <Icon
                   name={option.icon}
                   type="material-community"
-                  color={selectedDayIndex === i ? "#ffffff" : "#1e3a8a"}
+                  color={selectedDayIndex === i ? "#FFFFFF" : "#1E3A8A"}
                   size={24}
                 />
-                <Text style={[
-                  styles.dayOptionText,
-                  selectedDayIndex === i && styles.dayOptionTextActive,
-                ]}>
+                <Text
+                  style={[
+                    styles.dayOptionText,
+                    selectedDayIndex === i && styles.dayOptionTextActive,
+                  ]}
+                >
                   {option.label}
                 </Text>
               </TouchableOpacity>
@@ -64,19 +76,19 @@ const CalendarTabBar: React.FC = () => {
         {/* Weekly */}
         <TabView.Item style={styles.tabItem}>
           <View style={styles.weekContainer}>
-            {weekDays.map((day) => (
+            {weekDays.map((day, i) => (
               <TouchableOpacity
-                key={day}
+                key={day + i}
                 style={[
                   styles.weekDay,
-                  selectedWeekday === day && styles.weekDayActive,
+                  selectedWeekday === day + i && styles.weekDayActive,
                 ]}
                 onPress={() => setSelectedWeekday(day)}
               >
                 <Text
                   style={[
                     styles.weekText,
-                    selectedWeekday === day && styles.weekTextActive,
+                    selectedWeekday === day + i && styles.weekTextActive,
                   ]}
                 >
                   {day}
@@ -89,13 +101,16 @@ const CalendarTabBar: React.FC = () => {
         {/* Monthly */}
         <TabView.Item style={styles.tabItem}>
           <Calendar
-            onDayPress={(day: { dateString: string; day: number; month: number; year: number }) => 
-              console.log("Selected day", day)
-            }
+            onDayPress={(day: {
+              dateString: string;
+              day: number;
+              month: number;
+              year: number;
+            }) => console.log("Selected day", day)}
             theme={{
-              selectedDayBackgroundColor: "#1e3a8a",
-              todayTextColor: "#1e3a8a",
-              arrowColor: "#1e3a8a",
+              selectedDayBackgroundColor: "#1E3A8A",
+              todayTextColor: "#1E3A8A",
+              arrowColor: "#1E3A8A",
             }}
             style={styles.calendar}
           />
@@ -110,35 +125,53 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
   },
-  tabContainer: {
-    backgroundColor: "#1e3a8a",
-    borderRadius: 12,
+  customTabWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#FFFFFF",
+    padding: 6,
+    borderRadius: 20,
     marginHorizontal: 16,
-    marginBottom: 10,
+    marginBottom: 16,
+    gap: 6,
   },
-  tabText: {
+
+  customTabItem: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 20,
+    backgroundColor: "transparent",
+    alignItems: "center",
+  },
+
+  customTabItemActive: {
+    backgroundColor: "#1E3A8A",
+  },
+
+  customTabText: {
     fontSize: 14,
-    color: "#e0e7ff",
     fontWeight: "600",
+    color: "#1E3A8A",
   },
-  indicator: {
-    backgroundColor: "#ffffff",
-    height: 3,
-    borderRadius: 2,
+
+  customTabTextActive: {
+    color: "#FFFFFF",
   },
   tabItem: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     paddingHorizontal: 16,
   },
   dailyContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    gap: 12,
+    // gap: 12,
   },
   dayOption: {
-    backgroundColor: "#e0e7ff",
+    backgroundColor: "#E0E7FF",
+    flexDirection: "row",
+    justifyContent: "center",
     padding: 12,
     borderRadius: 12,
     alignItems: "center",
@@ -146,38 +179,51 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   dayOptionActive: {
-    backgroundColor: "#1e3a8a",
+    backgroundColor: "#1E3A8A",
   },
   dayOptionText: {
-    marginTop: 6,
+    marginLeft: 6,
     fontWeight: "600",
-    color: "#1e3a8a",
+    color: "#1E3A8A",
   },
   dayOptionTextActive: {
-    color: "#ffffff",
+    color: "#FFFFFF",
   },
   weekContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 12,
     justifyContent: "center",
-  },
-  weekDay: {
+    gap: 12,
     paddingVertical: 10,
-    paddingHorizontal: 16,
-    backgroundColor: "#e0e7ff",
-    borderRadius: 20,
+  },
+  
+  weekDay: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    backgroundColor: "#E5E5E5",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#CBC3FB",
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    elevation: 2, // Android fallback
   },
   weekDayActive: {
-    backgroundColor: "#1e3a8a",
+    backgroundColor: "#1E3A8A",
   },
   weekText: {
-    color: "#1e3a8a",
-    fontWeight: "500",
+    color: "#1E3A8A",
+    fontWeight: "600",
+    fontSize: 12,
+    textAlign: "center",
   },
+  
   weekTextActive: {
-    color: "#ffffff",
+    color: "#FFFFFF",
   },
+  
   calendar: {
     borderRadius: 16,
     elevation: 3,

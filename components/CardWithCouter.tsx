@@ -20,7 +20,7 @@ export const CardWithCounter = ({ Element }: CardWithCounterProps) => {
 
       {/* WheelPicker */}
       <WheelPickerExpo
-        backgroundColor="#fff"
+        backgroundColor="#FFFFFF"
         height={150}
         width={70}
         initialSelectedIndex={1} // Set to 0 for the first item (1 in this case)

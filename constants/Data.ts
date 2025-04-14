@@ -50,15 +50,13 @@ const {
   vegetableItems,
 } = images;
 
-export const categories = [
+export const MyListCollection = [
   {
-    category: {
-      name: "Grocery List",
-      image: "groceryImage",
-      description:
-        "Scroll to the predefined articles or type them freely into the search below.",
-    },
-    subCategories: [
+    name: "Grocery List",
+    image: "groceryImage",
+    description:
+      "Scroll to the predefined articles or type them freely into the search below.",
+    Categories: [
       { name: "Bakery and Bread", items: bakeryAndBreadItems },
       { name: "Beverages", items: beveragesItems },
       { name: "Breakfast and Cereal", items: breakfastAndCerealItems },
@@ -87,13 +85,11 @@ export const categories = [
     ],
   },
   {
-    category: {
-      name: "Spiritual Goals",
-      image: "spiritualImage",
-      description:
-        "Scroll to the predefined articles or type them freely into the search below.",
-    },
-    subCategories: [
+    name: "Spiritual Goals",
+    image: "spiritualImage",
+    description:
+      "Scroll to the predefined articles or type them freely into the search below.",
+    Categories: [
       { name: "Prayers", items: prayersItems },
       { name: "Fasting", items: fastingItems },
       { name: "Donating", items: donatingItems },
@@ -102,13 +98,11 @@ export const categories = [
     ],
   },
   {
-    category: {
-      name: "Personal Grooming",
-      image: "personalGroomingImage",
-      description:
-        "Scroll to the predefined articles or type them freely into the search below.",
-    },
-    subCategories: [
+    name: "Personal Grooming",
+    image: "personalGroomingImage",
+    description:
+      "Scroll to the predefined articles or type them freely into the search below.",
+    Categories: [
       { name: "Personal Hygiene", items: PersonalHygiene },
       { name: "Dental Care", items: DentalCare },
       { name: "Skin Care", items: SkinCare },
@@ -117,13 +111,11 @@ export const categories = [
     ],
   },
   {
-    category: {
-      name: "Things To Do",
-      image: "thingsToDoImage",
-      description:
-        "Scroll to the predefined articles or type them freely into the search below.",
-    },
-    subCategories: [
+    name: "Things To Do",
+    image: "thingsToDoImage",
+    description:
+      "Scroll to the predefined articles or type them freely into the search below.",
+    Categories: [
       { name: "Cleaning", items: cleaningCaddyItems },
       { name: "Laundry", items: ToDoLaundry },
       { name: "Drinking", items: ToDoDrinking },
@@ -133,13 +125,11 @@ export const categories = [
     ],
   },
   {
-    category: {
-      name: "Kitchen Menu",
-      image: "kitchenMenuImage",
-      description:
-        "Scroll to the predefined articles or type them freely into the search below.",
-    },
-    subCategories: [
+    name: "Kitchen Menu",
+    image: "kitchenMenuImage",
+    description:
+      "Scroll to the predefined articles or type them freely into the search below.",
+    Categories: [
       { name: "Breakfast", items: BreakfastItems },
       { name: "Brunch", items: BrunchItems },
       { name: "Salads", items: SaladItems },

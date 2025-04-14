@@ -9,7 +9,6 @@ import {
 import { BottomSheet, Button, ListItem } from "@rneui/themed";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { COLORS } from "@/constants";
-import { CardWithCounter } from "@/components/CardWithCouter";
 
 const Reminder = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,7 +53,6 @@ const Reminder = () => {
           /> */}
           <View style={styles.item}>
             <Button onPress={() => setIsVisible(false)}>Close</Button>
-            <CardWithCounter/>
           </View>
         </BottomSheet>
       </View>
