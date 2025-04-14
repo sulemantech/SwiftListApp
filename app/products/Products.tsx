@@ -6,9 +6,25 @@ import {
   TouchableOpacity,
   ScrollView,
   useWindowDimensions,
+  Dimensions,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
+import { images } from "@/constants";
+
+const { width: screenWidth } = Dimensions.get("window");
+
+// 🟢 Responsive layout calculation
+const horizontalPadding = screenWidth * 0.04;
+const minCardWidth = 90;
+const spacing = screenWidth * (4 / 360); // based on margin 3
+const availableWidth = screenWidth - horizontalPadding * 2;
+const numColumns = Math.max(
+  3,
+  Math.floor((availableWidth + spacing) / (minCardWidth + spacing))
+);
+const itemWidth = (availableWidth - spacing * (numColumns - 1)) / numColumns;
 
 interface Product {
   imgPath: any;
@@ -207,7 +223,6 @@ const ProductList: React.FC<ProductListProps> = ({
       ) : (
         <Text>No items available for this category.</Text>
       )}
-
       {page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
