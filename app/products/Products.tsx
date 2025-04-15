@@ -374,9 +374,7 @@ const ProductList: React.FC<ProductListProps> = ({
   ListName,
   onProductSelect = () => {},
 }) => {
-  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
-  const { selectedProducts, updateSelectedProducts } =
-    useContext(ProductContext);
+
   const [snapIndex, setSnapIndex] = useState<number>(0);
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
@@ -404,14 +402,15 @@ const ProductList: React.FC<ProductListProps> = ({
   }, [selectedProduct, selectedProducts, ListName]);
 
   const paddingBottom =
-    page !== "itemslist"
-      ? snapIndex === 0
-        ? screenHeight * 0.12
-        ? screenHeight * 0.12
-        : snapIndex === 1
-        ? screenHeight * 0.22
-        : screenHeight * 0.48
-      : 0;
+  page !== "itemslist"
+    ? snapIndex === 0
+      ? screenHeight * 0.12
+      : snapIndex === 1
+      ? screenHeight * 0.22
+      : screenHeight * 0.48
+    : 0;
+
+
 
   const horizontalPadding = screenWidth * 0.04;
   const minCardWidth = 90;
