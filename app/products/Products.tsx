@@ -374,6 +374,9 @@ const ProductList: React.FC<ProductListProps> = ({
   ListName,
   onProductSelect = () => {},
 }) => {
+  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
+  const { selectedProducts, updateSelectedProducts } =
+    useContext(ProductContext);
   const [snapIndex, setSnapIndex] = useState<number>(0);
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
@@ -403,6 +406,7 @@ const ProductList: React.FC<ProductListProps> = ({
   const paddingBottom =
     page !== "itemslist"
       ? snapIndex === 0
+        ? screenHeight * 0.12
         ? screenHeight * 0.12
         : snapIndex === 1
         ? screenHeight * 0.22
@@ -525,6 +529,7 @@ const ProductList: React.FC<ProductListProps> = ({
         <Text>No items available for this category.</Text>
       )}
 
+
       {page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct!}
@@ -562,7 +567,6 @@ const styles = StyleSheet.create({
   productName: {
     fontFamily: "Poppins-Medium",
     textAlign: "center",
-    color: "white",
   },
   productName2: {
     fontFamily: "Poppins-Medium",
