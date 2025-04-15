@@ -1026,11 +1026,10 @@ const ProductList: React.FC<ProductListProps> = ({
                       (selected: { name: string }) =>
                         selected.name === item.name
                     )
-                      ? "#FFFFFF" // Selected color
-                      : "#A9A0F0" // Default color
+                      ? "#FFFFFF"
+                      : "#A9A0F0"
                   }
                 />
-
                 <Text
                   style={[
                     styles.productName,
@@ -1072,7 +1071,7 @@ const ProductList: React.FC<ProductListProps> = ({
           })}
           {Array.from({ length: placeholderVal }).map((_, i) => (
             <View
-              key={`placeholder-${i}`}
+              key={placeholderVal - i}
               style={[
                 styles.productCard,
                 {
