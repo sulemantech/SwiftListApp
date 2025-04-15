@@ -105,6 +105,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 1,
     backgroundColor: "#ccc",
-    marginTop: 15,
-  },
+    marginTop: 15,
+  },
 });
