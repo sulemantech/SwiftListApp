@@ -1026,10 +1026,11 @@ const ProductList: React.FC<ProductListProps> = ({
                       (selected: { name: string }) =>
                         selected.name === item.name
                     )
-                      ? "#FFFFFF"
-                      : "#A9A0F0"
+                      ? "#FFFFFF" // Selected color
+                      : "#A9A0F0" // Default color
                   }
                 />
+
                 <Text
                   style={[
                     styles.productName,
