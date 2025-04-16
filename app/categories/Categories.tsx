@@ -36,13 +36,15 @@ interface Props {
 
 const Categories: React.FC<Props> = ({ ListName }) => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [filteredItems, setFilteredItems] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState(""); // ✅ Tracks search input text
+  const [filteredItems, setFilteredItems] = useState<any[]>([]); // ✅ Stores matching items during search
+  const [allItems, setAllItems] = useState<any[]>([]); // ✅ Stores all products across subcategories
   const [pressedItem, setPressedItem] = useState("");
-  const [selectedItem, setSelectedItem] = useState<any[]>([]);
+  const [selectedItem, setSelectedItem] = useState<any[]>([]); // original selected items
   const [itemclicked, setItemclicked] = useState(true);
+
   const router = useRouter();
   const { selectedProducts } = useContext(ProductContext);
-
   const { name } = useLocalSearchParams();
 
   const matchingCategory = MyListCollection.find((categoryObj) => {
@@ -52,32 +54,57 @@ const Categories: React.FC<Props> = ({ ListName }) => {
       (Array.isArray(name) ? name[0] : name)?.toLowerCase()
     );
   });
-  
+
+  // ✅ Get all products from this category once
+  useEffect(() => {
+    if (!matchingCategory) return;
+
+    const items =
+      matchingCategory.Categories?.flatMap(
+        (subCategory) => subCategory.items
+      ) || [];
+    setAllItems(items); // store all category items for later filtering
+  }, [matchingCategory]);
+
+  // ✅ Set selected items based on selectedProducts context
   useEffect(() => {
     if (!matchingCategory || !selectedProducts) return;
-  
+
     const allItems =
-      matchingCategory.Categories?.flatMap((subCategory) => subCategory.items) || [];
-  
+      matchingCategory.Categories?.flatMap(
+        (subCategory) => subCategory.items
+      ) || [];
+
     const listKey = Array.isArray(name) ? name[0] : name;
-  
-    const selectedNames = selectedProducts[listKey]?.map(
-      (product: any) => product.name
-    ) || [];
-  
+
+    const selectedNames =
+      selectedProducts[listKey]?.map((product: any) => product.name) || [];
+
     const filteredItems = allItems.filter((item) =>
       selectedNames.includes(item.name)
     );
-  
+
     const uniqueItems = filteredItems.filter(
       (item, index, self) =>
         index === self.findIndex((t) => t.name === item.name)
     );
-  
-    setSelectedItem(uniqueItems);
-  }, [selectedProducts, matchingCategory]);
-  
 
+    setSelectedItem(uniqueItems); // used when searchQuery is empty
+  }, [selectedProducts, matchingCategory]);
+
+  // ✅ Filter logic based on searchQuery
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredItems([]); // show selected items if query is empty
+      return;
+    }
+
+    const filtered = allItems.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredItems(filtered); // update search results
+  }, [searchQuery, allItems]);
   const formattedName =
     (Array.isArray(name) ? name[0] : name)?.replace(/\s+/g, "").toLowerCase() +
     "image";
@@ -103,6 +130,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         />
         <View style={styles.divider} />
 
+        {/* ✅ Banner section (image + description) shown only when not searching */}
         <View
           style={
             isSearchFocused
@@ -140,10 +168,10 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           )} */}
         </View>
 
+        {/* ✅ Search Input */}
         <View
           style={[
             styles.searchContainerBase,
-            // isSearchFocused && styles.search_focused_searchContainer,
             !isSearchFocused && styles.searchContainer,
           ]}
         >
@@ -167,19 +195,17 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             borderRadius={40}
             placeholder={"Search items here..."}
             placeholderTextColor={"black"}
-            // placeholderfontsize
             fontsize={13}
             style={
               isSearchFocused ? styles.searchInputFocused : styles.searchInput
             }
-            // style={[
-            //   styles.searchInput,
-            //   isSearchFocused && styles.searchInputFocused, // Apply focus styles
-            // ]}
             onFocus={() => setIsSearchFocused(true)}
             onBlur={() => setIsSearchFocused(false)}
+            value={searchQuery}
+            onChangeText={(text) => setSearchQuery(text)}
           />
 
+          {/* ✅ Search icon toggle */}
           <View style={styles.searchiconContainer}>
             {typeof searchicon === "function" ? (
               <View style={styles.searchicon}>
@@ -202,6 +228,14 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           </View>
         </View>
 
+        {/* ✅ Optional message if nothing matches */}
+        {searchQuery.trim() && filteredItems.length === 0 && (
+          <Text style={{ textAlign: "center", color: "gray", marginTop: 10 }}>
+            No matching items found.
+          </Text>
+        )}
+
+        {/* ✅ Product list (filtered or selected) + subcategories */}
         <FlatList
           data={
             matchingCategory
@@ -232,7 +266,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           )}
           ListHeaderComponent={
             <ProductList
-              products={selectedItem || []}
+              products={searchQuery.trim() ? filteredItems : selectedItem}
               ListName={name}
               page=""
             />

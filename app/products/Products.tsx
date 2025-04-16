@@ -1129,6 +1129,7 @@ const styles = StyleSheet.create({
   productName: {
     fontFamily: "Poppins-Medium",
     textAlign: "center",
+    // color:"red",
   },
   productName2: {
     fontFamily: "Poppins-Medium",
