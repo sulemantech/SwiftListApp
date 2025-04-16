@@ -891,6 +891,7 @@ interface ProductListProps {
   page?: string;
   ListName: any;
   onProductSelect?: () => void;
+  showBottomSheet?: boolean; // 🆕 optional prop
 }
 
 const ProductList: React.FC<ProductListProps> = ({
@@ -898,6 +899,7 @@ const ProductList: React.FC<ProductListProps> = ({
   page,
   ListName,
   onProductSelect = () => {},
+  showBottomSheet = true, // 🆕 default to true
 }) => {
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
@@ -984,7 +986,7 @@ const ProductList: React.FC<ProductListProps> = ({
         { paddingHorizontal: sidePadding },
       ]}
     >
-      {products.length > 0 ? (
+      {products.length > 0 && (
         <ScrollView
           contentContainerStyle={[styles.itemsContainer]}
           showsVerticalScrollIndicator={false}
@@ -1084,10 +1086,8 @@ const ProductList: React.FC<ProductListProps> = ({
             />
           ))}
         </ScrollView>
-      ) : (
-        <Text>No items available for this category.</Text>
       )}
-      {page !== "itemslist" && isProductSelected && (
+      {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
@@ -1150,5 +1150,10 @@ const styles = StyleSheet.create({
   },
   bottomLeftBorder: {
     borderBottomLeftRadius: 8,
+  },
+  noItems: {
+    fontSize: 16,
+    fontFamily: "Poppins-Medium",
+    color: "#A9A0F0",
   },
 });
