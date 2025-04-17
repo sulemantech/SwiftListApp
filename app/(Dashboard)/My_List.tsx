@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '@/constants'
+import TimeSelector from "@/components/BottomSheet/TimeSelector";
 
 const My_List = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>My List Coming Soon!</Text>
+      <TimeSelector />
     </View>
-  )
+  );
 }
 
 export default My_List
