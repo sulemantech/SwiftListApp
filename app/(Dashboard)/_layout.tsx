@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     // paddingTop: (10 / 820) * height,
     // backgroundColor:"red"
+    marginTop: Platform.OS === "ios" ? (9 / 800) * height : 0, // 👈 iOS-specific top margin
   },
   gradientIcon: {
     alignItems: "center",
