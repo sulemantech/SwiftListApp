@@ -118,7 +118,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   };
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
-  console.log(selectedItem, "selectedItem");
 
   return (
     <TouchableWithoutFeedback>

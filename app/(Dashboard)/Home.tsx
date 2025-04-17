@@ -176,7 +176,6 @@ const Home = () => {
     loadSelectedProducts();
   }, [selectedProducts, isListLoaded]);
 
-  console.log("selectedProducts", selectedProducts);
 
   return (
     <LinearGradient
