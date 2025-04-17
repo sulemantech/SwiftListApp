@@ -4,10 +4,12 @@ import { LinearGradient } from "expo-linear-gradient";
 
 interface CircleWithChevronProps {
   chevronColor?: string;
+  isSelected?: boolean;
 }
 
 const CircleWithChevron: React.FC<CircleWithChevronProps> = ({
   chevronColor = "#61CBD6",
+  isSelected = false, // 🛠 Default not selected
 }) => {
   return (
     <LinearGradient
@@ -16,7 +18,12 @@ const CircleWithChevron: React.FC<CircleWithChevronProps> = ({
       end={{ x: 0.75, y: 0.25 }}
       style={styles.circle}
     >
-      <View style={styles.chevron} />
+      <View
+        style={[
+          styles.chevron,
+          { borderColor: isSelected ? "#FFFFFF" : "#A9A0F0" }, // 🛠 Change chevron color based on selected
+        ]}
+      />
     </LinearGradient>
   );
 };
@@ -45,7 +52,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderRadius: 2,
     marginRight: 4,
-    borderColor: "#A9A0F0", // Chevron color
     transform: [{ rotate: "45deg" }], // Rotate to create a chevron
   },
 });

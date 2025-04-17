@@ -245,25 +245,34 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
           style={styles.subCategoriesContainer}
-          renderItem={({ item }) => (
-            <TouchableHighlight
-              onPress={() => {
-                setPressedItem(item.name);
-                router.push({
-                  pathname: "/products/ProductsPage" as ExternalPathString,
-                  params: { myStringProp: item.name, ListName: name },
-                });
-              }}
-              activeOpacity={1}
-              underlayColor="#fff"
-              style={styles.subCategoryItem}
-            >
-              <View style={styles.subCategoryContent}>
-                <Text style={styles.subCategoryName}>{item.name}</Text>
-                <CIrcleWithchevron chevronColor={"#F3F3FD"} />
-              </View>
-            </TouchableHighlight>
-          )}
+          // 🛠 Updated renderItem here to support color change
+          renderItem={({ item }) => {
+            const isSelected = pressedItem === item.name; // ✅ check if this item is pressed/selected
+
+            return (
+              <TouchableHighlight
+                onPress={() => {
+                  setPressedItem(item.name); // ✅ set pressed item name
+                  router.push({
+                    pathname: "/products/ProductsPage" as ExternalPathString,
+                    params: { myStringProp: item.name, ListName: name },
+                  });
+                }}
+                activeOpacity={1}
+                underlayColor="#fff"
+                style={styles.subCategoryItem}
+              >
+                <View style={styles.subCategoryContent}>
+                  <Text style={styles.subCategoryName}>{item.name}</Text>
+                  {/* 🛠 Updated CIrcleWithchevron color based on selected item */}
+                  <CIrcleWithchevron
+                    chevronColor={isSelected ? "#A9A0F0" : "#F3F3FD"}
+                    isSelected={isSelected} // 🛠 New prop to control inside chevron color
+                  />
+                </View>
+              </TouchableHighlight>
+            );
+          }}
           ListHeaderComponent={
             <ProductList
               products={searchQuery.trim() ? filteredItems : selectedItem}
