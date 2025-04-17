@@ -103,7 +103,7 @@ const ProductList: React.FC<ProductListProps> = ({
   }
 
   // 🟢 Fix applied: 3 columns enforced for mid-range screen widths (e.g., 360-500)
-  const gap = screenWidth <= 480 ? 4 : screenWidth <= 768 ? 8 : 12;
+  const gap = screenWidth <= 480 ? 3 : screenWidth <= 768 ? 8 : 12;
   const sidePadding = 16;
   const availableWidth = screenWidth - sidePadding * 2;
   const minColumns = screenWidth >= 360 && screenWidth < 500 ? 3 : 0;
