@@ -6,11 +6,37 @@ import {
   TouchableOpacity,
   ScrollView,
   useWindowDimensions,
+  Image,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
+import adaptiveicons from "../../assets/images/adaptive-icon.png";
+import arrowactive from "../../assets/images/arrowactive.png";
+import arrowdropdown from "../../assets/images/arrowdropdown.png";
+import circle from "../../assets/images/circle.png";
+import arrownotactive from "../../assets/images/arrownotactive.png";
+import favicon from "../../assets/images/favicon.png";
+import bellicon from "../../assets/images/bellicon.png";
+import heartIconz from "../../assets/images/heartIcon.png";
+import heartIcon from "../../assets/images/heartIcon.png";
+import splashicon from "../../assets/images/splash-icon.png";
+import profileicon from "../../assets/images/profileicon.png";
+
+const image = [
+  adaptiveicons,
+  arrowactive,
+  arrowdropdown,
+  circle,
+  arrownotactive,
+  favicon,
+  bellicon,
+  heartIconz,
+  heartIcon,
+  splashicon,
+  profileicon,
+];
 
 interface Product {
   imgPath: any;
@@ -28,6 +54,29 @@ interface ProductListProps {
   showBottomSheet?: boolean; // 🆕 optional prop
 }
 
+const getBorderStyles = (index: number, lastIndex: number) => {
+  const borderBottomRightIndex =
+    lastIndex % 3 === 1
+      ? lastIndex - 1
+      : lastIndex % 3 === 2
+      ? lastIndex - 2
+      : lastIndex % 3 === 0
+      ? lastIndex - 3
+      : null;
+
+  const secondLineLastElement =
+    lastIndex % 3 === 2
+      ? lastIndex - 3
+      : lastIndex % 3 === 1
+      ? lastIndex - 2
+      : null;
+
+  return {
+    borderBottomRightIndex,
+    secondLineLastElement,
+  };
+};
+
 const ProductList: React.FC<ProductListProps> = ({
   products,
   page,
@@ -39,14 +88,30 @@ const ProductList: React.FC<ProductListProps> = ({
   const { selectedProducts, updateSelectedProducts } =
     useContext(ProductContext);
   const [snapIndex, setSnapIndex] = useState<number>(0);
+  const [localItems, setLocalItems] = useState(selectedProducts);
   const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
 
   const handleSelect = async (product: Product) => {
+    const currentList = localItems[ListName] || [];
+    const isAlreadySelected = currentList.some(
+      (item: Product) => item.name === product.name
+    );
+
+    const updatedList = isAlreadySelected
+      ? currentList.filter((item: Product) => item.name !== product.name)
+      : [...currentList, product];
+
+    const updatedLocalItems = {
+      ...localItems,
+      [ListName]: updatedList,
+    };
+
+    setLocalItems(updatedLocalItems);
     setSelectedProduct(product.name);
-    await updateSelectedProducts(ListName, product);
+    await updateSelectedProducts(ListName, product); // <- optional await
     onProductSelect();
   };
 
@@ -54,41 +119,16 @@ const ProductList: React.FC<ProductListProps> = ({
     const isFound = selectedProducts[ListName]?.some(
       (selected: Product) => selected.name === selectedProduct
     );
+
     setIsProductSelected(isFound);
   }, [selectedProduct, selectedProducts, ListName]);
 
   useEffect(() => {
-    const number = products.length;
-    const calculateValue = (num: number): number => {
-      if (num % 3 === 0) return 0;
-      const nearestHigherDivisibleBy3 = num + (3 - (num % 3));
-      return nearestHigherDivisibleBy3 - number;
+    const calculatePlaceholderVal = (length: number): number => {
+      return length % 3 === 0 ? 0 : 3 - (length % 3);
     };
-    setPlaceholderVal(calculateValue(number));
+    setPlaceholderVal(calculatePlaceholderVal(products.length));
   }, [products.length]);
-
-  const getBorderStyles = (index: number, lastIndex: number) => {
-    const borderBottomRightIndex =
-      lastIndex % 3 === 1
-        ? lastIndex - 1
-        : lastIndex % 3 === 2
-        ? lastIndex - 2
-        : lastIndex % 3 === 0
-        ? lastIndex - 3
-        : null;
-
-    const secondLineLastElement =
-      lastIndex % 3 === 2
-        ? lastIndex - 3
-        : lastIndex % 3 === 1
-        ? lastIndex - 2
-        : null;
-
-    return {
-      borderBottomRightIndex,
-      secondLineLastElement,
-    };
-  };
 
   const mobileReferenceWidth = 360;
   const tabletReferenceWidth = 768;
@@ -110,6 +150,8 @@ const ProductList: React.FC<ProductListProps> = ({
   const numColumnsRaw = Math.floor((availableWidth + gap) / (itemSize + gap));
   const numColumns = Math.max(numColumnsRaw, minColumns);
   const itemWidth = (availableWidth - gap * (numColumns - 1)) / numColumns;
+  const fontSize = itemWidth * 0.12;
+  const marginTop = itemWidth * 0.04;
 
   return (
     <View
@@ -127,6 +169,10 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
+            const isSelected = localItems[ListName]?.some(
+              (selected: { name: string }) => selected.name === item.name
+            );
+
             const { borderBottomRightIndex, secondLineLastElement } =
               getBorderStyles(index, products.length);
 
@@ -142,9 +188,7 @@ const ProductList: React.FC<ProductListProps> = ({
                     marginBottom: gap,
                     marginRight: (index + 1) % numColumns === 0 ? 0 : gap,
                   },
-                  selectedProducts[ListName]?.some(
-                    (selected: { name: string }) => selected.name === item.name
-                  ) && styles.selectedCard,
+                  isSelected && styles.selectedCard,
                   index === 0 && styles.topLeftBorder,
                   index === 2 && styles.topRightBorder,
                   products.length === 1 && styles.borderRadiusmain,
@@ -157,27 +201,16 @@ const ProductList: React.FC<ProductListProps> = ({
                 <item.imgPath
                   width={itemWidth * 0.6}
                   height={itemWidth * 0.6}
-                  color={
-                    selectedProducts[ListName]?.some(
-                      (selected: { name: string }) =>
-                        selected.name === item.name
-                    )
-                      ? "#FFFFFF"
-                      : "#A9A0F0"
-                  }
+                  color={isSelected ? "#FFFFFF" : "#A9A0F0"}
                 />
+
                 <Text
                   style={[
                     styles.productName,
                     {
-                      fontSize: itemWidth * 0.12,
+                      fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      color: selectedProducts[ListName]?.some(
-                        (selected: { name: string }) =>
-                          selected.name === item.name
-                      )
-                        ? "#FFFFFF"
-                        : "#A9A0F0",
+                      color: isSelected ? "#FFFFFF" : "#A9A0F0",
                     },
                   ]}
                   numberOfLines={1}
@@ -221,7 +254,7 @@ const ProductList: React.FC<ProductListProps> = ({
           ))}
         </ScrollView>
       )}
-      {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
@@ -229,7 +262,7 @@ const ProductList: React.FC<ProductListProps> = ({
           setSnapIndex={setSnapIndex}
           snapIndex={snapIndex}
         />
-      )}
+      )} */}
     </View>
   );
 };
