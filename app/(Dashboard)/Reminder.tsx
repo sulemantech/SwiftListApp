@@ -25,13 +25,6 @@ const Reminder = () => {
     setIsVisible(false);
   };
 
-  const renderItem = ({ item }: { item: (typeof list)[0] }) => (
-    <ListItem containerStyle={styles.item} onPress={item.onPress}>
-      <ListItem.Content>
-        <ListItem.Title style={styles.title}>{item.title}</ListItem.Title>
-      </ListItem.Content>
-    </ListItem>
-  );
 
   return (
     <SafeAreaProvider>
@@ -46,11 +39,6 @@ const Reminder = () => {
           isVisible={isVisible}
           onBackdropPress={() => setIsVisible(false)}
         >
-          {/* <FlatList
-            data={list}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-          /> */}
           <View style={styles.item}>
             <Button onPress={() => setIsVisible(false)}>Close</Button>
           </View>
