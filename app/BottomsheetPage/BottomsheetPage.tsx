@@ -2,6 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { useTheme } from "@rneui/themed";
 import CalendarTabBar from "@/components/CalanderTabBar";
+import TimeSelector from "@/components/BottomSheet/TimeSelector";
 
 export default function BottomsheetPage() {
   const { theme } = useTheme();
@@ -12,6 +13,8 @@ export default function BottomsheetPage() {
       <Text style={styles.headerText}>Select Your Preferences</Text>
       <View style={styles.calendarContainer}>
         <CalendarTabBar />
+        <TimeSelector />
+
       </View>
     </ScrollView>
   );

@@ -23,8 +23,6 @@ import heartIconz from "../../assets/images/heartIcon.png";
 import heartIcon from "../../assets/images/heartIcon.png";
 import splashicon from "../../assets/images/splash-icon.png";
 import profileicon from "../../assets/images/profileicon.png";
-import { useRoute } from "@react-navigation/native";
-import { useRouter } from "expo-router";
 
 const image = [
   adaptiveicons,
@@ -95,26 +93,25 @@ const ProductList: React.FC<ProductListProps> = ({
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
 
-  const router = useRouter();
   const handleSelect = async (product: Product) => {
-    router.push("/BottomsheetPage/BottomsheetPage");    // const currentList = localItems[ListName] || [];
-    // const isAlreadySelected = currentList.some(
-    //   (item: Product) => item.name === product.name
-    // );
+    const currentList = localItems[ListName] || [];
+    const isAlreadySelected = currentList.some(
+      (item: Product) => item.name === product.name
+    );
 
-    // const updatedList = isAlreadySelected
-    //   ? currentList.filter((item: Product) => item.name !== product.name)
-    //   : [...currentList, product];
+    const updatedList = isAlreadySelected
+      ? currentList.filter((item: Product) => item.name !== product.name)
+      : [...currentList, product];
 
-    // const updatedLocalItems = {
-    //   ...localItems,
-    //   [ListName]: updatedList,
-    // };
+    const updatedLocalItems = {
+      ...localItems,
+      [ListName]: updatedList,
+    };
 
-    // setLocalItems(updatedLocalItems);
-    // setSelectedProduct(product.name);
-    // await updateSelectedProducts(ListName, product); // <- optional await
-    // onProductSelect();
+    setLocalItems(updatedLocalItems);
+    setSelectedProduct(product.name);
+    await updateSelectedProducts(ListName, product); // <- optional await
+    onProductSelect();
   };
 
   useEffect(() => {
