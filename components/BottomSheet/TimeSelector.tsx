@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F7F6FC",
     borderRadius: 15,
+    marginHorizontal: "auto",
     padding: 16,
     marginVertical: 10,
     width: "90%",

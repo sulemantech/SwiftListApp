@@ -3,19 +3,21 @@ import React, { useState } from "react";
 import { useTheme } from "@rneui/themed";
 import CalendarTabBar from "@/components/CalanderTabBar";
 import TimeSelector from "@/components/BottomSheet/TimeSelector";
+import Header from "@/components/Header";
+import { useRouter } from "expo-router";
 
 export default function BottomsheetPage() {
   const { theme } = useTheme();
+  const router = useRouter();
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.handleIndicator} />
-      <Text style={styles.headerText}>Select Your Preferences</Text>
+        <Header     onBack={() => router.back()}
+          title={"Select Your Preferences"}/>
       <View style={styles.calendarContainer}>
         <CalendarTabBar />
-        <TimeSelector />
-
       </View>
+      <TimeSelector />
     </ScrollView>
   );
 }
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     height: "100%",
-    backgroundColor: "#F3F3FD",
+    backgroundColor: "#FFF",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowColor: "#000",
@@ -50,10 +52,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   calendarContainer: {
-    height: 'auto',
+    height: "auto",
+    backgroundColor: "#000",
     minHeight: 430,
     overflow: "hidden",
-    backgroundColor: "#FFFFFF",
     borderRadius: 15,
     padding: 10,
     marginTop: 10,

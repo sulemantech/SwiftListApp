@@ -129,11 +129,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "#FFFFFF",
-    padding: 6,
     borderRadius: 20,
     marginHorizontal: 16,
     marginBottom: 16,
     gap: 6,
+    borderWidth: 1,
+    borderColor: "#D8D8D8",
   },
 
   customTabItem: {

@@ -2,23 +2,19 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  Pressable,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Image } from "expo-image";
-// import { StatusBar } from "expo-status-bar";
 
-// Import image assets
 import back from "../assets/images/back-arrow.png";
 import heart from "../assets/images/heartIcon.png";
 import { Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
 
-// Define props type
 interface HeaderProps {
   title: string | string[];
   onBack: () => void;
@@ -29,49 +25,61 @@ const Header: React.FC<HeaderProps> = ({
   title,
   onBack,
   Rightelement = false,
-}) => (
-  <SafeAreaView style={styles.headerContainer}>
-    <View style={styles.bacKview}>
-      <TouchableOpacity
-        style={styles.backview}
-        activeOpacity={0.2}
-        onPress={onBack}
-      >
-        <Image source={back} style={styles.back} />
-      </TouchableOpacity>
-      <Text style={styles.signInText}>{title}</Text>
-      <Text style={styles.signInText}></Text>
-      {Rightelement && <Image source={heart} style={styles.heart} />}
-    </View>
-  </SafeAreaView>
-);
+}) => {
+  const [pressed, setPressed] = useState(false);
+
+  const handleBackPress = () => {
+    setPressed(true);
+  
+    setTimeout(() => {
+      onBack();
+      setPressed(false); 
+    }, 50);
+  };
+  
+
+  return (
+    <SafeAreaView style={styles.headerContainer}>
+      <View style={styles.bacKview}>
+        <Pressable
+          style={[
+            styles.backview,
+            { backgroundColor: pressed ? "#903fff" : "#F3F3FD" },
+          ]}
+          onPress={handleBackPress}
+        >
+          <Image source={back} style={styles.back} />
+        </Pressable>
+        <Text style={styles.signInText}>{title}</Text>
+        <Text style={styles.signInText}></Text>
+        {Rightelement && <Image source={heart} style={styles.heart} />}
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default Header;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    // paddingVertical: 7,
-    // paddingHorizontal: "",
     paddingTop: StatusBar.currentHeight || 0,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "red",
-    // backgroundColor: "#fff",
     width: "100%",
     zIndex: 1,
   },
   backview: {
     display: "flex",
-    // backgroundColor: "#903fff",
     justifyContent: "center",
     alignItems: "center",
-    height: 34,
-    width: 34,
-    // width: 100,
+    width: 40,
+    borderRadius: 50,
+    aspectRatio: 1,
   },
   back: {
     width: 18.95,
     height: 10.26,
+    
   },
   signInText: {
     color: "#4C4C4C",
@@ -90,9 +98,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // backgroundColor: "#903fff",
     height: 24,
     width: screenWidth * 0.8889,
-    marginTop:19.54,
+    marginTop: 19.54,
   },
 });
