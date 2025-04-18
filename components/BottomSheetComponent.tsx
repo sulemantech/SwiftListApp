@@ -6,12 +6,13 @@ import React, {
   useCallback,
 } from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { Badge, useTheme } from "@rneui/themed";
-import { CardWithCounter } from "./CardWithCouter";
+import { Badge, useTheme, Divider, Switch } from "@rneui/themed";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+
 import { ProductContext } from "../Context/CardContext";
-import { Divider, Theme, Switch } from "@rneui/themed";
+import { CardWithCounter } from "./CardWithCouter";
 import CalendarTabBar from "./CalanderTabBar";
+
 const { width } = Dimensions.get("window");
 
 interface BottomSheetComponentProps {
@@ -22,12 +23,6 @@ interface BottomSheetComponentProps {
   snapIndex: number;
 }
 
-interface ItemsQuantity {
-  Quantity: string | number;
-  unit: string;
-  urgency: boolean;
-}
-
 const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   selecteditem,
   ListName,
@@ -35,112 +30,99 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   setSnapIndex,
   snapIndex,
 }) => {
-  const [itemsQuantity, setItemsQuantity] = useState<ItemsQuantity>({
+  const [itemsQuantity, setItemsQuantity] = useState({
     Quantity: "",
     unit: "",
     urgency: false,
   });
 
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
-  const { theme } = useTheme();
+  const [checked, setChecked] = useState(false);
 
-  const snapPoints = useMemo(() => ["25%", "55%", "90%" , "99%"], []);
-  const ItemValues: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
   const { selectedProducts, updateSelectedProductsQuantity } =
     useContext(ProductContext);
 
-  const SelectQuantity = useCallback((Quantity: number | string) => {
-    setItemsQuantity((prevState) => ({
-      ...prevState,
-      Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
-    }));
-    setSelectedValue(Number(Quantity));
-  }, []);
-  const [checked, setChecked] = useState(false);
+  const { theme } = useTheme();
 
-  const toggleSwitch = () => {
-    setChecked(!checked);
-  };
-  const NUMBERS = Array.from({ length: 31 }, (_, index) =>
-    (index + 1).toString()
-  );
-  const Quntity = ["kg", "Litre", "Dozen"];
-  const Time = ["Per Day", "Per Week", "Per Month"];
+  const snapPoints = useMemo(() => ["25%", "55%", "90%", "99%"], []);
+  const NUMBERS = useMemo(() => Array.from({ length: 31 }, (_, i) => `${i + 1}`), []);
+  const QUANTITY_UNITS = useMemo(() => ["kg", "Litre", "Dozen"], []);
+  const TIME_UNITS = useMemo(() => ["Per Day", "Per Week", "Per Month"], []);
 
-  useEffect(() => {
-    if (itemsQuantity.Quantity) {
-      handleSelectedElementQuantity(ListName);
-    }
-  }, [itemsQuantity, ListName]);
+  const toggleSwitch = useCallback(() => setChecked((prev) => !prev), []);
 
-  const handleSelectedElementQuantity = async (listName: string) => {
+  const handleSelectedElementQuantity = useCallback(async () => {
     if (!itemsQuantity.Quantity) return;
 
-    if (selectedProducts[listName] && selectedProducts[listName].length > 0) {
-      const updatedList = [...selectedProducts[listName]];
-      const lastElement = updatedList[updatedList.length - 1];
-
-      const updatedLastElement = {
-        ...lastElement,
-        Quantity: itemsQuantity.Quantity,
-        unit: itemsQuantity.unit,
-        urgency: itemsQuantity.urgency,
+    const list = selectedProducts[ListName];
+    if (list?.length) {
+      const updatedList = [...list];
+      const lastElement = {
+        ...updatedList[updatedList.length - 1],
+        ...itemsQuantity,
       };
 
       try {
-        await updateSelectedProductsQuantity(listName, updatedLastElement);
+        await updateSelectedProductsQuantity(ListName, lastElement);
       } catch (error) {
         console.error("Error handling product selection:", error);
       }
     }
-  };
+  }, [itemsQuantity, ListName, selectedProducts, updateSelectedProductsQuantity]);
+
+  useEffect(() => {
+    if (itemsQuantity.Quantity) {
+      handleSelectedElementQuantity();
+    }
+  }, [itemsQuantity, handleSelectedElementQuantity]);
+
+  const onChangeSnapIndex = useCallback((index: number) => {
+    setSnapIndex(index);
+  }, [setSnapIndex]);
 
   return (
     <BottomSheet
       index={snapIndex}
-      onChange={(index) => setSnapIndex(index)}
+      onChange={onChangeSnapIndex}
       snapPoints={snapPoints}
       backgroundComponent={({ style }) => (
         <View style={[style, styles.background]} />
       )}
-      handleIndicatorStyle={styles.handleIndicator} //
+      handleIndicatorStyle={styles.handleIndicator}
     >
       <BottomSheetView style={styles.contentContainer}>
         <View style={styles.bottomSheetHeader}>
           <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-          <Text
-            onPress={() => setIsProductSelected(false)}
-            style={styles.doneText}
-          >
+          <Text onPress={() => setIsProductSelected(false)} style={styles.doneText}>
             Done
           </Text>
         </View>
-        {/* divider */}
+
         <View style={styles.divider} />
+
         <View style={styles.FromCategoryContainer}>
           <Text style={styles.Category}>Categories</Text>
           <Badge
-            value={`${ListName}`}
+            value={ListName}
             badgeStyle={styles.CategoryContainer}
             textStyle={styles.CategoryName}
           />
         </View>
       </BottomSheetView>
-      {/*======================== old code ======================*/}
+
       <BottomSheetView style={styles.counterCardWrapper}>
         <View style={styles.counterCard}>
-          <Text> </Text>
+          <Text />
           <Text style={styles.CardName}>Counter</Text>
-          <Switch
-            value={checked}
-            onValueChange={(value) => setChecked(value)}
-          />
+          <Switch value={checked} onValueChange={toggleSwitch} />
         </View>
+
         <Divider
           width={1.5}
           color={theme?.colors?.primary}
           style={{ marginVertical: 10 }}
         />
+
         <View style={styles.counterCard}>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}>Quantity</Text>
@@ -148,20 +130,22 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
           </View>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}>Unit</Text>
-            <CardWithCounter Element={Quntity} />
+            <CardWithCounter Element={QUANTITY_UNITS} />
           </View>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}> </Text>
-            <CardWithCounter Element={Time} />
+            <CardWithCounter Element={TIME_UNITS} />
           </View>
         </View>
       </BottomSheetView>
-      <CalendarTabBar/>
+
+      <CalendarTabBar />
     </BottomSheet>
   );
 };
 
 export default BottomSheetComponent;
+
 
 const styles = StyleSheet.create({
   background: {
