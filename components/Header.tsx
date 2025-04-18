@@ -30,13 +30,12 @@ const Header: React.FC<HeaderProps> = ({
 
   const handleBackPress = () => {
     setPressed(true);
-  
+
     setTimeout(() => {
       onBack();
-      setPressed(false); 
+      setPressed(false);
     }, 50);
   };
-  
 
   return (
     <SafeAreaView style={styles.headerContainer}>
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
   back: {
     width: 18.95,
     height: 10.26,
-    
   },
   signInText: {
     color: "#4C4C4C",

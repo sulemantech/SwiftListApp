@@ -237,7 +237,7 @@ const ProductList: React.FC<ProductListProps> = ({
               </TouchableOpacity>
             );
           })}
-          {Array.from({ length: placeholderVal }).map((_, i) => (
+          {/* {Array.from({ length: placeholderVal }).map((_, i) => (
             <View
               key={placeholderVal - i}
               style={[
@@ -250,7 +250,7 @@ const ProductList: React.FC<ProductListProps> = ({
                 },
               ]}
             />
-          ))}
+          ))} */}
         </ScrollView>
       )}
       {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
