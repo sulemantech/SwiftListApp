@@ -6,123 +6,153 @@ import React, {
   useCallback,
 } from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { Badge, useTheme, Divider, Switch } from "@rneui/themed";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-
-import { ProductContext } from "../Context/CardContext";
+import { Badge, useTheme } from "@rneui/themed";
 import { CardWithCounter } from "./CardWithCouter";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { ProductContext } from "../Context/CardContext";
+import { Divider, Theme, Switch } from "@rneui/themed";
 import CalendarTabBar from "./CalanderTabBar";
-
+import { useRouter } from "expo-router";
 const { width } = Dimensions.get("window");
 
 interface BottomSheetComponentProps {
   selecteditem: string;
   ListName: string;
   setIsProductSelected: (value: boolean) => void;
-  setSnapIndex: (index: number) => void;
-  snapIndex: number;
+  // setSnapIndex: (index: number) => void;
+  // snapIndex: number;
+}
+
+interface ItemsQuantity {
+  Quantity: string | number;
+  unit: string;
+  urgency: boolean;
 }
 
 const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   selecteditem,
   ListName,
   setIsProductSelected,
-  setSnapIndex,
-  snapIndex,
+  // setSnapIndex,
+  // snapIndex,
 }) => {
-  const [itemsQuantity, setItemsQuantity] = useState({
+  const [itemsQuantity, setItemsQuantity] = useState<ItemsQuantity>({
     Quantity: "",
     unit: "",
     urgency: false,
   });
+    const [snapIndex, setSnapIndex] = useState<number>(0);
+  
 
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
-  const [checked, setChecked] = useState(false);
+  const { theme } = useTheme();
 
+  const snapPoints = useMemo(() => ["25%", "55%", "90%" , "99%"], []);
+  const ItemValues: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
   const { selectedProducts, updateSelectedProductsQuantity } =
     useContext(ProductContext);
 
-  const { theme } = useTheme();
+  const SelectQuantity = useCallback((Quantity: number | string) => {
+    setItemsQuantity((prevState) => ({
+      ...prevState,
+      Quantity: Quantity !== undefined ? Quantity : prevState.Quantity,
+    }));
+    setSelectedValue(Number(Quantity));
+  }, []);
+  const [checked, setChecked] = useState(false);
 
-  const snapPoints = useMemo(() => ["25%", "55%", "90%", "99%"], []);
-  const NUMBERS = useMemo(() => Array.from({ length: 31 }, (_, i) => `${i + 1}`), []);
-  const QUANTITY_UNITS = useMemo(() => ["kg", "Litre", "Dozen"], []);
-  const TIME_UNITS = useMemo(() => ["Per Day", "Per Week", "Per Month"], []);
+  const toggleSwitch = () => {
+    setChecked(!checked);
+  };
+  const NUMBERS = Array.from({ length: 31 }, (_, index) =>
+    (index + 1).toString()
+  );
+  const Quntity = ["kg", "Litre", "Dozen"];
+  const Time = ["Per Day", "Per Week", "Per Month"];
 
-  const toggleSwitch = useCallback(() => setChecked((prev) => !prev), []);
+  useEffect(() => {
+    if (itemsQuantity.Quantity) {
+      handleSelectedElementQuantity(ListName);
+    }
+  }, [itemsQuantity, ListName]);
 
-  const handleSelectedElementQuantity = useCallback(async () => {
+  const handleSelectedElementQuantity = async (listName: string) => {
     if (!itemsQuantity.Quantity) return;
 
-    const list = selectedProducts[ListName];
-    if (list?.length) {
-      const updatedList = [...list];
-      const lastElement = {
-        ...updatedList[updatedList.length - 1],
-        ...itemsQuantity,
+    if (selectedProducts[listName] && selectedProducts[listName].length > 0) {
+      const updatedList = [...selectedProducts[listName]];
+      const lastElement = updatedList[updatedList.length - 1];
+
+      const updatedLastElement = {
+        ...lastElement,
+        Quantity: itemsQuantity.Quantity,
+        unit: itemsQuantity.unit,
+        urgency: itemsQuantity.urgency,
       };
 
       try {
-        await updateSelectedProductsQuantity(ListName, lastElement);
+        await updateSelectedProductsQuantity(listName, updatedLastElement);
       } catch (error) {
         console.error("Error handling product selection:", error);
       }
     }
-  }, [itemsQuantity, ListName, selectedProducts, updateSelectedProductsQuantity]);
-
-  useEffect(() => {
-    if (itemsQuantity.Quantity) {
-      handleSelectedElementQuantity();
-    }
-  }, [itemsQuantity, handleSelectedElementQuantity]);
-
-  const onChangeSnapIndex = useCallback((index: number) => {
+  };
+  const router = useRouter();
+  const handleSnapPress = (index: any) => {
+    console.log(index)
     setSnapIndex(index);
-  }, [setSnapIndex]);
+    if (index === 4) {
+      setIsProductSelected(false)
+      router.push("/BottomsheetPage/BottomsheetPage");
+    }
+  };
 
   return (
     <BottomSheet
       index={snapIndex}
-      onChange={onChangeSnapIndex}
+      onChange={(index) => handleSnapPress(index)}
       snapPoints={snapPoints}
       backgroundComponent={({ style }) => (
         <View style={[style, styles.background]} />
       )}
-      handleIndicatorStyle={styles.handleIndicator}
+      handleIndicatorStyle={styles.handleIndicator} //
     >
-      <BottomSheetView style={styles.contentContainer}>
+      <BottomSheetView  style={styles.contentContainer}>
         <View style={styles.bottomSheetHeader}>
           <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-          <Text onPress={() => setIsProductSelected(false)} style={styles.doneText}>
+          <Text
+            onPress={() => setIsProductSelected(false)}
+            style={styles.doneText}
+          >
             Done
           </Text>
         </View>
-
+        {/* divider */}
         <View style={styles.divider} />
-
         <View style={styles.FromCategoryContainer}>
           <Text style={styles.Category}>Categories</Text>
           <Badge
-            value={ListName}
+            value={`${ListName}`}
             badgeStyle={styles.CategoryContainer}
             textStyle={styles.CategoryName}
           />
         </View>
       </BottomSheetView>
-
+      {/*======================== old code ======================*/}
       <BottomSheetView style={styles.counterCardWrapper}>
         <View style={styles.counterCard}>
-          <Text />
+          <Text> </Text>
           <Text style={styles.CardName}>Counter</Text>
-          <Switch value={checked} onValueChange={toggleSwitch} />
+          <Switch
+            value={checked}
+            onValueChange={(value) => setChecked(value)}
+          />
         </View>
-
         <Divider
           width={1.5}
           color={theme?.colors?.primary}
           style={{ marginVertical: 10 }}
         />
-
         <View style={styles.counterCard}>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}>Quantity</Text>
@@ -130,22 +160,20 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
           </View>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}>Unit</Text>
-            <CardWithCounter Element={QUANTITY_UNITS} />
+            <CardWithCounter Element={Quntity} />
           </View>
           <View style={styles.LabelCounter}>
             <Text style={styles.CounterLabeltext}> </Text>
-            <CardWithCounter Element={TIME_UNITS} />
+            <CardWithCounter Element={Time} />
           </View>
         </View>
       </BottomSheetView>
-
-      <CalendarTabBar />
+      <CalendarTabBar/>
     </BottomSheet>
   );
 };
 
 export default BottomSheetComponent;
-
 
 const styles = StyleSheet.create({
   background: {
