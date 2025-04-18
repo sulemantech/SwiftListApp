@@ -88,7 +88,7 @@ const TimePickerModal: React.FC<TimePickerModalProps> = ({
 
         {/* 🟣 Label Row */}
         <View style={styles.labelRow}>
-          <Text style={[styles.labelText,{left: -15}]}>Hours</Text>
+          <Text style={[styles.labelText, { left: -15 }]}>Hours</Text>
           <Text style={styles.labelText}>Minutes</Text>
           <Text style={styles.labelText}></Text> {/* Empty for AM/PM */}
         </View>
@@ -105,56 +105,60 @@ const TimePickerModal: React.FC<TimePickerModalProps> = ({
             <View style={styles.separatorSmall} />
             <View style={styles.separatorSmall} />
           </View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            {/* Hours */}
+            <FlatList
+              ref={hourRef}
+              data={hours}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: 2 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "hour")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedHour)}
+            />
 
-          {/* Hours */}
-          <FlatList
-            ref={hourRef}
-            data={hours}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={[styles.flatList,{left: 2}]}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onScroll={(e) => handleScroll(e, "hour")}
-            scrollEventThrottle={16}
-            renderItem={({ item }) => renderItem(item, selectedHour)}
-          />
+            {/* Separator ":" in its own column */}
+            <View style={styles.separatorColumn}>
+              <Text style={styles.separator}>:</Text>
+            </View>
 
-          <Text style={styles.separator}>:</Text>
+            {/* Minutes */}
+            <FlatList
+              ref={minuteRef}
+              data={minutes}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: -10 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "minute")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedMinute)}
+            />
 
-          {/* Minutes */}
-          <FlatList
-            ref={minuteRef}
-            data={minutes}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={[styles.flatList,{left: -10}]}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onScroll={(e) => handleScroll(e, "minute")}
-            scrollEventThrottle={16}
-            renderItem={({ item }) => renderItem(item, selectedMinute)}
-          />
-
-          {/* AM / PM */}
-          <FlatList
-            ref={periodRef}
-            data={periods}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={[styles.flatList,{left: -4}]}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onScroll={(e) => handleScroll(e, "period")}
-            scrollEventThrottle={16}
-            renderItem={({ item }) => renderItem(item, selectedPeriod)}
-          />
+            {/* AM / PM */}
+            <FlatList
+              ref={periodRef}
+              data={periods}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: -4 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "period")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedPeriod)}
+            />
+          </View>
         </View>
 
         {/* Action Buttons */}
@@ -297,6 +301,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 16,
     color: "#fff",
+  },
+  separatorColumn: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 20,
   },
 });
 
