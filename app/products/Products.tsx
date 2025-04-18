@@ -238,23 +238,23 @@ const ProductList: React.FC<ProductListProps> = ({
               </TouchableOpacity>
             );
           })}
-          {/* {Array.from({ length: placeholderVal }).map((_, i) => (
+          {Array.from({ length: placeholderVal }).map((_, i) => (
             <View
               key={placeholderVal - i}
               style={[
                 styles.productCard,
                 {
                   width: itemWidth,
-                  backgroundColor: "#F3F3FD",
+                  backgroundColor: "transparent",
                   marginBottom: gap,
                   marginRight: (i + 1) % numColumns === 0 ? 0 : gap,
                 },
               ]}
             />
-          ))} */}
+          ))}
         </ScrollView>
       )}
-      {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
@@ -262,7 +262,7 @@ const ProductList: React.FC<ProductListProps> = ({
           setSnapIndex={setSnapIndex}
           snapIndex={snapIndex}
         />
-      )} 
+      )} */}
     </View>
   );
 };
