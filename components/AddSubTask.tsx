@@ -19,9 +19,6 @@ type SubTaskInput = {
   isEditing: boolean;
 };
 
-const cross = require("../assets/images/cross.svg");
-const check = require("../assets/images/check.svg");
-
 const AddSubTask: React.FC = () => {
   const [inputs, setInputs] = useState<SubTaskInput[]>([]);
   const [showSubTasks, setShowSubTasks] = useState(true);
@@ -99,7 +96,7 @@ const AddSubTask: React.FC = () => {
             </TouchableOpacity>
           </>
         ) : (
-          <View style={{ position: "relative" }}>
+          <View style={{ position: "relative", zIndex: 9999 }}>
             <TouchableOpacity
               onPress={() => setActivePopupId(showOptions ? null : item.id)}
             >
@@ -107,26 +104,12 @@ const AddSubTask: React.FC = () => {
             </TouchableOpacity>
 
             {showOptions && (
-              <View
-                style={{
-                  position: "absolute",
-                  top: 30,
-                  right: 0,
-                  backgroundColor: "#fff",
-                  padding: 10,
-                  zIndex: 100,
-                  borderRadius: 8,
-                  shadowColor: "#000",
-                  shadowOpacity: 0.2,
-                  shadowOffset: { width: 0, height: 2 },
-                }}
-              >
+              <View style={styles.popupDialog}>
                 <TouchableOpacity
-                  onPress={() => {
-                    handleEdit(item.id);
-                  }}
+                  onPress={() => handleEdit(item.id)}
+                  style={styles.popupOption}
                 >
-                  <Text style={{ color: "#4C4C4C" }}>Edit</Text>
+                  <Text style={styles.popupText}>Edit</Text>
                 </TouchableOpacity>
               </View>
             )}
@@ -154,7 +137,7 @@ const AddSubTask: React.FC = () => {
       </View>
 
       {showSubTasks && (
-        <View style={{ width: "90%", alignSelf: "center" }}>
+        <View style={{ width: "90%", alignSelf: "center", zIndex: 10 }}>
           <FlatList
             data={inputs}
             keyExtractor={(item) => item.id.toString()}
@@ -162,6 +145,7 @@ const AddSubTask: React.FC = () => {
           />
         </View>
       )}
+
       {inputs.length >= 1 && (
         <TouchableOpacity
           style={[
@@ -255,6 +239,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginRight: 10,
   },
+  popupDialog: {
+    position: "absolute",
+    left: -70,
+    top: -20,
+    width: ScreenWidth * 0.15,
+    borderWidth: 1,
+    borderColor: "#E0E0E0",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    zIndex: 9999,
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 5,
+  },
+
+  popupOption: {
+    paddingVertical: 6,
+  },
+
+  popupText: {
+    fontSize: 14,
+    color: "#4C4C4C",
+    fontFamily: "OpenSans-SemiBold",
+  },
+
   check: {
     fontSize: 20,
     marginRight: 10,
