@@ -1,6 +1,6 @@
 import { Image } from "expo-image";
 import React, { useState } from "react";
-import { Feather } from "@expo/vector-icons";
+import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
@@ -25,6 +25,7 @@ const AddSubTask: React.FC = () => {
   const [activePopupId, setActivePopupId] = useState<number | null>(null);
 
   const handleAddInput = () => {
+    setShowSubTasks(true);
     setInputs((prev) => [
       ...prev,
       { id: Date.now(), value: "", isCompleted: false, isEditing: true },
@@ -58,7 +59,7 @@ const AddSubTask: React.FC = () => {
           ? {
               ...input,
               isEditing: true,
-              isCompleted: false, // make it editable again
+              isCompleted: false,
             }
           : input
       )
@@ -96,11 +97,16 @@ const AddSubTask: React.FC = () => {
             </TouchableOpacity>
           </>
         ) : (
-          <View style={{ position: "relative", zIndex: 9999 }}>
+          <View
+            style={{
+              position: "relative",
+              zIndex: 0,
+            }}
+          >
             <TouchableOpacity
               onPress={() => setActivePopupId(showOptions ? null : item.id)}
             >
-              <Feather name="more-horizontal" size={20} color="#999" />
+              <Entypo name="dots-three-vertical" size={20} color="#999" />
             </TouchableOpacity>
 
             {showOptions && (
@@ -109,7 +115,15 @@ const AddSubTask: React.FC = () => {
                   onPress={() => handleEdit(item.id)}
                   style={styles.popupOption}
                 >
+                  <Feather name="edit-2" size={15} color="#A9A0F0" />
                   <Text style={styles.popupText}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => handleRemoveInput(item.id)}
+                  style={styles.popupOption}
+                >
+                  <AntDesign name="delete" size={15} color="#B20B1F" />
+                  <Text style={styles.popupText}>Delete</Text>
                 </TouchableOpacity>
               </View>
             )}
@@ -137,7 +151,15 @@ const AddSubTask: React.FC = () => {
       </View>
 
       {showSubTasks && (
-        <View style={{ width: "90%", alignSelf: "center", zIndex: 10 }}>
+        <View
+          style={{
+            width: "90%",
+            alignSelf: "center",
+            zIndex: 10,
+            position: "relative",
+            overflow: "visible",
+          }}
+        >
           <FlatList
             data={inputs}
             keyExtractor={(item) => item.id.toString()}
@@ -219,6 +241,9 @@ const styles = StyleSheet.create({
   },
 
   inputRow: {
+    overflow: "visible",
+    position: "relative", // add this!
+    zIndex: 1,
     flexDirection: "row",
     backgroundColor: "#fff", // same as container
     paddingHorizontal: 16,
@@ -240,29 +265,32 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   popupDialog: {
+    left: -100,
+    top: -30,
     position: "absolute",
-    left: -70,
-    top: -20,
-    width: ScreenWidth * 0.15,
-    borderWidth: 1,
-    borderColor: "#E0E0E0",
+    zIndex: 999,
+    elevation: 20,
+    width: ScreenWidth * 0.23,
     backgroundColor: "#fff",
     borderRadius: 10,
     paddingVertical: 8,
     paddingHorizontal: 12,
-    zIndex: 9999,
     shadowColor: "#000",
     shadowOpacity: 0.15,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
-    elevation: 5,
   },
 
   popupOption: {
-    paddingVertical: 6,
+    flexDirection: "row",
+    gap: 5,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 3,
   },
 
   popupText: {
+    width:50,
     fontSize: 14,
     color: "#4C4C4C",
     fontFamily: "OpenSans-SemiBold",
@@ -280,6 +308,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: ScreenWidth * 0.9,
     height: 40,
+    zIndex: 10,
     alignSelf: "center",
     flexDirection: "row",
     justifyContent: "center",
