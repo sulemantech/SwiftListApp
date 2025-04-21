@@ -167,6 +167,7 @@ const Home = () => {
           progress,
           percentagetext: `${card.percentagetext.split(' ')[0]} ${percentage}%`,
           // percentage,
+          
         };
       });
       
