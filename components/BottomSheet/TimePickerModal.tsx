@@ -310,3 +310,5 @@ const styles = StyleSheet.create({
 });
 
 export default TimePickerModal;
+
+//  Platform.OS === "web" && { cursor: "grab" },

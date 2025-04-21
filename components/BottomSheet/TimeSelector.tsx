@@ -1,9 +1,18 @@
 // components/BottomSheet/TimeSelector.tsx
 
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Switch, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Switch,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // For clock icon
 import TimePickerModal from "./TimePickerModal"; // We'll create this next
+
+const { width, height } = Dimensions.get("window");
 
 interface TimeSelectorProps {
   initialStartTime?: string;
@@ -27,7 +36,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Ionicons name="time-outline" size={20} color="#555" />
+          <Ionicons name="time-outline" size={width * 0.05} color="#555" />
           <Text style={styles.headerText}>Time</Text>
         </View>
         <Switch
@@ -86,66 +95,66 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({
   );
 };
 
+export default TimeSelector;
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F7F6FC",
     borderRadius: 15,
     marginHorizontal: "auto",
-    padding: 16,
-    marginVertical: 10,
+    paddingHorizontal: width * 0.05,
+    paddingVertical: height * 0.02,
+    marginVertical: height * 0.015,
     width: "90%",
-    height: 150,
+    height: height * (153 / 820),
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
-    
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 12,
+    marginBottom: height * 0.015,
   },
   headerLeft: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: width * 0.02,
   },
   headerText: {
-    fontSize: 16,
+    fontSize: width * 0.045,
     fontWeight: "600",
     color: "#333",
   },
   timeContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 12,
+    marginTop: height * 0.015,
   },
   timeBlock: {
     flex: 1,
     alignItems: "center",
   },
   label: {
-    fontSize: 14,
+    fontSize: width * 0.035,
     color: "#555",
-    marginBottom: 6,
+    marginBottom: height * 0.01,
   },
   timeButton: {
     borderWidth: 1,
     borderColor: "#E2E2E2",
     borderRadius: 10,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    minWidth: 110,
+    paddingHorizontal: width * 0.04,
+    paddingVertical: height * 0.012,
+    minWidth: width * 0.25,
     alignItems: "center",
   },
   timeText: {
-    fontSize: 16,
+    fontSize: width * 0.04,
     color: "#333",
     fontWeight: "500",
   },
 });
-
-export default TimeSelector;
