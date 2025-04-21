@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,28 +6,39 @@ import {
   StyleSheet,
   Switch,
   Dimensions,
+  Modal,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ReminderPickerModal from "@/components/BottomSheet/ReminderPickerModal"; // import ReminderPickerModal
 
 const { width, height } = Dimensions.get("window");
 
-interface ReminderSectionProps {
-  reminderText?: string;
-  isEnabled?: boolean;
-  onToggleSwitch?: (value: boolean) => void;
-  onDeleteReminder?: () => void;
-  onPressReminderField?: () => void;
-  onAddReminder?: () => void;
-}
+const ReminderSection = () => {
+  const [reminderText, setReminderText] = useState("DD MM - 00:00 AM");
+  const [isEnabled, setIsEnabled] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-const ReminderSection: React.FC<ReminderSectionProps> = ({
-  reminderText = "DD MM - 00:00 AM",
-  isEnabled = true,
-  onToggleSwitch = () => {},
-  onDeleteReminder = () => {},
-  onPressReminderField = () => {},
-  onAddReminder = () => {},
-}) => {
+  const handleToggleSwitch = (value: boolean) => {
+    setIsEnabled(value);
+  };
+
+  const handleDeleteReminder = () => {
+    setReminderText("DD MM - 00:00 AM");
+    setIsEnabled(false);
+  };
+
+  const handleAddReminder = () => {
+    setIsModalVisible(true);
+  };
+
+  const handlePressReminderField = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleModalSave = (selectedValue: string) => {
+    setReminderText(selectedValue);
+  };
+
   return (
     <View style={styles.container}>
       {/* Title and Actions Row */}
@@ -45,7 +56,7 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({
       {/* Reminder Field Row */}
       <View style={styles.reminderFieldRow}>
         <TouchableOpacity
-          onPress={onPressReminderField}
+          onPress={handlePressReminderField}
           style={styles.dateField}
         >
           <Text style={styles.dateText}>{reminderText}</Text>
@@ -53,7 +64,7 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({
 
         <View style={styles.rightIcons}>
           <TouchableOpacity
-            onPress={onDeleteReminder}
+            onPress={handleDeleteReminder}
             style={styles.trashButtonInside}
           >
             <Ionicons
@@ -64,7 +75,7 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({
           </TouchableOpacity>
           <Switch
             value={isEnabled}
-            onValueChange={onToggleSwitch}
+            onValueChange={handleToggleSwitch}
             trackColor={{ false: "#ccc", true: "#B5A9F8" }}
             thumbColor="#fff"
           />
@@ -72,12 +83,19 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({
       </View>
 
       {/* Add Reminder */}
-      <TouchableOpacity style={styles.addButton} onPress={onAddReminder}>
+      <TouchableOpacity style={styles.addButton} onPress={handleAddReminder}>
         <View style={styles.addIconWrapper}>
           <Ionicons name="add" size={width * (12.5 / 360)} color="#6A5AE0" />
         </View>
         <Text style={styles.addButtonText}>Add Reminder</Text>
       </TouchableOpacity>
+
+      {/* Reminder Picker Modal */}
+      <ReminderPickerModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onSave={handleModalSave}
+      />
     </View>
   );
 };

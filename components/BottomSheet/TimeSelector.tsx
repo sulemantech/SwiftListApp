@@ -99,7 +99,7 @@ export default TimeSelector;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F7F6FC",
+    backgroundColor: "#FFFFFF",
     borderRadius: 15,
     marginHorizontal: "auto",
     paddingHorizontal: width * 0.05,

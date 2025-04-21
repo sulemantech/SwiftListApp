@@ -8,7 +8,7 @@ const My_List = () => {
   return (
     <View style={styles.container}>
       <TimeSelector />
-      <AddSubTask/>
+      <AddSubTask/> 
     </View>
   );
 }
