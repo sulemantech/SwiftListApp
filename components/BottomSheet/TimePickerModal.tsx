@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  Dimensions,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from "react-native";
 import Modal from "react-native-modal";
 
@@ -14,8 +15,6 @@ interface TimePickerModalProps {
   onClose: () => void;
   onConfirm: (time: string) => void;
 }
-
-const { height: screenHeight } = Dimensions.get("window");
 
 const ITEM_HEIGHT = 40;
 
@@ -58,11 +57,20 @@ const TimePickerModal: React.FC<TimePickerModalProps> = ({
     </View>
   );
 
-  const handleScrollEnd = (e: any, list: "hour" | "minute" | "period") => {
-    const index = Math.round(e.nativeEvent.contentOffset.y / ITEM_HEIGHT);
-    if (list === "hour") setSelectedHour(hours[index]);
-    else if (list === "minute") setSelectedMinute(minutes[index]);
-    else if (list === "period") setSelectedPeriod(periods[index]);
+  const handleScroll = (
+    e: NativeSyntheticEvent<NativeScrollEvent>,
+    list: "hour" | "minute" | "period"
+  ) => {
+    const offsetY = e.nativeEvent.contentOffset.y;
+    const index = Math.round(offsetY / ITEM_HEIGHT);
+
+    if (list === "hour") {
+      setSelectedHour(hours[index]);
+    } else if (list === "minute") {
+      setSelectedMinute(minutes[index]);
+    } else if (list === "period") {
+      setSelectedPeriod(periods[index]);
+    }
   };
 
   return (
@@ -78,58 +86,79 @@ const TimePickerModal: React.FC<TimePickerModalProps> = ({
       <View style={styles.container}>
         <Text style={styles.title}>Time</Text>
 
-        {/* Time Pickers */}
+        {/* 🟣 Label Row */}
+        <View style={styles.labelRow}>
+          <Text style={[styles.labelText, { left: -15 }]}>Hours</Text>
+          <Text style={styles.labelText}>Minutes</Text>
+          <Text style={styles.labelText}></Text> {/* Empty for AM/PM */}
+        </View>
+
         <View style={styles.pickerContainer}>
-          {/* Top and Bottom separator lines */}
-          <View style={styles.separatorLineTop} />
-          <View style={styles.separatorLineBottom} />
+          {/* 🟣 Top and Bottom separators */}
+          <View style={styles.separatorTopRow}>
+            <View style={styles.separatorSmall} />
+            <View style={styles.separatorSmall} />
+            <View style={styles.separatorSmall} />
+          </View>
+          <View style={styles.separatorBottomRow}>
+            <View style={styles.separatorSmall} />
+            <View style={styles.separatorSmall} />
+            <View style={styles.separatorSmall} />
+          </View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            {/* Hours */}
+            <FlatList
+              ref={hourRef}
+              data={hours}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: 2 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "hour")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedHour)}
+            />
 
-          {/* Hours Picker */}
-          <FlatList
-            ref={hourRef}
-            data={hours}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={styles.flatList}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onMomentumScrollEnd={(e) => handleScrollEnd(e, "hour")}
-            renderItem={({ item }) => renderItem(item, selectedHour)}
-          />
+            {/* Separator ":" in its own column */}
+            <View style={styles.separatorColumn}>
+              <Text style={styles.separator}>:</Text>
+            </View>
 
-          <Text style={styles.separator}>:</Text>
+            {/* Minutes */}
+            <FlatList
+              ref={minuteRef}
+              data={minutes}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: -10 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "minute")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedMinute)}
+            />
 
-          {/* Minutes Picker */}
-          <FlatList
-            ref={minuteRef}
-            data={minutes}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={styles.flatList}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onMomentumScrollEnd={(e) => handleScrollEnd(e, "minute")}
-            renderItem={({ item }) => renderItem(item, selectedMinute)}
-          />
-
-          {/* AM/PM Picker */}
-          <FlatList
-            ref={periodRef}
-            data={periods}
-            keyExtractor={(item) => item}
-            showsVerticalScrollIndicator={false}
-            style={styles.flatList}
-            snapToInterval={ITEM_HEIGHT}
-            decelerationRate="fast"
-            bounces={true}
-            contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
-            onMomentumScrollEnd={(e) => handleScrollEnd(e, "period")}
-            renderItem={({ item }) => renderItem(item, selectedPeriod)}
-          />
+            {/* AM / PM */}
+            <FlatList
+              ref={periodRef}
+              data={periods}
+              keyExtractor={(item) => item}
+              showsVerticalScrollIndicator={false}
+              style={[styles.flatList, { left: -4 }]}
+              snapToInterval={ITEM_HEIGHT}
+              decelerationRate="fast"
+              bounces={true}
+              contentContainerStyle={{ paddingVertical: ITEM_HEIGHT * 2 }}
+              onScroll={(e) => handleScroll(e, "period")}
+              scrollEventThrottle={16}
+              renderItem={({ item }) => renderItem(item, selectedPeriod)}
+            />
+          </View>
         </View>
 
         {/* Action Buttons */}
@@ -171,7 +200,23 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "600",
-    marginBottom: 20,
+    marginBottom: 10,
+    // color: "red",
+  },
+  labelRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "80%",
+    marginBottom: 5,
+    // color: "red",
+    marginRight: 25,
+  },
+  labelText: {
+    fontSize: 14,
+    color: "#5C5C5C",
+    textAlign: "center",
+    marginTop: 10,
+    opacity: 0.6,
   },
   pickerContainer: {
     flexDirection: "row",
@@ -179,33 +224,44 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     position: "relative",
     height: 200,
+    // backgroundColor:"red",
   },
-  separatorLineTop: {
+  separatorTopRow: {
     position: "absolute",
     top: 80,
     left: 0,
     right: 0,
     height: 1,
-    backgroundColor: "#B5A9F8",
-    opacity: 0.7,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    zIndex: 1,
   },
-  separatorLineBottom: {
+  separatorBottomRow: {
     position: "absolute",
     bottom: 80,
     left: 0,
     right: 0,
     height: 1,
-    backgroundColor: "#B5A9F8",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    zIndex: 1,
+  },
+  separatorSmall: {
+    width: 40,
+    height: 1,
+    backgroundColor: "#A9A0F0",
     opacity: 0.7,
   },
   flatList: {
     height: 200,
     width: 60,
+    // backgroundColor: "red",
   },
   item: {
     height: ITEM_HEIGHT,
     justifyContent: "center",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   itemText: {
     fontSize: 18,
@@ -213,13 +269,13 @@ const styles = StyleSheet.create({
   },
   selectedItemText: {
     fontSize: 20,
-    color: "#7B61FF",
+    color: "#A9A0F0",
     fontWeight: "bold",
   },
   separator: {
     fontSize: 24,
     marginHorizontal: 8,
-    color: "#B5A9F8",
+    color: "#A9A0F0",
   },
   buttonRow: {
     flexDirection: "row",
@@ -235,17 +291,24 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     borderWidth: 1,
-    borderColor: "#7B61FF",
+    borderColor: "#A9A0F0",
     backgroundColor: "transparent",
   },
   okButton: {
-    backgroundColor: "#7B61FF",
+    backgroundColor: "#A9A0F0",
   },
   buttonText: {
     fontWeight: "600",
     fontSize: 16,
     color: "#fff",
   },
+  separatorColumn: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 20,
+  },
 });
 
 export default TimePickerModal;
+
+//  Platform.OS === "web" && { cursor: "grab" },

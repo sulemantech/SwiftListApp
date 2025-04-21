@@ -244,7 +244,7 @@ const ProductList: React.FC<ProductListProps> = ({
                 styles.productCard,
                 {
                   width: itemWidth,
-                  backgroundColor: "#F3F3FD",
+                  backgroundColor: "transparent",
                   marginBottom: gap,
                   marginRight: (i + 1) % numColumns === 0 ? 0 : gap,
                 },
@@ -253,14 +253,14 @@ const ProductList: React.FC<ProductListProps> = ({
           ))} */}
         </ScrollView>
       )}
-      {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
        
         />
-      )} 
+      )} */}
     </View>
   );
 };
