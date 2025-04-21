@@ -253,14 +253,14 @@ const ProductList: React.FC<ProductListProps> = ({
           ))} */}
         </ScrollView>
       )}
-      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
        
         />
-      )} */}
+      )}
     </View>
   );
 };
