@@ -169,6 +169,7 @@ const Home = () => {
           // percentage,
         };
       });
+      
 
       setCardDataFilterArray(updatedCardDataWithPercentages);
     };
