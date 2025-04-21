@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
   },
   chevronbar: {
     backgroundColor: "#fff",
-    width: ScreenWidth * 0.9,
+    width: "90%",
     height: 40,
     zIndex: 10,
     alignSelf: "center",
