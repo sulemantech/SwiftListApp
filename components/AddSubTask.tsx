@@ -160,11 +160,9 @@ const AddSubTask: React.FC = () => {
             overflow: "visible",
           }}
         >
-          <FlatList
-            data={inputs}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderItem}
-          />
+          {inputs.map((item) => (
+            <View key={item.id}>{renderItem({ item, index: 0, separators: { highlight: () => {}, unhighlight: () => {}, updateProps: () => {} } })}</View>
+          ))}
         </View>
       )}
 
@@ -290,7 +288,7 @@ const styles = StyleSheet.create({
   },
 
   popupText: {
-    width:50,
+    width: 50,
     fontSize: 14,
     color: "#4C4C4C",
     fontFamily: "OpenSans-SemiBold",
