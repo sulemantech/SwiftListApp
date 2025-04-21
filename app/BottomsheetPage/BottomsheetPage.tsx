@@ -5,6 +5,7 @@ import CalendarTabBar from "@/components/CalanderTabBar";
 import TimeSelector from "@/components/BottomSheet/TimeSelector";
 import Header from "@/components/Header";
 import { useRouter } from "expo-router";
+import AddSubTask from "@/components/AddSubTask";
 
 export default function BottomsheetPage() {
   const { theme } = useTheme();
@@ -18,6 +19,7 @@ export default function BottomsheetPage() {
         <CalendarTabBar />
       </View>
       <TimeSelector />
+      <AddSubTask/>
     </ScrollView>
   );
 }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     height: "100%",
-    backgroundColor: "#FFF",
+    backgroundColor: "#f4f4f4",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowColor: "#000",
