@@ -8,11 +8,17 @@ import React, {
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { Badge, useTheme } from "@rneui/themed";
 import { CardWithCounter } from "./CardWithCouter";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet, {
+  BottomSheetScrollView,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
 import { ProductContext } from "../Context/CardContext";
 import { Divider, Theme, Switch } from "@rneui/themed";
 import CalendarTabBar from "./CalanderTabBar";
 import { useRouter } from "expo-router";
+import TextInput2 from "./Input1";
+import TimeSelector from "./BottomSheet/TimeSelector";
+import AddSubTask from "./AddSubTask";
 const { width } = Dimensions.get("window");
 
 interface BottomSheetComponentProps {
@@ -41,13 +47,14 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
     unit: "",
     urgency: false,
   });
-    const [snapIndex, setSnapIndex] = useState<number>(0);
-  
+  const [snapIndex, setSnapIndex] = useState<number>(0);
+  const [description, setDescription] = useState<string>("");
 
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
   const { theme } = useTheme();
 
-  const snapPoints = useMemo(() => ["25%", "55%", "90%" , "99%"], []);
+  const snapPoints = useMemo(() => ["25%", "55%", "90%", "99%"], []);
+  const [sheetHeight, setSheetHeight] = useState(100);
   const ItemValues: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
   const { selectedProducts, updateSelectedProductsQuantity } =
     useContext(ProductContext);
@@ -100,10 +107,10 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const router = useRouter();
   const handleSnapPress = (index: any) => {
     setSnapIndex(index);
-    if (index === 4) {
-      setIsProductSelected(false)
-      router.push("/BottomsheetPage/BottomsheetPage");
-    }
+    // if (index === 4) {
+    //   setIsProductSelected(false)
+    //   router.push("/BottomsheetPage/BottomsheetPage");
+    // }
   };
 
   return (
@@ -116,58 +123,81 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
       )}
       handleIndicatorStyle={styles.handleIndicator} //
     >
-      <BottomSheetView  style={styles.contentContainer}>
-        <View style={styles.bottomSheetHeader}>
-          <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
-          <Text
-            onPress={() => setIsProductSelected(false)}
-            style={styles.doneText}
-          >
-            Done
-          </Text>
-        </View>
-        {/* divider */}
-        <View style={styles.divider} />
-        <View style={styles.FromCategoryContainer}>
-          <Text style={styles.Category}>Categories</Text>
-          <Badge
-            value={`${ListName}`}
-            badgeStyle={styles.CategoryContainer}
-            textStyle={styles.CategoryName}
+      <BottomSheetScrollView>
+        <BottomSheetView style={styles.contentContainer}>
+          <View style={styles.bottomSheetHeader}>
+            <Text style={styles.bottomSheetHeadertext}>{selecteditem}</Text>
+            <Text
+              onPress={() => setIsProductSelected(false)}
+              style={styles.doneText}
+            >
+              Done
+            </Text>
+          </View>
+          {/* divider */}
+          <View style={styles.divider} />
+          <View style={styles.FromCategoryContainer}>
+            <Text style={styles.Category}>Categories</Text>
+            <Badge
+              value={`${ListName}`}
+              badgeStyle={styles.CategoryContainer}
+              textStyle={styles.CategoryName}
+            />
+          </View>
+        </BottomSheetView>
+        {/*======================== old code ======================*/}
+        <BottomSheetView style={styles.counterCardWrapper}>
+          <View style={styles.counterCard}>
+            <Text> </Text>
+            <Text style={styles.CardName}>Quantity</Text>
+            <Switch
+              value={checked}
+              onValueChange={(value) => setChecked(value)}
+            />
+          </View>
+          <Divider
+            width={1.5}
+            color={theme?.colors?.primary}
+            style={{ marginVertical: 10 }}
           />
-        </View>
-      </BottomSheetView>
-      {/*======================== old code ======================*/}
-      <BottomSheetView style={styles.counterCardWrapper}>
-        <View style={styles.counterCard}>
-          <Text> </Text>
-          <Text style={styles.CardName}>Counter</Text>
-          <Switch
-            value={checked}
-            onValueChange={(value) => setChecked(value)}
+          <View style={styles.counterCard}>
+            {/* <View style={styles.LabelCounter}>
+              <Text style={styles.CounterLabeltext}>Quantity</Text>
+              <CardWithCounter Element={NUMBERS} />
+            </View>
+            <View style={styles.LabelCounter}>
+              <Text style={styles.CounterLabeltext}>Unit</Text>
+              <CardWithCounter Element={Quntity} />
+            </View>
+            <View style={styles.LabelCounter}>
+              <Text style={styles.CounterLabeltext}> </Text>
+              <CardWithCounter Element={Time} />
+            </View> */}
+            <View style={{ width: "95%", marginHorizontal: "auto" }}>
+              <TextInput2
+                label={"Description"}
+                placeholder={"Enter description, quantity, unit."}
+                value={description}
+                onChangeText={setDescription}
+                onFocus={undefined}
+                onBlur={undefined}
+                style={undefined}
+              />
+            </View>
+          </View>
+        </BottomSheetView>
+        <BottomSheetView style={[{ height: sheetHeight }]}>
+          <CalendarTabBar
+            onTabChange={(tabIndex) => {
+              if (tabIndex === 0) setSheetHeight(100);
+              else if (tabIndex === 1) setSheetHeight(150);
+              else setSheetHeight(450);
+            }}
           />
-        </View>
-        <Divider
-          width={1.5}
-          color={theme?.colors?.primary}
-          style={{ marginVertical: 10 }}
-        />
-        <View style={styles.counterCard}>
-          <View style={styles.LabelCounter}>
-            <Text style={styles.CounterLabeltext}>Quantity</Text>
-            <CardWithCounter Element={NUMBERS} />
-          </View>
-          <View style={styles.LabelCounter}>
-            <Text style={styles.CounterLabeltext}>Unit</Text>
-            <CardWithCounter Element={Quntity} />
-          </View>
-          <View style={styles.LabelCounter}>
-            <Text style={styles.CounterLabeltext}> </Text>
-            <CardWithCounter Element={Time} />
-          </View>
-        </View>
-      </BottomSheetView>
-      <CalendarTabBar/>
+        </BottomSheetView>
+        <TimeSelector />
+        <AddSubTask />
+      </BottomSheetScrollView>
     </BottomSheet>
   );
 };
@@ -189,7 +219,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   counterCardWrapper: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "transparent",
     marginTop: 10,
     width: "90%",
     marginHorizontal: "auto",
