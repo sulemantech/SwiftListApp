@@ -1,4 +1,3 @@
-// ReminderPickerModal.tsx
 import React, { useState, useRef, useEffect } from "react";
 import {
   Modal,
@@ -88,6 +87,9 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
     "Tomorrow",
     "In 2 days",
     "In 3 days",
+    "In month",
+    "In week",
+    "In Year",
   ];
 
   const handleSave = () => {
@@ -134,10 +136,8 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
               <Ionicons name="close" size={28} color="#6C6C6C" />
             </TouchableOpacity>
           </View>
-
           {/* Divider */}
           <View style={styles.divider} />
-
           {/* Tabs */}
           <View style={styles.tabs}>
             <TouchableOpacity
@@ -165,8 +165,8 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
               </Text>
             </TouchableOpacity>
           </View>
-
           {/* Content */}
+
           {activeTab === "Custom" ? (
             <View style={styles.customContainer}>
               <View style={styles.selectionOverlay} pointerEvents="none" />
@@ -234,26 +234,44 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
               </View>
             </View>
           ) : (
-            <View style={styles.quickOptions}>
-              {quickOptions.map((option) => (
-                <TouchableOpacity
-                  key={option}
-                  style={styles.option}
-                  onPress={() => setSelectedQuickOption(option)}
-                >
-                  <Text
-                    style={[
-                      styles.optionText,
-                      selectedQuickOption === option && styles.selectedOption,
-                    ]}
+            <View style={styles.quickOptionsWrapper}>
+              <FlatList
+                data={quickOptions}
+                keyExtractor={(item) => item}
+                style={styles.quickOptions}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item: option }) => (
+                  <TouchableOpacity
+                    style={styles.quickOptionRow}
+                    onPress={() => setSelectedQuickOption(option)}
                   >
-                    {option}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                    <View style={styles.quickOptionContent}>
+                      <Ionicons
+                        name="calendar-outline"
+                        size={20}
+                        color={
+                          selectedQuickOption === option ? "#B5A9F8" : "#555"
+                        }
+                        style={styles.optionIcon}
+                      />
+                      <Text
+                        style={[
+                          styles.optionText,
+                          selectedQuickOption === option &&
+                            styles.selectedOption,
+                        ]}
+                      >
+                        {option}
+                      </Text>
+                    </View>
+                    {selectedQuickOption === option && (
+                      <Ionicons name="checkmark" size={24} color="#B5A9F8" />
+                    )}
+                  </TouchableOpacity>
+                )}
+              />
             </View>
           )}
-
           {/* Save Button */}
           <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
             <Text style={styles.saveButtonText}>Save</Text>
@@ -374,8 +392,18 @@ const styles = StyleSheet.create({
   quickOptions: {
     paddingHorizontal: 10,
   },
-  option: {
+  quickOptionRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingVertical: 12,
+  },
+  quickOptionContent: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  optionIcon: {
+    marginRight: 10,
   },
   optionText: {
     fontSize: 16,
@@ -396,5 +424,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#fff",
+  },
+  quickOptionsWrapper: {
+    maxHeight: height * 0.25, // 👈 Add this new style
   },
 });
