@@ -45,13 +45,12 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
   const router = useRouter();
   const { selectedProducts } = useContext(ProductContext);
-  const { name } = useLocalSearchParams();
+  const { name , id } = useLocalSearchParams();
 
   const matchingCategory = MyListCollection.find((categoryObj) => {
-    const categoryName = categoryObj.name ?? categoryObj.name;
+    const categoryName = categoryObj.id ?? categoryObj.id;
     return (
-      categoryName?.toLowerCase() ===
-      (Array.isArray(name) ? name[0] : name)?.toLowerCase()
+      categoryName == Number(id)
     );
   });
 
