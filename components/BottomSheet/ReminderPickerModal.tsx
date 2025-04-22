@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+// ReminderPickerModal.tsx
+import React, { useState, useRef, useEffect } from "react";
 import {
   Modal,
   View,
@@ -8,10 +9,24 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 const dates = Array.from({ length: 31 }, (_, i) =>
   (i + 1).toString().padStart(2, "0")
 );
@@ -22,6 +37,8 @@ const minutes = Array.from({ length: 60 }, (_, i) =>
   i.toString().padStart(2, "0")
 );
 const periods = ["AM", "PM"];
+
+const ITEM_HEIGHT = 40;
 
 interface ReminderPickerModalProps {
   visible: boolean;
@@ -43,6 +60,28 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
   const [selectedQuickOption, setSelectedQuickOption] =
     useState("In 30 minutes");
 
+  const monthRef = useRef<FlatList>(null);
+  const dateRef = useRef<FlatList>(null);
+  const hourRef = useRef<FlatList>(null);
+  const minuteRef = useRef<FlatList>(null);
+  const periodRef = useRef<FlatList>(null);
+
+  useEffect(() => {
+    if (visible) {
+      monthRef.current?.scrollToIndex({ index: 0, animated: false });
+      dateRef.current?.scrollToIndex({ index: 0, animated: false });
+      hourRef.current?.scrollToIndex({ index: 0, animated: false });
+      minuteRef.current?.scrollToIndex({ index: 0, animated: false });
+      periodRef.current?.scrollToIndex({ index: 0, animated: false });
+
+      setSelectedMonth(months[0]);
+      setSelectedDate(dates[0]);
+      setSelectedHour(hours[0]);
+      setSelectedMinute(minutes[0]);
+      setSelectedPeriod(periods[0]);
+    }
+  }, [visible]);
+
   const quickOptions = [
     "In 30 minutes",
     "In one hour",
@@ -61,10 +100,44 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
     onClose();
   };
 
+  const renderPickerItem = (item: string, selected: string) => (
+    <View style={styles.pickerItem}>
+      <Text
+        style={[
+          styles.pickerItemText,
+          item === selected && styles.selectedPickerItemText,
+        ]}
+      >
+        {item}
+      </Text>
+    </View>
+  );
+
+  const handleScroll = (e: any, listType: string) => {
+    const offsetY = e.nativeEvent.contentOffset.y;
+    const index = Math.round(offsetY / ITEM_HEIGHT);
+    if (listType === "month") setSelectedMonth(months[index]);
+    if (listType === "date") setSelectedDate(dates[index]);
+    if (listType === "hour") setSelectedHour(hours[index]);
+    if (listType === "minute") setSelectedMinute(minutes[index]);
+    if (listType === "period") setSelectedPeriod(periods[index]);
+  };
+
   return (
     <Modal visible={visible} transparent animationType="slide">
       <View style={styles.overlay}>
         <View style={styles.modal}>
+          {/* Header */}
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Reminder</Text>
+            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+              <Ionicons name="close" size={28} color="#6C6C6C" />
+            </TouchableOpacity>
+          </View>
+
+          {/* Divider */}
+          <View style={styles.divider} />
+
           {/* Tabs */}
           <View style={styles.tabs}>
             <TouchableOpacity
@@ -95,11 +168,70 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
 
           {/* Content */}
           {activeTab === "Custom" ? (
-            <View style={styles.pickerContainer}>
-              <Text style={styles.pickerText}>
-                {selectedMonth} {selectedDate} - {selectedHour}:{selectedMinute}{" "}
-                {selectedPeriod}
-              </Text>
+            <View style={styles.customContainer}>
+              <View style={styles.selectionOverlay} pointerEvents="none" />
+              <View style={styles.scrollPickerRow}>
+                {[
+                  {
+                    label: "Month",
+                    data: months,
+                    selected: selectedMonth,
+                    ref: monthRef,
+                    type: "month",
+                  },
+                  {
+                    label: "Date",
+                    data: dates,
+                    selected: selectedDate,
+                    ref: dateRef,
+                    type: "date",
+                  },
+                  {
+                    label: "Hours",
+                    data: hours,
+                    selected: selectedHour,
+                    ref: hourRef,
+                    type: "hour",
+                  },
+                  {
+                    label: "Minutes",
+                    data: minutes,
+                    selected: selectedMinute,
+                    ref: minuteRef,
+                    type: "minute",
+                  },
+                  {
+                    label: " ",
+                    data: periods,
+                    selected: selectedPeriod,
+                    ref: periodRef,
+                    type: "period",
+                  },
+                ].map((col) => (
+                  <View style={styles.pickerColumn} key={col.type}>
+                    {col.label ? (
+                      <Text style={styles.titleText}>{col.label}</Text>
+                    ) : null}
+                    <FlatList
+                      ref={col.ref}
+                      data={col.data}
+                      keyExtractor={(item) => item}
+                      showsVerticalScrollIndicator={false}
+                      snapToInterval={ITEM_HEIGHT}
+                      decelerationRate="fast"
+                      contentContainerStyle={{
+                        paddingVertical: ITEM_HEIGHT * 2,
+                      }}
+                      onScroll={(e) => handleScroll(e, col.type)}
+                      scrollEventThrottle={16}
+                      renderItem={({ item }) =>
+                        renderPickerItem(item, col.selected)
+                      }
+                      style={styles.pickerList}
+                    />
+                  </View>
+                ))}
+              </View>
             </View>
           ) : (
             <View style={styles.quickOptions}>
@@ -138,26 +270,50 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   modal: {
-    backgroundColor: "#F9F9FB",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    backgroundColor: "#F3F3FD",
+    borderRadius: 20,
     padding: 20,
-    minHeight: height * 0.5,
+    marginHorizontal: 20,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    position: "relative",
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  closeButton: {
+    position: "absolute",
+    right: 0,
+    padding: 8,
+  },
+  divider: {
+    width: "110%",
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    marginTop: 8,
+    marginBottom: 14,
+    left: -20,
   },
   tabs: {
     flexDirection: "row",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 25,
     marginBottom: 20,
   },
   tab: {
     flex: 1,
     alignItems: "center",
-    paddingVertical: 10,
+    paddingVertical: 12,
     borderRadius: 25,
-    backgroundColor: "#EAEAEA",
-    marginHorizontal: 5,
   },
   activeTab: {
     backgroundColor: "#B5A9F8",
@@ -171,14 +327,49 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-  pickerContainer: {
+  customContainer: {
     alignItems: "center",
-    marginBottom: 20,
   },
-  pickerText: {
-    fontSize: 20,
+  scrollPickerRow: {
+    flexDirection: "row",
+    marginBottom: 10,
+    position: "relative",
+  },
+  pickerColumn: {
+    alignItems: "center",
+    width: 60,
+  },
+  titleText: {
+    fontSize: 14,
     fontWeight: "bold",
-    color: "#555",
+    color: "#5C5C5C",
+    marginBottom: 8,
+  },
+  pickerList: {
+    height: ITEM_HEIGHT * 5,
+  },
+  pickerItem: {
+    height: ITEM_HEIGHT,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  pickerItemText: {
+    fontSize: 16,
+    color: "#888",
+  },
+  selectedPickerItemText: {
+    fontSize: 18,
+    color: "#333",
+    fontWeight: "bold",
+  },
+  selectionOverlay: {
+    position: "absolute",
+    top: ITEM_HEIGHT * 2 + 24,
+    left: 0,
+    right: 0,
+    height: ITEM_HEIGHT,
+    backgroundColor: "#E0D9FA",
+    borderRadius: 20,
   },
   quickOptions: {
     paddingHorizontal: 10,
