@@ -100,10 +100,10 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const router = useRouter();
   const handleSnapPress = (index: any) => {
     setSnapIndex(index);
-    if (index === 4) {
-      setIsProductSelected(false)
-      router.push("/BottomsheetPage/BottomsheetPage");
-    }
+    // if (index === 4) {
+    //   setIsProductSelected(false)
+    //   router.push("/BottomsheetPage/BottomsheetPage");
+    // }
   };
 
   return (

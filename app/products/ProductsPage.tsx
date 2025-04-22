@@ -5,7 +5,7 @@ import {
   View,
   BackHandler,
   SafeAreaView,
-  StatusBar
+  StatusBar,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { MyListCollection } from "../../constants/Data";
@@ -24,8 +24,8 @@ const ProductsPage: React.FC = () => {
 
   // Adjust for inconsistent structure of MyListCollection
   const allCategories = useMemo(() => {
-    return MyListCollection.flatMap((list) =>
-      list.Categories ?? list.Categories ?? []
+    return MyListCollection.flatMap(
+      (list) => list.Categories ?? list.Categories ?? []
     );
   }, []);
 
@@ -42,7 +42,10 @@ const ProductsPage: React.FC = () => {
       const selectedItem = selectedProducts[ListName]?.find(
         (selected: { name: string }) => selected.name === item.name
       );
-      return selectedItem ? { ...selectedItem, imgPath: item.imgPath } : item;
+      console.log(item, "selectedItem");
+      return selectedItem
+        ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
+        : item;
     });
   }, [matchingSubCategory, selectedProducts, ListName]);
 
@@ -105,6 +108,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 1,
     backgroundColor: "#ccc",
-    marginTop: 15,
-  },
+    marginTop: 15,
+  },
 });
