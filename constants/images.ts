@@ -151,167 +151,167 @@ import WhiteBeans from "../assets/images/SwiftlistApp/Grocery/Pulses/WhiteBeans.
 import WhiteLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/WhiteLentil.svg";
 import YellowLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/YellowLentil.svg";
 
- const frozenitems = [
-  { name: "Bread", imgPath: Bread },
-  { name: "Burger Patties", imgPath: BurgerPatties },
-  { name: "Cheese Ball", imgPath: CheeseBall },
-  { name: "Chicken Breast", imgPath: ChickenBreast },
-  { name: "Chicken Samosa", imgPath: ChickenSamosa },
-  { name: "Chicken Strips", imgPath: ChickenStrips },
-  { name: "Chicken Wings", imgPath: ChickenWings },
-  { name: "Corn", imgPath: Corn },
-  { name: "Dumplings", imgPath: Dumplings },
-  { name: "Fish", imgPath: Fish },
-  { name: "French Fries", imgPath: FrenchFries },
-  // { name: "Fruits", imgPath: Fruits },
-  { name: "Full Chicken", imgPath: FullChicken },
-  { name: "Gola Kebab", imgPath: GolaKebab },
-  { name: "Ice Cream", imgPath: IceCream },
-  { name: "Meat", imgPath: Meat },
-  { name: "Meatballs", imgPath: Meatballs },
-  { name: "Nuggets", imgPath: Nuggets },
-  { name: "Parathas", imgPath: Parathas },
-  { name: "Pepperoni", imgPath: Pepperoni },
-  { name: "Pizza", imgPath: Pizza },
-  { name: "Popcorn Chicken", imgPath: PopcornChicken },
-  { name: "Sausages", imgPath: Sausages },
-  { name: "Spring Roll", imgPath: SpringRoll },
-  { name: "Vegetable Samosa", imgPath: VegetableSamosa },
-  { name: "Vegetables", imgPath: Vegetables },
-  { name: "Wonton", imgPath: Wonton },
-  { name: "Chicken Drumstick", imgPath: ChickenDrumstick },
+const frozenitems = [
+  { id: 1, name: "Bread", imgPath: Bread },
+  { id: 2, name: "Burger Patties", imgPath: BurgerPatties },
+  { id: 3, name: "Cheese Ball", imgPath: CheeseBall },
+  { id: 4, name: "Chicken Breast", imgPath: ChickenBreast },
+  { id: 5, name: "Chicken Samosa", imgPath: ChickenSamosa },
+  { id: 6, name: "Chicken Strips", imgPath: ChickenStrips },
+  { id: 7, name: "Chicken Wings", imgPath: ChickenWings },
+  { id: 8, name: "Corn", imgPath: Corn },
+  { id: 9, name: "Dumplings", imgPath: Dumplings },
+  { id: 10, name: "Fish", imgPath: Fish },
+  { id: 11, name: "French Fries", imgPath: FrenchFries },
+  // { id: 12, name: "Fruits", imgPath: Fruits },
+  { id: 12, name: "Full Chicken", imgPath: FullChicken },
+  { id: 13, name: "Gola Kebab", imgPath: GolaKebab },
+  { id: 14, name: "Ice Cream", imgPath: IceCream },
+  { id: 15, name: "Meat", imgPath: Meat },
+  { id: 16, name: "Meatballs", imgPath: Meatballs },
+  { id: 17, name: "Nuggets", imgPath: Nuggets },
+  { id: 18, name: "Parathas", imgPath: Parathas },
+  { id: 19, name: "Pepperoni", imgPath: Pepperoni },
+  { id: 20, name: "Pizza", imgPath: Pizza },
+  { id: 21, name: "Popcorn Chicken", imgPath: PopcornChicken },
+  { id: 22, name: "Sausages", imgPath: Sausages },
+  { id: 23, name: "Spring Roll", imgPath: SpringRoll },
+  { id: 24, name: "Vegetable Samosa", imgPath: VegetableSamosa },
+  { id: 25, name: "Vegetables", imgPath: Vegetables },
+  { id: 26, name: "Wonton", imgPath: Wonton },
+  { id: 27, name: "Chicken Drumstick", imgPath: ChickenDrumstick },
 ];
 
 // (The file continues in a similar manner for the rest of your asset imports and arrays)
 
 // Spices array
 const spices = [
-  { name: "Basil", imgPath: basil },
-  { name: "Black Cardamom", imgPath: blackCardamom },
-  { name: "Black Pepper", imgPath: blackPepper },
-  { name: "Cardamom", imgPath: cardamom },
-  { name: "Chilli Powder", imgPath: chilliPowder },
-  { name: "Cinnamon", imgPath: cinnamon },
-  { name: "Cloves", imgPath: cloves },
-  { name: "Coriander Powder", imgPath: corianderPowder },
-  { name: "Cumin", imgPath: cumin },
-  { name: "Curry Leaves", imgPath: curryLeaves },
-  { name: "Fennel Seeds", imgPath: fennelSeeds },
-  { name: "Garam Masala", imgPath: garamMasala },
-  { name: "Garlic Powder", imgPath: garlicPowder },
-  { name: "Ginger Powder", imgPath: gingerPowder },
-  { name: "Mixed Herbs", imgPath: mixedHerbs },
-  { name: "Nutmeg", imgPath: nutmeg },
-  { name: "Oregano", imgPath: oregano },
-  { name: "Paprika Powder", imgPath: paprikaPowder },
-  { name: "Powdered Garam Masala", imgPath: powderedGaramMasala },
-  { name: "Red Chilli Flakes", imgPath: redChilliFlakes },
-  { name: "Rosemary", imgPath: rosemary },
-  { name: "Salt", imgPath: salt },
-  { name: "Star Anise", imgPath: starAnise },
-  { name: "Sugar", imgPath: sugar },
-  { name: "Turmeric Powder", imgPath: turmericPowder },
-  { name: "White Pepper", imgPath: whitePepper },
+  { id: 1, name: "Basil", imgPath: basil },
+  { id: 2, name: "Black Cardamom", imgPath: blackCardamom },
+  { id: 3, name: "Black Pepper", imgPath: blackPepper },
+  { id: 4, name: "Cardamom", imgPath: cardamom },
+  { id: 5, name: "Chilli Powder", imgPath: chilliPowder },
+  { id: 6, name: "Cinnamon", imgPath: cinnamon },
+  { id: 7, name: "Cloves", imgPath: cloves },
+  { id: 8, name: "Coriander Powder", imgPath: corianderPowder },
+  { id: 9, name: "Cumin", imgPath: cumin },
+  { id: 10, name: "Curry Leaves", imgPath: curryLeaves },
+  { id: 11, name: "Fennel Seeds", imgPath: fennelSeeds },
+  { id: 12, name: "Garam Masala", imgPath: garamMasala },
+  { id: 13, name: "Garlic Powder", imgPath: garlicPowder },
+  { id: 14, name: "Ginger Powder", imgPath: gingerPowder },
+  { id: 15, name: "Mixed Herbs", imgPath: mixedHerbs },
+  { id: 16, name: "Nutmeg", imgPath: nutmeg },
+  { id: 17, name: "Oregano", imgPath: oregano },
+  { id: 18, name: "Paprika Powder", imgPath: paprikaPowder },
+  { id: 19, name: "Powdered Garam Masala", imgPath: powderedGaramMasala },
+  { id: 20, name: "Red Chilli Flakes", imgPath: redChilliFlakes },
+  { id: 21, name: "Rosemary", imgPath: rosemary },
+  { id: 22, name: "Salt", imgPath: salt },
+  { id: 23, name: "Star Anise", imgPath: starAnise },
+  { id: 24, name: "Sugar", imgPath: sugar },
+  { id: 25, name: "Turmeric Powder", imgPath: turmericPowder },
+  { id: 26, name: "White Pepper", imgPath: whitePepper },
 ];
-
 // Sauces array
 const sauces = [
-  { name: "BBQ Sauce", imgPath: bbqSauce },
-  { name: "Balsamic Vinegar", imgPath: balsamicVinegar },
-  { name: "Chili Paste", imgPath: chiliPaste },
-  { name: "Chilli Sauce", imgPath: chilliSauce },
-  { name: "Fish Sauce", imgPath: fishSauce },
-  { name: "Hot Chilli Sauce", imgPath: hotChilliSauce },
-  { name: "Hot Sauce", imgPath: hotSauce },
-  { name: "Marinara Sauce", imgPath: marinaraSauce },
-  { name: "Mayonnaise", imgPath: mayonnaise },
-  { name: "Mustard Sauce", imgPath: mustardSauce },
-  { name: "Pasta Sauce", imgPath: pastaSauce },
-  { name: "Seasoning Sauce", imgPath: seasoningSauce },
-  { name: "Soy Sauce", imgPath: soySauce },
-  { name: "Sriracha", imgPath: sriracha },
-  { name: "Steak Sauce", imgPath: steakSauce },
-  { name: "Tahini", imgPath: tahini },
-  { name: "Tomato Paste", imgPath: tomatoPaste },
-  { name: "Vinegar", imgPath: vinegar },
-  { name: "Ketchup", imgPath: ketchup },
+  { id: 1, name: "BBQ Sauce", imgPath: bbqSauce },
+  { id: 2, name: "Balsamic Vinegar", imgPath: balsamicVinegar },
+  { id: 3, name: "Chili Paste", imgPath: chiliPaste },
+  { id: 4, name: "Chilli Sauce", imgPath: chilliSauce },
+  { id: 5, name: "Fish Sauce", imgPath: fishSauce },
+  { id: 6, name: "Hot Chilli Sauce", imgPath: hotChilliSauce },
+  { id: 7, name: "Hot Sauce", imgPath: hotSauce },
+  { id: 8, name: "Marinara Sauce", imgPath: marinaraSauce },
+  { id: 9, name: "Mayonnaise", imgPath: mayonnaise },
+  { id: 10, name: "Mustard Sauce", imgPath: mustardSauce },
+  { id: 11, name: "Pasta Sauce", imgPath: pastaSauce },
+  { id: 12, name: "Seasoning Sauce", imgPath: seasoningSauce },
+  { id: 13, name: "Soy Sauce", imgPath: soySauce },
+  { id: 14, name: "Sriracha", imgPath: sriracha },
+  { id: 15, name: "Steak Sauce", imgPath: steakSauce },
+  { id: 16, name: "Tahini", imgPath: tahini },
+  { id: 17, name: "Tomato Paste", imgPath: tomatoPaste },
+  { id: 18, name: "Vinegar", imgPath: vinegar },
+  { id: 19, name: "Ketchup", imgPath: ketchup },
 ];
 
 const milkproducts = [
-  { name: "Butter Milk", imgPath: butterMilk },
-  { name: "Butter", imgPath: butter },
-  { name: "Cheese", imgPath: cheese },
-  { name: "Condensed Milk", imgPath: condensedMilk },
-  { name: "Cottage Cheese", imgPath: cottageCheese },
-  { name: "Cream Cheese", imgPath: creamCheese },
-  { name: "Cream", imgPath: cream },
-  // { name: "Evaporated Milk", imgPath: evaporatedMilk },
-  { name: "Heavy Cream", imgPath: heavyCream },
-  { name: "Skim Milk", imgPath: skimMilk },
-  { name: "Sour Cream", imgPath: sourCream },
-  // { name: "Whole Milk Powder", imgPath: wholeMilkPowder },
-  { name: "Whole Milk", imgPath: wholeMilk },
-  { name: "Yogurt", imgPath: yogurt },
+  { id: 1, name: "Butter Milk", imgPath: butterMilk },
+  { id: 2, name: "Butter", imgPath: butter },
+  { id: 3, name: "Cheese", imgPath: cheese },
+  { id: 4, name: "Condensed Milk", imgPath: condensedMilk },
+  { id: 5, name: "Cottage Cheese", imgPath: cottageCheese },
+  { id: 6, name: "Cream Cheese", imgPath: creamCheese },
+  { id: 7, name: "Cream", imgPath: cream },
+  // { id: 8, name: "Evaporated Milk", imgPath: evaporatedMilk },
+  { id: 8, name: "Heavy Cream", imgPath: heavyCream },
+  { id: 9, name: "Skim Milk", imgPath: skimMilk },
+  { id: 10, name: "Sour Cream", imgPath: sourCream },
+  // { id: 11, name: "Whole Milk Powder", imgPath: wholeMilkPowder },
+  { id: 11, name: "Whole Milk", imgPath: wholeMilk },
+  { id: 12, name: "Yogurt", imgPath: yogurt },
 ];
 
 const vegetableItems = [
-  { name: "Potato", imgPath: potato },
-  { name: "Bringle", imgPath: bringle },
-  { name: "Broccoli", imgPath: broccoli },
-  { name: "Cabbage", imgPath: cabbage },
-  { name: "Capsicum", imgPath: capsicum },
-  { name: "Carrot", imgPath: carrot },
-  { name: "Cucumber", imgPath: cucumber },
-  { name: "Garlic", imgPath: garlic },
-  { name: "Ginger", imgPath: ginger },
-  { name: "Green Beans", imgPath: greenBeans },
-  { name: "Green Chilli", imgPath: greenChilli },
-  { name: "Leek", imgPath: leek },
-  { name: "Lettuce", imgPath: lettuce },
-  { name: "Mushroom", imgPath: mushroom },
-  { name: "Okra", imgPath: okra },
-  { name: "Onion", imgPath: onion },
-  { name: "Peas", imgPath: peas },
-  { name: "Spinach", imgPath: spinach },
-  { name: "Sweet Potato", imgPath: sweetPotato },
-  { name: "Tomato", imgPath: tomato },
-  { name: "Turnip", imgPath: turnip },
-  { name: "Zucchini", imgPath: zucchini },
+  { id: 1, name: "Potato", imgPath: potato },
+  { id: 2, name: "Bringle", imgPath: bringle },
+  { id: 3, name: "Broccoli", imgPath: broccoli },
+  { id: 4, name: "Cabbage", imgPath: cabbage },
+  { id: 5, name: "Capsicum", imgPath: capsicum },
+  { id: 6, name: "Carrot", imgPath: carrot },
+  { id: 7, name: "Cucumber", imgPath: cucumber },
+  { id: 8, name: "Garlic", imgPath: garlic },
+  { id: 9, name: "Ginger", imgPath: ginger },
+  { id: 10, name: "Green Beans", imgPath: greenBeans },
+  { id: 11, name: "Green Chilli", imgPath: greenChilli },
+  { id: 12, name: "Leek", imgPath: leek },
+  { id: 13, name: "Lettuce", imgPath: lettuce },
+  { id: 14, name: "Mushroom", imgPath: mushroom },
+  { id: 15, name: "Okra", imgPath: okra },
+  { id: 16, name: "Onion", imgPath: onion },
+  { id: 17, name: "Peas", imgPath: peas },
+  { id: 18, name: "Spinach", imgPath: spinach },
+  { id: 19, name: "Sweet Potato", imgPath: sweetPotato },
+  { id: 20, name: "Tomato", imgPath: tomato },
+  { id: 21, name: "Turnip", imgPath: turnip },
+  { id: 22, name: "Zucchini", imgPath: zucchini },
 ];
 
 const fruitItems = [
-  { name: "Apple", imgPath: apple },
-  { name: "Avocado", imgPath: avocado },
-  { name: "Banana", imgPath: banana },
-  { name: "Blueberry", imgPath: blueberry },
-  { name: "Cherry", imgPath: cherry },
-  { name: "Grapes", imgPath: grapes },
-  { name: "Guava", imgPath: guava },
-  { name: "Kiwi", imgPath: kiwi },
-  { name: "Lichi", imgPath: lichi },
-  { name: "Mango", imgPath: mango },
-  { name: "Melon", imgPath: melon },
-  // { name: "Orange", imgPath: orange },
-  { name: "Papaya", imgPath: papaya },
-  { name: "Peach", imgPath: peach },
-  { name: "Pear", imgPath: pear },
-  { name: "Pineapple", imgPath: pineapple },
-  // { name: "Pomengranate", imgPath: pomengranate },
-  { name: "Raspberry", imgPath: raspberry },
-  { name: "Strawberry", imgPath: strawberry },
-  { name: "Watermelon", imgPath: watermelon },
+  { id: 1, name: "Apple", imgPath: apple },
+  { id: 2, name: "Avocado", imgPath: avocado },
+  { id: 3, name: "Banana", imgPath: banana },
+  { id: 4, name: "Blueberry", imgPath: blueberry },
+  { id: 5, name: "Cherry", imgPath: cherry },
+  { id: 6, name: "Grapes", imgPath: grapes },
+  { id: 7, name: "Guava", imgPath: guava },
+  { id: 8, name: "Kiwi", imgPath: kiwi },
+  { id: 9, name: "Lichi", imgPath: lichi },
+  { id: 10, name: "Mango", imgPath: mango },
+  { id: 11, name: "Melon", imgPath: melon },
+  // { id: 12, name: "Orange", imgPath: orange },
+  { id: 12, name: "Papaya", imgPath: papaya },
+  { id: 13, name: "Peach", imgPath: peach },
+  { id: 14, name: "Pear", imgPath: pear },
+  { id: 15, name: "Pineapple", imgPath: pineapple },
+  // { id: 16, name: "Pomengranate", imgPath: pomengranate },
+  { id: 16, name: "Raspberry", imgPath: raspberry },
+  { id: 17, name: "Strawberry", imgPath: strawberry },
+  { id: 18, name: "Watermelon", imgPath: watermelon },
 ];
+
 const Pulses = [
-  { name: "BlackEyedPeas", imgPath: BlackEyedPeas },
-  { name: "BlankLentil", imgPath: BlankLentil },
-  { name: "BrownLentil", imgPath: BrownLentil },
-  { name: "Chickpeas", imgPath: Chickpeas },
-  { name: "GreenLentil", imgPath: GreenLentil },
-  { name: "OrangeLentil", imgPath: OrangeLentil },
-  { name: "RedBeans", imgPath: RedBeans },
-  { name: "WhiteBeans", imgPath: WhiteBeans },
-  { name: "WhiteLentil", imgPath: WhiteLentil },
-  { name: "YellowLentil", imgPath: YellowLentil },
+  { id: 1, name: "BlackEyedPeas", imgPath: BlackEyedPeas },
+  { id: 2, name: "BlankLentil", imgPath: BlankLentil },
+  { id: 3, name: "BrownLentil", imgPath: BrownLentil },
+  { id: 4, name: "Chickpeas", imgPath: Chickpeas },
+  { id: 5, name: "GreenLentil", imgPath: GreenLentil },
+  { id: 6, name: "OrangeLentil", imgPath: OrangeLentil },
+  { id: 7, name: "RedBeans", imgPath: RedBeans },
+  { id: 8, name: "WhiteBeans", imgPath: WhiteBeans },
+  { id: 9, name: "WhiteLentil", imgPath: WhiteLentil },
+  { id: 10, name: "YellowLentil", imgPath: YellowLentil },
 ];
 // ===============================
 // Bakery & Bread Items
@@ -338,26 +338,26 @@ import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Whi
 import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WholeWheatBread.svg";
 
 const bakeryAndBreadItems = [
-  { name: "Bagels", imgPath: Bagels },
-  { name: "Breadsticks", imgPath: Breadsticks },
-  { name: "Buns", imgPath: Buns },
-  { name: "Cookies", imgPath: Cookies },
-  { name: "Croissants", imgPath: Croissants },
-  { name: "Donut", imgPath: Donut },
-  { name: "Focaccia", imgPath: Focaccia },
-  { name: "Garlic Bread", imgPath: GarlicBread },
-  { name: "Loaf Bread", imgPath: LoafBread },
-  { name: "Muffins", imgPath: Muffins },
-  { name: "Pancakes", imgPath: Pancakes },
-  { name: "Pastry Bread", imgPath: PastryBread },
-  { name: "Pita Bread", imgPath: PitaBread },
-  { name: "Rusk", imgPath: Rusk },
-  { name: "Sourdough Bread", imgPath: SourdoughBread },
-  { name: "Sweet Bun", imgPath: SweetBun },
-  { name: "Tortillas", imgPath: Tortillas },
-  { name: "Waffles", imgPath: WafflesB },
-  { name: "White Bread", imgPath: WhiteBread },
-  { name: "Whole Wheat Bread", imgPath: WholeWheatBread },
+  { id: 1, name: "Bagels", imgPath: Bagels },
+  { id: 2, name: "Breadsticks", imgPath: Breadsticks },
+  { id: 3, name: "Buns", imgPath: Buns },
+  { id: 4, name: "Cookies", imgPath: Cookies },
+  { id: 5, name: "Croissants", imgPath: Croissants },
+  { id: 6, name: "Donut", imgPath: Donut },
+  { id: 7, name: "Focaccia", imgPath: Focaccia },
+  { id: 8, name: "Garlic Bread", imgPath: GarlicBread },
+  { id: 9, name: "Loaf Bread", imgPath: LoafBread },
+  { id: 10, name: "Muffins", imgPath: Muffins },
+  { id: 11, name: "Pancakes", imgPath: Pancakes },
+  { id: 12, name: "Pastry Bread", imgPath: PastryBread },
+  { id: 13, name: "Pita Bread", imgPath: PitaBread },
+  { id: 14, name: "Rusk", imgPath: Rusk },
+  { id: 15, name: "Sourdough Bread", imgPath: SourdoughBread },
+  { id: 16, name: "Sweet Bun", imgPath: SweetBun },
+  { id: 17, name: "Tortillas", imgPath: Tortillas },
+  { id: 18, name: "Waffles", imgPath: WafflesB },
+  { id: 19, name: "White Bread", imgPath: WhiteBread },
+  { id: 20, name: "Whole Wheat Bread", imgPath: WholeWheatBread },
 ];
 
 // ===============================
@@ -377,18 +377,18 @@ import Tea from "../assets/images/SwiftlistApp/Grocery/Beverages/Tea.svg";
 import Water from "../assets/images/SwiftlistApp/Grocery/Beverages/Water.svg";
 
 const beveragesItems = [
-  { name: "Coconut Water", imgPath: CoconutWater },
-  { name: "Coffee", imgPath: Coffee },
-  { name: "Energy Drinks", imgPath: EnergyDrinks },
-  { name: "Herbal Tea", imgPath: HerbalTea },
-  { name: "Iced Tea", imgPath: IcedTea },
-  { name: "Juice", imgPath: Juice },
-  { name: "Lemonade", imgPath: Lemonade },
-  { name: "Milkshakes", imgPath: Milkshakes },
-  { name: "Soda", imgPath: Soda },
-  { name: "Sparkling Water", imgPath: SparklingWater },
-  { name: "Tea", imgPath: Tea },
-  { name: "Water", imgPath: Water },
+  { id: 1, name: "Coconut Water", imgPath: CoconutWater },
+  { id: 2, name: "Coffee", imgPath: Coffee },
+  { id: 3, name: "Energy Drinks", imgPath: EnergyDrinks },
+  { id: 4, name: "Herbal Tea", imgPath: HerbalTea },
+  { id: 5, name: "Iced Tea", imgPath: IcedTea },
+  { id: 6, name: "Juice", imgPath: Juice },
+  { id: 7, name: "Lemonade", imgPath: Lemonade },
+  { id: 8, name: "Milkshakes", imgPath: Milkshakes },
+  { id: 9, name: "Soda", imgPath: Soda },
+  { id: 10, name: "Sparkling Water", imgPath: SparklingWater },
+  { id: 11, name: "Tea", imgPath: Tea },
+  { id: 12, name: "Water", imgPath: Water },
 ];
 
 // ===============================
@@ -413,23 +413,22 @@ import Toast from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Toas
 // // import Waffles from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Waffles.png";
 
 const breakfastAndCerealItems = [
-  // Reusing the Bagels from the Bakery & Bread section.
-  { name: "Bagels", imgPath: Bagels },
-  { name: "Cereal", imgPath: CerealB },
-  { name: "Chia Seed", imgPath: ChiaSeed },
-  { name: "Chocolate Spread", imgPath: ChocolateSpread },
-  { name: "Croissants", imgPath: Croissants },
-  { name: "English Muffins", imgPath: EnglishMuffins },
-  { name: "Granola Bars", imgPath: GranolaBars },
-  { name: "Honey", imgPath: Honey },
-  { name: "Jam", imgPath: Jam },
-  { name: "Muffins", imgPath: Muffins },
-  { name: "Oatmeal", imgPath: Oatmeal },
-  { name: "Pancake Mix", imgPath: PancakeMix },
-  { name: "Pistachio Spread", imgPath: PistachioSpread },
-  { name: "Pop Tarts", imgPath: PopTarts },
-  { name: "Toast", imgPath: Toast },
-  // { name: "Waffles", imgPath: Waffles },
+  { id: 1, name: "Bagels", imgPath: Bagels },
+  { id: 2, name: "Cereal", imgPath: CerealB },
+  { id: 3, name: "Chia Seed", imgPath: ChiaSeed },
+  { id: 4, name: "Chocolate Spread", imgPath: ChocolateSpread },
+  { id: 5, name: "Croissants", imgPath: Croissants },
+  { id: 6, name: "English Muffins", imgPath: EnglishMuffins },
+  { id: 7, name: "Granola Bars", imgPath: GranolaBars },
+  { id: 8, name: "Honey", imgPath: Honey },
+  { id: 9, name: "Jam", imgPath: Jam },
+  { id: 10, name: "Muffins", imgPath: Muffins },
+  { id: 11, name: "Oatmeal", imgPath: Oatmeal },
+  { id: 12, name: "Pancake Mix", imgPath: PancakeMix },
+  { id: 13, name: "Pistachio Spread", imgPath: PistachioSpread },
+  { id: 14, name: "Pop Tarts", imgPath: PopTarts },
+  { id: 15, name: "Toast", imgPath: Toast },
+  // { id: 16, name: "Waffles", imgPath: Waffles },
 ];
 
 // Cleaning Caddy done
@@ -456,30 +455,31 @@ import ToiletPlunger from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/T
 import TrashBags from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/TrashBags.svg";
 import Wiper from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Wiper.svg";
 
- const cleaningCaddyItems = [
-  { name: "All-Purpose Cleaner", imgPath: AllPurposeCleaner },
-  { name: "Basket", imgPath: Basket },
-  { name: "Broom", imgPath: Broom },
-  { name: "Broom & Dustpan", imgPath: BroomAndDustpan },
-  { name: "Brush", imgPath: Brush },
-  { name: "Cleaning Gloves", imgPath: CleaningGloves },
-  { name: "Disinfection Cleaner Spray", imgPath: DisinfectionCleanerSpray },
-  { name: "Duster and Dustpan", imgPath: DusterAndDustpan },
-  { name: "Feather Duster", imgPath: FeatherDuster },
-  { name: "Floor Mop", imgPath: FloorMop },
-  { name: "Microfiber Cloth", imgPath: MicrofiberCloth },
-  { name: "Modern Vacuum Cleaner", imgPath: ModernVacuumCleaner },
-  { name: "Mop", imgPath: Mop },
-  { name: "Mop and Basket", imgPath: MopAndBasket },
-  { name: "Oven Cleaner", imgPath: OvenCleaner },
-  { name: "Scrub Brush", imgPath: ScrubBrush },
-  { name: "Sponge", imgPath: Sponge },
-  { name: "Step Trash", imgPath: StepTrash },
-  { name: "Toilet Brush", imgPath: ToiletBrush },
-  { name: "Toilet Plunger", imgPath: ToiletPlunger },
-  { name: "Trash Bags", imgPath: TrashBags },
-  { name: "Wiper", imgPath: Wiper },
+const cleaningCaddyItems = [
+  { id: 1, name: "All-Purpose Cleaner", imgPath: AllPurposeCleaner },
+  { id: 2, name: "Basket", imgPath: Basket },
+  { id: 3, name: "Broom", imgPath: Broom },
+  { id: 4, name: "Broom & Dustpan", imgPath: BroomAndDustpan },
+  { id: 5, name: "Brush", imgPath: Brush },
+  { id: 6, name: "Cleaning Gloves", imgPath: CleaningGloves },
+  { id: 7, name: "Disinfection Cleaner Spray", imgPath: DisinfectionCleanerSpray },
+  { id: 8, name: "Duster and Dustpan", imgPath: DusterAndDustpan },
+  { id: 9, name: "Feather Duster", imgPath: FeatherDuster },
+  { id: 10, name: "Floor Mop", imgPath: FloorMop },
+  { id: 11, name: "Microfiber Cloth", imgPath: MicrofiberCloth },
+  { id: 12, name: "Modern Vacuum Cleaner", imgPath: ModernVacuumCleaner },
+  { id: 13, name: "Mop", imgPath: Mop },
+  { id: 14, name: "Mop and Basket", imgPath: MopAndBasket },
+  { id: 15, name: "Oven Cleaner", imgPath: OvenCleaner },
+  { id: 16, name: "Scrub Brush", imgPath: ScrubBrush },
+  { id: 17, name: "Sponge", imgPath: Sponge },
+  { id: 18, name: "Step Trash", imgPath: StepTrash },
+  { id: 19, name: "Toilet Brush", imgPath: ToiletBrush },
+  { id: 20, name: "Toilet Plunger", imgPath: ToiletPlunger },
+  { id: 21, name: "Trash Bags", imgPath: TrashBags },
+  { id: 22, name: "Wiper", imgPath: Wiper },
 ];
+
 // before
 // const CaesarDressing = require("../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/CaesarDressing.svg");
 // const HoneyMustard = require("../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HoneyMustard.svg");
@@ -515,16 +515,17 @@ import TartarSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDres
 import WorcestershireSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/WorcestershireSauce.svg";
 
 const condimentsAndDressingsItems = [
-  { name: "Caesar Dressing", imgPath: CaesarDressing },
-  { name: "Honey Mustard", imgPath: HoneyMustard },
-  { name: "Hot Sauce", imgPath: HotSauce },
-  { name: "Peanut Butter", imgPath: PeanutButter },
-  { name: "Ranch Dressing", imgPath: RanchDressing },
-  { name: "Salad Dressing", imgPath: SaladDressing },
-  { name: "Sandwich Spread", imgPath: SandwichSpread },
-  { name: "Tartar Sauce", imgPath: TartarSauce },
-  { name: "Worcestershire Sauce", imgPath: WorcestershireSauce },
+  { id: 1, name: "Caesar Dressing", imgPath: CaesarDressing },
+  { id: 2, name: "Honey Mustard", imgPath: HoneyMustard },
+  { id: 3, name: "Hot Sauce", imgPath: HotSauce },
+  { id: 4, name: "Peanut Butter", imgPath: PeanutButter },
+  { id: 5, name: "Ranch Dressing", imgPath: RanchDressing },
+  { id: 6, name: "Salad Dressing", imgPath: SaladDressing },
+  { id: 7, name: "Sandwich Spread", imgPath: SandwichSpread },
+  { id: 8, name: "Tartar Sauce", imgPath: TartarSauce },
+  { id: 9, name: "Worcestershire Sauce", imgPath: WorcestershireSauce },
 ];
+
 // Confectionery & Sweets
 import Candies from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Candies.svg";
 import ChocolateBars from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateBars.svg";
@@ -537,18 +538,18 @@ import Lollipops from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSwe
 import Marshmallows from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Marshmallows.svg";
 import Pastries from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Pastries.svg";
 
- const confectioneryAndSweetsItems = [
-  { name: "Candies", imgPath: Candies },
-  { name: "Chocolate Bars", imgPath: ChocolateBars },
-  { name: "Chocolate Syrup", imgPath: ChocolateSyrup },
-  { name: "Cookies", imgPath: Cookies },
-  { name: "Donuts", imgPath: Donuts },
-  { name: "Gummy Bears", imgPath: GummyBears1 },
-  { name: "Hard Candy", imgPath: HardCandy },
-  { name: "Ice Cream", imgPath: IceCream1 },
-  { name: "Lollipops", imgPath: Lollipops },
-  { name: "Marshmallows", imgPath: Marshmallows },
-  { name: "Pastries", imgPath: Pastries },
+const confectioneryAndSweetsItems = [
+  { id: 1, name: "Candies", imgPath: Candies },
+  { id: 2, name: "Chocolate Bars", imgPath: ChocolateBars },
+  { id: 3, name: "Chocolate Syrup", imgPath: ChocolateSyrup },
+  { id: 4, name: "Cookies", imgPath: Cookies },
+  { id: 5, name: "Donuts", imgPath: Donuts },
+  { id: 6, name: "Gummy Bears", imgPath: GummyBears1 },
+  { id: 7, name: "Hard Candy", imgPath: HardCandy },
+  { id: 8, name: "Ice Cream", imgPath: IceCream1 },
+  { id: 9, name: "Lollipops", imgPath: Lollipops },
+  { id: 10, name: "Marshmallows", imgPath: Marshmallows },
+  { id: 11, name: "Pastries", imgPath: Pastries },
 ];
 
 
@@ -562,16 +563,17 @@ import SesameOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/SesameO
 import SunflowerOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/SunflowerOil.svg";
 import VegetableOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/VegetableOil.svg";
 
- const cookingOilsItems = [
-  { name: "Canola Oil", imgPath: CanolaOil },
-  { name: "Coconut Oil", imgPath: CoconutOil },
-  { name: "Corn Oil", imgPath: CornOil },
-  { name: "Grapeseed Oil", imgPath: GrapeseedOil },
-  { name: "Olive Oil", imgPath: OliveOil },
-  { name: "Sesame Oil", imgPath: SesameOil },
-  { name: "Sunflower Oil", imgPath: SunflowerOil },
-  { name: "Vegetable Oil", imgPath: VegetableOil },
+const cookingOilsItems = [
+  { id: 1, name: "Canola Oil", imgPath: CanolaOil },
+  { id: 2, name: "Coconut Oil", imgPath: CoconutOil },
+  { id: 3, name: "Corn Oil", imgPath: CornOil },
+  { id: 4, name: "Grapeseed Oil", imgPath: GrapeseedOil },
+  { id: 5, name: "Olive Oil", imgPath: OliveOil },
+  { id: 6, name: "Sesame Oil", imgPath: SesameOil },
+  { id: 7, name: "Sunflower Oil", imgPath: SunflowerOil },
+  { id: 8, name: "Vegetable Oil", imgPath: VegetableOil },
 ];
+
 // Dairy Alternatives
 import AlmondMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/AlmondMilk.svg";
 import CashewMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CashewMilk.svg";
@@ -584,15 +586,15 @@ import RiceMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/Ri
 import SoyMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/SoyMilk.svg";
 
 const dairyAlternativesItems = [
-  { name: "Almond Milk", imgPath: AlmondMilk },
-  { name: "Cashew Milk", imgPath: CashewMilk },
-  { name: "Coconut Milk", imgPath: CoconutMilk },
-  { name: "Hazelnut Milk", imgPath: HazelnutMilk },
-  { name: "Hemp Milk", imgPath: HempMilk },
-  { name: "Lactose-Free Milk", imgPath: LactoseFreeMilk },
-  { name: "Oat Milk", imgPath: OatMilk },
-  { name: "Rice Milk", imgPath: RiceMilk },
-  { name: "Soy Milk", imgPath: SoyMilk },
+  { id: 1, name: "Almond Milk", imgPath: AlmondMilk },
+  { id: 2, name: "Cashew Milk", imgPath: CashewMilk },
+  { id: 3, name: "Coconut Milk", imgPath: CoconutMilk },
+  { id: 4, name: "Hazelnut Milk", imgPath: HazelnutMilk },
+  { id: 5, name: "Hemp Milk", imgPath: HempMilk },
+  { id: 6, name: "Lactose-Free Milk", imgPath: LactoseFreeMilk },
+  { id: 7, name: "Oat Milk", imgPath: OatMilk },
+  { id: 8, name: "Rice Milk", imgPath: RiceMilk },
+  { id: 9, name: "Soy Milk", imgPath: SoyMilk },
 ];
 
 // Flour & Baking Supplies
@@ -611,19 +613,19 @@ import VanillaExtract from "../assets/images/SwiftlistApp/Grocery/FlourandBaking
 import Yeast from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Yeast.svg";
 
 const flourAndBakingSuppliesItems = [
-  { name: "All-Purpose Flour", imgPath: AllPurposeFlour },
-  { name: "Baking Powder", imgPath: BakingPowder },
-  { name: "Baking Soda", imgPath: BakingSoda },
-  { name: "Brownie Mix", imgPath: BrownieMix },
-  { name: "Cake Mix", imgPath: CakeMix },
-  { name: "Chocolate Chips", imgPath: ChocolateChips },
-  { name: "Cocoa Powder", imgPath: CocoaPowder },
-  { name: "Cornstarch", imgPath: Cornstarch },
-  { name: "Pastry Flour", imgPath: PastryFlour },
-  { name: "Self-Raising Flour", imgPath: SelfRaisingFlour },
-  { name: "Sugar", imgPath: Sugar },
-  { name: "Vanilla Extract", imgPath: VanillaExtract },
-  { name: "Yeast", imgPath: Yeast },
+  { id: 1, name: "All-Purpose Flour", imgPath: AllPurposeFlour },
+  { id: 2, name: "Baking Powder", imgPath: BakingPowder },
+  { id: 3, name: "Baking Soda", imgPath: BakingSoda },
+  { id: 4, name: "Brownie Mix", imgPath: BrownieMix },
+  { id: 5, name: "Cake Mix", imgPath: CakeMix },
+  { id: 6, name: "Chocolate Chips", imgPath: ChocolateChips },
+  { id: 7, name: "Cocoa Powder", imgPath: CocoaPowder },
+  { id: 8, name: "Cornstarch", imgPath: Cornstarch },
+  { id: 9, name: "Pastry Flour", imgPath: PastryFlour },
+  { id: 10, name: "Self-Raising Flour", imgPath: SelfRaisingFlour },
+  { id: 11, name: "Sugar", imgPath: Sugar },
+  { id: 12, name: "Vanilla Extract", imgPath: VanillaExtract },
+  { id: 13, name: "Yeast", imgPath: Yeast },
 ];
 
 // Grains & Rice
@@ -637,16 +639,16 @@ import Quinoa from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/Quinoa.svg
 import WhiteRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/WhiteRice.svg";
 import WildRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/WildRice.svg";
 
- const grainsAndRiceItems = [
-  { name: "Barley", imgPath: Barley },
-  { name: "Basmati Rice", imgPath: BasmatiRice },
-  { name: "Brown Rice", imgPath: BrownRice },
-  { name: "Jasmine Rice", imgPath: JasmineRice },
-  { name: "Millet", imgPath: Millet },
-  { name: "Oats", imgPath: Oats },
-  { name: "Quinoa", imgPath: Quinoa },
-  { name: "White Rice", imgPath: WhiteRice },
-  { name: "Wild Rice", imgPath: WildRice },
+const grainsAndRiceItems = [
+  { id: 1, name: "Barley", imgPath: Barley },
+  { id: 2, name: "Basmati Rice", imgPath: BasmatiRice },
+  { id: 3, name: "Brown Rice", imgPath: BrownRice },
+  { id: 4, name: "Jasmine Rice", imgPath: JasmineRice },
+  { id: 5, name: "Millet", imgPath: Millet },
+  { id: 6, name: "Oats", imgPath: Oats },
+  { id: 7, name: "Quinoa", imgPath: Quinoa },
+  { id: 8, name: "White Rice", imgPath: WhiteRice },
+  { id: 9, name: "Wild Rice", imgPath: WildRice },
 ];
 
 // Herbs
@@ -662,20 +664,19 @@ import Rosemary from "../assets/images/SwiftlistApp/Grocery/Herbs/Rosemary.svg";
 import Sage from "../assets/images/SwiftlistApp/Grocery/Herbs/Sage.svg";
 import Thyme from "../assets/images/SwiftlistApp/Grocery/Herbs/Thyme.svg";
 
- const herbsItems = [
-  { name: "Basil", imgPath: Basil },
-  { name: "Bay Leaves", imgPath: BayLeaves },
-  { name: "Chives", imgPath: Chives },
-  { name: "Cilantro", imgPath: Cilantro },
-  { name: "Dill", imgPath: Dill },
-  { name: "Mint", imgPath: Mint },
-  { name: "Oregano", imgPath: Oregano },
-  { name: "Parsley", imgPath: Parsley },
-  { name: "Rosemary", imgPath: Rosemary },
-  { name: "Sage", imgPath: Sage },
-  { name: "Thyme", imgPath: Thyme },
+const herbsItems = [
+  { id: 1, name: "Basil", imgPath: Basil },
+  { id: 2, name: "Bay Leaves", imgPath: BayLeaves },
+  { id: 3, name: "Chives", imgPath: Chives },
+  { id: 4, name: "Cilantro", imgPath: Cilantro },
+  { id: 5, name: "Dill", imgPath: Dill },
+  { id: 6, name: "Mint", imgPath: Mint },
+  { id: 7, name: "Oregano", imgPath: Oregano },
+  { id: 8, name: "Parsley", imgPath: Parsley },
+  { id: 9, name: "Rosemary", imgPath: Rosemary },
+  { id: 10, name: "Sage", imgPath: Sage },
+  { id: 11, name: "Thyme", imgPath: Thyme },
 ];
-
 
 // Meat & Seafood
 import Bacon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Bacon.svg";
@@ -687,18 +688,18 @@ import SausagesImg from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Saus
 import Shrimp from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Shrimp.svg";
 import TurkeyBreast from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/TurkeyBreast.svg";
 
- const meatAndSeafoodItems = [
-   { name: "Bacon", imgPath: Bacon },
-   { name: "Chicken Breast", imgPath: ChickenBreast },
-   { name: "Chicken Wings", imgPath: ChickenWings },
-   { name: "Fish Fillets", imgPath: FishFillets },
-   { name: "Ground Beef", imgPath: GroundBeef },
-   { name: "Lamb Chops", imgPath: LambChops },
-   { name: "Salmon", imgPath: Salmon },
-   { name: "Sausages", imgPath: SausagesImg },
-   { name: "Shrimp", imgPath: Shrimp },
-   { name: "Turkey Breast", imgPath: TurkeyBreast },
- ];
+const meatAndSeafoodItems = [
+  { id: 1, name: "Bacon", imgPath: Bacon },
+  { id: 2, name: "Chicken Breast", imgPath: ChickenBreast },
+  { id: 3, name: "Chicken Wings", imgPath: ChickenWings },
+  { id: 4, name: "Fish Fillets", imgPath: FishFillets },
+  { id: 5, name: "Ground Beef", imgPath: GroundBeef },
+  { id: 6, name: "Lamb Chops", imgPath: LambChops },
+  { id: 7, name: "Salmon", imgPath: Salmon },
+  { id: 8, name: "Sausages", imgPath: SausagesImg },
+  { id: 9, name: "Shrimp", imgPath: Shrimp },
+  { id: 10, name: "Turkey Breast", imgPath: TurkeyBreast },
+];
 
 
 // Nuts & Seeds
@@ -716,20 +717,20 @@ import PumpkinSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pum
 import SunflowerSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/SunflowerSeeds.svg";
 import Walnuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Walnuts.svg";
 
- const nutsAndSeedsItems = [
-  { name: "Almonds", imgPath: Almonds },
-  { name: "Brazil Nuts", imgPath: BrazilNuts },
-  { name: "Cashews", imgPath: Cashews },
-  { name: "Coconut", imgPath: Coconut },
-  { name: "Fig", imgPath: Fig },
-  { name: "Flaxseeds", imgPath: Flaxseeds },
-  { name: "Macadamia Nuts", imgPath: MacadamiaNuts },
-  { name: "Peanuts", imgPath: Peanuts },
-  { name: "Pecans", imgPath: Pecans },
-  { name: "Pistachios", imgPath: Pistachios },
-  { name: "Pumpkin Seeds", imgPath: PumpkinSeeds },
-  { name: "Sunflower Seeds", imgPath: SunflowerSeeds },
-  { name: "Walnuts", imgPath: Walnuts },
+const nutsAndSeedsItems = [
+  { id: 1, name: "Almonds", imgPath: Almonds },
+  { id: 2, name: "Brazil Nuts", imgPath: BrazilNuts },
+  { id: 3, name: "Cashews", imgPath: Cashews },
+  { id: 4, name: "Coconut", imgPath: Coconut },
+  { id: 5, name: "Fig", imgPath: Fig },
+  { id: 6, name: "Flaxseeds", imgPath: Flaxseeds },
+  { id: 7, name: "Macadamia Nuts", imgPath: MacadamiaNuts },
+  { id: 8, name: "Peanuts", imgPath: Peanuts },
+  { id: 9, name: "Pecans", imgPath: Pecans },
+  { id: 10, name: "Pistachios", imgPath: Pistachios },
+  { id: 11, name: "Pumpkin Seeds", imgPath: PumpkinSeeds },
+  { id: 12, name: "Sunflower Seeds", imgPath: SunflowerSeeds },
+  { id: 13, name: "Walnuts", imgPath: Walnuts },
 ];
 
 // Paper Products
@@ -745,19 +746,20 @@ import ToiletPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/Toi
 // const TrashBags = require("../assets/images/SwiftlistApp/Grocery/PaperProducts/TrashBags.png");
 import WrappingPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/WrappingPaper.svg";
 
- const paperProductsItems = [
-  { name: "Aluminum Foil", imgPath: AluminumFoil },
-  { name: "Coffee Filters", imgPath: CoffeeFilters },
-  { name: "Napkins", imgPath: Napkins },
-  { name: "Paper Cups", imgPath: PaperCups },
-  { name: "Paper Napkins", imgPath: PaperNapkins },
-  { name: "Paper Plates", imgPath: PaperPlates },
-  { name: "Paper Towels", imgPath: PaperTowels },
-  { name: "Tissues", imgPath: Tissues },
-  { name: "Toilet Paper", imgPath: ToiletPaper },
-  { name: "Trash Bags", imgPath: TrashBags },
-  { name: "Wrapping Paper", imgPath: WrappingPaper },
+const paperProductsItems = [
+  { id: 1, name: "Aluminum Foil", imgPath: AluminumFoil },
+  { id: 2, name: "Coffee Filters", imgPath: CoffeeFilters },
+  { id: 3, name: "Napkins", imgPath: Napkins },
+  { id: 4, name: "Paper Cups", imgPath: PaperCups },
+  { id: 5, name: "Paper Napkins", imgPath: PaperNapkins },
+  { id: 6, name: "Paper Plates", imgPath: PaperPlates },
+  { id: 7, name: "Paper Towels", imgPath: PaperTowels },
+  { id: 8, name: "Tissues", imgPath: Tissues },
+  { id: 9, name: "Toilet Paper", imgPath: ToiletPaper },
+  { id: 10, name: "Trash Bags", imgPath: TrashBags },
+  { id: 11, name: "Wrapping Paper", imgPath: WrappingPaper },
 ];
+
 // Pasta & Noodles
 import BowtiePasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/BowtiePasta.svg";
 import EggNoodles from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/EggNoodles.svg";
@@ -774,19 +776,19 @@ import ShellPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Shel
 import Spaghetti from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Spaghetti.svg";
 
 const pastaAndNoodlesItems = [
-  { name: "Bowtie Pasta", imgPath: BowtiePasta },
-  { name: "Egg Noodles", imgPath: EggNoodles },
-  { name: "Fettuccine", imgPath: Fettuccine },
-  { name: "Fusilli Pasta", imgPath: FusilliPasta },
-  { name: "Italian Pasta", imgPath: ItalianPasta },
-  { name: "Lasagna Noodles", imgPath: LasagnaNoodles },
-  { name: "Linguine", imgPath: Linguine },
-  { name: "Macaroni", imgPath: Macaroni },
-  { name: "Penne Pasta", imgPath: PennePasta },
-  { name: "Ravioli", imgPath: Ravioli },
-  { name: "Rigatoni Pasta", imgPath: RigatoniPasta },
-  { name: "Shell Pasta", imgPath: ShellPasta },
-  { name: "Spaghetti", imgPath: Spaghetti },
+  { id: 1, name: "Bowtie Pasta", imgPath: BowtiePasta },
+  { id: 2, name: "Egg Noodles", imgPath: EggNoodles },
+  { id: 3, name: "Fettuccine", imgPath: Fettuccine },
+  { id: 4, name: "Fusilli Pasta", imgPath: FusilliPasta },
+  { id: 5, name: "Italian Pasta", imgPath: ItalianPasta },
+  { id: 6, name: "Lasagna Noodles", imgPath: LasagnaNoodles },
+  { id: 7, name: "Linguine", imgPath: Linguine },
+  { id: 8, name: "Macaroni", imgPath: Macaroni },
+  { id: 9, name: "Penne Pasta", imgPath: PennePasta },
+  { id: 10, name: "Ravioli", imgPath: Ravioli },
+  { id: 11, name: "Rigatoni Pasta", imgPath: RigatoniPasta },
+  { id: 12, name: "Shell Pasta", imgPath: ShellPasta },
+  { id: 13, name: "Spaghetti", imgPath: Spaghetti },
 ];
 
 // Personal Care
@@ -807,21 +809,21 @@ import Sunscreen from "../assets/images/SwiftlistApp/Grocery/PersonalCare/sunscr
 import Toothpaste from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Toothpaste.svg";
 
 const personalCareItems = [
-  { name: "Bath Soap", imgPath: BathSoap },
-  { name: "Body Wash", imgPath: BodyWash },
-  { name: "Deodorant", imgPath: Deodorant },
-  { name: "Eye Cream", imgPath: EyeCream },
-  { name: "Face Wash", imgPath: FaceWash },
-  { name: "Hair Conditioner", imgPath: HairConditioner },
-  { name: "Hand Sanitizer", imgPath: HandSanitizer },
-  { name: "Lip Balm", imgPath: LipBalm },
-  { name: "Lotion", imgPath: Lotion },
-  { name: "Moisturizer", imgPath: Moisturizer },
-  { name: "Shampoo", imgPath: Shampoo },
-  { name: "Shaving Cream", imgPath: ShavingCream },
-  { name: "Soap", imgPath: Soap },
-  { name: "Sunscreen", imgPath: Sunscreen },
-  { name: "Toothpaste", imgPath: Toothpaste },
+  { id: 1, name: "Bath Soap", imgPath: BathSoap },
+  { id: 2, name: "Body Wash", imgPath: BodyWash },
+  { id: 3, name: "Deodorant", imgPath: Deodorant },
+  { id: 4, name: "Eye Cream", imgPath: EyeCream },
+  { id: 5, name: "Face Wash", imgPath: FaceWash },
+  { id: 6, name: "Hair Conditioner", imgPath: HairConditioner },
+  { id: 7, name: "Hand Sanitizer", imgPath: HandSanitizer },
+  { id: 8, name: "Lip Balm", imgPath: LipBalm },
+  { id: 9, name: "Lotion", imgPath: Lotion },
+  { id: 10, name: "Moisturizer", imgPath: Moisturizer },
+  { id: 11, name: "Shampoo", imgPath: Shampoo },
+  { id: 12, name: "Shaving Cream", imgPath: ShavingCream },
+  { id: 13, name: "Soap", imgPath: Soap },
+  { id: 14, name: "Sunscreen", imgPath: Sunscreen },
+  { id: 15, name: "Toothpaste", imgPath: Toothpaste },
 ];
 // Pet Food & Supplies
 import BirdSeed from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/BirdSeed.svg";
@@ -837,17 +839,17 @@ import PetToys from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/Pe
 import PetTreats from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetTreats.svg";
 
 const petFoodAndSuppliesItems = [
-  { name: "Bird Seed", imgPath: BirdSeed },
-  { name: "Cat Food", imgPath: CatFood },
-  { name: "Cat Litter", imgPath: CatLitter },
-  { name: "Dog Food", imgPath: DogFood },
-  { name: "Dog Treats", imgPath: DogTreats },
-  { name: "Fish Food", imgPath: FishFood },
-  { name: "Litter Box Liners", imgPath: LitterBoxLiners },
-  { name: "Pet Grooming Supplies", imgPath: PetGroomingSupplies },
-  { name: "Pet Shampoo", imgPath: PetShampoo },
-  { name: "Pet Toys", imgPath: PetToys },
-  { name: "Pet Treats", imgPath: PetTreats },
+  { id: 1, name: "Bird Seed", imgPath: BirdSeed },
+  { id: 2, name: "Cat Food", imgPath: CatFood },
+  { id: 3, name: "Cat Litter", imgPath: CatLitter },
+  { id: 4, name: "Dog Food", imgPath: DogFood },
+  { id: 5, name: "Dog Treats", imgPath: DogTreats },
+  { id: 6, name: "Fish Food", imgPath: FishFood },
+  { id: 7, name: "Litter Box Liners", imgPath: LitterBoxLiners },
+  { id: 8, name: "Pet Grooming Supplies", imgPath: PetGroomingSupplies },
+  { id: 9, name: "Pet Shampoo", imgPath: PetShampoo },
+  { id: 10, name: "Pet Toys", imgPath: PetToys },
+  { id: 11, name: "Pet Treats", imgPath: PetTreats },
 ];
 // Snacks
 import Chips from "../assets/images/SwiftlistApp/Grocery/Snacks/Chips.svg";
@@ -861,16 +863,16 @@ import Pretzels from "../assets/images/SwiftlistApp/Grocery/Snacks/Pretzels.svg"
 import RiceCakes from "../assets/images/SwiftlistApp/Grocery/Snacks/RiceCakes.svg";
 
 const snacksItems = [
-  { name: "Chips", imgPath: Chips },
-  { name: "Crackers", imgPath: Crackers },
-  { name: "Dried Fruit", imgPath: DriedFruit },
-  { name: "Dried Veggie Chips", imgPath: DriedVeggieChips },
-  { name: "Fruit Snacks", imgPath: FruitSnacks },
-  { name: "Granola Bars", imgPath: GranolaBars },
-  { name: "Nachos", imgPath: Nachos },
-  { name: "Popcorn", imgPath: Popcorn },
-  { name: "Pretzels", imgPath: Pretzels },
-  { name: "Rice Cakes", imgPath: RiceCakes },
+  { id: 1, name: "Chips", imgPath: Chips },
+  { id: 2, name: "Crackers", imgPath: Crackers },
+  { id: 3, name: "Dried Fruit", imgPath: DriedFruit },
+  { id: 4, name: "Dried Veggie Chips", imgPath: DriedVeggieChips },
+  { id: 5, name: "Fruit Snacks", imgPath: FruitSnacks },
+  { id: 6, name: "Granola Bars", imgPath: GranolaBars },
+  { id: 7, name: "Nachos", imgPath: Nachos },
+  { id: 8, name: "Popcorn", imgPath: Popcorn },
+  { id: 9, name: "Pretzels", imgPath: Pretzels },
+  { id: 10, name: "Rice Cakes", imgPath: RiceCakes },
 ];
 
 // Spiritual – Azkaar
@@ -885,18 +887,19 @@ import nightAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/NightAzka
 import subhanAllah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/SubhanAllah.svg";
 import travellingZikar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/TravellingZikar.svg";
 
- const azkaarItems = [
-  { name: "Alhamdulillah", imgPath: alhamdulillah },
-  { name: "Allahu Akbar", imgPath: allahuAkbar },
-  { name: "Astaghfirullah", imgPath: astaghfirullah },
-  { name: "Evening Azkar", imgPath: eveningAzkar },
-  { name: "Lailahaillallah", imgPath: lailahaillallah },
-  { name: "Morning Azkar", imgPath: morningAzkar },
-  { name: "Night Azkar", imgPath: nightAzkar },
-  // { name: "Reciting Darood", imgPath: recitingDarood },
-  { name: "SubhanAllah", imgPath: subhanAllah },
-  { name: "Travelling Zikar", imgPath: travellingZikar },
+const azkaarItems = [
+  { id: 1, name: "Alhamdulillah", imgPath: alhamdulillah },
+  { id: 2, name: "Allahu Akbar", imgPath: allahuAkbar },
+  { id: 3, name: "Astaghfirullah", imgPath: astaghfirullah },
+  { id: 4, name: "Evening Azkar", imgPath: eveningAzkar },
+  { id: 5, name: "Lailahaillallah", imgPath: lailahaillallah },
+  { id: 6, name: "Morning Azkar", imgPath: morningAzkar },
+  { id: 7, name: "Night Azkar", imgPath: nightAzkar },
+  // { id: 8, name: "Reciting Darood", imgPath: recitingDarood },
+  { id: 9, name: "SubhanAllah", imgPath: subhanAllah },
+  { id: 10, name: "Travelling Zikar", imgPath: travellingZikar },
 ];
+
 // Spiritual – Donating
 import buildingShelters from "../assets/images/SwiftlistApp/Spiritual/Donating/BuildingShelters.svg";
 import charity from "../assets/images/SwiftlistApp/Spiritual/Donating/Charity.svg";
@@ -909,17 +912,17 @@ import sponsoringEducation from "../assets/images/SwiftlistApp/Spiritual/Donatin
 import supportingOrphans from "../assets/images/SwiftlistApp/Spiritual/Donating/SupportingOrphans.svg";
 import waterProjectDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/WaterProjectDonation.svg";
 
- const donatingItems = [
-  { name: "Building Shelters", imgPath: buildingShelters },
-  { name: "Charity", imgPath: charity },
-  { name: "Clothes Donation", imgPath: clothesDonation },
-  { name: "Crowdfunding Donations", imgPath: crowdfundingDonations },
-  { name: "Food Donation", imgPath: foodDonation },
-  { name: "Health Causes Donation", imgPath: healthCausesDonation },
-  { name: "Relief Funds Donation", imgPath: reliefFundsDonation },
-  { name: "Sponsoring Education", imgPath: sponsoringEducation },
-  { name: "Supporting Orphans", imgPath: supportingOrphans },
-  { name: "Water Project Donation", imgPath: waterProjectDonation },
+const donatingItems = [
+  { id: 1, name: "Building Shelters", imgPath: buildingShelters },
+  { id: 2, name: "Charity", imgPath: charity },
+  { id: 3, name: "Clothes Donation", imgPath: clothesDonation },
+  { id: 4, name: "Crowdfunding Donations", imgPath: crowdfundingDonations },
+  { id: 5, name: "Food Donation", imgPath: foodDonation },
+  { id: 6, name: "Health Causes Donation", imgPath: healthCausesDonation },
+  { id: 7, name: "Relief Funds Donation", imgPath: reliefFundsDonation },
+  { id: 8, name: "Sponsoring Education", imgPath: sponsoringEducation },
+  { id: 9, name: "Supporting Orphans", imgPath: supportingOrphans },
+  { id: 10, name: "Water Project Donation", imgPath: waterProjectDonation },
 ];
 
 // Spiritual – Fasting
@@ -932,16 +935,17 @@ import fastingOnThursdays from "../assets/images/SwiftlistApp/Spiritual/Fasting/
 import intermittentFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/IntermittentFasting.svg";
 import whiteDaysFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/WhiteDaysFasting.svg";
 
- const fastingItems = [
-  { name: "Dawn to Sunset Fast", imgPath: dawnToSunsetFast },
-  { name: "Fasting in Ramadan", imgPath: fastingInRamadan },
-  { name: "Fasting of Ashura", imgPath: fastingOfAshura },
-  { name: "Fasting on Arafah", imgPath: fastingOnArafah },
-  { name: "Fasting on Mondays", imgPath: fastingOnMondays },
-  { name: "Fasting on Thursdays", imgPath: fastingOnThursdays },
-  { name: "Intermittent Fasting", imgPath: intermittentFasting },
-  { name: "White Days Fasting", imgPath: whiteDaysFasting },
+const fastingItems = [
+  { id: 1, name: "Dawn to Sunset Fast", imgPath: dawnToSunsetFast },
+  { id: 2, name: "Fasting in Ramadan", imgPath: fastingInRamadan },
+  { id: 3, name: "Fasting of Ashura", imgPath: fastingOfAshura },
+  { id: 4, name: "Fasting on Arafah", imgPath: fastingOnArafah },
+  { id: 5, name: "Fasting on Mondays", imgPath: fastingOnMondays },
+  { id: 6, name: "Fasting on Thursdays", imgPath: fastingOnThursdays },
+  { id: 7, name: "Intermittent Fasting", imgPath: intermittentFasting },
+  { id: 8, name: "White Days Fasting", imgPath: whiteDaysFasting },
 ];
+
 // Spiritual – Meditation
 import bodyScan from "../assets/images/SwiftlistApp/Spiritual/Meditation/BodyScan.svg";
 import deepBreathing from "../assets/images/SwiftlistApp/Spiritual/Meditation/DeepBreathing.svg";
@@ -954,18 +958,19 @@ import transcendentalMeditation from "../assets/images/SwiftlistApp/Spiritual/Me
 import walkingMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/WalkingMeditation.svg";
 import yogaMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/YogaMeditation.svg";
 
- const meditationItems = [
-  { name: "Body Scan", imgPath: bodyScan },
-  { name: "Deep Breathing", imgPath: deepBreathing },
-  { name: "Focused Meditation", imgPath: focusedMeditation },
-  { name: "Guided Imagery", imgPath: guidedImagery },
-  { name: "Loving-Kindness Meditation", imgPath: lovingKindnessMeditation },
-  { name: "Mantra Meditation", imgPath: mantraMeditation },
-  { name: "Mindfulness Meditation", imgPath: mindfulnessMeditation },
-  { name: "Transcendental Meditation", imgPath: transcendentalMeditation },
-  { name: "Walking Meditation", imgPath: walkingMeditation },
-  { name: "Yoga Meditation", imgPath: yogaMeditation },
+const meditationItems = [
+  { id: 1, name: "Body Scan", imgPath: bodyScan },
+  { id: 2, name: "Deep Breathing", imgPath: deepBreathing },
+  { id: 3, name: "Focused Meditation", imgPath: focusedMeditation },
+  { id: 4, name: "Guided Imagery", imgPath: guidedImagery },
+  { id: 5, name: "Loving-Kindness Meditation", imgPath: lovingKindnessMeditation },
+  { id: 6, name: "Mantra Meditation", imgPath: mantraMeditation },
+  { id: 7, name: "Mindfulness Meditation", imgPath: mindfulnessMeditation },
+  { id: 8, name: "Transcendental Meditation", imgPath: transcendentalMeditation },
+  { id: 9, name: "Walking Meditation", imgPath: walkingMeditation },
+  { id: 10, name: "Yoga Meditation", imgPath: yogaMeditation },
 ];
+
 /// Spiritual – Prayers
 import asar from "../assets/images/SwiftlistApp/Spiritual/Prayers/Asr.svg";
 import duha from "../assets/images/SwiftlistApp/Spiritual/Prayers/Duha.svg";
@@ -978,18 +983,18 @@ import solarEclipsePrayer from "../assets/images/SwiftlistApp/Spiritual/Prayers/
 import tahajjud from "../assets/images/SwiftlistApp/Spiritual/Prayers/Tahajjud.svg";
 // const zohar = require("../assets/images/SwiftlistApp/Spiritual/Prayers/Zohar.png");
 
- const prayersItems = [
-  { name: "Asar", imgPath: asar },
-  { name: "Duha", imgPath: duha },
-  { name: "Fajr", imgPath: fajr },
-  { name: "Isha", imgPath: isha },
-  { name: "Lunar Eclipse Prayer", imgPath: lunarEclipsePrayer },
-  { name: "Maghrib", imgPath: maghrib },
-  { name: "Salatul Tasbih", imgPath: salatulTasbih },
-  { name: "Solar Eclipse Prayer", imgPath: solarEclipsePrayer },
-  { name: "Tahajjud", imgPath: tahajjud },
-  // { name: "Zohar", imgPath: zohar },
+const prayersItems = [
+  { id: 1, name: "Asar", imgPath: asar },
+  { id: 2, name: "Duha", imgPath: duha },
+  { id: 3, name: "Fajr", imgPath: fajr },
+  { id: 4, name: "Isha", imgPath: isha },
+  { id: 5, name: "Lunar Eclipse Prayer", imgPath: lunarEclipsePrayer },
+  { id: 6, name: "Maghrib", imgPath: maghrib },
+  { id: 7, name: "Salatul Tasbih", imgPath: salatulTasbih },
+  { id: 8, name: "Solar Eclipse Prayer", imgPath: solarEclipsePrayer },
+  { id: 9, name: "Tahajjud", imgPath: tahajjud },
 ];
+
 // ===============================
 // ToDo – Cleaning (SVG assets)
 // ===============================
@@ -1009,20 +1014,20 @@ import windowCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Wind
 import wipingSurfaces from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/WipingSurfaces.svg";
 
 const cleaningItems = [
-  { name: "Bathroom Cleaning", imgPath: bathroomCleaning },
-  { name: "Carpet Cleaning", imgPath: carpetCleaning },
-  { name: "Cleaning Walls", imgPath: cleaningWalls },
-  { name: "Cobweb Removal", imgPath: cobwebRemoval },
-  { name: "Decluttering", imgPath: decluttering },
-  { name: "Dusting", imgPath: dusting },
-  { name: "Floor Polishing", imgPath: floorPolishing },
-  { name: "Kitchen Cleaning", imgPath: kitchenCleaning },
-  { name: "Mopping", imgPath: mopping },
-  { name: "Organizing Shelves", imgPath: organizingShelves },
-  { name: "Sweeping", imgPath: sweeping },
-  { name: "Vacuuming", imgPath: vacuuming },
-  { name: "Window Cleaning", imgPath: windowCleaning },
-  { name: "Wiping Surfaces", imgPath: wipingSurfaces },
+  { id: 1, name: "Bathroom Cleaning", imgPath: bathroomCleaning },
+  { id: 2, name: "Carpet Cleaning", imgPath: carpetCleaning },
+  { id: 3, name: "Cleaning Walls", imgPath: cleaningWalls },
+  { id: 4, name: "Cobweb Removal", imgPath: cobwebRemoval },
+  { id: 5, name: "Decluttering", imgPath: decluttering },
+  { id: 6, name: "Dusting", imgPath: dusting },
+  { id: 7, name: "Floor Polishing", imgPath: floorPolishing },
+  { id: 8, name: "Kitchen Cleaning", imgPath: kitchenCleaning },
+  { id: 9, name: "Mopping", imgPath: mopping },
+  { id: 10, name: "Organizing Shelves", imgPath: organizingShelves },
+  { id: 11, name: "Sweeping", imgPath: sweeping },
+  { id: 12, name: "Vacuuming", imgPath: vacuuming },
+  { id: 13, name: "Window Cleaning", imgPath: windowCleaning },
+  { id: 14, name: "Wiping Surfaces", imgPath: wipingSurfaces },
 ];
 
 
@@ -1045,20 +1050,20 @@ import StirringandSauteing from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/
 import UsingCookingAppliances from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/UsingCookingAppliances.svg";
 
 const Cooking = [
-  { name: "Baking", imgPath: Baking },
-  { name: "Boiling", imgPath: Boiling },
-  { name: "Broiling", imgPath: Broiling },
-  { name: "Chopping Vegetables", imgPath: ChoppingVegetables },
-  { name: "Frying", imgPath: Frying },
-  { name: "Grilling", imgPath: Grilling },
-  { name: "Marinating", imgPath: Marinating },
-  { name: "Mixing Ingredients", imgPath: MixingIngredients },
-  { name: "Prepping Ingredients", imgPath: PreppingIngredients },
-  { name: "Roasting", imgPath: Roasting },
-  { name: "Slow Cooking", imgPath: SlowCooking },
-  { name: "Steaming", imgPath: Steaming },
-  { name: "Stirring and Sauteing", imgPath: StirringandSauteing },
-  { name: "Using Cooking Appliances", imgPath: UsingCookingAppliances },
+  { id: 1, name: "Baking", imgPath: Baking },
+  { id: 2, name: "Boiling", imgPath: Boiling },
+  { id: 3, name: "Broiling", imgPath: Broiling },
+  { id: 4, name: "Chopping Vegetables", imgPath: ChoppingVegetables },
+  { id: 5, name: "Frying", imgPath: Frying },
+  { id: 6, name: "Grilling", imgPath: Grilling },
+  { id: 7, name: "Marinating", imgPath: Marinating },
+  { id: 8, name: "Mixing Ingredients", imgPath: MixingIngredients },
+  { id: 9, name: "Prepping Ingredients", imgPath: PreppingIngredients },
+  { id: 10, name: "Roasting", imgPath: Roasting },
+  { id: 11, name: "Slow Cooking", imgPath: SlowCooking },
+  { id: 12, name: "Steaming", imgPath: Steaming },
+  { id: 13, name: "Stirring and Sauteing", imgPath: StirringandSauteing },
+  { id: 14, name: "Using Cooking Appliances", imgPath: UsingCookingAppliances },
 ];
 
 
@@ -1082,21 +1087,21 @@ import UsingFabricSoftener from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/
 import WashingMachineUse from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/WashingMachineUse.svg";
 
 const ToDoLaundry = [
-  { name: "Airing Delicate Fabrics", imgPath: AiringDelicateFabrics },
-  { name: "Detergent Selection", imgPath: DetergentSelection },
-  { name: "Drying Clothes", imgPath: DryingClothes },
-  { name: "Folding Clothes", imgPath: FoldingClothes },
-  { name: "Hanging Clothes (1)", imgPath: HangingClothes1 },
-  { name: "Hanging Clothes", imgPath: HangingClothes },
-  { name: "Ironing", imgPath: Ironing },
-  { name: "Organizing Closet", imgPath: OrganizingCloset },
-  { name: "Removing Stains", imgPath: RemovingStains },
-  { name: "Sorting Clothes", imgPath: SortingClothes },
-  { name: "Starching Clothes", imgPath: StarchingClothes },
-  { name: "Storing Bed Linen", imgPath: StoringBedLinen },
-  { name: "Storing Winter Clothes", imgPath: StoringWinterClothes },
-  { name: "Using Fabric Softener", imgPath: UsingFabricSoftener },
-  { name: "Washing Machine Use", imgPath: WashingMachineUse },
+  { id: 1, name: "Airing Delicate Fabrics", imgPath: AiringDelicateFabrics },
+  { id: 2, name: "Detergent Selection", imgPath: DetergentSelection },
+  { id: 3, name: "Drying Clothes", imgPath: DryingClothes },
+  { id: 4, name: "Folding Clothes", imgPath: FoldingClothes },
+  { id: 5, name: "Hanging Clothes (1)", imgPath: HangingClothes1 }, // don't know why it is so? is it needed?
+  { id: 6, name: "Hanging Clothes", imgPath: HangingClothes },
+  { id: 7, name: "Ironing", imgPath: Ironing },
+  { id: 8, name: "Organizing Closet", imgPath: OrganizingCloset },
+  { id: 9, name: "Removing Stains", imgPath: RemovingStains },
+  { id: 10, name: "Sorting Clothes", imgPath: SortingClothes },
+  { id: 11, name: "Starching Clothes", imgPath: StarchingClothes },
+  { id: 12, name: "Storing Bed Linen", imgPath: StoringBedLinen },
+  { id: 13, name: "Storing Winter Clothes", imgPath: StoringWinterClothes },
+  { id: 14, name: "Using Fabric Softener", imgPath: UsingFabricSoftener },
+  { id: 15, name: "Washing Machine Use", imgPath: WashingMachineUse },
 ];
 
 
@@ -1118,21 +1123,21 @@ import Smoothies from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/Smoothies
 // const Water = require("../assets/images/SwiftlistApp/ToDo/Drinking/Water.png");
 import Wine from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/Wine.svg";
 
- const ToDoDrinking = [
-  { name: "Beer", imgPath: Beer },
-  { name: "Coffee", imgPath: Coffee },
-  { name: "Energy Drinks", imgPath: EnergyDrinks },
-  { name: "Herbal Teas", imgPath: HerbalTeas },
-  { name: "Juice", imgPath: Juice },
-  { name: "Juice Detox", imgPath: JuiceDetox },
-  { name: "Lemonade", imgPath: Lemonade },
-  { name: "Milkshakes", imgPath: Milkshakes },
-  { name: "Smoothies", imgPath: Smoothies },
-  { name: "Soda", imgPath: Soda },
-  { name: "Sparkling Water", imgPath: SparklingWater },
-  { name: "Tea", imgPath: Tea },
-  { name: "Water", imgPath: Water },
-  { name: "Wine", imgPath: Wine },
+const ToDoDrinking = [
+  { id: 1, name: "Beer", imgPath: Beer },
+  { id: 2, name: "Coffee", imgPath: Coffee },
+  { id: 3, name: "Energy Drinks", imgPath: EnergyDrinks },
+  { id: 4, name: "Herbal Teas", imgPath: HerbalTeas },
+  { id: 5, name: "Juice", imgPath: Juice },
+  { id: 6, name: "Juice Detox", imgPath: JuiceDetox },
+  { id: 7, name: "Lemonade", imgPath: Lemonade },
+  { id: 8, name: "Milkshakes", imgPath: Milkshakes },
+  { id: 9, name: "Smoothies", imgPath: Smoothies },
+  { id: 10, name: "Soda", imgPath: Soda },
+  { id: 11, name: "Sparkling Water", imgPath: SparklingWater },
+  { id: 12, name: "Tea", imgPath: Tea },
+  { id: 13, name: "Water", imgPath: Water },
+  { id: 14, name: "Wine", imgPath: Wine },
 ];
 
 
@@ -1154,19 +1159,19 @@ import SnacksT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Snacks.svg";
 import TakeawayMeals from "../assets/images/SwiftlistApp/ToDo/Eating/svg/TakeawayMeals.svg";
 
 const Eating = [
-  { name: "Breakfast", imgPath: BreakfastT },
-  { name: "Buffet", imgPath: Buffet },
-  { name: "Desserts", imgPath: Desserts },
-  { name: "Dinner", imgPath: DinnerT },
-  { name: "Fast Food", imgPath: FastFood },
-  { name: "Fruit", imgPath: FruitT },
-  { name: "Grilled Meals", imgPath: GrilledMeals },
-  { name: "Lunch", imgPath: LunchT },
-  { name: "Meal Prep", imgPath: MealPrep },
-  { name: "Plated Meals", imgPath: PlatedMeals },
-  { name: "Salads", imgPath: SaladsT },
-  { name: "Snacks", imgPath: SnacksT },
-  { name: "Takeaway Meals", imgPath: TakeawayMeals },
+  { id: 1, name: "Breakfast", imgPath: BreakfastT },
+  { id: 2, name: "Buffet", imgPath: Buffet },
+  { id: 3, name: "Desserts", imgPath: Desserts },
+  { id: 4, name: "Dinner", imgPath: DinnerT },
+  { id: 5, name: "Fast Food", imgPath: FastFood },
+  { id: 6, name: "Fruit", imgPath: FruitT },
+  { id: 7, name: "Grilled Meals", imgPath: GrilledMeals },
+  { id: 8, name: "Lunch", imgPath: LunchT },
+  { id: 9, name: "Meal Prep", imgPath: MealPrep },
+  { id: 10, name: "Plated Meals", imgPath: PlatedMeals },
+  { id: 11, name: "Salads", imgPath: SaladsT },
+  { id: 12, name: "Snacks", imgPath: SnacksT },
+  { id: 13, name: "Takeaway Meals", imgPath: TakeawayMeals },
 ];
 
 // ToDo – Official Task (SVG assets)
@@ -1186,20 +1191,20 @@ import TaskPrioritization from "../assets/images/SwiftlistApp/ToDo/Official Task
 import TrackingTasks from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/TrackingTasks.svg";
 
 const OfficialTask = [
-  { name: "Answering Emails", imgPath: AnsweringEmails },
-  { name: "Budget Planning", imgPath: BudgetPlanning },
-  { name: "Completing Documents", imgPath: CompletingDocuments },
-  { name: "Data Entry", imgPath: DataEntry },
-  { name: "File Management", imgPath: FileManagement },
-  { name: "Organizing Meetings", imgPath: OrganizingMeetings },
-  { name: "Phone Calls", imgPath: PhoneCalls },
-  { name: "Preparing Presentations", imgPath: PreparingPresentations },
-  { name: "Preparing Reports", imgPath: PreparingReports },
-  { name: "Project Management", imgPath: ProjectManagement },
-  { name: "Reviewing Documents", imgPath: ReviewingDocuments },
-  { name: "Scheduling Meetings", imgPath: SchedulingMeetings },
-  { name: "Task Prioritization", imgPath: TaskPrioritization },
-  { name: "Tracking Tasks", imgPath: TrackingTasks },
+  { id: 1, name: "Answering Emails", imgPath: AnsweringEmails },
+  { id: 2, name: "Budget Planning", imgPath: BudgetPlanning },
+  { id: 3, name: "Completing Documents", imgPath: CompletingDocuments },
+  { id: 4, name: "Data Entry", imgPath: DataEntry },
+  { id: 5, name: "File Management", imgPath: FileManagement },
+  { id: 6, name: "Organizing Meetings", imgPath: OrganizingMeetings },
+  { id: 7, name: "Phone Calls", imgPath: PhoneCalls },
+  { id: 8, name: "Preparing Presentations", imgPath: PreparingPresentations },
+  { id: 9, name: "Preparing Reports", imgPath: PreparingReports },
+  { id: 10, name: "Project Management", imgPath: ProjectManagement },
+  { id: 11, name: "Reviewing Documents", imgPath: ReviewingDocuments },
+  { id: 12, name: "Scheduling Meetings", imgPath: SchedulingMeetings },
+  { id: 13, name: "Task Prioritization", imgPath: TaskPrioritization },
+  { id: 14, name: "Tracking Tasks", imgPath: TrackingTasks },
 ];
 
 // Grooming – Personal Hygiene
@@ -1218,19 +1223,19 @@ import WashFace from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Was
 import WearCleanCloths from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/WearCleanClothes.svg";
 
 const PersonalHygiene = [
-  { name: "Apply Perfume", imgPath: ApplyPerfume },
-  { name: "Apply Screen", imgPath: ApplyScreen },
-  { name: "Brush Teeth", imgPath: BrushTeeth },
-  { name: "Clean Ears", imgPath: CleanEars },
-  { name: "Clean Body", imgPath: CleanBody },
-  { name: "Combo Hair", imgPath: ComboHair },
-  { name: "Condition Hair", imgPath: ConditionHair },
-  { name: "Moisturize Skin", imgPath: MoisturizeSkin },
-  { name: "Shampoo Hair", imgPath: ShampooHair },
-  { name: "Shower", imgPath: Shower },
-  { name: "Trim Nails", imgPath: TrimNails },
-  { name: "Wash Face", imgPath: WashFace },
-  { name: "Wear Clean Cloths", imgPath: WearCleanCloths },
+  { id: 1, name: "Apply Perfume", imgPath: ApplyPerfume },
+  { id: 2, name: "Apply Screen", imgPath: ApplyScreen },
+  { id: 3, name: "Brush Teeth", imgPath: BrushTeeth },
+  { id: 4, name: "Clean Ears", imgPath: CleanEars },
+  { id: 5, name: "Clean Body", imgPath: CleanBody },
+  { id: 6, name: "Combo Hair", imgPath: ComboHair },
+  { id: 7, name: "Condition Hair", imgPath: ConditionHair },
+  { id: 8, name: "Moisturize Skin", imgPath: MoisturizeSkin },
+  { id: 9, name: "Shampoo Hair", imgPath: ShampooHair },
+  { id: 10, name: "Shower", imgPath: Shower },
+  { id: 11, name: "Trim Nails", imgPath: TrimNails },
+  { id: 12, name: "Wash Face", imgPath: WashFace },
+  { id: 13, name: "Wear Clean Cloths", imgPath: WearCleanCloths },
 ];
 
 // Grooming – Dental Care
@@ -1245,15 +1250,15 @@ import ToothExtraction from "../assets/images/SwiftlistApp/Grooming/DentalCare/T
 import Whitening from "../assets/images/SwiftlistApp/Grooming/DentalCare/Whitening.svg";
 
 const DentalCare = [
-  { name: "Consultation", imgPath: Consultation },
-  { name: "Flexible Denture", imgPath: FlexibleDenture },
-  { name: "Mouth Guard", imgPath: MouthGuard },
-  { name: "Oral Prophylaxis", imgPath: OralProphylaxis },
-  { name: "Partial Denture", imgPath: PartialDenture },
-  { name: "Retainers", imgPath: Retainers },
-  { name: "Temporary Filling", imgPath: TemporaryFilling },
-  { name: "Tooth Extraction", imgPath: ToothExtraction },
-  { name: "Whitening", imgPath: Whitening },
+  { id: 1, name: "Consultation", imgPath: Consultation },
+  { id: 2, name: "Flexible Denture", imgPath: FlexibleDenture },
+  { id: 3, name: "Mouth Guard", imgPath: MouthGuard },
+  { id: 4, name: "Oral Prophylaxis", imgPath: OralProphylaxis },
+  { id: 5, name: "Partial Denture", imgPath: PartialDenture },
+  { id: 6, name: "Retainers", imgPath: Retainers },
+  { id: 7, name: "Temporary Filling", imgPath: TemporaryFilling },
+  { id: 8, name: "Tooth Extraction", imgPath: ToothExtraction },
+  { id: 9, name: "Whitening", imgPath: Whitening },
 ];
 
 // ===============================================shared===============================================
@@ -1283,33 +1288,34 @@ import Moisturizing from "../assets/images/SwiftlistApp/Grooming/NailCare/Moistu
 import Trimming from "../assets/images/SwiftlistApp/Grooming/NailCare/Trimming.svg";
 
 // Combined arrays
- const NailCare = [
-  { name: "Nail Cleaning", imgPath: NailCleaning },
-  { name: "Massaging", imgPath: Massaging },
-  { name: "Moisturizing", imgPath: Moisturizing },
-  { name: "Trimming", imgPath: Trimming },
+const NailCare = [
+  { id: 1, name: "Nail Cleaning", imgPath: NailCleaning },
+  { id: 2, name: "Massaging", imgPath: Massaging },
+  { id: 3, name: "Moisturizing", imgPath: Moisturizing },
+  { id: 4, name: "Trimming", imgPath: Trimming },
 ];
 
- const SkinCare = [
-  { name: "Aloe Vera", imgPath: AloeVera },
-  { name: "Cleanser", imgPath: Cleanser },
-  { name: "Eye Cream", imgPath: EyeCream },
-  { name: "Face Oil", imgPath: FaceOil },
-  { name: "Moisturizer", imgPath: Moisturizer },
-  { name: "Night Cream", imgPath: NightCream },
-  { name: "Serum", imgPath: Serum },
-  { name: "Spot Treatment", imgPath: SpotTreatment },
-  { name: "Toner", imgPath: Toner },
+const SkinCare = [
+  { id: 1, name: "Aloe Vera", imgPath: AloeVera },
+  { id: 2, name: "Cleanser", imgPath: Cleanser },
+  { id: 3, name: "Eye Cream", imgPath: EyeCream },
+  { id: 4, name: "Face Oil", imgPath: FaceOil },
+  { id: 5, name: "Moisturizer", imgPath: Moisturizer },
+  { id: 6, name: "Night Cream", imgPath: NightCream },
+  { id: 7, name: "Serum", imgPath: Serum },
+  { id: 8, name: "Spot Treatment", imgPath: SpotTreatment },
+  { id: 9, name: "Toner", imgPath: Toner },
 ];
 
- const Haircare = [
-  { name: "Brushing Combing", imgPath: BrushingCombing },
-  { name: "Hair Mask Treatment", imgPath: HairMaskTreatment },
-  { name: "HairOiling", imgPath: HairOiling },
-  { name: "HairWash", imgPath: HairWash },
-  { name: "ScalpMassaging", imgPath: ScalpMassaging },
-  { name: "ScalpScrub", imgPath: ScalpScrub },
+const Haircare = [
+  { id: 1, name: "Brushing Combing", imgPath: BrushingCombing },
+  { id: 2, name: "Hair Mask Treatment", imgPath: HairMaskTreatment },
+  { id: 3, name: "HairOiling", imgPath: HairOiling },
+  { id: 4, name: "HairWash", imgPath: HairWash },
+  { id: 5, name: "ScalpMassaging", imgPath: ScalpMassaging },
+  { id: 6, name: "ScalpScrub", imgPath: ScalpScrub },
 ];
+
 // Beef Items
 import BeefBiryani from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBiryani.svg";
 import BeefBurger from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBurger.svg";
@@ -1322,17 +1328,17 @@ import BeefStroganoff from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefS
 import BeefTacos from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefTacos.svg";
 import RoastBeef from "../assets/images/SwiftlistApp/KitchenMenu/Beef/RoastBeef.svg";
 
- const BeefDishes = [
-  { name: "Beef Biryani", imgPath: BeefBiryani },
-  { name: "Beef Burger", imgPath: BeefBurger },
-  { name: "Beef Curry", imgPath: BeefCurry },
-  { name: "Beef Kebab", imgPath: BeefKebab },
-  { name: "Beef Ribs", imgPath: BeefRibs },
-  { name: "Beef Steak", imgPath: BeefSteak },
-  { name: "Beef Stir Fry", imgPath: BeefStirFry },
-  { name: "Beef Stroganoff", imgPath: BeefStroganoff },
-  { name: "Beef Tacos", imgPath: BeefTacos },
-  { name: "Roast Beef", imgPath: RoastBeef },
+const BeefDishes = [
+  { id: 1, name: "Beef Biryani", imgPath: BeefBiryani },
+  { id: 2, name: "Beef Burger", imgPath: BeefBurger },
+  { id: 3, name: "Beef Curry", imgPath: BeefCurry },
+  { id: 4, name: "Beef Kebab", imgPath: BeefKebab },
+  { id: 5, name: "Beef Ribs", imgPath: BeefRibs },
+  { id: 6, name: "Beef Steak", imgPath: BeefSteak },
+  { id: 7, name: "Beef Stir Fry", imgPath: BeefStirFry },
+  { id: 8, name: "Beef Stroganoff", imgPath: BeefStroganoff },
+  { id: 9, name: "Beef Tacos", imgPath: BeefTacos },
+  { id: 10, name: "Roast Beef", imgPath: RoastBeef },
 ];
 
 // Breakfast Items
@@ -1349,16 +1355,16 @@ import SmoothieBowl from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/_S
 // const Waffles = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Waffles.png");
 
 const BreakfastItems = [
-  { name: "Boiled Eggs", imgPath: BoiledEggs },
-  // { name: "Cereal", imgPath: Cereal },
-  { name: "French Toast", imgPath: FrenchToast },
-  { name: "Omelette", imgPath: Omelette },
-  { name: "Pancakes", imgPath: Pancakes },
-  { name: "Paratha & Yogurt", imgPath: ParathaYogurt },
-  { name: "Porridge", imgPath: Porridge },
-  { name: "Scrambled Eggs", imgPath: ScrambledEggs },
-  { name: "Smoothie Bowl", imgPath: SmoothieBowl },
-  // { name: "Waffles", imgPath: Waffles },
+  { id: 1, name: "Boiled Eggs", imgPath: BoiledEggs },
+  // { id: 2, name: "Cereal", imgPath: Cereal },
+  { id: 3, name: "French Toast", imgPath: FrenchToast },
+  { id: 4, name: "Omelette", imgPath: Omelette },
+  { id: 5, name: "Pancakes", imgPath: Pancakes },
+  { id: 6, name: "Paratha & Yogurt", imgPath: ParathaYogurt },
+  { id: 7, name: "Porridge", imgPath: Porridge },
+  { id: 8, name: "Scrambled Eggs", imgPath: ScrambledEggs },
+  { id: 9, name: "Smoothie Bowl", imgPath: SmoothieBowl },
+  // { id: 10, name: "Waffles", imgPath: Waffles },
 ];
 
 // Brunch Items
@@ -1370,12 +1376,12 @@ import Sandwich from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Sandwich.
 import Wraps from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Wraps.svg";
 
 const BrunchItems = [
-  { name: "Burrito", imgPath: Burrito },
-  { name: "Chicken Salad Sandwich", imgPath: ChickenSaladSandwich },
-  { name: "Flatbread & Hummus", imgPath: FlatbreadHummus },
-  { name: "Frittata", imgPath: Frittata },
-  { name: "Sandwich", imgPath: Sandwich },
-  { name: "Wraps", imgPath: Wraps },
+  { id: 1, name: "Burrito", imgPath: Burrito },
+  { id: 2, name: "Chicken Salad Sandwich", imgPath: ChickenSaladSandwich },
+  { id: 3, name: "Flatbread & Hummus", imgPath: FlatbreadHummus },
+  { id: 4, name: "Frittata", imgPath: Frittata },
+  { id: 5, name: "Sandwich", imgPath: Sandwich },
+  { id: 6, name: "Wraps", imgPath: Wraps },
 ];
 
 // Chicken Items
@@ -1390,17 +1396,17 @@ import ChickenTikka from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/Chic
 import GrilledChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/GrilledChicken.svg";
 import RoastedChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/RoastedChicken.svg";
 
- const ChickenItems = [
-  { name: "Chicken Alfredo", imgPath: ChickenAlfredo },
-  { name: "Chicken Curry", imgPath: ChickenCurry },
-  { name: "Chicken Fajitas", imgPath: ChickenFajitas },
-  { name: "Chicken Nuggets", imgPath: ChickenNuggets },
-  { name: "Chicken Parmesan", imgPath: ChickenParmesan },
-  { name: "Chicken Shawarma", imgPath: ChickenShawarma },
-  { name: "Chicken Tikka", imgPath: ChickenTikka },
-  { name: "Chicken Wings", imgPath: ChickenWings },
-  { name: "Grilled Chicken", imgPath: GrilledChicken },
-  { name: "Roasted Chicken", imgPath: RoastedChicken },
+const ChickenItems = [
+  { id: 1, name: "Chicken Alfredo", imgPath: ChickenAlfredo },
+  { id: 2, name: "Chicken Curry", imgPath: ChickenCurry },
+  { id: 3, name: "Chicken Fajitas", imgPath: ChickenFajitas },
+  { id: 4, name: "Chicken Nuggets", imgPath: ChickenNuggets },
+  { id: 5, name: "Chicken Parmesan", imgPath: ChickenParmesan },
+  { id: 6, name: "Chicken Shawarma", imgPath: ChickenShawarma },
+  { id: 7, name: "Chicken Tikka", imgPath: ChickenTikka },
+  { id: 8, name: "Chicken Wings", imgPath: ChickenWings },
+  { id: 9, name: "Grilled Chicken", imgPath: GrilledChicken },
+  { id: 10, name: "Roasted Chicken", imgPath: RoastedChicken },
 ];
 
 // ===============================
@@ -1418,16 +1424,16 @@ import SeekhKebabswithNaan from "../assets/images/SwiftlistApp/KitchenMenu/Dinne
 import SpicedWholeChickenwithYogurtSauce from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/SpicedWholeChickenWithYogurtSauce.svg";
 
 const DinnerItems = [
-  { name: "Beef Lasagna", imgPath: BeefLasagna },
-  { name: "Grilled Lamb Chops", imgPath: GrilledLambChops },
-  { name: "Herb Roasted Chicken with Mashed Potatoes", imgPath: HerbRoastedChickenwithMashedPotatoes },
-  { name: "Kidney Beans with Rice", imgPath: KidneyBeanswithRice },
-  { name: "Moroccan Chicken with Couscous", imgPath: MoroccanChickenwithCouscous },
-  { name: "Mushroom Risotto", imgPath: MushroomRisotto },
-  { name: "Mutton Curry with Flatbread", imgPath: MuttonCurrywithFlatbread },
-  { name: "Mutton Soup with Bread", imgPath: MuttonSoupwithBread },
-  { name: "Seekh Kebabs with Naan", imgPath: SeekhKebabswithNaan },
-  { name: "Spiced Whole Chicken with Yogurt Sauce", imgPath: SpicedWholeChickenwithYogurtSauce },
+  { id: 1, name: "Beef Lasagna", imgPath: BeefLasagna },
+  { id: 2, name: "Grilled Lamb Chops", imgPath: GrilledLambChops },
+  { id: 3, name: "Herb Roasted Chicken with Mashed Potatoes", imgPath: HerbRoastedChickenwithMashedPotatoes },
+  { id: 4, name: "Kidney Beans with Rice", imgPath: KidneyBeanswithRice },
+  { id: 5, name: "Moroccan Chicken with Couscous", imgPath: MoroccanChickenwithCouscous },
+  { id: 6, name: "Mushroom Risotto", imgPath: MushroomRisotto },
+  { id: 7, name: "Mutton Curry with Flatbread", imgPath: MuttonCurrywithFlatbread },
+  { id: 8, name: "Mutton Soup with Bread", imgPath: MuttonSoupwithBread },
+  { id: 9, name: "Seekh Kebabs with Naan", imgPath: SeekhKebabswithNaan },
+  { id: 10, name: "Spiced Whole Chicken with Yogurt Sauce", imgPath: SpicedWholeChickenwithYogurtSauce },
 ];
 
 // ===============================
@@ -1444,17 +1450,17 @@ import PulaowithRaita from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/Pula
 import SpicedOkra from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicedOkra.svg";
 import SpicyChickpeaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicyChickpeaSalad.svg";
 
- const LunchItems = [
-  { name: "Chicken Biryani", imgPath: ChickenBiryani },
-  { name: "Chicken Karahi with Naan", imgPath: ChickenKarahiwithNaan },
-  { name: "Lentils with Rice", imgPath: LentilswithRice },
-  { name: "Minced Meat Stuffed Bread", imgPath: MincedMeatStuffedBread },
-  { name: "Mutton Korma with Tandoori Roti", imgPath: MuttonKormawithTandooriRoti },
-  { name: "Palak Paneer (Spinach and Cottage Cheese) with Rice", imgPath: PalakPaneer },
-  { name: "Potato and Meat Curry", imgPath: PotatoandMeatCurry },
-  { name: "Pulao with Raita", imgPath: PulaowithRaita },
-  { name: "Spiced Okra", imgPath: SpicedOkra },
-  { name: "Spicy Chickpea Salad", imgPath: SpicyChickpeaSalad },
+const LunchItems = [
+  { id: 1, name: "Chicken Biryani", imgPath: ChickenBiryani },
+  { id: 2, name: "Chicken Karahi with Naan", imgPath: ChickenKarahiwithNaan },
+  { id: 3, name: "Lentils with Rice", imgPath: LentilswithRice },
+  { id: 4, name: "Minced Meat Stuffed Bread", imgPath: MincedMeatStuffedBread },
+  { id: 5, name: "Mutton Korma with Tandoori Roti", imgPath: MuttonKormawithTandooriRoti },
+  { id: 6, name: "Palak Paneer (Spinach and Cottage Cheese) with Rice", imgPath: PalakPaneer },
+  { id: 7, name: "Potato and Meat Curry", imgPath: PotatoandMeatCurry },
+  { id: 8, name: "Pulao with Raita", imgPath: PulaowithRaita },
+  { id: 9, name: "Spiced Okra", imgPath: SpicedOkra },
+  { id: 10, name: "Spicy Chickpea Salad", imgPath: SpicyChickpeaSalad },
 ];
 
 // ===============================
@@ -1471,18 +1477,18 @@ import SpinachSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/Spinac
 // const TunaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Salad/TunaSalad.png');
 import WaldorfSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/WaldorfSalad.svg";
 
- const SaladItems = [
-  { name: "Caesar Salad", imgPath: CaesarSalad },
-  { name: "Caprese Salad", imgPath: CapreseSalad },
-  { name: "Cobb Salad", imgPath: CobbSalad },
-  { name: "Coleslaw Salad", imgPath: ColeslawSalad },
-  { name: "Garden Salad", imgPath: GardenSalad },
-  { name: "Greek Salad", imgPath: GreekSalad },
-  { name: "Pasta Salad", imgPath: PastaSalad },
-  { name: "Spinach Salad", imgPath: SpinachSalad },
-  // { name: 'Tuna Salad', imgPath: TunaSalad },
-  { name: "Waldorf Salad", imgPath: WaldorfSalad },
+const SaladItems = [
+  { id: 1, name: "Caesar Salad", imgPath: CaesarSalad },
+  { id: 2, name: "Caprese Salad", imgPath: CapreseSalad },
+  { id: 3, name: "Cobb Salad", imgPath: CobbSalad },
+  { id: 4, name: "Coleslaw Salad", imgPath: ColeslawSalad },
+  { id: 5, name: "Garden Salad", imgPath: GardenSalad },
+  { id: 6, name: "Greek Salad", imgPath: GreekSalad },
+  { id: 7, name: "Pasta Salad", imgPath: PastaSalad },
+  { id: 8, name: "Spinach Salad", imgPath: SpinachSalad },
+  { id: 9, name: "Waldorf Salad", imgPath: WaldorfSalad },
 ];
+
 
 export default{
   frozenitems,
