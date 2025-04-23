@@ -94,6 +94,8 @@ const ProductList: React.FC<ProductListProps> = ({
     onProductSelect();
   };
 
+  console.log(selectedProducts , "==================================================")
+
   useEffect(() => {
     const isFound = selectedProducts[ListName]?.some(
       (selected: Product) => selected.name === selectedProduct
@@ -148,7 +150,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = localItems[ListName]?.some(
+            const isSelected = localItems[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 

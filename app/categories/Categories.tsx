@@ -114,6 +114,9 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     thingstodoimage: ThingsToDoSVG,
     kitchenmenuimage: KitchenSVG,
   };
+    useEffect(()=>{
+      console.log(selectedItem , " -=-=-=-=-=--==-=-=-=-=-=-=-=----------------")
+    },[selectedItem])
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
 
@@ -274,7 +277,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             <ProductList
               products={searchQuery.trim() ? filteredItems : selectedItem}
               ListName={name}
-              ListID={matchingCategory}
+              ListID={currentID}
               page=""
               showBottomSheet={!searchQuery.trim()} // 🟢 Add this line
             />

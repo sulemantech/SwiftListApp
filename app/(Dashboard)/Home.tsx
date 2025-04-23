@@ -149,7 +149,7 @@ const Home = () => {
       let totalItems = 0;
 
       const updatedCardData = cardDataFilterArray.map((card) => {
-        const itemsFromContext = selectedProducts[card.title] || [];
+        const itemsFromContext = selectedProducts[card.id] || [];
         const itemCount = itemsFromContext.length;
 
         totalItems += itemCount;
