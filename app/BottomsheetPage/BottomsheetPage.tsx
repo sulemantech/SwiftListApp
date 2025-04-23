@@ -16,7 +16,7 @@ export default function BottomsheetPage() {
         <Header     onBack={() => router.back()}
           title={"Select Your Preferences"}/>
       <View style={styles.calendarContainer}>
-        <CalendarTabBar />
+        {/* <CalendarTabBar /> */}
       </View>
       <TimeSelector />
       <AddSubTask/>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     height: "auto",
-    backgroundColor: "transparent",
+    backgroundColor: "#000",
     minHeight: 430,
     overflow: "hidden",
     borderRadius: 15,

@@ -71,6 +71,10 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const toggleSwitch = () => {
     setChecked(!checked);
   };
+  // Set initial height to show Weekly tab properly
+  useEffect(() => {
+    setSheetHeight(150); // Weekly is default tab
+  }, []);
   const NUMBERS = Array.from({ length: 31 }, (_, index) =>
     (index + 1).toString()
   );
@@ -186,16 +190,20 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
             </View>
           </View>
         </BottomSheetView>
-        <BottomSheetView style={[{ height: sheetHeight }]}>
-          <CalendarTabBar
-            onTabChange={(tabIndex) => {
-              if (tabIndex === 0) setSheetHeight(100);
-              else if (tabIndex === 1) setSheetHeight(150);
-              else setSheetHeight(450);
-            }}
-          />
-        </BottomSheetView>
+        <View>
+          <BottomSheetView style={[{ height: sheetHeight }]}>
+            <CalendarTabBar
+              onTabChange={(tabIndex) => {
+                if (tabIndex === 0) setSheetHeight(100);
+                else if (tabIndex === 1) setSheetHeight(150);
+                else setSheetHeight(480);
+              }}
+            />
+          </BottomSheetView>
+        </View>
+
         <TimeSelector />
+
         <AddSubTask />
       </BottomSheetScrollView>
     </BottomSheet>
