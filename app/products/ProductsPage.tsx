@@ -15,34 +15,48 @@ import { ProductContext } from "../../Context/CardContext";
 
 const ProductsPage: React.FC = () => {
   const router = useRouter();
-  const { myStringProp, ListName } = useLocalSearchParams<{
-    myStringProp: string;
-    ListName: string;
-  }>();
-
+  const { categoryName, ListName, CategoryID, ListID } =
+    useLocalSearchParams() as {
+      categoryName: string;
+      ListName: string;
+      CategoryID: any;
+      ListID: any;
+    };
   const selectedProducts = useContext(ProductContext)?.selectedProducts;
+  const CategoryIDInNum = Number(CategoryID);
+  const ListIDInNum = Number(ListID);
 
   // Adjust for inconsistent structure of MyListCollection
   const allCategories = useMemo(() => {
-    return MyListCollection.flatMap(
-      (list) => list.Categories ?? list.Categories ?? []
-    );
+    return MyListCollection.flatMap((list) => list.Categories ?? []);
   }, []);
 
+  console.log(CategoryIDInNum , "CategoryIDInNum");
+  console.log(ListIDInNum , "ListIDInNum");
+
   const matchingSubCategory = useMemo(() => {
-    return allCategories.find(
-      (subCategory) => subCategory.name === myStringProp
+    // Step 1: First find the correct list
+    const matchingList = MyListCollection.find(
+      (list) => list.id === ListIDInNum // this is the main list/category ID
     );
-  }, [myStringProp, allCategories]);
+
+    // Step 2: Then find the category **within that list**
+    const subCategory = matchingList?.Categories?.find(
+      (cat) => cat.id === CategoryIDInNum
+    );
+
+    console.log("Matching list:", matchingList);
+    console.log("Subcategory from list:", subCategory);
+    return subCategory;
+  }, [CategoryIDInNum, ListIDInNum]);
 
   const updatedItems = useMemo(() => {
     if (!selectedProducts || !matchingSubCategory) return [];
 
     return matchingSubCategory.items.map((item: any) => {
-      const selectedItem = selectedProducts[ListName]?.find(
-        (selected: { name: string }) => selected.name === item.name
+      const selectedItem = selectedProducts[ListIDInNum]?.find(
+        (selected: { id: number }) => selected.id === item.id
       );
-      console.log(item, "selectedItem");
       return selectedItem
         ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
         : item;
@@ -66,14 +80,19 @@ const ProductsPage: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Header
-        title={myStringProp || "Products"}
+        title={categoryName || "Products"}
         Rightelement={false}
         onBack={handleBackPress}
       />
       <View style={styles.divider} />
 
       {updatedItems.length > 0 ? (
-        <ProductList products={updatedItems} ListName={ListName} page={""} />
+        <ProductList
+          products={updatedItems}
+          ListName={ListName}
+          page={""}
+          ListID={CategoryIDInNum}
+        />
       ) : (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>

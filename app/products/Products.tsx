@@ -28,6 +28,7 @@ interface ProductListProps {
   products: Product[];
   page?: string;
   ListName: any;
+  ListID:any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -59,6 +60,7 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   page,
   ListName,
+  ListID,
   onProductSelect = () => {},
   showBottomSheet = true,
 }) => {
@@ -88,7 +90,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
     setLocalItems(updatedLocalItems);
     setSelectedProduct(product.name);
-    await updateSelectedProducts(ListName, product); // <- optional await
+    await updateSelectedProducts(ListID, product); // <- optional await
     onProductSelect();
   };
 
