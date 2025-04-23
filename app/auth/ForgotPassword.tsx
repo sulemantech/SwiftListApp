@@ -28,7 +28,6 @@ const ForgotPassword: React.FC = () => {
 
     try {
       await auth().sendPasswordResetEmail(email);
-      console.log("Reset email sent to:", email);
 
       // Alert.alert(
       //   "Success",

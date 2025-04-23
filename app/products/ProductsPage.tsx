@@ -15,25 +15,29 @@ import { ProductContext } from "../../Context/CardContext";
 
 const ProductsPage: React.FC = () => {
   const router = useRouter();
-  const { myStringProp, ListName } = useLocalSearchParams<{
-    myStringProp: string;
+  const { categoryName, ListName, CategoryID } = useLocalSearchParams() as {
+    categoryName: string;
     ListName: string;
-  }>();
+    CategoryID: any;
+  };
+  const CategoryIDInNum = Number(CategoryID)
 
   const selectedProducts = useContext(ProductContext)?.selectedProducts;
 
   // Adjust for inconsistent structure of MyListCollection
   const allCategories = useMemo(() => {
     return MyListCollection.flatMap(
-      (list) => list.Categories ?? list.Categories ?? []
+      (list) =>  list.Categories ?? []
     );
   }, []);
 
   const matchingSubCategory = useMemo(() => {
-    return allCategories.find(
-      (subCategory) => subCategory.name === myStringProp
+    const found = allCategories.find(
+      (subCategory) => subCategory.id === CategoryIDInNum
     );
-  }, [myStringProp, allCategories]);
+    return found;
+  }, [categoryName, allCategories]);
+  
 
   const updatedItems = useMemo(() => {
     if (!selectedProducts || !matchingSubCategory) return [];
@@ -42,9 +46,9 @@ const ProductsPage: React.FC = () => {
       const selectedItem = selectedProducts[ListName]?.find(
         (selected: { name: string }) => selected.name === item.name
       );
-      console.log(item, "selectedItem");
+      console.log(selectedItem)
       return selectedItem
-        ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
+        ? { ...selectedItem, imgPath: item.imgPath , id:item.id }
         : item;
     });
   }, [matchingSubCategory, selectedProducts, ListName]);
@@ -66,7 +70,7 @@ const ProductsPage: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <Header
-        title={myStringProp || "Products"}
+        title={categoryName || "Products"}
         Rightelement={false}
         onBack={handleBackPress}
       />

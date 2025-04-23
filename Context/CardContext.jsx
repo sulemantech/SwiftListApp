@@ -131,7 +131,6 @@ export const ProductProvider = ({ children }) => {
       return prev;
     });
   
-    console.log('Added notification:', notification);
   };
   
   

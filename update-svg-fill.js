@@ -45,7 +45,6 @@ const updateSVGFiles = (dir) => {
                 console.error(`Error writing file: ${filePath}`, err);
                 return;
               }
-              console.log(`Updated: ${filePath}`);
             });
           });
         }
