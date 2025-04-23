@@ -12,31 +12,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
-import adaptiveicons from "../../assets/images/adaptive-icon.png";
-import arrowactive from "../../assets/images/arrowactive.png";
-import arrowdropdown from "../../assets/images/arrowdropdown.png";
-import circle from "../../assets/images/circle.png";
-import arrownotactive from "../../assets/images/arrownotactive.png";
-import favicon from "../../assets/images/favicon.png";
-import bellicon from "../../assets/images/bellicon.png";
-import heartIconz from "../../assets/images/heartIcon.png";
-import heartIcon from "../../assets/images/heartIcon.png";
-import splashicon from "../../assets/images/splash-icon.png";
-import profileicon from "../../assets/images/profileicon.png";
 
-const image = [
-  adaptiveicons,
-  arrowactive,
-  arrowdropdown,
-  circle,
-  arrownotactive,
-  favicon,
-  bellicon,
-  heartIconz,
-  heartIcon,
-  splashicon,
-  profileicon,
-];
+
+
 
 interface Product {
   imgPath: any;
@@ -82,7 +60,7 @@ const ProductList: React.FC<ProductListProps> = ({
   page,
   ListName,
   onProductSelect = () => {},
-  showBottomSheet = true, // 🆕 default to true
+  showBottomSheet = true,
 }) => {
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =

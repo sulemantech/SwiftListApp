@@ -61,7 +61,7 @@ export const ProductProvider = ({ children }) => {
     if (isSelected) {
       updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.name !== product.name);
     } else {
-      updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath });
+      updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath , id: product.id });
     }
 
     setSelectedProducts(updatedProducts);

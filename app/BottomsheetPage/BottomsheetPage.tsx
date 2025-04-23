@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     height: "auto",
-    backgroundColor: "#000",
+    backgroundColor: "transparent",
     minHeight: 430,
     overflow: "hidden",
     borderRadius: 15,

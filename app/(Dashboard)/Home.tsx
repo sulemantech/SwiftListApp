@@ -39,6 +39,7 @@ const Home = () => {
 
   const cardDataArray = [
     {
+      id: 1,
       title: "Grocery List",
       description: "Add needed items.",
       items: "0 Items",
@@ -50,6 +51,7 @@ const Home = () => {
       badgeColor: "#61CBD6",
     },
     {
+      id: 2,
       title: "Spiritual Goals",
       description: "Add your spiritual goals.",
       items: "0 Goals",
@@ -61,6 +63,7 @@ const Home = () => {
       badgeColor: "#4AA688",
     },
     {
+      id: 3,
       title: "Personal Grooming",
       description: "Add your grooming tasks in list.",
       items: "0 Tasks",
@@ -72,6 +75,7 @@ const Home = () => {
       badgeColor: "#C54B6C",
     },
     {
+      id: 4,
       title: "Things To Do",
       description: "Add tasks in your to-do list.",
       items: "0 Items",
@@ -83,6 +87,7 @@ const Home = () => {
       badgeColor: "#D98E33",
     },
     {
+      id: 5,
       title: "Kitchen Menu",
       description: "Add items to your list.",
       items: "0 Recipies",
@@ -229,7 +234,7 @@ const Home = () => {
                 onPress={() =>
                   router.push({
                     pathname: "/categories/Categories" as ExternalPathString,
-                    params: { name: item.title },
+                    params: { name: item.title , id: item.id },
                   })
                 }
               />

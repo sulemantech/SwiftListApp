@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Tab, Text, TabView, Icon } from "@rneui/themed";
 import { Calendar } from "react-native-calendars"; // install this package
+interface CalendarTabBarProps {
+  onTabChange: (tabIndex: number) => void;
+}
 
-const CalendarTabBar: React.FC = () => {
+const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedDayIndex, setSelectedDayIndex] = useState<number | null>(null);
   const [selectedWeekday, setSelectedWeekday] = useState<string | null>(null);
@@ -23,7 +26,10 @@ const CalendarTabBar: React.FC = () => {
         {["Daily", "Weekly", "Monthly"].map((title, index) => (
           <TouchableOpacity
             key={title}
-            onPress={() => setTabIndex(index)}
+            onPress={() => {
+              setTabIndex(index);
+              onTabChange(index); // update height
+            }}
             style={[
               styles.customTabItem,
               tabIndex === index && styles.customTabItemActive,
@@ -44,7 +50,7 @@ const CalendarTabBar: React.FC = () => {
       <TabView value={tabIndex} onChange={setTabIndex} animationType="spring">
         {/* Daily */}
         <TabView.Item style={styles.tabItem}>
-          <View style={styles.dailyContainer}>
+          {/* <View style={styles.dailyContainer}>
             {dayOptions.map((option, i) => (
               <TouchableOpacity
                 key={option.label}
@@ -70,7 +76,7 @@ const CalendarTabBar: React.FC = () => {
                 </Text>
               </TouchableOpacity>
             ))}
-          </View>
+          </View> */}
         </TabView.Item>
 
         {/* Weekly */}
