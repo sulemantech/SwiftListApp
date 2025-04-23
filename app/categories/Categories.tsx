@@ -76,17 +76,16 @@ const Categories: React.FC<Props> = ({ ListName }) => {
       setAllItems(allItems);
 
     const selectedNames =
-      selectedProducts[name.toString()]?.map((product: any) => product.name) || [];
+      selectedProducts[currentID]?.map((product: any) => product.id) || [];
 
     const filteredItems = allItems.filter((item) =>
-      selectedNames.includes(item.name)
+      selectedNames.includes(item.id)
     );
 
     const uniqueItems = filteredItems.filter(
       (item, index, self) =>
         index === self.findIndex((t) => t.name === item.name)
     );
-    console.log( uniqueItems , selectedNames)
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
   }, [selectedProducts, matchingCategory]);
@@ -253,7 +252,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
                   setPressedItem(item.name); // ✅ set pressed item name
                   router.push({
                     pathname: "/products/ProductsPage" as ExternalPathString,
-                    params: { categoryName : item.name, ListName: name , CategoryID : currentID },
+                    params: { categoryName : item.name, ListName: name , CategoryID : item.id , ListID : currentID},
                   });
                 }}
                 activeOpacity={1}
@@ -275,6 +274,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             <ProductList
               products={searchQuery.trim() ? filteredItems : selectedItem}
               ListName={name}
+              ListID={matchingCategory}
               page=""
               showBottomSheet={!searchQuery.trim()} // 🟢 Add this line
             />
