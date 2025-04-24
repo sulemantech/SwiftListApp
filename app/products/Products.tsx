@@ -64,14 +64,14 @@ const ProductList: React.FC<ProductListProps> = ({
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
     useContext(ProductContext);
-  const [localItems, setLocalItems] = useState(selectedProducts);
+  // const [selectedProducts, setLocalItems] = useState(selectedProducts);
   const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
 
   const handleSelect = async (product: Product) => {
-    const currentList = localItems[ListName] || [];
+    const currentList = selectedProducts[ListName] || [];
     const isAlreadySelected = currentList.some(
       (item: Product) => item.name === product.name
     );
@@ -81,23 +81,18 @@ const ProductList: React.FC<ProductListProps> = ({
       : [...currentList, product];
 
     const updatedLocalItems = {
-      ...localItems,
+      ...selectedProducts,
       [ListName]: updatedList,
     };
 
-    setLocalItems(updatedLocalItems);
+    // setLocalItems(updatedLocalItems);
     setSelectedProduct(product.name);
     await updateSelectedProducts(ListID, product); // <- optional await
     onProductSelect();
   };
-  useEffect(() => {
-    setLocalItems(selectedProducts);
-  }, [selectedProducts]);
-
-  console.log(
-    selectedProducts,
-    "=================================================="
-  );
+  // useEffect(() => {
+  //   setLocalItems(selectedProducts);
+  // }, [selectedProducts]);
 
   useEffect(() => {
     const isFound = selectedProducts[ListID]?.some(
@@ -153,7 +148,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = localItems[ListID]?.some(
+            const isSelected = selectedProducts[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 
