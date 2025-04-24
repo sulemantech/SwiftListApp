@@ -64,14 +64,18 @@ const ProductList: React.FC<ProductListProps> = ({
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
     useContext(ProductContext);
-  // const [selectedProducts, setLocalItems] = useState(selectedProducts);
+  const [localSelectedProducts, setLocalSelectedProducts] = useState<{
+    [key: string]: Product[];
+  }>({});
   const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
-
+  useEffect(() => {
+    setLocalSelectedProducts(selectedProducts);
+  }, []); // empty dependency array to run only once
   const handleSelect = async (product: Product) => {
-    const currentList = selectedProducts[ListName] || [];
+    const currentList = localSelectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
       (item: Product) => item.name === product.name
     );
@@ -81,13 +85,14 @@ const ProductList: React.FC<ProductListProps> = ({
       : [...currentList, product];
 
     const updatedLocalItems = {
-      ...selectedProducts,
-      [ListName]: updatedList,
+      ...localSelectedProducts,
+      [ListID]: updatedList,
     };
 
-    // setLocalItems(updatedLocalItems);
+    console.log(updatedLocalItems);
+    setLocalSelectedProducts(updatedLocalItems);
     setSelectedProduct(product.name);
-    await updateSelectedProducts(ListID, product); // <- optional await
+    // updateSelectedProducts(ListID, product);
     onProductSelect();
   };
   // useEffect(() => {
@@ -95,12 +100,12 @@ const ProductList: React.FC<ProductListProps> = ({
   // }, [selectedProducts]);
 
   useEffect(() => {
-    const isFound = selectedProducts[ListID]?.some(
+    const isFound = localSelectedProducts[ListID]?.some(
       (selected: Product) => selected.name === selectedProduct
     );
 
     setIsProductSelected(isFound);
-  }, [selectedProduct, selectedProducts, ListName]);
+  }, [selectedProduct, localSelectedProducts, ListName]);
 
   useEffect(() => {
     const calculatePlaceholderVal = (length: number): number => {
@@ -111,6 +116,10 @@ const ProductList: React.FC<ProductListProps> = ({
 
   const mobileReferenceWidth = 360;
   const tabletReferenceWidth = 768;
+  console.log(
+    localSelectedProducts,
+    "_______________________________________________++___+_+__"
+  );
 
   let itemSize;
   if (screenWidth <= tabletReferenceWidth) {
@@ -148,7 +157,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = selectedProducts[ListID]?.some(
+            const isSelected = localSelectedProducts[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 
@@ -231,6 +240,23 @@ const ProductList: React.FC<ProductListProps> = ({
               ]}
             />
           ))} */}
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#A9A0F0",
+              paddingVertical: 10,
+              borderRadius: 8,
+              marginTop: 20,
+              alignItems: "center",
+            }}
+            onPress={() => {
+              const localSelected = localSelectedProducts[ListID];
+              updateSelectedProducts(ListID, localSelected);
+            }}
+          >
+            <Text style={{ color: "#FFF", fontFamily: "Poppins-Medium" }}>
+              Done
+            </Text>
+          </TouchableOpacity>
         </ScrollView>
       )}
       {showBottomSheet && page !== "itemslist" && isProductSelected && (

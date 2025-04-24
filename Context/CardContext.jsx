@@ -50,24 +50,34 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   const updateSelectedProducts = async (ListID, product) => {
-    console.log(ListID , product)
+    console.log(ListID , product )
     const updatedProducts = { ...selectedProducts };
-
+  
     if (!updatedProducts[ListID]) {
       updatedProducts[ListID] = [];
     }
-
-    const isSelected = updatedProducts[ListID].some(selected => selected.id === product.id);
-
-    if (isSelected) {
-      updatedProducts[ListID] = updatedProducts[ListID].filter(selected => selected.id !== product.id);
-    } else {
-      updatedProducts[ListID].push({ name: product.name, imgPath: product.imgPath , id: product.id });
-    }
-
+  
+    // Normalize to an array
+    const products = Array.isArray(product) ? product : [product];
+  
+    products.forEach(prod => {
+      const isSelected = updatedProducts[ListID].some(selected => selected.id === prod.id);
+  
+      if (isSelected) {
+        updatedProducts[ListID] = updatedProducts[ListID].filter(selected => selected.id !== prod.id);
+      } else {
+        updatedProducts[ListID].push({
+          name: prod.name,
+          imgPath: prod.imgPath,
+          id: prod.id
+        });
+      }
+    });
+  
     setSelectedProducts(updatedProducts);
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };
+  
 
   const updateSelectedProductsQuantity = async (ListName, product) => {
     const updatedProducts = { ...selectedProducts };
