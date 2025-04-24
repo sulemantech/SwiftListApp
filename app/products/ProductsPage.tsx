@@ -31,9 +31,6 @@ const ProductsPage: React.FC = () => {
     return MyListCollection.flatMap((list) => list.Categories ?? []);
   }, []);
 
-  console.log(CategoryIDInNum , "CategoryIDInNum");
-  console.log(ListIDInNum , "ListIDInNum");
-
   const matchingSubCategory = useMemo(() => {
     // Step 1: First find the correct list
     const matchingList = MyListCollection.find(
@@ -44,9 +41,6 @@ const ProductsPage: React.FC = () => {
     const subCategory = matchingList?.Categories?.find(
       (cat) => cat.id === CategoryIDInNum
     );
-
-    console.log("Matching list:", matchingList);
-    console.log("Subcategory from list:", subCategory);
     return subCategory;
   }, [CategoryIDInNum, ListIDInNum]);
 
@@ -91,7 +85,7 @@ const ProductsPage: React.FC = () => {
           products={updatedItems}
           ListName={ListName}
           page={""}
-          ListID={CategoryIDInNum}
+          ListID={ListIDInNum}
         />
       ) : (
         <View style={styles.emptyContainer}>

@@ -49,19 +49,20 @@ export const ProductProvider = ({ children }) => {
     loadSelectedProducts();
   }, []);
 
-  const updateSelectedProducts = async (ListName, product) => {
+  const updateSelectedProducts = async (ListID, product) => {
+    console.log(ListID , product)
     const updatedProducts = { ...selectedProducts };
 
-    if (!updatedProducts[ListName]) {
-      updatedProducts[ListName] = [];
+    if (!updatedProducts[ListID]) {
+      updatedProducts[ListID] = [];
     }
 
-    const isSelected = updatedProducts[ListName].some(selected => selected.name === product.name);
+    const isSelected = updatedProducts[ListID].some(selected => selected.id === product.id);
 
     if (isSelected) {
-      updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.name !== product.name);
+      updatedProducts[ListID] = updatedProducts[ListID].filter(selected => selected.id !== product.id);
     } else {
-      updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath , id: product.id });
+      updatedProducts[ListID].push({ name: product.name, imgPath: product.imgPath , id: product.id });
     }
 
     setSelectedProducts(updatedProducts);

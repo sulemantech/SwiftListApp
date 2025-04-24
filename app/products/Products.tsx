@@ -13,9 +13,6 @@ import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
 
-
-
-
 interface Product {
   imgPath: any;
   name: string;
@@ -28,7 +25,7 @@ interface ProductListProps {
   products: Product[];
   page?: string;
   ListName: any;
-  ListID:any;
+  ListID: any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -93,9 +90,17 @@ const ProductList: React.FC<ProductListProps> = ({
     await updateSelectedProducts(ListID, product); // <- optional await
     onProductSelect();
   };
+  useEffect(() => {
+    setLocalItems(selectedProducts);
+  }, [selectedProducts]);
+
+  console.log(
+    selectedProducts,
+    "=================================================="
+  );
 
   useEffect(() => {
-    const isFound = selectedProducts[ListName]?.some(
+    const isFound = selectedProducts[ListID]?.some(
       (selected: Product) => selected.name === selectedProduct
     );
 
@@ -148,7 +153,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = localItems[ListName]?.some(
+            const isSelected = localItems[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 
@@ -238,7 +243,6 @@ const ProductList: React.FC<ProductListProps> = ({
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
-       
         />
       )}
     </View>

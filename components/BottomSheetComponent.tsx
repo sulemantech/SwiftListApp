@@ -19,6 +19,7 @@ import { useRouter } from "expo-router";
 import TextInput2 from "./Input1";
 import TimeSelector from "./BottomSheet/TimeSelector";
 import AddSubTask from "./AddSubTask";
+import ReminderSection from "./BottomSheet/ReminderSection";
 const { width } = Dimensions.get("window");
 
 interface BottomSheetComponentProps {
@@ -205,6 +206,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         <TimeSelector />
 
         <AddSubTask />
+        <ReminderSection/>
       </BottomSheetScrollView>
     </BottomSheet>
   );
