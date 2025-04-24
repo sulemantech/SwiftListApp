@@ -83,7 +83,7 @@ const ProductsPage: React.FC = () => {
       {updatedItems.length > 0 ? (
         <ProductList
           products={updatedItems}
-          ListName={ListName}
+          ListName={categoryName}
           page={""}
           ListID={ListIDInNum}
         />

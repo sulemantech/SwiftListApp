@@ -251,9 +251,15 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               <TouchableHighlight
                 onPress={() => {
                   setPressedItem(item.name); // ✅ set pressed item name
+                  console.log(item.name); // Log the item name before navigation
                   router.push({
                     pathname: "/products/ProductsPage" as ExternalPathString,
-                    params: { categoryName : item.name, ListName: name , CategoryID : item.id , ListID : currentID},
+                    params: {
+                      categoryName: item.name,
+                      ListName: name,
+                      CategoryID: item.id,
+                      ListID: currentID,
+                    },
                   });
                 }}
                 activeOpacity={1}

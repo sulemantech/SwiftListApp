@@ -144,7 +144,8 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
           <View style={styles.FromCategoryContainer}>
             <Text style={styles.Category}>Categories</Text>
             <Badge
-              value={`${ListName}`}
+              // value={`${ListName}`}
+              value={ListName}
               badgeStyle={styles.CategoryContainer}
               textStyle={styles.CategoryName}
             />
