@@ -76,17 +76,21 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   useEffect(() => {
     setSheetHeight(150); // Weekly is default tab
   }, []);
-  const NUMBERS = Array.from({ length: 31 }, (_, index) =>
-    (index + 1).toString()
-  );
-  const Quntity = ["kg", "Litre", "Dozen"];
-  const Time = ["Per Day", "Per Week", "Per Month"];
+  // const NUMBERS = useMemo(() => Array.from({ length: 31 }, (_, i) => (i + 1).toString()), []);
+  // const Quntity = useMemo(() => ["kg", "Litre", "Dozen"], []);
+  // const Time = useMemo(() => ["Per Day", "Per Week", "Per Month"], []);
+  
 
   useEffect(() => {
-    if (itemsQuantity.Quantity) {
-      handleSelectedElementQuantity(ListName);
-    }
+    const timeout = setTimeout(() => {
+      if (itemsQuantity.Quantity) {
+        handleSelectedElementQuantity(ListName);
+      }
+    }, 300); // adjust as needed
+  
+    return () => clearTimeout(timeout);
   }, [itemsQuantity, ListName]);
+  
 
   const handleSelectedElementQuantity = async (listName: string) => {
     if (!itemsQuantity.Quantity) return;
@@ -110,13 +114,10 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
     }
   };
   const router = useRouter();
-  const handleSnapPress = (index: any) => {
+  const handleSnapPress = useCallback((index: number) => {
     setSnapIndex(index);
-    // if (index === 4) {
-    //   setIsProductSelected(false)
-    //   router.push("/BottomsheetPage/BottomsheetPage");
-    // }
-  };
+  }, []);
+  
 
   return (
     <BottomSheet

@@ -72,6 +72,7 @@ const ProductList: React.FC<ProductListProps> = ({
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
   useEffect(() => {
+    console.log(selectedProduct);
     setLocalSelectedProducts(selectedProducts);
   }, []); // empty dependency array to run only once
   const handleSelect = async (product: Product) => {
@@ -89,9 +90,9 @@ const ProductList: React.FC<ProductListProps> = ({
       [ListID]: updatedList,
     };
 
-    console.log(updatedLocalItems);
     setLocalSelectedProducts(updatedLocalItems);
     setSelectedProduct(product.name);
+    console.log(localSelectedProducts, "-------------");
     // updateSelectedProducts(ListID, product);
     onProductSelect();
   };
@@ -116,10 +117,6 @@ const ProductList: React.FC<ProductListProps> = ({
 
   const mobileReferenceWidth = 360;
   const tabletReferenceWidth = 768;
-  console.log(
-    localSelectedProducts,
-    "_______________________________________________++___+_+__"
-  );
 
   let itemSize;
   if (screenWidth <= tabletReferenceWidth) {
@@ -147,7 +144,7 @@ const ProductList: React.FC<ProductListProps> = ({
         page !== "itemslist"
           ? styles.productsContainer
           : styles.productsContainer2,
-        { paddingHorizontal: sidePadding },
+        { paddingHorizontal: sidePadding , paddingBottom: isProductSelected ? 200 : 0 },
       ]}
     >
       {products.length > 0 && (
@@ -249,8 +246,7 @@ const ProductList: React.FC<ProductListProps> = ({
               alignItems: "center",
             }}
             onPress={() => {
-              const localSelected = localSelectedProducts[ListID];
-              updateSelectedProducts(ListID, localSelected);
+              updateSelectedProducts(ListID, localSelectedProducts[ListID]);
             }}
           >
             <Text style={{ color: "#FFF", fontFamily: "Poppins-Medium" }}>
