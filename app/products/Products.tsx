@@ -3,11 +3,13 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   ScrollView,
   useWindowDimensions,
   Image,
 } from "react-native";
+import {
+  TouchableOpacity,
+} from '@gorhom/bottom-sheet';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
@@ -130,7 +132,7 @@ const ProductList: React.FC<ProductListProps> = ({
   // 🟢 Fix applied: 3 columns enforced for mid-range screen widths (e.g., 360-500)
   const gap = screenWidth <= 480 ? 3 : screenWidth <= 768 ? 8 : 12;
   const sidePadding = 16;
-  const availableWidth = screenWidth - sidePadding * 2;
+  const availableWidth = screenWidth - sidePadding * 2.5;
   const minColumns = screenWidth >= 360 && screenWidth < 500 ? 3 : 0;
   const numColumnsRaw = Math.floor((availableWidth + gap) / (itemSize + gap));
   const numColumns = Math.max(numColumnsRaw, minColumns);
@@ -171,7 +173,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   {
                     width: itemWidth,
                     marginBottom: gap,
-                    marginRight: (index + 1) % numColumns === 0 ? 0 : gap,
+                    marginRight: (index + 1) % numColumns === 200 ? 0 : gap,
                   },
                   isSelected && styles.selectedCard,
                   index === 0 && styles.topLeftBorder,
