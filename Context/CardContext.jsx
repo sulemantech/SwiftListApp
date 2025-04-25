@@ -49,19 +49,21 @@ export const ProductProvider = ({ children }) => {
     loadSelectedProducts();
   }, []);
 
-  const updateSelectedProducts = async (ListID, product) => {
-    console.log(ListID, product);
-  
+  const updateSelectedProducts = async (ListName, product) => {
     const updatedProducts = { ...selectedProducts };
-  
-    // Just directly assign whatever comes in product array
-    updatedProducts[ListID] = Array.isArray(product)
-      ? product.map(prod => ({
-          id: prod.id,
-          name: prod.name,
-        }))
-      : [];
-  
+
+    if (!updatedProducts[ListName]) {
+      updatedProducts[ListName] = [];
+    }
+
+    const isSelected = updatedProducts[ListName].some(selected => selected.name === product.name);
+
+    if (isSelected) {
+      updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.name !== product.name);
+    } else {
+      updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath , id: product.id });
+    }
+
     setSelectedProducts(updatedProducts);
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };

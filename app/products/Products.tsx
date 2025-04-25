@@ -3,13 +3,15 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   useWindowDimensions,
   Image,
 } from "react-native";
 import {
   TouchableOpacity,
 } from '@gorhom/bottom-sheet';
+import {
+  ScrollView,
+} from 'react-native-gesture-handler';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
@@ -66,19 +68,19 @@ const ProductList: React.FC<ProductListProps> = ({
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
     useContext(ProductContext);
-  const [localSelectedProducts, setLocalSelectedProducts] = useState<{
-    [key: string]: Product[];
-  }>({});
+  // const [selectedProducts, setselectedProducts] = useState<{
+  //   [key: string]: Product[];
+  // }>({});
   const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
-  useEffect(() => {
-    console.log(selectedProduct);
-    setLocalSelectedProducts(selectedProducts);
-  }, []); // empty dependency array to run only once
+  // useEffect(() => {
+  //   console.log(selectedProduct);
+  //   setselectedProducts(selectedProducts);
+  // }, []);
   const handleSelect = async (product: Product) => {
-    const currentList = localSelectedProducts[ListID] || [];
+    const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
       (item: Product) => item.name === product.name
     );
@@ -88,14 +90,13 @@ const ProductList: React.FC<ProductListProps> = ({
       : [...currentList, product];
 
     const updatedLocalItems = {
-      ...localSelectedProducts,
+      ...selectedProducts,
       [ListID]: updatedList,
     };
 
-    setLocalSelectedProducts(updatedLocalItems);
+    // setselectedProducts(updatedLocalItems);
     setSelectedProduct(product.name);
-    console.log(localSelectedProducts, "-------------");
-    // updateSelectedProducts(ListID, product);
+    updateSelectedProducts(ListID, product);
     onProductSelect();
   };
   // useEffect(() => {
@@ -103,12 +104,12 @@ const ProductList: React.FC<ProductListProps> = ({
   // }, [selectedProducts]);
 
   useEffect(() => {
-    const isFound = localSelectedProducts[ListID]?.some(
+    const isFound = selectedProducts[ListID]?.some(
       (selected: Product) => selected.name === selectedProduct
     );
 
     setIsProductSelected(isFound);
-  }, [selectedProduct, localSelectedProducts, ListName]);
+  }, [selectedProduct, selectedProducts, ListName]);
 
   useEffect(() => {
     const calculatePlaceholderVal = (length: number): number => {
@@ -146,7 +147,7 @@ const ProductList: React.FC<ProductListProps> = ({
         page !== "itemslist"
           ? styles.productsContainer
           : styles.productsContainer2,
-        { paddingHorizontal: sidePadding , paddingBottom: isProductSelected ? 200 : 0 },
+        { paddingHorizontal: sidePadding , paddingBottom: (isProductSelected && page !== "itemslist") ? 200 : 0 },
       ]}
     >
       {products.length > 0 && (
@@ -156,7 +157,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = localSelectedProducts[ListID]?.some(
+            const isSelected = selectedProducts[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 
@@ -239,7 +240,7 @@ const ProductList: React.FC<ProductListProps> = ({
               ]}
             />
           ))} */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               backgroundColor: "#A9A0F0",
               paddingVertical: 10,
@@ -248,13 +249,13 @@ const ProductList: React.FC<ProductListProps> = ({
               alignItems: "center",
             }}
             onPress={() => {
-              updateSelectedProducts(ListID, localSelectedProducts[ListID]);
+              updateSelectedProducts(ListID, selectedProducts[ListID]);
             }}
           >
             <Text style={{ color: "#FFF", fontFamily: "Poppins-Medium" }}>
               Done
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       )}
       {showBottomSheet && page !== "itemslist" && isProductSelected && (
@@ -277,7 +278,7 @@ const styles = StyleSheet.create({
   },
   productsContainer2: {
     marginVertical: 10,
-    marginHorizontal: 10,
+    flex: 1,
   },
   itemsContainer: {
     flexDirection: "row",

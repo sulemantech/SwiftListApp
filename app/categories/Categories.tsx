@@ -6,8 +6,10 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   Dimensions,
-  FlatList,
 } from "react-native";
+import {
+  FlatList
+} from 'react-native-gesture-handler';
 import searchicon from "../../assets/images/SVG/searchiconactive.svg";
 import searchiconBlack from "../../assets/images/SVG/searchiconnotactive.svg";
 import { MyListCollection } from "../../constants/Data";
@@ -276,7 +278,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               products={searchQuery.trim() ? filteredItems : selectedItem}
               ListName={name}
               ListID={currentID}
-              page=""
+              page="itemslist"
               showBottomSheet={!searchQuery.trim()} // 🟢 Add this line
             />
           }
