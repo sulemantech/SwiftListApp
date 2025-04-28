@@ -4,6 +4,7 @@ import { TabView, Text } from "@rneui/themed";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import moment from "moment";
+import { color } from "@rneui/base";
 const { width } = Dimensions.get("window");
 
 // ✅ Custom weekday headers
@@ -208,7 +209,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     justifyContent: "center",
-    
   },
   customTabWrapper: {
     flexDirection: "row",
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E0E0E0",
     width: width * (320 / 360),
-    alignSelf: "center", 
+    alignSelf: "center",
   },
   customTabItem: {
     flex: 1,
@@ -233,12 +233,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#A89EFF",
   },
   customTabText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#1E3A8A",
+    fontSize: 13,
+    fontFamily: "OpenSans-SemiBold",
+    color: "#5C5C5C",
   },
   customTabTextActive: {
     color: "#FFFFFF",
+    fontSize: 13,
+    fontFamily: "OpenSans-SemiBold",
   },
   tabItem: {
     flex: 1,
@@ -280,6 +282,7 @@ const styles = StyleSheet.create({
   },
   monthlyWrapper: {
     width: "100%",
+    // backgroundColor:"red"
   },
   monthlyContainer: {
     backgroundColor: "#FFFFFF",
