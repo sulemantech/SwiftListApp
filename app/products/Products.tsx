@@ -6,18 +6,15 @@ import {
   useWindowDimensions,
   Image,
 } from "react-native";
-import {
-  TouchableOpacity,
-} from '@gorhom/bottom-sheet';
-import {
-  ScrollView,
-} from 'react-native-gesture-handler';
+import { TouchableOpacity } from "@gorhom/bottom-sheet";
+import { ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
 
 interface Product {
+  id: number;
   imgPath: any;
   name: string;
   Quantity?: number;
@@ -82,11 +79,11 @@ const ProductList: React.FC<ProductListProps> = ({
   const handleSelect = async (product: Product) => {
     const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
-      (item: Product) => item.name === product.name
+      (item: Product) => item.id === product.id
     );
 
     const updatedList = isAlreadySelected
-      ? currentList.filter((item: Product) => item.name !== product.name)
+      ? currentList.filter((item: Product) => item.id !== product.id)
       : [...currentList, product];
 
     const updatedLocalItems = {
@@ -147,7 +144,10 @@ const ProductList: React.FC<ProductListProps> = ({
         page !== "itemslist"
           ? styles.productsContainer
           : styles.productsContainer2,
-        { paddingHorizontal: sidePadding , paddingBottom: (isProductSelected && page !== "itemslist") ? 200 : 0 },
+        {
+          paddingHorizontal: sidePadding,
+          paddingBottom: isProductSelected && page !== "itemslist" ? 200 : 0,
+        },
       ]}
     >
       {products.length > 0 && (

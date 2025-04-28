@@ -56,10 +56,10 @@ export const ProductProvider = ({ children }) => {
       updatedProducts[ListName] = [];
     }
 
-    const isSelected = updatedProducts[ListName].some(selected => selected.name === product.name);
+    const isSelected = updatedProducts[ListName].some(selected => selected.id === product.id);
 
     if (isSelected) {
-      updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.name !== product.name);
+      updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.id !== product.id);
     } else {
       updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath , id: product.id });
     }
