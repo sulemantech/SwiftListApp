@@ -61,15 +61,15 @@ export const ProductProvider = ({ children }) => {
     if (isSelected) {
       updatedProducts[ListName] = updatedProducts[ListName].filter(selected => selected.id !== product.id);
     } else {
-      updatedProducts[ListName].push({ name: product.name, imgPath: product.imgPath , id: product.id });
+      updatedProducts[ListName].push({ id: product.id, name:product.name});
     }
 
     setSelectedProducts(updatedProducts);
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };
-  
-   
-  
+
+
+
 
   const updateSelectedProductsQuantity = async (ListName, product) => {
     const updatedProducts = { ...selectedProducts };
@@ -123,21 +123,21 @@ export const ProductProvider = ({ children }) => {
 
   const addNotification = (notification) => {
     setNotifications((prev) => {
-      const isDuplicate = prev.some((n) => 
-        n.title === notification.title && 
-        Math.abs(n.time - notification.time) >= 60000 
+      const isDuplicate = prev.some((n) =>
+        n.title === notification.title &&
+        Math.abs(n.time - notification.time) >= 60000
       );
-      
+
       if (!isDuplicate) {
         return [...prev, notification];
       }
       return prev;
     });
-  
+
   };
-  
-  
-  
+
+
+
 
 
   return (

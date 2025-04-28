@@ -72,6 +72,7 @@ const ProductList: React.FC<ProductListProps> = ({
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
+  console.log(products)
   // useEffect(() => {
   //   console.log(selectedProduct);
   //   setselectedProducts(selectedProducts);
@@ -146,7 +147,7 @@ const ProductList: React.FC<ProductListProps> = ({
           : styles.productsContainer2,
         {
           paddingHorizontal: sidePadding,
-          paddingBottom: isProductSelected && page !== "itemslist" ? 200 : 0,
+          // paddingBottom: isProductSelected && page !== "itemslist" ? 200 : 0,
         },
       ]}
     >
@@ -186,11 +187,12 @@ const ProductList: React.FC<ProductListProps> = ({
                   index === secondLineLastElement && styles.bottomRightBorder,
                 ]}
               >
-                <item.imgPath
+                {/* <item.imgPath
                   width={itemWidth * 0.6}
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
-                />
+                /> */}
+                <Image source={item.imgPath} width={itemWidth * 0.6} height={itemWidth * 0.6}/>
 
                 <Text
                   style={[
@@ -258,13 +260,13 @@ const ProductList: React.FC<ProductListProps> = ({
           </TouchableOpacity> */}
         </ScrollView>
       )}
-      {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
         />
-      )}
+      )} */}
     </View>
   );
 };

@@ -52,7 +52,7 @@ const ProductsPage: React.FC = () => {
         (selected: { id: number }) => selected.id === item.id
       );
       return selectedItem
-        ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
+        ? { ...selectedItem, imgPath: item.imgPath, id: item.id}
         : item;
     });
   }, [matchingSubCategory, selectedProducts, ListName]);

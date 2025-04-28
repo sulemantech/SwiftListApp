@@ -154,26 +154,47 @@ import YellowLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/YellowLen
 // ===============================
 // Bakery & Bread Items
 // ===============================
-import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Bagels.svg";
-import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Breadsticks.svg";
-import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Buns.svg";
-import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Cookies.svg";
-import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Croissants.svg";
-import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Donut.svg";
-import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Focaccia.svg";
-import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/GarlicBread.svg";
-import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/LoafBread.svg";
-import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Muffins.svg";
-import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Pancakes.svg";
-import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PastryBread.svg";
-import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PitaBread.svg";
-import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Rusk.svg";
-import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SourdoughBread.svg";
-import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SweetBun.svg";
-import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Tortillas.svg";
-import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Waffles.svg";
-import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WhiteBread.svg";
-import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WholeWheatBread.svg";
+// import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Bagels.svg";
+// import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Breadsticks.svg";
+// import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Buns.svg";
+// import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Cookies.svg";
+// import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Croissants.svg";
+// import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Donut.svg";
+// import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Focaccia.svg";
+// import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/GarlicBread.svg";
+// import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/LoafBread.svg";
+// import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Muffins.svg";
+// import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Pancakes.svg";
+// import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PastryBread.svg";
+// import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PitaBread.svg";
+// import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Rusk.svg";
+// import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SourdoughBread.svg";
+// import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SweetBun.svg";
+// import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Tortillas.svg";
+// import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Waffles.svg";
+// import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WhiteBread.svg";
+// import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WholeWheatBread.svg";
+//png
+import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/apple.png";
+import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/avocado.png";
+import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/banana.png";
+import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/blueberry.png";
+import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/cherry.png";
+import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/fig.png";
+import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/grapes.png";
+import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/guava.png";
+import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/kiwi.png";
+import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/lichi.png";
+import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/mango.png";
+import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/melon.png";
+import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/papaya.png";
+import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/kiwi.png";
+import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/peach.png";
+import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/pear.png";
+import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/pineapple.png";
+import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/raspberry.png";
+import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/strawberry.png";
+import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/apple.png";
 // ===============================
 // Breakfast & Cereal Items
 // ===============================
