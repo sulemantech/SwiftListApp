@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import { TabView, Text } from "@rneui/themed";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import moment from "moment";
+const { width } = Dimensions.get("window");
 
 // ✅ Custom weekday headers
 LocaleConfig.locales["custom"] = {
@@ -73,7 +74,7 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.customTabWrapper}>
+      <View style={[styles.customTabWrapper,{alignItems:"center",justifyContent:"center"}]}>
         {["Daily", "Weekly", "Monthly"].map((title, index) => (
           <TouchableOpacity
             key={title}
@@ -206,6 +207,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
+    justifyContent: "center",
+    
   },
   customTabWrapper: {
     flexDirection: "row",
@@ -216,6 +219,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: "#E0E0E0",
+    width: width * (320 / 360),
+    alignSelf: "center", 
   },
   customTabItem: {
     flex: 1,

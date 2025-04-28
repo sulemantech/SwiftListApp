@@ -180,7 +180,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
               <Text style={styles.CounterLabeltext}> </Text>
               <CardWithCounter Element={Time} />
             </View> */}
-            <View style={{ width: "95%", marginHorizontal: "auto" }}>
+            {/* <View style={{ width: "100%", marginHorizontal: "auto" }}>
               <TextInput2
                 label={"Description"}
                 placeholder={"Enter description, quantity, unit."}
@@ -189,6 +189,19 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
                 onFocus={undefined}
                 onBlur={undefined}
                 style={undefined}
+              />
+            </View> */}
+            <View style={{ alignItems: "center" }}>
+              <TextInput2
+                label={"Description"}
+                placeholder={"Enter description, quantity, unit."}
+                value={description}
+                onChangeText={setDescription}
+                onFocus={undefined}
+                onBlur={undefined}
+                style={{
+                  width: width * (320 / 360),
+                }}
               />
             </View>
           </View>
@@ -208,7 +221,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         <TimeSelector />
 
         <AddSubTask />
-        <ReminderSection/>
+        <ReminderSection />
       </BottomSheetScrollView>
     </BottomSheet>
   );
@@ -225,15 +238,17 @@ const styles = StyleSheet.create({
   },
   bottomSheetHeader: {
     display: "flex",
-    width: "90%",
+    width: width * (320 / 360),
     flexDirection: "row",
     marginBottom: 10,
     justifyContent: "space-between",
+    // backgroundColor: "red",
   },
   counterCardWrapper: {
-    backgroundColor: "transparent",
+    // backgroundColor: "red",
     marginTop: 10,
-    width: "90%",
+    width: width * (320 / 360),
+
     marginHorizontal: "auto",
     padding: 10,
     borderRadius: 15,
@@ -243,8 +258,9 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   doneText: {
     fontFamily: "OpenSans-Medium",
@@ -269,17 +285,19 @@ const styles = StyleSheet.create({
   },
   FromCategoryContainer: {
     display: "flex",
-    width: "90%",
+    width: width * (320 / 360),
     flexDirection: "row",
     marginTop: 15,
     justifyContent: "space-between",
     alignItems: "center",
+    // backgroundColor: "red",
   },
   Category: {
     fontFamily: "OpenSans-Medium",
     fontSize: 14,
     textAlign: "center",
     color: "#5C5C5C",
+    // backgroundColor: "red",
   },
   CategoryContainer: {
     height: 22,
@@ -312,10 +330,10 @@ const styles = StyleSheet.create({
     textAlign: "left",
     marginVertical: 4,
     color: "#4C4C4C",
-    backgroundColor: "red",
+    // backgroundColor: "red",
   },
   TextInput2: {
-    width: "94%",
+    width: width * (320 / 360),
   },
   contentContainer2: {
     flexDirection: "row",
