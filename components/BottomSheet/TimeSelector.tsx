@@ -114,19 +114,20 @@ export default TimeSelector;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 15,
+    borderRadius: 8,
     marginTop: 24,
     marginHorizontal: "auto",
     paddingHorizontal: width * 0.05,
     paddingVertical: height * 0.02,
     marginVertical: height * 0.015,
-    width: "90%",
+    width: width * (320 / 360),
     height: height * (153 / 820),
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
+    top: height * -0.044,
   },
   // header: {
   //   flexDirection: "row",

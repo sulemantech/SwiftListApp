@@ -97,7 +97,7 @@ const ReminderSection = () => {
             >
               <Ionicons
                 name="trash-outline"
-                size={width * 0.05}
+                size={width * 0.06}
                 color="#FF6B6B"
               />
             </TouchableOpacity>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 15,
     marginHorizontal: "auto",
-    paddingHorizontal: width * 0.04,
+    paddingHorizontal: width * 0.055,
     paddingVertical: height * 0.02,
     marginVertical: height * 0.015,
     alignItems: "center",
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
+    top: height * (-0.028),
   },
   titleAndActionsRow: {
     flexDirection: "row",
@@ -188,6 +189,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     marginBottom: height * 0.01,
+    // backgroundColor: "red",
   },
   dateField: {
     flex: 0.7,
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   trashButtonInside: {
-    marginRight: width * 0.03,
+    marginRight: width * 0.015,
   },
   addButton: {
     flexDirection: "row",

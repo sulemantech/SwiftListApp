@@ -5,7 +5,8 @@ import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import moment from "moment";
 import { color } from "@rneui/base";
-const { width } = Dimensions.get("window");
+// const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 // ✅ Custom weekday headers
 LocaleConfig.locales["custom"] = {
@@ -75,7 +76,7 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.customTabWrapper,{alignItems:"center",justifyContent:"center"}]}>
+      <View style={[styles.customTabWrapper,{alignItems:"center",justifyContent:"center",}]}>
         {["Daily", "Weekly", "Monthly"].map((title, index) => (
           <TouchableOpacity
             key={title}
@@ -209,14 +210,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     justifyContent: "center",
+    // backgroundColor: "red",
+    // top: height * (0.008),
   },
   customTabWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#fff",
     borderRadius: 30,
     marginHorizontal: 16,
-    marginBottom: 16,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: "#E0E0E0",
     width: width * (320 / 360),
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
   },
   customTabItem: {
     flex: 1,
-    paddingVertical: 14,
+    paddingVertical: width * (25/820),
     borderRadius: 30,
     backgroundColor: "transparent",
     alignItems: "center",
@@ -251,9 +254,12 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     gap: 12,
-    paddingTop: 12,
-    paddingBottom: 12,
+    // paddingTop: 12,
+    // paddingBottom: 12,
     marginBottom: 0,
+    alignSelf: "center",
+    // backgroundColor: "red",
+    top: height * (0.007),
   },
   weekDay: {
     width: 36,
