@@ -54,7 +54,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
   const { theme } = useTheme();
 
-  const snapPoints = useMemo(() => ["25%", "55%", "90%", "99%"], []);
+  const snapPoints = useMemo(() => ["15%", "55%", "90%", "99%"], []);
   const [sheetHeight, setSheetHeight] = useState(100);
   const ItemValues: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20];
   const { selectedProducts, updateSelectedProductsQuantity } =

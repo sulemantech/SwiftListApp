@@ -1,731 +1,734 @@
 // Profile Page – Spices
-import basil from "../assets/images/SwiftlistApp/Grocery/Spices/Basil.svg";
-import blackCardamom from "../assets/images/SwiftlistApp/Grocery/Spices/BlackCardamom.svg";
-import blackPepper from "../assets/images/SwiftlistApp/Grocery/Spices/BlackPepper.svg";
-import cardamom from "../assets/images/SwiftlistApp/Grocery/Spices/Cardamom.svg";
-import chilliPowder from "../assets/images/SwiftlistApp/Grocery/Spices/ChilliPowder.svg";
-import cinnamon from "../assets/images/SwiftlistApp/Grocery/Spices/Cinnamon.svg";
-import cloves from "../assets/images/SwiftlistApp/Grocery/Spices/Cloves.svg";
-import corianderPowder from "../assets/images/SwiftlistApp/Grocery/Spices/CorianderPowder.svg";
-import cumin from "../assets/images/SwiftlistApp/Grocery/Spices/Cumin.svg";
-import curryLeaves from "../assets/images/SwiftlistApp/Grocery/Spices/CurryLeaves.svg";
-import fennelSeeds from "../assets/images/SwiftlistApp/Grocery/Spices/FennelSeeds.svg";
-import garamMasala from "../assets/images/SwiftlistApp/Grocery/Spices/GaramMasala.svg";
-import garlicPowder from "../assets/images/SwiftlistApp/Grocery/Spices/GarlicPowder.svg";
-import gingerPowder from "../assets/images/SwiftlistApp/Grocery/Spices/GingerPowder.svg";
-import mixedHerbs from "../assets/images/SwiftlistApp/Grocery/Spices/MixedHerbs.svg";
-import nutmeg from "../assets/images/SwiftlistApp/Grocery/Spices/Nutmeg.svg";
-import oregano from "../assets/images/SwiftlistApp/Grocery/Spices/Oregano.svg";
-import paprikaPowder from "../assets/images/SwiftlistApp/Grocery/Spices/PaprikaPowder.svg";
-import powderedGaramMasala from "../assets/images/SwiftlistApp/Grocery/Spices/PowderedGaramMasala.svg";
-import redChilliFlakes from "../assets/images/SwiftlistApp/Grocery/Spices/RedChilliFlakes.svg";
-import rosemary from "../assets/images/SwiftlistApp/Grocery/Spices/Rosemary.svg";
-import salt from "../assets/images/SwiftlistApp/Grocery/Spices/Salt.svg";
-import starAnise from "../assets/images/SwiftlistApp/Grocery/Spices/StarAnise.svg";
-import sugar from "../assets/images/SwiftlistApp/Grocery/Spices/Sugar.svg";
-import turmericPowder from "../assets/images/SwiftlistApp/Grocery/Spices/TurmericPowder.svg";
-import whitePepper from "../assets/images/SwiftlistApp/Grocery/Spices/WhitePepper.svg";
+import basil from "../assets/images/SwiftlistApp/Grocery/Spices/png/Basil.png";
+import blackCardamom from "../assets/images/SwiftlistApp/Grocery/Spices/png/BlackCardamom.png";
+import blackPepper from "../assets/images/SwiftlistApp/Grocery/Spices/png/BlackPepper.png";
+import cardamom from "../assets/images/SwiftlistApp/Grocery/Spices/png/Cardamom.png";
+import chilliPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/ChilliPowder.png";
+import cinnamon from "../assets/images/SwiftlistApp/Grocery/Spices/png/Cinnamon.png";
+import cloves from "../assets/images/SwiftlistApp/Grocery/Spices/png/Cloves.png";
+import corianderPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/CorianderPowder.png";
+import cumin from "../assets/images/SwiftlistApp/Grocery/Spices/png/Cumin.png";
+import curryLeaves from "../assets/images/SwiftlistApp/Grocery/Spices/png/CurryLeaves.png";
+import fennelSeeds from "../assets/images/SwiftlistApp/Grocery/Spices/png/FennelSeeds.png";
+import garamMasala from "../assets/images/SwiftlistApp/Grocery/Spices/png/GaramMasala.png";
+import garlicPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/GarlicPowder.png";
+import gingerPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/GingerPowder.png";
+import mixedHerbs from "../assets/images/SwiftlistApp/Grocery/Spices/png/MixedHerbs.png";
+import nutmeg from "../assets/images/SwiftlistApp/Grocery/Spices/png/Nutmeg.png";
+import oregano from "../assets/images/SwiftlistApp/Grocery/Spices/png/Oregano.png";
+import paprikaPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/PaprikaPowder.png";
+import powderedGaramMasala from "../assets/images/SwiftlistApp/Grocery/Spices/png/PowderedGaramMasala.png";
+import redChilliFlakes from "../assets/images/SwiftlistApp/Grocery/Spices/png/RedChilliFlakes.png";
+import rosemary from "../assets/images/SwiftlistApp/Grocery/Spices/png/Rosemary.png";
+import salt from "../assets/images/SwiftlistApp/Grocery/Spices/png/Salt.png";
+import starAnise from "../assets/images/SwiftlistApp/Grocery/Spices/png/StarAnise.png";
+import sugar from "../assets/images/SwiftlistApp/Grocery/Spices/png/Sugar.png";
+import turmericPowder from "../assets/images/SwiftlistApp/Grocery/Spices/png/TurmericPowder.png";
+import whitePepper from "../assets/images/SwiftlistApp/Grocery/Spices/png/WhitePepper.png";
 
 // Sauces
-import bbqSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/BBQSauce.svg";
-import balsamicVinegar from "../assets/images/SwiftlistApp/Grocery/Sauces/BalsamicVinegar.svg";
-import chiliPaste from "../assets/images/SwiftlistApp/Grocery/Sauces/ChiliPaste.svg";
-import chilliSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/ChilliSauce.svg";
-import fishSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/FishSauce.svg";
-import hotChilliSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/HotChilliSauce.svg";
-import hotSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/HotSauce.svg";
-import marinaraSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/MarinaraSauce.svg";
-import mayonnaise from "../assets/images/SwiftlistApp/Grocery/Sauces/Mayonnaise.svg";
-import mustardSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/MustardSauce.svg";
-import pastaSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/PastaSauce.svg";
-import seasoningSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/SeasoningSauce.svg";
-import soySauce from "../assets/images/SwiftlistApp/Grocery/Sauces/SoySauce.svg";
-import sriracha from "../assets/images/SwiftlistApp/Grocery/Sauces/Sriracha.svg";
-import steakSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/SteakSauce.svg";
-import tahini from "../assets/images/SwiftlistApp/Grocery/Sauces/Tahini.svg";
-import tomatoPaste from "../assets/images/SwiftlistApp/Grocery/Sauces/TomatoPaste.svg";
-import vinegar from "../assets/images/SwiftlistApp/Grocery/Sauces/Vinegar.svg";
-import ketchup from "../assets/images/SwiftlistApp/Grocery/Sauces/Ketchup.svg";
+import bbqSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/BBQSauce.png";
+import balsamicVinegar from "../assets/images/SwiftlistApp/Grocery/Sauces/png/BalsamicVinegar.png";
+import chiliPaste from "../assets/images/SwiftlistApp/Grocery/Sauces/png/ChilliPaste.png";
+import chilliSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/ChilliSauce.png";
+import fishSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/FishSauce.png";
+import hotChilliSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/HotChilliSauce.png";
+import hotSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/HotSauce.png";
+import marinaraSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/MarinaraSauce.png";
+import mayonnaise from "../assets/images/SwiftlistApp/Grocery/Sauces/png/Mayonnaise.png";
+import mustardSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/MustardSauce.png";
+import pastaSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/PastaSauce.png";
+import seasoningSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/SeasoningSauce.png";
+import soySauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/SoySauce.png";
+import sriracha from "../assets/images/SwiftlistApp/Grocery/Sauces/png/Sriracha.png";
+import steakSauce from "../assets/images/SwiftlistApp/Grocery/Sauces/png/SteakSauce.png";
+import tahini from "../assets/images/SwiftlistApp/Grocery/Sauces/png/Tahini.png";
+import tomatoPaste from "../assets/images/SwiftlistApp/Grocery/Sauces/png/TomatoPaste.png";
+import vinegar from "../assets/images/SwiftlistApp/Grocery/Sauces/png/Vinegar.png";
+import ketchup from "../assets/images/SwiftlistApp/Grocery/Sauces/png/Ketchup.png";
 
 // Frozen Items (Note: PNG remains unchanged)
-import Bread from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Bread.svg";
-import BurgerPatties from "../assets/images/SwiftlistApp/Grocery/FrozenItems/BurgerPatties.svg";
-import CheeseBall from "../assets/images/SwiftlistApp/Grocery/FrozenItems/CheeseBall.svg";
-import ChickenBreast from "../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenBreast.svg";
-import ChickenSamosa from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Chicken Samosa.svg";
-import ChickenStrips from "../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenBreast.svg";
-import ChickenWings from "../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenWings.svg";
-import Corn from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Corn.svg";
-import Dumplings from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Dumplings.svg";
-import Fish from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Fish.svg";
-import FrenchFries from "../assets/images/SwiftlistApp/Grocery/FrozenItems/FrenchFries.svg";
-// const Fruits = require("../assets/images/SwiftlistApp/Grocery/FrozenItems/Fruits.png");
-import FullChicken from "../assets/images/SwiftlistApp/Grocery/FrozenItems/FullChicken.svg";
-import GolaKebab from "../assets/images/SwiftlistApp/Grocery/FrozenItems/GolaKebab.svg";
-import IceCream from "../assets/images/SwiftlistApp/Grocery/FrozenItems/IceCream.svg";
-import Meat from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Meat.svg";
-import Meatballs from "../assets/images/SwiftlistApp/Grocery/FrozenItems/MeatBalls.svg";
-import Nuggets from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Nuggets.svg";
-import Parathas from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Parathas.svg";
-import Pepperoni from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Peporoni.svg";
-import Pizza from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Pizza.svg";
-import PopcornChicken from "../assets/images/SwiftlistApp/Grocery/FrozenItems/PopcornChicken.svg";
-import Sausages from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Sausages.svg";
-import SpringRoll from "../assets/images/SwiftlistApp/Grocery/FrozenItems/SpringRoll.svg";
-import VegetableSamosa from "../assets/images/SwiftlistApp/Grocery/FrozenItems/VegetableSamosa.svg";
-import Vegetables from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Vegetables.svg";
-import Wonton from "../assets/images/SwiftlistApp/Grocery/FrozenItems/Wonton.svg";
-import ChickenDrumstick from "../assets/images/SwiftlistApp/Grocery/FrozenItems/ChickenDrumstick.svg";
+import Bread from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Bread.png";
+import BurgerPatties from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/BurgerPatties.png";
+import CheeseBall from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/CheeseBall.png";
+import ChickenBreast from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/ChickenBreast.png";
+import ChickenSamosa from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/ChickenSamosa.png";
+import ChickenStrips from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/ChickenBreast.png";
+import ChickenWings from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/ChickenWings.png";
+import Corn from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Corn.png";
+import Dumplings from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Dumplings.png";
+import Fish from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Fish.png";
+import FrenchFries from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/FrenchFries.png";
+// const Fruits = require("../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Fruits.png");
+import FullChicken from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/FullChicken.png";
+import GolaKebab from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/GolaKebab.png";
+import IceCream from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/IceCream.png";
+import Meat from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Meat.png";
+import Meatballs from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/MeatBalls.png";
+import Nuggets from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Nuggets.png";
+import Parathas from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Parathas.png";
+import Pepperoni from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Peporoni.png";
+import Pizza from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Pizza.png";
+import PopcornChicken from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/PopcornChicken.png";
+import Sausages from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Sausages.png";
+import SpringRoll from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/SpringRoll.png";
+import VegetableSamosa from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/VegetableSamosa.png";
+import Vegetables from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Vegetables.png";
+import Wonton from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/Wonton.png";
+import ChickenDrumstick from "../assets/images/SwiftlistApp/Grocery/FrozenItems/png/ChickenDrumstick.png";
 
 // Milk Products
-import butterMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/ButterMilk.svg";
-import butter from "../assets/images/SwiftlistApp/Grocery/MilkProducts/Butter.svg";
-import cheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/Cheese.svg";
-import condensedMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/CondensedMilk.svg";
-import cottageCheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/CottageCheese.svg";
-import creamCheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/CreamCheese.svg";
-import cream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/Cream.svg";
-// const evaporatedMilk = require("../assets/images/SwiftlistApp/Grocery/MilkProducts/EvaporatedMilk.png");
-import heavyCream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/HeavyCream.svg";
-import skimMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/SkimMilk.svg";
-import sourCream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/SourCream.svg";
-// const wholeMilkPowder = require("../assets/images/SwiftlistApp/Grocery/MilkProducts/WholeMilkPowder.png");
-import wholeMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/WholeMilk.svg";
-import yogurt from "../assets/images/SwiftlistApp/Grocery/MilkProducts/Yogurt.svg";
+import butterMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/ButterMilk.png";
+import butter from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/Butter.png";
+import cheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/Cheese.png";
+import condensedMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/CondensedMilk.png";
+import cottageCheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/CottageCheese.png";
+import creamCheese from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/CreamCheese.png";
+import cream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/Cream.png";
+// const evaporatedMilk = require("../assets/images/SwiftlistApp/Grocery/MilkProducts/png/EvaporatedMilk.png");
+import heavyCream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/HeavyCream.png";
+import skimMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/SkimMilk.png";
+import sourCream from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/SourCream.png";
+// const wholeMilkPowder = require("../assets/images/SwiftlistApp/Grocery/MilkProducts/png/WholeMilkPowder.png");
+import wholeMilk from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/WholeMilk.png";
+import yogurt from "../assets/images/SwiftlistApp/Grocery/MilkProducts/png/Yogurt.png";
 
 // Vegetables
-import potato from "../assets/images/SwiftlistApp/Grocery/Vegetables/Potato.svg";
-import bringle from "../assets/images/SwiftlistApp/Grocery/Vegetables/Bringle.svg";
-import broccoli from "../assets/images/SwiftlistApp/Grocery/Vegetables/Brocolli.svg";
-import cabbage from "../assets/images/SwiftlistApp/Grocery/Vegetables/Cabbage.svg";
-import capsicum from "../assets/images/SwiftlistApp/Grocery/Vegetables/Capsicum.svg";
-import carrot from "../assets/images/SwiftlistApp/Grocery/Vegetables/Carrot.svg";
-import cucumber from "../assets/images/SwiftlistApp/Grocery/Vegetables/Cucumber.svg";
-import garlic from "../assets/images/SwiftlistApp/Grocery/Vegetables/Garlic.svg";
-import ginger from "../assets/images/SwiftlistApp/Grocery/Vegetables/Ginger.svg";
-import greenBeans from "../assets/images/SwiftlistApp/Grocery/Vegetables/GreenBeans.svg";
-import greenChilli from "../assets/images/SwiftlistApp/Grocery/Vegetables/GreenChilli.svg";
-import leek from "../assets/images/SwiftlistApp/Grocery/Vegetables/Leek.svg";
-import lettuce from "../assets/images/SwiftlistApp/Grocery/Vegetables/Lettuce.svg";
-import mushroom from "../assets/images/SwiftlistApp/Grocery/Vegetables/Mushroom.svg";
-import okra from "../assets/images/SwiftlistApp/Grocery/Vegetables/Okra.svg";
-import onion from "../assets/images/SwiftlistApp/Grocery/Vegetables/Onion.svg";
-import peas from "../assets/images/SwiftlistApp/Grocery/Vegetables/Peas.svg";
-import spinach from "../assets/images/SwiftlistApp/Grocery/Vegetables/Spinach.svg";
-import sweetPotato from "../assets/images/SwiftlistApp/Grocery/Vegetables/SweetPotato.svg";
-import tomato from "../assets/images/SwiftlistApp/Grocery/Vegetables/Tomato.svg";
-import turnip from "../assets/images/SwiftlistApp/Grocery/Vegetables/Turnip.svg";
-import zucchini from "../assets/images/SwiftlistApp/Grocery/Vegetables/Zucchini.svg";
+import potato from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Potato.png";
+// import bringle from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Bringle.png";
+import broccoli from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Brocolli.png";
+import cabbage from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Cabbage.png";
+// import capsicum from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Capsicum.png";
+import carrot from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Carrot.png";
+import cucumber from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Cucumber.png";
+import garlic from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Garlic.png";
+import ginger from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Ginger.png";
+import greenBeans from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/GreenBeans.png";
+import greenChilli from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/GreenChilli.png";
+import leek from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Leek.png";
+import lettuce from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Lettuce.png";
+import mushroom from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Mushroom.png";
+import okra from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Okra.png";
+import onion from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Onion.png";
+import peas from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Peas.png";
+import spinach from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Spinach.png";
+import sweetPotato from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/SweetPotato.png";
+import tomato from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Tomato.png";
+import turnip from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Turnip.png";
+import zucchini from "../assets/images/SwiftlistApp/Grocery/Vegetables/png/Zucchini.png";
 
 // Fruits
-import apple from "../assets/images/SwiftlistApp/Grocery/Fruits/Apple.svg";
-import avocado from "../assets/images/SwiftlistApp/Grocery/Fruits/Avocado.svg";
-import banana from "../assets/images/SwiftlistApp/Grocery/Fruits/Banana.svg";
-import blueberry from "../assets/images/SwiftlistApp/Grocery/Fruits/Blueberry.svg";
-import cherry from "../assets/images/SwiftlistApp/Grocery/Fruits/Cherry.svg";
-import grapes from "../assets/images/SwiftlistApp/Grocery/Fruits/Grapes.svg";
-import guava from "../assets/images/SwiftlistApp/Grocery/Fruits/Guava.svg";
-import kiwi from "../assets/images/SwiftlistApp/Grocery/Fruits/Kiwi.svg";
-import lichi from "../assets/images/SwiftlistApp/Grocery/Fruits/Lichi.svg";
-import mango from "../assets/images/SwiftlistApp/Grocery/Fruits/Mango.svg";
-import melon from "../assets/images/SwiftlistApp/Grocery/Fruits/Melon.svg";
-// const orange = require("../assets/images/SwiftlistApp/Grocery/Fruits/orange.png");
-import papaya from "../assets/images/SwiftlistApp/Grocery/Fruits/Papaya.svg";
-import peach from "../assets/images/SwiftlistApp/Grocery/Fruits/Peach.svg";
-import pear from "../assets/images/SwiftlistApp/Grocery/Fruits/Pear.svg";
-import pineapple from "../assets/images/SwiftlistApp/Grocery/Fruits/Pineapple.svg";
-// const pomengranate = require("../assets/images/SwiftlistApp/Grocery/Fruits/pomengarate.png");
-import raspberry from "../assets/images/SwiftlistApp/Grocery/Fruits/Raspberry.svg";
-import strawberry from "../assets/images/SwiftlistApp/Grocery/Fruits/Strawberry.svg";
-import watermelon from "../assets/images/SwiftlistApp/Grocery/Fruits/Watermelon.svg";
+import apple from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Apple.png";
+import avocado from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Avocado.png";
+import banana from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Banana.png";
+import blueberry from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Blueberry.png";
+import cherry from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Cherry.png";
+import grapes from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Grapes.png";
+import guava from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Guava.png";
+import kiwi from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Kiwi.png";
+import lichi from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Lichi.png";
+import mango from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Mango.png";
+import melon from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Melon.png";
+// const orange = require("../assets/images/SwiftlistApp/Grocery/Fruits/png/orange.png");
+import papaya from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Papaya.png";
+import peach from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Peach.png";
+import pear from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Pear.png";
+import pineapple from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Pineapple.png";
+// const pomengranate = require("../assets/images/SwiftlistApp/Grocery/Fruits/png/pomengarate.png");
+import raspberry from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Raspberry.png";
+import strawberry from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Strawberry.png";
+import watermelon from "../assets/images/SwiftlistApp/Grocery/Fruits/png/Watermelon.png";
 
 // Pulses
-import BlackEyedPeas from "../assets/images/SwiftlistApp/Grocery/Pulses/BlackEyedPeas.svg";
-import BlankLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/BlackLentil.svg";
-import BrownLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/BrownLentil.svg";
-import Chickpeas from "../assets/images/SwiftlistApp/Grocery/Pulses/Chickpeas.svg";
-import GreenLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/GreenLentil.svg";
-import OrangeLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/OrangeLentil.svg";
-import RedBeans from "../assets/images/SwiftlistApp/Grocery/Pulses/RedBeans.svg";
-import WhiteBeans from "../assets/images/SwiftlistApp/Grocery/Pulses/WhiteBeans.svg";
-import WhiteLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/WhiteLentil.svg";
-import YellowLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/YellowLentil.svg";
+import BlackEyedPeas from "../assets/images/SwiftlistApp/Grocery/Pulses/png/BlackEyedPeas.png";
+import BlankLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/BlackLentil.png";
+import BrownLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/BrownLentil.png";
+import Chickpeas from "../assets/images/SwiftlistApp/Grocery/Pulses/png/Chickpeas.png";
+import GreenLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/GreenLentil.png";
+import OrangeLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/OrangeLentil.png";
+import RedBeans from "../assets/images/SwiftlistApp/Grocery/Pulses/png/RedBeans.png";
+import WhiteBeans from "../assets/images/SwiftlistApp/Grocery/Pulses/png/WhiteBeans.png";
+import WhiteLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/WhiteLentil.png";
+import YellowLentil from "../assets/images/SwiftlistApp/Grocery/Pulses/png/YellowLentil.png";
 
 // ===============================
 // Bakery & Bread Items
 // ===============================
-// import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Bagels.svg";
-// import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Breadsticks.svg";
-// import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Buns.svg";
-// import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Cookies.svg";
-// import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Croissants.svg";
-// import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Donut.svg";
-// import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Focaccia.svg";
-// import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/GarlicBread.svg";
-// import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/LoafBread.svg";
-// import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Muffins.svg";
-// import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Pancakes.svg";
-// import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PastryBread.svg";
-// import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/PitaBread.svg";
-// import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Rusk.svg";
-// import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SourdoughBread.svg";
-// import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/SweetBun.svg";
-// import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Tortillas.svg";
-// import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/Waffles.svg";
-// import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WhiteBread.svg";
-// import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/WholeWheatBread.svg";
+import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Bagels.png";
+import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Breadsticks.png";
+import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Buns.png";
+import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Cookies.png";
+import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Croissants.png";
+import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Donut.png";
+import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Focaccia.png";
+import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/GarlicBread.png";
+import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/LoafBread.png";
+import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Muffins.png";
+import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Pancakes.png";
+import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/PastryBread.png";
+import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/PitaBread.png";
+import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Rusk.png";
+import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/SourdoughBread.png";
+import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/SweetBun.png";
+import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Tortillas.png";
+import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/Waffles.png";
+import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/WhiteBread.png";
+import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/WholeWheatBread.png";
 //png
-import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/apple.png";
-import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/avocado.png";
-import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/banana.png";
-import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/blueberry.png";
-import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/cherry.png";
-import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/fig.png";
-import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/grapes.png";
-import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/guava.png";
-import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/kiwi.png";
-import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/lichi.png";
-import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/mango.png";
-import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/melon.png";
-import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/papaya.png";
-import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/kiwi.png";
-import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/peach.png";
-import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/pear.png";
-import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/pineapple.png";
-import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/raspberry.png";
-import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/strawberry.png";
-import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/apple.png";
+// import Bagels from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/apple.png";
+// import Breadsticks from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/avocado.png";
+// import Buns from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/banana.png";
+// import Cookies from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/blueberry.png";
+// import Croissants from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/cherry.png";
+// import Donut from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/fig.png";
+// import Focaccia from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/grapes.png";
+// import GarlicBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/guava.png";
+// import LoafBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/kiwi.png";
+// import Muffins from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/lichi.png";
+// import Pancakes from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/mango.png";
+// import PastryBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/melon.png";
+// import PitaBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/papaya.png";
+// import Rusk from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/kiwi.png";
+// import SourdoughBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/peach.png";
+// import SweetBun from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/pear.png";
+// import Tortillas from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/pineapple.png";
+// import WafflesB from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/raspberry.png";
+// import WhiteBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/strawberry.png";
+// import WholeWheatBread from "../assets/images/SwiftlistApp/Grocery/BakeryandBread/png/apple.png";
 // ===============================
 // Breakfast & Cereal Items
 // ===============================
-import CerealB from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Cereal.svg";
-import ChiaSeed from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/ChiaSeed.svg";
-import ChocolateSpread from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/ChocolateSpread.svg";
+import CerealB from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Cereal.png";
+import ChiaSeed from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/ChiaSeed.png";
+import ChocolateSpread from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/ChocolateSpread.png";
 // The following lines are commented out as they reference PNGs:
-// // import Croissants from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Croissants.png";
-// // import Muffins from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Muffins.png";
-import EnglishMuffins from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/EnglishMuffins.svg";
-import GranolaBars from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/GranolaBars.svg";
-import Honey from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Honey.svg";
-import Jam from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Jam.svg";
-import Oatmeal from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Oatmeal.svg";
-import PancakeMix from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/PancakeMix.svg";
-import PistachioSpread from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/PistachioSpread.svg";
-import PopTarts from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/PopTarts.svg";
-import Toast from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Toast.svg";
+// // import Croissants from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Croissants.png";
+// // import Muffins from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Muffins.png";
+import EnglishMuffins from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/EnglishMuffins.png";
+import GranolaBars from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/GranolaBars.png";
+import Honey from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Honey.png";
+import Jam from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Jam.png";
+import Oatmeal from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Oatmeal.png";
+import PancakeMix from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/PancakeMix.png";
+import PistachioSpread from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/PistachioSpread.png";
+import PopTarts from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/PopTarts.png";
+import Toast from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Toast.png";
 // Waffles is commented out as it is a PNG:
-// // import Waffles from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/Waffles.png";
+// // import Waffles from "../assets/images/SwiftlistApp/Grocery/BreakfastandCereal/png/Waffles.png";
 // ===============================
 // Beverages Items
 // ===============================
-import CoconutWater from "../assets/images/SwiftlistApp/Grocery/Beverages/CoconutWater.svg";
-import Coffee from "../assets/images/SwiftlistApp/Grocery/Beverages/Coffee.svg";
-import EnergyDrinks from "../assets/images/SwiftlistApp/Grocery/Beverages/Energy Drinks.svg";
-import HerbalTea from "../assets/images/SwiftlistApp/Grocery/Beverages/HerbalTea.svg";
-import IcedTea from "../assets/images/SwiftlistApp/Grocery/Beverages/IcedTea.svg";
-import Juice from "../assets/images/SwiftlistApp/Grocery/Beverages/Juice.svg";
-import Lemonade from "../assets/images/SwiftlistApp/Grocery/Beverages/Lemonade.svg";
-import Milkshakes from "../assets/images/SwiftlistApp/Grocery/Beverages/MilkShakes.svg";
-import Soda from "../assets/images/SwiftlistApp/Grocery/Beverages/Soda.svg";
-import SparklingWater from "../assets/images/SwiftlistApp/Grocery/Beverages/SparklingWater.svg";
-import Tea from "../assets/images/SwiftlistApp/Grocery/Beverages/Tea.svg";
-import Water from "../assets/images/SwiftlistApp/Grocery/Beverages/Water.svg";
+import CoconutWater from "../assets/images/SwiftlistApp/Grocery/Beverages/png/CoconutWater.png";
+import Coffee from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Coffee.png";
+import EnergyDrinks from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Energy Drinks.png";
+import HerbalTea from "../assets/images/SwiftlistApp/Grocery/Beverages/png/HerbalTea.png";
+import IcedTea from "../assets/images/SwiftlistApp/Grocery/Beverages/png/IcedTea.png";
+import Juice from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Juice.png";
+import Lemonade from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Lemonade.png";
+import Milkshakes from "../assets/images/SwiftlistApp/Grocery/Beverages/png/MilkShakes.png";
+import Soda from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Soda.png";
+import SparklingWater from "../assets/images/SwiftlistApp/Grocery/Beverages/png/SparklingWater.png";
+import Tea from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Tea.png";
+import Water from "../assets/images/SwiftlistApp/Grocery/Beverages/png/Water.png";
 
 // Flour & Baking Supplies
-import AllPurposeFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/AllPurposeFlour.svg";
-import BakingPowder from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingPowder.svg";
-import BakingSoda from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BakingPowder.svg";
-import BrownieMix from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/BrownieMix.svg";
-import CakeMix from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CakeMix.svg";
-import ChocolateChips from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/ChocolateChips.svg";
-import CocoaPowder from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/CocoaPowder.svg";
-import Cornstarch from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Cornstarch.svg";
-import PastryFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/PastryFlour.svg";
-import SelfRaisingFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/SelfRaisingFlour.svg";
-import Sugar from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Sugar.svg";
-import VanillaExtract from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/VanillaExtract.svg";
-import Yeast from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/Yeast.svg";
+import AllPurposeFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/AllPurposeFlour.png";
+import BakingPowder from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/BakingPowder.png";
+import BakingSoda from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/BakingPowder.png";
+import BrownieMix from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/BrownieMix.png";
+import CakeMix from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/CakeMix.png";
+import ChocolateChips from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/ChocolateChips.png";
+import CocoaPowder from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/CocoaPowder.png";
+import Cornstarch from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/Cornstarch.png";
+import PastryFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/PastryFlour.png";
+import SelfRaisingFlour from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/SelfRaisingFlour.png";
+import Sugar from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/Sugar.png";
+import VanillaExtract from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/VanillaExtract.png";
+import Yeast from "../assets/images/SwiftlistApp/Grocery/FlourandBakingSupplies/png/Yeast.png";
 // Grains & Rice
-import Barley from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/Barley.svg";
-import BasmatiRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/BasmatiRice.svg";
-import BrownRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/BrownRice.svg";
-import JasmineRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/JasmineRice.svg";
-import Millet from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/Millet.svg";
-import Oats from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/Oats.svg";
-import Quinoa from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/Quinoa.svg";
-import WhiteRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/WhiteRice.svg";
-import WildRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/WildRice.svg";
+import Barley from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/Barley.png";
+import BasmatiRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/BasmatiRice.png";
+import BrownRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/BrownRice.png";
+import JasmineRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/JasmineRice.png";
+import Millet from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/Millet.png";
+import Oats from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/Oats.png";
+import Quinoa from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/Quinoa.png";
+import WhiteRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/WhiteRice.png";
+import WildRice from "../assets/images/SwiftlistApp/Grocery/Grains&Rice/png/WildRice.png";
 // Herbs
-import Basil from "../assets/images/SwiftlistApp/Grocery/Herbs/Basil.svg";
-import BayLeaves from "../assets/images/SwiftlistApp/Grocery/Herbs/Bay Leaves.svg";
-import Chives from "../assets/images/SwiftlistApp/Grocery/Herbs/Chives.svg";
-import Cilantro from "../assets/images/SwiftlistApp/Grocery/Herbs/Cilantro.svg";
-import Dill from "../assets/images/SwiftlistApp/Grocery/Herbs/Dill.svg";
-import Mint from "../assets/images/SwiftlistApp/Grocery/Herbs/Mint.svg";
-import Oregano from "../assets/images/SwiftlistApp/Grocery/Herbs/Oregano.svg";
-import Parsley from "../assets/images/SwiftlistApp/Grocery/Herbs/Parsley.svg";
-import Rosemary from "../assets/images/SwiftlistApp/Grocery/Herbs/Rosemary.svg";
-import Sage from "../assets/images/SwiftlistApp/Grocery/Herbs/Sage.svg";
-import Thyme from "../assets/images/SwiftlistApp/Grocery/Herbs/Thyme.svg";
+import Basil from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Basil.png";
+import BayLeaves from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Bay Leaves.png";
+import Chives from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Chives.png";
+import Cilantro from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Cilantro.png";
+import Dill from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Dill.png";
+import Mint from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Mint.png";
+import Oregano from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Oregano.png";
+import Parsley from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Parsley.png";
+import Rosemary from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Rosemary.png";
+import Sage from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Sage.png";
+import Thyme from "../assets/images/SwiftlistApp/Grocery/Herbs/png/Thyme.png";
 // Dairy Alternatives
-import AlmondMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/AlmondMilk.svg";
-import CashewMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CashewMilk.svg";
-import CoconutMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/CoconutMilk.svg";
-import HazelnutMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HazelnutMilk.svg";
-import HempMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/HempMilk.svg";
-import LactoseFreeMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/LactoseFreeMilk.svg";
-import OatMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/OatMilk.svg";
-import RiceMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/RiceMilk.svg";
-import SoyMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/SoyMilk.svg";
+import AlmondMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/AlmondMilk.png";
+import CashewMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/CashewMilk.png";
+import CoconutMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/CoconutMilk.png";
+import HazelnutMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/HazelnutMilk.png";
+import HempMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/HempMilk.png";
+import LactoseFreeMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/LactoseFreeMilk.png";
+import OatMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/OatMilk.png";
+import RiceMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/RiceMilk.png";
+import SoyMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/SoyMilk.png";
 
 
 
 // Meat & Seafood
-import Bacon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Bacon.svg";
-import FishFillets from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/FishFillets.svg";
-import GroundBeef from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/GroundBeef.svg";
-import LambChops from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/LambChops.svg";
-import Salmon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Salmon.svg";
-import SausagesImg from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Sausages.svg";
-import Shrimp from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/Shrimp.svg";
-import TurkeyBreast from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/TurkeyBreast.svg";
+import Bacon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/Bacon.png";
+import FishFillets from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/FishFillets.png";
+import GroundBeef from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/GroundBeef.png";
+import LambChops from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/LambChops.png";
+import Salmon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/Salmon.png";
+import SausagesImg from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/Sausages.png";
+import Shrimp from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/Shrimp.png";
+import TurkeyBreast from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/TurkeyBreast.png";
 // Nuts & Seeds
-import Almonds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Almonds.svg";
-import BrazilNuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/BrazilNuts.svg";
-import Cashews from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Cashews.svg";
-import Coconut from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Coconut.svg";
-import Fig from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Fig.svg";
-import Flaxseeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/FlaxSeeds.svg";
-import MacadamiaNuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/MacadamiaNuts.svg";
-import Peanuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Peanuts.svg";
-import Pecans from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pecans.svg";
-import Pistachios from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Pistachios.svg";
-import PumpkinSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/PumpkinSeeds.svg";
-import SunflowerSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/SunflowerSeeds.svg";
-import Walnuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/Walnuts.svg";
+import Almonds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Almonds.png";
+import BrazilNuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/BrazilNuts.png";
+import Cashews from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Cashews.png";
+import Coconut from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Coconut.png";
+import Fig from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Fig.png";
+import Flaxseeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/FlaxSeeds.png";
+import MacadamiaNuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/MacadamiaNuts.png";
+import Peanuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Peanuts.png";
+import Pecans from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Pecans.png";
+import Pistachios from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Pistachios.png";
+import PumpkinSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/PumpkinSeeds.png";
+import SunflowerSeeds from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/SunflowerSeeds.png";
+import Walnuts from "../assets/images/SwiftlistApp/Grocery/NutsandSeeds/png/Walnuts.png";
 
 // Paper Products
-import AluminumFoil from "../assets/images/SwiftlistApp/Grocery/PaperProducts/AluminumFoil.svg";
-import CoffeeFilters from "../assets/images/SwiftlistApp/Grocery/PaperProducts/CoffeeFilters.svg";
-import Napkins from "../assets/images/SwiftlistApp/Grocery/PaperProducts/Napkins.svg";
-import PaperCups from "../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperCups.svg";
-import PaperNapkins from "../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperNapkins.svg";
-import PaperPlates from "../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperPlates.svg";
-import PaperTowels from "../assets/images/SwiftlistApp/Grocery/PaperProducts/PaperTowels.svg";
-import Tissues from "../assets/images/SwiftlistApp/Grocery/PaperProducts/Tissues.svg";
-import ToiletPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/ToiletPaper.svg";
-// const TrashBags = require("../assets/images/SwiftlistApp/Grocery/PaperProducts/TrashBags.png");
-import WrappingPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/WrappingPaper.svg";
+import AluminumFoil from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/AluminumFoil.png";
+import CoffeeFilters from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/CoffeeFilters.png";
+import Napkins from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/Napkins.png";
+import PaperCups from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/PaperCups.png";
+import PaperNapkins from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/PaperNapkins.png";
+import PaperPlates from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/PaperPlates.png";
+import PaperTowels from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/PaperTowels.png";
+import Tissues from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/Tissues.png";
+import ToiletPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/ToiletPaper.png";
+// const TrashBags = require("../assets/images/SwiftlistApp/Grocery/PaperProducts/png/TrashBags.png");
+import WrappingPaper from "../assets/images/SwiftlistApp/Grocery/PaperProducts/png/WrappingPaper.png";
 
 // Pasta & Noodles
-import BowtiePasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/BowtiePasta.svg";
-import EggNoodles from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/EggNoodles.svg";
-import Fettuccine from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Fettuccine.svg";
-import FusilliPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/FusilliPasta.svg";
-import ItalianPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ItalianPasta.svg";
-import LasagnaNoodles from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/LasagnaNoodles.svg";
-import Linguine from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Linguine.svg";
-import Macaroni from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Macaroni.svg";
-import PennePasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/PennePasta.svg";
-import Ravioli from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Ravioli.svg";
-import RigatoniPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/RigatoniPasta.svg";
-import ShellPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/ShellPasta.svg";
-import Spaghetti from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/Spaghetti.svg";
+import BowtiePasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/BowtiePasta.png";
+import EggNoodles from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/EggNoodles.png";
+import Fettuccine from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/Fettuccine.png";
+import FusilliPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/FusilliPasta.png";
+import ItalianPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/ItalianPasta.png";
+import LasagnaNoodles from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/LasagnaNoodles.png";
+import Linguine from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/Linguine.png";
+import Macaroni from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/Macaroni.png";
+import PennePasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/PennePasta.png";
+import Ravioli from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/Ravioli.png";
+import RigatoniPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/RigatoniPasta.png";
+import ShellPasta from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/ShellPasta.png";
+import Spaghetti from "../assets/images/SwiftlistApp/Grocery/Pasta&Noodles/png/Spaghetti.png";
 // Personal Care
-import BathSoap from "../assets/images/SwiftlistApp/Grocery/PersonalCare/BathSoap.svg";
-import BodyWash from "../assets/images/SwiftlistApp/Grocery/PersonalCare/BodyWash.svg";
-import Deodorant from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Deodorant.svg";
-import EyeCream from "../assets/images/SwiftlistApp/Grocery/PersonalCare/EyeCream.svg";
-import FaceWash from "../assets/images/SwiftlistApp/Grocery/PersonalCare/FaceWash.svg";
-import HairConditioner from "../assets/images/SwiftlistApp/Grocery/PersonalCare/HairConditioner.svg";
-import HandSanitizer from "../assets/images/SwiftlistApp/Grocery/PersonalCare/HandSanitizer.svg";
-import LipBalm from "../assets/images/SwiftlistApp/Grocery/PersonalCare/LipBalm.svg";
-import Lotion from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Lotion.svg";
-import Moisturizer from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Moisturizer.svg";
-import Shampoo from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Shampoo.svg";
-import ShavingCream from "../assets/images/SwiftlistApp/Grocery/PersonalCare/ShavingCream.svg";
-import Soap from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Soap.svg";
-import Sunscreen from "../assets/images/SwiftlistApp/Grocery/PersonalCare/sunscreen.svg";
-import Toothpaste from "../assets/images/SwiftlistApp/Grocery/PersonalCare/Toothpaste.svg";
+import BathSoap from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/BathSoap.png";
+import BodyWash from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/BodyWash.png";
+import Deodorant from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Deodorant.png";
+import EyeCream from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/EyeCream.png";
+import FaceWash from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/FaceWash.png";
+import HairConditioner from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/HairConditioner.png";
+import HandSanitizer from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/HandSanitizer.png";
+import LipBalm from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/LipBalm.png";
+import Lotion from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Lotion.png";
+import Moisturizer from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Moisturizer.png";
+import Shampoo from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Shampoo.png";
+import ShavingCream from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/ShavingCream.png";
+import Soap from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Soap.png";
+import Sunscreen from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/sunscreen.png";
+import Toothpaste from "../assets/images/SwiftlistApp/Grocery/PersonalCare/png/Toothpaste.png";
 
 // Pet Food & Supplies
-import BirdSeed from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/BirdSeed.svg";
-import CatFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatFood.svg";
-import CatLitter from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/CatLitter.svg";
-import DogFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogFood.svg";
-import DogTreats from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/DogTreats.svg";
-import FishFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/FishFood.svg";
-import LitterBoxLiners from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/LitterBoxLiners.svg";
-import PetGroomingSupplies from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetGroomingSupplies.svg";
-import PetShampoo from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetShampoo.svg";
-import PetToys from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetToys.svg";
-import PetTreats from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/PetTreats.svg";
+import BirdSeed from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/BirdSeed.png";
+import CatFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/CatFood.png";
+import CatLitter from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/CatLitter.png";
+import DogFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/DogFood.png";
+import DogTreats from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/DogTreats.png";
+import FishFood from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/FishFood.png";
+import LitterBoxLiners from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/LitterBoxLiners.png";
+import PetGroomingSupplies from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/PetGroomingSupplies.png";
+import PetShampoo from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/PetShampoo.png";
+import PetToys from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/PetToys.png";
+import PetTreats from "../assets/images/SwiftlistApp/Grocery/PetFoodandSupplies/png/PetTreats.png";
 // Snacks
-import Chips from "../assets/images/SwiftlistApp/Grocery/Snacks/Chips.svg";
-import Crackers from "../assets/images/SwiftlistApp/Grocery/Snacks/Crackers.svg";
-import DriedFruit from "../assets/images/SwiftlistApp/Grocery/Snacks/DriedFruit.svg";
-import DriedVeggieChips from "../assets/images/SwiftlistApp/Grocery/Snacks/DriedVeggieChips.svg";
-import FruitSnacks from "../assets/images/SwiftlistApp/Grocery/Snacks/FruitSnacks.svg";
-import Nachos from "../assets/images/SwiftlistApp/Grocery/Snacks/Nachos.svg";
-import Popcorn from "../assets/images/SwiftlistApp/Grocery/Snacks/Popcorn.svg";
-import Pretzels from "../assets/images/SwiftlistApp/Grocery/Snacks/Pretzels.svg";
-import RiceCakes from "../assets/images/SwiftlistApp/Grocery/Snacks/RiceCakes.svg";
+import Chips from "../assets/images/SwiftlistApp/Grocery/Snacks/png/Chips.png";
+import Crackers from "../assets/images/SwiftlistApp/Grocery/Snacks/png/Crackers.png";
+import DriedFruit from "../assets/images/SwiftlistApp/Grocery/Snacks/png/DriedFruit.png";
+import DriedVeggieChips from "../assets/images/SwiftlistApp/Grocery/Snacks/png/DriedVeggieChips.png";
+import FruitSnacks from "../assets/images/SwiftlistApp/Grocery/Snacks/png/FruitSnacks.png";
+import Nachos from "../assets/images/SwiftlistApp/Grocery/Snacks/png/Nachos.png";
+import Popcorn from "../assets/images/SwiftlistApp/Grocery/Snacks/png/Popcorn.png";
+import Pretzels from "../assets/images/SwiftlistApp/Grocery/Snacks/png/Pretzels.png";
+import RiceCakes from "../assets/images/SwiftlistApp/Grocery/Snacks/png/RiceCakes.png";
 // Spiritual – Azkaar
-import alhamdulillah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/Alhamdulillah.svg";
-import allahuAkbar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/AllahuAkbar.svg";
-import astaghfirullah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/Astaghfirullah.svg";
-import eveningAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/EveningAzkar.svg";
-import lailahaillallah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/LaIlahaIllallah.svg";
-import morningAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/MorningAzkar.svg";
-import nightAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/NightAzkar.svg";
-// const recitingDarood = require("../assets/images/SwiftlistApp/Spiritual/Azkaar/RecitingDarood.png");
-import subhanAllah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/SubhanAllah.svg";
-import travellingZikar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/TravellingZikar.svg";
+import alhamdulillah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/Alhamdulillah.png";
+import allahuAkbar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/AllahuAkbar.png";
+import astaghfirullah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/Astaghfirullah.png";
+import eveningAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/EveningAzkar.png";
+import lailahaillallah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/LaIlahaIllallah.png";
+import morningAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/MorningAzkar.png";
+import nightAzkar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/NightAzkar.png";
+// const recitingDarood = require("../assets/images/SwiftlistApp/Spiritual/Azkaar/png/RecitingDarood.png");
+import subhanAllah from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/SubhanAllah.png";
+import travellingZikar from "../assets/images/SwiftlistApp/Spiritual/Azkaar/png/TravellingZikar.png";
 
 // Spiritual – Donating
-import buildingShelters from "../assets/images/SwiftlistApp/Spiritual/Donating/BuildingShelters.svg";
-import charity from "../assets/images/SwiftlistApp/Spiritual/Donating/Charity.svg";
-import clothesDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/ClothesDonation.svg";
-import crowdfundingDonations from "../assets/images/SwiftlistApp/Spiritual/Donating/CrowdfundingDonations.svg";
-import foodDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/FoodDonation.svg";
-import healthCausesDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/HealthCausesDonation.svg";
-import reliefFundsDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/ReliefFundsDonation.svg";
-import sponsoringEducation from "../assets/images/SwiftlistApp/Spiritual/Donating/SponsoringEducation.svg";
-import supportingOrphans from "../assets/images/SwiftlistApp/Spiritual/Donating/SupportingOrphans.svg";
-import waterProjectDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/WaterProjectDonation.svg";
+import buildingShelters from "../assets/images/SwiftlistApp/Spiritual/Donating/png/BuildingShelters.png";
+import charity from "../assets/images/SwiftlistApp/Spiritual/Donating/png/CharityToThePoor.png";
+import clothesDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/DonatingClothes.png";
+import crowdfundingDonations from "../assets/images/SwiftlistApp/Spiritual/Donating/png/CrowdFundingDonations.png";
+import foodDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/DonatingFood.png";
+import healthCausesDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/DonatingToHealthCauses.png";
+import reliefFundsDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/DonatingToReliefFunds.png";
+import sponsoringEducation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/SponsoringEducation.png";
+import supportingOrphans from "../assets/images/SwiftlistApp/Spiritual/Donating/png/SupportingOrphans.png";
+import waterProjectDonation from "../assets/images/SwiftlistApp/Spiritual/Donating/png/DonatingForWaterProjects.png";
 
 // Spiritual – Fasting
-import dawnToSunsetFast from "../assets/images/SwiftlistApp/Spiritual/Fasting/DawnToSunsetFast.svg";
-import fastingInRamadan from "../assets/images/SwiftlistApp/Spiritual/Fasting/FastingInRamadan.svg";
-import fastingOfAshura from "../assets/images/SwiftlistApp/Spiritual/Fasting/FastingOfAshura.svg";
-import fastingOnArafah from "../assets/images/SwiftlistApp/Spiritual/Fasting/FastingOnArafah.svg";
-import fastingOnMondays from "../assets/images/SwiftlistApp/Spiritual/Fasting/FastingOnMondays.svg";
-import fastingOnThursdays from "../assets/images/SwiftlistApp/Spiritual/Fasting/FastingOnThursdays.svg";
-import intermittentFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/IntermittentFasting.svg";
-import whiteDaysFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/WhiteDaysFasting.svg";
+import dawnToSunsetFast from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/DawnToSunsetFast.png";
+import fastingInRamadan from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/FastingInRamadan.png";
+import fastingOfAshura from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/FastingOfAshura.png";
+import fastingOnArafah from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/FastingOnArafah.png";
+import fastingOnMondays from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/FastingOnMondays.png";
+import fastingOnThursdays from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/FastingOnThursdays.png";
+import intermittentFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/IntermittentFasting.png";
+import whiteDaysFasting from "../assets/images/SwiftlistApp/Spiritual/Fasting/png/WhiteDaysFasting.png";
 
 // Spiritual – Meditation
-import bodyScan from "../assets/images/SwiftlistApp/Spiritual/Meditation/BodyScan.svg";
-import deepBreathing from "../assets/images/SwiftlistApp/Spiritual/Meditation/DeepBreathing.svg";
-import focusedMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/FocusedMeditation.svg";
-import guidedImagery from "../assets/images/SwiftlistApp/Spiritual/Meditation/GuidedImagery.svg";
-import lovingKindnessMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/Loving-KindnessMeditation.svg";
-import mantraMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/MantraMeditation.svg";
-import mindfulnessMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/MindfulnessMeditation.svg";
-import transcendentalMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/TranscendentalMeditation.svg";
-import walkingMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/WalkingMeditation.svg";
-import yogaMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/YogaMeditation.svg";
+import bodyScan from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/BodyScan.png";
+import deepBreathing from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/DeepBreathing.png";
+import focusedMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/FocusedMeditation.png";
+import guidedImagery from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/GuidedImagery.png";
+import lovingKindnessMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/LovingKindnessMeditation.png";
+import mantraMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/MantraMeditation.png";
+import mindfulnessMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/MindfulnessMeditation.png";
+import transcendentalMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/TranscendentalMeditation.png";
+import walkingMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/WalkingMeditation.png";
+import yogaMeditation from "../assets/images/SwiftlistApp/Spiritual/Meditation/png/YogaMeditation.png";
 
 /// Spiritual – Prayers
-import asar from "../assets/images/SwiftlistApp/Spiritual/Prayers/Asr.svg";
-import duha from "../assets/images/SwiftlistApp/Spiritual/Prayers/Duha.svg";
-import fajr from "../assets/images/SwiftlistApp/Spiritual/Prayers/Fajr.svg";
-import isha from "../assets/images/SwiftlistApp/Spiritual/Prayers/Isha.svg";
-import lunarEclipsePrayer from "../assets/images/SwiftlistApp/Spiritual/Prayers/LunarEclipsePrayer.svg";
-import maghrib from "../assets/images/SwiftlistApp/Spiritual/Prayers/Maghrib.svg";
-import salatulTasbih from "../assets/images/SwiftlistApp/Spiritual/Prayers/SalatUlTasbih.svg";
-import solarEclipsePrayer from "../assets/images/SwiftlistApp/Spiritual/Prayers/SolarEclipsePrayer.svg";
-import tahajjud from "../assets/images/SwiftlistApp/Spiritual/Prayers/Tahajjud.svg";
-// const zohar = require("../assets/images/SwiftlistApp/Spiritual/Prayers/Zohar.png");
+import asar from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/asar.png";
+import duha from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/Duha.png";
+import fajr from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/fajr.png";
+import isha from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/isha.png";
+import lunarEclipsePrayer from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/LunarEclipsePrayer.png";
+import maghrib from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/maghrib.png";
+import salatulTasbih from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/SalatulTasbih.png";
+import solarEclipsePrayer from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/SolarEclipsePrayer.png";
+import tahajjud from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/Tahajjud.png";
+import zohar from "../assets/images/SwiftlistApp/Spiritual/Prayers/png/Zohar.png";
 
 // Cleaning Caddy done
-import AllPurposeCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/All-PurposeCleaner.svg";
-import Basket from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Basket.svg";
-import Broom from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Broom.svg";
-import BroomAndDustpan from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Broom&Dustpan.svg";
-import Brush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Brush.svg";
-import CleaningGloves from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/CleaningGloves.svg";
-import DisinfectionCleanerSpray from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/DisinfectionCleanerSpray.svg";
-import DusterAndDustpan from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/DusterandDustpan.svg";
-import FeatherDuster from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/FeatherDuster.svg";
-import FloorMop from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/FloorMop.svg";
-import MicrofiberCloth from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/MicrofiberCloth.svg";
-import ModernVacuumCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/ModernVacuumCleaner.svg";
-import Mop from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Mop.svg";
-import MopAndBasket from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/MopandBasket.svg";
-import OvenCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/OvenCleaner.svg";
-import ScrubBrush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/ScrubBrush.svg";
-import Sponge from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Sponge.svg";
-import StepTrash from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/StepTrash.svg";
-import ToiletBrush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/ToiletBrush.svg";
-import ToiletPlunger from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/ToiletPlunger.svg";
-import TrashBags from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/TrashBags.svg";
-import Wiper from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/Wiper.svg";
+import AllPurposeCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/All-PurposeCleaner.png";
+import Basket from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Basket.png";
+import Broom from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Broom.png";
+import BroomAndDustpan from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Broom&Dustpan.png";
+import Brush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Brush.png";
+import CleaningGloves from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/CleaningGloves.png";
+import DisinfectionCleanerSpray from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/DisinfectionCleanerSpray.png";
+import DusterAndDustpan from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/DusterandDustpan.png";
+import FeatherDuster from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/FeatherDuster.png";
+import FloorMop from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/FloorMop.png";
+import MicrofiberCloth from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/MicrofiberCloth.png";
+import ModernVacuumCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/ModernVacuumCleaner.png";
+import Mop from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Mop.png";
+import MopAndBasket from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/MopandBasket.png";
+import OvenCleaner from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/OvenCleaner.png";
+import ScrubBrush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/ScrubBrush.png";
+import Sponge from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Sponge.png";
+import StepTrash from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/StepTrash.png";
+import ToiletBrush from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/ToiletBrush.png";
+import ToiletPlunger from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/ToiletPlunger.png";
+import TrashBags from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/TrashBags.png";
+import Wiper from "../assets/images/SwiftlistApp/Grocery/CleaningCaddy/png/Wiper.png";
 // Condiments & Dressings after
-import CaesarDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/CaesarDressing.svg";
-import HoneyMustard from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HoneyMustard.svg";
-import HotSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/HotSauce.svg";
-import PeanutButter from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/PeanutButter.svg";
-import RanchDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/RanchDressing.svg";
-import SaladDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SaladDressing.svg";
-import SandwichSpread from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/SandwichSpread.svg";
-import TartarSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/TartarSauce.svg";
-import WorcestershireSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/WorcestershireSauce.svg";
+import CaesarDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/CaesarDressing.png";
+import HoneyMustard from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/HoneyMustard.png";
+import HotSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/HotSauce.png";
+import PeanutButter from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/PeanutButter.png";
+import RanchDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/RanchDressing.png";
+import SaladDressing from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/SaladDressing.png";
+import SandwichSpread from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/SandwichSpread.png";
+import TartarSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/TartarSauce.png";
+import WorcestershireSauce from "../assets/images/SwiftlistApp/Grocery/CondimentsandDressings/png/WorcestershireSauce.png";
 // Confectionery & Sweets
-import Candies from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Candies.svg";
-import ChocolateBars from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateBars.svg";
-import ChocolateSyrup from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/ChocolateSyrup.svg";
-import Donuts from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Donuts.svg";
-import GummyBears1 from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/GummyBears.svg";
-import HardCandy from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/HardCandy.svg";
-import IceCream1 from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/IceCream.svg";
-import Lollipops from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Lollipops.svg";
-import Marshmallows from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Marshmallows.svg";
-import Pastries from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/Pastries.svg";
+import Candies from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/Candies.png";
+import ChocolateBars from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/ChocolateBars.png";
+import ChocolateSyrup from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/ChocolateSyrup.png";
+import Donuts from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/Donuts.png";
+import GummyBears1 from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/GummyBears.png";
+import HardCandy from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/HardCandy.png";
+import IceCream1 from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/IceCream.png";
+import Lollipops from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/Lollipops.png";
+import Marshmallows from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/Marshmallows.png";
+import Pastries from "../assets/images/SwiftlistApp/Grocery/ConfectioneryandSweets/png/Pastries.png";
 
 // Cooking Oils
-import CanolaOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/CanolaOil.svg";
-import CoconutOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/CoconutOil.svg";
-import CornOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/CornOil.svg";
-import GrapeseedOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/GrapeseedOil.svg";
-import OliveOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/OliveOil.svg";
-import SesameOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/SesameOil.svg";
-import SunflowerOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/SunflowerOil.svg";
-import VegetableOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/VegetableOil.svg";
+import CanolaOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/CanolaOil.png";
+import CoconutOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/CoconutOil.png";
+import CornOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/CornOil.png";
+import GrapeseedOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/GrapeseedOil.png";
+import OliveOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/OliveOil.png";
+import SesameOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/SesameOil.png";
+import SunflowerOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/SunflowerOil.png";
+import VegetableOil from "../assets/images/SwiftlistApp/Grocery/CookingOils/png/VegetableOil.png";
+
+import ApplyPerfume from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/ApplyPerfume.png";
+import ApplyScreen from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/ApplyScreen.png";
+import BrushTeeth from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/BrushTeeth.png";
+import CleanEars from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/CleanEars.png";
+import CleanBody from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/CleansBody.png";
+import ComboHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/ComboHair.png";
+import ConditionHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/ConditionerHair.png";
+import MoisturizeSkin from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/MoisturizeSkin.png";
+import ShampooHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/ShampooHair.png";
+import Shower from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/Shower.png";
+import TrimNails from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/TrimNails.png";
+import WashFace from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/WashFace.png";
+import WearCleanCloths from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/png/WearCleanClothes.png";
+// Grooming – Dental Care
+import Consultation from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/Consultation.png";
+import FlexibleDenture from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/FlexibleDenture.png";
+import MouthGuard from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/MouthGuard.png";
+import OralProphylaxis from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/OralProphylaxis.png";
+import PartialDenture from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/PartialDenture.png";
+import Retainers from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/Retainers.png";
+import TemporaryFilling from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/TemporaryFilling.png";
+import ToothExtraction from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/ToothExtraction.png";
+import Whitening from "../assets/images/SwiftlistApp/Grooming/Dentalcare/png/Whitening.png";
+
+// ===============================================shared===============================================
+// Skin Care
+import AloeVera from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/AloeVera.png";
+import Cleanser from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/Cleanser.png";
+// const EyeCream = require("../assets/images/SwiftlistApp/Grooming/SkinCare/png/Eyecream.png");
+import FaceOil from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/FaceOil.png";
+// const Moisturizer = require("../assets/images/SwiftlistApp/Grooming/SkinCare/png/Moisturizer.png");
+import NightCream from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/NightCream.png";
+import Serum from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/Serum.png";
+import SpotTreatment from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/SpotTreatment.png";
+import Toner from "../assets/images/SwiftlistApp/Grooming/SkinCare/png/Toner.png";
+
+// Hair Care
+import BrushingCombing from "../assets/images/SwiftlistApp/Grooming/HairCare/png/BrushingCombing.png";
+import HairMaskTreatment from "../assets/images/SwiftlistApp/Grooming/HairCare/png/HairMaskTreatment.png";
+import HairOiling from "../assets/images/SwiftlistApp/Grooming/HairCare/png/HairOiling.png";
+import HairWash from "../assets/images/SwiftlistApp/Grooming/HairCare/png/HairWash.png";
+import ScalpMassaging from "../assets/images/SwiftlistApp/Grooming/HairCare/png/ScalpMassaging.png";
+import ScalpScrub from "../assets/images/SwiftlistApp/Grooming/HairCare/png/ScalpScrub.png";
+
+// Nail Care
+import NailCleaning from "../assets/images/SwiftlistApp/Grooming/NailCare/png/Cleaning.png";
+import Massaging from "../assets/images/SwiftlistApp/Grooming/NailCare/png/Massaging.png";
+import Moisturizing from "../assets/images/SwiftlistApp/Grooming/NailCare/png/Moisturizing.png";
+import Trimming from "../assets/images/SwiftlistApp/Grooming/NailCare/png/Trimming.png";
+
 
 // ===============================
 // ToDo – Cleaning (SVG assets)
 // ===============================
-import bathroomCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/BathroomCleaning.svg";
-import carpetCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/CarpetCleaning.svg";
-import cleaningWalls from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/CleaningWalls.svg";
-import cobwebRemoval from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/CobwebRemoval.svg";
-import decluttering from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Decluttering.svg";
-import dusting from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Dusting.svg";
-import floorPolishing from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/FloorPolishing.svg";
-import kitchenCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/KitchenCleaning.svg";
-import mopping from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Mopping.svg";
-import organizingShelves from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/OrganizingShelves.svg";
-import sweeping from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Sweeping.svg";
-import vacuuming from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/Vacuuming.svg";
-import windowCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/WindowCleaning.svg";
-import wipingSurfaces from "../assets/images/SwiftlistApp/ToDo/Cleaning/svg/WipingSurfaces.svg";
+import bathroomCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/BathroomCleaning.png";
+import carpetCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/CarpetCleaning.png";
+import cleaningWalls from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/CleaningWalls.png";
+import cobwebRemoval from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/CobwebRemoval.png";
+import decluttering from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/Decluttering.png";
+import dusting from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/Dusting.png";
+import floorPolishing from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/FloorPolishing.png";
+import kitchenCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/KitchenCleaning.png";
+import mopping from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/Mopping.png";
+import organizingShelves from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/OrganizingShelves.png";
+import sweeping from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/Sweeping.png";
+import vacuuming from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/Vacuuming.png";
+import windowCleaning from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/WindowCleaning.png";
+import wipingSurfaces from "../assets/images/SwiftlistApp/ToDo/Cleaning/png/WipingSurfaces.png";
 
 
 // ===============================
 // ToDo – Cooking (SVG assets)
 // ===============================
-import Baking from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Baking.svg";
-import Boiling from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Boiling.svg";
-import Broiling from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Broiling.svg";
-import ChoppingVegetables from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/ChoppingVegetables.svg";
-import Frying from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Frying.svg";
-import Grilling from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Grilling.svg";
-import Marinating from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Marinating.svg";
-import MixingIngredients from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/MixingIngredients.svg";
-import PreppingIngredients from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/PreppingIngredients.svg";
-import Roasting from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Roasting.svg";
-import SlowCooking from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/SlowCooking.svg";
-import Steaming from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/Steaming.svg";
-import StirringandSauteing from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/StirringAndSauteing.svg";
-import UsingCookingAppliances from "../assets/images/SwiftlistApp/ToDo/Cooking/svg/UsingCookingAppliances.svg";
+import Baking from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Baking.png";
+import Boiling from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Boiling.png";
+import Broiling from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Broiling.png";
+import ChoppingVegetables from "../assets/images/SwiftlistApp/ToDo/Cooking/png/ChoppingVegetables.png";
+import Frying from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Frying.png";
+import Grilling from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Grilling.png";
+import Marinating from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Marinating.png";
+import MixingIngredients from "../assets/images/SwiftlistApp/ToDo/Cooking/png/MixingIngredients.png";
+import PreppingIngredients from "../assets/images/SwiftlistApp/ToDo/Cooking/png/PreppingIngredients.png";
+import Roasting from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Roasting.png";
+import SlowCooking from "../assets/images/SwiftlistApp/ToDo/Cooking/png/SlowCooking.png";
+import Steaming from "../assets/images/SwiftlistApp/ToDo/Cooking/png/Steaming.png";
+import StirringandSauteing from "../assets/images/SwiftlistApp/ToDo/Cooking/png/StirringAndSauteing.png";
+import UsingCookingAppliances from "../assets/images/SwiftlistApp/ToDo/Cooking/png/UsingCookingAppliances.png";
 
 
 // ===============================
 // ToDo – Laundry (SVG assets)
 // ===============================
-import AiringDelicateFabrics from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/AiringDelicateFabrics.svg";
-import DetergentSelection from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/DetergentSelection.svg";
-import DryingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/DryingClothes.svg";
-import FoldingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/FoldingClothes.svg";
-import HangingClothes1 from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/HangingClothes.svg";
-import HangingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/HangingClothes.svg";
-import Ironing from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/Ironing.svg";
-import OrganizingCloset from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/OrganizingCloset.svg";
-import RemovingStains from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/RemovingStains.svg";
-import SortingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/SortingClothes.svg";
-import StarchingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/StarchingClothes.svg";
-import StoringBedLinen from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/StoringBedLinen.svg";
-import StoringWinterClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/StoringWinterClothes.svg";
-import UsingFabricSoftener from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/UsingFabricSoftener.svg";
-import WashingMachineUse from "../assets/images/SwiftlistApp/ToDo/Laundry/svg/WashingMachineUse.svg";
+import AiringDelicateFabrics from "../assets/images/SwiftlistApp/ToDo/Laundry/png/AiringDelicateFabrics.png";
+import DetergentSelection from "../assets/images/SwiftlistApp/ToDo/Laundry/png/DetergentSelection.png";
+import DryingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/DryingClothes.png";
+import FoldingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/FoldingClothes.png";
+import HangingClothes1 from "../assets/images/SwiftlistApp/ToDo/Laundry/png/HangingClothes.png";
+import HangingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/HangingClothes.png";
+import Ironing from "../assets/images/SwiftlistApp/ToDo/Laundry/png/Ironing.png";
+import OrganizingCloset from "../assets/images/SwiftlistApp/ToDo/Laundry/png/OrganizingCloset.png";
+import RemovingStains from "../assets/images/SwiftlistApp/ToDo/Laundry/png/RemovingStains.png";
+import SortingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/SortingClothes.png";
+import StarchingClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/StarchingClothes.png";
+import StoringBedLinen from "../assets/images/SwiftlistApp/ToDo/Laundry/png/StoringBedLinen.png";
+import StoringWinterClothes from "../assets/images/SwiftlistApp/ToDo/Laundry/png/StoringWinterClothes.png";
+import UsingFabricSoftener from "../assets/images/SwiftlistApp/ToDo/Laundry/png/UsingFabricSoftener.png";
+import WashingMachineUse from "../assets/images/SwiftlistApp/ToDo/Laundry/png/WashingMachineUse.png";
 // Grooming – Personal Hygiene
-import ApplyPerfume from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/ApplyPerfume.svg";
-import ApplyScreen from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/ApplyScreen.svg";
-import BrushTeeth from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/BrushTeeth.svg";
-import CleanEars from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/CleanEars.svg";
-import CleanBody from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/CleansBody.svg";
-import ComboHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/ComboHair.svg";
-import ConditionHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/ConditionerHair.svg";
-import MoisturizeSkin from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/MoisturizeSkin.svg";
-import ShampooHair from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/ShampooHair.svg";
-import Shower from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/Shower.svg";
-import TrimNails from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/TrimNails.svg";
-import WashFace from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/WashFace.svg";
-import WearCleanCloths from "../assets/images/SwiftlistApp/Grooming/PersonalHygiene/WearCleanClothes.svg";
+
 
 
 // ===============================
 // ToDo – Drinking (Mixed SVG & PNG assets)
 // ===============================
-import Beer from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/Beer.svg";
+import Beer from "../assets/images/SwiftlistApp/ToDo/Drinking/png/Beer.png";
 // const Coffee = require("../assets/images/SwiftlistApp/ToDo/Drinking/Coffee.png");
 // const EnergyDrinks = require("../assets/images/SwiftlistApp/ToDo/Drinking/EnergyDrinks.png");
-import HerbalTeas from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/HerbalTeas.svg";
+import HerbalTeas from "../assets/images/SwiftlistApp/ToDo/Drinking/png/HerbalTeas.png";
 // const Juice = require("../assets/images/SwiftlistApp/ToDo/Drinking/Juice.png");
-import JuiceDetox from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/JuiceDetox.svg";
+import JuiceDetox from "../assets/images/SwiftlistApp/ToDo/Drinking/png/JuiceDetox.png";
 // const Lemonade = require("../assets/images/SwiftlistApp/ToDo/Drinking/Lemonade.png");
 // const Milkshakes = require("../assets/images/SwiftlistApp/ToDo/Drinking/Milkshakes.png");
-import Smoothies from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/Smoothies.svg";
+import Smoothies from "../assets/images/SwiftlistApp/ToDo/Drinking/png/Smoothies.png";
 // const Soda = require("../assets/images/SwiftlistApp/ToDo/Drinking/Soda.png");
 // const SparklingWater = require("../assets/images/SwiftlistApp/ToDo/Drinking/SparklingWater.png");
 // const Tea = require("../assets/images/SwiftlistApp/ToDo/Drinking/Tea.png");
 // const Water = require("../assets/images/SwiftlistApp/ToDo/Drinking/Water.png");
-import Wine from "../assets/images/SwiftlistApp/ToDo/Drinking/svg/Wine.svg";
+import Wine from "../assets/images/SwiftlistApp/ToDo/Drinking/png/Wine.png";
 // ===============================
 // ToDo – Eating (SVG assets)
 // ===============================
-import BreakfastT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Breakfast.svg";
-import Buffet from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Buffet.svg";
-import Desserts from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Desserts.svg";
-import DinnerT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Dinner.svg";
-import FastFood from "../assets/images/SwiftlistApp/ToDo/Eating/svg/FastFood.svg";
-import FruitT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Fruit.svg";
-import GrilledMeals from "../assets/images/SwiftlistApp/ToDo/Eating/svg/GrilledMeals.svg";
-import LunchT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Lunch.svg";
-import MealPrep from "../assets/images/SwiftlistApp/ToDo/Eating/svg/MealPrep.svg";
-import PlatedMeals from "../assets/images/SwiftlistApp/ToDo/Eating/svg/PlatedMeals.svg";
-import SaladsT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Salads.svg";
-import SnacksT from "../assets/images/SwiftlistApp/ToDo/Eating/svg/Snacks.svg";
-import TakeawayMeals from "../assets/images/SwiftlistApp/ToDo/Eating/svg/TakeawayMeals.svg";
+import BreakfastT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Breakfast.png";
+import Buffet from "../assets/images/SwiftlistApp/ToDo/Eating/png/Buffet.png";
+import Desserts from "../assets/images/SwiftlistApp/ToDo/Eating/png/Desserts.png";
+import DinnerT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Dinner.png";
+import FastFood from "../assets/images/SwiftlistApp/ToDo/Eating/png/FastFood.png";
+import FruitT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Fruit.png";
+import GrilledMeals from "../assets/images/SwiftlistApp/ToDo/Eating/png/GrilledMeals.png";
+import LunchT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Lunch.png";
+import MealPrep from "../assets/images/SwiftlistApp/ToDo/Eating/png/MealPrep.png";
+import PlatedMeals from "../assets/images/SwiftlistApp/ToDo/Eating/png/PlatedMeals.png";
+import SaladsT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Salads.png";
+import SnacksT from "../assets/images/SwiftlistApp/ToDo/Eating/png/Snacks.png";
+import TakeawayMeals from "../assets/images/SwiftlistApp/ToDo/Eating/png/TakeawayMeals.png";
 
 // ToDo – Official Task (SVG assets)
-import AnsweringEmails from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/AnsweringEmails.svg";
-import BudgetPlanning from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/BudgetPlanning.svg";
-import CompletingDocuments from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/CompletingDocuments.svg";
-import DataEntry from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/DataEntry.svg";
-import FileManagement from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/FileManagement.svg";
-import OrganizingMeetings from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/OrganizingMeetings.svg";
-import PhoneCalls from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/PhoneCalls.svg";
-import PreparingPresentations from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/PreparingPresentations.svg";
-import PreparingReports from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/PreparingReports.svg";
-import ProjectManagement from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/ProjectManagement.svg";
-import ReviewingDocuments from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/ReviewingDocuments.svg";
-import SchedulingMeetings from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/SchedulingMeetings.svg";
-import TaskPrioritization from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/TaskPrioritization.svg";
-import TrackingTasks from "../assets/images/SwiftlistApp/ToDo/Official Task/svg/TrackingTasks.svg";
-// Grooming – Dental Care
-import Consultation from "../assets/images/SwiftlistApp/Grooming/DentalCare/Consultation.svg";
-import FlexibleDenture from "../assets/images/SwiftlistApp/Grooming/DentalCare/FlexibleDenture.svg";
-import MouthGuard from "../assets/images/SwiftlistApp/Grooming/DentalCare/MouthGuard.svg";
-import OralProphylaxis from "../assets/images/SwiftlistApp/Grooming/DentalCare/OralProphylaxis.svg";
-import PartialDenture from "../assets/images/SwiftlistApp/Grooming/DentalCare/PartialDenture.svg";
-import Retainers from "../assets/images/SwiftlistApp/Grooming/DentalCare/Retainers.svg";
-import TemporaryFilling from "../assets/images/SwiftlistApp/Grooming/DentalCare/TemporaryFilling.svg";
-import ToothExtraction from "../assets/images/SwiftlistApp/Grooming/DentalCare/ToothExtraction.svg";
-import Whitening from "../assets/images/SwiftlistApp/Grooming/DentalCare/Whitening.svg";
-
-// ===============================================shared===============================================
-// Skin Care
-import AloeVera from "../assets/images/SwiftlistApp/Grooming/SkinCare/AloeVera.svg";
-import Cleanser from "../assets/images/SwiftlistApp/Grooming/SkinCare/Cleanser.svg";
-// const EyeCream = require("../assets/images/SwiftlistApp/Grooming/SkinCare/Eyecream.png");
-import FaceOil from "../assets/images/SwiftlistApp/Grooming/SkinCare/FaceOil.svg";
-// const Moisturizer = require("../assets/images/SwiftlistApp/Grooming/SkinCare/Moisturizer.png");
-import NightCream from "../assets/images/SwiftlistApp/Grooming/SkinCare/NightCream.svg";
-import Serum from "../assets/images/SwiftlistApp/Grooming/SkinCare/Serum.svg";
-import SpotTreatment from "../assets/images/SwiftlistApp/Grooming/SkinCare/SpotTreatment.svg";
-import Toner from "../assets/images/SwiftlistApp/Grooming/SkinCare/Toner.svg";
-
-// Hair Care
-import BrushingCombing from "../assets/images/SwiftlistApp/Grooming/HairCare/BrushingCombing.svg";
-import HairMaskTreatment from "../assets/images/SwiftlistApp/Grooming/HairCare/HairMaskTreatment.svg";
-import HairOiling from "../assets/images/SwiftlistApp/Grooming/HairCare/HairOiling.svg";
-import HairWash from "../assets/images/SwiftlistApp/Grooming/HairCare/HairWash.svg";
-import ScalpMassaging from "../assets/images/SwiftlistApp/Grooming/HairCare/ScalpMassaging.svg";
-import ScalpScrub from "../assets/images/SwiftlistApp/Grooming/HairCare/ScalpScrub.svg";
-
-// Nail Care
-import NailCleaning from "../assets/images/SwiftlistApp/Grooming/NailCare/Cleaning.svg";
-import Massaging from "../assets/images/SwiftlistApp/Grooming/NailCare/Massaging.svg";
-import Moisturizing from "../assets/images/SwiftlistApp/Grooming/NailCare/Moisturizing.svg";
-import Trimming from "../assets/images/SwiftlistApp/Grooming/NailCare/Trimming.svg";
+import AnsweringEmails from "../assets/images/SwiftlistApp/ToDo/Official Task/png/AnsweringEmails.png";
+import BudgetPlanning from "../assets/images/SwiftlistApp/ToDo/Official Task/png/BudgetPlanning.png";
+import CompletingDocuments from "../assets/images/SwiftlistApp/ToDo/Official Task/png/CompletingDocuments.png";
+import DataEntry from "../assets/images/SwiftlistApp/ToDo/Official Task/png/DataEntry.png";
+import FileManagement from "../assets/images/SwiftlistApp/ToDo/Official Task/png/FileManagement.png";
+import OrganizingMeetings from "../assets/images/SwiftlistApp/ToDo/Official Task/png/OrganizingMeetings.png";
+import PhoneCalls from "../assets/images/SwiftlistApp/ToDo/Official Task/png/PhoneCalls.png";
+import PreparingPresentations from "../assets/images/SwiftlistApp/ToDo/Official Task/png/PreparingPresentations.png";
+import PreparingReports from "../assets/images/SwiftlistApp/ToDo/Official Task/png/PreparingReports.png";
+import ProjectManagement from "../assets/images/SwiftlistApp/ToDo/Official Task/png/ProjectManagement.png";
+import ReviewingDocuments from "../assets/images/SwiftlistApp/ToDo/Official Task/png/ReviewingDocuments.png";
+import SchedulingMeetings from "../assets/images/SwiftlistApp/ToDo/Official Task/png/SchedulingMeetings.png";
+import TaskPrioritization from "../assets/images/SwiftlistApp/ToDo/Official Task/png/TaskPrioritization.png";
+import TrackingTasks from "../assets/images/SwiftlistApp/ToDo/Official Task/png/TrackingTasks.png";
 
 // Beef Items
-import BeefBiryani from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBiryani.svg";
-import BeefBurger from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefBurger.svg";
-import BeefCurry from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefCurry.svg";
-import BeefKebab from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefKebab.svg";
-import BeefRibs from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefRibs.svg";
-import BeefSteak from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefSteak.svg";
-import BeefStirFry from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStirFry.svg";
-import BeefStroganoff from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefStroganoff.svg";
-import BeefTacos from "../assets/images/SwiftlistApp/KitchenMenu/Beef/BeefTacos.svg";
-import RoastBeef from "../assets/images/SwiftlistApp/KitchenMenu/Beef/RoastBeef.svg";
+import BeefBiryani from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefBiryani.png";
+import BeefBurger from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefBurger.png";
+import BeefCurry from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefCurry.png";
+import BeefKebab from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefKebab.png";
+import BeefRibs from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefRibs.png";
+import BeefSteak from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefSteak.png";
+import BeefStirFry from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefStirFry.png";
+import BeefStroganoff from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefStroganoff.png";
+import BeefTacos from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/BeefTacos.png";
+import RoastBeef from "../assets/images/SwiftlistApp/KitchenMenu/Beef/png/RoastBeef.png";
 
 // Breakfast Items
-import BoiledEggs from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/BoiledEggs.svg";
-// const Cereal = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Cereal.png");
+import BoiledEggs from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/BoiledEggs.png";
+// const Cereal = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/Cereal.png");
 // Note: The original line for Pancakes was commented out since it’s a PNG.
-import FrenchToast from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/FrenchToast.svg";
-import Omelette from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/_Omelette.svg";
-// const Pancakes = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Pancakes.png");
-import ParathaYogurt from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/ParathaAndYogurt.svg";
-import Porridge from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Porridge.svg";
-import ScrambledEggs from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/ScrambledEggs.svg";
-import SmoothieBowl from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/_SmoothieBowl.svg";
-// const Waffles = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/Waffles.png");
+import FrenchToast from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/FrenchToast.png";
+import Omelette from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/Omelette.png";
+// const Pancakes = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/Pancakes.png");
+import ParathaYogurt from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/ParathaAndYogurt.png";
+import Porridge from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/Porridge.png";
+import ScrambledEggs from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/ScrambledEggs.png";
+import SmoothieBowl from "../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/SmoothieBowl.png";
+// const Waffles = require("../assets/images/SwiftlistApp/KitchenMenu/Breakfast/png/Waffles.png");
 
 // Brunch Items
-import Burrito from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Burrito.svg";
-import ChickenSaladSandwich from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/ChickenSaladSandwich.svg";
-import FlatbreadHummus from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/FlatbreadAndHummus.svg";
-import Frittata from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Frittata.svg";
-import Sandwich from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Sandwich.svg";
-import Wraps from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/Wraps.svg";
+import Burrito from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/Burrito.png";
+import ChickenSaladSandwich from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/ChickenSaladSandwich.png";
+import FlatbreadHummus from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/FlatbreadAndHummus.png";
+import Frittata from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/Frittata.png";
+import Sandwich from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/Sandwich.png";
+import Wraps from "../assets/images/SwiftlistApp/KitchenMenu/Brunch/png/Wraps.png";
 // Chicken Items
-import ChickenAlfredo from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenAlfredo.svg";
-import ChickenCurry from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenCurry.svg";
-import ChickenFajitas from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenFajitas.svg";
-import ChickenNuggets from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenNuggets.svg";
-import ChickenParmesan from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenParmesan.svg";
-import ChickenShawarma from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenShawarma.svg";
-import ChickenTikka from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenTikka.svg";
-// const ChickenWings = require("../assets/images/SwiftlistApp/KitchenMenu/Chicken/ChickenWings.png");
-import GrilledChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/GrilledChicken.svg";
-import RoastedChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/RoastedChicken.svg";
+import ChickenAlfredo from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenAlfredo.png";
+import ChickenCurry from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenCurry.png";
+import ChickenFajitas from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenFajitas.png";
+import ChickenNuggets from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenNuggets.png";
+import ChickenParmesan from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenParmesan.png";
+import ChickenShawarma from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenShawarma.png";
+import ChickenTikka from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenTikka.png";
+// const ChickenWings = require("../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/ChickenWings.png");
+import GrilledChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/GrilledChicken.png";
+import RoastedChicken from "../assets/images/SwiftlistApp/KitchenMenu/Chicken/png/RoastedChicken.png";
 
 // ===============================
 // Dinner Items
 // ===============================
-import BeefLasagna from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/BeefLasagna.svg";
-import GrilledLambChops from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/GrilledLambChops.svg";
-import HerbRoastedChickenwithMashedPotatoes from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/HerbRoastedChickenWithMashedPotatoes.svg";
-import KidneyBeanswithRice from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/KidneyBeansWithRice.svg";
-import MoroccanChickenwithCouscous from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/MoroccanChickenWithCouscous.svg";
-import MushroomRisotto from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/MushroomRisotto.svg";
-import MuttonCurrywithFlatbread from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonCurryWithFlatbread.svg";
-import MuttonSoupwithBread from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/MuttonSoupWithBread.svg";
-import SeekhKebabswithNaan from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/SeekhKebabsWithNaan.svg";
-import SpicedWholeChickenwithYogurtSauce from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/SpicedWholeChickenWithYogurtSauce.svg";
+import BeefLasagna from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/BeefLasagna.png";
+import GrilledLambChops from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/GrilledLambChops.png";
+import HerbRoastedChickenwithMashedPotatoes from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/HerbRoastedChickenwithMashedPotatoes.png";
+import KidneyBeanswithRice from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/KidneyBeanswithRice.png";
+import MoroccanChickenwithCouscous from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/MoroccanChickenwithCouscous.png";
+import MushroomRisotto from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/MushroomRisotto.png";
+import MuttonCurrywithFlatbread from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/MuttonCurrywithFlatbread.png";
+import MuttonSoupwithBread from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/MuttonSoupwithBread.png";
+import SeekhKebabswithNaan from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/SeekhKebabswithNaan.png";
+import SpicedWholeChickenwithYogurtSauce from "../assets/images/SwiftlistApp/KitchenMenu/Dinner/png/SpicedWholeChickenwithYogurtSauce.png";
 
 // ===============================
 // Lunch Items
 // ===============================
-import ChickenBiryani from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenBiryani.svg";
-import ChickenKarahiwithNaan from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/ChickenKarahiWithNaan.svg";
-import LentilswithRice from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/LentilsWithRice.svg";
-import MincedMeatStuffedBread from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/MincedMeatStuffedBread.svg";
-import MuttonKormawithTandooriRoti from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/MuttonKormaWithTandooriRoti.svg";
-import PalakPaneer from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/PalakPaneer(SpinachAndCottageCheese)WithRice.svg";
-import PotatoandMeatCurry from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/PotatoAndMeatCurry.svg";
-import PulaowithRaita from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/PulaoWithRaita.svg";
-import SpicedOkra from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicedOkra.svg";
-import SpicyChickpeaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/SpicyChickpeaSalad.svg";
+import ChickenBiryani from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/ChickenBiryani.png";
+import ChickenKarahiwithNaan from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/ChickenKarahiWithNaan.png";
+import LentilswithRice from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/LentilsWithRice.png";
+import MincedMeatStuffedBread from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/MincedMeatStuffedBread.png";
+import MuttonKormawithTandooriRoti from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/MuttonKormaWithTandooriRoti.png";
+import PalakPaneer from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/PalakPaneer(SpinachandCottageCheese)WithRice.png";
+import PotatoandMeatCurry from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/PotatoAndMeatCurry.png";
+import PulaowithRaita from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/PulaoWithRaita.png";
+import SpicedOkra from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/SpicedOkra.png";
+import SpicyChickpeaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Lunch/png/SpicyChickpeaSalad.png";
 
 // ===============================
 // Salad Items
 // ===============================
-import CaesarSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/CaesarSalad.svg";
-import CapreseSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/CapreseSalad.svg";
-import CobbSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/CobbSalad.svg";
-import ColeslawSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/ColeslawSalad.svg";
-import GardenSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/GardenSalad.svg";
-import GreekSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/GreekSalad.svg";
-import PastaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/PastaSalad.svg";
-import SpinachSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/SpinachSalad.svg";
-// const TunaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Salad/TunaSalad.png');
-import WaldorfSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/WaldorfSalad.svg";
+import CaesarSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/CaesarSalad.png";
+import CapreseSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/CapreseSalad.png";
+import CobbSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/CobbSalad.png";
+import ColeslawSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/ColeslawSalad.png";
+import GardenSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/GardenSalad.png";
+import GreekSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/GreekSalad.png";
+import PastaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/PastaSalad.png";
+import SpinachSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/SpinachSalad.png";
+// const TunaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Salad/png/TunaSalad.png');
+import WaldorfSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/WaldorfSalad.png";
 
 const frozenitems = [
   { id: 1, name: "Bread", imgPath: Bread },
@@ -831,10 +834,10 @@ const milkproducts = [
 
 const vegetableItems = [
   { id: 85, name: "Potato", imgPath: potato },
-  { id: 86, name: "Bringle", imgPath: bringle },
+  // { id: 86, name: "Bringle", imgPath: bringle },
   { id: 87, name: "Broccoli", imgPath: broccoli },
   { id: 88, name: "Cabbage", imgPath: cabbage },
-  { id: 89, name: "Capsicum", imgPath: capsicum },
+  // { id: 89, name: "Capsicum", imgPath: capsicum },
   { id: 90, name: "Carrot", imgPath: carrot },
   { id: 91, name: "Cucumber", imgPath: cucumber },
   { id: 92, name: "Garlic", imgPath: garlic },

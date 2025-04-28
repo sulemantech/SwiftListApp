@@ -4,7 +4,6 @@ import {
   Text,
   View,
   useWindowDimensions,
-  Image,
 } from "react-native";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { ScrollView } from "react-native-gesture-handler";
@@ -12,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
+import { Image } from "expo-image";
 
 interface Product {
   id: number;
@@ -192,7 +192,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
                 /> */}
-                <Image source={item.imgPath} width={itemWidth * 0.6} height={itemWidth * 0.6}/>
+                <Image source={item.imgPath} style={styles.image}/>
 
                 <Text
                   style={[
@@ -260,13 +260,13 @@ const ProductList: React.FC<ProductListProps> = ({
           </TouchableOpacity> */}
         </ScrollView>
       )}
-      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
         />
-      )} */}
+      )}
     </View>
   );
 };
@@ -306,6 +306,10 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Medium",
     textAlign: "center",
     color: "white",
+  },
+  image:{
+    width:70,
+    aspectRatio:1
   },
 
   topLeftBorder: {
