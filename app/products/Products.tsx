@@ -4,7 +4,6 @@ import {
   Text,
   View,
   useWindowDimensions,
-  Image,
 } from "react-native";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { ScrollView } from "react-native-gesture-handler";
@@ -12,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
+import { Image } from "expo-image";
 
 interface Product {
   id: number;
@@ -174,7 +174,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   {
                     width: itemWidth,
                     marginBottom: gap,
-                    marginRight: (index + 1) % numColumns === 200 ? 0 : gap,
+                    marginRight: (index + 1) % numColumns === 0 ? 0 : gap,
                   },
                   isSelected && styles.selectedCard,
                   index === 0 && styles.topLeftBorder,
@@ -186,11 +186,12 @@ const ProductList: React.FC<ProductListProps> = ({
                   index === secondLineLastElement && styles.bottomRightBorder,
                 ]}
               >
-                <item.imgPath
+                {/* <item.imgPath
                   width={itemWidth * 0.6}
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
-                />
+                />  */}
+                <Image source={item.imgPath} style={styles.image} />
 
                 <Text
                   style={[
@@ -198,7 +199,8 @@ const ProductList: React.FC<ProductListProps> = ({
                     {
                       fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      color: isSelected ? "#FFFFFF" : "#A9A0F0",
+                      // color: isSelected ? "#FFFFFF" : "#BFBFBF",
+                      color: "#ffffff",
                     },
                   ]}
                   numberOfLines={1}
@@ -258,13 +260,13 @@ const ProductList: React.FC<ProductListProps> = ({
           </TouchableOpacity> */}
         </ScrollView>
       )}
-      {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
         />
-      )}
+      )} */}
     </View>
   );
 };
@@ -286,7 +288,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   productCard: {
-    backgroundColor: "#F3F3FD",
+    backgroundColor: "#BFBFBF",
     alignItems: "center",
     justifyContent: "center",
     aspectRatio: 1,
@@ -304,6 +306,10 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Medium",
     textAlign: "center",
     color: "white",
+  },
+  image: {
+    width: 70,
+    aspectRatio: 1,
   },
 
   topLeftBorder: {
