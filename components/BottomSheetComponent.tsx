@@ -79,7 +79,6 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   // const NUMBERS = useMemo(() => Array.from({ length: 31 }, (_, i) => (i + 1).toString()), []);
   // const Quntity = useMemo(() => ["kg", "Litre", "Dozen"], []);
   // const Time = useMemo(() => ["Per Day", "Per Week", "Per Month"], []);
-  
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -87,10 +86,9 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         handleSelectedElementQuantity(ListName);
       }
     }, 300); // adjust as needed
-  
+
     return () => clearTimeout(timeout);
   }, [itemsQuantity, ListName]);
-  
 
   const handleSelectedElementQuantity = async (listName: string) => {
     if (!itemsQuantity.Quantity) return;
@@ -117,7 +115,6 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const handleSnapPress = useCallback((index: number) => {
     setSnapIndex(index);
   }, []);
-  
 
   return (
     <BottomSheet
@@ -141,7 +138,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
             </Text>
           </View>
           {/* divider */}
-          <View style={styles.divider} />
+          {/* <View style={styles.divider} />
           <View style={styles.FromCategoryContainer}>
             <Text style={styles.Category}>Categories</Text>
             <Badge
@@ -150,25 +147,25 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
               badgeStyle={styles.CategoryContainer}
               textStyle={styles.CategoryName}
             />
-          </View>
+          </View> */}
         </BottomSheetView>
         {/*======================== old code ======================*/}
-        <BottomSheetView style={styles.counterCardWrapper}>
-          <View style={styles.counterCard}>
+        {/* <BottomSheetView style={styles.counterCardWrapper}> */}
+        {/* <View style={styles.counterCard}>
             <Text> </Text>
             <Text style={styles.CardName}>Quantity</Text>
             <Switch
               value={checked}
               onValueChange={(value) => setChecked(value)}
             />
-          </View>
-          <Divider
+          </View> */}
+        {/* <Divider
             width={1.5}
             color={theme?.colors?.primary}
             style={{ marginVertical: 10 }}
-          />
-          <View style={styles.counterCard}>
-            {/* <View style={styles.LabelCounter}>
+          /> */}
+        {/* <View style={styles.counterCard}> */}
+        {/* <View style={styles.LabelCounter}>
               <Text style={styles.CounterLabeltext}>Quantity</Text>
               <CardWithCounter Element={NUMBERS} />
             </View>
@@ -180,7 +177,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
               <Text style={styles.CounterLabeltext}> </Text>
               <CardWithCounter Element={Time} />
             </View> */}
-            {/* <View style={{ width: "100%", marginHorizontal: "auto" }}>
+        {/* <View style={{ width: "100%", marginHorizontal: "auto" }}>
               <TextInput2
                 label={"Description"}
                 placeholder={"Enter description, quantity, unit."}
@@ -191,21 +188,21 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
                 style={undefined}
               />
             </View> */}
-            <View style={{ alignItems: "center" }}>
-              <TextInput2
-                label={"Description"}
-                placeholder={"Enter description, quantity, unit."}
-                value={description}
-                onChangeText={setDescription}
-                onFocus={undefined}
-                onBlur={undefined}
-                style={{
-                  width: width * (320 / 360),
-                }}
-              />
-            </View>
-          </View>
-        </BottomSheetView>
+        <View style={{ alignItems: "center", alignSelf: "center" }}>
+          <TextInput2
+            label={""}
+            placeholder={"Enter description, quantity, unit."}
+            value={description}
+            onChangeText={setDescription}
+            onFocus={undefined}
+            onBlur={undefined}
+            style={{
+              width: width * (320 / 360),
+            }}
+          />
+        </View>
+        {/* </View> */}
+        {/* </BottomSheetView> */}
         <View>
           <BottomSheetView style={[{ height: sheetHeight }]}>
             <CalendarTabBar
@@ -217,11 +214,11 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
             />
           </BottomSheetView>
         </View>
+        <ReminderSection /><AddSubTask />
 
         <TimeSelector />
 
-        <AddSubTask />
-        <ReminderSection />
+        
       </BottomSheetScrollView>
     </BottomSheet>
   );
@@ -240,7 +237,7 @@ const styles = StyleSheet.create({
     display: "flex",
     width: width * (320 / 360),
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: 16,
     justifyContent: "space-between",
     // backgroundColor: "red",
   },
@@ -248,7 +245,6 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     marginTop: 10,
     width: width * (320 / 360),
-
     marginHorizontal: "auto",
     padding: 10,
     borderRadius: 15,
@@ -320,7 +316,7 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans-Bold",
     fontSize: 16,
     textAlign: "center",
-    color: "#4C4C4C",
+    color: "red",
   },
 
   buttonsLabeltext: {
