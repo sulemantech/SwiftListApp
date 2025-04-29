@@ -146,7 +146,7 @@ const ProductList: React.FC<ProductListProps> = ({
           : styles.productsContainer2,
         {
           paddingHorizontal: sidePadding,
-          paddingBottom: isProductSelected && page !== "itemslist" ? 200 : 0,
+          paddingBottom: isProductSelected && page !== "itemslist" ? 0 : 0,
         },
       ]}
     >
@@ -260,13 +260,13 @@ const ProductList: React.FC<ProductListProps> = ({
           </TouchableOpacity> */}
         </ScrollView>
       )}
-      {/* {showBottomSheet && page !== "itemslist" && isProductSelected && (
+      {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
           ListName={ListName}
           setIsProductSelected={setIsProductSelected}
         />
-      )} */}
+      )} 
     </View>
   );
 };
