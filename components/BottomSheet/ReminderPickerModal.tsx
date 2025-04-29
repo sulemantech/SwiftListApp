@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -133,7 +134,7 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
           <View style={styles.header}>
             <Text style={styles.headerTitle}>Reminder</Text>
             <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-              <Ionicons name="close" size={28} color="#6C6C6C" />
+              <Ionicons name="close-outline" size={width * 0.05} color="#6C6C6C" />
             </TouchableOpacity>
           </View>
           {/* Divider */}
@@ -247,7 +248,7 @@ const ReminderPickerModal: React.FC<ReminderPickerModalProps> = ({
                   >
                     <View style={styles.quickOptionContent}>
                       <Ionicons
-                        name="calendar-outline"
+                        name="time-outline"
                         size={20}
                         color={
                           selectedQuickOption === option ? "#B5A9F8" : "#555"
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3FD",
     borderRadius: 20,
     padding: 20,
-    marginHorizontal: 20,
+    // marginHorizontal: 10,
   },
   header: {
     flexDirection: "row",
@@ -302,16 +303,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
     position: "relative",
+    // backgroundColor: "red",
   },
   headerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 17,
+    fontFamily: "OpenSans-SemiBold",
     color: "#333",
   },
   closeButton: {
     position: "absolute",
+    fontFamily: "OpenSans-Light",
     right: 0,
-    padding: 8,
+    // padding: 8,
   },
   divider: {
     width: "110%",
@@ -326,6 +329,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 25,
     marginBottom: 20,
+    // backgroundColor: "red",
+    width: width * (320 / 360),
+    height: height * (35 / 812),
   },
   tab: {
     flex: 1,
@@ -358,9 +364,9 @@ const styles = StyleSheet.create({
     width: 60,
   },
   titleText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#5C5C5C",
+    fontSize: 13,
+    fontFamily: "OpenSans-SemiBold",
+    color: "#4C4C4C",
     marginBottom: 8,
   },
   pickerList: {
@@ -385,7 +391,9 @@ const styles = StyleSheet.create({
     top: ITEM_HEIGHT * 2 + 24,
     left: 0,
     right: 0,
-    height: ITEM_HEIGHT,
+    // height: ITEM_HEIGHT,
+    width: width * (320 / 360),
+    height: height * (35 / 812),
     backgroundColor: "#E0D9FA",
     borderRadius: 20,
   },
