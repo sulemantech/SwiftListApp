@@ -235,7 +235,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
                 style={undefined}
               />
             </View> */}
-       {CompToShow[1] && <View style={{ alignItems: "center", alignSelf: "center" }}>
+        {/* {CompToShow[1] && <View style={{ alignItems: "center", alignSelf: "center" }}>
           <TextInput2
             label={""}
             placeholder={"Enter description, quantity, unit."}
@@ -250,7 +250,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         </View>}
         {/* </View> */}
         {/* </BottomSheetView> */}
-        {CompToShow[2] &&  <View>
+        {/* {CompToShow[2] &&  <View>
           <BottomSheetView style={[{ height: sheetHeight }]}>
             <CalendarTabBar
               onTabChange={(tabIndex) => {
@@ -264,7 +264,69 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
         {CompToShow[3] && <ReminderSection />}
         {CompToShow[4] && <AddSubTask />}
 
-        {CompToShow[5] &&<TimeSelector />}
+        {CompToShow[5] &&<TimeSelector />}  */}
+        {CompToShow[1] && (
+          <View
+            style={{
+              alignItems: "center",
+              alignSelf: "center",
+              marginBottom: 12, // ✅ spacing below TextInput2
+            }}
+          >
+            <TextInput2
+              label={""}
+              placeholder={"Enter description, quantity, unit."}
+              value={description}
+              onChangeText={setDescription}
+              onFocus={undefined}
+              onBlur={undefined}
+              style={{
+                width: width * (320 / 360),
+              }}
+            />
+          </View>
+        )}
+
+        {CompToShow[2] && (
+          <View
+            style={{
+              marginTop: ListName === "Spiritual Goals" || ListName === "Things To Do" ? -12 : 0,
+            }}
+          >
+            <BottomSheetView style={{ height: sheetHeight }}>
+              <CalendarTabBar
+                onTabChange={(tabIndex) => {
+                  if (tabIndex === 0) setSheetHeight(100);
+                  else if (tabIndex === 1) setSheetHeight(150);
+                  else setSheetHeight(480);
+                }}
+              />
+            </BottomSheetView>
+          </View>
+        )}
+
+        {CompToShow[3] && (
+          <View
+            style={{
+              marginTop: ListName === "Personal Grooming" ? 16 : 0,
+              // marginBottom: 12,
+            }}
+          >
+            <ReminderSection />
+          </View>
+        )}
+
+        {CompToShow[4] && (
+          <View style={{}}>
+            <AddSubTask />
+          </View>
+        )}
+
+        {CompToShow[5] && (
+          <View style={{ marginBottom: 24 }}>
+            <TimeSelector />
+          </View>
+        )}
       </BottomSheetScrollView>
     </BottomSheet>
   );
