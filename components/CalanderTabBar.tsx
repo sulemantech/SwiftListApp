@@ -143,7 +143,7 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
             ]}
           >
             <View style={styles.monthlyContainer}>
-              <Calendar
+              {/* <Calendar
                 current={selectedDate}
                 onDayPress={(day: DateData) => setSelectedDate(day.dateString)}
                 dayComponent={({
@@ -153,6 +153,31 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
                   date: DateData;
                   state: string;
                 }) => {
+                  const isSelected = selectedDate === date.dateString;
+                  return (
+                    <TouchableOpacity
+                      onPress={() => setSelectedDate(date.dateString)}
+                      style={[
+                        styles.weekDay,
+                        isSelected && styles.weekDayActive,
+                        state === "disabled" && { opacity: 0.1 },
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          styles.weekText,
+                          isSelected && styles.weekTextActive,
+                        ]}
+                      >
+                        {date.day}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                }} */}
+              <Calendar
+                current={selectedDate}
+                onDayPress={(day: DateData) => setSelectedDate(day.dateString)}
+                dayComponent={({ date, state }: { date: DateData; state: string }) => {
                   const isSelected = selectedDate === date.dateString;
                   return (
                     <TouchableOpacity
@@ -186,6 +211,11 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
                       color="#A9A0F0"
                     />
                   </View>
+                )}
+                renderHeader={(date: moment.MomentInput) => (
+                  <Text style={styles.monthHeader}>
+                    {moment(date).format("MMMM")}
+                  </Text>
                 )}
                 theme={{
                   backgroundColor: "#FFFFFF",
@@ -278,11 +308,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 2,
-    // borderTopWidth: 0,
-    // borderLeftWidth: 0,
-    // borderBottomWidth: 3,
-    // borderRightWidth: 3,
-    // borderColor: "#CBC3FB",
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderBottomWidth: 3,
+    borderRightWidth: 3,
+    borderColor: "#CBC3FB",
   },
   weekDayActive: {
     backgroundColor: "#A89EFF",
@@ -310,11 +340,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 6,
     marginVertical: 10,
-    // borderTopWidth: 1, 
-    // borderLeftWidth: 1, 
-    // borderBottomWidth: 5, 
-    // borderRightWidth: 5,
-    // borderColor: "#CBC3FB", 
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderBottomWidth: 5,
+    borderRightWidth: 5,
+    borderColor: "#CBC3FB",
   },
 
   calendar: {
@@ -328,6 +358,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F3FF",
     justifyContent: "center",
     alignItems: "center",
+  },
+  monthHeader: {
+    fontFamily: "OpenSans-SemiBold",
+    fontSize: 18,
+    color: "#5C5C5C",
+    textAlign: "center",
+    marginBottom: 10, // (adjust if needed)
   },
 });
 
