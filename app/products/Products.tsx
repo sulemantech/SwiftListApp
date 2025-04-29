@@ -27,6 +27,7 @@ interface ProductListProps {
   page?: string;
   ListName: any;
   ListID: any;
+  categoryName:any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -58,6 +59,7 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   page,
   ListName,
+  categoryName,
   ListID,
   onProductSelect = () => {},
   showBottomSheet = true,
@@ -72,6 +74,7 @@ const ProductList: React.FC<ProductListProps> = ({
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
+  console.log(products)
   // useEffect(() => {
   //   console.log(selectedProduct);
   //   setselectedProducts(selectedProducts);
@@ -174,7 +177,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   {
                     width: itemWidth,
                     marginBottom: gap,
-                    marginRight: (index + 1) % numColumns === 0 ? 0 : gap,
+                    marginRight: (index + 1) % numColumns === 200 ? 0 : gap,
                   },
                   isSelected && styles.selectedCard,
                   index === 0 && styles.topLeftBorder,
@@ -190,8 +193,8 @@ const ProductList: React.FC<ProductListProps> = ({
                   width={itemWidth * 0.6}
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
-                />  */}
-                <Image source={item.imgPath} style={styles.image} />
+                /> */}
+                <Image source={item.imgPath} style={styles.image}/>
 
                 <Text
                   style={[
@@ -199,8 +202,7 @@ const ProductList: React.FC<ProductListProps> = ({
                     {
                       fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      // color: isSelected ? "#FFFFFF" : "#BFBFBF",
-                      color: "#ffffff",
+                      color: '#FFFFFF',
                     },
                   ]}
                   numberOfLines={1}
@@ -263,7 +265,7 @@ const ProductList: React.FC<ProductListProps> = ({
       {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
-          ListName={ListName}
+          ListName={categoryName}
           setIsProductSelected={setIsProductSelected}
         />
       )} 
@@ -307,9 +309,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
   },
-  image: {
-    width: 70,
-    aspectRatio: 1,
+  image:{
+    width:70,
+    aspectRatio:1
   },
 
   topLeftBorder: {

@@ -84,6 +84,7 @@ const ProductsPage: React.FC = () => {
         <ProductList
           products={updatedItems}
           ListName={categoryName}
+          categoryName={ListName}
           page={""}
           ListID={ListIDInNum}
         />
