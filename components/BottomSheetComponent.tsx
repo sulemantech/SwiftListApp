@@ -29,6 +29,13 @@ interface BottomSheetComponentProps {
   // setSnapIndex: (index: number) => void;
   // snapIndex: number;
 }
+type CompToShowState = {
+  1: boolean;
+  2: boolean;
+  3: boolean;
+  4: boolean;
+  5: boolean;
+};
 
 interface ItemsQuantity {
   Quantity: string | number;
@@ -68,6 +75,38 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
     setSelectedValue(Number(Quantity));
   }, []);
   const [checked, setChecked] = useState(false);
+  const [CompToShow, setCompToShow] = useState<CompToShowState>({
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+  });
+
+  const updateCompToShow = (name: string) => {
+    // Define a mapping for each name
+    const mapping: Record<string, number[]> = {
+      "Grocery List": [1],
+      'Spiritual Goals': [1, 2],
+      "Personal Grooming": [1, 3],
+      "Things To Do": [1, 2, 3, 4, 5],
+      "Kitchen Menu": [1],
+    };
+
+    // Get active keys for the current name
+    const activeKeys = mapping[name] || [];
+
+    // Create a new state object based on the active keys
+    const newState: CompToShowState = {
+      1: activeKeys.includes(1),
+      2: activeKeys.includes(2),
+      3: activeKeys.includes(3),
+      4: activeKeys.includes(4),
+      5: activeKeys.includes(5),
+    };
+
+    setCompToShow(newState);
+  };
 
   const toggleSwitch = () => {
     setChecked(!checked);
@@ -115,6 +154,14 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   const handleSnapPress = useCallback((index: number) => {
     setSnapIndex(index);
   }, []);
+
+  useEffect(() => {
+    console.log(ListName);
+    const name = ListName; 
+    if (name) {
+      updateCompToShow(name);
+    }
+  }, [ListName]);
 
   return (
     <BottomSheet
@@ -188,7 +235,7 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
                 style={undefined}
               />
             </View> */}
-        <View style={{ alignItems: "center", alignSelf: "center" }}>
+       {CompToShow[1] && <View style={{ alignItems: "center", alignSelf: "center" }}>
           <TextInput2
             label={""}
             placeholder={"Enter description, quantity, unit."}
@@ -200,10 +247,10 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
               width: width * (320 / 360),
             }}
           />
-        </View>
+        </View>}
         {/* </View> */}
         {/* </BottomSheetView> */}
-        <View>
+        {CompToShow[2] &&  <View>
           <BottomSheetView style={[{ height: sheetHeight }]}>
             <CalendarTabBar
               onTabChange={(tabIndex) => {
@@ -213,12 +260,11 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
               }}
             />
           </BottomSheetView>
-        </View>
-        <ReminderSection /><AddSubTask />
+        </View>}
+        {CompToShow[3] && <ReminderSection />}
+        {CompToShow[4] && <AddSubTask />}
 
-        <TimeSelector />
-
-        
+        {CompToShow[5] &&<TimeSelector />}
       </BottomSheetScrollView>
     </BottomSheet>
   );

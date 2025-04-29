@@ -27,6 +27,7 @@ interface ProductListProps {
   page?: string;
   ListName: any;
   ListID: any;
+  categoryName:any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -58,6 +59,7 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   page,
   ListName,
+  categoryName,
   ListID,
   onProductSelect = () => {},
   showBottomSheet = true,
@@ -147,7 +149,7 @@ const ProductList: React.FC<ProductListProps> = ({
           : styles.productsContainer2,
         {
           paddingHorizontal: sidePadding,
-          // paddingBottom: isProductSelected && page !== "itemslist" ? 200 : 0,
+          paddingBottom: isProductSelected && page !== "itemslist" ? 0 : 0,
         },
       ]}
     >
@@ -200,7 +202,7 @@ const ProductList: React.FC<ProductListProps> = ({
                     {
                       fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      color: isSelected ? "#FFFFFF" : "#A9A0F0",
+                      color: '#FFFFFF',
                     },
                   ]}
                   numberOfLines={1}
@@ -263,10 +265,10 @@ const ProductList: React.FC<ProductListProps> = ({
       {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
-          ListName={ListName}
+          ListName={categoryName}
           setIsProductSelected={setIsProductSelected}
         />
-      )}
+      )} 
     </View>
   );
 };
@@ -288,7 +290,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   productCard: {
-    backgroundColor: "#F3F3FD",
+    backgroundColor: "#BFBFBF",
     alignItems: "center",
     justifyContent: "center",
     aspectRatio: 1,

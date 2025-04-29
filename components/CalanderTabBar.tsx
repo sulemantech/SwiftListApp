@@ -76,7 +76,12 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.customTabWrapper,{alignItems:"center",justifyContent:"center",}]}>
+      <View
+        style={[
+          styles.customTabWrapper,
+          { alignItems: "center", justifyContent: "center" },
+        ]}
+      >
         {["Daily", "Weekly", "Monthly"].map((title, index) => (
           <TouchableOpacity
             key={title}
@@ -227,7 +232,7 @@ const styles = StyleSheet.create({
   },
   customTabItem: {
     flex: 1,
-    paddingVertical: width * (25/820),
+    paddingVertical: width * (25 / 820),
     borderRadius: 30,
     backgroundColor: "transparent",
     alignItems: "center",
@@ -259,7 +264,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     alignSelf: "center",
     // backgroundColor: "red",
-    top: height * (0.007),
+    top: height * 0.007,
   },
   weekDay: {
     width: 36,
@@ -273,6 +278,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 2,
+    // borderTopWidth: 0,
+    // borderLeftWidth: 0,
+    // borderBottomWidth: 3,
+    // borderRightWidth: 3,
+    // borderColor: "#CBC3FB",
   },
   weekDayActive: {
     backgroundColor: "#A89EFF",
@@ -300,7 +310,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 6,
     marginVertical: 10,
+    // borderTopWidth: 1, 
+    // borderLeftWidth: 1, 
+    // borderBottomWidth: 5, 
+    // borderRightWidth: 5,
+    // borderColor: "#CBC3FB", 
   },
+
   calendar: {
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
