@@ -1280,7 +1280,7 @@ const ToDoLaundry = [
   { id: 431, name: "Detergent Selection", imgPath: DetergentSelection },
   { id: 432, name: "Drying Clothes", imgPath: DryingClothes },
   { id: 433, name: "Folding Clothes", imgPath: FoldingClothes },
-  { id: 434, name: "Hanging Clothes (1)", imgPath: HangingClothes1 },
+  // { id: 434, name: "Hanging Clothes (1)", imgPath: HangingClothes1 },
   { id: 435, name: "Hanging Clothes", imgPath: HangingClothes },
   { id: 436, name: "Ironing", imgPath: Ironing },
   { id: 437, name: "Organizing Closet", imgPath: OrganizingCloset },

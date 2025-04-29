@@ -25,6 +25,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import IconWithCircle from "@/components/IconWithCircle";
+import CreateButton from "@/components/CreateButton";
 
 const { width, height } = Dimensions.get("window");
 
@@ -262,32 +263,9 @@ const Home = () => {
           />
         </View>
       </View>
-      <View style={styles.AddITems}>
-        <IconWithCircle
-          text="Add Item"
-          textColor="#333"
-          circleColor="#89B8EC"
-          circleSize={60}
-          imageSource={require("../../assets/icons/item.png")}
-          imageSize={35}
-        />
-          <IconWithCircle
-            text="Add Category"
-            textColor="#333"
-            circleColor="#74B0AE"
-            circleSize={60}
-            imageSource={require("../../assets/icons/category.png")}
-            imageSize={35}
-          />
-        <IconWithCircle
-          text="Add List"
-          textColor="#333"
-          circleColor="#FFBC71"
-          circleSize={60}
-          imageSource={require("../../assets/icons/List.png")}
-          imageSize={35}
-        />
-      </View>
+      {isBlur && (
+       <CreateButton/>
+      )}
       <TouchableOpacity
         onPress={() => CreateList()}
         style={styles.fixedAddButton}
@@ -437,7 +415,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 60,
   },
-  AddITems:{
+  AddITems: {
     position: "absolute",
     bottom: height * 0.2,
     right: width * 0.1,
@@ -447,5 +425,6 @@ const styles = StyleSheet.create({
     // width: 60,
     aspectRatio: 1,
     zIndex: 999,
-  }
+    gap:10
+  },
 });

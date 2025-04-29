@@ -31,7 +31,7 @@ const IconWithCircle: React.FC<IconWithCircleProps> = ({
 }) => {
   return (
     <View style={[styles.container]}>
-      <Text style={[{ color: textColor, marginLeft: 10 }, textStyle]}>
+      <Text style={[{ color: textColor, marginLeft: 10 }, styles.text]}>
         {text}
       </Text>
       <View
@@ -64,10 +64,19 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    gap:10,
+    width: 180,
+    justifyContent: "flex-end",
+    gap: 10,
   },
   circle: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  text: {
+    fontFamily: "OpenSans-Bold",
+    fontSize: 13,
+    lineHeight: 13,
+    letterSpacing: 0,
+    textAlignVertical: "center",
   },
 });

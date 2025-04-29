@@ -283,7 +283,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             <ProductList
               products={searchQuery.trim() ? filteredItems : selectedItem}
               ListName={name}
-              categoryName={"CATEGORYnAME"}
+              categoryName={""}
               ListID={currentID}
               page="itemslist"
               showBottomSheet={!searchQuery.trim()} // 🟢 Add this line
