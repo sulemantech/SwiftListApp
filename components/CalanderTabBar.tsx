@@ -177,7 +177,13 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
               <Calendar
                 current={selectedDate}
                 onDayPress={(day: DateData) => setSelectedDate(day.dateString)}
-                dayComponent={({ date, state }: { date: DateData; state: string }) => {
+                dayComponent={({
+                  date,
+                  state,
+                }: {
+                  date: DateData;
+                  state: string;
+                }) => {
                   const isSelected = selectedDate === date.dateString;
                   return (
                     <TouchableOpacity
@@ -209,6 +215,7 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
                       }
                       size={18}
                       color="#A9A0F0"
+
                     />
                   </View>
                 )}
@@ -230,7 +237,10 @@ const CalendarTabBar: React.FC<CalendarTabBarProps> = ({ onTabChange }) => {
                   textDayHeaderFontWeight: "500",
                   textDayHeaderFontSize: 13,
                 }}
-                style={styles.calendar}
+                style={[
+                  styles.calendar,
+                  { width: width * (316 / 360), alignSelf: "center" },
+                ]}
               />
             </View>
           </View>
@@ -328,11 +338,14 @@ const styles = StyleSheet.create({
   },
   monthlyWrapper: {
     width: "100%",
+    alignItems: "center",
+    overflow: "visible",
     // backgroundColor:"red"
   },
   monthlyContainer: {
+    width: width * (320 / 360),
     backgroundColor: "#FFFFFF",
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 10,
     elevation: 3,
     shadowColor: "#CBC3FB",
@@ -342,12 +355,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderTopWidth: 1,
     borderLeftWidth: 1,
-    borderBottomWidth: 5,
-    borderRightWidth: 5,
+    borderBottomWidth: 4,
+    borderRightWidth: 4,
     borderColor: "#CBC3FB",
+    alignSelf: "center",
+    overflow: "hidden",
   },
 
   calendar: {
+    width: "100%",
+    paddingHorizontal: 10, // ✅ key fix
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
   },
@@ -358,6 +375,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F3FF",
     justifyContent: "center",
     alignItems: "center",
+    marginHorizontal: -10,
   },
   monthHeader: {
     fontFamily: "OpenSans-SemiBold",
