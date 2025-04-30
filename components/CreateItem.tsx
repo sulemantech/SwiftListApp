@@ -2,22 +2,20 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import TextInput2 from "./Input";
 import DropdownComponent from "./DropDown";
+import ImagePickerExample from "./ImagePicker";
 
-interface CreateCategoryProps {
+interface CreateItem {
   setIsVisible: (isVisible: boolean) => void;
 }
 
-const CreateCategory: React.FC<CreateCategoryProps> = ({ setIsVisible }) => {
+const CreateItem: React.FC<CreateItem> = ({ setIsVisible }) => {
   const [listDescription, setListDescription] = useState<string>("");
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.signInText}>Add List</Text>
-        <TouchableOpacity
-          //  onPress={saveListToStorage}
-          style={styles.saveButton}
-        >
+        <Text style={styles.signInText}>Add Item</Text>
+        <TouchableOpacity style={styles.saveButton}>
           <Text
             onPress={() => setIsVisible(false)}
             style={styles.saveButtonText}
@@ -27,17 +25,22 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ setIsVisible }) => {
         </TouchableOpacity>
       </View>
       <TextInput2
-        label={"Description:"}
-        placeholder={"Write your list Description"}
+        label={"Name:"}
+        placeholder={"Enter item Name"}
         value={listDescription}
         onChangeText={setListDescription}
       />
-      <DropdownComponent Label="List" Placeholder="Select a List" />
+      <DropdownComponent Label="Select List" Placeholder="Select" />
+      <DropdownComponent Label="Select category" Placeholder="Select" />
+      <View>
+        <Text>Add Icon</Text>
+        <ImagePickerExample />
+      </View>
     </View>
   );
 };
 
-export default CreateCategory;
+export default CreateItem;
 
 const styles = StyleSheet.create({
   container: {

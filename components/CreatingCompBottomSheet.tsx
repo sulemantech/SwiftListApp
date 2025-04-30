@@ -10,6 +10,7 @@ import {
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import CreateList from "./CreateList";
 import CreateCategory from "./CreateCategory";
+import CreateItem from "./CreateItem";
 
 type BottomSheetComponentProps = {
   isVisible: boolean;
@@ -40,7 +41,8 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
       case "item":
         return (
           <View style={styles.contentWrapper}>
-            <Text>Add Item Form or Content Here 🛒</Text>
+            <CreateItem setIsVisible={setIsVisible}/>
+
           </View>
         );
       case "category":
