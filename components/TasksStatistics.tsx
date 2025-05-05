@@ -6,6 +6,7 @@ import UserProfile from "../assets/images/UserProfile.png";
 import ProgressCircle from "./progress";
 import { Image } from "expo-image";
 import { Dimensions } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 
@@ -31,18 +32,25 @@ const TasksStatistics: React.FC<TasksStatisticsProps> = ({ cardDataArray }) => {
         <View style={styles.innerView}>
           <Text style={styles.innerText}>Today’s Progress</Text>
 
-          <View style={styles.progressCircles_view}>
-            {cardDataArray.map((card, index) => (
-              <ProgressCircle
-                key={index}
-                percentage={card.progress ? card.progress * 100 : 0}
-                colors={["#FFF", card.badgeColor, card.badgeColor]}
-                size={height * (40 / 820)}
-                strokeWidth={7}
-                textSize={10}
-              />
-            ))}
-          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.progressCircles_scrollView}
+          >
+            <View style={styles.progressCircles_view}>
+              {cardDataArray.map((card, index) => (
+                <ProgressCircle
+                  key={index}
+                  percentage={card.progress ? card.progress * 100 : 0}
+                  colors={["#FFF", card.badgeColor, card.badgeColor]}
+                  size={height * (40 / 820)}
+                  strokeWidth={7}
+                  textSize={10}
+                  style={styles.progressCircle} // Add individual circle styling if needed
+                />
+              ))}
+            </View>
+          </ScrollView>
 
           <View style={styles.motivational_msg_view}>
             <Image
@@ -96,6 +104,18 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.0122,
     marginHorizontal: 0,
   },
+  progressCircles_scrollView: {
+    paddingRight: 20, // Add some padding if needed
+  },
+  progressCircles_view: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: width * 0.0111,
+    // backgroundColor: "red",
+  },
+  progressCircle: {
+    marginHorizontal: 0, // Additional spacing if needed
+  },
   innerView: {
     // margin: 10,
     marginTop: height * 0.022,
@@ -119,12 +139,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     marginBottom: height * (12 / 820),
   },
-  progressCircles_view: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: width * 0.0111,
-    // backgroundColor: "red",
-  },
+
   motivational_msg_view: {
     flexDirection: "row",
     alignItems: "center",

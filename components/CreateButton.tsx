@@ -12,7 +12,11 @@ import CreatingCompBottomSheet from "./CreatingCompBottomSheet";
 
 const { width, height } = Dimensions.get("window");
 
-const CreateButton = () => {
+interface CreateButtonProps {
+  categories: any; // Replace 'string[]' with the appropriate type for your categories
+}
+
+const CreateButton = ({ categories }: CreateButtonProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [compName, setCompName] = useState("");
   const openSheet = (name: any) => {
@@ -68,6 +72,7 @@ const CreateButton = () => {
           CompName={compName}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          categories={categories}
         />
       </View>
     </>

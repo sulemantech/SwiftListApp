@@ -19,7 +19,6 @@ interface TextInput2Props extends TextInputProps {
 }
 
 const TextInput2: React.FC<TextInput2Props> = ({
-  
   label,
   placeholder,
   value,

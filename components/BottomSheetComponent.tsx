@@ -16,7 +16,7 @@ import { ProductContext } from "../Context/CardContext";
 import { Divider, Theme, Switch } from "@rneui/themed";
 import CalendarTabBar from "./CalanderTabBar";
 import { useRouter } from "expo-router";
-import TextInput2 from "./Input1";
+import TextInput2 from "./Input";
 import TimeSelector from "./BottomSheet/TimeSelector";
 import AddSubTask from "./AddSubTask";
 import ReminderSection from "./BottomSheet/ReminderSection";

@@ -34,6 +34,7 @@ const Home = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [isListLoaded, setIsListLoaded] = useState(false);
   const [isBlur, setIsBlur] = useState(false);
+  const [cardTitles, setCardTitles] = useState<string[]>([]);
 
   const handleCardClick = (title: any) => {
     setSelectedCard(title);
@@ -118,10 +119,15 @@ const Home = () => {
     );
   };
 
+  useEffect(() => {
+    getListFromLocalStorage();
+  }, [isBlur]);
+
   const getListFromLocalStorage = async () => {
     setIsListLoaded(false);
     try {
-      const storedList = await AsyncStorage.getItem("userLists");
+      const storedList = await AsyncStorage.getItem("myLists");
+      console.log(storedList);
       const list = storedList ? JSON.parse(storedList) : [];
       const formattedList = list
         .map((item: any) => ({
@@ -144,7 +150,9 @@ const Home = () => {
       const mergedData =
         formattedList.length > 0
           ? [...cardDataArray, ...formattedList]
-          : cardDataArray;
+          : [...cardDataArray];
+      const titleArray = mergedData.slice(5).map((item) => item.title);
+      setCardTitles(titleArray);
 
       setCardDataFilterArray(mergedData);
       setIsListLoaded(true);
@@ -263,14 +271,12 @@ const Home = () => {
           />
         </View>
       </View>
-      {isBlur && (
-       <CreateButton/>
-      )}
+      {isBlur && <CreateButton categories={cardTitles} />}
       <TouchableOpacity
         onPress={() => CreateList()}
         style={styles.fixedAddButton}
       >
-        <Text style={styles.icon}> + </Text>
+        <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
       </TouchableOpacity>
     </LinearGradient>
   );
@@ -425,6 +431,6 @@ const styles = StyleSheet.create({
     // width: 60,
     aspectRatio: 1,
     zIndex: 999,
-    gap:10
+    gap: 10,
   },
 });
