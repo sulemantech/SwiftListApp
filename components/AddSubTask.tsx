@@ -9,8 +9,11 @@ import {
   TextInput,
   FlatList,
   ListRenderItem,
+  Dimensions,
 } from "react-native";
 import { ScreenWidth } from "@rneui/base";
+const { width, height } = Dimensions.get("window");
+
 
 type SubTaskInput = {
   id: number;
@@ -194,6 +197,7 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingTop: 20,
     alignItems: "center",
+    top: height * (-0.041),
   },
   container: {
     backgroundColor: "#fff",

@@ -3,20 +3,18 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  ScrollView,
   useWindowDimensions,
-  Image,
 } from "react-native";
+import { TouchableOpacity } from "@gorhom/bottom-sheet";
+import { ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ProductContext } from "../../Context/CardContext";
 import BottomSheetComponent from "../../components/BottomSheetComponent";
 import { images } from "@/constants";
-
-
-
+import { Image } from "expo-image";
 
 interface Product {
+  id: number;
   imgPath: any;
   name: string;
   Quantity?: number;
@@ -28,6 +26,8 @@ interface ProductListProps {
   products: Product[];
   page?: string;
   ListName: any;
+  ListID: any;
+  categoryName:any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -59,41 +59,52 @@ const ProductList: React.FC<ProductListProps> = ({
   products,
   page,
   ListName,
+  categoryName,
+  ListID,
   onProductSelect = () => {},
   showBottomSheet = true,
 }) => {
   const { width: screenWidth } = useWindowDimensions();
   const { selectedProducts, updateSelectedProducts } =
     useContext(ProductContext);
-  const [localItems, setLocalItems] = useState(selectedProducts);
+  // const [selectedProducts, setselectedProducts] = useState<{
+  //   [key: string]: Product[];
+  // }>({});
   const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
-
+  console.log(products)
+  // useEffect(() => {
+  //   console.log(selectedProduct);
+  //   setselectedProducts(selectedProducts);
+  // }, []);
   const handleSelect = async (product: Product) => {
-    const currentList = localItems[ListName] || [];
+    const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
-      (item: Product) => item.name === product.name
+      (item: Product) => item.id === product.id
     );
 
     const updatedList = isAlreadySelected
-      ? currentList.filter((item: Product) => item.name !== product.name)
+      ? currentList.filter((item: Product) => item.id !== product.id)
       : [...currentList, product];
 
     const updatedLocalItems = {
-      ...localItems,
-      [ListName]: updatedList,
+      ...selectedProducts,
+      [ListID]: updatedList,
     };
 
-    setLocalItems(updatedLocalItems);
+    // setselectedProducts(updatedLocalItems);
     setSelectedProduct(product.name);
-    await updateSelectedProducts(ListName, product); // <- optional await
+    updateSelectedProducts(ListID, product);
     onProductSelect();
   };
+  // useEffect(() => {
+  //   setLocalItems(selectedProducts);
+  // }, [selectedProducts]);
 
   useEffect(() => {
-    const isFound = selectedProducts[ListName]?.some(
+    const isFound = selectedProducts[ListID]?.some(
       (selected: Product) => selected.name === selectedProduct
     );
 
@@ -122,7 +133,7 @@ const ProductList: React.FC<ProductListProps> = ({
   // 🟢 Fix applied: 3 columns enforced for mid-range screen widths (e.g., 360-500)
   const gap = screenWidth <= 480 ? 3 : screenWidth <= 768 ? 8 : 12;
   const sidePadding = 16;
-  const availableWidth = screenWidth - sidePadding * 2;
+  const availableWidth = screenWidth - sidePadding * 2.5;
   const minColumns = screenWidth >= 360 && screenWidth < 500 ? 3 : 0;
   const numColumnsRaw = Math.floor((availableWidth + gap) / (itemSize + gap));
   const numColumns = Math.max(numColumnsRaw, minColumns);
@@ -136,7 +147,10 @@ const ProductList: React.FC<ProductListProps> = ({
         page !== "itemslist"
           ? styles.productsContainer
           : styles.productsContainer2,
-        { paddingHorizontal: sidePadding },
+        {
+          paddingHorizontal: sidePadding,
+          paddingBottom: isProductSelected && page !== "itemslist" ? 0 : 0,
+        },
       ]}
     >
       {products.length > 0 && (
@@ -146,7 +160,7 @@ const ProductList: React.FC<ProductListProps> = ({
           keyboardShouldPersistTaps="handled"
         >
           {products.map((item, index) => {
-            const isSelected = localItems[ListName]?.some(
+            const isSelected = selectedProducts[ListID]?.some(
               (selected: { name: string }) => selected.name === item.name
             );
 
@@ -163,7 +177,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   {
                     width: itemWidth,
                     marginBottom: gap,
-                    marginRight: (index + 1) % numColumns === 0 ? 0 : gap,
+                    marginRight: (index + 1) % numColumns === 200 ? 0 : gap,
                   },
                   isSelected && styles.selectedCard,
                   index === 0 && styles.topLeftBorder,
@@ -175,11 +189,12 @@ const ProductList: React.FC<ProductListProps> = ({
                   index === secondLineLastElement && styles.bottomRightBorder,
                 ]}
               >
-                <item.imgPath
+                {/* <item.imgPath
                   width={itemWidth * 0.6}
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
-                />
+                /> */}
+                <Image source={item.imgPath} style={styles.image}/>
 
                 <Text
                   style={[
@@ -187,7 +202,7 @@ const ProductList: React.FC<ProductListProps> = ({
                     {
                       fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      color: isSelected ? "#FFFFFF" : "#A9A0F0",
+                      color: '#FFFFFF',
                     },
                   ]}
                   numberOfLines={1}
@@ -229,16 +244,31 @@ const ProductList: React.FC<ProductListProps> = ({
               ]}
             />
           ))} */}
+          {/* <TouchableOpacity
+            style={{
+              backgroundColor: "#A9A0F0",
+              paddingVertical: 10,
+              borderRadius: 8,
+              marginTop: 20,
+              alignItems: "center",
+            }}
+            onPress={() => {
+              updateSelectedProducts(ListID, selectedProducts[ListID]);
+            }}
+          >
+            <Text style={{ color: "#FFF", fontFamily: "Poppins-Medium" }}>
+              Done
+            </Text>
+          </TouchableOpacity> */}
         </ScrollView>
       )}
       {showBottomSheet && page !== "itemslist" && isProductSelected && (
         <BottomSheetComponent
           selecteditem={selectedProduct}
-          ListName={ListName}
+          ListName={categoryName}
           setIsProductSelected={setIsProductSelected}
-       
         />
-      )}
+      )} 
     </View>
   );
 };
@@ -252,7 +282,7 @@ const styles = StyleSheet.create({
   },
   productsContainer2: {
     marginVertical: 10,
-    marginHorizontal: 10,
+    flex: 1,
   },
   itemsContainer: {
     flexDirection: "row",
@@ -260,7 +290,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   productCard: {
-    backgroundColor: "#F3F3FD",
+    backgroundColor: "#BFBFBF",
     alignItems: "center",
     justifyContent: "center",
     aspectRatio: 1,
@@ -278,6 +308,10 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Medium",
     textAlign: "center",
     color: "white",
+  },
+  image:{
+    width:70,
+    aspectRatio:1
   },
 
   topLeftBorder: {

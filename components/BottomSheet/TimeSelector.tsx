@@ -35,6 +35,20 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
+        <View style={styles.headerCenter}>
+          <Ionicons name="time-outline" size={width * 0.05} color="#555" />
+          <Text style={styles.headerText}>Time</Text>
+        </View>
+        <Switch
+          value={isEnabled}
+          onValueChange={toggleSwitch}
+          thumbColor="#FFFFFF"
+          trackColor={{ true: "#B5A9F8", false: "#ccc" }}
+          style={styles.switch}
+        />
+      </View>
+
+      {/* <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Ionicons name="time-outline" size={width * 0.05} color="#555" />
           <Text style={styles.headerText}>Time</Text>
@@ -45,7 +59,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({
           thumbColor="#FFFFFF"
           trackColor={{ true: "#B5A9F8", false: "#ccc" }}
         />
-      </View>
+      </View> */}
 
       {/* Start and End Time */}
       <View style={styles.timeContainer}>
@@ -100,34 +114,38 @@ export default TimeSelector;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 15,
+    borderRadius: 8,
+    marginTop: 24,
     marginHorizontal: "auto",
     paddingHorizontal: width * 0.05,
     paddingVertical: height * 0.02,
     marginVertical: height * 0.015,
-    width: "90%",
+    width: width * (320 / 360),
     height: height * (153 / 820),
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
+    top: height * -0.044,
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: height * 0.015,
-  },
+  // header: {
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  //   marginBottom: height * 0.015,
+  // },
   headerLeft: {
     flexDirection: "row",
     alignItems: "center",
     gap: width * 0.02,
   },
   headerText: {
-    fontSize: width * 0.045,
+    fontSize: width * (16 / 360),
+    color: "#5C5C5C",
     fontWeight: "600",
-    color: "#333",
+    marginLeft: width * 0.015,
+    fontFamily: "OpenSans-SemiBold",
   },
   timeContainer: {
     flexDirection: "row",
@@ -156,5 +174,22 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
     color: "#333",
     fontWeight: "500",
+  },
+  header: {
+    justifyContent: "center", // ✅ center content
+    alignItems: "center",
+    position: "relative", // ✅ important
+    marginBottom: height * 0.015,
+  },
+
+  headerCenter: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: width * 0.02,
+  },
+
+  switch: {
+    position: "absolute",
+    right: width * -0.01, // ✅ EXACT same spacing as ReminderSection
   },
 });

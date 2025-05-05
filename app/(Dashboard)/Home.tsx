@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import { Image } from "expo-image";
+import { BlurView } from "expo-blur";
 import { ProductContext } from "@/Context/CardContext";
 import CardComponent from "@/components/Card";
 import UserProfile from "@/assets/images/UserProfile.png";
@@ -23,6 +24,8 @@ import Fifth from "../../assets/images/SVG/recipe.svg";
 import { LinearGradient } from "expo-linear-gradient";
 import { Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import IconWithCircle from "@/components/IconWithCircle";
+import CreateButton from "@/components/CreateButton";
 
 const { width, height } = Dimensions.get("window");
 
@@ -30,6 +33,7 @@ const Home = () => {
   const { width, height } = useWindowDimensions();
   const [selectedCard, setSelectedCard] = useState(null);
   const [isListLoaded, setIsListLoaded] = useState(false);
+  const [isBlur, setIsBlur] = useState(false);
 
   const handleCardClick = (title: any) => {
     setSelectedCard(title);
@@ -102,46 +106,57 @@ const Home = () => {
 
   const [cardDataFilterArray, setCardDataFilterArray] = useState(cardDataArray);
 
-  const FilterCatagories = (name:any) => {
+  const FilterCatagories = (name: any) => {
     const searchedtext = name.toLowerCase();
     if (!searchedtext) {
       return setCardDataFilterArray(cardDataArray);
     }
-    setCardDataFilterArray(cardDataFilterArray.filter(item => item.title.toLowerCase().startsWith(searchedtext)));
+    setCardDataFilterArray(
+      cardDataFilterArray.filter((item) =>
+        item.title.toLowerCase().startsWith(searchedtext)
+      )
+    );
   };
 
   const getListFromLocalStorage = async () => {
     setIsListLoaded(false);
     try {
-      const storedList = await AsyncStorage.getItem('userLists');
+      const storedList = await AsyncStorage.getItem("userLists");
       const list = storedList ? JSON.parse(storedList) : [];
       const formattedList = list
-        .map((item:any) => ({
+        .map((item: any) => ({
           ...item,
-          Picture: item.Picture === 'first' ? First :
-            item.Picture === 'seconed' ? Second :
-              item.Picture === 'third' ? Third :
-                item.Picture === 'fourth' ? Fourth :
-                  item.Picture === 'fifth' ? Fifth : item.Picture,
+          Picture:
+            item.Picture === "first"
+              ? First
+              : item.Picture === "seconed"
+              ? Second
+              : item.Picture === "third"
+              ? Third
+              : item.Picture === "fourth"
+              ? Fourth
+              : item.Picture === "fifth"
+              ? Fifth
+              : item.Picture,
         }))
-        .filter((item:any) => item.title);
+        .filter((item: any) => item.title);
 
-      const mergedData = formattedList.length > 0 ? [...cardDataArray, ...formattedList] : cardDataArray;
+      const mergedData =
+        formattedList.length > 0
+          ? [...cardDataArray, ...formattedList]
+          : cardDataArray;
 
       setCardDataFilterArray(mergedData);
       setIsListLoaded(true);
-      setChangestate(false)
+      setChangestate(false);
     } catch (error) {
-      console.error('Error retrieving list:', error);
+      console.error("Error retrieving list:", error);
     }
   };
-
 
   useEffect(() => {
     getListFromLocalStorage();
   }, [changestate]);
-
-
 
   useEffect(() => {
     if (!isListLoaded) return;
@@ -149,46 +164,52 @@ const Home = () => {
       let totalItems = 0;
 
       const updatedCardData = cardDataFilterArray.map((card) => {
-        const itemsFromContext = selectedProducts[card.title] || [];
+        const itemsFromContext = selectedProducts[card.id] || [];
         const itemCount = itemsFromContext.length;
 
         totalItems += itemCount;
 
         return {
           ...card,
-          items: `${itemCount} ${card.items.split(' ')[1]}`,
+          items: `${itemCount} ${card.items.split(" ")[1]}`,
           itemCount,
         };
       });
 
-      const updatedCardDataWithPercentages = updatedCardData.map(card => {
-        const percentage = totalItems > 0
-          ? Math.round((card.itemCount / totalItems) * 100)
-          : 0;
-          const progress = !isNaN(percentage) ? percentage / 100 : 0;
+      const updatedCardDataWithPercentages = updatedCardData.map((card) => {
+        const percentage =
+          totalItems > 0 ? Math.round((card.itemCount / totalItems) * 100) : 0;
+        const progress = !isNaN(percentage) ? percentage / 100 : 0;
 
         return {
           ...card,
           progress,
-          percentagetext: `${card.percentagetext.split(' ')[0]} ${percentage}%`,
+          percentagetext: `${card.percentagetext.split(" ")[0]} ${percentage}%`,
           // percentage,
-          
         };
       });
-      
 
       setCardDataFilterArray(updatedCardDataWithPercentages);
     };
 
     loadSelectedProducts();
   }, [selectedProducts, isListLoaded]);
-
+  const CreateList = () => {
+    setIsBlur((prev) => !prev);
+  };
 
   return (
     <LinearGradient
       colors={["#FFC41F10", "#FFFFFF10", "#FFC41F20"]}
-      style={styles.LinearGradient}
+      style={[styles.LinearGradient]}
     >
+      {isBlur && (
+        <BlurView
+          intensity={100}
+          tint="light"
+          style={[StyleSheet.absoluteFill, { zIndex: 10, borderRadius: 10 }]}
+        />
+      )}
       <View style={styles.container}>
         <StatusBar style="dark" backgroundColor="#FFFFFF" />
 
@@ -234,7 +255,7 @@ const Home = () => {
                 onPress={() =>
                   router.push({
                     pathname: "/categories/Categories" as ExternalPathString,
-                    params: { name: item.title , id: item.id },
+                    params: { name: item.title, id: item.id },
                   })
                 }
               />
@@ -242,8 +263,13 @@ const Home = () => {
           />
         </View>
       </View>
-      {/* closing flatListContainer */}
-      <TouchableOpacity style={styles.fixedAddButton}>
+      {isBlur && (
+       <CreateButton/>
+      )}
+      <TouchableOpacity
+        onPress={() => CreateList()}
+        style={styles.fixedAddButton}
+      >
         <Text style={styles.icon}> + </Text>
       </TouchableOpacity>
     </LinearGradient>
@@ -376,17 +402,29 @@ const styles = StyleSheet.create({
     right: width * 0.055,
     backgroundColor: "#A9A0F0",
     borderRadius: 50,
-    width: width * (60 / 360),
-    aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
+    width: 60,
+    aspectRatio: 1,
     zIndex: 999,
   },
   icon: {
     fontFamily: "OpenSans-Light",
     fontSize: width * 0.12,
     color: "white",
-    marginBottom: width * 0.016,
-    marginLeft: 1,
+    textAlign: "center",
+    lineHeight: 60,
+  },
+  AddITems: {
+    position: "absolute",
+    bottom: height * 0.2,
+    right: width * 0.1,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    // width: 60,
+    aspectRatio: 1,
+    zIndex: 999,
+    gap:10
   },
 });

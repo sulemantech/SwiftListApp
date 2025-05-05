@@ -27,6 +27,12 @@
       "favicon": "./assets/images/splashico.png"
     },
     "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ],
       "expo-router",
       "@react-native-google-signin/google-signin",
       "@react-native-firebase/app",
