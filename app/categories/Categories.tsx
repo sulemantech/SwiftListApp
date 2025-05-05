@@ -46,16 +46,21 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const [itemclicked, setItemclicked] = useState(true);
 
   const router = useRouter();
-  const { selectedProducts } = useContext(ProductContext);
+  const { selectedProducts , storedCategories, setStoredCategories } = useContext(ProductContext);
   const { name , id } = useLocalSearchParams();
   const currentID = Number(id)
 
-  const matchingCategory = MyListCollection.find((categoryObj) => {
-    const categoryID = categoryObj.id;
-    return (
-      categoryID == Number(id)
-    );
+  
+  const LocalCategory = MyListCollection.find((categoryObj) => {
+    return categoryObj.id === Number(id);
   });
+  
+  const StoredCategory = MyListCollection?.find((categoryObj) => {
+    return categoryObj.id === Number(id);
+  });
+  
+  const matchingCategory = LocalCategory || StoredCategory || null;
+  
 
   // ✅ Get all products from this category once
   // useEffect(() => {

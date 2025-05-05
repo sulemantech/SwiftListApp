@@ -3,19 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-const data = [
-  { label: "Grocery List", value: "1" },
-  { label: "Spiritual Goals", value: "2" },
-  { label: "Personal Grooming", value: "3" },
-  { label: "Things To Do", value: "4" },
-  { label: "Kitchen Menu", value: "5" },
-];
+
 interface DropDownProps {
   Label: string;
   Placeholder: string;
+  data: { label: string; value: string }[];
+  onChange?: (item: { label: string; value: string }) => void;
 }
 
-const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder }) => {
+const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder, data, onChange }) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -40,7 +36,13 @@ const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder }) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         data={data}
-        search
+        onChange={(item) => {
+          setValue(item.value);
+          setIsFocus(false);
+          if (onChange) {
+            onChange(item); // 👈 this sends the selected item to the parent
+          }
+        }}        
         maxHeight={300}
         labelField="label"
         valueField="value"
@@ -49,10 +51,10 @@ const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder }) => {
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
+        // onChange={(item) => {
+        //   setValue(item.value);
+        //   setIsFocus(false);
+        // }}
         //   renderLeftIcon={() => (
         //     <AntDesign
         //       style={styles.icon}

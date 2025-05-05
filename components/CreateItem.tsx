@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import TextInput2 from "./Input";
 import DropdownComponent from "./DropDown";
 import ImagePickerExample from "./ImagePicker";
+import { Divider } from "@rneui/base";
 
 interface CreateItem {
   setIsVisible: (isVisible: boolean) => void;
+  categories:any
 }
 
-const CreateItem: React.FC<CreateItem> = ({ setIsVisible }) => {
+const CreateItem: React.FC<CreateItem> = ({ setIsVisible ,categories }) => {
   const [listDescription, setListDescription] = useState<string>("");
 
   return (
     <View style={styles.container}>
+      <View style={styles.line}></View>
       <View style={styles.headerContainer}>
         <Text style={styles.signInText}>Add Item</Text>
         <TouchableOpacity style={styles.saveButton}>
@@ -24,17 +27,20 @@ const CreateItem: React.FC<CreateItem> = ({ setIsVisible }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <TextInput2
-        label={"Name:"}
-        placeholder={"Enter item Name"}
-        value={listDescription}
-        onChangeText={setListDescription}
-      />
-      <DropdownComponent Label="Select List" Placeholder="Select" />
-      <DropdownComponent Label="Select category" Placeholder="Select" />
-      <View>
-        <Text>Add Icon</Text>
-        <ImagePickerExample />
+      <Divider />
+      <View style={styles.container2}>
+        <TextInput2
+          label={"Name:"}
+          placeholder={"Enter item Name"}
+          value={listDescription}
+          onChangeText={setListDescription}
+        />
+        <DropdownComponent Label="Select List" Placeholder="Select" data={categories} />
+        <DropdownComponent Label="Select category" Placeholder="Select" data={categories} />
+        <View>
+          <Text>Add Icon</Text>
+          <ImagePickerExample />
+        </View>
       </View>
     </View>
   );
@@ -52,15 +58,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
+    paddingVertical: 10,
+  },
+  line: {
+    marginTop: 10,
+    height: 4,
+    width: 65,
+    borderRadius: 50,
+    marginHorizontal: "auto",
+    backgroundColor: "#5C5C5C",
   },
   back: {
     width: 25,
     height: 20,
   },
+  container2: {
+    marginVertical: 20,
+    gap: 6,
+  },
   signInText: {
-    color: "#0c0c0c",
-    fontSize: 20,
-    fontWeight: "600",
+    color: "#5C5C5C",
+    fontSize: 18,
     fontFamily: "OpenSans-Bold",
   },
   saveButton: {
@@ -71,8 +89,8 @@ const styles = StyleSheet.create({
     // marginTop: 20,
   },
   saveButtonText: {
-    color: "#000",
-    fontSize: 18,
-    fontWeight: "600",
+    color: "#5C5C5C",
+    fontSize: 16,
+    fontFamily: "OpenSans-Medium",
   },
 });

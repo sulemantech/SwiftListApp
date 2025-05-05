@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import auth from "@react-native-firebase/auth";
-import TextInput2 from "../../components/Input1";
+import TextInput2 from "../../components/Input";
 import back from "../../assets/images/back-arrow.png";
 import ForgotPassword_image from "../../assets/images/ForgotPassword.svg";
 import { router } from "expo-router";
