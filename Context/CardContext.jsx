@@ -25,12 +25,13 @@ export const ProductProvider = ({ children }) => {
       const lists = await getStoredLists();
       const stored = await AsyncStorage.getItem('category_list');
       const parsedStored = stored ? JSON.parse(stored) : [];
+      // await AsyncStorage.removeItem('category_list');  
       setStoredCategories(parsedStored);
       setStoredLists(lists);
     };
 
     fetchData();
-  }, []);
+  }, [changestate]);
 
   useEffect(() => {
     const loadSelectedProducts = async () => {
@@ -125,15 +126,54 @@ export const ProductProvider = ({ children }) => {
     try {
       const existing = await AsyncStorage.getItem("category_list");
       const existingData = existing ? JSON.parse(existing) : [];
-
-      const updatedData = [...existingData, categoryCreation];
-
-      await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
-      console.log("Category saved:", categoryCreation);
+  
+      // Find if a category with the same name already exists
+      const existingIndex = existingData.findIndex(
+        (cat) => cat.name === categoryCreation.name
+      );
+  
+      if (existingIndex !== -1) {
+        // Add new subcategory to the existing category
+        const updatedCategories = [
+          ...existingData[existingIndex].Categories,
+          {
+            ...categoryCreation.Categories,
+            id:
+              existingData[existingIndex].Categories.slice(-1)[0]?.id + 1 || 1,
+          },
+        ];
+  
+        // Update the specific category in the array
+        existingData[existingIndex] = {
+          ...existingData[existingIndex],
+          Categories: updatedCategories,
+        };
+  
+        await AsyncStorage.setItem("category_list", JSON.stringify(existingData));
+        console.log("Subcategory added to existing category");
+      } else {
+        // Add new category object with initial Categories array
+        const newCategory = {
+          ...categoryCreation,
+          id: existingData[existingData.length - 1]?.id + 1 || 6,
+          Categories: [
+            {
+              ...categoryCreation.Categories,
+              id: 1,
+            },
+          ],
+        };
+  
+        const updatedData = [...existingData, newCategory];
+  
+        await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
+        console.log("New category saved:", newCategory);
+      }
     } catch (error) {
       console.error("Error saving category:", error);
     }
   };
+  
 
 
   const getLocalCategory = async (id, MyListCollection) => {
@@ -228,10 +268,6 @@ export const ProductProvider = ({ children }) => {
     });
 
   };
-
-
-
-
 
   return (
     <ProductContext.Provider value={{

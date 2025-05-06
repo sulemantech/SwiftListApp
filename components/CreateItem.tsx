@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React, { useState } from "react";
 import TextInput2 from "./Input";
 import DropdownComponent from "./DropDown";
@@ -7,11 +7,43 @@ import { Divider } from "@rneui/base";
 
 interface CreateItem {
   setIsVisible: (isVisible: boolean) => void;
-  categories:any
+  categories: any;
 }
+const alphabetImages = [
+  { letter: "A", image: require("../assets/images/AlphabetsLetters/A.png") },
+  { letter: "B", image: require("../assets/images/AlphabetsLetters/B.png") },
+  { letter: "C", image: require("../assets/images/AlphabetsLetters/C.png") },
+  { letter: "D", image: require("../assets/images/AlphabetsLetters/D.png") },
+  { letter: "E", image: require("../assets/images/AlphabetsLetters/E.png") },
+  { letter: "F", image: require("../assets/images/AlphabetsLetters/F.png") },
+  { letter: "G", image: require("../assets/images/AlphabetsLetters/G.png") },
+  { letter: "H", image: require("../assets/images/AlphabetsLetters/H.png") },
+  { letter: "I", image: require("../assets/images/AlphabetsLetters/I.png") },
+  { letter: "J", image: require("../assets/images/AlphabetsLetters/J.png") },
+  { letter: "K", image: require("../assets/images/AlphabetsLetters/K.png") },
+  { letter: "L", image: require("../assets/images/AlphabetsLetters/L.png") },
+  { letter: "M", image: require("../assets/images/AlphabetsLetters/M.png") },
+  { letter: "N", image: require("../assets/images/AlphabetsLetters/N.png") },
+  { letter: "O", image: require("../assets/images/AlphabetsLetters/O.png") },
+  { letter: "P", image: require("../assets/images/AlphabetsLetters/P.png") },
+  { letter: "Q", image: require("../assets/images/AlphabetsLetters/Q.png") },
+  { letter: "R", image: require("../assets/images/AlphabetsLetters/R.png") },
+  { letter: "S", image: require("../assets/images/AlphabetsLetters/S.png") },
+  { letter: "T", image: require("../assets/images/AlphabetsLetters/T.png") },
+  { letter: "U", image: require("../assets/images/AlphabetsLetters/U.png") },
+  { letter: "V", image: require("../assets/images/AlphabetsLetters/V.png") },
+  { letter: "W", image: require("../assets/images/AlphabetsLetters/W.png") },
+  { letter: "X", image: require("../assets/images/AlphabetsLetters/X.png") },
+  { letter: "Y", image: require("../assets/images/AlphabetsLetters/Y.png") },
+  { letter: "Z", image: require("../assets/images/AlphabetsLetters/Z.png") },
+];
 
-const CreateItem: React.FC<CreateItem> = ({ setIsVisible ,categories }) => {
+const CreateItem: React.FC<CreateItem> = ({ setIsVisible, categories }) => {
   const [listDescription, setListDescription] = useState<string>("");
+  const firstLetter = listDescription.trim().charAt(0).toUpperCase();
+  const matchingImage = alphabetImages.find(
+    (item) => item.letter === firstLetter
+  );
 
   return (
     <View style={styles.container}>
@@ -28,6 +60,18 @@ const CreateItem: React.FC<CreateItem> = ({ setIsVisible ,categories }) => {
         </TouchableOpacity>
       </View>
       <Divider />
+      {listDescription && matchingImage && (
+        <View
+          style={[styles.productCard, { alignItems: "center", marginTop: 10 }]}
+        >
+          <Image
+            source={matchingImage.image}
+            style={{ width: 60, height: 60, resizeMode: "contain" }}
+          />
+          <Text style={{ marginTop: 5, color: "#ffffff" }}> {firstLetter}</Text>
+        </View>
+      )}
+
       <View style={styles.container2}>
         <TextInput2
           label={"Name:"}
@@ -35,12 +79,12 @@ const CreateItem: React.FC<CreateItem> = ({ setIsVisible ,categories }) => {
           value={listDescription}
           onChangeText={setListDescription}
         />
-        <DropdownComponent Label="Select List" Placeholder="Select" data={categories} />
-        <DropdownComponent Label="Select category" Placeholder="Select" data={categories} />
-        <View>
+        {/* <DropdownComponent Label="Select List" Placeholder="Select" data={categories} />
+        <DropdownComponent Label="Select category" Placeholder="Select" data={categories} /> */}
+        {/* <View>
           <Text>Add Icon</Text>
           <ImagePickerExample />
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -51,6 +95,14 @@ export default CreateItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  productCard: {
+    backgroundColor: "#A9A0F0",
+    alignItems: "center",
+    justifyContent: "center",
+    aspectRatio: 1,
+    width: 100,
+    borderRadius: 10,
   },
   headerContainer: {
     paddingHorizontal: 10,

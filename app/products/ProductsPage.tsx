@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,15 +6,21 @@ import {
   BackHandler,
   SafeAreaView,
   StatusBar,
+  TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { MyListCollection } from "../../constants/Data";
 import ProductList from "./Products";
 import Header from "../../components/Header";
 import { ProductContext } from "../../Context/CardContext";
+import CreateButton from "@/components/CreateButton";
+const { width, height } = Dimensions.get("window");
 
 const ProductsPage: React.FC = () => {
   const router = useRouter();
+  const [cardTitles, setCardTitles] = useState<string[]>([]);
+  const [isBlur, setIsBlur] = useState(false);
   const { categoryName, ListName, CategoryID, ListID } =
     useLocalSearchParams() as {
       categoryName: string;
@@ -69,6 +75,9 @@ const ProductsPage: React.FC = () => {
     );
     return () => backHandler.remove();
   }, []);
+  const CreateList = () => {
+    setIsBlur((prev) => !prev);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -93,6 +102,13 @@ const ProductsPage: React.FC = () => {
           <Text style={styles.emptyText}>
             No items available for this List.
           </Text>
+          {isBlur && <CreateButton screen="item" categories={cardTitles} />}
+          <TouchableOpacity
+            onPress={() => CreateList()}
+            style={styles.fixedAddButton}
+          >
+            <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
+          </TouchableOpacity>
         </View>
       )}
     </SafeAreaView>
@@ -110,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
+    backgroundColor: "#ffffff",
   },
   emptyText: {
     fontSize: 16,
@@ -123,5 +139,24 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#ccc",
     marginTop: 15,
+  },
+  fixedAddButton: {
+    position: "absolute",
+    bottom: height * 0.1,
+    right: width * 0.055,
+    backgroundColor: "#A9A0F0",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 60,
+    aspectRatio: 1,
+    zIndex: 999,
+  },
+  icon: {
+    fontFamily: "OpenSans-Light",
+    fontSize: width * 0.12,
+    color: "white",
+    textAlign: "center",
+    lineHeight: 60,
   },
 });

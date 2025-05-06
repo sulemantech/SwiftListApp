@@ -1,10 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useState } from "react";
 import TextInput2 from "./Input";
+import images from "../constants/images";
 import DropdownComponent from "./DropDown";
 import { Divider } from "@rneui/base";
 import { ProductContext } from "../Context/CardContext";
-
+const { PersonalHygiene } = images;
 
 interface CreateCategoryProps {
   setIsVisible: (isVisible: boolean) => void;
@@ -23,29 +24,25 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
   const [categoryCreation, SetCategoryCreation] = useState({
     name: "",
     image: "spiritualImage",
-    id: 6,
+    id: 0,
     description: "Your Current Categories.",
+    Categories: { id: 0, name: "", items: PersonalHygiene },
   });
-    const { savecategoriesToAsyncStorage } = useContext(ProductContext);
+  const { savecategoriesToAsyncStorage , changestate,setChangestate } = useContext(ProductContext);
 
-    const savecategrories =()=>{
-      savecategoriesToAsyncStorage(categoryCreation);
-      setIsVisible(false)
-    };
-  
+  const savecategrories = () => {
+    setChangestate(!changestate);
+    savecategoriesToAsyncStorage(categoryCreation);
+    setIsVisible(false);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.line}></View>
       <View style={styles.headerContainer}>
         <Text style={styles.signInText}>Add List</Text>
-        <TouchableOpacity
-          style={styles.saveButton}
-        >
-          <Text
-            onPress={savecategrories}
-            style={styles.saveButtonText}
-          >
+        <TouchableOpacity style={styles.saveButton}>
+          <Text onPress={savecategrories} style={styles.saveButtonText}>
             Save
           </Text>
         </TouchableOpacity>
@@ -53,13 +50,16 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
       <View style={styles.container2}>
         <Divider />
         <TextInput2
-          label={"Description:"}
-          placeholder={"Write your list Description"}
-          value={categoryCreation.description}
+          label={"Name:"}
+          placeholder={"Write your Category Name"}
+          value={categoryCreation.Categories.name}
           onChangeText={(text) =>
             SetCategoryCreation((prev) => ({
               ...prev,
-              description: text,
+              Categories: {
+                ...prev.Categories,
+                name: text,
+              },
             }))
           }
         />

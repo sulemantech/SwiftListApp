@@ -7,9 +7,7 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
 } from "react-native";
-import {
-  FlatList
-} from 'react-native-gesture-handler';
+import { FlatList } from "react-native-gesture-handler";
 import searchicon from "../../assets/images/SVG/searchiconactive.svg";
 import searchiconBlack from "../../assets/images/SVG/searchiconnotactive.svg";
 import { MyListCollection } from "../../constants/Data";
@@ -46,21 +44,22 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const [itemclicked, setItemclicked] = useState(true);
 
   const router = useRouter();
-  const { selectedProducts , storedCategories, setStoredCategories } = useContext(ProductContext);
-  const { name , id } = useLocalSearchParams();
-  const currentID = Number(id)
+  const { selectedProducts, storedCategories, setStoredCategories } =
+    useContext(ProductContext);
+  const { name, id } = useLocalSearchParams();
+  const currentID = Number(id);
 
-  
   const LocalCategory = MyListCollection.find((categoryObj) => {
     return categoryObj.id === Number(id);
   });
-  
-  const StoredCategory = MyListCollection?.find((categoryObj) => {
-    return categoryObj.id === Number(id);
-  });
-  
-  const matchingCategory = LocalCategory || StoredCategory || null;
-  
+
+  const StoredCategory = storedCategories?.find((categoryObj: any) => {
+    return categoryObj.name === name;
+  }); 
+  console.log(StoredCategory, storedCategories," ==================-=-=-=-=-=-=-=-")
+
+  const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
+  console.log(matchingCategory,"-=-=-=-=-=-=-=-=-=-=-=-=--")
 
   // ✅ Get all products from this category once
   // useEffect(() => {
@@ -71,27 +70,27 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   //       (subCategory) => subCategory.items
   //     ) || [];
   //   }, [matchingCategory]);
-    
-    // ✅ Set selected items based on selectedProducts context
-    useEffect(() => {
-      if (!matchingCategory || !selectedProducts) return;
-      
-      const allItems =
-      matchingCategory.Categories?.flatMap(
-        (subCategory) => subCategory.items
+
+  // ✅ Set selected items based on selectedProducts context
+  useEffect(() => {
+    if (!matchingCategory || !selectedProducts) return;
+
+    const allItems =
+      matchingCategory?.Categories?.flatMap(
+        (subCategory: any) => subCategory.items
       ) || [];
-      setAllItems(allItems);
+    setAllItems(allItems);
 
     const selectedNames =
       selectedProducts[currentID]?.map((product: any) => product.id) || [];
 
-    const filteredItems = allItems.filter((item) =>
+    const filteredItems = allItems.filter((item: any) =>
       selectedNames.includes(item.id)
     );
 
     const uniqueItems = filteredItems.filter(
-      (item, index, self) =>
-        index === self.findIndex((t) => t.name === item.name)
+      (item: any, index: any, self: any) =>
+        index === self.findIndex((t: any) => t.name === item.name)
     );
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
@@ -121,7 +120,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     thingstodoimage: ThingsToDoSVG,
     kitchenmenuimage: KitchenSVG,
   };
- 
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
 
@@ -492,4 +490,3 @@ const styles = StyleSheet.create({
     top: -1.5,
   },
 });
-

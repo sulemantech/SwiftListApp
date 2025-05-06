@@ -13,15 +13,16 @@ import CreatingCompBottomSheet from "./CreatingCompBottomSheet";
 const { width, height } = Dimensions.get("window");
 
 interface CreateButtonProps {
-  categories: any; // Replace 'string[]' with the appropriate type for your categories
+  categories: any;
+  screen: "list" | "item" | "category";
 }
 
-const CreateButton = ({ categories }: CreateButtonProps) => {
+const CreateButton = ({ categories, screen }: CreateButtonProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [compName, setCompName] = useState("");
   const openSheet = (name: any) => {
     setIsVisible(true);
-    setCompName(name)
+    setCompName(name);
     console.log("Opening sheet...", name);
   };
 
@@ -46,24 +47,29 @@ const CreateButton = ({ categories }: CreateButtonProps) => {
   return (
     <>
       <View style={styles.buttonContainer}>
-        {renderButton(
-          () => openSheet("item"),
-          "Add Item",
-          "#89B8EC",
-          require("../assets/icons/item.png")
-        )}
-        {renderButton(
-          () => openSheet("category"),
-          "Add Category",
-          "#74B0AE",
-          require("../assets/icons/category.png")
-        )}
-        {renderButton(
-          () => openSheet("list"),
-          "Add List",
-          "#FFBC71",
-          require("../assets/icons/List.png")
-        )}
+        {screen === "item" &&
+          renderButton(
+            () => openSheet("item"),
+            "Add Item",
+            "#89B8EC",
+            require("../assets/icons/item.png")
+          )}
+
+        {screen === "list" &&
+          renderButton(
+            () => openSheet("category"),
+            "Add Category",
+            "#74B0AE",
+            require("../assets/icons/category.png")
+          )}
+
+        {screen === "list" &&
+          renderButton(
+            () => openSheet("list"),
+            "Add List",
+            "#FFBC71",
+            require("../assets/icons/List.png")
+          )}
       </View>
 
       {/* Wrap the bottom sheet in a full-screen absolute View */}

@@ -271,7 +271,7 @@ const Home = () => {
           />
         </View>
       </View>
-      {isBlur && <CreateButton categories={cardTitles} />}
+      {isBlur && <CreateButton  screen="list" categories={cardTitles} />}
       <TouchableOpacity
         onPress={() => CreateList()}
         style={styles.fixedAddButton}
