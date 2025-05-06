@@ -29,26 +29,37 @@ const ProductsPage: React.FC = () => {
       ListID: any;
     };
   const selectedProducts = useContext(ProductContext)?.selectedProducts;
+  const { storedCategories , changestate ,setChangestate } = useContext(ProductContext);
   const CategoryIDInNum = Number(CategoryID);
   const ListIDInNum = Number(ListID);
 
-  // Adjust for inconsistent structure of MyListCollection
   const allCategories = useMemo(() => {
     return MyListCollection.flatMap((list) => list.Categories ?? []);
   }, []);
 
   const matchingSubCategory = useMemo(() => {
-    // Step 1: First find the correct list
-    const matchingList = MyListCollection.find(
-      (list) => list.id === ListIDInNum // this is the main list/category ID
+    const allLists = [...MyListCollection, ...storedCategories]; // combine both sources
+
+
+    const matchingList = allLists.find(
+      (list) => Number(list.id) === Number(ListIDInNum)
     );
 
-    // Step 2: Then find the category **within that list**
-    const subCategory = matchingList?.Categories?.find(
-      (cat) => cat.id === CategoryIDInNum
+    if (!matchingList) {
+      console.warn("No matching list found for ID:", ListIDInNum);
+      return undefined;
+    }
+
+    const subCategory = matchingList.Categories?.find(
+      (cat: any) => Number(cat.id) === Number(CategoryIDInNum)
     );
+
+    if (!subCategory) {
+      console.warn("No matching subcategory found for ID:", CategoryIDInNum);
+    }
+
     return subCategory;
-  }, [CategoryIDInNum, ListIDInNum]);
+  }, [CategoryIDInNum, ListIDInNum, storedCategories]);
 
   const updatedItems = useMemo(() => {
     if (!selectedProducts || !matchingSubCategory) return [];
@@ -102,15 +113,24 @@ const ProductsPage: React.FC = () => {
           <Text style={styles.emptyText}>
             No items available for this List.
           </Text>
-          {isBlur && <CreateButton screen="item" categories={cardTitles} />}
+        </View>
+      )}
+          {isBlur && (
+            <CreateButton
+              screen="item"
+              categories={cardTitles}
+              ListName={ListName}
+              CategoryName={categoryName}
+              setChangestate={setChangestate}
+              changestate={setChangestate}
+            />
+          )}
           <TouchableOpacity
             onPress={() => CreateList()}
             style={styles.fixedAddButton}
           >
             <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
           </TouchableOpacity>
-        </View>
-      )}
     </SafeAreaView>
   );
 };

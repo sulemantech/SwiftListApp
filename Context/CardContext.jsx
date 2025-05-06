@@ -26,6 +26,7 @@ export const ProductProvider = ({ children }) => {
       const stored = await AsyncStorage.getItem('category_list');
       const parsedStored = stored ? JSON.parse(stored) : [];
       // await AsyncStorage.removeItem('category_list');  
+      // await AsyncStorage.removeItem('myLists');  
       setStoredCategories(parsedStored);
       setStoredLists(lists);
     };
@@ -85,30 +86,36 @@ export const ProductProvider = ({ children }) => {
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };
 
-  const ListStorefnc = async (id, name, description, image) => {
-    const newList = {
-      id: id,
-      title: name,
-      description,
-      items: "0 Items",
-      percentagetext: "Bought",
-      percent: "0",
-      progress: 0.0,
-      Picture: image,
-      bgColor: "#9DF4F4",
-      badgeColor: "#61CBD6",
-    };
-
+  const ListStorefnc = async (name, description, image) => {
     try {
       const storedListsJSON = await AsyncStorage.getItem("myLists");
       const storedLists = storedListsJSON ? JSON.parse(storedListsJSON) : [];
 
+      // ✅ Determine the new ID
+      const newId =
+        storedLists.length > 0
+          ? Math.max(...storedLists.map((list) => Number(list.id))) + 1
+          : 6;
+
+      const newList = {
+        id: newId,
+        title: name,
+        description,
+        items: "0 Items",
+        percentagetext: "Bought",
+        percent: "0",
+        progress: 0.0,
+        Picture: image,
+        bgColor: "#9DF4F4",
+        badgeColor: "#61CBD6",
+      };
+
       storedLists.push(newList);
       await AsyncStorage.setItem("myLists", JSON.stringify(storedLists));
 
-      // setList(newList);
+      console.log("✅ New list saved with ID:", newId);
     } catch (error) {
-      console.error("Error storing list:", error);
+      console.error("❌ Error storing list:", error);
     }
   };
 
@@ -126,12 +133,13 @@ export const ProductProvider = ({ children }) => {
     try {
       const existing = await AsyncStorage.getItem("category_list");
       const existingData = existing ? JSON.parse(existing) : [];
-  
+      console.log(existing)
+
       // Find if a category with the same name already exists
       const existingIndex = existingData.findIndex(
         (cat) => cat.name === categoryCreation.name
       );
-  
+
       if (existingIndex !== -1) {
         // Add new subcategory to the existing category
         const updatedCategories = [
@@ -142,15 +150,14 @@ export const ProductProvider = ({ children }) => {
               existingData[existingIndex].Categories.slice(-1)[0]?.id + 1 || 1,
           },
         ];
-  
+
         // Update the specific category in the array
         existingData[existingIndex] = {
           ...existingData[existingIndex],
           Categories: updatedCategories,
         };
-  
+
         await AsyncStorage.setItem("category_list", JSON.stringify(existingData));
-        console.log("Subcategory added to existing category");
       } else {
         // Add new category object with initial Categories array
         const newCategory = {
@@ -163,17 +170,16 @@ export const ProductProvider = ({ children }) => {
             },
           ],
         };
-  
+
         const updatedData = [...existingData, newCategory];
-  
+
         await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
-        console.log("New category saved:", newCategory);
       }
     } catch (error) {
       console.error("Error saving category:", error);
     }
   };
-  
+
 
 
   const getLocalCategory = async (id, MyListCollection) => {

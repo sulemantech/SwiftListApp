@@ -70,15 +70,10 @@ const ProductList: React.FC<ProductListProps> = ({
   // const [selectedProducts, setselectedProducts] = useState<{
   //   [key: string]: Product[];
   // }>({});
-  const [selectedProduct, setSelectedProduct] =
+  const [selectedProduct, setSelectedProduct,] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
-  console.log(products)
-  // useEffect(() => {
-  //   console.log(selectedProduct);
-  //   setselectedProducts(selectedProducts);
-  // }, []);
   const handleSelect = async (product: Product) => {
     const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
@@ -195,7 +190,6 @@ const ProductList: React.FC<ProductListProps> = ({
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
                 /> */}
                 <Image source={item.imgPath} style={styles.image}/>
-
                 <Text
                   style={[
                     styles.productName,
@@ -310,7 +304,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   image:{
-    width:70,
+    width:60,
     aspectRatio:1
   },
 

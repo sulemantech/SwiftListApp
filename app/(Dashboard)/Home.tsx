@@ -127,7 +127,6 @@ const Home = () => {
     setIsListLoaded(false);
     try {
       const storedList = await AsyncStorage.getItem("myLists");
-      console.log(storedList);
       const list = storedList ? JSON.parse(storedList) : [];
       const formattedList = list
         .map((item: any) => ({
@@ -271,7 +270,16 @@ const Home = () => {
           />
         </View>
       </View>
-      {isBlur && <CreateButton  screen="list" categories={cardTitles} />}
+      {isBlur && (
+        <CreateButton
+          screen="list"
+          categories={cardTitles}
+          ListName={""}
+          CategoryName={""}
+          setChangestate={""}
+          changestate={""}
+        />
+      )}
       <TouchableOpacity
         onPress={() => CreateList()}
         style={styles.fixedAddButton}

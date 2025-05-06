@@ -1343,6 +1343,10 @@ const OfficialTask = [
   { id: 485, name: "Tracking Tasks", imgPath: TrackingTasks },
 ];
 
+const Sampledata = {
+  id: 0, name: "Dummy data", imgPath: null
+}
+
 const PersonalHygiene = [
   { id: 486, name: "Apply Perfume", imgPath: ApplyPerfume },
   { id: 487, name: "Apply Screen", imgPath: ApplyScreen },
@@ -1488,7 +1492,7 @@ const SaladItems = [
 ];
 
 
-export default{
+export default {
   frozenitems,
   Haircare,
   DinnerItems,
@@ -1537,6 +1541,7 @@ export default{
   petFoodAndSuppliesItems,
   Pulses,
   snacksItems,
+  Sampledata
 };
 
 

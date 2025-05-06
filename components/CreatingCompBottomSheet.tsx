@@ -16,7 +16,11 @@ type BottomSheetComponentProps = {
   isVisible: boolean;
   setIsVisible: (visible: boolean) => void;
   CompName: string;
-  categories:any
+  categories: any;
+  ListName: any;
+  CategoryName: any;
+  setChangestate:any,
+  changestate:any
 };
 
 const { height: screenHeight } = Dimensions.get("window");
@@ -25,7 +29,11 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   isVisible,
   setIsVisible,
   CompName,
-  categories
+  categories,
+  ListName,
+  CategoryName,
+  setChangestate,
+  changestate
 }) => {
   const list = [
     { title: "List Item 1" },
@@ -43,20 +51,29 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
       case "item":
         return (
           <View style={styles.contentWrapper}>
-            <CreateItem setIsVisible={setIsVisible} categories={categories}/>
-
+            <CreateItem
+              setIsVisible={setIsVisible}
+              ListName={ListName}
+              CategoryName={CategoryName}
+              setChangestate={setChangestate}
+              changestate={changestate}
+            />
           </View>
         );
       case "category":
         return (
           <View style={styles.contentWrapper}>
-            <CreateCategory setIsVisible={setIsVisible} categories={categories}/>
+            <CreateCategory
+              setIsVisible={setIsVisible}
+              categories={categories}
+              ListName={ListName}
+            />
           </View>
         );
       case "list":
         return (
           <View style={styles.contentWrapper}>
-            <CreateList setIsVisible={setIsVisible}  />
+            <CreateList setIsVisible={setIsVisible} />
           </View>
         );
       default:

@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import ChevronIcon from "../assets/images/profilepage/ChevronIcon.png";
 import DefaultIcon from "../assets/images/profilepage/profile.png";
+import Entypo from '@expo/vector-icons/Entypo';
 
 interface LabelWithBtnProps {
   text: string;
@@ -15,7 +16,7 @@ const LabelWithBtn: React.FC<LabelWithBtnProps> = ({
   text,
   onPress = () => console.log("Button pressed"),
   IconsURL = DefaultIcon,
-  iconSize = { width: 16, height: 16 },
+  iconSize = { width: 20, height: 20 },
 }) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
@@ -26,7 +27,9 @@ const LabelWithBtn: React.FC<LabelWithBtnProps> = ({
         />
         <Text style={styles.text}>{text}</Text>
       </View>
-      <Image source={ChevronIcon} style={{ width: 14.77, height: 14.77 }} />
+      <View style={styles.Chevrobg}>
+        <Entypo name="chevron-right" size={23} color="#A9A0F0" />
+      </View>
     </TouchableOpacity>
   );
 };
@@ -47,12 +50,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontFamily: "Poppins-Bold",
-    fontSize: 12,
-    fontWeight: "500",
-    lineHeight: 16,
+    fontFamily: "OpenSans-Bold",
+    fontSize: 14,
+    // lineHeight: 16,
     textAlign: "left",
     color: "#4c4c4c",
     marginLeft: 10,
+  },
+  Chevrobg: {
+    backgroundColor: "#F3F3FD",
+    padding: 4,
+    borderRadius: 50,
   },
 });

@@ -27,6 +27,8 @@ import ThingsToDoSVG from "../../assets/images/SVG/thingstodopage.svg";
 import KitchenSVG from "../../assets/images/SVG/kitchenpage.svg";
 import ProductList from "../products/Products";
 import { ProductContext } from "@/Context/CardContext";
+import CreateButton from "@/components/CreateButton";
+import { TouchableOpacity } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -42,6 +44,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const [pressedItem, setPressedItem] = useState("");
   const [selectedItem, setSelectedItem] = useState<any[]>([]); // original selected items
   const [itemclicked, setItemclicked] = useState(true);
+  const [cardTitles, setCardTitles] = useState<string[]>([]);
+  const [isBlur, setIsBlur] = useState(false);
 
   const router = useRouter();
   const { selectedProducts, storedCategories, setStoredCategories } =
@@ -55,11 +59,9 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
   const StoredCategory = storedCategories?.find((categoryObj: any) => {
     return categoryObj.name === name;
-  }); 
-  console.log(StoredCategory, storedCategories," ==================-=-=-=-=-=-=-=-")
+  });
 
   const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
-  console.log(matchingCategory,"-=-=-=-=-=-=-=-=-=-=-=-=--")
 
   // ✅ Get all products from this category once
   // useEffect(() => {
@@ -120,6 +122,11 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     thingstodoimage: ThingsToDoSVG,
     kitchenmenuimage: KitchenSVG,
   };
+
+  const CreateList = () => {
+    setIsBlur((prev) => !prev);
+  };
+  console.log(ListName ,  )
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
 
@@ -256,7 +263,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
               <TouchableHighlight
                 onPress={() => {
                   setPressedItem(item.name); // ✅ set pressed item name
-                  console.log(item.name); // Log the item name before navigation
                   router.push({
                     pathname: "/products/ProductsPage" as ExternalPathString,
                     params: {
@@ -293,6 +299,22 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             />
           }
         />
+      {isBlur && (
+        <CreateButton
+          screen="category"
+          categories={cardTitles}
+          ListName={name}
+          CategoryName={""}
+          setChangestate={""}
+          changestate={""}
+        />
+      )}
+      <TouchableOpacity
+        onPress={() => CreateList()}
+        style={styles.fixedAddButton}
+      >
+        <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
+      </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -346,6 +368,25 @@ const styles = StyleSheet.create({
     // borderColor: "#CBC3FB80",
     alignItems: "center",
     justifyContent: "center",
+  },
+  fixedAddButton: {
+    position: "absolute",
+    bottom: height * 0.1,
+    right: width * 0.055,
+    backgroundColor: "#A9A0F0",
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 60,
+    aspectRatio: 1,
+    zIndex: 999,
+  },
+  icon: {
+    fontFamily: "OpenSans-Light",
+    fontSize: width * 0.12,
+    color: "white",
+    textAlign: "center",
+    lineHeight: 60,
   },
 
   // searchInput: {

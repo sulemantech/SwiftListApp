@@ -4,10 +4,14 @@ import TextInput2 from "./Input";
 import DropdownComponent from "./DropDown";
 import ImagePickerExample from "./ImagePicker";
 import { Divider } from "@rneui/base";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface CreateItem {
   setIsVisible: (isVisible: boolean) => void;
-  categories: any;
+  ListName: string;
+  CategoryName: string;
+  setChangestate: any;
+  changestate: any;
 }
 const alphabetImages = [
   { letter: "A", image: require("../assets/images/AlphabetsLetters/A.png") },
@@ -38,12 +42,95 @@ const alphabetImages = [
   { letter: "Z", image: require("../assets/images/AlphabetsLetters/Z.png") },
 ];
 
-const CreateItem: React.FC<CreateItem> = ({ setIsVisible, categories }) => {
+const CreateItem: React.FC<CreateItem> = ({
+  setIsVisible,
+  ListName,
+  CategoryName,
+  setChangestate,
+  changestate,
+}) => {
   const [listDescription, setListDescription] = useState<string>("");
   const firstLetter = listDescription.trim().charAt(0).toUpperCase();
   const matchingImage = alphabetImages.find(
     (item) => item.letter === firstLetter
   );
+
+  const addItemToSubCategory = async (
+    mainCategoryName: string,
+    subCategoryName: string,
+    newItem: { id: number; name: string; imgPath: string | null }
+  ) => {
+    try {
+      const stored = await AsyncStorage.getItem("category_list");
+      if (!stored) return;
+
+      const categoryList = JSON.parse(stored);
+
+      const updatedList = categoryList.map((mainCat: any) => {
+        if (mainCat.name === mainCategoryName) {
+          return {
+            ...mainCat,
+            Categories: mainCat.Categories.map((subCat: any) => {
+              if (subCat.name === subCategoryName) {
+                return {
+                  ...subCat,
+                  items: [...subCat.items, newItem],
+                };
+              }
+              return subCat;
+            }),
+          };
+        }
+        return mainCat;
+      });
+
+      await AsyncStorage.setItem("category_list", JSON.stringify(updatedList));
+      console.log("✅ Item successfully added!");
+      setChangestate(changestate);
+    } catch (error) {
+      console.error("❌ Error while adding item:", error);
+    }
+  };
+  const handleSaveItem = async () => {
+    if (!listDescription) {
+      setIsVisible(false)
+      return;
+    }
+
+    try {
+      const stored = await AsyncStorage.getItem("category_list");
+      if (!stored) return;
+
+      const categoryList = JSON.parse(stored);
+
+      let maxId = 0;
+
+      categoryList.forEach((mainCat: any) => {
+        if (mainCat.name === ListName) {
+          mainCat.Categories.forEach((subCat: any) => {
+            if (subCat.name === CategoryName) {
+              subCat.items.forEach((item: any) => {
+                if (typeof item.id === "number" && item.id > maxId) {
+                  maxId = item.id;
+                }
+              });
+            }
+          });
+        }
+      });
+
+      const newItem = {
+        id: maxId ? maxId + 1 : 1,
+        name: listDescription,
+        imgPath: matchingImage ? matchingImage.image : null,
+      };
+
+      await addItemToSubCategory(ListName, CategoryName, newItem);
+      setIsVisible(false);
+    } catch (error) {
+      console.error("❌ Error while saving item:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -51,10 +138,7 @@ const CreateItem: React.FC<CreateItem> = ({ setIsVisible, categories }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.signInText}>Add Item</Text>
         <TouchableOpacity style={styles.saveButton}>
-          <Text
-            onPress={() => setIsVisible(false)}
-            style={styles.saveButtonText}
-          >
+          <Text onPress={handleSaveItem} style={styles.saveButtonText}>
             Save
           </Text>
         </TouchableOpacity>

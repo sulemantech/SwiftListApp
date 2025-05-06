@@ -83,7 +83,6 @@ const Theme = ({
     const selectedTheme = cardDataArray[selectedThemeIndex];
   
     ListStorefnc(
-      Date.now(), 
       listName,
       listDescription,
       selectedTheme.PictureName

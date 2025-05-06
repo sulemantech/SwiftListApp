@@ -15,15 +15,26 @@ const { width, height } = Dimensions.get("window");
 interface CreateButtonProps {
   categories: any;
   screen: "list" | "item" | "category";
+  ListName: any;
+  CategoryName: any;
+  setChangestate:any,
+  changestate:any
 }
 
-const CreateButton = ({ categories, screen }: CreateButtonProps) => {
+const CreateButton = ({
+  categories,
+  screen,
+  ListName,
+  CategoryName,
+  setChangestate,
+  changestate
+
+}: CreateButtonProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [compName, setCompName] = useState("");
   const openSheet = (name: any) => {
     setIsVisible(true);
     setCompName(name);
-    console.log("Opening sheet...", name);
   };
 
   const renderButton = (
@@ -55,7 +66,7 @@ const CreateButton = ({ categories, screen }: CreateButtonProps) => {
             require("../assets/icons/item.png")
           )}
 
-        {screen === "list" &&
+        {screen === "category" &&
           renderButton(
             () => openSheet("category"),
             "Add Category",
@@ -79,6 +90,10 @@ const CreateButton = ({ categories, screen }: CreateButtonProps) => {
           isVisible={isVisible}
           setIsVisible={setIsVisible}
           categories={categories}
+          ListName={ListName}
+          CategoryName={CategoryName}
+          setChangestate={setChangestate}
+          changestate={changestate}
         />
       </View>
     </>

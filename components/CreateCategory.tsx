@@ -5,16 +5,18 @@ import images from "../constants/images";
 import DropdownComponent from "./DropDown";
 import { Divider } from "@rneui/base";
 import { ProductContext } from "../Context/CardContext";
-const { PersonalHygiene } = images;
+const { Sampledata } = images;
 
 interface CreateCategoryProps {
   setIsVisible: (isVisible: boolean) => void;
   categories: any;
+  ListName:any
 }
 
 const CreateCategory: React.FC<CreateCategoryProps> = ({
   setIsVisible,
   categories,
+  ListName
 }) => {
   const [listDescription, setListDescription] = useState<string>("");
   const data = categories.map((category: any, index: any) => ({
@@ -22,13 +24,14 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
     value: (index + 1).toString(),
   }));
   const [categoryCreation, SetCategoryCreation] = useState({
-    name: "",
+    name: ListName,
     image: "spiritualImage",
     id: 0,
     description: "Your Current Categories.",
-    Categories: { id: 0, name: "", items: PersonalHygiene },
+    Categories: { id: 0, name: "", items: [] },
   });
-  const { savecategoriesToAsyncStorage , changestate,setChangestate } = useContext(ProductContext);
+  const { savecategoriesToAsyncStorage, changestate, setChangestate } =
+    useContext(ProductContext);
 
   const savecategrories = () => {
     setChangestate(!changestate);
@@ -63,7 +66,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
             }))
           }
         />
-        <DropdownComponent
+        {/* <DropdownComponent
           Label="List"
           Placeholder="Select a List"
           data={data}
@@ -73,7 +76,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
               name: item.label,
             }));
           }}
-        />
+        /> */}
       </View>
     </View>
   );
