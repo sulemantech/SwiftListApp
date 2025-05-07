@@ -729,6 +729,34 @@ import PastaSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/Past
 import SpinachSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/SpinachSalad.png";
 // const TunaSalad = require('../assets/images/SwiftlistApp/KitchenMenu/Salad/png/TunaSalad.png');
 import WaldorfSalad from "../assets/images/SwiftlistApp/KitchenMenu/Salad/png/WaldorfSalad.png";
+export const alphabetImages = [
+  { letter: "A", image: require("../assets/images/AlphabetsLetters/A.png") },
+  { letter: "B", image: require("../assets/images/AlphabetsLetters/B.png") },
+  { letter: "C", image: require("../assets/images/AlphabetsLetters/C.png") },
+  { letter: "D", image: require("../assets/images/AlphabetsLetters/D.png") },
+  { letter: "E", image: require("../assets/images/AlphabetsLetters/E.png") },
+  { letter: "F", image: require("../assets/images/AlphabetsLetters/F.png") },
+  { letter: "G", image: require("../assets/images/AlphabetsLetters/G.png") },
+  { letter: "H", image: require("../assets/images/AlphabetsLetters/H.png") },
+  { letter: "I", image: require("../assets/images/AlphabetsLetters/I.png") },
+  { letter: "J", image: require("../assets/images/AlphabetsLetters/J.png") },
+  { letter: "K", image: require("../assets/images/AlphabetsLetters/K.png") },
+  { letter: "L", image: require("../assets/images/AlphabetsLetters/L.png") },
+  { letter: "M", image: require("../assets/images/AlphabetsLetters/M.png") },
+  { letter: "N", image: require("../assets/images/AlphabetsLetters/N.png") },
+  { letter: "O", image: require("../assets/images/AlphabetsLetters/O.png") },
+  { letter: "P", image: require("../assets/images/AlphabetsLetters/P.png") },
+  { letter: "Q", image: require("../assets/images/AlphabetsLetters/Q.png") },
+  { letter: "R", image: require("../assets/images/AlphabetsLetters/R.png") },
+  { letter: "S", image: require("../assets/images/AlphabetsLetters/S.png") },
+  { letter: "T", image: require("../assets/images/AlphabetsLetters/T.png") },
+  { letter: "U", image: require("../assets/images/AlphabetsLetters/U.png") },
+  { letter: "V", image: require("../assets/images/AlphabetsLetters/V.png") },
+  { letter: "W", image: require("../assets/images/AlphabetsLetters/W.png") },
+  { letter: "X", image: require("../assets/images/AlphabetsLetters/X.png") },
+  { letter: "Y", image: require("../assets/images/AlphabetsLetters/Y.png") },
+  { letter: "Z", image: require("../assets/images/AlphabetsLetters/Z.png") },
+];
 
 const frozenitems = [
   { id: 1, name: "Bread", imgPath: Bread },

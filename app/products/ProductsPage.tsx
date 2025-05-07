@@ -68,6 +68,7 @@ const ProductsPage: React.FC = () => {
       const selectedItem = selectedProducts[ListIDInNum]?.find(
         (selected: { id: number }) => selected.id === item.id
       );
+      console.log(selectedItem , "Selected Itemssssssss")
       return selectedItem
         ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
         : item;
@@ -115,7 +116,7 @@ const ProductsPage: React.FC = () => {
           </Text>
         </View>
       )}
-      {isBlur && (
+      {/* {isBlur && (
         <CreateButton
           screen="item"
           categories={cardTitles}
@@ -124,7 +125,7 @@ const ProductsPage: React.FC = () => {
           setChangestate={setChangestate}
           changestate={setChangestate}
         />
-      )}
+      )} */}
       {ListIDInNum > 5 && (
         <TouchableOpacity
           onPress={() => CreateList()}

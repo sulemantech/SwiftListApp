@@ -21,6 +21,8 @@ type BottomSheetComponentProps = {
   CategoryName: any;
   setChangestate:any,
   changestate:any
+  isBlur:any
+  setIsBlur:any
 };
 
 const { height: screenHeight } = Dimensions.get("window");
@@ -33,7 +35,9 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   ListName,
   CategoryName,
   setChangestate,
-  changestate
+  changestate,
+  isBlur,
+  setIsBlur
 }) => {
   const list = [
     { title: "List Item 1" },
@@ -66,7 +70,8 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
             <CreateCategory
               setIsVisible={setIsVisible}
               categories={categories}
-              ListName={ListName}
+              isBlur={isBlur}
+              setIsBlur={setIsBlur}
             />
           </View>
         );

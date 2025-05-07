@@ -271,14 +271,32 @@ const Home = () => {
         </View>
       </View>
       {isBlur && (
-        <CreateButton
-          screen="list"
-          categories={cardTitles}
-          ListName={""}
-          CategoryName={""}
-          setChangestate={""}
-          changestate={""}
-        />
+        <View style={styles.createcategory}>
+          <CreateButton
+            categories={cardTitles}
+            screen="category"
+            ListName={""}
+            CategoryName={""}
+            setChangestate={""}
+            changestate={""}
+            isBlur={isBlur}
+            setIsBlur={setIsBlur}
+          />
+        </View>
+      )}
+      {isBlur && (
+        <View>
+          <CreateButton
+            screen="list"
+            categories={cardTitles}
+            ListName={""}
+            CategoryName={""}
+            setChangestate={""}
+            changestate={""}
+            isBlur={isBlur}
+            setIsBlur={setIsBlur}
+          />
+        </View>
       )}
       <TouchableOpacity
         onPress={() => CreateList()}
@@ -440,5 +458,8 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     zIndex: 999,
     gap: 10,
+  },
+  createcategory: {
+    marginBottom: 80,
   },
 });

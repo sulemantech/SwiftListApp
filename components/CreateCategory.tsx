@@ -7,16 +7,19 @@ import { Divider } from "@rneui/base";
 import { ProductContext } from "../Context/CardContext";
 const { Sampledata } = images;
 
+// remove ListName from props
 interface CreateCategoryProps {
   setIsVisible: (isVisible: boolean) => void;
   categories: any;
-  ListName:any
+  setIsBlur: any;
+  isBlur: any;
 }
 
 const CreateCategory: React.FC<CreateCategoryProps> = ({
   setIsVisible,
   categories,
-  ListName
+  isBlur,
+  setIsBlur
 }) => {
   const [listDescription, setListDescription] = useState<string>("");
   const data = categories.map((category: any, index: any) => ({
@@ -24,7 +27,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
     value: (index + 1).toString(),
   }));
   const [categoryCreation, SetCategoryCreation] = useState({
-    name: ListName,
+    name: "",
     image: "spiritualImage",
     id: 0,
     description: "Your Current Categories.",
@@ -35,6 +38,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
 
   const savecategrories = () => {
     setChangestate(!changestate);
+    setIsBlur(!isBlur)
     savecategoriesToAsyncStorage(categoryCreation);
     setIsVisible(false);
   };
@@ -66,17 +70,17 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
             }))
           }
         />
-        {/* <DropdownComponent
+        <DropdownComponent
           Label="List"
           Placeholder="Select a List"
           data={data}
-          onChange={(item) => {
+          onChange={(item: any) => {
             SetCategoryCreation((prev) => ({
               ...prev,
-              name: item.label,
+              name: item.label, // Sets list name from dropdown
             }));
           }}
-        /> */}
+        />
       </View>
     </View>
   );

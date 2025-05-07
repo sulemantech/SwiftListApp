@@ -17,8 +17,10 @@ interface CreateButtonProps {
   screen: "list" | "item" | "category";
   ListName: any;
   CategoryName: any;
-  setChangestate:any,
-  changestate:any
+  setChangestate: any;
+  changestate: any;
+  isBlur: any;
+  setIsBlur: any;
 }
 
 const CreateButton = ({
@@ -27,8 +29,9 @@ const CreateButton = ({
   ListName,
   CategoryName,
   setChangestate,
-  changestate
-
+  changestate,
+  isBlur,
+  setIsBlur,
 }: CreateButtonProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [compName, setCompName] = useState("");
@@ -94,6 +97,8 @@ const CreateButton = ({
           CategoryName={CategoryName}
           setChangestate={setChangestate}
           changestate={changestate}
+          isBlur={isBlur}
+          setIsBlur={setIsBlur}
         />
       </View>
     </>

@@ -9,6 +9,7 @@ export const ProductProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [storedLists, setStoredLists] = useState([]);
+  const [showToast, setShowToast] = useState(false);
   const [storedCategories, setStoredCategories] = useState([]);
   const [userDetails, setUserDetails] = useState({
     UserName: "",
@@ -174,6 +175,7 @@ export const ProductProvider = ({ children }) => {
         const updatedData = [...existingData, newCategory];
 
         await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
+        setShowToast(true);  
       }
     } catch (error) {
       console.error("Error saving category:", error);
@@ -289,6 +291,7 @@ export const ProductProvider = ({ children }) => {
       storedLists, setStoredLists,
       userDetails, setUserDetails,
       savecategoriesToAsyncStorage,
+      showToast, setShowToast,
       storedCategories, setStoredCategories
     }}>
       {children}

@@ -1,10 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 import { ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,7 +22,7 @@ interface ProductListProps {
   page?: string;
   ListName: any;
   ListID: any;
-  categoryName:any;
+  categoryName: any;
   onProductSelect?: () => void;
   showBottomSheet?: boolean; // 🆕 optional prop
 }
@@ -70,16 +65,16 @@ const ProductList: React.FC<ProductListProps> = ({
   // const [selectedProducts, setselectedProducts] = useState<{
   //   [key: string]: Product[];
   // }>({});
-  const [selectedProduct, setSelectedProduct,] =
+  const [selectedProduct, setSelectedProduct] =
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
+  console.log(products, "these are products");
   const handleSelect = async (product: Product) => {
     const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(
       (item: Product) => item.id === product.id
     );
-
     const updatedList = isAlreadySelected
       ? currentList.filter((item: Product) => item.id !== product.id)
       : [...currentList, product];
@@ -189,14 +184,14 @@ const ProductList: React.FC<ProductListProps> = ({
                   height={itemWidth * 0.6}
                   color={isSelected ? "#FFFFFF" : "#A9A0F0"}
                 /> */}
-                <Image source={item.imgPath} style={styles.image}/>
+                <Image source={item.imgPath} style={styles.image} />
                 <Text
                   style={[
                     styles.productName,
                     {
                       fontSize: fontSize,
                       marginTop: itemWidth * 0.04,
-                      color: '#FFFFFF',
+                      color: "#FFFFFF",
                     },
                   ]}
                   numberOfLines={1}
@@ -262,7 +257,7 @@ const ProductList: React.FC<ProductListProps> = ({
           ListName={categoryName}
           setIsProductSelected={setIsProductSelected}
         />
-      )} 
+      )}
     </View>
   );
 };
@@ -303,9 +298,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
   },
-  image:{
-    width:60,
-    aspectRatio:1
+  image: {
+    width: 60,
+    aspectRatio: 1,
   },
 
   topLeftBorder: {

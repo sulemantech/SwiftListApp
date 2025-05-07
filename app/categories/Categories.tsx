@@ -14,6 +14,7 @@ import { MyListCollection } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
 import Header from "../../components/Header";
 import CIrcleWithchevron from "../../components/CIrcleWithchevron";
+import uuid from 'react-native-uuid';
 import {
   useRouter,
   useLocalSearchParams,
@@ -29,6 +30,9 @@ import ProductList from "../products/Products";
 import { ProductContext } from "@/Context/CardContext";
 import CreateButton from "@/components/CreateButton";
 import { TouchableOpacity } from "react-native";
+import { alphabetImages } from "@/constants/images";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addItemToSubCategory } from "@/components/AddItemFunction";
 
 const { width, height } = Dimensions.get("window");
 
@@ -46,10 +50,16 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const [itemclicked, setItemclicked] = useState(true);
   const [cardTitles, setCardTitles] = useState<string[]>([]);
   const [isBlur, setIsBlur] = useState(false);
+  const [listDescription, setListDescription] = useState<string>("");
 
   const router = useRouter();
-  const { selectedProducts, storedCategories, setStoredCategories } =
-    useContext(ProductContext);
+  const {
+    selectedProducts,
+    storedCategories,
+    setStoredCategories,
+    changestate,
+    setChangestate,
+  } = useContext(ProductContext);
   const { name, id } = useLocalSearchParams();
   const currentID = Number(id);
 
@@ -106,8 +116,9 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     }
 
     const filtered = allItems.filter((item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
     );
+    
 
     setFilteredItems(filtered); // update search results
   }, [searchQuery, allItems]);
@@ -126,9 +137,49 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const CreateList = () => {
     setIsBlur((prev) => !prev);
   };
-  console.log(ListName ,  )
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
+  const handleSaveItem = async (matchingImage: any) => {
+    try {
+      const stored = await AsyncStorage.getItem("category_list");
+      if (!stored) return;
+
+      const categoryList = JSON.parse(stored);
+
+      let maxId = 0;
+
+      categoryList.forEach((mainCat: any) => {
+        if (mainCat.name === ListName) {
+          mainCat.Categories.forEach((subCat: any) => {
+            if (subCat.name === pressedItem || matchingCategory.Categories[0]) {
+              subCat.items.forEach((item: any) => {
+                if (typeof item.id === "number" && item.id > maxId) {
+                  maxId = item.id;
+                }
+              });
+            }
+          });
+        }
+      });
+
+      const newItem = {
+        id: uuid.v4(),
+        name: searchQuery.trim(),
+        imgPath: matchingImage ? matchingImage.image : null,
+      };
+
+      await addItemToSubCategory(
+        name.toString(),
+        pressedItem || matchingCategory.Categories[0],
+        newItem,
+        changestate,
+        setChangestate
+      );
+      // setIsVisible(false);
+    } catch (error) {
+      console.error("❌ Error while saving item:", error);
+    }
+  };
 
   return (
     <TouchableWithoutFeedback>
@@ -239,19 +290,53 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         </View>
 
         {/* ✅ Optional message if nothing matches */}
-        {searchQuery.trim() && filteredItems.length === 0 && (
-          <Text style={{ textAlign: "center", color: "gray", marginTop: 10 }}>
-            No matching items found.
-          </Text>
-        )}
+        {searchQuery.trim() &&
+          filteredItems.length === 0 &&
+          (() => {
+            const letter = searchQuery.trim().charAt(0).toUpperCase();
+            console.log(ListName);
+            const match = alphabetImages.find((item) => item.letter === letter);
+            return match && currentID > 5  ? (
+              <TouchableOpacity
+                style={styles.productCard}
+                onPress={() => handleSaveItem(match)}
+              >
+                <Image
+                  source={match.image}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    alignSelf: "center",
+                    // marginTop: 10,
+                  }}
+                />
+                <Text
+                  style={[
+                    styles.productName,
+                    {
+                      fontSize: 12,
+                      marginTop: 4,
+                      color: "#FFFFFF",
+                    },
+                  ]}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {searchQuery.trim()}
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <Text
+                style={{ textAlign: "center", color: "gray", marginTop: 10 }}
+              >
+                No matching items foundddddd.
+              </Text>
+            );
+          })()}
 
         {/* ✅ Product list (filtered or selected) + subcategories */}
         <FlatList
-          data={
-            matchingCategory
-              ? matchingCategory.Categories
-              : MyListCollection[0].Categories
-          }
+          data={matchingCategory ? matchingCategory.Categories : []}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
           style={styles.subCategoriesContainer}
@@ -299,7 +384,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
             />
           }
         />
-      {isBlur && (
+        {/* {isBlur && (
         <CreateButton
           screen="category"
           categories={cardTitles}
@@ -314,7 +399,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         style={styles.fixedAddButton}
       >
         <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
-      </TouchableOpacity>}
+      </TouchableOpacity>} */}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -339,6 +424,11 @@ const styles = StyleSheet.create({
     marginTop: 15,
     // backgroundColor:"red"
   },
+  productName: {
+    fontFamily: "Poppins-Medium",
+    textAlign: "center",
+    // color:"red",
+  },
   caption2: {
     fontFamily: "OpenSans-Regular",
     fontSize: 13,
@@ -357,6 +447,15 @@ const styles = StyleSheet.create({
     width: "100%",
     // height: "38%",
     // backgroundColor: "green",
+  },
+  productCard: {
+    backgroundColor: "#BFBFBF",
+    alignItems: "center",
+    justifyContent: "center",
+    aspectRatio: 1,
+    width: 100,
+    height: 100,
+    borderRadius: 20,
   },
   categoryImage: {
     width: 146.36,
