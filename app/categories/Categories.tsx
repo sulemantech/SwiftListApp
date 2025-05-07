@@ -309,12 +309,12 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           changestate={""}
         />
       )}
-      <TouchableOpacity
+      {currentID > 5 && <TouchableOpacity
         onPress={() => CreateList()}
         style={styles.fixedAddButton}
       >
         <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
-      </TouchableOpacity>
+      </TouchableOpacity>}
       </View>
     </TouchableWithoutFeedback>
   );

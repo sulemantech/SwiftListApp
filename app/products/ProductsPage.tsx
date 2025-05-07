@@ -29,7 +29,8 @@ const ProductsPage: React.FC = () => {
       ListID: any;
     };
   const selectedProducts = useContext(ProductContext)?.selectedProducts;
-  const { storedCategories , changestate ,setChangestate } = useContext(ProductContext);
+  const { storedCategories, changestate, setChangestate } =
+    useContext(ProductContext);
   const CategoryIDInNum = Number(CategoryID);
   const ListIDInNum = Number(ListID);
 
@@ -39,7 +40,6 @@ const ProductsPage: React.FC = () => {
 
   const matchingSubCategory = useMemo(() => {
     const allLists = [...MyListCollection, ...storedCategories]; // combine both sources
-
 
     const matchingList = allLists.find(
       (list) => Number(list.id) === Number(ListIDInNum)
@@ -115,22 +115,24 @@ const ProductsPage: React.FC = () => {
           </Text>
         </View>
       )}
-          {isBlur && (
-            <CreateButton
-              screen="item"
-              categories={cardTitles}
-              ListName={ListName}
-              CategoryName={categoryName}
-              setChangestate={setChangestate}
-              changestate={setChangestate}
-            />
-          )}
-          <TouchableOpacity
-            onPress={() => CreateList()}
-            style={styles.fixedAddButton}
-          >
-            <Text style={styles.icon}> {isBlur ? " × " : " + "} </Text>
-          </TouchableOpacity>
+      {isBlur && (
+        <CreateButton
+          screen="item"
+          categories={cardTitles}
+          ListName={ListName}
+          CategoryName={categoryName}
+          setChangestate={setChangestate}
+          changestate={setChangestate}
+        />
+      )}
+      {ListIDInNum > 5 && (
+        <TouchableOpacity
+          onPress={() => CreateList()}
+          style={styles.fixedAddButton}
+        >
+          <Text style={styles.icon}> {isBlur ? " ✕ " : " + "} </Text>
+        </TouchableOpacity>
+      )}
     </SafeAreaView>
   );
 };
