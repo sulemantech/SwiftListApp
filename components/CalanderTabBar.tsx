@@ -452,7 +452,6 @@ export default CalendarTabBar;
 //             current={"2012-03-01"}
 //             // Callback that gets called when the user selects a day
 //             onDayPress={(day: any) => {
-//               console.log("selected day", day);
 //             }}
 //             // Mark specific dates as marked
 //             markedDates={{

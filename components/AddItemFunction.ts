@@ -1,21 +1,42 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const addItemToSubCategory = async (
-    mainCategoryName: string,
-    subCategoryName: string,
-    newItem: { id: any; name: string; imgPath: string | null },
-    changestate: any,
-    setChangestate: any,
+    mainCategoryName?: string,
+    subCategoryName?: string,
+    newItem?: { id: any; name: string; imgPath: string | null },
+    changestate?: any,
+    setChangestate?: any,
+    savecategoriesToAsyncStorage?: any,
+    id?: number,
 ) => {
     try {
-        console.log(mainCategoryName , subCategoryName , newItem )
         const stored = await AsyncStorage.getItem("category_list");
-        console.log(stored)
-        if (!stored) return;
+        const categoryList = stored ? JSON.parse(stored) : [];
 
-        const categoryList = JSON.parse(stored);
+        const mainCategory = categoryList.find((cat: any) => cat.name === mainCategoryName);
+        const subCategoryExists = mainCategory?.Categories?.some(
+            (sub: any) => sub.name === subCategoryName
+        );
 
-        const updatedList = categoryList.map((mainCat: any) => {
+        if (!mainCategory || !subCategoryExists) {
+            await savecategoriesToAsyncStorage({
+                name: mainCategoryName,
+                image: "optionalImage",
+                Categories: {
+                    name: subCategoryName,
+                    items: [],
+                },
+            },
+                id,
+
+            );
+        }
+
+        // Refetch after ensuring structure
+        const updatedStored = await AsyncStorage.getItem("category_list");
+        const updatedList = updatedStored ? JSON.parse(updatedStored) : [];
+
+        const finalList = updatedList.map((mainCat: any) => {
             if (mainCat.name === mainCategoryName) {
                 return {
                     ...mainCat,
@@ -23,7 +44,7 @@ export const addItemToSubCategory = async (
                         if (subCat.name === subCategoryName) {
                             return {
                                 ...subCat,
-                                items: [...subCat.items, newItem],
+                                items: [...(subCat.items || []), newItem],
                             };
                         }
                         return subCat;
@@ -33,8 +54,7 @@ export const addItemToSubCategory = async (
             return mainCat;
         });
 
-        await AsyncStorage.setItem("category_list", JSON.stringify(updatedList));
-        console.log("✅ Item successfully added!");
+        await AsyncStorage.setItem("category_list", JSON.stringify(finalList));
         setChangestate(!changestate);
     } catch (error) {
         console.error("❌ Error while adding item:", error);

@@ -39,41 +39,48 @@ const ProductsPage: React.FC = () => {
   }, []);
 
   const matchingSubCategory = useMemo(() => {
-    const allLists = [...MyListCollection, ...storedCategories]; // combine both sources
-
-    const matchingList = allLists.find(
+    const localList = MyListCollection.find(
       (list) => Number(list.id) === Number(ListIDInNum)
     );
+    console.log(localList, "Locallist");
 
-    if (!matchingList) {
-      console.warn("No matching list found for ID:", ListIDInNum);
+    const storedList = storedCategories.find(
+      (list: any) => Number(list.id) === Number(ListIDInNum)
+    );
+    console.log(storedList, "StoredList");
+
+    const localCategory = localList?.Categories?.find(
+      (cat) => Number(cat.id) === Number(CategoryIDInNum)
+    );
+    console.log(localCategory, "Local Categories");
+
+    const storedCategory = storedList?.Categories?.find(
+      (cat: any) => Number(cat.id) === Number(CategoryIDInNum)
+    );
+    console.log(storedCategories, "Storedcategories");
+
+    // Merge both item arrays if available
+    const mergedItems = [
+      ...(localCategory?.items || []),
+      ...(storedCategory?.items || []),
+    ];
+
+    if (!localCategory && !storedCategory) {
+      console.warn("No matching subcategory found for ID:", CategoryIDInNum);
       return undefined;
     }
 
-    const subCategory = matchingList.Categories?.find(
-      (cat: any) => Number(cat.id) === Number(CategoryIDInNum)
-    );
-
-    if (!subCategory) {
-      console.warn("No matching subcategory found for ID:", CategoryIDInNum);
-    }
-
-    return subCategory;
+    return {
+      ...(localCategory || storedCategory),
+      items: mergedItems,
+    };
   }, [CategoryIDInNum, ListIDInNum, storedCategories]);
 
   const updatedItems = useMemo(() => {
-    if (!selectedProducts || !matchingSubCategory) return [];
+    if (!matchingSubCategory) return [];
 
-    return matchingSubCategory.items.map((item: any) => {
-      const selectedItem = selectedProducts[ListIDInNum]?.find(
-        (selected: { id: number }) => selected.id === item.id
-      );
-      console.log(selectedItem , "Selected Itemssssssss")
-      return selectedItem
-        ? { ...selectedItem, imgPath: item.imgPath, id: item.id }
-        : item;
-    });
-  }, [matchingSubCategory, selectedProducts, ListName]);
+    return matchingSubCategory.items.map((item: any) => item);
+  }, [matchingSubCategory]);
 
   const handleBackPress = () => {
     router.back();

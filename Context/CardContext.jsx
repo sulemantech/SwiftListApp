@@ -113,8 +113,6 @@ export const ProductProvider = ({ children }) => {
 
       storedLists.push(newList);
       await AsyncStorage.setItem("myLists", JSON.stringify(storedLists));
-
-      console.log("✅ New list saved with ID:", newId);
     } catch (error) {
       console.error("❌ Error storing list:", error);
     }
@@ -130,12 +128,10 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  const savecategoriesToAsyncStorage = async (categoryCreation) => {
+  const savecategoriesToAsyncStorage = async (categoryCreation, id) => {
     try {
       const existing = await AsyncStorage.getItem("category_list");
       const existingData = existing ? JSON.parse(existing) : [];
-      console.log(existing)
-
       // Find if a category with the same name already exists
       const existingIndex = existingData.findIndex(
         (cat) => cat.name === categoryCreation.name
@@ -163,7 +159,7 @@ export const ProductProvider = ({ children }) => {
         // Add new category object with initial Categories array
         const newCategory = {
           ...categoryCreation,
-          id: existingData[existingData.length - 1]?.id + 1 || 6,
+          id: id ?? (existingData[existingData.length - 1]?.id + 1 || 6),
           Categories: [
             {
               ...categoryCreation.Categories,
@@ -175,7 +171,7 @@ export const ProductProvider = ({ children }) => {
         const updatedData = [...existingData, newCategory];
 
         await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
-        setShowToast(true);  
+        setShowToast(true);
       }
     } catch (error) {
       console.error("Error saving category:", error);

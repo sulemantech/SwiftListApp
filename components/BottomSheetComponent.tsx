@@ -156,7 +156,6 @@ const BottomSheetComponent: React.FC<BottomSheetComponentProps> = ({
   }, []);
 
   useEffect(() => {
-    console.log(ListName);
     const name = ListName; 
     if (name) {
       updateCompToShow(name);

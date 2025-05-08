@@ -69,7 +69,6 @@ const ProductList: React.FC<ProductListProps> = ({
     useState<string>("Select a Product");
   const [placeholderVal, setPlaceholderVal] = useState<number>(products.length);
   const [isProductSelected, setIsProductSelected] = useState<boolean>(false);
-  console.log(products, "these are products");
   const handleSelect = async (product: Product) => {
     const currentList = selectedProducts[ListID] || [];
     const isAlreadySelected = currentList.some(

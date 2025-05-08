@@ -14,7 +14,7 @@ import { MyListCollection } from "../../constants/Data";
 import TextInput2 from "../../components/Input";
 import Header from "../../components/Header";
 import CIrcleWithchevron from "../../components/CIrcleWithchevron";
-import uuid from 'react-native-uuid';
+import uuid from "react-native-uuid";
 import {
   useRouter,
   useLocalSearchParams,
@@ -59,6 +59,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     setStoredCategories,
     changestate,
     setChangestate,
+    savecategoriesToAsyncStorage,
   } = useContext(ProductContext);
   const { name, id } = useLocalSearchParams();
   const currentID = Number(id);
@@ -70,6 +71,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const StoredCategory = storedCategories?.find((categoryObj: any) => {
     return categoryObj.name === name;
   });
+
+  console.log(LocalCategory, StoredCategory);
 
   const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
 
@@ -85,12 +88,23 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
   // ✅ Set selected items based on selectedProducts context
   useEffect(() => {
-    if (!matchingCategory || !selectedProducts) return;
+    if (!matchingCategory || !selectedProducts ||  !storedCategories) return;
 
-    const allItems =
+    const localItems =
       matchingCategory?.Categories?.flatMap(
         (subCategory: any) => subCategory.items
       ) || [];
+
+    // Get items from storedCategories
+    const storedItems = storedCategories.flatMap(
+      (storedCat: any) =>
+        storedCat.Categories?.flatMap(
+          (subCategory: any) => subCategory.items
+        ) || []
+    );
+
+    // Merge both
+    const allItems = [...localItems, ...storedItems];
     setAllItems(allItems);
 
     const selectedNames =
@@ -106,7 +120,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     );
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
-  }, [selectedProducts, matchingCategory]);
+  }, [selectedProducts, matchingCategory , changestate]);
 
   // ✅ Filter logic based on searchQuery
   useEffect(() => {
@@ -118,7 +132,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     const filtered = allItems.filter((item) =>
       item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
     );
-    
 
     setFilteredItems(filtered); // update search results
   }, [searchQuery, allItems]);
@@ -142,25 +155,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const handleSaveItem = async (matchingImage: any) => {
     try {
       const stored = await AsyncStorage.getItem("category_list");
-      if (!stored) return;
-
-      const categoryList = JSON.parse(stored);
-
-      let maxId = 0;
-
-      categoryList.forEach((mainCat: any) => {
-        if (mainCat.name === ListName) {
-          mainCat.Categories.forEach((subCat: any) => {
-            if (subCat.name === pressedItem || matchingCategory.Categories[0]) {
-              subCat.items.forEach((item: any) => {
-                if (typeof item.id === "number" && item.id > maxId) {
-                  maxId = item.id;
-                }
-              });
-            }
-          });
-        }
-      });
 
       const newItem = {
         id: uuid.v4(),
@@ -170,12 +164,13 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
       await addItemToSubCategory(
         name.toString(),
-        pressedItem || matchingCategory.Categories[0],
+        pressedItem || matchingCategory.Categories[0]?.name, // 🛠️ Use `.name` here
         newItem,
         changestate,
-        setChangestate
+        setChangestate,
+        savecategoriesToAsyncStorage,
+        currentID
       );
-      // setIsVisible(false);
     } catch (error) {
       console.error("❌ Error while saving item:", error);
     }
@@ -294,9 +289,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
           filteredItems.length === 0 &&
           (() => {
             const letter = searchQuery.trim().charAt(0).toUpperCase();
-            console.log(ListName);
             const match = alphabetImages.find((item) => item.letter === letter);
-            return match && currentID > 5  ? (
+            return match ? (
               <TouchableOpacity
                 style={styles.productCard}
                 onPress={() => handleSaveItem(match)}
