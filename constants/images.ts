@@ -279,7 +279,6 @@ import RiceMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/pn
 import SoyMilk from "../assets/images/SwiftlistApp/Grocery/DairyAlternatives/png/SoyMilk.png";
 
 
-
 // Meat & Seafood
 import Bacon from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/Bacon.png";
 import FishFillets from "../assets/images/SwiftlistApp/Grocery/Meat&Seafood/png/FishFillets.png";
