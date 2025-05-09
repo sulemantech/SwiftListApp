@@ -4,8 +4,8 @@ export const addItemToSubCategory = async (
     mainCategoryName?: string,
     subCategoryName?: string,
     newItem?: { id: any; name: string; imgPath: string | null },
-    changestate?: any,
-    setChangestate?: any,
+    itemsStateChange?: any,
+    setItemsStateChange?: any,
     savecategoriesToAsyncStorage?: any,
     id?: number,
 ) => {
@@ -13,8 +13,8 @@ export const addItemToSubCategory = async (
         console.log("🏷️ mainCategoryName:", mainCategoryName);
         console.log("🏷️ subCategoryName:", subCategoryName);
         console.log("🏷️ newItem:", newItem);
-        console.log("🏷️ changestate:", changestate);
-        console.log("🏷️ setChangestate:", setChangestate);
+        console.log("🏷️ changestate:", itemsStateChange);
+        console.log("🏷️ setChangestate:", setItemsStateChange);
         console.log("🏷️ savecategoriesToAsyncStorage:", savecategoriesToAsyncStorage);
         console.log("🏷️ id:", id);
         const stored = await AsyncStorage.getItem("category_list");
@@ -62,7 +62,7 @@ export const addItemToSubCategory = async (
         });
 
         await AsyncStorage.setItem("category_list", JSON.stringify(finalList));
-        setChangestate(!changestate);
+        setItemsStateChange?.((prev: boolean) => !prev);
         console.log("✅ Item has been added.")
     } catch (error) {
         console.error("❌ Error while adding item:", error);

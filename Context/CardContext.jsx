@@ -19,21 +19,23 @@ export const ProductProvider = ({ children }) => {
     UserProfilePicture: 'https://via.placeholder.com/150',
   });
   const [changestate, setChangestate] = useState(false);
+  const [itemsStateChange, setItemsStateChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      // await AsyncStorage.removeItem("myLists");
       const lists = await getStoredLists();
       const stored = await AsyncStorage.getItem('category_list');
       const parsedStored = stored ? JSON.parse(stored) : [];
+      // await AsyncStorage.removeItem("myLists");
+      // await AsyncStorage.removeItem("selectedProducts");
       // await AsyncStorage.removeItem('category_list');  
       // await AsyncStorage.removeItem('myLists');  
       setStoredCategories(parsedStored);
       setStoredLists(lists);
     };
-
+    console.log("--------------------------------",itemsStateChange)
     fetchData();
-  }, [changestate]);
+  }, [changestate, itemsStateChange]);
 
   useEffect(() => {
     const loadSelectedProducts = async () => {
@@ -296,7 +298,8 @@ export const ProductProvider = ({ children }) => {
       storedLists, setStoredLists,
       userDetails, setUserDetails,
       savecategoriesToAsyncStorage,
-      storedCategories, setStoredCategories
+      storedCategories, setStoredCategories,
+      itemsStateChange, setItemsStateChange
     }}>
       {children}
     </ProductContext.Provider>

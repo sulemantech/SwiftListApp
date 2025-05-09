@@ -59,6 +59,8 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     setStoredCategories,
     changestate,
     setChangestate,
+    itemsStateChange,
+    setItemsStateChange,
     savecategoriesToAsyncStorage,
   } = useContext(ProductContext);
   const { name, id } = useLocalSearchParams();
@@ -71,6 +73,9 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   const StoredCategory = storedCategories?.find((categoryObj: any) => {
     return categoryObj.name === name;
   });
+  useEffect(() => {
+    console.log(StoredCategory);
+  }, [StoredCategory]);
 
   const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
 
@@ -87,6 +92,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   // ✅ Set selected items based on selectedProducts context
   useEffect(() => {
     if (!matchingCategory || !selectedProducts || !storedCategories) return;
+    console.log("hello");
 
     const localItems =
       matchingCategory?.Categories?.flatMap(
@@ -118,7 +124,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     );
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
-  }, [selectedProducts, matchingCategory, changestate]);
+  }, [selectedProducts, matchingCategory , StoredCategory]);
 
   // ✅ Filter logic based on searchQuery
   useEffect(() => {
@@ -171,7 +177,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         pressedItem || matchingCategory.Categories[0]?.name, // 🛠️ Use `.name` here
         newItem,
         changestate,
-        setChangestate,
+        setItemsStateChange,
         savecategoriesToAsyncStorage,
         currentID
       );
