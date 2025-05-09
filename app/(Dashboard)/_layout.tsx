@@ -18,11 +18,14 @@ import Reminder1 from "../../assets/images/SVG/bottomTabIcons/Reminder1.svg";
 import Reminder2 from "../../assets/images/SVG/bottomTabIcons/Reminder2.svg";
 import Profile1 from "../../assets/images/SVG/bottomTabIcons/Profile1.svg";
 import Profile2 from "../../assets/images/SVG/bottomTabIcons/Profile2.svg";
+import Toast from 'react-native-toast-message';
+
 
 const { width, height } = Dimensions.get("window");
 
 export default function HomeLayout() {
   return (
+    <>
     <Tabs
       initialRouteName="Home"
       screenOptions={{
@@ -167,6 +170,8 @@ export default function HomeLayout() {
         }}
       />
     </Tabs>
+    <Toast/>
+    </>
   );
 }
 

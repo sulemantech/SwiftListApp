@@ -10,6 +10,13 @@ export const addItemToSubCategory = async (
     id?: number,
 ) => {
     try {
+        console.log("🏷️ mainCategoryName:", mainCategoryName);
+        console.log("🏷️ subCategoryName:", subCategoryName);
+        console.log("🏷️ newItem:", newItem);
+        console.log("🏷️ changestate:", changestate);
+        console.log("🏷️ setChangestate:", setChangestate);
+        console.log("🏷️ savecategoriesToAsyncStorage:", savecategoriesToAsyncStorage);
+        console.log("🏷️ id:", id);
         const stored = await AsyncStorage.getItem("category_list");
         const categoryList = stored ? JSON.parse(stored) : [];
 
@@ -56,6 +63,7 @@ export const addItemToSubCategory = async (
 
         await AsyncStorage.setItem("category_list", JSON.stringify(finalList));
         setChangestate(!changestate);
+        console.log("✅ Item has been added.")
     } catch (error) {
         console.error("❌ Error while adding item:", error);
     }

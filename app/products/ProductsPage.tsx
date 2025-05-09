@@ -42,38 +42,35 @@ const ProductsPage: React.FC = () => {
     const localList = MyListCollection.find(
       (list) => Number(list.id) === Number(ListIDInNum)
     );
-    console.log(localList, "Locallist");
 
     const storedList = storedCategories.find(
       (list: any) => Number(list.id) === Number(ListIDInNum)
     );
-    console.log(storedList, "StoredList");
 
     const localCategory = localList?.Categories?.find(
       (cat) => Number(cat.id) === Number(CategoryIDInNum)
     );
-    console.log(localCategory, "Local Categories");
 
     const storedCategory = storedList?.Categories?.find(
       (cat: any) => Number(cat.id) === Number(CategoryIDInNum)
     );
-    console.log(storedCategories, "Storedcategories");
 
-    // Merge both item arrays if available
     const mergedItems = [
       ...(localCategory?.items || []),
       ...(storedCategory?.items || []),
     ];
 
     if (!localCategory && !storedCategory) {
-      console.warn("No matching subcategory found for ID:", CategoryIDInNum);
+      console.warn("⚠️ No matching subcategory found for ID:", CategoryIDInNum);
       return undefined;
     }
 
-    return {
+    const result = {
       ...(localCategory || storedCategory),
       items: mergedItems,
     };
+
+    return result;
   }, [CategoryIDInNum, ListIDInNum, storedCategories]);
 
   const updatedItems = useMemo(() => {

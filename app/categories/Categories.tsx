@@ -72,8 +72,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     return categoryObj.name === name;
   });
 
-  console.log(LocalCategory, StoredCategory);
-
   const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
 
   // ✅ Get all products from this category once
@@ -88,7 +86,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
 
   // ✅ Set selected items based on selectedProducts context
   useEffect(() => {
-    if (!matchingCategory || !selectedProducts ||  !storedCategories) return;
+    if (!matchingCategory || !selectedProducts || !storedCategories) return;
 
     const localItems =
       matchingCategory?.Categories?.flatMap(
@@ -120,7 +118,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     );
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
-  }, [selectedProducts, matchingCategory , changestate]);
+  }, [selectedProducts, matchingCategory, changestate]);
 
   // ✅ Filter logic based on searchQuery
   useEffect(() => {
@@ -129,12 +127,18 @@ const Categories: React.FC<Props> = ({ ListName }) => {
       return;
     }
 
-    const filtered = allItems.filter((item) =>
-      item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-    );
+    const filtered = allItems
+      .filter((item) =>
+        item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+      )
+      .filter(
+        (value, index, self) =>
+          index === self.findIndex((t) => t.id === value.id) // Remove duplicates based on 'id'
+      );
 
     setFilteredItems(filtered); // update search results
   }, [searchQuery, allItems]);
+
   const formattedName =
     (Array.isArray(name) ? name[0] : name)?.replace(/\s+/g, "").toLowerCase() +
     "image";

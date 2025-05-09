@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { showToast } from '@/components/ToastComponet';
 
 export const ProductContext = createContext();
 
@@ -9,7 +10,6 @@ export const ProductProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [storedLists, setStoredLists] = useState([]);
-  const [showToast, setShowToast] = useState(false);
   const [storedCategories, setStoredCategories] = useState([]);
   const [userDetails, setUserDetails] = useState({
     UserName: "",
@@ -159,7 +159,10 @@ export const ProductProvider = ({ children }) => {
         // Add new category object with initial Categories array
         const newCategory = {
           ...categoryCreation,
-          id: id ?? (existingData[existingData.length - 1]?.id + 1 || 6),
+          id: id ?? (existingData[existingData.length - 1]?.id > 5
+            ? existingData[existingData.length - 1].id + 1
+            : 6),
+
           Categories: [
             {
               ...categoryCreation.Categories,
@@ -171,7 +174,13 @@ export const ProductProvider = ({ children }) => {
         const updatedData = [...existingData, newCategory];
 
         await AsyncStorage.setItem("category_list", JSON.stringify(updatedData));
-        setShowToast(true);
+        // showToast({
+        //   title: "Category Created",
+        //   message: `Category has been added successfully!`,
+        //   type: "success",
+        // });
+
+
       }
     } catch (error) {
       console.error("Error saving category:", error);
@@ -287,7 +296,6 @@ export const ProductProvider = ({ children }) => {
       storedLists, setStoredLists,
       userDetails, setUserDetails,
       savecategoriesToAsyncStorage,
-      showToast, setShowToast,
       storedCategories, setStoredCategories
     }}>
       {children}
