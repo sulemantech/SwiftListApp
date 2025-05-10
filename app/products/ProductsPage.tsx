@@ -130,14 +130,14 @@ const ProductsPage: React.FC = () => {
           changestate={setChangestate}
         />
       )} */}
-      {ListIDInNum > 5 && (
+      {/* {ListIDInNum > 5 && (
         <TouchableOpacity
           onPress={() => CreateList()}
           style={styles.fixedAddButton}
         >
           <Text style={styles.icon}> {isBlur ? " ✕ " : " + "} </Text>
         </TouchableOpacity>
-      )}
+      )} */}
     </SafeAreaView>
   );
 };

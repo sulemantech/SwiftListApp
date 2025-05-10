@@ -33,7 +33,7 @@ export const ProductProvider = ({ children }) => {
       setStoredCategories(parsedStored);
       setStoredLists(lists);
     };
-    console.log("--------------------------------",itemsStateChange)
+    console.log("--------------------------------", itemsStateChange)
     fetchData();
   }, [changestate, itemsStateChange]);
 
@@ -71,6 +71,7 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   const updateSelectedProducts = async (ListName, product) => {
+    console.log("I am  Here", ListName, product);
     const updatedProducts = { ...selectedProducts };
 
     if (!updatedProducts[ListName]) {
@@ -86,6 +87,7 @@ export const ProductProvider = ({ children }) => {
     }
 
     setSelectedProducts(updatedProducts);
+    console.log("------------ Updated Products--------- ", updatedProducts);
     await AsyncStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
   };
 

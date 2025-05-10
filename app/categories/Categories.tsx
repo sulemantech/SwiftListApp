@@ -59,6 +59,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     setStoredCategories,
     changestate,
     setChangestate,
+    updateSelectedProducts,
     itemsStateChange,
     setItemsStateChange,
     savecategoriesToAsyncStorage,
@@ -77,7 +78,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     console.log(StoredCategory);
   }, [StoredCategory]);
 
-  const matchingCategory = currentID < 5 ? LocalCategory : StoredCategory;
+  const matchingCategory = currentID <= 5 ? LocalCategory : StoredCategory;
 
   // ✅ Get all products from this category once
   // useEffect(() => {
@@ -92,7 +93,6 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   // ✅ Set selected items based on selectedProducts context
   useEffect(() => {
     if (!matchingCategory || !selectedProducts || !storedCategories) return;
-    console.log("hello");
 
     const localItems =
       matchingCategory?.Categories?.flatMap(
@@ -124,7 +124,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
     );
 
     setSelectedItem(uniqueItems); // used when searchQuery is empty
-  }, [selectedProducts, matchingCategory , StoredCategory]);
+  }, [selectedProducts, matchingCategory, StoredCategory]);
 
   // ✅ Filter logic based on searchQuery
   useEffect(() => {
@@ -162,6 +162,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
   };
 
   const SelectedImageComponent = imageMap[formattedName] || GrocerySVG;
+
   const handleSaveItem = async (matchingImage: any) => {
     try {
       const stored = await AsyncStorage.getItem("category_list");
@@ -181,6 +182,7 @@ const Categories: React.FC<Props> = ({ ListName }) => {
         savecategoriesToAsyncStorage,
         currentID
       );
+     await updateSelectedProducts(name.toString(), newItem);
     } catch (error) {
       console.error("❌ Error while saving item:", error);
     }

@@ -3,15 +3,21 @@ import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-
 interface DropDownProps {
   Label: string;
   Placeholder: string;
   data: { label: string; value: string }[];
   onChange?: (item: { label: string; value: string }) => void;
+  error?: string;
 }
 
-const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder, data, onChange }) => {
+const DropdownComponent: React.FC<DropDownProps> = ({
+  Label,
+  Placeholder,
+  data,
+  onChange,
+  error,
+}) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -30,7 +36,13 @@ const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder, data, 
     <View style={styles.container}>
       <Text>{Label}</Text>
       <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+        style={[
+          styles.dropdown,
+          {
+            borderColor: error ? "#ff4d4f" : "gray",
+            borderWidth: error ? 1.2 : 0.5,
+          },
+        ]}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
@@ -42,7 +54,7 @@ const DropdownComponent: React.FC<DropDownProps> = ({ Label, Placeholder, data, 
           if (onChange) {
             onChange(item); // 👈 this sends the selected item to the parent
           }
-        }}        
+        }}
         maxHeight={300}
         labelField="label"
         valueField="value"

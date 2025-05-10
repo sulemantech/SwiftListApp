@@ -1,13 +1,13 @@
 import React from "react";
 import {
   StyleSheet,
-  useColorScheme,
   Text,
   TextInput,
   View,
+  useColorScheme,
   TextInputProps,
+  Dimensions,
 } from "react-native";
-import { Dimensions } from "react-native";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -16,6 +16,7 @@ interface TextInput2Props extends TextInputProps {
   borderRadius?: number;
   bgColor?: string;
   fontsize?: number;
+  error?: string;
 }
 
 const TextInput2: React.FC<TextInput2Props> = ({
@@ -29,11 +30,12 @@ const TextInput2: React.FC<TextInput2Props> = ({
   borderRadius = 13,
   bgColor = "#fff",
   fontsize = 13,
+  error,
   style,
-
   ...props
 }) => {
   const colorScheme = useColorScheme();
+  const showError = Boolean(error);
 
   return (
     <View style={styles.container}>
@@ -49,14 +51,15 @@ const TextInput2: React.FC<TextInput2Props> = ({
             borderRadius: borderRadius,
             fontSize: fontsize,
             color: colorScheme === "dark" ? "#000" : "#000",
+            borderColor: showError ? "red" : "#DEDDE2",
           },
-          style,
+          style as object, // Explicit cast to avoid style type conflicts
         ]}
-        placeholder={placeholder}
-        placeholderTextColor="#A9A9A9"
+        placeholder={showError ? error : placeholder}
+        placeholderTextColor={"#A9A9A9"}
         value={value}
         onChangeText={onChangeText}
-        {...props} // Spread other TextInputProps
+        {...props}
       />
     </View>
   );
@@ -66,11 +69,9 @@ export default TextInput2;
 
 const styles = StyleSheet.create({
   container: {
-    // width: "100%",
     width: screenWidth * 0.8889,
   },
   label: {
-    // backgroundColor: "red",
     fontFamily: "OpenSans-Regular",
     fontSize: 12,
     marginBottom: 12,

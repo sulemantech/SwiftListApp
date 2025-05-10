@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useState } from "react";
 import TextInput2 from "./Input";
 import images from "../constants/images";
@@ -19,9 +19,14 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
   setIsVisible,
   categories,
   isBlur,
-  setIsBlur
+  setIsBlur,
 }) => {
   const [listDescription, setListDescription] = useState<string>("");
+  const [errors, setErrors] = useState({
+    categoryName: "",
+    listName: "",
+  });
+
   const data = categories.map((category: any, index: any) => ({
     label: category,
     value: (index + 1).toString(),
@@ -37,9 +42,33 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
     useContext(ProductContext);
 
   const savecategrories = () => {
+    let hasError = false;
+    let newErrors = {
+      categoryName: "",
+      listName: "",
+    };
+
+    if (categoryCreation.Categories.name.trim() === "") {
+      newErrors.categoryName = "Category name is required.";
+      hasError = true;
+    }
+
+    if (categoryCreation.name.trim() === "") {
+      newErrors.listName = "Please select a list.";
+      hasError = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasError) return;
+
     setChangestate(!changestate);
-    setIsBlur(!isBlur)
+    setIsBlur(!isBlur);
     savecategoriesToAsyncStorage(categoryCreation);
+    setIsVisible(false);
+  };
+
+  const Close = () => {
     setIsVisible(false);
   };
 
@@ -47,12 +76,19 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
     <View style={styles.container}>
       <View style={styles.line}></View>
       <View style={styles.headerContainer}>
-        <Text style={styles.signInText}>Add List</Text>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text onPress={savecategrories} style={styles.saveButtonText}>
-            Save
-          </Text>
-        </TouchableOpacity>
+        <Text style={styles.signInText}>Add Category</Text>
+        <View style={styles.containerCross}>
+          <TouchableOpacity style={styles.saveButton}>
+            <Text onPress={savecategrories} style={styles.saveButtonText}>
+              Save
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text onPress={Close} style={styles.saveButtonText}>
+              ❌
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.container2}>
         <Divider />
@@ -69,18 +105,39 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({
               },
             }))
           }
+          style={[
+            {
+              borderWidth: 1,
+              borderColor: errors.categoryName ? "red" : "#ccc",
+              borderRadius: 8,
+              padding: 8,
+            },
+          ]}
         />
+        {errors.categoryName ? (
+          <Text style={{ color: "red", marginLeft: 10 }}>
+            {errors.categoryName}
+          </Text>
+        ) : null}
+
         <DropdownComponent
           Label="List"
           Placeholder="Select a List"
           data={data}
+          error={errors.listName}
           onChange={(item: any) => {
             SetCategoryCreation((prev) => ({
               ...prev,
-              name: item.label, // Sets list name from dropdown
+              name: item.label,
             }));
+            setErrors((prev) => ({ ...prev, listName: "" }));
           }}
         />
+        {errors.listName ? (
+          <Text style={{ color: "red", marginLeft: 10 }}>
+            {errors.listName}
+          </Text>
+        ) : null}
       </View>
     </View>
   );
@@ -132,5 +189,13 @@ const styles = StyleSheet.create({
     color: "#5C5C5C",
     fontSize: 16,
     fontFamily: "OpenSans-Medium",
+  },
+  containerCross: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    // marginTop: 20,
+    padding: 10,
+    gap: 20, // gives space between buttons if supported
+    alignItems: "center",
   },
 });
