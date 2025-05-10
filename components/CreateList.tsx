@@ -19,8 +19,12 @@ import { ProductContext } from "../Context/CardContext";
 
 const Theme = ({
   setIsVisible,
+  setIsBlur,
+  isBlur
 }: {
   setIsVisible: (value: boolean) => void;
+  setIsBlur: React.Dispatch<React.SetStateAction<boolean>>;
+  isBlur: boolean;
 }) => {
   const [listName, setListName] = useState("");
   const [listDescription, setListDescription] = useState("");
@@ -83,6 +87,7 @@ const Theme = ({
     const selectedTheme = cardDataArray[selectedThemeIndex!];
 
     ListStorefnc(listName, listDescription, selectedTheme.PictureName);
+    setIsBlur(!isBlur);
     setIsVisible(false);
   };
 
@@ -124,7 +129,7 @@ const Theme = ({
           }}
         />
         {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
-      
+
         <TextInput2
           label={"Description:"}
           placeholder={errors.description || "Write your list Description"}
